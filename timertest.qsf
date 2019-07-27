@@ -58,4 +58,5 @@ set_global_assignment -name VERILOG_FILE timertest.v
 set_global_assignment -name VERILOG_FILE tb.v
 set_global_assignment -name VERILOG_FILE nor_3.v
 set_global_assignment -name VERILOG_FILE nor_1.v
+set_global_assignment -name VERILOG_FILE a2_timer.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
