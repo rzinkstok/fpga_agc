@@ -1,6 +1,6 @@
-module nor_2(y, a, b, SIM_RST, SIM_CLK);
+module nor_2(y, a, b, SIM_CLK);
 	parameter iv = 1'b0;
-	input wire a, b, SIM_RST, SIM_CLK;
+	input wire a, b, SIM_CLK;
 	output reg y = iv;
 	reg next_val = iv;
 	reg prev_val = iv;
