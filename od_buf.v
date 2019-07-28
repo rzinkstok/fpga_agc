@@ -3,5 +3,4 @@ module od_buf(y, a);
 	output wire y;
 	
 	assign y = a;
-
 endmodule
