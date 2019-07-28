@@ -24,6 +24,6 @@ module tb;
    
     initial
     begin
-       #10000 $stop;
+       #30000 $stop;
     end   
 endmodule
