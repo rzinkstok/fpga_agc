@@ -11,6 +11,7 @@ module tb;
     reg GOJ1 = 0;
     reg MSTP = 0;
     
+    wire NOR37101_out, NOR37102_out, NOR37103_out, NOR37105_out, NOR37106_out, NOR37111_out, NOR37112_out, NOR37113_out, NOR37114_out;
     wire CLK, PHS2, PHS2_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     wire P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_;
     wire F01A, F01B, F01C, F01D, FS01, FS01_;
@@ -22,12 +23,14 @@ module tb;
     wire T12SET;
     
     always 
-       #0.244140625 CLOCK = !CLOCK;
+        //#0.244140625 CLOCK = !CLOCK;
+	    #0.25 CLOCK = !CLOCK;  
     always
-       #0.010 SIM_CLK = !SIM_CLK;
+        #0.0025 SIM_CLK = !SIM_CLK;
 
     a2_timer timer(
         CLOCK, 
+        NOR37101_out, NOR37102_out, NOR37103_out, NOR37105_out, NOR37106_out, NOR37111_out, NOR37112_out, NOR37113_out, NOR37114_out,
         CLK, PHS2, PHS2_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
         RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
         P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_,

@@ -1,5 +1,6 @@
 module a2_timer(
     CLOCK, 
+    NOR37101_out, NOR37102_out, NOR37103_out, NOR37105_out, NOR37106_out, NOR37111_out, NOR37112_out, NOR37113_out, NOR37114_out,
     CLK, PHS2, PHS2_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
     RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
     P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_,
@@ -16,8 +17,8 @@ module a2_timer(
 
     input wire SIM_CLK;
     
-	// input wires used in multiple sheets
-	input wire STOP, T12DC_;
+	// output wires used in multiple sheets
+	output wire STOP, T12DC_;
     
     /************************
      *
@@ -32,16 +33,16 @@ module a2_timer(
     output wand MONWT, Q2A;
     output wire RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     
-    wire NOR37101_out;
-    wire NOR37102_out;
-    wire NOR37103_out;
-    wire NOR37105_out;
-    wire NOR37106_out;
+    output wire NOR37101_out;
+    output wire NOR37102_out;
+    output wire NOR37103_out;
+    output wire NOR37105_out;
+    output wire NOR37106_out;
     wire NOR37107_out;
-    wire NOR37111_out;
-    wire NOR37112_out;
-    wire NOR37113_out;
-    wire NOR37114_out;
+    output wire NOR37111_out;
+    output wire NOR37112_out;
+    output wire NOR37113_out;
+    output wire NOR37114_out;
     wire NOR37117_out;
     wire NOR37118_out;
     wire NOR37121_out;
