@@ -75,6 +75,8 @@ module a1_scaler(
     
     // Gates NOR38238 - NOR38240 not used
     
+    
+    
     /**************************
      *
      *  Module A1 sheet 2
