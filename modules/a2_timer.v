@@ -1,6 +1,5 @@
 module a2_timer(
-    CLOCK, 
-    NOR37101_out, NOR37102_out, NOR37103_out, NOR37105_out, NOR37106_out, NOR37111_out, NOR37112_out, NOR37113_out, NOR37114_out,
+    CLOCK,
     CLK, PHS2, PHS2_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
     RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
     P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_,
@@ -9,9 +8,12 @@ module a2_timer(
     SBY, ALGA, MSTRTP, STRT1, STRT2, GOJ1, MSTP,
     STOPA, GOJAM, GOJAM_, STOP, STOP_,
     MSTPIT_, MGOJAM,
-    T01, T01DC_, T02, T02DC_, T03, T03DC_, T04, T04DC_, T05, T05DC_, T06, T06DC_,
-    T07, T07DC_, T08, T08DC_, T09, T09DC_, T10, T10DC_, T11, T12, T12DC_,
-    T12SET,
+    WL15, WL15_, WL16, WL16_,
+    T01, T01_, T01DC_, T02, T02_, T02DC_, T03, T03_, T03DC_, T04, T04_, T04DC_,
+    T05, T05_, T05DC_, T06, T06_, T06DC_, T07, T07_, T07DC_, T08, T08_, T08DC_,
+    T09, T09_, T09DC_, T10, T10_, T10DC_, T11, T11_,         T12, T12_, T12DC_,
+    MT01, MT02, MT03,MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, T12SET,
+    UNF, UNF_, OVF, OVF_,
     SIM_CLK
 );
 
@@ -20,12 +22,12 @@ module a2_timer(
 	// output wires used in multiple sheets
 	output wire STOP, T12DC_;
     
-    /************************
+    /**************************
      *
      *  Module A2 sheet 1
-     *  Sheet number 205260/1
+     *  Sheet number 2005260/1
      *
-     ************************/
+     **************************/
     
     input wire CLOCK;
     
@@ -33,16 +35,16 @@ module a2_timer(
     output wand MONWT, Q2A;
     output wire RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     
-    output wire NOR37101_out;
-    output wire NOR37102_out;
-    output wire NOR37103_out;
-    output wire NOR37105_out;
-    output wire NOR37106_out;
+    wire NOR37101_out;
+    wire NOR37102_out;
+    wire NOR37103_out;
+    wire NOR37105_out;
+    wire NOR37106_out;
     wire NOR37107_out;
-    output wire NOR37111_out;
-    output wire NOR37112_out;
-    output wire NOR37113_out;
-    output wire NOR37114_out;
+    wire NOR37111_out;
+    wire NOR37112_out;
+    wire NOR37113_out;
+    wire NOR37114_out;
     wire NOR37117_out;
     wire NOR37118_out;
     wire NOR37121_out;
@@ -105,7 +107,7 @@ module a2_timer(
     // RT
     nor_1 #(1'b0) NOR37129(RT,              NOR37103_out,                                   SIM_CLK);
     
-    // RT_, from page 3
+    // RT_, moved here from sheet 3
      nor_1 #(1'b0) NOR37350(RT_,            RT,                                             SIM_CLK);
      //nor_1 #(1'b0) NOR37351(RT_,          RT,                                             SIM_CLK);
      //nor_1 #(1'b0) NOR37352(RT_,          RT,                                             SIM_CLK);
@@ -167,15 +169,15 @@ module a2_timer(
     
     // NOR37160 omitted (extra gate generating a copy of T03, see sheet 3)
     
-    // END OF SHEET (160 gates)
+    // END OF SHEET (60 gates)
     
     
-    /************************
+    /**************************
      *
      *  Module A2 sheet 2
-     *  Sheet number 205260/2
+     *  Sheet number 2005260/2
      *
-     ************************/
+     **************************/
     
     input wire SBY, ALGA, MSTRTP, STRT1, STRT2, GOJ1, MSTP;
     output wire P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_;
@@ -298,19 +300,22 @@ module a2_timer(
     nor_2 #(1'b0) NOR37258(SB4,             P02_,           P04,                            SIM_CLK);
     nor_3 #(1'b0) NOR37259(EDSET,           P02,            P03_,           P04,            SIM_CLK);
     
-    // END OF SHEET (259 gates)
+    // END OF SHEET (59 gates)
     
     
-    /************************
+    /**************************
      *
      *  Module A2 sheet 3
-     *  Sheet number 205260/3
+     *  Sheet number 2005260/3
      *
-     ************************/
+     **************************/
      
-     output wire T01, T01DC_, T02, T02DC_, T03, T03DC_, T04, T04DC_, T05, T05DC_, T06, T06DC_;
-     output wire T07, T07DC_, T08, T08DC_, T09, T09DC_, T10, T10DC_, T11, T12;
-     output wand T12SET;
+     input wire WL15, WL15_, WL16, WL16_;
+     output wire T01, T01_, T01DC_, T02, T02_, T02DC_, T03, T03_, T03DC_, T04, T04_, T04DC_;
+     output wire T05, T05_, T05DC_, T06, T06_, T06DC_, T07, T07_, T07DC_, T08, T08_, T08DC_;
+     output wire T09, T09_, T09DC_, T10, T10_, T10DC_, T11, T11_,         T12, T12_;
+     output wand MT01, MT02, MT03,MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, T12SET;
+     output wire UNF, UNF_, OVF, OVF_;
      
      wire NOR37303_out;
      wire NOR37304_out;
@@ -345,7 +350,43 @@ module a2_timer(
      wire BUF37357_proxy;
      wire NOR37358_out;
      wire BUF37358_proxy;
-    
+     
+     wire NOR37401_out;
+     wire NOR37404_out;
+     wire BUF37404_proxy;
+     wire NOR37405_out;
+     wire NOR37407_out;
+     wire BUF37407_proxy;
+     wire NOR37408_out;
+     wire NOR37411_out;
+     wire BUF37411_proxy;
+     wire NOR37412_out;
+     wire NOR37415_out;
+     wire BUF37415_proxy;
+     wire NOR37416_out;
+     wire NOR37422_out;
+     wire BUF37422_proxy;
+     wire NOR37423_out;
+     wire NOR37427_out;
+     wire BUF37427_proxy;
+     wire NOR37428_out;
+     wire NOR37432_out;
+     wire BUF37432_proxy;
+     wire NOR37433_out;
+     wire NOR37437_out;
+     wire BUF37437_proxy;
+     wire NOR37438_out;
+     wire NOR37442_out;
+     wire BUF37442_proxy;
+     wire NOR37443_out;
+     wire NOR37447_out;
+     wire BUF37447_proxy;
+     wire NOR37448_out;
+     wire NOR37450_out;
+     wire BUF37450_proxy;
+     wire NOR37451_out;
+     wire NOR37454_out;
+     wire BUF37454_proxy;
      
      // Time pulse generator
      
@@ -433,12 +474,110 @@ module a2_timer(
      
      // NOR37359 omitted, extra gate generating a copy of T02
      
-     // TODO: NOR37360
+     // NOR37360 (creating CINORM) omitted, is a fan-in gate for an output on module A7
      
      // Gate numbers NOR37361 - NOR37400 not used
      
+     // Monitor time pulse outputs
      
+     nor_1 #(1'b1) NOR37401(T01_,           T01,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37402(T01_,         T01,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37403(T01_,         T01,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37404(NOR37404_out,   T01_,                                           SIM_CLK);
+     od_buf        BUF37404(BUF37404_proxy, NOR37404_out);
+     assign MT01 = BUF37404_proxy;
      
+     nor_1 #(1'b1) NOR37405(T02_,           T02,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37406(T02_,         T02,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37407(NOR37407_out,   T02_,                                           SIM_CLK);
+     od_buf        BUF37407(BUF37407_proxy, NOR37407_out);
+     assign MT02 = BUF37407_proxy;
      
+     nor_1 #(1'b1) NOR37408(T03_,           T03,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37409(T03_,         T03,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37410(T03_,         T03,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37411(NOR37411_out,   T03_,                                           SIM_CLK);
+     od_buf        BUF37411(BUF37411_proxy, NOR37411_out);
+     assign MT03 = BUF37411_proxy;
      
+     nor_1 #(1'b1) NOR37412(T04_,           T04,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37413(T04_,         T04,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37414(T04_,         T04,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37415(NOR37415_out,   T04_,                                           SIM_CLK);
+     od_buf        BUF37415(BUF37415_proxy, NOR37415_out);
+     assign MT04 = BUF37415_proxy;
+     
+     nor_1 #(1'b1) NOR37416(T05_,           T05,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37417(T05_,         T05,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37418(T05_,         T05,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37419(T05_,         T05,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37420(T05_,         T05,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37421(T05_,         T05,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37422(NOR37422_out,   T05_,                                           SIM_CLK);
+     od_buf        BUF37422(BUF37422_proxy, NOR37422_out);
+     assign MT05 = BUF37422_proxy;
+     
+     nor_1 #(1'b1) NOR37423(T06_,           T06,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37424(T06_,         T06,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37425(T06_,         T06,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37426(T06_,         T06,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37427(NOR37427_out,   T06_,                                           SIM_CLK);
+     od_buf        BUF37427(BUF37427_proxy, NOR37427_out);
+     assign MT06 = BUF37427_proxy;
+     
+     nor_1 #(1'b1) NOR37428(T07_,           T07,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37429(T07_,         T07,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37430(T07_,         T07,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37431(T07_,         T07,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37432(NOR37432_out,   T07_,                                           SIM_CLK);
+     od_buf        BUF37432(BUF37432_proxy, NOR37432_out);
+     assign MT07 = BUF37432_proxy;
+     
+     nor_1 #(1'b1) NOR37433(T08_,           T08,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37434(T08_,         T08,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37435(T08_,         T08,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37436(T08_,         T08,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37437(NOR37437_out,   T08_,                                           SIM_CLK);
+     od_buf        BUF37437(BUF37437_proxy, NOR37437_out);
+     assign MT08 = BUF37437_proxy;
+     
+     nor_1 #(1'b1) NOR37438(T09_,           T09,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37439(T09_,         T09,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37440(T09_,         T09,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37441(T09_,         T09,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37442(NOR37442_out,   T09_,                                           SIM_CLK);
+     od_buf        BUF37442(BUF37442_proxy, NOR37442_out);
+     assign MT09 = BUF37442_proxy;
+     
+     nor_1 #(1'b1) NOR37443(T10_,           T10,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37444(T10_,         T10,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37445(T10_,         T10,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37446(T10_,         T10,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37447(NOR37447_out,   T10_,                                           SIM_CLK);
+     od_buf        BUF37447(BUF37447_proxy, NOR37447_out);
+     assign MT10 = BUF37447_proxy;
+     
+     nor_1 #(1'b1) NOR37448(T11_,           T11,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37449(T11_,         T11,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37450(NOR37450_out,   T11_,                                           SIM_CLK);
+     od_buf        BUF37450(BUF37450_proxy, NOR37450_out);
+     assign MT11 = BUF37450_proxy;
+     
+     nor_1 #(1'b1) NOR37451(T12_,           T12,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37452(T12_,         T12,                                            SIM_CLK);
+     //nor_1 #(1'b1) NOR37453(T12_,         T12,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37454(NOR37454_out,   T12_,                                           SIM_CLK);
+     od_buf        BUF37454(BUF37454_proxy, NOR37454_out);
+     assign MT12 = BUF37454_proxy;
+     
+     // OVF/UNF detection (gates NOR37353 and NOR37354 from above) 
+     
+     nor_3 #(1'b0) NOR37353(OVF,            WL15_,          WL16,           OVFSTB_,        SIM_CLK);
+     nor_3 #(1'b0) NOR37354(UNF,            OVFSTB_,        WL15,           WL16_,          SIM_CLK);
+     nor_1 #(1'b0) NOR37455(OVF_,           OVF,                                            SIM_CLK);
+     nor_1 #(1'b0) NOR37456(UNF_,           UNF,                                            SIM_CLK);
+     
+     // END OF SHEET (60 + 56 = 116 gates)
+     
+     // END OF MODULE (60 + 59 + 116 = 235 gates)
 endmodule
