@@ -58,7 +58,6 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name VERILOG_FILE testbenches/a2_timer_tb.v
 set_global_assignment -name VERILOG_FILE modules/a2_timer.v
-set_global_assignment -name VERILOG_FILE components/od_buf.v
 set_global_assignment -name VERILOG_FILE components/nor_3.v
 set_global_assignment -name VERILOG_FILE components/nor_2.v
 set_global_assignment -name VERILOG_FILE components/nor_1.v
