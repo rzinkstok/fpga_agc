@@ -1,0 +1,130 @@
+Module A1
+Gates
+46316 added from A19 sheet 2
+49205 added from A24 sheet 1
+49418 added from A24 sheet 2
+49420 added from A24 sheet 2
+
+Module A2
+Gates 37101-37160
+Gates 37201-37259
+Gates 37301-37360
+Gates 37401-47456
+37110 removed (fan-out expansion)
+37116 removed (fan-out expansion)
+37120 removed (fan-out expansion)
+37123 removed (fan-out expansion)
+37124 removed (fan-out expansion)
+37127 removed (fan-out expansion)
+37128 removed (fan-out expansion)
+37132 removed (fan-out expansion)
+37133 removed (fan-out expansion)
+37134 removed (fan-out expansion)
+37141 removed (fan-out expansion)
+37143 removed (fan-out expansion)
+37144 removed (fan-out expansion)
+37145 removed (fan-out expansion)
+37146 removed (fan-out expansion)
+37147 removed (fan-out expansion)
+37156 removed (fan-out expansion)
+37157 removed (fan-out expansion)
+37159 removed (fan-out expansion)
+37160 removed (fan-out expansion)
+37249 removed (gate merge)
+37241 removed (gate merge)
+37246 removed (fan-out expansion)
+37247 removed (fan-out expansion)
+37248 removed (fan-out expansion)
+37249 removed (fan-out expansion)
+37250 removed (fan-out expansion)
+37253 removed (fan-out expansion)
+37252 removed (fan-out expansion)
+37254 removed (fan-out expansion)
+37324 removed (gate merge)
+37351 removed (fan-out expansion)
+37352 removed (fan-out expansion)
+37359 removed (fan-out expansion)
+37360 moved to A7 sheet 2 (fan-in expansion)
+37402 removed (fan-out expansion)
+37403 removed (fan-out expansion)
+37406 removed (fan-out expansion)
+37409 removed (fan-out expansion)
+37410 removed (fan-out expansion)
+37413 removed (fan-out expansion)
+37414 removed (fan-out expansion)
+37417 removed (fan-out expansion)
+37418 removed (fan-out expansion)
+37419 removed (fan-out expansion)
+37420 removed (fan-out expansion)
+37421 removed (fan-out expansion)
+37424 removed (fan-out expansion)
+37425 removed (fan-out expansion)
+37426 removed (fan-out expansion)
+37429 removed (fan-out expansion)
+37430 removed (fan-out expansion)
+37431 removed (fan-out expansion)
+37434 removed (fan-out expansion)
+37435 removed (fan-out expansion)
+37436 removed (fan-out expansion)
+37439 removed (fan-out expansion)
+37440 removed (fan-out expansion)
+37441 removed (fan-out expansion)
+37444 removed (fan-out expansion)
+37445 removed (fan-out expansion)
+37446 removed (fan-out expansion)
+37449 removed (fan-out expansion)
+37452 removed (fan-out expansion)
+37453 removed (fan-out expansion)
+49414 added from A24 sheet 2
+49224 added from A24 sheet 1
+49226 added from A24 sheet 1
+49228 added from A24 sheet 1
+
+Module A3
+Gates
+30158 removed (fan-out expansion A2 sheet 2)
+
+Module A5
+Gates
+39261 moved to A2 sheet 1 and merged (fan-in expansion)
+
+Module A7
+Gates
+37160 added from A2 sheet 3 (fan-in expansion)
+
+Module A12
+Gates
+34305 removed (fan-out expansion A2 sheet 2)
+34308 removed (fan-out expansion A2 sheet 2)
+34313 removed (fan-out expansion A2 sheet 2)
+34321 removed (fan-out expansion A2 sheet 2)
+34324 removed (fan-out expansion A2 sheet 2)
+
+Module A19
+Gates
+46316 moved to A1 sheet 1
+
+Module A24
+Gates
+49205 moved to A1 sheet 1
+49230 moved to A1 sheet 1
+49231 removed (fan-out expansion)
+49232 moved to A1 sheet 1
+49233 removed (fan-out expansion)
+49255 removed (fan-out expansion)
+49414 moved to A2 sheet 1
+49415 removed (fan-out expansion)
+49416 removed (fan-out expansion)
+49417 removed (fan-out expansion)
+49418 moved to A1 sheet 1
+49420 moved to A1 sheet 1
+49421 removed (fan-out expansion A2 sheet 2)
+49422 removed (fan-out expansion A2 sheet 2)
+49423 removed (fan-out expansion A2 sheet 2)
+49424 removed (fan-out expansion A2 sheet 2)
+49224 moved to A2 sheet 2
+49225 removed (fan-out expansion)
+49226 moved to A2 sheet 2
+49227 removed (fan-out expansion)
+49228 moved to A2 sheet 2
+49229 removed (fan-out expansion)

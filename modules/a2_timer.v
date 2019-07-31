@@ -1,6 +1,6 @@
 module a2_timer(
     CLOCK,
-    CLK, PHS2, PHS2_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
+    CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
     RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
     P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_,
     F01A, F01B, F01C, F01D, FS01, FS01_,
@@ -31,7 +31,7 @@ module a2_timer(
     
     input wire CLOCK;
     
-    output wire CLK, PHS2, PHS2_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_;
+    output wire CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_;
     output wand MONWT, Q2A;
     output wire RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     
@@ -105,7 +105,7 @@ module a2_timer(
     // RT
     nor_1 #(1'b0) NOR37129(RT,              NOR37103_out,                                   SIM_CLK);
     
-    // RT_, moved here from sheet 3
+    // RT_, moved here from A2 sheet 3
      nor_1 #(1'b0) NOR37350(RT_,            RT,                                             SIM_CLK);
      //nor_1 #(1'b0) NOR37351(RT_,          RT,                                             SIM_CLK);
      //nor_1 #(1'b0) NOR37352(RT_,          RT,                                             SIM_CLK);
@@ -139,6 +139,9 @@ module a2_timer(
     //nor_1 #(1'b1) NOR37145(CT_,           CT,                                             SIM_CLK);
     //nor_1 #(1'b1) NOR37146(CT_,           CT,                                             SIM_CLK);
     //nor_1 #(1'b1) NOR37147(CT_,           CT,                                             SIM_CLK);
+    
+    // PHS3_ (moved here from A24 sheet 2)
+    nor_1 ~(1'b0) NOR49414(PHS3_,           CT,                                             SIM_CLK);
     
     // OVFSTB
     nor_2 #(1'b0) NOR37148(NOR37148_out,    CT_,            NOR37149_out,                   SIM_CLK);
@@ -286,6 +289,14 @@ module a2_timer(
     nor_2 #(1'b0) NOR37257(SB2,             P05_,           P02,                            SIM_CLK);
     nor_2 #(1'b0) NOR37258(SB4,             P02_,           P04,                            SIM_CLK);
     nor_3 #(1'b0) NOR37259(EDSET,           P02,            P03_,           P04,            SIM_CLK);
+    
+    // SB0_, SB1_, SB2_ moved here from A24 sheet 1
+    nor_1 #(1'b0) NOR49224(SB0_,            SB0,                                            SIM_CLK);
+    nor_1 #(1'b0) NOR49226(SB1_,            SB1,                                            SIM_CLK);
+    nor_1 #(1'b0) NOR49228(SB2_,            SB2,                                            SIM_CLK);
+    
+    // Add TIMR generation? Which sheet?
+    
     
     // END OF SHEET (59 gates)
     
@@ -441,7 +452,7 @@ module a2_timer(
      
      // NOR37359 omitted, extra gate generating a copy of T02
      
-     // NOR37360 (creating CINORM) omitted, is a fan-in gate for an output on module A7
+     // NOR37360 (creating CINORM) moved to A7 sheet 2 (fan-in expansion)
      
      // Gate numbers NOR37361 - NOR37400 not used
      
