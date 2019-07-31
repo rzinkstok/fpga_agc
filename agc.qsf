@@ -64,4 +64,5 @@ set_global_assignment -name VERILOG_FILE components/nor_1.v
 set_global_assignment -name VERILOG_FILE agc.v
 
 set_global_assignment -name VERILOG_FILE modules/a1_scaler.v
+set_global_assignment -name VERILOG_FILE components/nor_4.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

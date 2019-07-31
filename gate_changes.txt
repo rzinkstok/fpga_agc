@@ -88,6 +88,16 @@ Module A5
 Gates
 39261 moved to A2 sheet 1 and merged (fan-in expansion)
 
+Module A6
+Gates
+40246 moved to A2 sheet 2
+40247 moved to A2 sheet 2
+40248 moved to A2 sheet 2
+40249 removed (fan-in expansion)
+40250 moved to A2 sheet 2
+40251 moved to A2 sheet 2
+40252 removed (fan-out expansion)
+
 Module A7
 Gates
 37160 added from A2 sheet 3 (fan-in expansion)

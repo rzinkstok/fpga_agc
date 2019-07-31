@@ -4,9 +4,9 @@ module a2_timer(
     RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
     P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_,
     F01A, F01B, F01C, F01D, FS01, FS01_,
-    SB0, SB1, SB2, SB4, EDSET,
+    SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET,
     SBY, ALGA, MSTRTP, STRT1, STRT2, GOJ1, MSTP,
-    STOPA, GOJAM, GOJAM_, STOP, STOP_,
+    STOPA, GOJAM, GOJAM_, STOP, STOP_, TIMR,
     MSTPIT_, MGOJAM,
     WL15, WL15_, WL16, WL16_,
     T01, T01_, T01DC_, T02, T02_, T02DC_, T03, T03_, T03DC_, T04, T04_, T04DC_,
@@ -141,7 +141,7 @@ module a2_timer(
     //nor_1 #(1'b1) NOR37147(CT_,           CT,                                             SIM_CLK);
     
     // PHS3_ (moved here from A24 sheet 2)
-    nor_1 ~(1'b0) NOR49414(PHS3_,           CT,                                             SIM_CLK);
+    nor_1 #(1'b0) NOR49414(PHS3_,           CT,                                             SIM_CLK);
     
     // OVFSTB
     nor_2 #(1'b0) NOR37148(NOR37148_out,    CT_,            NOR37149_out,                   SIM_CLK);
@@ -181,8 +181,8 @@ module a2_timer(
     input wire SBY, ALGA, MSTRTP, STRT1, STRT2, GOJ1, MSTP;
     output wire P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_;
     output wire F01A, F01B, F01C, F01D, FS01, FS01_;
-    output wire SB0, SB1, SB2, SB4, EDSET;
-    output wire STOPA, GOJAM, GOJAM_, STOP_;
+    output wire SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET;
+    output wire STOPA, GOJAM, GOJAM_, STOP_, TIMR;
     output wand MSTPIT_, MGOJAM;
     
     wire NOR37201_out;
@@ -210,7 +210,11 @@ module a2_timer(
     wire NOR37239_out;
     wire NOR37244_out;
     wire NOR37251_out;
-    
+    wire NOR40246_out;
+    wire NOR40247_out;
+    wire NOR40248_out;
+    wire NOR40250_out;
+    wire NOR40251_out;
     
     // Ring counter
     
@@ -295,8 +299,12 @@ module a2_timer(
     nor_1 #(1'b0) NOR49226(SB1_,            SB1,                                            SIM_CLK);
     nor_1 #(1'b0) NOR49228(SB2_,            SB2,                                            SIM_CLK);
     
-    // Add TIMR generation? Which sheet?
-    
+    // TIMR generation moved here from A6 sheet 1
+    nor_2 #(1'b0) NOR40246(NOR40246_out,    P01,            NOR40247_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR40247(NOR40247_out,    NOR40246_out,   STOP_,                          SIM_CLK);
+    nor_4 #(1'b0) NOR40248(NOR40248_out,    P04,            P05_,           NOR40246_out,   NOR40247_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR40250(NOR40250_out,    STRT2,          NOR40247_out,                   SIM_CLK);
+    nor_1 #(1'b0) NOR40251(TIMR,            NOR40250_out,                                   SIM_CLK);
     
     // END OF SHEET (59 gates)
     

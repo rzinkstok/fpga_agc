@@ -10,12 +10,12 @@ module agc(CLOCK, CLK, SIM_CLK);
     reg GOJ1 = 0;
     reg MSTP = 0;
     
-    wire PHS2, PHS2_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A;
+    wire PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A;
     wire RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     wire P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_;
     wire F01A, F01B, F01C, F01D, FS01, FS01_;
-    wire SB0, SB1, SB2, SB4, EDSET;
-    wire STOPA, GOJAM, GOJAM_, STOP, STOP_;
+    wire SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET;
+    wire STOPA, GOJAM, GOJAM_, STOP, STOP_, TIMR;
     wire MSTPIT_, MGOJAM;
     reg WL15 = 0;
     reg WL15_ = 1;
@@ -29,13 +29,13 @@ module agc(CLOCK, CLK, SIM_CLK);
     
     a2_timer timer(
         CLOCK,
-        CLK, PHS2, PHS2_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
+        CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
         RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
         P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_,
         F01A, F01B, F01C, F01D, FS01, FS01_,
-        SB0, SB1, SB2, SB4, EDSET,
+        SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET,
         SBY, ALGA, MSTRTP, STRT1, STRT2, GOJ1, MSTP,
-        STOPA, GOJAM, GOJAM_, STOP, STOP_,
+        STOPA, GOJAM, GOJAM_, STOP, STOP_, TIMR,
         MSTPIT_, MGOJAM,
         WL15, WL15_, WL16, WL16_,
         T01, T01_, T01DC_, T02, T02_, T02DC_, T03, T03_, T03DC_, T04, T04_, T04DC_,

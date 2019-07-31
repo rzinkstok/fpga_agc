@@ -4,6 +4,8 @@ module a1_scaler(
     FS03, FS03A, F03A, F03B,
     FS04, FS04A, F04A, F04B, F04B_,
     FS05, FS05_, FS05A, F05A, F05A_, F05B, F05B_, F05D,
+    FS06, FS06A, F06A, F06B, F06B_,
+    CHAT01,
     SIM_CLK
 );
     // input wire used in multiple sheets
@@ -88,7 +90,7 @@ module a1_scaler(
     nor_2 #(1'b0) NOR49420(F05D,            F04B_,          FS05_,                          SIM_CLK);
     
     // Stage 6
-    output wire FS06, FS06A, F06A, F06B, F06B_;
+    output wire FS06, FS06A, F06A, F06B, F06B_, CHAT01;
     wire NOR38243_out,NOR38244_out, NOR38245_out;
     
     nor_2 #(1'b0) NOR38241(CHAT01,          RCHAT_,         NOR38244_out,                   SIM_CLK);
@@ -97,7 +99,7 @@ module a1_scaler(
     nor_2 #(1'b0) NOR38244(NOR38244_out,    NOR38243_out,   FS06,                           SIM_CLK);
     nor_3 #(1'b0) NOR38245(NOR38245_out,    NOR38243_out,   F05A,           F06B,           SIM_CLK);
     nor_2 #(1'b1) NOR38246(FS06,            NOR38244_out,   NOR38245_out,                   SIM_CLK);
-    nor_2 #(1'b0) NOR38237(F06B,            NOR38245,       FS06,                           SIM_CLK);
+    nor_2 #(1'b0) NOR38247(F06B,            NOR38245,       FS06,                           SIM_CLK);
     
     // Gates NOR38248 - NOR38250 not used
     
