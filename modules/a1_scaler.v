@@ -4,8 +4,11 @@ module a1_scaler(
     FS03, FS03A, F03A, F03B,
     FS04, FS04A, F04A, F04B, F04B_,
     FS05, FS05_, FS05A, F05A, F05A_, F05B, F05B_, F05D,
-    FS06, FS06A, F06A, F06B, F06B_,
-    CHAT01,
+    FS06, FS06_, F06A, F06B, F06B_,
+    FS07, FS07_, FS07A, F07A, F07B, F07B_, F07B_, F07D_, F07C_,
+    FS08, FS08_, F08A, F08B, F08B_,
+    FS09, FS09_, F09A, F09A_, F09B, F09B_, F09D_,
+    CHAT01, CHAT02, CHAT03, CHAT04,
     SIM_CLK
 );
     // input wire used in multiple sheets
@@ -19,7 +22,8 @@ module a1_scaler(
      *
      **************************/
     
-    input wire FS01_;
+    input wire FS01_;    
+    
     
     // Stage 2
     output wire FS02, FS02A, F02A, F02B;
@@ -90,7 +94,7 @@ module a1_scaler(
     nor_2 #(1'b0) NOR49420(F05D,            F04B_,          FS05_,                          SIM_CLK);
     
     // Stage 6
-    output wire FS06, FS06A, F06A, F06B, F06B_, CHAT01;
+    output wire FS06, FS06_, F06A, F06B, F06B_, CHAT01;
     wire NOR38243_out,NOR38244_out, NOR38245_out;
     
     nor_2 #(1'b0) NOR38241(CHAT01,          RCHAT_,         NOR38244_out,                   SIM_CLK);
@@ -103,8 +107,92 @@ module a1_scaler(
     
     // Gates NOR38248 - NOR38250 not used
     
+    // FS06_
+    nor_1 #(1'b0) NOR38190(FS06_,           FS06,                                           SIM_CLK);
+    
     // F06B_ moved here from A19 sheet 2
     nor_1 #(1'b0) NOR46316(F06B_,           F06B,                                           SIM_CLK);
+    
+    
+    // Stage 7
+    output wire FS07, FS07_, FS07A, F07A, F07B, F07B_, F07B_, F07D_, F07C_, CHAT02;
+    wire NOR38253_out,NOR38254_out, NOR38255_out, NOR49355_out, NOR49356_out;
+    
+    nor_2 #(1'b0) NOR38251(CHAT02,          RCHAT_,         NOR38254_out,                   SIM_CLK);
+    nor_2 #(1'b1) NOR38252(F07A,            NOR38254_out,   NOR38253_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38253(NOR38253_out,    F07A,           F06A,           NOR38255_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38254(NOR38254_out,    NOR38253_out,   FS07,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38255(NOR38255_out,    NOR38253_out,   F06A,           F07B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38256(FS07,            NOR38254_out,   NOR38255_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38257(F07B,            NOR38255,       FS07,                           SIM_CLK);
+    
+    // Gates NOR38258 - NOR38260 not used
+    
+    // FS07_
+    nor_1 #(1'b0) NOR38191(FS07_,           FS07,                                           SIM_CLK);
+    
+    // FS07A
+    nor_1 #(1'b0) NOR38291(FS07A,           FS07_,                                          SIM_CLK);
+    
+    // F07B_ moved here from A24 sheet 1
+    nor_1 #(1'b0) NOR49234(F07B_,           F07B,                                           SIM_CLK);
+    
+    // F07C_ and F07D_ moved here from A24 sheet 2
+    nor_2 #(1'b0) NOR49355(NOR49355_out,    FS07_,          F06B_,                          SIM_CLK);
+    nor_2 #(1'b0) NOR49356(NOR49356_out,    F06B_,          FS07A,                          SIM_CLK);
+    nor_1 #(1'b0) NOR49357(F07D_,           NOR49355_out,                                   SIM_CLK);
+    nor_1 #(1'b0) NOR49358(F07C_,           NOR49356_out,                                   SIM_CLK);
+    
+    
+    // Stage 8
+    output wire FS08, FS08_, F08A, F08B, F08B_, CHAT03;
+    wire NOR38263_out,NOR38264_out, NOR38265_out;
+    
+    nor_1 #(1'b0) NOR38261(CHAT03,          NOR38264_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38262(F08A,            NOR38264_out,   NOR38263_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38263(NOR38263_out,    F08A,           FS07_,          NOR38265_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38264(NOR38264_out,    NOR38263_out,   FS08,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38265(NOR38265_out,    NOR38263_out,   FS07_,          F08B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38266(FS08,            NOR38264_out,   NOR38265_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38267(F08B,            NOR38265,       FS08,                           SIM_CLK);
+    
+    // Gates NOR38268 - NOR38270 not used
+    
+    // FS08_
+    nor_1 #(1'b0) NOR38290(FS08_,           FS08,                                           SIM_CLK);
+    
+    // F08B_ moved here from A13 sheet 1
+    nor_1 #(1'b0) NOR41241(F08B_,           F08B,                                           SIM_CLK);
+    
+    
+    // Stage 9
+    output wire FS09, FS09_, F09A, F09A_, F09B, F09B_, F09D_, CHAT04;
+    wire NOR38273_out,NOR38274_out, NOR38275_out, NOR49351_out;
+    
+    nor_1 #(1'b0) NOR38271(CHAT04,          NOR38274_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38272(F09A,            NOR38274_out,   NOR38273_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38273(NOR38273_out,    F09A,           FS08_,          NOR38275_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38274(NOR38274_out,    NOR38273_out,   FS09,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38275(NOR38275_out,    NOR38273_out,   FS08_,          F09B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38276(FS09,            NOR38274_out,   NOR38275_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38277(F09B,            NOR38275,       FS09,                           SIM_CLK);
+    
+    // Gates NOR38278 - NOR38290 not used
+    
+    // F09B_ moved here from A19 sheet 2
+    nor_1 #(1'b0) NOR46312(F09B_,           F09B,                                           SIM_CLK);    
+    
+    // F09A_ moved here from A24 sheet 2
+    nor_1 #(1'b0) NOR49353(F09A_,           F09A,                                           SIM_CLK);
+    
+    // F09D_ and FS09_ moved here from A24 sheet 2
+    nor_1 #(1'b0) NOR49348(FS09_,           FS09,                                           SIM_CLK);
+    nor_1 #(1'b0) NOR49351(NOR49351_out,    F08B_,          F08B_,                          SIM_CLK);
+    nor_2 #(1'b0) NOR49352(F09D_,           NOR49351_out,   FS09_,                          SIM_CLK);
+    
+    
+    
+    
     
     /**************************
      *
