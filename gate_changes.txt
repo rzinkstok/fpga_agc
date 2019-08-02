@@ -31,6 +31,10 @@ Gates 38290-38291
 49348 added from A24 sheet 2
 49351 added from A24 sheet 2
 49352 added from A24 sheet 2
+46314 added from A19 sheet 2
+46309 added from A19 sheet 2
+45159 added from A18 sheet 1
+45261 added from A18 sheet 1
 
 Module A2
 Gates 37101-37160
@@ -140,10 +144,16 @@ Gates
 Module A13
 41241 moved to A1 sheet 1
 
+Module A18
+45159 moved to A1 sheet 1
+45261 moved to A1 sheet 1
+
 Module A19
 Gates
 46316 moved to A1 sheet 1
 46312 moved to A1 sheet 1
+46314 moved to A1 sheet 1
+46309 moved to A1 sheet 1
 
 Module A24
 Gates

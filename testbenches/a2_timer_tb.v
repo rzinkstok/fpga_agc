@@ -53,6 +53,7 @@ module a2_timer_tb;
    
     initial
     begin
+	   #5 STRT1 = 1;
        #30 $stop;
     end   
 endmodule

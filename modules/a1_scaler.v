@@ -8,9 +8,19 @@ module a1_scaler(
     FS07, FS07_, FS07A, F07A, F07B, F07B_, F07B_, F07D_, F07C_,
     FS08, FS08_, F08A, F08B, F08B_,
     FS09, FS09_, F09A, F09A_, F09B, F09B_, F09D_,
-    CHAT01, CHAT02, CHAT03, CHAT04,
+    FS10, F10A, F10A_, F10B, F10B_,
+    FS11, F11A, F11B,
+    FS12, F12A, F12B,
+    FS13, F13A, F13B,
+    FS14, F14A, F14B,
+    FS15, F15A, F15B,
+    FS16, F16A, F16B,
+    FS17, F17A, F17A_, F17B, F17B_,
+    CHAT01, CHAT02, CHAT03, CHAT04, CHAT05, CHAT06, CHAT07, CHAT08,
+    CHAT09, CHAT10, CHAT11, CHAT12,
     SIM_CLK
 );
+
     // input wire used in multiple sheets
     input wire SIM_CLK, RCHAT_;
     
@@ -150,9 +160,9 @@ module a1_scaler(
     
     nor_1 #(1'b0) NOR38261(CHAT03,          NOR38264_out,                                   SIM_CLK);
     nor_2 #(1'b1) NOR38262(F08A,            NOR38264_out,   NOR38263_out,                   SIM_CLK);
-    nor_3 #(1'b0) NOR38263(NOR38263_out,    F08A,           FS07_,          NOR38265_out,   SIM_CLK);
+    nor_3 #(1'b0) NOR38263(NOR38263_out,    F08A,           F07A,           NOR38265_out,   SIM_CLK);
     nor_2 #(1'b0) NOR38264(NOR38264_out,    NOR38263_out,   FS08,                           SIM_CLK);
-    nor_3 #(1'b0) NOR38265(NOR38265_out,    NOR38263_out,   FS07_,          F08B,           SIM_CLK);
+    nor_3 #(1'b0) NOR38265(NOR38265_out,    NOR38263_out,   F07A,           F08B,           SIM_CLK);
     nor_2 #(1'b1) NOR38266(FS08,            NOR38264_out,   NOR38265_out,                   SIM_CLK);
     nor_2 #(1'b0) NOR38267(F08B,            NOR38265,       FS08,                           SIM_CLK);
     
@@ -171,9 +181,9 @@ module a1_scaler(
     
     nor_1 #(1'b0) NOR38271(CHAT04,          NOR38274_out,                                   SIM_CLK);
     nor_2 #(1'b1) NOR38272(F09A,            NOR38274_out,   NOR38273_out,                   SIM_CLK);
-    nor_3 #(1'b0) NOR38273(NOR38273_out,    F09A,           FS08_,          NOR38275_out,   SIM_CLK);
+    nor_3 #(1'b0) NOR38273(NOR38273_out,    F09A,           F08A,           NOR38275_out,   SIM_CLK);
     nor_2 #(1'b0) NOR38274(NOR38274_out,    NOR38273_out,   FS09,                           SIM_CLK);
-    nor_3 #(1'b0) NOR38275(NOR38275_out,    NOR38273_out,   FS08_,          F09B,           SIM_CLK);
+    nor_3 #(1'b0) NOR38275(NOR38275_out,    NOR38273_out,   F08A,           F09B,           SIM_CLK);
     nor_2 #(1'b1) NOR38276(FS09,            NOR38274_out,   NOR38275_out,                   SIM_CLK);
     nor_2 #(1'b0) NOR38277(F09B,            NOR38275,       FS09,                           SIM_CLK);
     
@@ -191,7 +201,135 @@ module a1_scaler(
     nor_2 #(1'b0) NOR49352(F09D_,           NOR49351_out,   FS09_,                          SIM_CLK);
     
     
+    // Stage 10
+    output wire FS10, F10A, F10A_, F10B, F10B_, CHAT05;
+    wire NOR38103_out,NOR38104_out, NOR38105_out;
     
+    nor_1 #(1'b0) NOR38101(CHAT05,          NOR38104_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38102(F10A,            NOR38104_out,   NOR38103_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38103(NOR38103_out,    F10A,           F09A,           NOR38105_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38104(NOR38104_out,    NOR38103_out,   FS10,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38105(NOR38105_out,    NOR38103_out,   F09A,           F10B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38106(FS10,            NOR38104_out,   NOR38105_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38107(F10B,            NOR38105,       FS10,                           SIM_CLK);
+    
+    // Gates NOR38108 - NOR38110 not used
+    
+    // F10A_ moved here from A19 sheet 2
+    nor_1 #(1'b0) NOR46314(F10A_,           F10A,                                           SIM_CLK);
+    
+    // F10B_ moved here from A19 sheet 2
+    nor_1 #(1'b0) NOR46309(F10B_,           F10B,                                           SIM_CLK);
+    
+    // Stage 11
+    output wire FS11, F11A, F11B, CHAT06;
+    wire NOR38113_out,NOR38114_out, NOR38115_out;
+    
+    nor_1 #(1'b0) NOR38111(CHAT06,          NOR38114_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38112(F11A,            NOR38114_out,   NOR38113_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38113(NOR38113_out,    F11A,           F10A,           NOR38115_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38114(NOR38114_out,    NOR38113_out,   FS11,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38115(NOR38115_out,    NOR38113_out,   F10A,           F11B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38116(FS11,            NOR38114_out,   NOR38115_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38117(F11B,            NOR38115,       FS11,                           SIM_CLK);
+    
+    // Gates NOR38118 - NOR38120 not used
+    
+    
+    // Stage 12
+    output wire FS12, F12A, F12B, CHAT07;
+    wire NOR38123_out,NOR38124_out, NOR38125_out;
+    
+    nor_1 #(1'b0) NOR38121(CHAT07,          NOR38124_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38122(F12A,            NOR38124_out,   NOR38123_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38123(NOR38123_out,    F12A,           F11A,           NOR38125_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38124(NOR38124_out,    NOR38123_out,   FS12,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38125(NOR38125_out,    NOR38123_out,   F11A,           F12B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38126(FS12,            NOR38124_out,   NOR38125_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38127(F12B,            NOR38125,       FS12,                           SIM_CLK);
+    
+    // Gates NOR38128 - NOR38130 not used
+    
+    
+    // Stage 13
+    output wire FS13, F13A, F13B, CHAT08;
+    wire NOR38133_out,NOR38134_out, NOR38135_out;
+    
+    nor_1 #(1'b0) NOR38131(CHAT08,          NOR38134_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38132(F13A,            NOR38134_out,   NOR38133_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38133(NOR38133_out,    F13A,           F12A,           NOR38135_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38134(NOR38134_out,    NOR38133_out,   FS13,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38135(NOR38135_out,    NOR38133_out,   F12A,           F13B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38136(FS13,            NOR38134_out,   NOR38135_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38137(F13B,            NOR38135,       FS13,                           SIM_CLK);
+    
+    // Gates NOR38138 - NOR38140 not used
+    
+    
+    // Stage 14
+    output wire FS14, F14A, F14B, CHAT09;
+    wire NOR38143_out,NOR38144_out, NOR38145_out;
+    
+    nor_1 #(1'b0) NOR38141(CHAT09,          NOR38144_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38142(F14A,            NOR38144_out,   NOR38143_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38143(NOR38143_out,    F14A,           F13A,           NOR38145_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38144(NOR38144_out,    NOR38143_out,   FS14,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38145(NOR38145_out,    NOR38143_out,   F13A,           F14B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38146(FS14,            NOR38144_out,   NOR38145_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38147(F14B,            NOR38145,       FS14,                           SIM_CLK);
+    
+    // Gates NOR38148 - NOR38150 not used
+    
+    
+    // Stage 15
+    output wire FS15, F15A, F15B, CHAT10;
+    wire NOR38153_out,NOR38154_out, NOR38155_out;
+    
+    nor_1 #(1'b0) NOR38151(CHAT10,          NOR38154_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38152(F15A,            NOR38154_out,   NOR38153_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38153(NOR38153_out,    F15A,           F14A,           NOR38155_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38154(NOR38154_out,    NOR38153_out,   FS15,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38155(NOR38155_out,    NOR38153_out,   F14A,           F15B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38156(FS15,            NOR38154_out,   NOR38155_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38157(F15B,            NOR38155,       FS15,                           SIM_CLK);
+    
+    // Gates NOR38158 - NOR38160 not used
+    
+    
+    // Stage 16
+    output wire FS16, F16A, F16B, CHAT11;
+    wire NOR38163_out,NOR38164_out, NOR38165_out;
+    
+    nor_1 #(1'b0) NOR38161(CHAT11,          NOR38164_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38162(F16A,            NOR38164_out,   NOR38163_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38163(NOR38163_out,    F16A,           F15A,           NOR38165_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38164(NOR38164_out,    NOR38163_out,   FS16,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38165(NOR38165_out,    NOR38163_out,   F15A,           F16B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38166(FS16,            NOR38164_out,   NOR38165_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38167(F16B,            NOR38165,       FS16,                           SIM_CLK);
+    
+    // Gates NOR38168 - NOR38170 not used
+    
+    
+    // Stage 17
+    output wire FS17, F17A, F17A_, F17B, F17B_, CHAT12;
+    wire NOR38173_out,NOR38174_out, NOR38175_out;
+    
+    nor_1 #(1'b0) NOR38171(CHAT12,          NOR38174_out,                                   SIM_CLK);
+    nor_2 #(1'b1) NOR38172(F17A,            NOR38174_out,   NOR38173_out,                   SIM_CLK);
+    nor_3 #(1'b0) NOR38173(NOR38173_out,    F17A,           F16A,           NOR38175_out,   SIM_CLK);
+    nor_2 #(1'b0) NOR38174(NOR38174_out,    NOR38173_out,   FS17,                           SIM_CLK);
+    nor_3 #(1'b0) NOR38175(NOR38175_out,    NOR38173_out,   F16A,           F17B,           SIM_CLK);
+    nor_2 #(1'b1) NOR38176(FS17,            NOR38174_out,   NOR38175_out,                   SIM_CLK);
+    nor_2 #(1'b0) NOR38177(F17B,            NOR38175,       FS17,                           SIM_CLK);
+    
+    // Gates NOR38178 - NOR38190 not used
+    
+    // F17A_ moved here from A18 sheet 1
+    nor_1 #(1'b0) NOR45159(F17A_,           F17A,                                           SIM_CLK);
+    
+    // F17B_ moved here from A18 sheet 1
+    nor_1 #(1'b0) NOR45261(F17B_,           F17B,                                           SIM_CLK);
     
     
     /**************************
