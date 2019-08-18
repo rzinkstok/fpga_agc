@@ -1,10 +1,10 @@
-`timescale 1us/1ns
+`timescale 1ns/1ps
 
 module a1_scaler_tb;
-    reg FS01_ = 1;
+    reg FS01_ = 0;
     reg RCHAT_ = 1;
     reg RCHBT_ = 1;
-    reg SIM_CLK = 0;
+    reg SIM_CLK = 1;
     
     wire FS02, FS02A, F02A, F02B,
         FS03, FS03A, F03A, F03B, F03B_,
@@ -44,10 +44,10 @@ module a1_scaler_tb;
         CHBT08, CHBT09, CHBT10, CHBT11, CHBT12, CHBT13, CHBT14;
 
     always 
-        //#0.244140625 CLOCK = !CLOCK;  // 2.048 MHz clock
-        #9.765625 FS01_ = !FS01_;    // 2.048 MHz clock divided by 2, divided by 10, divided by 2 = divided by 40
+        //#244.140625 CLOCK = !CLOCK;  // 2.048 MHz clock
+        #9765.625 FS01_ = !FS01_;    // 2.048 MHz clock divided by 2, divided by 10, divided by 2 = divided by 40
     always
-        #0.010 SIM_CLK = !SIM_CLK;    // 20 ns gate delay
+        #10 SIM_CLK = !SIM_CLK;    // 20 ns gate delay
 
 
     a1_scaler scaler(
@@ -94,6 +94,6 @@ module a1_scaler_tb;
 
     initial
     begin
-	   #200 $stop;
+	   #200000 $stop;
     end   
 endmodule

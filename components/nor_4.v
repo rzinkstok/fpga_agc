@@ -1,3 +1,6 @@
+`timescale 1ns/1ps
+`default_nettype none
+
 module nor_4(y, a, b, c, d, SIM_CLK);
 	parameter iv = 1'b0;
 	input wire a, b, c, d, SIM_CLK;
@@ -20,3 +23,5 @@ module nor_4(y, a, b, c, d, SIM_CLK);
 	end
 	
 endmodule
+
+`default_nettype wire

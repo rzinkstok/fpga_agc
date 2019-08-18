@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module a1_scaler(
     FS01_, RCHAT_, RCHBT_,
     FS02, FS02A, F02A, F02B,

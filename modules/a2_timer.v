@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module a2_timer(
     CLOCK,
     CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
@@ -32,7 +34,7 @@ module a2_timer(
     input wire CLOCK;
     
     output wire CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_;
-    output wand MONWT, Q2A;
+    output wire MONWT, Q2A; // was a wand but only single assingment
     output wire RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     
     wire NOR37101_out;
@@ -183,7 +185,7 @@ module a2_timer(
     output wire F01A, F01B, F01C, F01D, FS01, FS01_;
     output wire SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET;
     output wire STOPA, GOJAM, GOJAM_, STOP_, TIMR;
-    output wand MSTPIT_, MGOJAM;
+    output wire MSTPIT_, MGOJAM; // was a wand, but only single assingment
     
     wire NOR37201_out;
     wire NOR37202_out;
@@ -197,7 +199,7 @@ module a2_timer(
     wire NOR37218_out;
     wire NOR37227_out;
     wire NOR37228_out;
-    wand GOSET_;
+    wire GOSET_; // was a wand, changed to anded wire
     wire NOR37229_out;
     wire NOR37230_out;
     wire NOR37231_out;
@@ -255,8 +257,8 @@ module a2_timer(
     // Restart logic
     nor_3 #(1'b1) NOR37227(NOR37227_out,    SBY,            ALGA,           MSTRTP,         SIM_CLK);
     nor_3 #(1'b1) NOR37228(NOR37228_out,    STRT1,          STRT2,          NOR37229_out,   SIM_CLK);
-    assign GOSET_ = NOR37227_out;
-    assign GOSET_ = NOR37228_out;
+    assign GOSET_ = NOR37227_out & NOR37228_out;
+    
     nor_2 #(1'b0) NOR37229(NOR37229_out,    GOSET_,         GOJ1,                           SIM_CLK);
     nor_1 #(1'b0) NOR37230(NOR37230_out,    GOSET_,                                         SIM_CLK);
     nor_3 #(1'b0) NOR37231(NOR37231_out,    T12DC_,         GOSET_,         EVNSET_,        SIM_CLK);
@@ -320,7 +322,7 @@ module a2_timer(
      output wire T01, T01_, T01DC_, T02, T02_, T02DC_, T03, T03_, T03DC_, T04, T04_, T04DC_;
      output wire T05, T05_, T05DC_, T06, T06_, T06DC_, T07, T07_, T07DC_, T08, T08_, T08DC_;
      output wire T09, T09_, T09DC_, T10, T10_, T10DC_, T11, T11_,         T12, T12_;
-     output wand MT01, MT02, MT03,MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, T12SET;
+     output wire MT01, MT02, MT03,MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, T12SET; // were wands. Single connection
      output wire UNF, UNF_, OVF, OVF_;
      
      wire NOR37303_out;
