@@ -15,7 +15,3 @@ Deviations from the original schematics are similar to what Mike Stewart has don
   I have used nor gates with up to 4 inputs, making some of these fan-in expansions unnecessary.
 - A similar trick is used in the AGC to increase the fan-out capability, as a single nor gate could drive only
   five other gates. Modern electronics have near infinite fan-out, so these extra gates are eliminated.
-- Where the output of nor gates need to be connected together (for larger than 4 input nor gates, and cross-module
-  buses), a wand datatype net is used. This is like a wire, but can be assigned to multiple times, where the
-  output is the logical AND of all expressions assigned to it. Again, this is a trick I took from Mike Stewart.
-
