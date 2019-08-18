@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ns / 1ps
 
 module a2_timer(
     CLOCK,
@@ -449,16 +449,10 @@ module a2_timer(
      // Gates 37353 - 37354 (part of WL OVF/UNF detection) moved below
      
      nor_3 #(1'b0) NOR37355(NOR37355_out,   EVNSET_,        NOR37339_out,   NOR37343_out,   SIM_CLK);
-     assign T12SET = NOR37355_out;
-     
      nor_3 #(1'b0) NOR37356(NOR37356_out,   NOR37327_out,   NOR37331_out,   NOR37335_out,   SIM_CLK);
-     assign T12SET = NOR37356_out;
-     
      nor_3 #(1'b0) NOR37357(NOR37357_out,   NOR37322_out,   NOR37318_out,   NOR37314_out,   SIM_CLK);
-     assign T12SET = NOR37357_out;
-     
      nor_2 #(1'b0) NOR37358(NOR37358_out,   NOR37310_out,   NOR37306_out,                   SIM_CLK);
-     assign T12SET = NOR37358_out;
+     assign T12SET = NOR37355_out & NOR37356_out & NOR37357_out & NOR37358_out;
      
      // NOR37359 omitted, extra gate generating a copy of T02
      

@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ns / 1ps
 
 module a1_scaler(
     FS01_, RCHAT_, RCHBT_,
@@ -620,7 +620,5 @@ module a1_scaler(
     nor_2 #(1'b0) NOR38477(F33B,            NOR38475_out,   FS33,                           SIM_CLK);
     
     // Gates NOR38478 - NOR38489 not used
-    
-    
-    
+
 endmodule

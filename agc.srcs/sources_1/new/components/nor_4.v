@@ -1,15 +1,14 @@
-`timescale 1ns/1ps
-`default_nettype none
+`timescale 1ns / 1ps
 
-module nor_2(y, a, b, SIM_CLK);
+module nor_4(y, a, b, c, d, SIM_CLK);
 	parameter iv = 1'b0;
-	input wire a, b, SIM_CLK;
+	input wire a, b, c, d, SIM_CLK;
 	output reg y = iv;
 	reg next_val = iv;
 	reg prev_val = iv;
 	wire result;
 	
-	assign result = ~(a|b);
+	assign result = ~(a|b|c|d);
 	
 	always @(posedge SIM_CLK)
 	begin
@@ -23,5 +22,3 @@ module nor_2(y, a, b, SIM_CLK);
 	end
 	
 endmodule
-
-`default_nettype wire

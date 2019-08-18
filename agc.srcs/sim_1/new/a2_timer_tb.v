@@ -1,6 +1,8 @@
-module agc(CLOCK, CLK, SIM_CLK);
-    input wire CLOCK, SIM_CLK;
-    output wire CLK;
+`timescale 1ns / 1ps
+
+module a2_timer_tb;
+    reg CLOCK = 0;
+    reg SIM_CLK = 1;
     
     reg SBY = 0;
     reg ALGA = 0;
@@ -10,8 +12,7 @@ module agc(CLOCK, CLK, SIM_CLK);
     reg GOJ1 = 0;
     reg MSTP = 0;
     
-    wire PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A;
-    wire RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
+    wire CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     wire P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_;
     wire F01A, F01B, F01C, F01D, FS01, FS01_;
     wire SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET;
@@ -27,6 +28,11 @@ module agc(CLOCK, CLK, SIM_CLK);
     wire MT01, MT02, MT03,MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, T12SET;
     wire UNF, UNF_, OVF, OVF_;
     
+    always 
+        #244.140625 CLOCK = !CLOCK;  // 2.048 MHz clock
+    always
+        #10 SIM_CLK = !SIM_CLK;    // 20 ns gate delay
+
     a2_timer timer(
         CLOCK,
         CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
@@ -46,4 +52,9 @@ module agc(CLOCK, CLK, SIM_CLK);
         SIM_CLK
     );
    
+    initial
+    begin
+	   #15000 STRT1 = 1;
+       #25000 $stop;
+    end   
 endmodule
