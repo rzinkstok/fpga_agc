@@ -1,8 +1,6 @@
 `timescale 1ns / 1ps
 
-module a3_sq_register_tb(
-
-);
+module a3_sq_register_tb();
     reg NISQ = 0;
     wire NISQ_ = !NISQ;
    

@@ -155,6 +155,9 @@ Gates 30101-30161
 49108 added from A24 sheet 1
 49109 added from A24 sheet 1
 
+Sheet2
+49419 added from A24 sheet 2
+
 Module A5
 Gates
 39261 moved to A2 sheet 1 and merged (fan-in expansion)
@@ -245,3 +248,4 @@ Gates
 49348 moved to A1 sheet 1
 49351 moved to A1 sheet 1
 49352 moved to A1 sheet 1
+49419 moved to A3 sheet 2
