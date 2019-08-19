@@ -216,7 +216,7 @@ module a3_sq_register(
     
     // SCAS10 generation
     // These next 3 gates are probably better moved to another module
-    nor_2 #(1'b0) NOR30057(CON1,            DBLTST,         0,                              SIM_CLK);
+    nor_2 #(1'b0) NOR30057(CON1,            DBLTST,         1'b0,                           SIM_CLK);
     nor_2 #(1'b0) NOR30058(CON2,            CON1,           FS09,                           SIM_CLK);
     nor_2 #(1'b0) NOR30059(SCAS10,          CON2,           FS10,                           SIM_CLK);
     // NOR30060 not connected
@@ -331,7 +331,7 @@ module a3_sq_register(
     
     // Quarter Code register decoding
     nor_2 #(1'b0) NOR30141(QC0,             SQR11,          SQR12,                          SIM_CLK);
-    nor_2 #(1'b0) NOR30142(NOR30142_out,    NOR30134,       SQR12,                          SIM_CLK);
+    nor_2 #(1'b0) NOR30142(NOR30142_out,    NOR30134_out,   SQR12,                          SIM_CLK);
     nor_2 #(1'b0) NOR30143(NOR30143_out,    SQR11,          NOR30132_out,                   SIM_CLK);
     nor_2 #(1'b0) NOR30144(NOR30144_out,    NOR30132_out,   NOR30134_out,                   SIM_CLK);
     
