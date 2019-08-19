@@ -177,14 +177,130 @@ module a3_sq_register_tb(
     
     initial
     begin
-        #5000 NISQ = 1;
-        #17000 
-        begin 
-            WL16 = 1;
-            WL15 = 1;
-            WL14 = 1;
+        #10000
+        begin
+            WL13 = 0;
+            WL14 = 0;
+            WL16 = 0;
         end
-        #25000 $stop;
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL13 = 0;
+            WL14 = 1;
+            WL16 = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL13 = 1;
+            WL14 = 1;
+            WL16 = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL13 = 0;
+            WL14 = 0;
+            WL16 = 1;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 1;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL13 = 0;
+            WL14 = 1;
+            WL16 = 1;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL13 = 1;
+            WL14 = 1;
+            WL16 = 1;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL11 = 0;
+            WL12 = 0;
+            WL13 = 0;
+            WL14 = 0;
+            WL16 = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL11 = 1;
+            WL12 = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL11 = 0;
+            WL12 = 1;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL11 = 1;
+            WL12 = 1;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL10 = 0;
+            WL11 = 0;
+            WL12 = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL10 = 1;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            WL10 = 0;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin
+            EXT = 1;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+       
+        #5000 $stop;
     end
 
 endmodule
