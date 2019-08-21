@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a3_sq_register_tb();
+module a3_sq_register_tb2();
     reg NISQ = 0;
     wire NISQ_ = !NISQ;
    
@@ -181,130 +181,49 @@ module a3_sq_register_tb();
     
     initial
     begin
-        #10000
+        #7900
         begin
-            WL13 = 0;
-            WL14 = 0;
-            WL16 = 0;
+            WL10 = 0;   // SQ10 bit
+            WL11 = 0;   // QC bit 0
+            WL12 = 0;   // QC bit 1
+            WL13 = 0;   // SQ bit 0
+            WL14 = 0;   // SQ bit 1
+            WL16 = 0;   // SQ bit 2
+            ST0_ = 0;   // Stage counter bit 0
+            ST1_ = 1;   // Stage counter bit 1
+            EXT = 0;    // EXT bit
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
         #10900
         begin
-            WL13 = 1;
-            WL14 = 0;
-            WL16 = 0;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL13 = 0;
-            WL14 = 1;
-            WL16 = 0;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL13 = 1;
-            WL14 = 1;
-            WL16 = 0;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL13 = 0;
-            WL14 = 0;
-            WL16 = 1;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL13 = 1;
-            WL14 = 0;
-            WL16 = 1;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL13 = 0;
-            WL14 = 1;
-            WL16 = 1;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL13 = 1;
-            WL14 = 1;
-            WL16 = 1;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
+            WL10 = 0; 
             WL11 = 0;
             WL12 = 0;
-            WL13 = 0;
+            WL13 = 1;
             WL14 = 0;
             WL16 = 0;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL11 = 1;
-            WL12 = 0;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL11 = 0;
-            WL12 = 1;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL11 = 1;
-            WL12 = 1;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL10 = 0;
-            WL11 = 0;
-            WL12 = 0;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL10 = 1;
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #10900
-        begin
-            WL10 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
             EXT = 0;
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
         #10900
         begin
-            EXT = 1;
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 0;
+            WL13 = 0;
+            WL14 = 1;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
-       
-        #5000 $stop;
+        #10900 $stop;
     end
 
 endmodule
