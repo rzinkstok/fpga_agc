@@ -5,12 +5,14 @@ module a3_sq_register(
     GOJAM, MTCSAI, INHPLS, RELPLS, KRPT, n5XP4, EXT, EXTPLS,
     RUPTOR_, MNHRPT, PHS2_,
     WL10_, WL11_, WL12_, WL13_, WL14_, WL16_,
-    A15_, A16_, MP3,
-    ST0_, ST1_,
+    A15_, A16_,
+    ST0_, ST1_, ST3_,
     BR2_, BR1B2B,
+    RXOR0,
     SIM_CLK
 );
     input wire SIM_CLK;
+    wire MP3, MP3_;
     
     /**************************
     *
@@ -23,7 +25,7 @@ module a3_sq_register(
     input wire GOJAM, MTCSAI, INHPLS, RELPLS, KRPT, n5XP4, EXT, EXTPLS;
     input wire RUPTOR_, MNHRPT, PHS2_;
     input wire WL10_, WL11_, WL12_, WL13_, WL14_, WL16_;
-    input wire A15_, A16_, MP3;
+    input wire A15_, A16_;
     
     wire INKBT1;
     wire STRTFC;
@@ -363,9 +365,25 @@ module a3_sq_register(
     *
     **************************/
     
-    input wire ST0_, ST1_, BR2_, BR1B2B;
+    input wire ST0_, ST1_, ST3_, BR2_, BR1B2B, RXOR0;
     wire SQ5QC0_;
-    wire IC1, IC2, IC2_, IC3, IC3_, IC4, IC4_, IC5, IC5_, IC6, IC7, IC8_, IC9, IC9_, IC10, IC10_, IC11, IC11_, IC12, IC12_, IC13, IC13_, IC15, IC15_, IC16, IC16_, IC17;
+    wire IC1; 
+    wire IC2, IC2_;
+    wire IC3, IC3_;
+    wire IC4, IC4_;
+    wire IC5, IC5_;
+    wire IC6;
+    wire IC7;
+    wire IC8_; 
+    wire IC9, IC9_;
+    wire IC10, IC10_;
+    wire IC11, IC11_;
+    wire IC12, IC12_;
+    wire IC13, IC13_;
+    wire IC14;
+    wire IC15, IC15_;
+    wire IC16, IC16_;
+    wire IC17;
     wire NEXST0, NEXST0_;
     wire EXST0_, EXST1_;
     wire QXCH0, QXCH0_;
@@ -381,6 +399,18 @@ module a3_sq_register(
     wire DAS1, DAS1_;
     wire ADS0;
     wire MSU0, MSU0_;
+    wire INCR0;
+    wire AUG0, AUG0_;
+    wire DIM0, DIM0_;
+    wire MP0, MP0_, MP1, MP1_;
+    wire TCSAJ3, TCSAJ3_, MTCSA_;
+    wire RSM3, RSM3_;
+    wire SU0;
+    wire MASK0, MASK0_;
+    wire AD0;
+    wire NDX0, NDX0_;
+    wire NDXX1, NDXX1_;
+    wire GOJ1, GOJ1_;
     
     wire NOR30301_out;
     wire NOR30302_out;
@@ -397,6 +427,8 @@ module a3_sq_register(
     wire NOR30407_out;
     wire NOR30408_out;
     wire NOR30417_out;
+    wire NOR30438_out;
+    wire NOR30455_out;
     
     nor_2 #(1'b0) NOR30301(NOR30301_out,    SQ5_,           QC0_,                           SIM_CLK);
     nor_2 #(1'b0) NOR30302(NOR30302_out,    SQ5_,           SQEXT_,                         SIM_CLK);
@@ -493,5 +525,45 @@ module a3_sq_register(
     nor_1 #(1'b0) NOR30421(DAS1,            DAS1_,                                          SIM_CLK);
     nor_2 #(1'b0) NOR30422(IC12_,           CCS0,           MSU0,                           SIM_CLK);
     nor_1 #(1'b0) NOR30423(IC12,            IC12_,                                          SIM_CLK);
+    
+    nor_3 #(1'b0) NOR30424(ADS0,            SQ2_,           QC3_,           NEXST0_,        SIM_CLK);
+    nor_3 #(1'b0) NOR30425(INCR0,           QC2_,           SQ2_,           NEXST0_,        SIM_CLK);
+    nor_3 #(1'b0) NOR30426(MSU0,            SQ2_,           EXST0_,         QC0_,           SIM_CLK);
+    nor_1 #(1'b0) NOR30427(MSU0_,           MSU0,                                           SIM_CLK);
+    nor_3 #(1'b0) NOR30428(AUG0,            SQ2_,           EXST0_,         QC2_,           SIM_CLK);
+    nor_1 #(1'b0) NOR30429(AUG0_,           AUG0,                                           SIM_CLK);
+    nor_3 #(1'b0) NOR30430(DIM0,            SQ2_,           EXST0_,         QC3_,           SIM_CLK);
+    nor_1 #(1'b0) NOR30431(DIM0_,           DIM0,                                           SIM_CLK);
+    
+    nor_3 #(1'b0) NOR30432(MP3,             ST3_,           SQ7_,           SQEXT_,         SIM_CLK);
+    nor_1 #(1'b0) NOR30433(MP3_,            MP3,                                            SIM_CLK);
+    //nor_1 #(1'b0) NOR30434(MP3_,          MP3,                                            SIM_CLK);
+    nor_3 #(1'b0) NOR30435(MP1,             ST1_,           SQEXT_,         SQ7_,           SIM_CLK);
+    nor_1 #(1'b0) NOR30436(MP1_,            MP1,                                            SIM_CLK);
+    nor_3 #(1'b0) NOR30437(MP0,             ST0_,           SQEXT_,         SQ7_,           SIM_CLK);
+    nor_1 #(1'b0) NOR30439(MP0_,            MP0,                                            SIM_CLK);
+    //nor_1 #(1'b0) NOR30440(MP0_,          MP0,                                            SIM_CLK);
+    
+    nor_3 #(1'b0) NOR30441(TCSAJ3,          SQ0_,           SQEXT,          ST3_,           SIM_CLK);
+    nor_1 #(1'b0) NOR30442(TCSAJ3_,         TCSAJ3,                                         SIM_CLK);
+    nor_1 #(1'b0) NOR30438(NOR30438_out,    TCSAJ3,                                         SIM_CLK);
+    assign MTCSA_ = NOR30438_out;
+    
+    nor_3 #(1'b0) NOR30443(RSM3,            ST3_,           SQ5QC0_,        SQEXT,          SIM_CLK);
+    nor_1 #(1'b0) NOR30444(RSM3_,           RSM3,                                           SIM_CLK);
+    nor_3 #(1'b0) NOR30445(SU0,             SQ6_,           EXST0_,         QC0_,           SIM_CLK);
+    nor_2 #(1'b0) NOR30446(MASK0,           SQ7_,           NEXST0_,                        SIM_CLK);
+    nor_1 #(1'b0) NOR30447(MASK0_,          MASK0,                                          SIM_CLK);
+    nor_2 #(1'b0) NOR30448(AD0,             NEXST0_,        SQ6_,                           SIM_CLK);
+    nor_3 #(1'b0) NOR30449(NDX0,            NEXST0_,        SQ5_,           QC0_,           SIM_CLK);
+    nor_1 #(1'b0) NOR30450(NDX0_,           NDX0,                                           SIM_CLK);
+    nor_3 #(1'b0) NOR30451(NDXX1,           SQEXT_,         SQ5_,           ST1_,           SIM_CLK);
+    nor_1 #(1'b0) NOR30452(NDXX1_,          NDXX1,                                          SIM_CLK);
+    nor_3 #(1'b0) NOR30453(GOJ1,            SQEXT,          ST1_,           SQ0_,           SIM_CLK);
+    nor_1 #(1'b0) NOR30454(GOJ1_,           GOJ1,                                           SIM_CLK);
+    
+    nor_3 #(1'b0) NOR30455(NOR30455_out,    MASK0,          MP0,            RXOR0,          SIM_CLK);
+    nor_1 #(1'b0) NOR30456(IC14,            NOR30455_out,                                   SIM_CLK);
+    // NOR30457 omitted (fan-out expansion)
     
 endmodule
