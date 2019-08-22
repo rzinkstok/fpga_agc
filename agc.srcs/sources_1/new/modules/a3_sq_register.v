@@ -1,14 +1,30 @@
 `timescale 1ns / 1ps
     
 module a3_sq_register(
-    NISQ, NISQ_, FS09, FS10, T01_, T02, T12_, CT_, WT_, RT_, INKL, STD2, DBLTST,
-    GOJAM, MTCSAI, INHPLS, RELPLS, KRPT, n5XP4, EXT, EXTPLS,
-    RUPTOR_, MNHRPT, PHS2_,
+    // Inputs
+    NISQ, NISQ_, 
+    PHS2_, 
+    CT_, WT_, RT_,
+    T01_, T02, T12_, 
+    FS09, FS10, 
     WL10_, WL11_, WL12_, WL13_, WL14_, WL16_,
     A15_, A16_,
     ST0_, ST1_, ST3_,
     BR2_, BR1B2B,
+    INKL, STD2, 
+    GOJAM, MTCSAI, 
+    INHPLS, RELPLS, KRPT,
+    EXT, EXTPLS,
+    RUPTOR_, MNHRPT, 
     RXOR0,
+    n5XP4, 
+    DBLTST,
+    
+    // Outputs
+    MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
+    MINHL, MIIP,
+    
+    // SIM_CLK
     SIM_CLK
 );
     input wire SIM_CLK;
@@ -43,7 +59,7 @@ module a3_sq_register(
     wire SQR10, SQR10_, SQR11, SQR12, SQR12_, SQR13, SQR14, SQR16;
     wire SQ0_, SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_;
     wire QC0, QC0_, QC1_, QC2_, QC3_;
-    wire MSQ16, MSQ14, MSQ13, MSQ12, MSQ11, MSQ10, MSQEXT, MINHL, MIIP;
+    output wire MSQ16, MSQ14, MSQ13, MSQ12, MSQ11, MSQ10, MSQEXT, MINHL, MIIP;
     
     wire CON1, CON2, SCAS10;
     
