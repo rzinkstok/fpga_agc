@@ -45,8 +45,11 @@ module a3_sq_register_tb2();
     reg A16_ = 1;
     reg ST0_ = 0;
     reg ST1_ = 1;
+    reg ST3_ = 1;
     reg BR2_ = 1;
     reg BR1B2B = 0;
+    reg RXOR0 = 0;
+    wire MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT, MINHL, MIIP;
         
     wire CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     wire P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_;
@@ -169,20 +172,36 @@ module a3_sq_register_tb2();
     );
     
     a3_sq_register sq_register(
-        NISQ, NISQ_, FS09, FS10, T01_, T02, T12_, CT_, WT_, RT_, INKL, STD2, DBLTST,
-        GOJAM, MTCSAI, INHPLS, RELPLS, KRPT, n5XP4, EXT, EXTPLS,
-        RUPTOR_, MNHRPT, PHS2_,
+        NISQ, NISQ_, 
+        PHS2_, 
+        CT_, WT_, RT_,
+        T01_, T02, T12_, 
+        FS09, FS10, 
         WL10_, WL11_, WL12_, WL13_, WL14_, WL16_,
-        A15_, A16_, MP3,
-        ST0_, ST1_,
+        A15_, A16_,
+        ST0_, ST1_, ST3_,
         BR2_, BR1B2B,
+        INKL, STD2, 
+        GOJAM, MTCSAI, 
+        INHPLS, RELPLS, KRPT,
+        EXT, EXTPLS,
+        RUPTOR_, MNHRPT, 
+        RXOR0,
+        n5XP4, 
+        DBLTST,
+        
+        // Outputs
+        MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
+        MINHL, MIIP,
+        
+        // SIM_CLK
         SIM_CLK
     );
     
     initial
     begin
         #7900
-        begin
+        begin // SQ0, QC0, ST0
             WL10 = 0;   // SQ10 bit
             WL11 = 0;   // QC bit 0
             WL12 = 0;   // QC bit 1
@@ -196,7 +215,7 @@ module a3_sq_register_tb2();
         #700 NISQ = 1;
         #100 NISQ = 0;
         #10900
-        begin
+        begin // SQ1, QC0, ST0
             WL10 = 0; 
             WL11 = 0;
             WL12 = 0;
@@ -210,7 +229,7 @@ module a3_sq_register_tb2();
         #700 NISQ = 1;
         #100 NISQ = 0;
         #10900
-        begin
+        begin // SQ2, QC0, ST0
             WL10 = 0; 
             WL11 = 0;
             WL12 = 0;
@@ -223,7 +242,275 @@ module a3_sq_register_tb2();
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
-        #10900 $stop;
+        #10900 
+        begin // SQ3, QC0, ST0
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 0;
+            WL13 = 1;
+            WL14 = 1;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900      
+        begin // SQ4, QC0, ST0
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 0;
+            WL13 = 0;
+            WL14 = 0;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900         
+        begin // SQ5, QC0, ST0
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 0;
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900      
+        begin // SQ6, QC0, ST0
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 0;
+            WL13 = 0;
+            WL14 = 1;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900         
+        begin // SQ7, QC0, ST0
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 0;
+            WL13 = 1;
+            WL14 = 1;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900         
+        begin // SQ0, QC1, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 0;
+            WL13 = 0;
+            WL14 = 0;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900         
+        begin // SQ1, QC1, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 0;
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900         
+        begin // SQ2, QC1, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 0;
+            WL13 = 0;
+            WL14 = 1;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ3, QC1, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 0;
+            WL13 = 1;
+            WL14 = 1;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ4, QC1, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 0;
+            WL13 = 0;
+            WL14 = 0;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ5, QC1, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 0;
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ6, QC1, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 0;
+            WL13 = 0;
+            WL14 = 1;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ7, QC1, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 0;
+            WL13 = 1;
+            WL14 = 1;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ1, QC2, ST0
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 1;
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ2, QC2, ST0
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 1;
+            WL13 = 0;
+            WL14 = 1;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ5, QC2, ST0
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 1;
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ1, QC3, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 1;
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ2, QC3, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 1;
+            WL13 = 0;
+            WL14 = 1;
+            WL16 = 0;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ5, QC3, ST0
+            WL10 = 0; 
+            WL11 = 1;
+            WL12 = 1;
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 1;
+            ST0_ = 0;
+            ST1_ = 1;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+                                 
+        $stop;
     end
 
 endmodule

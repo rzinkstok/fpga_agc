@@ -2,8 +2,8 @@
 # Webtalk v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Sat Aug 24 15:31:44 2019
-# Process ID: 4012
+# Start of session at: Fri Aug 23 15:25:59 2019
+# Process ID: 5152
 # Current directory: C:/Users/IEUser/fpga_agc/agc.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source C:/Users/IEUser/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/a3_sq_register_tb2_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/IEUser/fpga_agc/agc.sim/sim_1/behav/xsim/webtalk.log
