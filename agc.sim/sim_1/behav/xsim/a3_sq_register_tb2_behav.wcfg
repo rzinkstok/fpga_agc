@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="67616666666fs"></ZoomStartTime>
-      <ZoomEndTime time="262716666667fs"></ZoomEndTime>
-      <Cursor1Time time="230200000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="288700000001fs"></ZoomEndTime>
+      <Cursor1Time time="106307974000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="180"></NameColumnWidth>
-      <ValueColumnWidth column_width="59"></ValueColumnWidth>
+      <NameColumnWidth column_width="177"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="87" />
+   <WVObjectSize size="90" />
    <wvobject fp_name="/a3_sq_register_tb2/NISQ" type="logic">
       <obj_property name="ElementShortName">NISQ</obj_property>
       <obj_property name="ObjectShortName">NISQ</obj_property>
@@ -27,6 +27,10 @@
    <wvobject fp_name="/a3_sq_register_tb2/timer/T12" type="logic">
       <obj_property name="ElementShortName">T12</obj_property>
       <obj_property name="ObjectShortName">T12</obj_property>
+   </wvobject>
+   <wvobject fp_name="/a3_sq_register_tb2/WL11" type="logic">
+      <obj_property name="ElementShortName">WL11</obj_property>
+      <obj_property name="ObjectShortName">WL11</obj_property>
    </wvobject>
    <wvobject fp_name="/a3_sq_register_tb2/sq_register/SQ0_" type="logic">
       <obj_property name="ElementShortName">SQ0_</obj_property>
@@ -367,5 +371,13 @@
    <wvobject fp_name="/a3_sq_register_tb2/sq_register/IC9" type="logic">
       <obj_property name="ElementShortName">IC9</obj_property>
       <obj_property name="ObjectShortName">IC9</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider88">
+      <obj_property name="label">SQ2, QC0, ST1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/a3_sq_register_tb2/sq_register/DAS1" type="logic">
+      <obj_property name="ElementShortName">DAS1</obj_property>
+      <obj_property name="ObjectShortName">DAS1</obj_property>
    </wvobject>
 </wave_config>

@@ -509,7 +509,35 @@ module a3_sq_register_tb2();
         #700 NISQ = 1;
         #100 NISQ = 0;
         #10900
-                                 
+        begin // SQ2, QC0, ST1
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 0;
+            WL13 = 0;
+            WL14 = 1;
+            WL16 = 0;
+            ST0_ = 1;
+            ST1_ = 0;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+        begin // SQ5, QC0, ST1
+            WL10 = 0; 
+            WL11 = 0;
+            WL12 = 0;
+            WL13 = 1;
+            WL14 = 0;
+            WL16 = 1;
+            ST0_ = 1;
+            ST1_ = 0;
+            EXT = 0;
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #10900
+                       
         $stop;
     end
 
