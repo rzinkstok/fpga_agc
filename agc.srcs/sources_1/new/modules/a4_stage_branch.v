@@ -145,7 +145,7 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36102(T12USE_,         DVST,           NOR36109_out,                               SIM_CLK);
     nor_3 #(1'b0) NOR36103(NOR36103_out,    T03_,           T12USE_,        PHS3_,                      SIM_CLK);
     nor_2 #(1'b0) NOR36104(NOR36104_out,    NOR36103_out,   NOR36110_out,                               SIM_CLK);
-    //nor_2 #(1'b0) NOR36104(NOR361011_out, NOR36103_out,   NOR36110_out,                               SIM_CLK);
+    //nor_2 #(1'b0) NOR36111(NOR361011_out, NOR36103_out,   NOR36110_out,                               SIM_CLK);
     nor_3 #(1'b1) NOR36109(NOR36109_out,    T12USE_,        RSTSTG,         GOJAM,                      SIM_CLK);
     nor_3 #(1'b0) NOR36110(NOR36110_out,    PHS3_,          NOR36109_out,   T12_,                       SIM_CLK);
     
@@ -286,7 +286,7 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36218(NOR36218_out,    L15_,           NOR36217_out,                               SIM_CLK);
     
     // BR1 input: TSGN
-    nor_3 #(1'b0) NOR37221(NOR36221_out,    PHS4_,          WL16_,          TSGN_,                      SIM_CLK);
+    nor_3 #(1'b0) NOR36221(NOR36221_out,    PHS4_,          WL16_,          TSGN_,                      SIM_CLK);
     
     // BR1 resets: TSGN
     nor_2 #(1'b0) NOR36224(NOR36224_out,    TSGN_,          PHS3_,                                      SIM_CLK);
@@ -299,7 +299,8 @@ module a4_stage_branch(
     
     // BR1 resets: TSGU
     nor_4 #(1'b0) NOR36231(NOR36231_out,    NOR36213_out,   PHS3_,          TSGU_,      PHS4,           SIM_CLK);
-    
+    // NOR36232 merged into NOR36231
+
     // BR1 flip-flop
     nor_2 #(1'b0) NOR36219(NOR36219_out,    SGUM,           NOR36216_out,                               SIM_CLK);
     nor_3 #(1'b0) NOR36222(NOR36222_out,    NOR36218_out,   NOR36221_out,   BR1FF,                      SIM_CLK);
@@ -352,7 +353,8 @@ module a4_stage_branch(
     assign BR2FF_ = NOR36237_out & NOR36241_out;
     
     nor_4 #(1'b1) NOR36245(BR2FF,           BR2FF_,         NOR36244_out,   NOR36230_out,   NOR36252_out,   SIM_CLK);
-    
+    // NOR36249 merged into NOR36245
+
     // BR2 outputs
     nor_1 #(1'b0) NOR36238(BR2,             BR2FF_,                                                     SIM_CLK);
     nor_1 #(1'b0) NOR36262(NOR36262_out,    BR2FF_,                                                     SIM_CLK);

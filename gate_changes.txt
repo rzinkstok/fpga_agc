@@ -1,50 +1,70 @@
 Module A1
 Sheet 1
-Gates 38100-38107
-Gates 38110-38117
-Gates 38120-38127
-Gates 38130-38137
-Gates 38140-38147
-Gates 38150-38157
-Gates 38160-38167
-Gates 38170-38177
+Gates 38101-38107
+Gates 38111-38117
+Gates 38121-38127
+Gates 38131-38137
+Gates 38141-38147
+Gates 38151-38157
+Gates 38161-38167
+Gates 38171-38177
 Gates 38190-38191
-Gates 38210-38217
-Gates 38220-38227
-Gates 38230-38237
-Gates 38240-38247
-Gates 38250-38257
-Gates 38260-38267
-Gates 38270-38277
+Gates 38201-38207
+Gates 38211-38217
+Gates 38221-38227
+Gates 38231-38237
+Gates 38241-38247
+Gates 38251-38257
+Gates 38261-38267
+Gates 38271-38277
 Gates 38290-38291
+41241 added from A13 sheet 1
+45159 added from A18 sheet 1
+45261 added from A18 sheet 1
+46309 added from A19 sheet 2
+46312 added from A19 sheet 2
+46314 added from A19 sheet 2
 46316 added from A19 sheet 2
 49205 added from A24 sheet 1
-49418 added from A24 sheet 2
-49420 added from A24 sheet 2
+49230 added from A24 sheet 1
+49232 added from A24 sheet 1
 49234 added from A24 sheet 1
+49348 added from A24 sheet 2
+49351 added from A24 sheet 2
+49352 added from A24 sheet 2
+49353 added from A24 sheet 2
 49355 added from A24 sheet 2
 49356 added from A24 sheet 2
 49357 added from A24 sheet 2
 49358 added from A24 sheet 2
-41241 added from A13 sheet 1
-46312 added from A19 sheet 2
-49353 added from A24 sheet 2
-49348 added from A24 sheet 2
-49351 added from A24 sheet 2
-49352 added from A24 sheet 2
-46314 added from A19 sheet 2
-46309 added from A19 sheet 2
-45159 added from A18 sheet 1
-45261 added from A18 sheet 1
+49418 added from A24 sheet 2
+49420 added from A24 sheet 2
 Sheet 2
-Gates
+Gates 38301-38307
+Gates 38311-38317
+Gates 38321-38327
+Gates 38331-38337
+Gates 38341-38347
+Gates 38351-38357
+Gates 38361-38367
+Gates 38371-38377
+Gates 38401-38407
+Gates 38411-38417
+Gates 38421-38427
+Gates 38431-38437
+Gates 38441-38447
+Gates 38451-38457
+Gates 38461-38467
+Gates 38471-38477
+Gates 38390-38391
+Gates 38490-38491
 48157 added from A23 sheet 1
 
 Module A2
 Gates 37101-37160
 Gates 37201-37259
 Gates 37301-37360
-Gates 37401-47456
+Gates 37401-37456
 37110 removed (fan-out expansion)
 37116 removed (fan-out expansion)
 37120 removed (fan-out expansion)
@@ -65,7 +85,7 @@ Gates 37401-47456
 37157 removed (fan-out expansion)
 37159 removed (fan-out expansion)
 37160 removed (fan-out expansion)
-37249 removed (gate merge)
+37240 removed (gate merge)
 37241 removed (gate merge)
 37246 removed (fan-out expansion)
 37247 removed (fan-out expansion)
@@ -79,7 +99,7 @@ Gates 37401-47456
 37351 removed (fan-out expansion)
 37352 removed (fan-out expansion)
 37359 removed (fan-out expansion)
-37360 moved to A7 sheet 2 (fan-in expansion)
+37360 removed (to A7 sheet 2, fan-in expansion)
 37402 removed (fan-out expansion)
 37403 removed (fan-out expansion)
 37406 removed (fan-out expansion)
@@ -110,6 +130,11 @@ Gates 37401-47456
 37449 removed (fan-out expansion)
 37452 removed (fan-out expansion)
 37453 removed (fan-out expansion)
+40246 added from A6 sheet 1
+40247 added from A6 sheet 1
+40248 added from A6 sheet 1
+40250 added from A6 sheet 1
+40251 added from A6 sheet 1
 49414 added from A24 sheet 2
 49224 added from A24 sheet 1
 49226 added from A24 sheet 1
@@ -122,29 +147,30 @@ Gates 30101-30161
 30008 removed (fan-out expansion)
 30012 removed (fan-out expansion)
 30026 removed (fan-out expansion)
-30027 not used
-30029 not used
-30030 not used
-30033 not used
-30035 not used
+30027 removed (not used)
+30029 removed (not used)
+30030 removed (not used)
+30033 removed (not used)
+30035 removed (not used)
 30046 removed (fan-out expansion)
-30047 not connected
+30047 removed (not connected)
 30050 removed (fan-out expansion)
 30051 removed (fan-out expansion)
-30052 not used
-30060 not connected
-30102 not used
+30052 removed (not used)
+30060 removed (not connected)
+30102 removed (not used)
 30125 removed (fan-out expansion)
-30126 not used
+30126 removed (not used)
+30128 removed (fan-out expansion)
 30146 removed (fan-out expansion)
 30147 removed (fan-out expansion)
 30149 removed (fan-out expansion)
-30150 not used
+30150 removed (not used)
 30153 removed (fan-out expansion)
+30155 removed (not used)
 30158 removed (fan-out expansion A2 sheet 2)
-30159 not connected
+30159 removed (not connected)
 30161 removed (fan-out expansion)
-32257 added from A24 sheet 2
 49101 added from A24 sheet 1
 49102 added from A24 sheet 1
 49103 added from A24 sheet 1
@@ -156,20 +182,77 @@ Gates 30101-30161
 49109 added from A24 sheet 1
 
 Sheet2
+Gates 30301-30357
+Gates 30360-30361
+Gates 30401-30457
+30306 removed (not used)
+30308 removed (fan-out expansion)
+30311 removed (fan-out expansion)
+30312 removed (fan-out expansion)
+30325 removed (fan-out expansion)
+30334 removed (not used)
+30344 removed (fan-in expansion)
+30351 removed (fan-out expansion)
+30353 removed (fan-out expansion)
+30355 removed (fan-out expansion)
+30361 removed (fan-out expansion)
+30402 removed (fan-out expansion)
+30414 removed (not used)
+30418 removed (fan-in expansion)
+30420 removed (fan-out expansion)
+30434 removed (fan-out expansion)
+30440 removed (fan-out expansion)
+30457 removed (fan-out expansion)
+36108 added from A4 sheet 1
 49419 added from A24 sheet 2
+
+Module A4
+Sheet 1
+Gates 36101-36159
+Gates 36201-36264
+36107 removed (fan-out expansion)
+36108 removed (moved to A3 sheet 2)
+36111 removed (fan-out expansion)
+36122 removed (fan-out expansion)
+36123 removed (fan-out expansion)
+36133 removed (fan-out expansion)
+36134 removed (fan-in expansion)
+36158 removed (fan-out expansion)
+36159 removed (fan-in expansion)
+36203 removed (fan-out expansion)
+36211 removed (fan-out expansion)
+36212 removed (fan-out expansion)
+36223 removed (fan-out expansion)
+36229 removed (fan-out expansion)
+36232 removed (fan-in expansion)
+36234 removed (not used)
+36235 removed (not used)
+36242 removed (fan-out expansion)
+36248 removed (fan-out expansion)
+36249 removed (fan-in expansion)
+36250 removed (fan-out expansion)
+36256 removed (not used)
+36257 removed (not used)
+36258 removed (not used)
+36259 removed (not used)
+36261 removed (fan-in expansion)
+
+Sheet 2
+Gates 36301-36360
+Gates 36401-36460
 
 Module A5
 Gates
-39261 moved to A2 sheet 1 and merged (fan-in expansion)
+39261 removed (moved to A2 sheet 1 and merged, fan-in expansion)
 
 Module A6
 Gates
-40246 moved to A2 sheet 2
-40247 moved to A2 sheet 2
-40248 moved to A2 sheet 2
+40246 removed (moved to A2 sheet 2)
+40247 removed (moved to A2 sheet 2)
+40248 removed (moved to A2 sheet 2)
 40249 removed (fan-in expansion)
-40250 moved to A2 sheet 2
-40251 moved to A2 sheet 2
+40250 removed (moved to A2 sheet 2)
+40251 removed (moved to A2 sheet 2)
 40252 removed (fan-out expansion)
 
 Module A7
@@ -185,67 +268,67 @@ Gates
 34324 removed (fan-out expansion A2 sheet 2)
 
 Module A13
-41241 moved to A1 sheet 1
+41241 removed (moved to A1 sheet 1)
 
 Module A18
-45159 moved to A1 sheet 1
-45261 moved to A1 sheet 1
+45159 removed (moved to A1 sheet 1)
+45261 removed (moved to A1 sheet 1)
 
 Module A19
 Gates
-46316 moved to A1 sheet 1
-46312 moved to A1 sheet 1
-46314 moved to A1 sheet 1
-46309 moved to A1 sheet 1
+46316 removed (moved to A1 sheet 1)
+46312 removed (moved to A1 sheet 1)
+46314 removed (moved to A1 sheet 1)
+46309 removed (moved to A1 sheet 1)
 
 Module A21
 Gates
-32257 moved to A3 sheet 1
+32257 removed (merged with gate on A3 sheet 1)
 
 Module A23
 Gates
-48157 moved to A1 sheet 2
+48157 removed (moved to A1 sheet 2)
 
 Module A24
 Gates
-49101 moved to A3 sheet 1
-49102 moved to A3 sheet 1
-49103 moved to A3 sheet 1
-49104 moved to A3 sheet 1
-49105 moved to A3 sheet 1
-49106 moved to A3 sheet 1
-49107 moved to A3 sheet 1
-49108 moved to A3 sheet 1
-49109 moved to A3 sheet 1
-49205 moved to A1 sheet 1
-49230 moved to A1 sheet 1
+49101 removed (moved to A3 sheet 1)
+49102 removed (moved to A3 sheet 1)
+49103 removed (moved to A3 sheet 1)
+49104 removed (moved to A3 sheet 1)
+49105 removed (moved to A3 sheet 1)
+49106 removed (moved to A3 sheet 1)
+49107 removed (moved to A3 sheet 1)
+49108 removed (moved to A3 sheet 1)
+49109 removed (moved to A3 sheet 1)
+49205 removed (moved to A1 sheet 1)
+49230 removed (moved to A1 sheet 1)
 49231 removed (fan-out expansion)
-49232 moved to A1 sheet 1
+49232 removed (moved to A1 sheet 1)
 49233 removed (fan-out expansion)
-49234 moved to A1 sheet 1
+49234 removed (moved to A1 sheet 1)
 49255 removed (fan-out expansion)
-49414 moved to A2 sheet 1
+49414 removed (moved to A2 sheet 1)
 49415 removed (fan-out expansion)
 49416 removed (fan-out expansion)
 49417 removed (fan-out expansion)
-49418 moved to A1 sheet 1
-49420 moved to A1 sheet 1
+49418 removed (moved to A1 sheet 1)
+49420 removed (moved to A1 sheet 1)
 49421 removed (fan-out expansion A2 sheet 2)
 49422 removed (fan-out expansion A2 sheet 2)
 49423 removed (fan-out expansion A2 sheet 2)
 49424 removed (fan-out expansion A2 sheet 2)
-49224 moved to A2 sheet 2
+49224 removed (moved to A2 sheet 2)
 49225 removed (fan-out expansion)
-49226 moved to A2 sheet 2
+49226 removed (moved to A2 sheet 2)
 49227 removed (fan-out expansion)
-49355 moved to A1 sheet 1
-49356 moved to A1 sheet 1
-49357 moved to A1 sheet 1
-49358 moved to A1 sheet 1
-49228 moved to A2 sheet 2
+49355 removed (moved to A1 sheet 1)
+49356 removed (moved to A1 sheet 1)
+49357 removed (moved to A1 sheet 1)
+49358 removed (moved to A1 sheet 1)
+49228 removed (moved to A2 sheet 2)
 49229 removed (fan-out expansion)
-49353 moved to A1 sheet 1
-49348 moved to A1 sheet 1
-49351 moved to A1 sheet 1
-49352 moved to A1 sheet 1
-49419 moved to A3 sheet 2
+49353 removed (moved to A1 sheet 1)
+49348 removed (moved to A1 sheet 1)
+49351 removed (moved to A1 sheet 1)
+49352 removed (moved to A1 sheet 1)
+49419 removed (moved to A3 sheet 2)

@@ -30,7 +30,7 @@ module a3_sq_register(
     SIM_CLK
 );
     input wire SIM_CLK;
-    wire MP3, MP3_;
+    wire MP3, MP3_, MP3A;
     
     /**************************
     *
@@ -375,6 +375,7 @@ module a3_sq_register(
     //nor_1 #(1'b0) NOR30153(QC3_,          NOR30144_out,                                   SIM_CLK);
     
     nor_1 #(1'b0) NOR30154(SQR10,           NOR30136_out,                                   SIM_CLK);
+    // NOR30155 not found
     nor_1 #(1'b0) NOR30156(SQR10_,          NOR30137_out,                                   SIM_CLK);
     
     
@@ -558,6 +559,8 @@ module a3_sq_register(
     nor_3 #(1'b0) NOR30432(MP3,             ST3_,           SQ7_,           SQEXT_,         SIM_CLK);
     nor_1 #(1'b0) NOR30433(MP3_,            MP3,                                            SIM_CLK);
     //nor_1 #(1'b0) NOR30434(MP3_,          MP3,                                            SIM_CLK);
+    // NOR36108 moved here from A4 sheet 1
+    nor_1 #(1'b0) NOR36108(MP3A,            MP3_,                                           SIM_CLK);
     nor_3 #(1'b0) NOR30435(MP1,             ST1_,           SQEXT_,         SQ7_,           SIM_CLK);
     nor_1 #(1'b0) NOR30436(MP1_,            MP1,                                            SIM_CLK);
     nor_3 #(1'b0) NOR30437(MP0,             ST0_,           SQEXT_,         SQ7_,           SIM_CLK);
