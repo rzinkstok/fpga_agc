@@ -61,6 +61,20 @@ module agc(CLOCK, CLK, SIM_CLK);
     wire SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET;
     wire STOPA, GOJAM, GOJAM_, STOP, STOP_, TIMR;
     wire MSTPIT_, MGOJAM;
+    reg WL01_ = 1;
+    reg WL02_ = 1;
+    reg WL03_ = 1;
+    reg WL04_ = 1;
+    reg WL05_ = 1;
+    reg WL06_ = 1;
+    reg WL07_ = 1;
+    reg WL08_ = 1;
+    reg WL09_ = 1;
+    reg WL10_ = 1;
+    reg WL11_ = 1;
+    reg WL12_ = 1;
+    reg WL13_ = 1;
+    reg WL14_ = 1;
     reg WL15 = 0;
     reg WL15_ = 1;
     reg WL16 = 0;
@@ -73,13 +87,47 @@ module agc(CLOCK, CLK, SIM_CLK);
     
     // A3
     wire NISQ, NISQ_; 
-    wire INKL, STD2, DBLTST;
+    wire INKL, DBLTST;
     wire MTCSAI, INHPLS, RELPLS, KRPT, n5XP4, EXT, EXTPLS;
     wire RUPTOR_, MNHRPT;
-    wire WL10_, WL11_, WL12_, WL13_, WL14_;
     wire A15_, A16_, MP3;
-        
-    a1_scaler scaler(
+    wire  QC0_, QC1_, QC2_, QC3_;
+    wire SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_;
+    wire MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT;
+    wire MINHL, MIIP;
+    
+    // A4
+    reg SUMA16_ = 1; 
+    reg SUMB16_ = 1;
+    reg DVST = 0;
+    reg RSTSTG = 0;
+    reg STRTFC = 0;
+    reg TRSM = 0;
+    reg XT1_ = 0;
+    reg XB7_ = 0;
+    reg NDR100_ = 0;
+    reg L15_ = 1;
+    reg GEQZRO_ = 1;
+    reg TPZG_ = 1;
+    reg TSGN2 = 0;
+    reg TMZ_ = 1;
+    reg ST1 = 0;
+    reg ST2 = 0;
+    wire DIV_;
+    reg TSGU_ = 1;
+    reg TOV_ = 1;
+    reg TL15 = 0;
+    reg TSGN_ = 1;
+    wire ST376, ST376_;
+    wire DV0, DV0_, DV1, DV1_, DV4, DV4_, DV376, DV376_, DV1376, DV1376_, DV3764;
+    wire ST0_, ST1_, STD2, ST3_, ST4_, ST1376_;
+    wire MST1, MST2;
+    wire SGUM;
+    wire BR1, BR1_, MBR1, BR2, BR2_, MBR2;
+    wire BR1B2B;
+    wire RXOR0;
+    
+    a1_scaler a1(
         FS01_, RCHAT_, RCHBT_,
         FS02, FS02A, F02A, F02B,
         FS03, FS03A, F03A, F03B, F03B_,
@@ -120,7 +168,7 @@ module agc(CLOCK, CLK, SIM_CLK);
         SIM_CLK
     );
 
-    a2_timer timer(
+    a2_timer a2(
         CLOCK,
         CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
         RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
@@ -139,12 +187,61 @@ module agc(CLOCK, CLK, SIM_CLK);
         SIM_CLK
     );
    
-    a3_sq_register sq_register(
-        NISQ, NISQ_, FS09, FS10, T01_, T02, T12_, CT_, WT_, RT_, INKL, STD2, DBLTST,
-        GOJAM, MTCSAI, INHPLS, RELPLS, KRPT, n5XP4, EXT, EXTPLS,
-        RUPTOR_, MNHRPT, PHS2_,
+    a3_sq_register a3(
+        NISQ, NISQ_, 
+        PHS2_, 
+        CT_, WT_, RT_,
+        T01_, T02, T12_, 
+        FS09, FS10, 
         WL10_, WL11_, WL12_, WL13_, WL14_, WL16_,
-        A15_, A16_, MP3,
+        A15_, A16_,
+        ST0_, ST1_, ST3_,
+        BR2_, BR1B2B,
+        INKL, STD2, 
+        GOJAM, MTCSAI, 
+        INHPLS, RELPLS, KRPT,
+        EXT, EXTPLS,
+        RUPTOR_, MNHRPT, 
+        RXOR0,
+        n5XP4, 
+        DBLTST,
+        
+        SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_,
+        QC0_, QC1_, QC2_, QC3_,
+        MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
+        MINHL, MIIP,
+        
         SIM_CLK
     );
+    
+    a4_stage_branch a4(
+        PHS2_, PHS3_, PHS4, PHS4_, T01, T03_, T12_,
+        SUMA16_, SUMB16_,
+        WL01_, WL02_, WL03_, WL04_, WL05_, WL06_, WL07_, WL08_, WL09_, WL10_, WL11_, WL12_, WL13_, WL14_, WL15_, WL16_,
+        QC0_, SQ1_, SQEXT_,
+        DVST,
+        ST1, ST2,
+        INKL,
+        MTCSAI,
+        GOJAM,
+        RSTSTG,
+        STRTFC,
+        TRSM,
+        XT1_,
+        XB7_,
+        NDR100_,
+        UNF_, L15_,
+        TSGU_, TOV_, TL15, TSGN_,
+        GEQZRO_, OVF_,
+        TPZG_, TSGN2, TMZ_,
+        DIV_,
+        ST376, ST376_,
+        DV0, DV0_, DV1, DV1_, DV4, DV4_, DV376, DV376_, DV1376, DV1376_, DV3764,
+        ST0_, ST1_, STD2, ST3_, ST4_, ST1376_,
+        MST1, MST2,
+        SGUM,
+        BR1, BR1_, MBR1, BR2, BR2_, MBR2,
+        SIM_CLK
+    );
+    
 endmodule

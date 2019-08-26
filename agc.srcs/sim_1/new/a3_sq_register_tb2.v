@@ -111,7 +111,7 @@ module a3_sq_register_tb2();
         CHBT01, CHBT02, CHBT03, CHBT04, CHBT05, CHBT06, CHBT07,
         CHBT08, CHBT09, CHBT10, CHBT11, CHBT12, CHBT13, CHBT14;
 
-    a1_scaler scaler(
+    a1_scaler a1(
         FS01_, RCHAT_, RCHBT_,
         FS02, FS02A, F02A, F02B,
         FS03, FS03A, F03A, F03B, F03B_,
@@ -152,7 +152,7 @@ module a3_sq_register_tb2();
         SIM_CLK
     );
     
-    a2_timer timer(
+    a2_timer a2(
         CLOCK,
         CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
         RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
@@ -171,7 +171,7 @@ module a3_sq_register_tb2();
         SIM_CLK
     );
     
-    a3_sq_register sq_register(
+    a3_sq_register a3(
         NISQ, NISQ_, 
         PHS2_, 
         CT_, WT_, RT_,
@@ -190,11 +190,11 @@ module a3_sq_register_tb2();
         n5XP4, 
         DBLTST,
         
-        // Outputs
+        SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_,
+        QC0_, QC1_, QC2_, QC3_,
         MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
         MINHL, MIIP,
         
-        // SIM_CLK
         SIM_CLK
     );
     

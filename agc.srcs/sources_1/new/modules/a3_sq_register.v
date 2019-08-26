@@ -21,6 +21,8 @@ module a3_sq_register(
     DBLTST,
     
     // Outputs
+    SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_,
+    QC0_, QC1_, QC2_, QC3_,
     MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
     MINHL, MIIP,
     
@@ -57,8 +59,10 @@ module a3_sq_register(
     wire WSQG_;
     
     wire SQR10, SQR10_, SQR11, SQR12, SQR12_, SQR13, SQR14, SQR16;
-    wire SQ0_, SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_;
-    wire QC0, QC0_, QC1_, QC2_, QC3_;
+    output wire SQ0_, SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_;
+    wire SQEXT;
+    wire QC0;
+    output wire QC0_, QC1_, QC2_, QC3_;
     output wire MSQ16, MSQ14, MSQ13, MSQ12, MSQ11, MSQ10, MSQEXT, MINHL, MIIP;
     
     wire CON1, CON2, SCAS10;

@@ -1,7 +1,9 @@
 `timescale 1ns / 1ps
 
 module a4_stage_branch(
-    PHS3_, T01, T03_, T12_,
+    PHS2_, PHS3_, PHS4, PHS4_, T01, T03_, T12_,
+    SUMA16_, SUMB16_,
+    WL01_, WL02_, WL03_, WL04_, WL05_, WL06_, WL07_, WL08_, WL09_, WL10_, WL11_, WL12_, WL13_, WL14_, WL15_, WL16_,
     QC0_, SQ1_, SQEXT_,
     DVST,
     ST1, ST2,
@@ -14,12 +16,18 @@ module a4_stage_branch(
     XT1_,
     XB7_,
     NDR100_,
+    UNF_, L15_,
+    TSGU_, TOV_, TL15, TSGN_,
+    GEQZRO_, OVF_,
+    TPZG_, TSGN2, TMZ_,
     
     DIV_,
     ST376, ST376_,
     DV0, DV0_, DV1, DV1_, DV4, DV4_, DV376, DV376_, DV1376, DV1376_, DV3764,
     ST0_, ST1_, STD2, ST3_, ST4_, ST1376_,
     MST1, MST2,
+    SGUM,
+    BR1, BR1_, MBR1, BR2, BR2_, MBR2,
     
     SIM_CLK
     );
@@ -32,7 +40,9 @@ module a4_stage_branch(
     *  Sheet number 2005262/1
     *
     **************************/
-    input wire T01, T03_, T12_, PHS3_;
+    input wire PHS2_, PHS3_, PHS4, PHS4_, T01, T03_, T12_;
+    input wire SUMA16_, SUMB16_;
+    input wire WL01_, WL02_, WL03_, WL04_, WL05_, WL06_, WL07_, WL08_, WL09_, WL10_, WL11_, WL12_, WL13_, WL14_, WL15_, WL16_;
     input wire QC0_, SQ1_, SQEXT_;
     input wire ST1, ST2;
     input wire INKL;
@@ -42,18 +52,27 @@ module a4_stage_branch(
     input wire STRTFC;
     input wire TRSM;
     input wire XT1_, XB7_, NDR100_; 
+    input wire UNF_, L15_;
+    input wire TSGU_, TOV_, TL15, TSGN_;
+    input wire GEQZRO_, OVF_;
+    input wire TPZG_, TSGN2, TMZ_;
     
     output wire DIV_;
     output wire ST376, ST376_;
     output wire DV0, DV0_, DV1, DV1_, DV4, DV4_, DV376, DV376_, DV1376, DV1376_, DV3764;
     output wire ST0_, ST1_, STD2, ST3_, ST4_, ST1376_;
     output wire MST1, MST2;
+    output wire SGUM;
+    
+    output wire BR1, BR1_, MBR1, BR2, BR2_, MBR2;
     
     wire DIVSTG, T12USE_, DVST_, TRSM_;
     wire STFFA_, STFFB_;
     wire STG1, STG2, STG3;
     wire ST1D;
-     
+    wire BR1FF, BR1FF_, BR2FF, BR2FF_;
+    wire TMZINP;
+    
     wire NOR36103_out;
     wire NOR36104_out;
     wire NOR36105_out;
@@ -89,7 +108,37 @@ module a4_stage_branch(
     wire NOR36156_out;
     
     wire NOR36201_out;
-    
+    wire NOR36213_out;
+    wire NOR36214_out;
+    wire NOR36215_out;
+    wire NOR36216_out;
+    wire NOR36217_out;
+    wire NOR36218_out;
+    wire NOR36219_out;
+    wire NOR36221_out;
+    wire NOR36222_out;
+    wire NOR36224_out;
+    wire NOR36225_out;
+    wire NOR36227_out;
+    wire NOR36228_out;
+    wire NOR36230_out;
+    wire NOR36231_out;
+    wire NOR36233_out;
+    wire NOR36236_out;
+    wire NOR36237_out;
+    wire NOR36239_out;
+    wire NOR36240_out;
+    wire NOR36241_out;
+    wire NOR36243_out;
+    wire NOR36244_out;
+    wire NOR36247_out;
+    wire NOR36251_out;
+    wire NOR36252_out;
+    wire NOR36253_out;
+    wire NOR36254_out;
+    wire NOR36255_out;
+    wire NOR36260_out;
+    wire NOR36262_out;
     
     // Transfer to second stage time flip-flop (T03 or T12)
     nor_2 #(1'b0) NOR36101(DIVSTG,          T12USE_,        T03_,                                       SIM_CLK);
@@ -207,8 +256,8 @@ module a4_stage_branch(
     nor_1 #(1'b0) NOR36205(DV0_,            DV0,                                                        SIM_CLK);
 
     // DV376
-    nor_2 #(1'b0) NOR36206(DV376,             DIV_,           ST376_,                                   SIM_CLK);
-    nor_1 #(1'b0) NOR36207(DV376_,            DV376,                                                    SIM_CLK);
+    nor_2 #(1'b0) NOR36206(DV376,           DIV_,           ST376_,                                     SIM_CLK);
+    nor_1 #(1'b0) NOR36207(DV376_,          DV376,                                                      SIM_CLK);
     
     // DV4
     nor_2 #(1'b0) NOR36208(DV4,             DIV_,           ST4_,                                       SIM_CLK);
@@ -223,7 +272,92 @@ module a4_stage_branch(
     
     // Branch register
     
+    // BR1 inputs: TSGU
+    nor_2 #(1'b0) NOR36213(NOR36213_out,    SUMA16_,        SUMB16_,                                    SIM_CLK);
+    nor_3 #(1'b0) NOR36214(NOR36214_out,    SUMA16_,        SUMB16_,        TSGU_,                      SIM_CLK);
+    nor_2 #(1'b0) NOR36215(NOR36215_out,    PHS4,           PHS3_,                                      SIM_CLK);
+    assign SGUM = NOR36214_out & NOR36215_out;
     
-
-
+    // BR1 inputs: TOV
+    nor_2 #(1'b0) NOR36216(NOR36216_out,    UNF_,           TOV_,                                       SIM_CLK);
+    
+    // BR1 inputs: TL15
+    nor_1 #(1'b0) NOR36217(NOR36217_out,    TL15,                                                       SIM_CLK);
+    nor_2 #(1'b0) NOR36218(NOR36218_out,    L15_,           NOR36217_out,                               SIM_CLK);
+    
+    // BR1 input: TSGN
+    nor_3 #(1'b0) NOR37221(NOR36221_out,    PHS4_,          WL16_,          TSGN_,                      SIM_CLK);
+    
+    // BR1 resets: TSGN
+    nor_2 #(1'b0) NOR36224(NOR36224_out,    TSGN_,          PHS3_,                                      SIM_CLK);
+    
+    // BR1 resets: TL15
+    nor_2 #(1'b0) NOR36227(NOR36227_out,    NOR36217_out,   PHS3_,                                      SIM_CLK);
+    
+    // BR1 resets: TOV
+    nor_2 #(1'b0) NOR36230(NOR36230_out,    TOV_,           PHS2_,                                      SIM_CLK);
+    
+    // BR1 resets: TSGU
+    nor_4 #(1'b0) NOR36231(NOR36231_out,    NOR36213_out,   PHS3_,          TSGU_,      PHS4,           SIM_CLK);
+    
+    // BR1 flip-flop
+    nor_2 #(1'b0) NOR36219(NOR36219_out,    SGUM,           NOR36216_out,                               SIM_CLK);
+    nor_3 #(1'b0) NOR36222(NOR36222_out,    NOR36218_out,   NOR36221_out,   BR1FF,                      SIM_CLK);
+    assign BR1FF_ = NOR36219_out & NOR36222_out;
+    
+    nor_3 #(1'b1) NOR36225(NOR36225_out,    BR1FF_,         NOR36224_out,   NOR36227_out,               SIM_CLK);
+    nor_2 #(1'b1) NOR36228(NOR36228_out,    NOR36230_out,   NOR36231_out,                               SIM_CLK);
+    assign BR1FF = NOR36225_out & NOR36228_out;
+    
+    // BR1 outputs
+    nor_1 #(1'b0) NOR36220(BR1,             BR1FF_,                                                     SIM_CLK);
+    //nor_1 #(1'b0) NOR36223(BR1,           BR1FF_,                                                     SIM_CLK);
+    //nor_1 #(1'b0) NOR36242(BR1,           BR1FF_,                                                     SIM_CLK);
+    
+    nor_1 #(1'b0) NOR36260(NOR36260_out,    BR1FF_,                                                     SIM_CLK);
+    assign MBR1 = NOR36260_out;
+    
+    nor_1 #(1'b0) NOR36226(BR1_,            BR1FF,                                                      SIM_CLK);
+    //nor_1 #(1'b0) NOR36229(BR1_,          BR1FF,                                                      SIM_CLK);
+    //nor_1 #(1'b0) NOR36248(BR1_,          BR1FF,                                                      SIM_CLK);
+    
+    // BR2 inputs: TPZG
+    nor_3 #(1'b0) NOR36233(NOR36233_out,    GEQZRO_,        PHS4_,          TPZG_,                      SIM_CLK);
+    
+    // BR2 inputs: TOV
+    nor_2 #(1'b0) NOR36236(NOR36236_out,    TOV_,           OVF_,                                       SIM_CLK);
+    
+    // BR2 inouts: TSGN2
+    nor_1 #(1'b0) NOR36239(NOR36239_out,    TSGN2,                                                      SIM_CLK);
+    nor_3 #(1'b0) NOR36240(NOR36240_out,    WL16_,          PHS4_,          NOR36239_out,               SIM_CLK);
+    
+    // BR2 inputs: TMZ
+    nor_3 #(1'b0) NOR36243(NOR36243_out,    WL16_,          WL15_,          WL14_,                      SIM_CLK);
+    nor_3 #(1'b0) NOR36247(NOR36247_out,    WL13_,          WL12_,          WL11_,                      SIM_CLK);
+    nor_3 #(1'b0) NOR36251(NOR36251_out,    WL10_,          WL09_,          WL08_,                      SIM_CLK);
+    nor_3 #(1'b0) NOR36253(NOR36253_out,    WL07_,          WL06_,          WL05_,                      SIM_CLK);
+    nor_3 #(1'b0) NOR36254(NOR36254_out,    WL04_,          WL03_,          WL02_,                      SIM_CLK);
+    nor_3 #(1'b0) NOR36255(NOR36255_out,    WL01_,          TMZ_,           PHS4_,                      SIM_CLK);
+    assign TMZINP = NOR36243_out & NOR36247_out & NOR36251_out & NOR36253_out & NOR36254_out & NOR36255_out;
+    
+    // BR2 resets: TSGN2
+    nor_2 #(1'b0) NOR36244(NOR36244_out,    NOR36239_out,   PHS3_,                                      SIM_CLK);
+    
+    // BR2 resets: TMZ
+    nor_2 #(1'b0) NOR36252(NOR36252_out,    PHS3_,          TMZ_,                                       SIM_CLK);
+    
+    // BR2 flip-flop
+    nor_2 #(1'b0) NOR36237(NOR36237_out,    NOR36233_out,   NOR36236_out,                               SIM_CLK);
+    nor_3 #(1'b0) NOR36241(NOR36241_out,    NOR36240_out,   TMZINP,         BR2FF,                      SIM_CLK);
+    assign BR2FF_ = NOR36237_out & NOR36241_out;
+    
+    nor_4 #(1'b1) NOR36245(BR2FF,           BR2FF_,         NOR36244_out,   NOR36230_out,   NOR36252_out,   SIM_CLK);
+    
+    // BR2 outputs
+    nor_1 #(1'b0) NOR36238(BR2,             BR2FF_,                                                     SIM_CLK);
+    nor_1 #(1'b0) NOR36262(NOR36262_out,    BR2FF_,                                                     SIM_CLK);
+    assign MBR2 = NOR36262_out;
+    nor_1 #(1'b0) NOR36246(BR2_,            BR2FF,                                                      SIM_CLK);
+    //nor_1 #(1'b0) NOR36250(BR2_,          BR2FF,                                                      SIM_CLK);
+             
 endmodule

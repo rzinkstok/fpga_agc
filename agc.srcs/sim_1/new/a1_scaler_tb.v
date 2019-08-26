@@ -50,7 +50,7 @@ module a1_scaler_tb;
         #10 SIM_CLK = !SIM_CLK;    // 20 ns gate delay
 
 
-    a1_scaler scaler(
+    a1_scaler a1(
         FS01_, RCHAT_, RCHBT_,
         FS02, FS02A, F02A, F02B,
         FS03, FS03A, F03A, F03B, F03B_,
