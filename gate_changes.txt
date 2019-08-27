@@ -240,6 +240,11 @@ Gates 36201-36264
 Sheet 2
 Gates 36301-36360
 Gates 36401-36460
+36302 removed (fan-out expansion)
+36307 removed (fan-out expansion)
+36311 removed (not  used)
+36325 removed (fan-in expansion)
+36330 removed (fan-out expansion)
 
 Module A5
 Gates

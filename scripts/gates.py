@@ -2,7 +2,7 @@ import os
 import re
 
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-GATE_CONFIG = os.path.join(BASEDIR, "gate_changes.txt")
+GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
 MODULES_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new", "modules")
 
 MODULE_RE = re.compile(r"^([a,b]\d\d?)\_")
@@ -26,6 +26,9 @@ def diff_module(gates1, gates2):
 
 
 def read_gates_from_source():
+    print()
+    print("Loading gates from source code")
+    print("------------------------------")
     gates = {}
     total_gates = 0
 
@@ -38,6 +41,7 @@ def read_gates_from_source():
         module = res.groups()[0].upper()
         if module not in gates.keys():
             gates[module] = []
+        print()
         print(f"Module {module}")
         with open(filepath, "r") as fp:
             for l in fp.readlines():
@@ -45,24 +49,27 @@ def read_gates_from_source():
                 res = GATE_RE.search(l)
                 if res:
                     gate_number = res.groups()[0]
-                    #print(gate_number)
                     gates[module].append(gate_number)
         total_gates += len(gates[module])
-        print(f"Number of gates: {len(gates[module])}\n")
+        print(f"Number of gates: {len(gates[module])}")
 
-    print(f"Total number of gates: {total_gates}\n")
+    print(f"Total number of gates: {total_gates}")
     return gates
 
 
-def read_gates_from_config():
-    with open(GATE_CONFIG, "r") as fp:
+def read_gates_from_schematics():
+    print()
+    print("Loading gates from schematics")
+    print("-----------------------------")
+    with open(GATE_SCHEMATICS, "r") as fp:
         gates = {}
         current_module = None
         for l in fp.readlines():
             res = MODULE_HEADER_RE.search(l)
             if res:
                 current_module = res.groups()[0]
-                print(f"\nModule {current_module}")
+                print()
+                print(f"Module {current_module}")
                 gates[current_module] = []
                 continue
             res = GATE_RANGE_RE.search(l)
@@ -86,24 +93,25 @@ def read_gates_from_config():
                     gates[current_module].remove(gate)
                     print(f"Removed gate {gate}")
                 else:
-                    print(sorted(gates[current_module]))
                     print(f"Gate {gate} cannot be removed from module {current_module}")
     return gates
 
             
 if __name__ == "__main__":
-    gates_config = read_gates_from_config()
+    gates_schematics = read_gates_from_schematics()
     gates_source = read_gates_from_source()
     print()
-    for m in sorted(gates_config.keys()):
+    print("Comparison results")
+    print("------------------")
+    for m in sorted(gates_schematics.keys()):
         if m not in [f"A{i}" for i in range(1, 5)]:
             continue
-        g_c = gates_config[m]
+        gsch = gates_schematics[m]
         try:
-            g_s = gates_source[m]
+            gsrc = gates_source[m]
         except KeyError:
             print(f"Module {m} missing from source")
-        diff1, diff2 = diff_module(g_c, g_s)
+        diff1, diff2 = diff_module(gsch, gsrc)
         for g in diff1:
             print(f"Gate {g} missing from source")
         for g in diff2:

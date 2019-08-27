@@ -432,7 +432,8 @@ module a4_stage_branch(
     
     // INOUT
     nor_3 #(1'b0) NOR36314(INOUT,           EXST0_,         SQ0_,           RUPT0,                      SIM_CLK);
-    
+    nor_2 #(1'b0) NOR36313(INOUT_,          INOUT,                                                      SIM_CLK);
+
     // ROR0, WOR0, RXOR0
     nor_3 #(1'b0) NOR36315(ROR0,            SQR10,          NOR36304_out,   QC2_,                       SIM_CLK);
     nor_3 #(1'b0) NOR36316(WOR0,            QC2_,           NOR36304_out,   SQR10_,                     SIM_CLK);
