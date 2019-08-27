@@ -4,7 +4,7 @@ module a4_stage_branch(
     PHS2_, PHS3_, PHS4, PHS4_, T01, T03_, T12_,
     SUMA16_, SUMB16_,
     WL01_, WL02_, WL03_, WL04_, WL05_, WL06_, WL07_, WL08_, WL09_, WL10_, WL11_, WL12_, WL13_, WL14_, WL15_, WL16_,
-    QC0_, SQ1_, SQEXT_,
+    QC0_, SQ0_, SQ1_, SQEXT_, EXST0_,
     DVST,
     ST1, ST2,
     INKL,
@@ -40,6 +40,7 @@ module a4_stage_branch(
     *  Sheet number 2005262/1
     *
     **************************/
+    
     input wire PHS2_, PHS3_, PHS4, PHS4_, T01, T03_, T12_;
     input wire SUMA16_, SUMB16_;
     input wire WL01_, WL02_, WL03_, WL04_, WL05_, WL06_, WL07_, WL08_, WL09_, WL10_, WL11_, WL12_, WL13_, WL14_, WL15_, WL16_;
@@ -361,5 +362,130 @@ module a4_stage_branch(
     assign MBR2 = NOR36262_out;
     nor_1 #(1'b0) NOR36246(BR2_,            BR2FF,                                                      SIM_CLK);
     //nor_1 #(1'b0) NOR36250(BR2_,          BR2FF,                                                      SIM_CLK);
-             
+    
+    
+    /**************************
+    *
+    *  Module A4 sheet 2
+    *  Sheet number 2005262/2
+    *
+    **************************/
+    
+    input wire T05_, T09_;
+    input wire QC1_, QC2_, QC3_;
+    input wire SQR12_, SQ0_, SQ2_, SQEXT, EXST0_, EXST1_;
+    input wire SQR10, SQR10_;
+    input wire IC12, IC13;
+    output wire READ0, READ0_;
+    output wire WRITE0, WRITE0_;
+    output wire RAND0, WAND0;
+    output wire INOUT, INOUT_;
+    output wire ROR0, WOR0, WOR0_, RXOR0, RXOR0_;
+    output wire RUPT0, RUPT0_;
+    output wire RUPT1, RUPT1_;
+    output wire BPP4;
+    output wire PRINC;
+    output wire RRPA;
+    output wire n3XP7;
+    output wire RB_, RC_;
+    output wire n5XP28;
+    output wire n9XP1;
+    output wire WG_;
+    
+    wire NOR36303_out;
+    wire NOR36304_out;
+    wire NOR36326_out;
+    wire NOR36328_out;
+    wire NOR36329_out;
+    wire NOR36333_out;
+    wire NOR36334_out;
+    wire NOR36335_out;
+    wire NOR36337_out;
+    wire NOR36338_out;
+    wire NOR36339_out;
+    wire NOR36340_out;
+    wire NOR36342_out;
+    wire NOR36343_out;
+    wire NOR36345_out;
+    wire NOR36347_out;
+    wire NOR36348_out;
+    wire NOR36351_out;
+    wire NOR36354_out;
+    
+    
+    // NOR36301 moved to sheet 1
+    // NOR36302 removed (fan-out expansion)
+    
+    // READ0, WRITE0
+    nor_2 #(1'b0) NOR36303(NOR36303_out,    SQ0_,           EXST0_,                                     SIM_CLK);
+    nor_1 #(1'b0) NOR36304(NOR36304_out,    NOR36303_out,                                               SIM_CLK);
+    //nor_1 #(1'b0) NOR36307(NOR36304_out,  NOR36303_out,                                               SIM_CLK);
+    nor_3 #(1'b0) NOR36305(READ0,           NOR36304_out,   SQR10,          QC0_,                       SIM_CLK);      
+    nor_1 #(1'b0) NOR36306(READ0_,          READ0,                                                      SIM_CLK);
+    nor_3 #(1'b0) NOR36308(WRITE0,          QC0_,           NOR36304_out,   SQR10_,                     SIM_CLK);
+    nor_1 #(1'b0) NOR36309(WRITE0_,         WRITE0,                                                     SIM_CLK);
+    
+    // RAND0, WAND0
+    nor_3 #(1'b0) NOR36310(RAND0,           SQR10,          NOR36304_out,   QC1_,                       SIM_CLK);
+    // NOR36311 not used
+    nor_3 #(1'b0) NOR36312(WAND0,           QC1_,           SQR10_,         NOR36304_out,               SIM_CLK);
+    
+    // INOUT
+    nor_3 #(1'b0) NOR36314(INOUT,           EXST0_,         SQ0_,           RUPT0,                      SIM_CLK);
+    
+    // ROR0, WOR0, RXOR0
+    nor_3 #(1'b0) NOR36315(ROR0,            SQR10,          NOR36304_out,   QC2_,                       SIM_CLK);
+    nor_3 #(1'b0) NOR36316(WOR0,            QC2_,           NOR36304_out,   SQR10_,                     SIM_CLK);
+    nor_1 #(1'b0) NOR36317(WOR0_,           WOR0,                                                       SIM_CLK);
+    nor_3 #(1'b0) NOR36318(RXOR0,           SQR10,          NOR36304_out,   QC3_,                       SIM_CLK);
+    nor_1 #(1'b0) NOR36319(RXOR0_,          RXOR0,                                                      SIM_CLK);
+    
+    // RUPT0, RUPT1
+    nor_3 #(1'b0) NOR36320(RUPT0,           QC3_,           NOR36304_out,   SQR10_,                     SIM_CLK);
+    nor_1 #(1'b0) NOR36321(RUPT0_,          RUPT0,                                                      SIM_CLK);
+    nor_4 #(1'b0) NOR36323(RUPT1,           SQ0_,           EXST1_,         QC3_,           SQR10_,     SIM_CLK);
+    // NOR36325 merged into NOR36323
+    nor_1 #(1'b0) NOR36324(RUPT1_,          RUPT1,                                                      SIM_CLK);
+    
+    // BPP4
+    nor_3 #(1'b0) NOR36322(BPP4,            INOUT,          DV4,            PRINC,                      SIM_CLK);
+    
+    // PRINC
+    nor_2 #(1'b0) NOR36326(NOR36326_out,    QC3_,           SQEXT,                                      SIM_CLK);
+    nor_2 #(1'b0) NOR36327(PRINC,           NOR36326_out,   NOR36329_out,                               SIM_CLK);
+    //nor_2 #(1'b0) NOR36330(PRINC,         NOR36326_out,   NOR36329_out,                               SIM_CLK);
+    nor_3 #(1'b0) NOR36328(NOR36328_out,    ST0_,           SQR12_,         SQ2_,                       SIM_CLK);
+    nor_1 #(1'b0) NOR36329(NOR36329_out,    NOR36328_out,                                               SIM_CLK);
+    
+    // RRPA, 3XP7
+    nor_2 #(1'b0) NOR36331(RRPA,            T03_,           RUPT1_,                                     SIM_CLK);
+    nor_2 #(1'b0) NOR36332(n3XP7,           T03_,           RXOR0_,                                     SIM_CLK);
+    
+    // RB_
+    nor_2 #(1'b0) NOR36333(NOR36333_out,    ROR0,           WOR0,                                       SIM_CLK);
+    nor_2 #(1'b0) NOR36334(NOR36334_out,    NOR36333_out,   T03_,                                       SIM_CLK);
+    nor_3 #(1'b0) NOR36335(NOR36335_out,    NOR36334_out,   NOR36348_out,   NOR36343_out,               SIM_CLK);
+    assign RB_ = NOR36335_out;
+    
+    // 9XP1
+    nor_2 #(1'b0) NOR36336(n9XP1,           T09_,           RUPT0_,                                     SIM_CLK);
+    
+    // RC_
+    nor_2 #(1'b0) NOR36337(NOR36337_out,    RAND0,          WAND0,                                      SIM_CLK);
+    nor_2 #(1'b0) NOR36338(NOR36338_out,    T03_,           NOR36337_out,                               SIM_CLK);
+    nor_3 #(1'b0) NOR36339(NOR36339_out,    NOR36338_out,   NOR36354_out,   NOR36340_out,               SIM_CLK);
+    assign RC_ = NOR36339_out;
+    
+    // 5XP28
+    nor_2 #(1'b0) NOR36341(n5XP28,          DV4_,           T05_,                                       SIM_CLK);
+    
+    // WG_
+    nor_2 #(1'b0) NOR36340(NOR36340_out,    T09_,           RUPT0_,                                     SIM_CLK);
+    nor_3 #(1'b0) NOR36342(NOR36342_out,    RUPT1,          IC13,           IC12,                       SIM_CLK);
+    nor_2 #(1'b0) NOR36343(NOR36343_out,    T09_,           NOR36342_out,                               SIM_CLK);
+    nor_3 #(1'b0) NOR36345(NOR36345_out,    n9XP1,          NOR36340_out,   NOR36354_out,               SIM_CLK);
+    nor_2 #(1'b0) NOR36347(NOR36347_out,    NOR36343_out,   NOR36351_out,                               SIM_CLK);
+    assign WG_ = NOR36345_out & NOR36347_out;
+    
+    
 endmodule

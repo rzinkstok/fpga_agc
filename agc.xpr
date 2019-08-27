@@ -82,7 +82,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/a4_stage_branch.v">
+      <File Path="$PSRCDIR/sources_1/new/modules/a4_stage_branch.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
