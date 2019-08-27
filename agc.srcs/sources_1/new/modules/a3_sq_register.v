@@ -19,10 +19,12 @@ module a3_sq_register(
     RXOR0,
     n5XP4, 
     DBLTST,
+    RPTSET,
     
     // Outputs
     SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_,
     QC0_, QC1_, QC2_, QC3_,
+    A03_RPTSET,
     MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
     MINHL, MIIP,
     
@@ -64,11 +66,13 @@ module a3_sq_register(
     wire QC0;
     output wire QC0_, QC1_, QC2_, QC3_;
     output wire MSQ16, MSQ14, MSQ13, MSQ12, MSQ11, MSQ10, MSQEXT, MINHL, MIIP;
-    
+    input wire RPTSET;
+    output wire A03_RPTSET;
+
     wire CON1, CON2, SCAS10;
-    
     wire INHINT;
-    wire RPTSET;
+
+
     
     wire NOR30001_out;
     wire NOR30002_out;
@@ -190,14 +194,17 @@ module a3_sq_register(
     
     // Sequence register monitor signals
     nor_1 #(1'b0) NOR30022(NOR30022_out,    NOR30016_out,                                   SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MSQ16 = NOR30022_out;
     
     // Moved here from below
     nor_1 #(1'b0) NOR30025(NOR30025_out,    NOR30018_out,                                   SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MSQ14 = NOR30025_out;
     
     // Moved here from below
     nor_1 #(1'b0) NOR30028(NOR30028_out,    NOR30020_out,                                   SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MSQ13 = NOR30028_out;
     
     // Sequence register decoding
@@ -280,6 +287,7 @@ module a3_sq_register(
     
     // Extend bit signals
     nor_1 #(1'b0) NOR30123(NOR30123_out,    NOR30119_out,                                   SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MSQEXT = NOR30123_out;
     nor_1 #(1'b1) NOR30124(SQEXT_,          NOR30120_out,                                   SIM_CLK);
     //nor_1 #(1'b1) NOR30125(SQEXT_,        NOR30120_out,                                   SIM_CLK);
@@ -294,12 +302,14 @@ module a3_sq_register(
     nor_2 #(1'b1) NOR30103(NOR30103_out,    INHPLS,         INHINT,                         SIM_CLK);
     nor_3 #(1'b0) NOR30104(INHINT,          NOR30103_out,   RELPLS,         GOJAM,          SIM_CLK);
     nor_1 #(1'b0) NOR30111(NOR30111_out,    NOR30103_out,                                   SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MINHL = NOR30111_out;
     
     // Interrupt in progress flip-flop
     nor_2 #(1'b1) NOR30105(IIP_,            KRPT,           IIP,                            SIM_CLK);
     nor_3 #(1'b0) NOR30106(IIP,             IIP_,           GOJAM,          n5XP4,          SIM_CLK);
     nor_1 #(1'b0) NOR30112(NOR30112_out,    IIP_,                                           SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MIIP = NOR30112_out;
     
     // OVNHRP
@@ -318,7 +328,8 @@ module a3_sq_register(
     nor_3 #(1'b0) NOR30116(NOR30116_out,    FUTEXT,         NISQL_,         T12_,           SIM_CLK);
     nor_3 #(1'b0) NOR30117(NOR30117_out,    PHS2_,          RUPTOR_,        MNHRPT,         SIM_CLK);
     nor_3 #(1'b0) NOR30118(NOR30118_out,    OVNHRP,         INHINT,         IIP,            SIM_CLK);
-    assign RPTSET = NOR30116_out & NOR30117_out & NOR30118_out;
+    // Cross-module fan-in, connected to A6
+    assign A03_RPTSET = NOR30116_out & NOR30117_out & NOR30118_out;
     
     // RPTFRC flip-flop
     nor_2 #(1'b1) NOR30121(NOR30121_out,    RPTSET,         NOR30122_out,                   SIM_CLK);
@@ -348,12 +359,15 @@ module a3_sq_register(
     
     // Quarter Code register monitor signals
     nor_1 #(1'b0) NOR30138(NOR30138_out,    NOR30132_out,                                   SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MSQ12 = NOR30138_out;
     
     nor_1 #(1'b0) NOR30139(NOR30139_out,    NOR30134_out,                                   SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MSQ11 = NOR30139_out;
     
     nor_1 #(1'b0) NOR30140(NOR30140_out,    NOR30136_out,                                   SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MSQ10 = NOR30140_out;
     
     // Quarter Code register decoding
@@ -491,6 +505,7 @@ module a3_sq_register(
     
     nor_3 #(1'b0) NOR30331(NOR30331_out,    IC7,            IC6,            IC11,           SIM_CLK);
     nor_3 #(1'b0) NOR30332(NOR30332_out,    IC1,            DCS0,           DCA0,           SIM_CLK);
+    // Single source signal, no cross-module fan-in
     assign IC13_ = NOR30331_out & NOR30332_out;
     nor_1 #(1'b0) NOR30333(IC13,            IC13_,                                          SIM_CLK);
     
@@ -570,6 +585,7 @@ module a3_sq_register(
     nor_3 #(1'b0) NOR30441(TCSAJ3,          SQ0_,           SQEXT,          ST3_,           SIM_CLK);
     nor_1 #(1'b0) NOR30442(TCSAJ3_,         TCSAJ3,                                         SIM_CLK);
     nor_1 #(1'b0) NOR30438(NOR30438_out,    TCSAJ3,                                         SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MTCSA_ = NOR30438_out;
     
     nor_3 #(1'b0) NOR30443(RSM3,            ST3_,           SQ5QC0_,        SQEXT,          SIM_CLK);

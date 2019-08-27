@@ -1,7 +1,10 @@
 `timescale 1ns / 1ps
 
 module a1_scaler(
+    // inputs
     FS01_, RCHAT_, RCHBT_,
+
+    // outputs
     FS02, FS02A, F02A, F02B,
     FS03, FS03A, F03A, F03B, F03B_,
     FS04, FS04A, F04A, F04B, F04B_,
@@ -38,6 +41,8 @@ module a1_scaler(
     CHAT08, CHAT09, CHAT10, CHAT11, CHAT12, CHAT13, CHAT14,
     CHBT01, CHBT02, CHBT03, CHBT04, CHBT05, CHBT06, CHBT07,
     CHBT08, CHBT09, CHBT10, CHBT11, CHBT12, CHBT13, CHBT14,
+
+    // input
     SIM_CLK
 );
 

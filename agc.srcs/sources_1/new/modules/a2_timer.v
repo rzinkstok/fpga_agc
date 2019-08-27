@@ -1,21 +1,34 @@
 `timescale 1ns / 1ps
 
 module a2_timer(
+    // inputs
     CLOCK,
+
+    // outputs
     CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
     RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
     P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_,
     F01A, F01B, F01C, F01D, FS01, FS01_,
     SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET,
+
+    // inputs
     SBY, ALGA, MSTRTP, STRT1, STRT2, GOJ1, MSTP,
+
+    // outputs
     STOPA, GOJAM, GOJAM_, STOP, STOP_, TIMR,
     MSTPIT_, MGOJAM,
+
+    // inputs
     WL15, WL15_, WL16, WL16_,
+
+    // outputs
     T01, T01_, T01DC_, T02, T02_, T02DC_, T03, T03_, T03DC_, T04, T04_, T04DC_,
     T05, T05_, T05DC_, T06, T06_, T06DC_, T07, T07_, T07DC_, T08, T08_, T08DC_,
     T09, T09_, T09DC_, T10, T10_, T10DC_, T11, T11_,         T12, T12_, T12DC_,
     MT01, MT02, MT03,MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, T12SET,
     UNF, UNF_, OVF, OVF_,
+
+    // input
     SIM_CLK
 );
 
@@ -122,6 +135,7 @@ module a2_timer(
     
     // MONWT
     nor_2 #(1'b0) NOR37136(NOR37136_out,    WT_,            WT_,                            SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MONWT = NOR37136_out;
     
     // CLK
@@ -129,6 +143,7 @@ module a2_timer(
     
     // Q2A
     nor_3 #(1'b0) NOR37138(NOR37138_out,    WT_,            WT_,            WT_,            SIM_CLK);
+    // Single output, no cross-module fan-in
     assign Q2A = NOR37138_out;
     
     // CT and CT_
@@ -185,7 +200,7 @@ module a2_timer(
     output wire F01A, F01B, F01C, F01D, FS01, FS01_;
     output wire SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET;
     output wire STOPA, GOJAM, GOJAM_, STOP_, TIMR;
-    output wire MSTPIT_, MGOJAM; // was a wand, but only single assingment
+    output wire MSTPIT_, MGOJAM;
     
     wire NOR37201_out;
     wire NOR37202_out;
@@ -199,7 +214,7 @@ module a2_timer(
     wire NOR37218_out;
     wire NOR37227_out;
     wire NOR37228_out;
-    wire GOSET_; // was a wand, changed to anded wire
+    wire GOSET_;
     wire NOR37229_out;
     wire NOR37230_out;
     wire NOR37231_out;
@@ -257,6 +272,7 @@ module a2_timer(
     // Restart logic
     nor_3 #(1'b1) NOR37227(NOR37227_out,    SBY,            ALGA,           MSTRTP,         SIM_CLK);
     nor_3 #(1'b1) NOR37228(NOR37228_out,    STRT1,          STRT2,          NOR37229_out,   SIM_CLK);
+    // Single output, no cross-module fan-in, not connected to the outside
     assign GOSET_ = NOR37227_out & NOR37228_out;
     
     nor_2 #(1'b0) NOR37229(NOR37229_out,    GOSET_,         GOJ1,                           SIM_CLK);
@@ -276,6 +292,7 @@ module a2_timer(
     nor_2 #(1'b0) NOR37242(STOP_,           STOPA,          NOR37239_out,                   SIM_CLK);
     nor_1 #(1'b1) NOR37243(STOP,            STOP_,                                          SIM_CLK);
     nor_1 #(1'b0) NOR37244(NOR37244_out,    STOP,                                           SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MSTPIT_ = NOR37244_out;
     nor_1 #(1'b1) NOR37245(GOJAM,           GOJAM_,                                         SIM_CLK);
     //nor_1 #(1'b1) NOR37246(GOJAM,         GOJAM_,                                         SIM_CLK);
@@ -284,6 +301,7 @@ module a2_timer(
     //nor_1 #(1'b1) NOR37249(GOJAM,         GOJAM_,                                         SIM_CLK);
     //nor_1 #(1'b1) NOR37250(GOJAM,         GOJAM_,                                         SIM_CLK);
     nor_1 #(1'b0) NOR37251(NOR37251_out,    GOJAM_,                                         SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MGOJAM = NOR37251_out;
     //nor_1 #(1'b1) NOR37252(GOJAM,         GOJAM_,                                         SIM_CLK);
     //nor_1 #(1'b1) NOR37253(GOJAM,         GOJAM_,                                         SIM_CLK);
@@ -452,6 +470,7 @@ module a2_timer(
      nor_3 #(1'b0) NOR37356(NOR37356_out,   NOR37327_out,   NOR37331_out,   NOR37335_out,   SIM_CLK);
      nor_3 #(1'b0) NOR37357(NOR37357_out,   NOR37322_out,   NOR37318_out,   NOR37314_out,   SIM_CLK);
      nor_2 #(1'b0) NOR37358(NOR37358_out,   NOR37310_out,   NOR37306_out,                   SIM_CLK);
+     // Single source, no cross-module fan-in; signal is not connected to the outside
      assign T12SET = NOR37355_out & NOR37356_out & NOR37357_out & NOR37358_out;
      
      // NOR37359 omitted, extra gate generating a copy of T02
@@ -466,23 +485,27 @@ module a2_timer(
      //nor_1 #(1'b1) NOR37402(T01_,         T01,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37403(T01_,         T01,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37404(NOR37404_out,   T01_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT01 = NOR37404_out;
      
      nor_1 #(1'b1) NOR37405(T02_,           T02,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37406(T02_,         T02,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37407(NOR37407_out,   T02_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT02 = NOR37407_out;
      
      nor_1 #(1'b1) NOR37408(T03_,           T03,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37409(T03_,         T03,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37410(T03_,         T03,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37411(NOR37411_out,   T03_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT03 = NOR37411_out;
      
      nor_1 #(1'b1) NOR37412(T04_,           T04,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37413(T04_,         T04,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37414(T04_,         T04,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37415(NOR37415_out,   T04_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT04 = NOR37415_out;
      
      nor_1 #(1'b1) NOR37416(T05_,           T05,                                            SIM_CLK);
@@ -492,6 +515,7 @@ module a2_timer(
      //nor_1 #(1'b1) NOR37420(T05_,         T05,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37421(T05_,         T05,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37422(NOR37422_out,   T05_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT05 = NOR37422_out;
      
      nor_1 #(1'b1) NOR37423(T06_,           T06,                                            SIM_CLK);
@@ -499,6 +523,7 @@ module a2_timer(
      //nor_1 #(1'b1) NOR37425(T06_,         T06,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37426(T06_,         T06,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37427(NOR37427_out,   T06_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT06 = NOR37427_out;
      
      nor_1 #(1'b1) NOR37428(T07_,           T07,                                            SIM_CLK);
@@ -506,6 +531,7 @@ module a2_timer(
      //nor_1 #(1'b1) NOR37430(T07_,         T07,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37431(T07_,         T07,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37432(NOR37432_out,   T07_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT07 = NOR37432_out;
      
      nor_1 #(1'b1) NOR37433(T08_,           T08,                                            SIM_CLK);
@@ -513,6 +539,7 @@ module a2_timer(
      //nor_1 #(1'b1) NOR37435(T08_,         T08,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37436(T08_,         T08,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37437(NOR37437_out,   T08_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT08 = NOR37437_out;
      
      nor_1 #(1'b1) NOR37438(T09_,           T09,                                            SIM_CLK);
@@ -520,6 +547,7 @@ module a2_timer(
      //nor_1 #(1'b1) NOR37440(T09_,         T09,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37441(T09_,         T09,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37442(NOR37442_out,   T09_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT09 = NOR37442_out;
      
      nor_1 #(1'b1) NOR37443(T10_,           T10,                                            SIM_CLK);
@@ -527,17 +555,20 @@ module a2_timer(
      //nor_1 #(1'b1) NOR37445(T10_,         T10,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37446(T10_,         T10,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37447(NOR37447_out,   T10_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT10 = NOR37447_out;
      
      nor_1 #(1'b1) NOR37448(T11_,           T11,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37449(T11_,         T11,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37450(NOR37450_out,   T11_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT11 = NOR37450_out;
      
      nor_1 #(1'b1) NOR37451(T12_,           T12,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37452(T12_,         T12,                                            SIM_CLK);
      //nor_1 #(1'b1) NOR37453(T12_,         T12,                                            SIM_CLK);
      nor_1 #(1'b0) NOR37454(NOR37454_out,   T12_,                                           SIM_CLK);
+     // Single monitor fan-in output, no cross-module fan-in
      assign MT12 = NOR37454_out;
      
      // OVF/UNF detection (gates NOR37353 and NOR37354 from above) 

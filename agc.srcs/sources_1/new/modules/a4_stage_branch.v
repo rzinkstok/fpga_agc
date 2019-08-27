@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 
 module a4_stage_branch(
+    // inputs
     PHS2_, PHS3_, PHS4, PHS4_, T01, T03_, T12_,
     SUMA16_, SUMB16_,
     WL01_, WL02_, WL03_, WL04_, WL05_, WL06_, WL07_, WL08_, WL09_, WL10_, WL11_, WL12_, WL13_, WL14_, WL15_, WL16_,
@@ -20,7 +21,8 @@ module a4_stage_branch(
     TSGU_, TOV_, TL15, TSGN_,
     GEQZRO_, OVF_,
     TPZG_, TSGN2, TMZ_,
-    
+
+    // outputs
     DIV_,
     ST376, ST376_,
     DV0, DV0_, DV1, DV1_, DV4, DV4_, DV376, DV376_, DV1376, DV1376_, DV3764,
@@ -28,7 +30,8 @@ module a4_stage_branch(
     MST1, MST2,
     SGUM,
     BR1, BR1_, MBR1, BR2, BR2_, MBR2,
-    
+
+    // input
     SIM_CLK
     );
     
@@ -153,6 +156,7 @@ module a4_stage_branch(
     // Flip-flop A
     nor_2 #(1'b1) NOR36112(NOR36112_out,    GOJAM,          MTCSAI,                                     SIM_CLK);
     nor_3 #(1'b1) NOR36113(NOR36113_out,    ST1,            NOR36124_out,   NOR36118_out,               SIM_CLK);
+    // No cross-module fan-in; signal added for convenience
     assign STFFA_ = NOR36112_out & NOR36113_out;
     nor_2 #(1'b0) NOR36118(NOR36118_out,    STFFA_,         T01,                                        SIM_CLK);
     
@@ -167,11 +171,13 @@ module a4_stage_branch(
     nor_2 #(1'b1) NOR36115(NOR36115_out,    NOR36114_out,   STG1,                                       SIM_CLK);
     nor_2 #(1'b0) NOR36120(STG1,            NOR36115_out,   NOR36119_out,                               SIM_CLK);
     nor_1 #(1'b0) NOR36116(NOR36116_out,    NOR36115_out,                                               SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MST1 = NOR36116_out;
     
     // Flip-flop B
     nor_2 #(1'b1) NOR36129(NOR36129_out,    ST2,            NOR36142_out,                               SIM_CLK);
     nor_3 #(1'b1) NOR36130(NOR36130_out,    NOR36139_out,   MTCSAI,         NOR36135_out,               SIM_CLK);
+    // No cross-module fan-in; signal added for convenience
     assign STFFB_ = NOR36129_out & NOR36130_out;
     nor_3 #(1'b0) NOR36135(NOR36135_out,    STFFB_,         GOJAM,          T01,                        SIM_CLK);
     
@@ -189,6 +195,7 @@ module a4_stage_branch(
     //nor_2 #(1'b1) NOR36133(NOR36133_out,  NOR36131_out,   STG2,                                       SIM_CLK);
     nor_2 #(1'b0) NOR36137(STG2,            NOR36132_out,   NOR36136_out,                               SIM_CLK);
     nor_1 #(1'b0) NOR36125(NOR36125_out,    NOR36132_out,                                               SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MST2 = NOR36125_out;
     
     // Flip-flop C
@@ -277,6 +284,7 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36213(NOR36213_out,    SUMA16_,        SUMB16_,                                    SIM_CLK);
     nor_3 #(1'b0) NOR36214(NOR36214_out,    SUMA16_,        SUMB16_,        TSGU_,                      SIM_CLK);
     nor_2 #(1'b0) NOR36215(NOR36215_out,    PHS4,           PHS3_,                                      SIM_CLK);
+    // No cross-module fan-in; signal not connected to outside
     assign SGUM = NOR36214_out & NOR36215_out;
     
     // BR1 inputs: TOV
@@ -305,10 +313,12 @@ module a4_stage_branch(
     // BR1 flip-flop
     nor_2 #(1'b0) NOR36219(NOR36219_out,    SGUM,           NOR36216_out,                               SIM_CLK);
     nor_3 #(1'b0) NOR36222(NOR36222_out,    NOR36218_out,   NOR36221_out,   BR1FF,                      SIM_CLK);
+    // No cross-module fan-in; signal added for convenience
     assign BR1FF_ = NOR36219_out & NOR36222_out;
     
     nor_3 #(1'b1) NOR36225(NOR36225_out,    BR1FF_,         NOR36224_out,   NOR36227_out,               SIM_CLK);
     nor_2 #(1'b1) NOR36228(NOR36228_out,    NOR36230_out,   NOR36231_out,                               SIM_CLK);
+    // No cross-module fan-in; signal added for convenience
     assign BR1FF = NOR36225_out & NOR36228_out;
     
     // BR1 outputs
@@ -317,6 +327,7 @@ module a4_stage_branch(
     //nor_1 #(1'b0) NOR36242(BR1,           BR1FF_,                                                     SIM_CLK);
     
     nor_1 #(1'b0) NOR36260(NOR36260_out,    BR1FF_,                                                     SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MBR1 = NOR36260_out;
     
     nor_1 #(1'b0) NOR36226(BR1_,            BR1FF,                                                      SIM_CLK);
@@ -340,6 +351,7 @@ module a4_stage_branch(
     nor_3 #(1'b0) NOR36253(NOR36253_out,    WL07_,          WL06_,          WL05_,                      SIM_CLK);
     nor_3 #(1'b0) NOR36254(NOR36254_out,    WL04_,          WL03_,          WL02_,                      SIM_CLK);
     nor_3 #(1'b0) NOR36255(NOR36255_out,    WL01_,          TMZ_,           PHS4_,                      SIM_CLK);
+    // No cross-module fan-in; not connected to outside
     assign TMZINP = NOR36243_out & NOR36247_out & NOR36251_out & NOR36253_out & NOR36254_out & NOR36255_out;
     
     // BR2 resets: TSGN2
@@ -351,6 +363,7 @@ module a4_stage_branch(
     // BR2 flip-flop
     nor_2 #(1'b0) NOR36237(NOR36237_out,    NOR36233_out,   NOR36236_out,                               SIM_CLK);
     nor_3 #(1'b0) NOR36241(NOR36241_out,    NOR36240_out,   TMZINP,         BR2FF,                      SIM_CLK);
+    // No cross-module fan-in; signal added for convenience
     assign BR2FF_ = NOR36237_out & NOR36241_out;
     
     nor_4 #(1'b1) NOR36245(BR2FF,           BR2FF_,         NOR36244_out,   NOR36230_out,   NOR36252_out,   SIM_CLK);
@@ -359,6 +372,7 @@ module a4_stage_branch(
     // BR2 outputs
     nor_1 #(1'b0) NOR36238(BR2,             BR2FF_,                                                     SIM_CLK);
     nor_1 #(1'b0) NOR36262(NOR36262_out,    BR2FF_,                                                     SIM_CLK);
+    // Single monitor fan-in output, no cross-module fan-in
     assign MBR2 = NOR36262_out;
     nor_1 #(1'b0) NOR36246(BR2_,            BR2FF,                                                      SIM_CLK);
     //nor_1 #(1'b0) NOR36250(BR2_,          BR2FF,                                                      SIM_CLK);
@@ -387,10 +401,10 @@ module a4_stage_branch(
     output wire PRINC;
     output wire RRPA;
     output wire n3XP7;
-    output wire RB_, RC_;
+    output wire A04_RB_, A04_RC_;
     output wire n5XP28;
     output wire n9XP1;
-    output wire WG_;
+    output wire A04_WG_;
     
     wire NOR36303_out;
     wire NOR36304_out;
@@ -466,7 +480,8 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36333(NOR36333_out,    ROR0,           WOR0,                                       SIM_CLK);
     nor_2 #(1'b0) NOR36334(NOR36334_out,    NOR36333_out,   T03_,                                       SIM_CLK);
     nor_3 #(1'b0) NOR36335(NOR36335_out,    NOR36334_out,   NOR36348_out,   NOR36343_out,               SIM_CLK);
-    assign RB_ = NOR36335_out;
+    // Cross-module fan-in, connected to A5 and A6
+    assign A04_RB_ = NOR36335_out;
     
     // 9XP1
     nor_2 #(1'b0) NOR36336(n9XP1,           T09_,           RUPT0_,                                     SIM_CLK);
@@ -475,7 +490,8 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36337(NOR36337_out,    RAND0,          WAND0,                                      SIM_CLK);
     nor_2 #(1'b0) NOR36338(NOR36338_out,    T03_,           NOR36337_out,                               SIM_CLK);
     nor_3 #(1'b0) NOR36339(NOR36339_out,    NOR36338_out,   NOR36354_out,   NOR36340_out,               SIM_CLK);
-    assign RC_ = NOR36339_out;
+    // Cross-module fan-in, connected to A5 and A6
+    assign A04_RC_ = NOR36339_out;
     
     // 5XP28
     nor_2 #(1'b0) NOR36341(n5XP28,          DV4_,           T05_,                                       SIM_CLK);
@@ -486,7 +502,7 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36343(NOR36343_out,    T09_,           NOR36342_out,                               SIM_CLK);
     nor_3 #(1'b0) NOR36345(NOR36345_out,    n9XP1,          NOR36340_out,   NOR36354_out,               SIM_CLK);
     nor_2 #(1'b0) NOR36347(NOR36347_out,    NOR36343_out,   NOR36351_out,                               SIM_CLK);
-    assign WG_ = NOR36345_out & NOR36347_out;
-    
-    
+    // Cross-module fan-in, connected to A5, A6 and A12
+    assign A04_WG_ = NOR36345_out & NOR36347_out;
+
 endmodule

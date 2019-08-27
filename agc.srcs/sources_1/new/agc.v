@@ -90,6 +90,7 @@ module agc(CLOCK, CLK, SIM_CLK);
     wire INKL, DBLTST;
     wire MTCSAI, INHPLS, RELPLS, KRPT, n5XP4, EXT, EXTPLS;
     wire RUPTOR_, MNHRPT;
+    wire RPTSET, A03_RPTSET;
     wire A15_, A16_, MP3;
     wire  QC0_, QC1_, QC2_, QC3_;
     wire SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_;
@@ -128,7 +129,10 @@ module agc(CLOCK, CLK, SIM_CLK);
     wire RXOR0;
     
     a1_scaler a1(
+        // inputs
         FS01_, RCHAT_, RCHBT_,
+
+        // outputs
         FS02, FS02A, F02A, F02B,
         FS03, FS03A, F03A, F03B, F03B_,
         FS04, FS04A, F04A, F04B, F04B_,
@@ -165,29 +169,43 @@ module agc(CLOCK, CLK, SIM_CLK);
         CHAT08, CHAT09, CHAT10, CHAT11, CHAT12, CHAT13, CHAT14,
         CHBT01, CHBT02, CHBT03, CHBT04, CHBT05, CHBT06, CHBT07,
         CHBT08, CHBT09, CHBT10, CHBT11, CHBT12, CHBT13, CHBT14,
+
         SIM_CLK
     );
 
     a2_timer a2(
+        // inputs
         CLOCK,
+
+        // outputs
         CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
         RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
         P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_,
         F01A, F01B, F01C, F01D, FS01, FS01_,
         SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET,
+
+        // inputs
         SBY, ALGA, MSTRTP, STRT1, STRT2, GOJ1, MSTP,
+
+        // outputs
         STOPA, GOJAM, GOJAM_, STOP, STOP_, TIMR,
         MSTPIT_, MGOJAM,
+
+        // inputs
         WL15, WL15_, WL16, WL16_,
+
+        // outputs
         T01, T01_, T01DC_, T02, T02_, T02DC_, T03, T03_, T03DC_, T04, T04_, T04DC_,
         T05, T05_, T05DC_, T06, T06_, T06DC_, T07, T07_, T07DC_, T08, T08_, T08DC_,
         T09, T09_, T09DC_, T10, T10_, T10DC_, T11, T11_,         T12, T12_, T12DC_,
         MT01, MT02, MT03,MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, T12SET,
         UNF, UNF_, OVF, OVF_,
+
         SIM_CLK
     );
    
     a3_sq_register a3(
+        // inputs
         NISQ, NISQ_, 
         PHS2_, 
         CT_, WT_, RT_,
@@ -205,9 +223,12 @@ module agc(CLOCK, CLK, SIM_CLK);
         RXOR0,
         n5XP4, 
         DBLTST,
-        
+        RPTSET,
+
+        // outputs
         SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_,
         QC0_, QC1_, QC2_, QC3_,
+        A03_RPTSET,
         MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
         MINHL, MIIP,
         
