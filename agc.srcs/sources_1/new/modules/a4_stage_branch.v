@@ -554,7 +554,7 @@ module a4_stage_branch(
     
     // RA_
     nor_2 #(1'b0) NOR36354(NOR36354_out,    T05_,           RXOR0_,                                     SIM_CLK);
-    nor_3 #(1'b0) NOR36455(NOR36355_out,    NOR36349_out,   NOR36354_out,   n2XP3,                      SIM_CLK);
+    nor_3 #(1'b0) NOR36355(NOR36355_out,    NOR36349_out,   NOR36354_out,   n2XP3,                      SIM_CLK);
     assign A04_RA_ = NOR36355_out;
     
     // n2XP3
@@ -590,6 +590,4 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36360(NOR36360_out,    STORE1_,        T09_,                                       SIM_CLK);
     nor_3 #(1'b0) NOR36411(NOR36411_out,    NOR36407_out,   NOR36360_out,   NOR36435_out,               SIM_CLK);
     assign WG_ = NOR36411_out;
-    
-    
 endmodule

@@ -245,6 +245,7 @@ Gates 36401-36460
 36311 removed (not  used)
 36325 removed (fan-in expansion)
 36330 removed (fan-out expansion)
+40428 added from A6 sheet 2
 
 Module A5
 Gates
@@ -252,6 +253,7 @@ Gates
 
 Module A6
 Gates
+40428 removed (moved to A4 sheet 2)
 40246 removed (moved to A2 sheet 2)
 40247 removed (moved to A2 sheet 2)
 40248 removed (moved to A2 sheet 2)
