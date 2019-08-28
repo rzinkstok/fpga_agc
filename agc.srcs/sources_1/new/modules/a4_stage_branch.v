@@ -412,6 +412,8 @@ module a4_stage_branch(
     output wire A04_RA_;
     output wire n2XP3;
     output wire R15;
+    output wire RB2;
+    output wire n1XP10;
     
     wire NOR36303_out;
     wire NOR36304_out;
@@ -541,6 +543,12 @@ module a4_stage_branch(
     // R15
     nor_3 #(1'b0) NOR36401(NOR36401_out,    RUPT0,          RUPT1,          RSM3,                       SIM_CLK);
     nor_2 #(1'b0) NOR36402(R15,             NOR36401_out,   T01_,                                       SIM_CLK);
+    
+    // RB2
+    nor_2 #(1'b0) NOR36403(RB2,             T01_,           RUPT1_,                                     SIM_CLK);
+    
+    // n1XP10
+    nor_2 #(1'b0) NOR36404(n1XP10,          T01_,           DV0_,                                       SIM_CLK);
     
     
 endmodule
