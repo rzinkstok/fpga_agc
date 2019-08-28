@@ -385,11 +385,13 @@ module a4_stage_branch(
     *
     **************************/
     
-    input wire T05_, T09_;
+    input wire T01_, T02_, T05_, T09_;
     input wire QC1_, QC2_, QC3_;
     input wire SQR12_, SQ0_, SQ2_, SQEXT, EXST0_, EXST1_;
     input wire SQR10, SQR10_;
     input wire IC12, IC13;
+    input wire n7XP14;
+    input wire RSM3;
     output wire READ0, READ0_;
     output wire WRITE0, WRITE0_;
     output wire RAND0, WAND0;
@@ -405,6 +407,11 @@ module a4_stage_branch(
     output wire n5XP28;
     output wire n9XP1;
     output wire A04_WG_;
+    output wire n5XP11;
+    output wire WCH_;
+    output wire A04_RA_;
+    output wire n2XP3;
+    output wire R15;
     
     wire NOR36303_out;
     wire NOR36304_out;
@@ -420,11 +427,17 @@ module a4_stage_branch(
     wire NOR36340_out;
     wire NOR36342_out;
     wire NOR36343_out;
+    wire NOR36344_out;
     wire NOR36345_out;
+    wire NOR36346_out;
     wire NOR36347_out;
     wire NOR36348_out;
+    wire NOR36349_out;
     wire NOR36351_out;
+    wire NOR36353_out;
     wire NOR36354_out;
+    wire NOR36355_out;
+    wire  NOR36401_out;
     
     
     // NOR36301 moved to sheet 1
@@ -477,6 +490,7 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36332(n3XP7,           T03_,           RXOR0_,                                     SIM_CLK);
     
     // RB_
+    nor_2 #(1'b0) NOR36348(NOR36348_out,    READ0_,         T05_,                                       SIM_CLK);
     nor_2 #(1'b0) NOR36333(NOR36333_out,    ROR0,           WOR0,                                       SIM_CLK);
     nor_2 #(1'b0) NOR36334(NOR36334_out,    NOR36333_out,   T03_,                                       SIM_CLK);
     nor_3 #(1'b0) NOR36335(NOR36335_out,    NOR36334_out,   NOR36348_out,   NOR36343_out,               SIM_CLK);
@@ -497,6 +511,7 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36341(n5XP28,          DV4_,           T05_,                                       SIM_CLK);
     
     // WG_
+    nor_2 #(1'b0) NOR36351(NOR36351_out,    T02_,           WRITE0_,                                    SIM_CLK);
     nor_2 #(1'b0) NOR36340(NOR36340_out,    T09_,           RUPT0_,                                     SIM_CLK);
     nor_3 #(1'b0) NOR36342(NOR36342_out,    RUPT1,          IC13,           IC12,                       SIM_CLK);
     nor_2 #(1'b0) NOR36343(NOR36343_out,    T09_,           NOR36342_out,                               SIM_CLK);
@@ -505,4 +520,27 @@ module a4_stage_branch(
     // Cross-module fan-in, connected to A5, A6 and A12
     assign A04_WG_ = NOR36345_out & NOR36347_out;
 
+    // 5XP11
+    nor_3 #(1'b0) NOR36344(NOR36344_out,    T05_,           INOUT_,         READ0,                      SIM_CLK);
+    nor_2 #(1'b0) NOR36346(NOR36346_out,    WRITE0,         RXOR0,                                      SIM_CLK);
+    assign n5XP11 = NOR36344_out & NOR36346_out;
+    
+    // WCH_
+    nor_2 #(1'b0) NOR36349(NOR36349_out,    WRITE0_,        T05_,                                       SIM_CLK);
+    nor_2 #(1'b0) NOR36353(NOR36353_out,    T05_,           WOR0_,                                      SIM_CLK);
+    nor_3 #(1'b0) NOR36350(WCH_,            NOR36349_out,   n7XP14,         NOR36353_out,               SIM_CLK);
+    
+    // RA_
+    nor_2 #(1'b0) NOR36354(NOR36354_out,    T05_,           RXOR0_,                                     SIM_CLK);
+    nor_3 #(1'b0) NOR36455(NOR36355_out,    NOR36349_out,   NOR36354_out,   n2XP3,                      SIM_CLK);
+    assign A04_RA_ = NOR36355_out;
+    
+    // n2XP3
+    nor_2 #(1'b0) NOR36352(n2XP3,           T02_,           INOUT_,                                     SIM_CLK);
+    
+    // R15
+    nor_3 #(1'b0) NOR36401(NOR36401_out,    RUPT0,          RUPT1,          RSM3,                       SIM_CLK);
+    nor_2 #(1'b0) NOR36402(R15,             NOR36401_out,   T01_,                                       SIM_CLK);
+    
+    
 endmodule

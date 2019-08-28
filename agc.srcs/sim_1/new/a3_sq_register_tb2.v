@@ -50,6 +50,11 @@ module a3_sq_register_tb2();
     reg BR1B2B = 0;
     reg RXOR0 = 0;
     wire MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT, MINHL, MIIP;
+    
+    reg RPTSET = 0;
+    wire SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_;
+    wire QC0_, QC1_, QC2_, QC3_;
+    wire A03_RPTSET;
         
     wire CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     wire P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_;

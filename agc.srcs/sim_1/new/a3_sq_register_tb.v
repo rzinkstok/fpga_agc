@@ -45,9 +45,19 @@ module a3_sq_register_tb();
     reg A16_ = 1;
     reg ST0_ = 0;
     reg ST1_ = 1;
+    reg ST2_ = 1;
+    reg ST3_ = 1;
     reg BR2_ = 1;
     reg BR1B2B = 0;
         
+    reg RXOR0 = 0;
+    reg RPTSET = 0;
+    wire A03_RPTSET;
+    wire SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_;
+    wire QC0_, QC1_, QC2_, QC3_;
+    wire MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT;
+    wire MINHL, MIIP;
+    
     wire CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     wire P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_;
     wire F01A, F01B, F01C, F01D, FS01, FS01_;
@@ -170,34 +180,34 @@ module a3_sq_register_tb();
     
     a3_sq_register a3(
         // Inputs
-        NISQ, NISQ_,
-        PHS2_,
-        CT_, WT_, RT_,
-        T01_, T02, T12_,
-        FS09, FS10,
-        WL10_, WL11_, WL12_, WL13_, WL14_, WL16_,
-        A15_, A16_,
-        ST0_, ST1_, ST3_,
-        BR2_, BR1B2B,
-        INKL, STD2,
-        GOJAM, MTCSAI,
-        INHPLS, RELPLS, KRPT,
-        EXT, EXTPLS,
-        RUPTOR_, MNHRPT,
-        RXOR0,
-        n5XP4,
-        DBLTST,
-        RPTSET,
-
-        // Outputs
-        SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_,
-        QC0_, QC1_, QC2_, QC3_,
-        A03_RPTSET,
-        MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
-        MINHL, MIIP,
-
-        // SIM_CLK
-        SIM_CLK
+    NISQ, NISQ_, 
+    PHS2_, 
+    CT_, WT_, RT_,
+    T01_, T02, T12_, 
+    FS09, FS10, 
+    WL10_, WL11_, WL12_, WL13_, WL14_, WL16_,
+    A15_, A16_,
+    ST0_, ST1_, ST3_,
+    BR2_, BR1B2B,
+    INKL, STD2, 
+    GOJAM, MTCSAI, 
+    INHPLS, RELPLS, KRPT,
+    EXT, EXTPLS,
+    RUPTOR_, MNHRPT, 
+    RXOR0,
+    n5XP4, 
+    DBLTST,
+    RPTSET,
+    
+    // Outputs
+    SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_,
+    QC0_, QC1_, QC2_, QC3_,
+    A03_RPTSET,
+    MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
+    MINHL, MIIP,
+    
+    // SIM_CLK
+    SIM_CLK
     );
     
     initial
