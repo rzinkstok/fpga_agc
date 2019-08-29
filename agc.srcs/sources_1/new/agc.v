@@ -136,7 +136,19 @@ module agc(CLOCK, CLK, SIM_CLK);
     wire SGUM;
     wire BR1, BR1_, MBR1, BR2, BR2_, MBR2;
     wire BPP4, PRINC, RRPA;
-    wire A04_RA_, A04_RB_, A04_RC_, A04_RB1_, A04_R1C_, A04_RSC_, A04_WG_, A04_WL_, A04_WY_, A04_CI_, A04_TMZ_, A04_TSGN_, A04_L16_;
+    wire A04_1_RA_, A04_2_RA_;
+    wire A04_1_RB_, A04_2_RB_;
+    wire A04_1_RC_, A04_2_RC_;
+    wire A04_1_RB1_;
+    wire A04_1_R1C_;
+    wire A04_1_RSC_;
+    wire A04_1_WG_, A04_2_WG_, A04_3_WG_;
+    wire A04_1_WL_;
+    wire A04_1_WY_, A04_2_WY_;
+    wire A04_1_CI_;
+    wire A04_1_TMZ_;
+    wire A04_1_TSGN_, A04_2_TSGN_;
+    wire A04_1_L16_;
     wire R15, RB2, WCH_;
     wire MP0_, MP1, MP3_, MP3A;
     wire READ0, READ0_, WRITE0, WRITE0_, RAND0, WAND0, INOUT, INOUT_;
@@ -149,7 +161,7 @@ module agc(CLOCK, CLK, SIM_CLK);
     wire TL15;
 
     // Cross-module fan-in signals
-    RPTSET = A03_1_RPTSET & A03_2_RPTSET & A03_3_RPTSET
+    assign RPTSET = A03_1_RPTSET & A03_2_RPTSET & A03_3_RPTSET;
 
 
     a1_scaler a1(
@@ -262,7 +274,7 @@ module agc(CLOCK, CLK, SIM_CLK);
     );
     
     a4_stage_branch a4(
-        // Inputs
+        // inputs
         PHS2_, PHS3_, PHS4, PHS4_, T01, T03_, T12_,
         SUMA16_, SUMB16_,
         WL01_, WL02_, WL03_, WL04_, WL05_, WL06_, WL07_, WL08_, WL09_, WL10_, WL11_, WL12_, WL13_, WL14_, WL15_, WL16_,
@@ -283,6 +295,7 @@ module agc(CLOCK, CLK, SIM_CLK);
         TSGU_, TOV_, TSGN_,
         GEQZRO_, OVF_,
         TPZG_, TMZ_,
+
         T01_, T02_, T04_, T05_, T06_, T07_, T08_, T09_, T10_, T11_,
         SQR10, SQR10_, SQR12_,
         EXST0_, EXST1_,
@@ -293,8 +306,8 @@ module agc(CLOCK, CLK, SIM_CLK);
         RSC_,
         MP0_, MP1, MP3_, MP3A,
         TS0_,
-        
-        // Outputs
+
+        // outputs
         DIV_,
         ST376, ST376_,
         DV0, DV0_, DV1, DV1_, DV4, DV4_, DV376, DV376_, DV1376, DV1376_, DV3764,
@@ -302,18 +315,32 @@ module agc(CLOCK, CLK, SIM_CLK);
         MST1, MST2,
         SGUM,
         BR1, BR1_, MBR1, BR2, BR2_, MBR2,
+
         READ0, READ0_, WRITE0, WRITE0_, RAND0, WAND0, INOUT, INOUT_,
         ROR0, WOR0, WOR0_, RXOR0, RXOR0_,
         RUPT0, RUPT0_, RUPT1, RUPT1_,
         BPP4, PRINC, RRPA,
         n1XP10, n2XP3, n2XP5, n3XP2, n3XP7, n4XP5, n4XP11, n5XP4, n5XP11, n5XP28, n6XP5, n7XP19, n8XP5, n8XP6, n9XP1,
-        A04_RA_, A04_RB_, A04_RC_, A04_RB1_, A04_R1C_, A04_RSC_, A04_WG_, A04_WL_, A04_WY_, A04_CI_, A04_TMZ_, A04_TSGN_, A04_L16_,
+        A04_1_RA_, A04_2_RA_,
+        A04_1_RB_, A04_2_RB_,
+        A04_1_RC_, A04_2_RC_,
+        A04_1_RB1_,
+        A04_1_R1C_,
+        A04_1_RSC_,
+        A04_1_WG_, A04_2_WG_, A04_3_WG_,
+        A04_1_WL_,
+        A04_1_WY_, A04_2_WY_,
+        A04_1_CI_,
+        A04_1_TMZ_,
+        A04_1_TSGN_, A04_2_TSGN_,
+        A04_1_L16_,
         R15, RB2, WCH_,
-        MRSC_, MP0T10,    
+        MRSC_, MP0T10,
         B15X, BR1B2, BR1B2_, BR12B, BR12B_, BRDIF_, BR1B2B, BR1B2B_,
         TL15,
         KRPT,
-        
+
+        // input
         SIM_CLK
     );
     

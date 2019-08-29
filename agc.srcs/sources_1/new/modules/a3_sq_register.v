@@ -26,6 +26,8 @@ module a3_sq_register(
     SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_,
     QC0_, QC1_, QC2_, QC3_,
     A03_1_RPTSET, A03_2_RPTSET, A03_3_RPTSET,
+    IC12, IC13, IC15,
+    MP0_, MP1, MP3_, MP3A,
     MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
     MINHL, MIIP,
     
@@ -33,7 +35,8 @@ module a3_sq_register(
     SIM_CLK
 );
     input wire SIM_CLK;
-    wire MP3, MP3_, MP3A;
+    wire MP3;
+    output wire MP3_, MP3A;
     
     /**************************
     *
@@ -414,10 +417,13 @@ module a3_sq_register(
     wire IC9, IC9_;
     wire IC10, IC10_;
     wire IC11, IC11_;
-    wire IC12, IC12_;
-    wire IC13, IC13_;
+    output wire IC12; 
+    wire IC12_;
+    output wire IC13;
+    wire IC13_;
     wire IC14;
-    wire IC15, IC15_;
+    output wire IC15; 
+    wire IC15_;
     wire IC16, IC16_;
     wire IC17;
     wire NEXST0, NEXST0_;
@@ -438,7 +444,10 @@ module a3_sq_register(
     wire INCR0;
     wire AUG0, AUG0_;
     wire DIM0, DIM0_;
-    wire MP0, MP0_, MP1, MP1_;
+    wire MP0;
+    output wire MP0_;
+    output wire MP1; 
+    wire MP1_;
     wire TCSAJ3, TCSAJ3_, MTCSA_;
     wire RSM3, RSM3_;
     wire SU0;

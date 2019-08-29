@@ -47,7 +47,7 @@ module a2_timer(
     input wire CLOCK;
     
     output wire CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_;
-    output wire MONWT, Q2A; // was a wand but only single assingment
+    output wire MONWT, Q2A; // was a wand but only single assignment
     output wire RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     
     wire NOR37101_out;
