@@ -25,7 +25,7 @@ module a3_sq_register(
     SQR10, SQR10_,  SQR12_,
     SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_,
     QC0_, QC1_, QC2_, QC3_,
-    A03_RPTSET,
+    A03_1_RPTSET, A03_2_RPTSET, A03_3_RPTSET,
     MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
     MINHL, MIIP,
     
@@ -68,7 +68,7 @@ module a3_sq_register(
     output wire QC0_, QC1_, QC2_, QC3_;
     output wire MSQ16, MSQ14, MSQ13, MSQ12, MSQ11, MSQ10, MSQEXT, MINHL, MIIP;
     input wire RPTSET;
-    output wire A03_RPTSET;
+    output wire A03_1_RPTSET, A03_2_RPTSET, A03_3_RPTSET;
 
     wire CON1, CON2, SCAS10;
     wire INHINT;
@@ -122,9 +122,9 @@ module a3_sq_register(
     wire NOR30113_out;
     wire NOR30114_out;
     wire NOR30115_out;
-    wire NOR30116_out;
-    wire NOR30117_out;
-    wire NOR30118_out;
+    //wire NOR30116_out;
+    //wire NOR30117_out;
+    //wire NOR30118_out;
     wire NOR30119_out;
     wire NOR30120_out;
     wire NOR30121_out;
@@ -326,11 +326,11 @@ module a3_sq_register(
     nor_3 #(1'b0) NOR49109(OVNHRP,          NOR49108_out,   NOR49107_out,   MP3,            SIM_CLK);
     
     // RPTSET
-    nor_3 #(1'b0) NOR30116(NOR30116_out,    FUTEXT,         NISQL_,         T12_,           SIM_CLK);
-    nor_3 #(1'b0) NOR30117(NOR30117_out,    PHS2_,          RUPTOR_,        MNHRPT,         SIM_CLK);
-    nor_3 #(1'b0) NOR30118(NOR30118_out,    OVNHRP,         INHINT,         IIP,            SIM_CLK);
     // Cross-module fan-in, connected to A6
-    assign A03_RPTSET = NOR30116_out & NOR30117_out & NOR30118_out;
+    nor_3 #(1'b0) NOR30116(A03_1_RPTSET,    FUTEXT,         NISQL_,         T12_,           SIM_CLK);
+    nor_3 #(1'b0) NOR30117(A03_2_RPTSET,    PHS2_,          RUPTOR_,        MNHRPT,         SIM_CLK);
+    nor_3 #(1'b0) NOR30118(A03_3_RPTSET,    OVNHRP,         INHINT,         IIP,            SIM_CLK);
+    //assign A03_RPTSET = NOR30116_out & NOR30117_out & NOR30118_out;
     
     // RPTFRC flip-flop
     nor_2 #(1'b1) NOR30121(NOR30121_out,    RPTSET,         NOR30122_out,                   SIM_CLK);

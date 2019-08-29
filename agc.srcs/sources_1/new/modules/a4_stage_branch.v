@@ -48,7 +48,10 @@ module a4_stage_branch(
     RUPT0, RUPT0_, RUPT1, RUPT1_,
     BPP4, PRINC, RRPA,
     n1XP10, n2XP3, n2XP5, n3XP2, n3XP7, n4XP5, n4XP11, n5XP4, n5XP11, n5XP28, n6XP5, n7XP19, n8XP5, n8XP6, n9XP1,
-    A04_RA_, A04_RB_, A04_RC_, A04_RB1_, A04_R1C_, A04_RSC_, A04_WG_, A04_WL_, A04_WY_, A04_CI_, A04_TMZ_, A04_TSGN_, A04_L16_,
+    A04_1_RA_, A04_2_RA_,
+    A04_RB_, A04_RC_, A04_RB1_, A04_R1C_, A04_RSC_,
+    A04_1_WG_, A04_2_WG_, A04_3_WG_,
+    A04_WL_, A04_WY_, A04_CI_, A04_TMZ_, A04_TSGN_, A04_L16_,
     R15, RB2, WCH_,
     MRSC_, MP0T10,    
     B15X, BR1B2, BR1B2_, BR12B, BR12B_, BRDIF_, BR1B2B, BR1B2B_,
@@ -453,14 +456,14 @@ module a4_stage_branch(
     
     // Partial cross-module fan-in signals
     
-    output wire A04_RA_;
+    output wire A04_1_RA_, A04_2_RA_;
     output wire A04_RB_;
     output wire A04_RC_;
     output wire A04_RB1_;
     output wire A04_R1C_;
     output wire A04_RSC_;
     
-    output wire A04_WG_;
+    output wire A04_1_WG_, A04_2_WG_, A04_3_WG_;
     output wire A04_WL_;
     output wire A04_WY_;
     
@@ -502,22 +505,22 @@ module a4_stage_branch(
     wire NOR36342_out;
     wire NOR36343_out;
     wire NOR36344_out;
-    wire NOR36345_out;
+    //wire NOR36345_out;
     wire NOR36346_out;
-    wire NOR36347_out;
+    //wire NOR36347_out;
     wire NOR36348_out;
     wire NOR36349_out;
     wire NOR36351_out;
     wire NOR36353_out;
     wire NOR36354_out;
-    wire NOR36355_out;
+    //wire NOR36355_out;
     wire NOR36360_out;
     wire NOR36401_out;
     wire NOR36405_out;
     wire NOR40428_out;
     wire NOR36406_out;
     wire NOR36407_out;
-    wire NOR36409_out;
+    //wire NOR36409_out;
     wire NOR36410_out;
     wire NOR36411_out;
     wire NOR36412_out;
@@ -620,14 +623,15 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36340(NOR36340_out,    T09_,           RUPT0_,                                     SIM_CLK);
     nor_3 #(1'b0) NOR36342(NOR36342_out,    RUPT1,          IC13,           IC12,                       SIM_CLK);
     nor_2 #(1'b0) NOR36343(NOR36343_out,    T09_,           NOR36342_out,                               SIM_CLK);
-    nor_3 #(1'b0) NOR36345(NOR36345_out,    n9XP1,          NOR36340_out,   NOR36354_out,               SIM_CLK);
-    nor_2 #(1'b0) NOR36347(NOR36347_out,    NOR36343_out,   NOR36351_out,                               SIM_CLK);
     // Cross-module fan-in, connected to A5, A6 and A12
-    assign A04_WG_ = NOR36345_out & NOR36347_out;
+    nor_3 #(1'b0) NOR36345(A04_1_WG_,       n9XP1,          NOR36340_out,   NOR36354_out,               SIM_CLK);
+    nor_2 #(1'b0) NOR36347(A04_2_WG_,       NOR36343_out,   NOR36351_out,                               SIM_CLK);
+    //assign A04_WG_ = NOR36345_out & NOR36347_out;
 
     // 5XP11
     nor_3 #(1'b0) NOR36344(NOR36344_out,    T05_,           INOUT_,         READ0,                      SIM_CLK);
     nor_2 #(1'b0) NOR36346(NOR36346_out,    WRITE0,         RXOR0,                                      SIM_CLK);
+    // No cross-module fan-in
     assign n5XP11 = NOR36344_out & NOR36346_out;
     
     // WCH_
@@ -635,10 +639,11 @@ module a4_stage_branch(
     nor_2 #(1'b0) NOR36353(NOR36353_out,    T05_,           WOR0_,                                      SIM_CLK);
     nor_3 #(1'b0) NOR36350(WCH_,            NOR36349_out,   n7XP14,         NOR36353_out,               SIM_CLK);
     
-    // RA_
+    // RA_ part 1
     nor_2 #(1'b0) NOR36354(NOR36354_out,    T05_,           RXOR0_,                                     SIM_CLK);
-    nor_3 #(1'b0) NOR36355(NOR36355_out,    NOR36349_out,   NOR36354_out,   n2XP3,                      SIM_CLK);
-    assign A04_RA_ = NOR36355_out;
+    // Cross-module fan-in, connected to A5
+    nor_3 #(1'b0) NOR36355(A04_1_RA_,       NOR36349_out,   NOR36354_out,   n2XP3,                      SIM_CLK);
+    //assign A04_RA_ = NOR36355_out;
     
     // n2XP3
     nor_2 #(1'b0) NOR36352(n2XP3,           T02_,           INOUT_,                                     SIM_CLK);
@@ -653,29 +658,35 @@ module a4_stage_branch(
     // n1XP10
     nor_2 #(1'b0) NOR36404(n1XP10,          T01_,           DV0_,                                       SIM_CLK);
     
-    // n2PP1, n2XP5, RA_, RSC_, WG_
+    // n2PP1
     nor_3 #(1'b0) NOR36405(NOR36405_out,    INOUT,          MP1,            MP3A,                       SIM_CLK);
     // Moved here from A6 sheet 2
     nor_3 #(1'b0) NOR40428(NOR40428_out,    DV0,            DV1376,         IC15,                       SIM_CLK);
+    // No cross-module fan-in
     assign n2PP1 = NOR36405_out & NOR40428_out;
+
+    // n2XP5
     nor_1 #(1'b0) NOR36406(NOR36406_out,    n2PP1,                                                      SIM_CLK);
     nor_2 #(1'b0) NOR36407(NOR36407_out,    T02_,           NOR36406_out,                               SIM_CLK);
     nor_3 #(1'b0) NOR36408(n2XP5,           T02_,           DV0_,           BR1,                        SIM_CLK);
-    
+
+    // RA_ part 2
     // Cross-module fan-in, connected to A5
-    nor_3 #(1'b0) NOR36409(NOR36409_out,    n1XP10,         n8XP5,          NOR36446_out,               SIM_CLK);
-    assign A04_RA_ = NOR36409_out;
-    
+    nor_3 #(1'b0) NOR36409(A04_2_RA_,       n1XP10,         n8XP5,          NOR36446_out,               SIM_CLK);
+    //assign A04_RA_ = NOR36409_out;
+
+    // RSC_
     // Cross-module fan-in, connected to A5 and A6
     nor_3 #(1'b0) NOR36410(NOR36410_out,    NOR36407_out,   NOR36435_out,   NOR36456_out,               SIM_CLK);
     assign A04_RSC_ = NOR36410_out;
     nor_1 #(1'b0) NOR36459(NOR36459_out,    RSC_,                                                       SIM_CLK);
     assign MRSC_ = NOR36459_out;
-    
-    // Cross-module fan-in, connected to A5, A6 and A12
+
+    // WG_ part 2
     nor_2 #(1'b0) NOR36360(NOR36360_out,    STORE1_,        T09_,                                       SIM_CLK);
-    nor_3 #(1'b0) NOR36411(NOR36411_out,    NOR36407_out,   NOR36360_out,   NOR36435_out,               SIM_CLK);
-    assign A04_WG_ = NOR36411_out;
+    // Cross-module fan-in, connected to A5, A6 and A12
+    nor_3 #(1'b0) NOR36411(A04_3_WG_,       NOR36407_out,   NOR36360_out,   NOR36435_out,               SIM_CLK);
+    //assign A04_WG_ = NOR36411_out;
     
     // TMZ_
     nor_2 #(1'b0) NOR36412(NOR36412_out,    n1XP10,         n2XP5,                                      SIM_CLK);

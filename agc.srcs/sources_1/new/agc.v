@@ -90,7 +90,7 @@ module agc(CLOCK, CLK, SIM_CLK);
     wire INKL, DBLTST;
     wire MTCSAI, INHPLS, RELPLS, KRPT, EXT, EXTPLS;
     wire RUPTOR_, MNHRPT;
-    wire RPTSET, A03_RPTSET;
+    wire RPTSET, A03_1_RPTSET, A03_2_RPTSET, A03_3_RPTSET;
     wire A15_, A16_, MP3;
     wire  QC0_, QC1_, QC2_, QC3_;
     wire SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_;
@@ -147,7 +147,11 @@ module agc(CLOCK, CLK, SIM_CLK);
     wire B15X, BR1B2, BR1B2_, BR12B, BR12B_, BRDIF_, BR1B2B, BR1B2B_;
     wire MRSC_, MP0T10;
     wire TL15;
-    
+
+    // Cross-module fan-in signals
+    RPTSET = A03_1_RPTSET & A03_2_RPTSET & A03_3_RPTSET
+
+
     a1_scaler a1(
         // inputs
         FS01_, RCHAT_, RCHBT_,
@@ -250,7 +254,7 @@ module agc(CLOCK, CLK, SIM_CLK);
         SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_,
         
         QC0_, QC1_, QC2_, QC3_,
-        A03_RPTSET,
+        A03_1_RPTSET, A03_2_RPTSET, A03_3_RPTSET,
         MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
         MINHL, MIIP,
         
