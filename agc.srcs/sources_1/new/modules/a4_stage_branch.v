@@ -5,7 +5,8 @@ module a4_stage_branch(
     PHS2_, PHS3_, PHS4, PHS4_, T01, T03_, T12_,
     SUMA16_, SUMB16_,
     WL01_, WL02_, WL03_, WL04_, WL05_, WL06_, WL07_, WL08_, WL09_, WL10_, WL11_, WL12_, WL13_, WL14_, WL15_, WL16_,
-    QC0_, SQ0_, SQ1_, SQEXT_, EXST0_,
+    QC0_, QC1_, QC2_, QC3_,
+    SQ0_, SQ1_, SQ2_, SQEXT, SQEXT_,
     DVST,
     ST1, ST2,
     INKL,
@@ -18,10 +19,21 @@ module a4_stage_branch(
     XB7_,
     NDR100_,
     UNF_, L15_,
-    TSGU_, TOV_, TL15, TSGN_,
+    TSGU_, TOV_, TSGN_,
     GEQZRO_, OVF_,
-    TPZG_, TSGN2, TMZ_,
+    TPZG_, TMZ_,
 
+    T01_, T02_, T04_, T05_, T06_, T07_, T08_, T09_, T10_, T11_,
+    SQR10, SQR10_, SQR12_,
+    EXST0_, EXST1_,
+    IC12, IC13, IC15,
+    n7XP14,
+    RSM3, RSM3_,
+    STORE1_,
+    RSC_,
+    MP0_, MP1, MP3_, MP3A,
+    TS0_,
+    
     // outputs
     DIV_,
     ST376, ST376_,
@@ -31,9 +43,21 @@ module a4_stage_branch(
     SGUM,
     BR1, BR1_, MBR1, BR2, BR2_, MBR2,
 
+    READ0, READ0_, WRITE0, WRITE0_, RAND0, WAND0, INOUT, INOUT_,
+    ROR0, WOR0, WOR0_, RXOR0, RXOR0_,
+    RUPT0, RUPT0_, RUPT1, RUPT1_,
+    BPP4, PRINC, RRPA,
+    n1XP10, n2XP3, n2XP5, n3XP2, n3XP7, n4XP5, n4XP11, n5XP4, n5XP11, n5XP28, n6XP5, n7XP19, n8XP5, n8XP6, n9XP1,
+    A04_RA_, A04_RB_, A04_RC_, A04_RB1_, A04_R1C_, A04_RSC_, A04_WG_, A04_WL_, A04_WY_, A04_CI_, A04_TMZ_, A04_TSGN_, A04_L16_,
+    R15, RB2, WCH_,
+    MRSC_, MP0T10,    
+    B15X, BR1B2, BR1B2_, BR12B, BR12B_, BRDIF_, BR1B2B, BR1B2B_,
+    TL15,
+    KRPT,
+    
     // input
     SIM_CLK
-    );
+);
     
     input wire SIM_CLK;
     output wire TL15;
@@ -389,15 +413,14 @@ module a4_stage_branch(
     
     input wire T01_, T02_, T04_, T05_, T06_, T07_, T08_, T09_, T10_, T11_;
     input wire QC1_, QC2_, QC3_;
-    input wire SQR12_, SQ0_, SQ2_, SQEXT, EXST0_, EXST1_;
-    input wire SQR10, SQR10_;
+    input wire SQR10, SQR10_, SQR12_, SQ0_, SQ2_, SQEXT;
+    input wire EXST0_, EXST1_;
     input wire IC12, IC13, IC15;
     input wire n7XP14;
     input wire RSM3, RSM3_;
-    input wire MP1, MP3A;
     input wire STORE1_;
     input wire RSC_;
-    input wire MP0_, MP3_;
+    input wire MP0_, MP1, MP3_, MP3A;
     input wire TS0_;
     
     output wire READ0, READ0_;
@@ -410,47 +433,57 @@ module a4_stage_branch(
     output wire BPP4;
     output wire PRINC;
     output wire RRPA;
+    
+    // Crosspoints
+    output wire n1XP10;
+    output wire n2XP3;
+    output wire n2XP5;
+    output wire n3XP2;
     output wire n3XP7;
+    output wire n4XP5;
+    output wire n4XP11;
+    output wire n5XP4;
+    output wire n5XP11;
+    output wire n5XP28;
+    output wire n6XP5;
+    output wire n7XP19;
+    output wire n8XP5;
+    output wire n8XP6;
+    output wire n9XP1;
+    
+    // Partial cross-module fan-in signals
+    
+    output wire A04_RA_;
     output wire A04_RB_;
     output wire A04_RC_;
-    output wire n5XP28;
-    output wire n9XP1;
+    output wire A04_RB1_;
+    output wire A04_R1C_;
+    output wire A04_RSC_;
+    
     output wire A04_WG_;
-    output wire n5XP11;
-    output wire WCH_;
-    output wire A04_RA_;
-    output wire n2XP3;
+    output wire A04_WL_;
+    output wire A04_WY_;
+    
+    output wire A04_CI_;
+    
+    output wire A04_TMZ_;
+    output wire A04_TSGN_;
+    output wire A04_L16_;
+    
     output wire R15;
     output wire RB2;
-    output wire n1XP10;
-    output wire n2XP5;
-    output wire n8XP5;
-    output wire A04_RA_;
-    output wire A04_RSC_;
-    output wire A04_WG_;
-    output wire A04_TMZ_;
+    output wire WCH_;
+    
     output wire MRSC_;
+    
     output wire B15X;
-    output wire n7XP19;
-    output wire n3XP2;
     output wire BR1B2, BR1B2_;
     output wire BR12B, BR12B_;
     output wire BRDIF_;
     output wire BR1B2B, BR1B2B_;
-    output wire A04_WL_;
-    output wire n4XP5;
-    output wire n6XP5;
-    output wire nXP11;
-    output wire n8XP6;
-    output wire A04_CI_;
-    output wire A04_WY_;
+    
     output wire MP0T10;
-    output wire n5XP4;
     output wire KRPT;
-    output wire A04_RB1_;
-    output wire A04_R1C_;
-    output wire A04_TSGN_;
-    output wire A04_L16_;
     
     wire n2PP1;
     
@@ -698,7 +731,7 @@ module a4_stage_branch(
     // Various XPs
     nor_3 #(1'b0) NOR36431(NOR36431_out,    DV1_,           T04_,           BR2_,                       SIM_CLK);
     nor_2 #(1'b0) NOR36432(n8XP5,           T08_,           DV1_,                                       SIM_CLK);
-    nor_2 #(1'b0) NOR36433(nXP11,           T04_,           INOUT_,                                     SIM_CLK);
+    nor_2 #(1'b0) NOR36433(n4XP11,           T04_,           INOUT_,                                     SIM_CLK);
     nor_3 #(1'b0) NOR36434(n8XP6,           T08_,           DV1_,           BR2,                        SIM_CLK);
     nor_2 #(1'b0) NOR36435(NOR36435_out,    T04_,           MP3_,                                       SIM_CLK);
     nor_3 #(1'b0) NOR36436(NOR36436_out,    TS0_,           T05_,           BR1B2_,                     SIM_CLK);

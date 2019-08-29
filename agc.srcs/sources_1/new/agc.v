@@ -88,12 +88,13 @@ module agc(CLOCK, CLK, SIM_CLK);
     // A3
     wire NISQ, NISQ_; 
     wire INKL, DBLTST;
-    wire MTCSAI, INHPLS, RELPLS, KRPT, n5XP4, EXT, EXTPLS;
+    wire MTCSAI, INHPLS, RELPLS, KRPT, EXT, EXTPLS;
     wire RUPTOR_, MNHRPT;
     wire RPTSET, A03_RPTSET;
     wire A15_, A16_, MP3;
     wire  QC0_, QC1_, QC2_, QC3_;
-    wire SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_;
+    wire SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_;
+    wire SQR10, SQR10_, SQR12_;
     wire MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT;
     wire MINHL, MIIP;
     
@@ -114,19 +115,38 @@ module agc(CLOCK, CLK, SIM_CLK);
     reg TMZ_ = 1;
     reg ST1 = 0;
     reg ST2 = 0;
-    wire DIV_;
+    reg EXST0_ = 1;
+    reg EXST1_ = 1;
+    reg IC12 = 0;
+    reg IC13 = 0;
+    reg IC15 = 0;
+    reg n7XP14 = 0;
     reg TSGU_ = 1;
     reg TOV_ = 1;
-    reg TL15 = 0;
     reg TSGN_ = 1;
+    reg STORE1_ = 1;
+    reg RSC_ = 1;
+    reg TS0_ = 1;
+    
+    wire DIV_;
     wire ST376, ST376_;
     wire DV0, DV0_, DV1, DV1_, DV4, DV4_, DV376, DV376_, DV1376, DV1376_, DV3764;
     wire ST0_, ST1_, STD2, ST3_, ST4_, ST1376_;
     wire MST1, MST2;
     wire SGUM;
     wire BR1, BR1_, MBR1, BR2, BR2_, MBR2;
-    wire BR1B2B;
-    wire RXOR0;
+    wire BPP4, PRINC, RRPA;
+    wire A04_RA_, A04_RB_, A04_RC_, A04_RB1_, A04_R1C_, A04_RSC_, A04_WG_, A04_WL_, A04_WY_, A04_CI_, A04_TMZ_, A04_TSGN_, A04_L16_;
+    wire R15, RB2, WCH_;
+    wire MP0_, MP1, MP3_, MP3A;
+    wire READ0, READ0_, WRITE0, WRITE0_, RAND0, WAND0, INOUT, INOUT_;
+    wire RSM3, RSM3_;
+    wire n1XP10, n2XP3, n2XP5, n3XP2, n3XP7, n4XP5, n4XP11, n5XP4, n5XP11, n5XP28, n6XP5, n7XP19, n8XP5, n8XP6, n9XP1;
+    wire RUPT0, RUPT0_, RUPT1, RUPT1_;
+    wire ROR0, WOR0, WOR0_, RXOR0, RXOR0_;
+    wire B15X, BR1B2, BR1B2_, BR12B, BR12B_, BRDIF_, BR1B2B, BR1B2B_;
+    wire MRSC_, MP0T10;
+    wire TL15;
     
     a1_scaler a1(
         // inputs
@@ -226,7 +246,9 @@ module agc(CLOCK, CLK, SIM_CLK);
         RPTSET,
 
         // outputs
-        SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT_,
+        SQR10, SQR10_, SQR12_,
+        SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_,
+        
         QC0_, QC1_, QC2_, QC3_,
         A03_RPTSET,
         MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
@@ -236,10 +258,12 @@ module agc(CLOCK, CLK, SIM_CLK);
     );
     
     a4_stage_branch a4(
+        // Inputs
         PHS2_, PHS3_, PHS4, PHS4_, T01, T03_, T12_,
         SUMA16_, SUMB16_,
         WL01_, WL02_, WL03_, WL04_, WL05_, WL06_, WL07_, WL08_, WL09_, WL10_, WL11_, WL12_, WL13_, WL14_, WL15_, WL16_,
-        QC0_, SQ1_, SQEXT_,
+        QC0_, QC1_, QC2_, QC3_,
+        SQ0_, SQ1_, SQ2_, SQEXT, SQEXT_,
         DVST,
         ST1, ST2,
         INKL,
@@ -252,9 +276,21 @@ module agc(CLOCK, CLK, SIM_CLK);
         XB7_,
         NDR100_,
         UNF_, L15_,
-        TSGU_, TOV_, TL15, TSGN_,
+        TSGU_, TOV_, TSGN_,
         GEQZRO_, OVF_,
-        TPZG_, TSGN2, TMZ_,
+        TPZG_, TMZ_,
+        T01_, T02_, T04_, T05_, T06_, T07_, T08_, T09_, T10_, T11_,
+        SQR10, SQR10_, SQR12_,
+        EXST0_, EXST1_,
+        IC12, IC13, IC15,
+        n7XP14,
+        RSM3, RSM3_,
+        STORE1_,
+        RSC_,
+        MP0_, MP1, MP3_, MP3A,
+        TS0_,
+        
+        // Outputs
         DIV_,
         ST376, ST376_,
         DV0, DV0_, DV1, DV1_, DV4, DV4_, DV376, DV376_, DV1376, DV1376_, DV3764,
@@ -262,6 +298,18 @@ module agc(CLOCK, CLK, SIM_CLK);
         MST1, MST2,
         SGUM,
         BR1, BR1_, MBR1, BR2, BR2_, MBR2,
+        READ0, READ0_, WRITE0, WRITE0_, RAND0, WAND0, INOUT, INOUT_,
+        ROR0, WOR0, WOR0_, RXOR0, RXOR0_,
+        RUPT0, RUPT0_, RUPT1, RUPT1_,
+        BPP4, PRINC, RRPA,
+        n1XP10, n2XP3, n2XP5, n3XP2, n3XP7, n4XP5, n4XP11, n5XP4, n5XP11, n5XP28, n6XP5, n7XP19, n8XP5, n8XP6, n9XP1,
+        A04_RA_, A04_RB_, A04_RC_, A04_RB1_, A04_R1C_, A04_RSC_, A04_WG_, A04_WL_, A04_WY_, A04_CI_, A04_TMZ_, A04_TSGN_, A04_L16_,
+        R15, RB2, WCH_,
+        MRSC_, MP0T10,    
+        B15X, BR1B2, BR1B2_, BR12B, BR12B_, BRDIF_, BR1B2B, BR1B2B_,
+        TL15,
+        KRPT,
+        
         SIM_CLK
     );
     
