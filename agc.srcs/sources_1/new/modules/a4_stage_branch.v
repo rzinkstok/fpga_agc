@@ -394,6 +394,9 @@ module a4_stage_branch(
     input wire RSM3;
     input wire MP1, MP3A;
     input wire STORE1_;
+    input wire RSC_;
+    input wire MP0_;
+    input wire TS0_;
     
     output wire READ0, READ0_;
     output wire WRITE0, WRITE0_;
@@ -420,8 +423,14 @@ module a4_stage_branch(
     output wire n2XP5;
     output wire n8XP5;
     output wire A04_RA_;
-    output wire RSC_;
-    output wire WG_;
+    output wire A04_RSC_;
+    output wire A04_WG_;
+    output wire A04_TMZ_;
+    output wire MRSC_;
+    output wire B15X;
+    output wire n7XP19;
+    output wire n3XP2;
+    output wire BR1B2;
     
     wire n2PP1;
     
@@ -458,9 +467,15 @@ module a4_stage_branch(
     wire NOR36409_out;
     wire NOR36410_out;
     wire NOR36411_out;
+    wire NOR36412_out;
+    wire NOR36413_out;
+    wire NOR36414_out;
+    wire NOR36415_out;
+    
     wire NOR36435_out;
     wire NOR36443_out;
     wire NOR36456_out;
+    wire NOR36459_out;
     
     // NOR36301 moved to sheet 1
     // NOR36302 removed (fan-out expansion)
@@ -570,7 +585,7 @@ module a4_stage_branch(
     // n1XP10
     nor_2 #(1'b0) NOR36404(n1XP10,          T01_,           DV0_,                                       SIM_CLK);
     
-    // n2PP1, n2XP5, RA_, RSC_
+    // n2PP1, n2XP5, RA_, RSC_, WG_
     nor_3 #(1'b0) NOR36405(NOR36405_out,    INOUT,          MP1,            MP3A,                       SIM_CLK);
     // Moved here from A6 sheet 2
     nor_3 #(1'b0) NOR40428(NOR40428_out,    DV0,            DV1376,         IC15,                       SIM_CLK);
@@ -585,9 +600,25 @@ module a4_stage_branch(
     
     // Cross-module fan-in, connected to A5 and A6
     nor_3 #(1'b0) NOR36410(NOR36410_out,    NOR36407_out,   NOR36435_out,   NOR36456_out,               SIM_CLK);
-    assign RSC_ = NOR36410_out;
+    assign A04_RSC_ = NOR36410_out;
+    nor_1 #(1'b0) NOR36459(NOR36459_out,    RSC_,                                                       SIM_CLK);
+    assign MRSC_ = NOR36459_out;
+    
     // Cross-module fan-in, connected to A5, A6 and A12
     nor_2 #(1'b0) NOR36360(NOR36360_out,    STORE1_,        T09_,                                       SIM_CLK);
     nor_3 #(1'b0) NOR36411(NOR36411_out,    NOR36407_out,   NOR36360_out,   NOR36435_out,               SIM_CLK);
-    assign WG_ = NOR36411_out;
+    assign A04_WG_ = NOR36411_out;
+    
+    // TMZ_
+    nor_2 #(1'b0) NOR36412(NOR36412_out,    n1XP10,         n2XP5,                                      SIM_CLK);
+    assign A04_TMZ_ = NOR36412_out;
+    
+    nor_2 #(1'b0) NOR36413(NOR36413_out,    MP0_,           T03_,                                       SIM_CLK);
+    nor_2 #(1'b0) NOR36414(NOR36414_out,    INOUT_,         T03_,                                       SIM_CLK);
+    // part of WY_, connected below with NOR36441
+    nor_3 #(1'b0) NOR36415(NOR36415_out,    NOR36414_out,   B15X,           n7XP19,                     SIM_CLK);
+    
+    nor_2 #(1'b0) NOR36416(n3XP2,           T03_,           TS0_,                                       SIM_CLK);
+    nor_2 #(1'b0) NOR36417(BR1B2,           BR1,            BR1_,                                       SIM_CLK);
+    
 endmodule
