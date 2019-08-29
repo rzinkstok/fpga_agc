@@ -74,24 +74,11 @@ def read_module(module):
 
     return module_name, module_params, input_wires, output_wires
 
-
-
-
-if __name__ == "__main__":
-    module_params = {}
-    input_wires = set()
-    output_wires = set()
-    for module in [f"a{n}" for n in range(1, 5)]:
-        module_name, params, inputs, outputs = read_module(module)
-        module_params[module_name] = params
-        input_wires.update(inputs)
-        output_wires.update(outputs)
-
-    testbench = "commands"
-    with open(os.path.join(SIM_SOURCE_FOLDER, f"{testbench}_tb.v"), "w") as fp:
+def write_testbench(testbench_name, module_params, input_wires, output_wires):
+    with open(os.path.join(SIM_SOURCE_FOLDER, f"{testbench_name}_tb.v"), "w") as fp:
         fp.write("`timescale 1ns / 1ps\n")
         fp.write("\n")
-        fp.write(f"module {testbench}();\n")
+        fp.write(f"module {testbench_name}();\n")
         fp.write("\n")
 
         for iw in sorted(input_wires):
@@ -131,4 +118,18 @@ if __name__ == "__main__":
         fp.write("\tend\n\n")
 
         fp.write("endmodule\n")
+
+
+if __name__ == "__main__":
+    module_params = {}
+    input_wires = set()
+    output_wires = set()
+    for module in [f"a{n}" for n in range(1, 5)]:
+        module_name, params, inputs, outputs = read_module(module)
+        module_params[module_name] = params
+        input_wires.update(inputs)
+        output_wires.update(outputs)
+
+    write_testbench("commands", module_params, input_wires, output_wires)
+
 
