@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="commands_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="commands" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="200000000001fs"></ZoomEndTime>
+      <Cursor1Time time="10750000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="173"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="24" />
+   <wvobject fp_name="/commands/CLOCK" type="logic">
+      <obj_property name="ElementShortName">CLOCK</obj_property>
+      <obj_property name="ObjectShortName">CLOCK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/SIM_CLK" type="logic">
+      <obj_property name="ElementShortName">SIM_CLK</obj_property>
+      <obj_property name="ObjectShortName">SIM_CLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/GOJAM" type="logic">
+      <obj_property name="ElementShortName">GOJAM</obj_property>
+      <obj_property name="ObjectShortName">GOJAM</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/DVST" type="logic">
+      <obj_property name="ElementShortName">DVST</obj_property>
+      <obj_property name="ObjectShortName">DVST</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/ST1" type="logic">
+      <obj_property name="ElementShortName">ST1</obj_property>
+      <obj_property name="ObjectShortName">ST1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/ST2" type="logic">
+      <obj_property name="ElementShortName">ST2</obj_property>
+      <obj_property name="ObjectShortName">ST2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/RSTSTG" type="logic">
+      <obj_property name="ElementShortName">RSTSTG</obj_property>
+      <obj_property name="ObjectShortName">RSTSTG</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a3/FUTEXT" type="logic">
+      <obj_property name="ElementShortName">FUTEXT</obj_property>
+      <obj_property name="ObjectShortName">FUTEXT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a3/EXT" type="logic">
+      <obj_property name="ElementShortName">EXT</obj_property>
+      <obj_property name="ObjectShortName">EXT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/TMZ_" type="logic">
+      <obj_property name="ElementShortName">TMZ_</obj_property>
+      <obj_property name="ObjectShortName">TMZ_</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/TOV_" type="logic">
+      <obj_property name="ElementShortName">TOV_</obj_property>
+      <obj_property name="ObjectShortName">TOV_</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/TSGN_" type="logic">
+      <obj_property name="ElementShortName">TSGN_</obj_property>
+      <obj_property name="ObjectShortName">TSGN_</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/TSGN2" type="logic">
+      <obj_property name="ElementShortName">TSGN2</obj_property>
+      <obj_property name="ObjectShortName">TSGN2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/TSGU_" type="logic">
+      <obj_property name="ElementShortName">TSGU_</obj_property>
+      <obj_property name="ObjectShortName">TSGU_</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/TPZG_" type="logic">
+      <obj_property name="ElementShortName">TPZG_</obj_property>
+      <obj_property name="ObjectShortName">TPZG_</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/TMZ_" type="logic">
+      <obj_property name="ElementShortName">TMZ_</obj_property>
+      <obj_property name="ObjectShortName">TMZ_</obj_property>
+   </wvobject>
+   <wvobject fp_name="/commands/a4/TL15" type="logic">
+      <obj_property name="ElementShortName">TL15</obj_property>
+      <obj_property name="ObjectShortName">TL15</obj_property>
+   </wvobject>
+   <wvobject fp_name="group480" type="group">
+      <obj_property name="label">Time pulses</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/commands/MT01" type="logic">
+         <obj_property name="ElementShortName">MT01</obj_property>
+         <obj_property name="ObjectShortName">MT01</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT02" type="logic">
+         <obj_property name="ElementShortName">MT02</obj_property>
+         <obj_property name="ObjectShortName">MT02</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT03" type="logic">
+         <obj_property name="ElementShortName">MT03</obj_property>
+         <obj_property name="ObjectShortName">MT03</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT04" type="logic">
+         <obj_property name="ElementShortName">MT04</obj_property>
+         <obj_property name="ObjectShortName">MT04</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT05" type="logic">
+         <obj_property name="ElementShortName">MT05</obj_property>
+         <obj_property name="ObjectShortName">MT05</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT06" type="logic">
+         <obj_property name="ElementShortName">MT06</obj_property>
+         <obj_property name="ObjectShortName">MT06</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT07" type="logic">
+         <obj_property name="ElementShortName">MT07</obj_property>
+         <obj_property name="ObjectShortName">MT07</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT08" type="logic">
+         <obj_property name="ElementShortName">MT08</obj_property>
+         <obj_property name="ObjectShortName">MT08</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT09" type="logic">
+         <obj_property name="ElementShortName">MT09</obj_property>
+         <obj_property name="ObjectShortName">MT09</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT10" type="logic">
+         <obj_property name="ElementShortName">MT10</obj_property>
+         <obj_property name="ObjectShortName">MT10</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT11" type="logic">
+         <obj_property name="ElementShortName">MT11</obj_property>
+         <obj_property name="ObjectShortName">MT11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/MT12" type="logic">
+         <obj_property name="ElementShortName">MT12</obj_property>
+         <obj_property name="ObjectShortName">MT12</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group556" type="group">
+      <obj_property name="label">Read/write/clear</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/commands/a2/RT" type="logic">
+         <obj_property name="ElementShortName">RT</obj_property>
+         <obj_property name="ObjectShortName">RT</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a2/WT" type="logic">
+         <obj_property name="ElementShortName">WT</obj_property>
+         <obj_property name="ObjectShortName">WT</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a2/CT" type="logic">
+         <obj_property name="ElementShortName">CT</obj_property>
+         <obj_property name="ObjectShortName">CT</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group482" type="group">
+      <obj_property name="label">Scaler</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/commands/FS01" type="logic">
+         <obj_property name="ElementShortName">FS01</obj_property>
+         <obj_property name="ObjectShortName">FS01</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS02" type="logic">
+         <obj_property name="ElementShortName">FS02</obj_property>
+         <obj_property name="ObjectShortName">FS02</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS03" type="logic">
+         <obj_property name="ElementShortName">FS03</obj_property>
+         <obj_property name="ObjectShortName">FS03</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS04" type="logic">
+         <obj_property name="ElementShortName">FS04</obj_property>
+         <obj_property name="ObjectShortName">FS04</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS05" type="logic">
+         <obj_property name="ElementShortName">FS05</obj_property>
+         <obj_property name="ObjectShortName">FS05</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS06" type="logic">
+         <obj_property name="ElementShortName">FS06</obj_property>
+         <obj_property name="ObjectShortName">FS06</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS07" type="logic">
+         <obj_property name="ElementShortName">FS07</obj_property>
+         <obj_property name="ObjectShortName">FS07</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS08" type="logic">
+         <obj_property name="ElementShortName">FS08</obj_property>
+         <obj_property name="ObjectShortName">FS08</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS09" type="logic">
+         <obj_property name="ElementShortName">FS09</obj_property>
+         <obj_property name="ObjectShortName">FS09</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS10" type="logic">
+         <obj_property name="ElementShortName">FS10</obj_property>
+         <obj_property name="ObjectShortName">FS10</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS11" type="logic">
+         <obj_property name="ElementShortName">FS11</obj_property>
+         <obj_property name="ObjectShortName">FS11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS12" type="logic">
+         <obj_property name="ElementShortName">FS12</obj_property>
+         <obj_property name="ObjectShortName">FS12</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS13" type="logic">
+         <obj_property name="ElementShortName">FS13</obj_property>
+         <obj_property name="ObjectShortName">FS13</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS14" type="logic">
+         <obj_property name="ElementShortName">FS14</obj_property>
+         <obj_property name="ObjectShortName">FS14</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS15" type="logic">
+         <obj_property name="ElementShortName">FS15</obj_property>
+         <obj_property name="ObjectShortName">FS15</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS16" type="logic">
+         <obj_property name="ElementShortName">FS16</obj_property>
+         <obj_property name="ObjectShortName">FS16</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS17" type="logic">
+         <obj_property name="ElementShortName">FS17</obj_property>
+         <obj_property name="ObjectShortName">FS17</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS18" type="logic">
+         <obj_property name="ElementShortName">FS18</obj_property>
+         <obj_property name="ObjectShortName">FS18</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS19" type="logic">
+         <obj_property name="ElementShortName">FS19</obj_property>
+         <obj_property name="ObjectShortName">FS19</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS20" type="logic">
+         <obj_property name="ElementShortName">FS20</obj_property>
+         <obj_property name="ObjectShortName">FS20</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS21" type="logic">
+         <obj_property name="ElementShortName">FS21</obj_property>
+         <obj_property name="ObjectShortName">FS21</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS22" type="logic">
+         <obj_property name="ElementShortName">FS22</obj_property>
+         <obj_property name="ObjectShortName">FS22</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS23" type="logic">
+         <obj_property name="ElementShortName">FS23</obj_property>
+         <obj_property name="ObjectShortName">FS23</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS24" type="logic">
+         <obj_property name="ElementShortName">FS24</obj_property>
+         <obj_property name="ObjectShortName">FS24</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS25" type="logic">
+         <obj_property name="ElementShortName">FS25</obj_property>
+         <obj_property name="ObjectShortName">FS25</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS26" type="logic">
+         <obj_property name="ElementShortName">FS26</obj_property>
+         <obj_property name="ObjectShortName">FS26</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS27" type="logic">
+         <obj_property name="ElementShortName">FS27</obj_property>
+         <obj_property name="ObjectShortName">FS27</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS28" type="logic">
+         <obj_property name="ElementShortName">FS28</obj_property>
+         <obj_property name="ObjectShortName">FS28</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS29" type="logic">
+         <obj_property name="ElementShortName">FS29</obj_property>
+         <obj_property name="ObjectShortName">FS29</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS30" type="logic">
+         <obj_property name="ElementShortName">FS30</obj_property>
+         <obj_property name="ObjectShortName">FS30</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS31" type="logic">
+         <obj_property name="ElementShortName">FS31</obj_property>
+         <obj_property name="ObjectShortName">FS31</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS32" type="logic">
+         <obj_property name="ElementShortName">FS32</obj_property>
+         <obj_property name="ObjectShortName">FS32</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/FS33" type="logic">
+         <obj_property name="ElementShortName">FS33</obj_property>
+         <obj_property name="ObjectShortName">FS33</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group525" type="group">
+      <obj_property name="label">Write lines</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/commands/WL01_" type="logic">
+         <obj_property name="ElementShortName">WL01_</obj_property>
+         <obj_property name="ObjectShortName">WL01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL02_" type="logic">
+         <obj_property name="ElementShortName">WL02_</obj_property>
+         <obj_property name="ObjectShortName">WL02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL03_" type="logic">
+         <obj_property name="ElementShortName">WL03_</obj_property>
+         <obj_property name="ObjectShortName">WL03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL04_" type="logic">
+         <obj_property name="ElementShortName">WL04_</obj_property>
+         <obj_property name="ObjectShortName">WL04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL05_" type="logic">
+         <obj_property name="ElementShortName">WL05_</obj_property>
+         <obj_property name="ObjectShortName">WL05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL06_" type="logic">
+         <obj_property name="ElementShortName">WL06_</obj_property>
+         <obj_property name="ObjectShortName">WL06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL07_" type="logic">
+         <obj_property name="ElementShortName">WL07_</obj_property>
+         <obj_property name="ObjectShortName">WL07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL08_" type="logic">
+         <obj_property name="ElementShortName">WL08_</obj_property>
+         <obj_property name="ObjectShortName">WL08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL09_" type="logic">
+         <obj_property name="ElementShortName">WL09_</obj_property>
+         <obj_property name="ObjectShortName">WL09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL10_" type="logic">
+         <obj_property name="ElementShortName">WL10_</obj_property>
+         <obj_property name="ObjectShortName">WL10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL11_" type="logic">
+         <obj_property name="ElementShortName">WL11_</obj_property>
+         <obj_property name="ObjectShortName">WL11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL12_" type="logic">
+         <obj_property name="ElementShortName">WL12_</obj_property>
+         <obj_property name="ObjectShortName">WL12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL13_" type="logic">
+         <obj_property name="ElementShortName">WL13_</obj_property>
+         <obj_property name="ObjectShortName">WL13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL14_" type="logic">
+         <obj_property name="ElementShortName">WL14_</obj_property>
+         <obj_property name="ObjectShortName">WL14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL15_" type="logic">
+         <obj_property name="ElementShortName">WL15_</obj_property>
+         <obj_property name="ObjectShortName">WL15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/WL16_" type="logic">
+         <obj_property name="ElementShortName">WL16_</obj_property>
+         <obj_property name="ObjectShortName">WL16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group516" type="group">
+      <obj_property name="label">SQ register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/commands/a3/NISQ" type="logic">
+         <obj_property name="ElementShortName">NISQ</obj_property>
+         <obj_property name="ObjectShortName">NISQ</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQR10" type="logic">
+         <obj_property name="ElementShortName">SQR10</obj_property>
+         <obj_property name="ObjectShortName">SQR10</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQR11" type="logic">
+         <obj_property name="ElementShortName">SQR11</obj_property>
+         <obj_property name="ObjectShortName">SQR11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQR12" type="logic">
+         <obj_property name="ElementShortName">SQR12</obj_property>
+         <obj_property name="ObjectShortName">SQR12</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQR13" type="logic">
+         <obj_property name="ElementShortName">SQR13</obj_property>
+         <obj_property name="ObjectShortName">SQR13</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQR14" type="logic">
+         <obj_property name="ElementShortName">SQR14</obj_property>
+         <obj_property name="ObjectShortName">SQR14</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQR16" type="logic">
+         <obj_property name="ElementShortName">SQR16</obj_property>
+         <obj_property name="ObjectShortName">SQR16</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQ0_" type="logic">
+         <obj_property name="ElementShortName">SQ0_</obj_property>
+         <obj_property name="ObjectShortName">SQ0_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQ1_" type="logic">
+         <obj_property name="ElementShortName">SQ1_</obj_property>
+         <obj_property name="ObjectShortName">SQ1_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQ2_" type="logic">
+         <obj_property name="ElementShortName">SQ2_</obj_property>
+         <obj_property name="ObjectShortName">SQ2_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQ3_" type="logic">
+         <obj_property name="ElementShortName">SQ3_</obj_property>
+         <obj_property name="ObjectShortName">SQ3_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQ4_" type="logic">
+         <obj_property name="ElementShortName">SQ4_</obj_property>
+         <obj_property name="ObjectShortName">SQ4_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQ5_" type="logic">
+         <obj_property name="ElementShortName">SQ5_</obj_property>
+         <obj_property name="ObjectShortName">SQ5_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQ6_" type="logic">
+         <obj_property name="ElementShortName">SQ6_</obj_property>
+         <obj_property name="ObjectShortName">SQ6_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQ7_" type="logic">
+         <obj_property name="ElementShortName">SQ7_</obj_property>
+         <obj_property name="ObjectShortName">SQ7_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/SQEXT" type="logic">
+         <obj_property name="ElementShortName">SQEXT</obj_property>
+         <obj_property name="ObjectShortName">SQEXT</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/QC0_" type="logic">
+         <obj_property name="ElementShortName">QC0_</obj_property>
+         <obj_property name="ObjectShortName">QC0_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/QC1_" type="logic">
+         <obj_property name="ElementShortName">QC1_</obj_property>
+         <obj_property name="ObjectShortName">QC1_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/QC2_" type="logic">
+         <obj_property name="ElementShortName">QC2_</obj_property>
+         <obj_property name="ObjectShortName">QC2_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a3/QC3_" type="logic">
+         <obj_property name="ElementShortName">QC3_</obj_property>
+         <obj_property name="ObjectShortName">QC3_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group560" type="group">
+      <obj_property name="label">Stage counter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/commands/a4/STG1" type="logic">
+         <obj_property name="ElementShortName">STG1</obj_property>
+         <obj_property name="ObjectShortName">STG1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/STG2" type="logic">
+         <obj_property name="ElementShortName">STG2</obj_property>
+         <obj_property name="ObjectShortName">STG2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/STG3" type="logic">
+         <obj_property name="ElementShortName">STG3</obj_property>
+         <obj_property name="ObjectShortName">STG3</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/ST376" type="logic">
+         <obj_property name="ElementShortName">ST376</obj_property>
+         <obj_property name="ObjectShortName">ST376</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/ST376_" type="logic">
+         <obj_property name="ElementShortName">ST376_</obj_property>
+         <obj_property name="ObjectShortName">ST376_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/ST0_" type="logic">
+         <obj_property name="ElementShortName">ST0_</obj_property>
+         <obj_property name="ObjectShortName">ST0_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/ST1_" type="logic">
+         <obj_property name="ElementShortName">ST1_</obj_property>
+         <obj_property name="ObjectShortName">ST1_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/STD2" type="logic">
+         <obj_property name="ElementShortName">STD2</obj_property>
+         <obj_property name="ObjectShortName">STD2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/ST3_" type="logic">
+         <obj_property name="ElementShortName">ST3_</obj_property>
+         <obj_property name="ObjectShortName">ST3_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/ST4_" type="logic">
+         <obj_property name="ElementShortName">ST4_</obj_property>
+         <obj_property name="ObjectShortName">ST4_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/ST1376_" type="logic">
+         <obj_property name="ElementShortName">ST1376_</obj_property>
+         <obj_property name="ObjectShortName">ST1376_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/DV0" type="logic">
+         <obj_property name="ElementShortName">DV0</obj_property>
+         <obj_property name="ObjectShortName">DV0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/DV1" type="logic">
+         <obj_property name="ElementShortName">DV1</obj_property>
+         <obj_property name="ObjectShortName">DV1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/DV4" type="logic">
+         <obj_property name="ElementShortName">DV4</obj_property>
+         <obj_property name="ObjectShortName">DV4</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/DV376" type="logic">
+         <obj_property name="ElementShortName">DV376</obj_property>
+         <obj_property name="ObjectShortName">DV376</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/DV1376" type="logic">
+         <obj_property name="ElementShortName">DV1376</obj_property>
+         <obj_property name="ObjectShortName">DV1376</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/DV3764" type="logic">
+         <obj_property name="ElementShortName">DV3764</obj_property>
+         <obj_property name="ObjectShortName">DV3764</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group585" type="group">
+      <obj_property name="label">Branch register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/commands/a4/BR1" type="logic">
+         <obj_property name="ElementShortName">BR1</obj_property>
+         <obj_property name="ObjectShortName">BR1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/commands/a4/BR2" type="logic">
+         <obj_property name="ElementShortName">BR2</obj_property>
+         <obj_property name="ObjectShortName">BR2</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

@@ -4,6 +4,7 @@ import re
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
 MODULES_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new", "modules")
+SIM_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sim_1", "new")
 
 MODULE_ARGS_START_RE = re.compile(r"^module [A-Za-z0-9\_]+\(")
 MODULE_ARGS_END_RE = re.compile(r"^\);")
@@ -87,7 +88,7 @@ if __name__ == "__main__":
         output_wires.update(outputs)
 
     testbench = "commands"
-    with open(f"{testbench}_tb.v", "w") as fp:
+    with open(os.path.join(SIM_SOURCE_FOLDER, f"{testbench}_tb.v"), "w") as fp:
         fp.write("`timescale 1ns / 1ps\n")
         fp.write("\n")
         fp.write(f"module {testbench}();\n")
@@ -110,7 +111,7 @@ if __name__ == "__main__":
             fp.write("\talways\n")
             fp.write("\t\t#10 SIM_CLK = !SIM_CLK; // 20 ns gate delay\n\n")
 
-        if "a2_timer" not in module_params.keys():
+        if "a2_timer" in module_params.keys():
             fp.write("\talways\n")
             fp.write("\t\t#244.140625 CLOCK = !CLOCK;  // 2.048 MHz clock\n\n")
 
