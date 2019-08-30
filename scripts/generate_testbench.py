@@ -3,13 +3,15 @@ import re
 
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
-MODULES_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new", "modules")
+SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new")
+MODULES_SOURCE_FOLDER = os.path.join(SOURCE_FOLDER, "modules")
 SIM_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sim_1", "new")
 
 MODULE_ARGS_START_RE = re.compile(r"^module [A-Za-z0-9\_]+\(")
 MODULE_ARGS_END_RE = re.compile(r"^\);")
 INPUT_WIRE_RE = re.compile(r"^input wire ")
 OUTPUT_WIRE_RE = re.compile(r"^output wire ")
+CROSS_MODULE_SIGNAL_RE = re.compile(r"^A[0-9][0-9]\_[0-9]\_(.+)")
 
 
 def read_module(module):
@@ -74,11 +76,191 @@ def read_module(module):
 
     return module_name, module_params, input_wires, output_wires
 
-def write_testbench(testbench_name, module_params, input_wires, output_wires):
-    with open(os.path.join(SIM_SOURCE_FOLDER, f"{testbench_name}_tb.v"), "w") as fp:
+
+def inv(b):
+    if b:
+        return 0
+    return 1
+
+
+def write_command_cycle(fp, ext, sq, qc, sq10, st, dvst):
+    fp.write(
+        f"""
+        begin // EXT {ext}, SQ {sq}, QC {qc}, SQ10 {sq10},  ST {st}
+            WL10_ = {inv(sq10)};  // SQ10 bit
+            WL11_ = {inv(qc & 1)};  // QC bit 0
+            WL12_ = {inv((qc & 2) >> 1)};  // QC bit 1
+            WL13_ = {inv(sq & 1)};  // SQ bit 0
+            WL14_ = {inv((sq & 2) >> 1)};  // SQ bit 1
+            WL16_ = {inv((sq & 4) >> 2)};  // SQ bit 2
+            ST1 = {st & 1};    // Stage counter bit 0
+            ST2 = {(st & 2) >> 1};    // Stage counter bit 1
+            DVST = {dvst};   // Divstage bit
+            EXT = {ext};    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900"""
+    )
+
+
+def write_commands(fp):
+    fp.write("""        #7900""")
+    ext = 0
+    sq = 0
+    qc = 0
+    sq10 = 0
+    st = 0
+    dvst = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    qc = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 2
+    qc = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    st = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    qc = 1
+    st = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    qc = 2
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    qc = 3
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 3
+    qc = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 4
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 5
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    st = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    st = 3
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    st = 0
+    qc = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    st = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    st = 0
+    qc = 2
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    qc = 3
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 6
+    qc = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 7
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    ext = 1
+    sq = 1
+    dvst = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    dvst = 0
+    st = 1
+    qc = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    # Branching omitted
+
+    sq = 2
+    qc = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    qc = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    qc = 2
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    qc = 3
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 3
+    qc = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    st = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    sq = 4
+    st = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    st = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 5
+    st = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    st = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    sq = 6
+    st = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+    qc = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    # Branching omitted
+
+    sq = 7
+    qc = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    st = 1
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    st = 3
+    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+
+
+def write_wrapper(name, module_params, input_wires, output_wires, testbench=False):
+    if testbench:
+        filepath = os.path.join(SIM_SOURCE_FOLDER, f"{name}_tb.v")
+    else:
+        filepath = os.path.join(SOURCE_FOLDER, f"{name}.v")
+
+    cross_module_signals = {}
+    extra_output_wires = []
+    for ow in sorted(output_wires):
+        res = CROSS_MODULE_SIGNAL_RE.search(ow)
+        if res:
+            signal = res.groups()[0]
+            if signal not in cross_module_signals:
+                cross_module_signals[signal] = []
+                if signal in input_wires:
+                    input_wires.remove(signal)
+                if (signal not in output_wires) and (signal not in input_wires):
+                    extra_output_wires.append(signal)
+            cross_module_signals[signal].append(ow)
+    output_wires.update(extra_output_wires)
+
+    with open(filepath, "w") as fp:
         fp.write("`timescale 1ns / 1ps\n")
         fp.write("\n")
-        fp.write(f"module {testbench_name}();\n")
+        fp.write(f"module {name}();\n")
         fp.write("\n")
 
         for iw in sorted(input_wires):
@@ -111,14 +293,23 @@ def write_testbench(testbench_name, module_params, input_wires, output_wires):
                     fp.write(",")
                 fp.write("\n")
             fp.write("\t);\n\n")
+
+
+        for signal in sorted(cross_module_signals.keys()):
+            fp.write(f"\tassign {signal} = ")
+            fp.write(" & ".join(sorted(cross_module_signals[signal])))
+            fp.write(";\n")
         fp.write("\n")
-        fp.write("\tinitial\n")
-        fp.write("\tbegin\n")
-        fp.write("\t\t#200000 $stop;\n")
-        fp.write("\tend\n\n")
+
+        if testbench:
+            fp.write("\tinitial\n")
+            fp.write("\tbegin\n")
+            write_commands(fp)
+            fp.write("\t\t$stop;\n")
+            fp.write("\tend\n\n")
 
         fp.write("endmodule\n")
-
+    print(f"Written {filepath}")
 
 if __name__ == "__main__":
     module_params = {}
@@ -130,6 +321,6 @@ if __name__ == "__main__":
         input_wires.update(inputs)
         output_wires.update(outputs)
 
-    write_testbench("commands", module_params, input_wires, output_wires)
+    write_wrapper("commands", module_params, input_wires, output_wires, testbench=True)
 
 

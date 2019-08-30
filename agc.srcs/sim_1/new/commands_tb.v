@@ -8,12 +8,9 @@ module commands();
 	reg CLOCK = 0;
 	reg DBLTST = 0;
 	reg DVST = 0;
-	reg EXST0_ = 1;
-	reg EXST1_ = 1;
 	reg EXT = 0;
 	reg EXTPLS = 0;
 	reg GEQZRO_ = 1;
-	reg GOJ1 = 0;
 	reg INHPLS = 0;
 	reg INKL = 0;
 	reg L15_ = 1;
@@ -27,10 +24,6 @@ module commands();
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
 	reg RELPLS = 0;
-	reg RPTSET = 0;
-	reg RSC_ = 1;
-	reg RSM3 = 0;
-	reg RSM3_ = 1;
 	reg RSTSTG = 0;
 	reg RUPTOR_ = 1;
 	reg SBY = 0;
@@ -40,15 +33,11 @@ module commands();
 	reg STORE1_ = 1;
 	reg STRT1 = 0;
 	reg STRT2 = 0;
-	reg STRTFC = 0;
 	reg SUMA16_ = 1;
 	reg SUMB16_ = 1;
-	reg TMZ_ = 1;
 	reg TOV_ = 1;
 	reg TPZG_ = 1;
 	reg TRSM = 0;
-	reg TS0_ = 1;
-	reg TSGN_ = 1;
 	reg TSGU_ = 1;
 	reg WL01_ = 1;
 	reg WL02_ = 1;
@@ -95,6 +84,9 @@ module commands();
 	wire A04_2_WG_;
 	wire A04_2_WY_;
 	wire A04_3_WG_;
+	wire AD0;
+	wire ADS0;
+	wire AUG0_;
 	wire B15X;
 	wire BPP4;
 	wire BR1;
@@ -108,6 +100,8 @@ module commands();
 	wire BR2;
 	wire BR2_;
 	wire BRDIF_;
+	wire CCS0;
+	wire CCS0_;
 	wire CHAT01;
 	wire CHAT02;
 	wire CHAT03;
@@ -136,9 +130,17 @@ module commands();
 	wire CHBT12;
 	wire CHBT13;
 	wire CHBT14;
+	wire CI_;
 	wire CLK;
 	wire CT;
 	wire CT_;
+	wire DAS0;
+	wire DAS0_;
+	wire DAS1;
+	wire DAS1_;
+	wire DCA0;
+	wire DCS0;
+	wire DIM0_;
 	wire DIV_;
 	wire DV0;
 	wire DV0_;
@@ -151,9 +153,12 @@ module commands();
 	wire DV376_;
 	wire DV4;
 	wire DV4_;
+	wire DXCH0;
 	wire EDSET;
 	wire EVNSET;
 	wire EVNSET_;
+	wire EXST0_;
+	wire EXST1_;
 	wire F01A;
 	wire F01B;
 	wire F01C;
@@ -287,23 +292,55 @@ module commands();
 	wire FS31;
 	wire FS32;
 	wire FS33;
+	wire FUTEXT;
+	wire GOJ1;
+	wire GOJ1_;
 	wire GOJAM;
 	wire GOJAM_;
+	wire IC1;
+	wire IC10;
+	wire IC10_;
+	wire IC11;
+	wire IC11_;
 	wire IC12;
+	wire IC12_;
 	wire IC13;
+	wire IC14;
 	wire IC15;
+	wire IC15_;
+	wire IC16;
+	wire IC16_;
+	wire IC17;
+	wire IC2;
+	wire IC2_;
+	wire IC3;
+	wire IC4;
+	wire IC5;
+	wire IC5_;
+	wire IC6;
+	wire IC7;
+	wire IC8_;
+	wire IC9;
+	wire IIP;
+	wire IIP_;
+	wire INCR0;
 	wire INOUT;
 	wire INOUT_;
 	wire KRPT;
+	wire L16_;
+	wire MASK0;
+	wire MASK0_;
 	wire MBR1;
 	wire MBR2;
 	wire MGOJAM;
 	wire MIIP;
 	wire MINHL;
 	wire MONWT;
+	wire MP0;
 	wire MP0T10;
 	wire MP0_;
 	wire MP1;
+	wire MP1_;
 	wire MP3A;
 	wire MP3_;
 	wire MRSC_;
@@ -317,6 +354,8 @@ module commands();
 	wire MST1;
 	wire MST2;
 	wire MSTPIT_;
+	wire MSU0;
+	wire MSU0_;
 	wire MT01;
 	wire MT02;
 	wire MT03;
@@ -329,6 +368,10 @@ module commands();
 	wire MT10;
 	wire MT11;
 	wire MT12;
+	wire MTCSA_;
+	wire NDX0_;
+	wire NDXX1_;
+	wire NISQL_;
 	wire ODDSET_;
 	wire OVF;
 	wire OVFSTB_;
@@ -354,15 +397,26 @@ module commands();
 	wire QC1_;
 	wire QC2_;
 	wire QC3_;
+	wire QXCH0_;
 	wire R15;
+	wire R1C_;
 	wire RAND0;
+	wire RA_;
+	wire RB1_;
 	wire RB2;
+	wire RBSQ;
+	wire RB_;
+	wire RC_;
 	wire READ0;
 	wire READ0_;
 	wire RINGA_;
 	wire RINGB_;
 	wire ROR0;
+	wire RPTSET;
 	wire RRPA;
+	wire RSC_;
+	wire RSM3;
+	wire RSM3_;
 	wire RT;
 	wire RT_;
 	wire RUPT0;
@@ -403,6 +457,8 @@ module commands();
 	wire STOP;
 	wire STOPA;
 	wire STOP_;
+	wire STRTFC;
+	wire SU0;
 	wire T01;
 	wire T01DC_;
 	wire T01_;
@@ -439,19 +495,31 @@ module commands();
 	wire T12DC_;
 	wire T12SET;
 	wire T12_;
+	wire TC0;
+	wire TC0_;
+	wire TCF0;
+	wire TCSAJ3;
+	wire TCSAJ3_;
 	wire TIMR;
 	wire TL15;
+	wire TMZ_;
+	wire TS0;
+	wire TS0_;
+	wire TSGN_;
 	wire TT_;
 	wire UNF;
 	wire UNF_;
 	wire WAND0;
 	wire WCH_;
+	wire WG_;
+	wire WL_;
 	wire WOR0;
 	wire WOR0_;
 	wire WRITE0;
 	wire WRITE0_;
 	wire WT;
 	wire WT_;
+	wire WY_;
 	wire n1XP10;
 	wire n2XP3;
 	wire n2XP5;
@@ -797,6 +865,8 @@ module commands();
 		n5XP4,
 		DBLTST,
 		RPTSET,
+		NISQL_,
+		RBSQ,
 		SQR10,
 		SQR10_,
 		SQR12_,
@@ -814,16 +884,10 @@ module commands();
 		QC1_,
 		QC2_,
 		QC3_,
-		A03_1_RPTSET,
-		A03_2_RPTSET,
-		A03_3_RPTSET,
-		IC12,
-		IC13,
-		IC15,
-		MP0_,
-		MP1,
-		MP3_,
-		MP3A,
+		FUTEXT,
+		IIP,
+		IIP_,
+		STRTFC,
 		MSQ10,
 		MSQ11,
 		MSQ12,
@@ -833,6 +897,76 @@ module commands();
 		MSQEXT,
 		MINHL,
 		MIIP,
+		TC0,
+		TC0_,
+		TCF0,
+		TS0,
+		TS0_,
+		DCS0,
+		DCA0,
+		QXCH0_,
+		DXCH0,
+		DAS0,
+		DAS0_,
+		INCR0,
+		CCS0,
+		CCS0_,
+		DAS1,
+		DAS1_,
+		ADS0,
+		AD0,
+		SU0,
+		AUG0_,
+		DIM0_,
+		MSU0,
+		MSU0_,
+		MP0,
+		MP0_,
+		MP1,
+		MP1_,
+		MP3_,
+		MP3_,
+		MP3A,
+		TCSAJ3,
+		TCSAJ3_,
+		RSM3,
+		RSM3_,
+		MASK0,
+		MASK0_,
+		NDX0_,
+		NDXX1_,
+		GOJ1,
+		GOJ1_,
+		IC1,
+		IC2,
+		IC2_,
+		IC3,
+		IC4,
+		IC5,
+		IC5_,
+		IC6,
+		IC7,
+		IC8_,
+		IC9,
+		IC10,
+		IC10_,
+		IC11,
+		IC11_,
+		IC12,
+		IC12_,
+		IC13,
+		IC14,
+		IC15,
+		IC15_,
+		IC16,
+		IC16_,
+		IC17,
+		EXST0_,
+		EXST1_,
+		MTCSA_,
+		A03_1_RPTSET,
+		A03_2_RPTSET,
+		A03_3_RPTSET,
 		SIM_CLK
 	);
 
@@ -1022,10 +1156,886 @@ module commands();
 		SIM_CLK
 	);
 
+	assign CI_ = A04_1_CI_;
+	assign L16_ = A04_1_L16_;
+	assign R1C_ = A04_1_R1C_;
+	assign RA_ = A04_1_RA_ & A04_2_RA_;
+	assign RB1_ = A04_1_RB1_;
+	assign RB_ = A04_1_RB_ & A04_2_RB_;
+	assign RC_ = A04_1_RC_ & A04_2_RC_;
+	assign RPTSET = A03_1_RPTSET & A03_2_RPTSET & A03_3_RPTSET;
+	assign RSC_ = A04_1_RSC_;
+	assign TMZ_ = A04_1_TMZ_;
+	assign TSGN_ = A04_1_TSGN_ & A04_2_TSGN_;
+	assign WG_ = A04_1_WG_ & A04_2_WG_ & A04_3_WG_;
+	assign WL_ = A04_1_WL_;
+	assign WY_ = A04_1_WY_ & A04_2_WY_;
 
 	initial
 	begin
-		#200000 $stop;
+        //#7900
+        #3000
+        begin // EXT 0, SQ 0, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 1, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 1, QC 1, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 2, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 2, QC 0, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 2, QC 1, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 2, QC 2, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 0;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 2, QC 3, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 0;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 3, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 4, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 5, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 5, QC 0, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 5, QC 0, SQ10 0,  ST 3
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 1;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 5, QC 1, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 5, QC 1, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 5, QC 2, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 0;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 5, QC 3, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 0;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 6, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 0, SQ 7, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 0;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 1, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 1;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 1, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 1;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 1, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 1;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 1, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 1;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 1, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 1;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 1, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 1;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 1, QC 1, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 2, QC 0, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 2, QC 1, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 2, QC 2, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 0;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 2, QC 3, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 0;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 3, QC 0, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 3, QC 0, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 1;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 4, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 4, QC 0, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 5, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 5, QC 0, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 1;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 6, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 6, QC 1, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 0;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 1;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 7, QC 0, SQ10 0,  ST 0
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 0;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 7, QC 0, SQ10 0,  ST 1
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 0;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900
+        begin // EXT 1, SQ 7, QC 0, SQ10 0,  ST 3
+            WL10_ = 1;  // SQ10 bit
+            WL11_ = 1;  // QC bit 0
+            WL12_ = 1;  // QC bit 1
+            WL13_ = 0;  // SQ bit 0
+            WL14_ = 0;  // SQ bit 1
+            WL16_ = 0;  // SQ bit 2
+            ST1 = 1;    // Stage counter bit 0
+            ST2 = 1;    // Stage counter bit 1
+            DVST = 0;   // Divstage bit
+            EXT = 1;    // EXT bit
+        end
+        #700 NISQ = 1;
+        #100 NISQ = 0;
+        #2
+        begin
+            ST1 = 0;
+            ST2 = 0;
+            DVST = 0;
+        end
+        #10900		$stop;
 	end
 
 endmodule
