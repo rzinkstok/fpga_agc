@@ -253,7 +253,12 @@ Gates 36401-36460
 40428 added from A6 sheet 2
 
 Module A5
-Gates
+Gates 39101-39156
+Gates 39201-39261
+39257 removed (not used)
+39258 removed (not used)
+39259 removed (not used)
+39260 removed (not used)
 39261 removed (moved to A2 sheet 1 and merged, fan-in expansion)
 
 Module A6
