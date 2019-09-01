@@ -255,6 +255,14 @@ Gates 36401-36460
 Module A5
 Gates 39101-39156
 Gates 39201-39261
+39114 removed (not used)
+39118 removed (not used)
+39119 removed (not used)
+39142 removed (not used)
+39206 removed (merged)
+39218 removed (not used)
+39246 removed (not used)
+39247 removed (not used)
 39257 removed (not used)
 39258 removed (not used)
 39259 removed (not used)
