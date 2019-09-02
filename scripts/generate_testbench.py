@@ -310,7 +310,7 @@ if __name__ == "__main__":
     module_params = {}
     input_wires = set()
     output_wires = set()
-    for module in [f"a{n}" for n in range(1, 6)]:
+    for module in [f"a{n}" for n in range(1, 7)]:
         module_name, params, inputs, outputs = read_module(module)
         module_params[module_name] = params
         input_wires.update(inputs)

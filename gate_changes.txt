@@ -288,8 +288,14 @@ Gates 39401-39461
 39461 removed (not connected)
 
 Module A6
-Gates
-40428 removed (moved to A4 sheet 2)
+Sheet 1
+Gates 40101-40160
+Gates 40201-40258
+40146 removed (fan-in expansion)
+40153 removed (fan-in expansion)
+40157 removed (fan-in expansion)
+40159 removed (fan-out expansion)
+
 40246 removed (moved to A2 sheet 2)
 40247 removed (moved to A2 sheet 2)
 40248 removed (moved to A2 sheet 2)
@@ -297,6 +303,10 @@ Gates
 40250 removed (moved to A2 sheet 2)
 40251 removed (moved to A2 sheet 2)
 40252 removed (fan-out expansion)
+
+Sheet 2
+Gates
+40428 removed (moved to A4 sheet 2)
 
 Module A7
 Gates

@@ -538,7 +538,7 @@ module a5_crosspoint_nqi(
     
     // WS_
     // Cross-module fan-in, connected to A6
-    nor_3 #(1'b0) NOR39305(A05_1_WS_,       RL10BB,         NOR39307_out,   RSCT,                       SIM_CLK);
+    nor_3 #(1'b1) NOR39305(A05_1_WS_,       RL10BB,         NOR39307_out,   RSCT,                       SIM_CLK);
     
     // R6
     nor_2 #(1'b0) NOR39306(R6,              T01_,           FETCH0_,                                    SIM_CLK);
@@ -563,8 +563,8 @@ module a5_crosspoint_nqi(
     
     // WB_ part 2
     // Cross-module fan-in, connected to A6
-    nor_3 #(1'b0) NOR39315(A05_2_WB_,       NOR39312_out,   RQ,             NOR39313_out,               SIM_CLK);
-    nor_3 #(1'b0) NOR39316(A05_3_WB_,       NOR39320_out,   NOR39324_out,   n6XP2,                      SIM_CLK);
+    nor_3 #(1'b1) NOR39315(A05_2_WB_,       NOR39312_out,   RQ,             NOR39313_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR39316(A05_3_WB_,       NOR39320_out,   NOR39324_out,   n6XP2,                      SIM_CLK);
     
     // NOR39317 not used
     
@@ -601,18 +601,18 @@ module a5_crosspoint_nqi(
     
     // WY12_ part 2
     // No cross-module fan-in, local fan-in expansion
-    nor_2 #(1'b0) NOR39331(A05_2_WY12_,     NOR39341_out,   NOR39343_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR39331(A05_2_WY12_,     NOR39341_out,   NOR39343_out,                               SIM_CLK);
     
     // 5XP9
     nor_2 #(1'b0) NOR39332(n5XP9,           SHIFT_,         T05_,                                       SIM_CLK);
     
     // WY_ part 3
     // Cross-module fan-in, connected to A4 and A6
-    nor_3 #(1'b0) NOR39333(A05_3_WY_,       NOR39330_out,   n2XP8,          n10XP10,                    SIM_CLK);
+    nor_3 #(1'b1) NOR39333(A05_3_WY_,       NOR39330_out,   n2XP8,          n10XP10,                    SIM_CLK);
     
     // A2X_ part 2
     // Cross-module fan-in, connected to A6
-    nor_2 #(1'b0) NOR39334(A05_2_A2X_,      NOR39327_out,   n10XP10,                                    SIM_CLK);
+    nor_2 #(1'b1) NOR39334(A05_2_A2X_,      NOR39327_out,   n10XP10,                                    SIM_CLK);
     
     nor_2 #(1'b0) NOR39335(NOR39335_out,    SHANC_,         T05_,                                       SIM_CLK);
     
@@ -679,7 +679,7 @@ module a5_crosspoint_nqi(
     
     // Z16_
     // Cross-module fan-in, connected to A11
-    nor_1 #(1'b0) NOR39413(A05_1_Z16_,      NOR39411_out,                                               SIM_CLK);
+    nor_1 #(1'b1) NOR39413(A05_1_Z16_,      NOR39411_out,                                               SIM_CLK);
     
     nor_3 #(1'b0) NOR39414(NOR39414_out,    IC2,            IC3,            TS0,                        SIM_CLK);
     nor_2 #(1'b0) NOR39415(NOR39415_out,    IC16,           MP3,                                        SIM_CLK);
@@ -689,7 +689,7 @@ module a5_crosspoint_nqi(
     
     // WZ_ part 2
     // Cross-module fan-in, connected to A6
-    nor_1 #(1'b0) NOR39417(A05_2_WZ_,       NOR39416_out,                                               SIM_CLK);
+    nor_1 #(1'b1) NOR39417(A05_2_WZ_,       NOR39416_out,                                               SIM_CLK);
     
     // RC_ part 3
     // Cross-module fan-in, connected to A4 and A6
@@ -706,13 +706,13 @@ module a5_crosspoint_nqi(
     
     // WA_ part 3
     // Cross-module fan-in, connected to A6
-    nor_2 #(1'b0) NOR39422(A05_3_WA_,       NOR39412_out,   NOR39432_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR39422(A05_3_WA_,       NOR39412_out,   NOR39432_out,                               SIM_CLK);
     
     // NOR39423 merged into NOR39418
     
     // TOV_
     // Cross-module fan-in, connected to A6
-    nor_2 #(1'b0) NOR39424(A05_1_TOV_,      n6XP7,          n6XP8,                                      SIM_CLK);
+    nor_2 #(1'b1) NOR39424(A05_1_TOV_,      n6XP7,          n6XP8,                                      SIM_CLK);
     
     nor_2 #(1'b0) NOR39425(NOR39425_out,    STFET1_,        T07_,                                       SIM_CLK);
     
@@ -735,11 +735,11 @@ module a5_crosspoint_nqi(
     
     // Z15_
     // Cross-module fan-in, connected to A11
-    nor_1 #(1'b0) NOR39433(A05_1_Z15_,      NOR39432_out,                                               SIM_CLK);
+    nor_1 #(1'b1) NOR39433(A05_1_Z15_,      NOR39432_out,                                               SIM_CLK);
     
     // WB_ part 3
     // Cross-module fan-in, connected to A6
-    nor_3 #(1'b0) NOR39434(A05_4_WB_,       NOR39428_out,   NOR39436_out,   NOR39441_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR39434(A05_4_WB_,       NOR39428_out,   NOR39436_out,   NOR39441_out,               SIM_CLK);
     
     // RG_ part 3
     // Cross-module fan-in, connected to A6
@@ -749,7 +749,7 @@ module a5_crosspoint_nqi(
     
     // WL_
     // Cross-module fan-in, connected to A4 and A6
-    nor_4 #(1'b0) NOR39437(A05_1_WL_,       n5XP13,         NOR39452_out,   NOR39436_out,   NOR39449_out,   SIM_CLK);
+    nor_4 #(1'b1) NOR39437(A05_1_WL_,       n5XP13,         NOR39452_out,   NOR39436_out,   NOR39449_out,   SIM_CLK);
     // NOR39438 merged into NOR39437
     
     nor_2 #(1'b0) NOR39439(NOR39439_out,    T09_,           DAS1_,                                      SIM_CLK);
@@ -769,7 +769,7 @@ module a5_crosspoint_nqi(
     
     // WYD_
     // Cross-module fan-in, connected to A6
-    nor_2 #(1'b0) NOR39444(A05_1_WYD_,      n5XP9,          n11XP6,                                     SIM_CLK);
+    nor_2 #(1'b1) NOR39444(A05_1_WYD_,      n5XP9,          n11XP6,                                     SIM_CLK);
     
     nor_3 #(1'b0) NOR39445(NOR39445_out,    IC14,           IC2,            DV1,                        SIM_CLK);
     
