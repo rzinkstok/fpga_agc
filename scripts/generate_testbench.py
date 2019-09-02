@@ -83,7 +83,7 @@ def inv(b):
     return 1
 
 
-def write_command_cycle(fp, ext, sq, qc, sq10, st, dvst):
+def write_command_cycle(fp, ext, sq, qc, sq10, st):
     fp.write(
         f"""
         begin // EXT {ext}, SQ {sq}, QC {qc}, SQ10 {sq10},  ST {st}
@@ -95,7 +95,6 @@ def write_command_cycle(fp, ext, sq, qc, sq10, st, dvst):
             WL16_ = {inv((sq & 4) >> 2)};  // SQ bit 2
             ST1 = {st & 1};    // Stage counter bit 0
             ST2 = {(st & 2) >> 1};    // Stage counter bit 1
-            DVST = {dvst};   // Divstage bit
             EXT = {ext};    // EXT bit
         end
         #700 NISQ = 1;
@@ -104,7 +103,6 @@ def write_command_cycle(fp, ext, sq, qc, sq10, st, dvst):
         begin
             ST1 = 0;
             ST2 = 0;
-            DVST = 0;
         end
         #10900"""
     )
@@ -117,123 +115,120 @@ def write_commands(fp):
     qc = 0
     sq10 = 0
     st = 0
-    dvst = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 2
     qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     qc = 1
     st = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     qc = 2
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     qc = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 3
     qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 4
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 5
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     st = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     st = 0
     qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     st = 0
     qc = 2
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     qc = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 6
     qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 7
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     ext = 1
     sq = 1
-    dvst = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
-    dvst = 0
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     st = 1
     qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     # Branching omitted
 
     sq = 2
     qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     qc = 2
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     qc = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 3
     qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     sq = 4
     st = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 5
     st = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     sq = 6
     st = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
     qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     # Branching omitted
 
     sq = 7
     qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
     st = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st, dvst)
+    write_command_cycle(fp, ext, sq, qc, sq10, st)
 
 
 def write_wrapper(name, module_params, input_wires, output_wires, testbench=False):
@@ -321,6 +316,6 @@ if __name__ == "__main__":
         input_wires.update(inputs)
         output_wires.update(outputs)
 
-    write_wrapper("agc", module_params, input_wires, output_wires, testbench=False)
+    write_wrapper("commands", module_params, input_wires, output_wires, testbench=True)
 
 
