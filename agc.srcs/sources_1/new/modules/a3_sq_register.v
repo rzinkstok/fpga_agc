@@ -37,7 +37,7 @@ module a3_sq_register(
     QXCH0_, DXCH0, DAS0, DAS0_,
     INCR0, CCS0, CCS0_, DAS1, DAS1_, ADS0, AD0, SU0,
     AUG0_, DIM0_, MSU0, MSU0_,
-    MP0, MP0_, MP1, MP1_, MP3_, MP3_, MP3A,
+    MP0, MP0_, MP1, MP1_, MP3_, MP3A,
     TCSAJ3, TCSAJ3_, RSM3, RSM3_, MASK0, MASK0_,
     NDX0_, NDXX1_, GOJ1, GOJ1_,
     IC1, IC2, IC2_, IC3, IC4, IC5, IC5_, IC6, IC7, IC8_, IC9, IC10, IC10_, 
