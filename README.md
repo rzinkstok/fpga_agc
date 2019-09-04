@@ -12,7 +12,8 @@ packaging of the gates, it is possible to translate all NOR gates in the origina
 
 For this project, I used the schematics as found in http://klabs.org/history/ech/agc_schematics/. When in doubt, I
 used the CAD transcriptions of these schematics from 
-https://github.com/virtualagc/virtualagc/tree/schematics/Schematics.
+https://github.com/virtualagc/virtualagc/tree/schematics/Schematics. For the backplane wiring, I used the excellent
+tool created by Mike Stewart (http://apolloguidance.computer/2003100_071/pins).
 
 Deviations from the original schematics are similar to what Mike Stewart has done:
 - The original AGC uses only 3-input nor gates, so for larger nor gates the fan-in is increased by connecting the
