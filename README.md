@@ -6,8 +6,13 @@ repository contains my first experiments in Verilog and FPGA programming. In the
 working FPGA implementation of the AGC.
 
 As this project is aimed at an FPGA implementation only, there is no need to use components other than
-nor gates and open drain buffers, unlike Mike Stewart's work: this makes it possible to identify all nor gates
-in the original schematics.
+nor gates and open drain buffers. This is different from Mike Stewart's work, which was (at least initially) aimed 
+at implementing an AGC in modern 74HC-series components. As this project is not constrained by the actual IC 
+packaging of the gates, it is possible to translate all NOR gates in the original schematics to Verilog modules.
+
+For this project, I used the schematics as found in http://klabs.org/history/ech/agc_schematics/. When in doubt, I
+used the CAD transcriptions of these schematics from 
+https://github.com/virtualagc/virtualagc/tree/schematics/Schematics.
 
 Deviations from the original schematics are similar to what Mike Stewart has done:
 - The original AGC uses only 3-input nor gates, so for larger nor gates the fan-in is increased by connecting the
