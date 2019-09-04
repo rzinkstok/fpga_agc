@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module commands();
+module agc_tb();
 
 	reg A15_ = 1;
 	reg A16_ = 1;

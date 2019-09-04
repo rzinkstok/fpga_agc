@@ -110,9 +110,9 @@ if __name__ == "__main__":
         try:
             gsrc = gates_source[m]
         except KeyError:
-            print(f"Module {m} missing from source")
+            print(f"Module {m} missing from source code")
         diff1, diff2 = diff_module(gsch, gsrc)
         for g in diff1:
-            print(f"Gate {g} missing from source")
+            print(f"Gate {g} missing from source code")
         for g in diff2:
-            print(f"Gate {g} missing from config")
+            print(f"Gate {g} missing from schematics")

@@ -1,5 +1,6 @@
 import os
 import re
+import glob
 
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
@@ -14,19 +15,13 @@ OUTPUT_WIRE_RE = re.compile(r"^output wire ")
 CROSS_MODULE_SIGNAL_RE = re.compile(r"^A[0-9][0-9]\_[0-9]\_(.+)")
 
 
-def read_module(module):
-    lines = None
-    module_name = None
-    for filename in os.listdir(MODULES_SOURCE_FOLDER):
-        if filename.startswith(module):
-            module_name = os.path.splitext(filename)[0]
-            print(module_name)
-            with open(os.path.join(MODULES_SOURCE_FOLDER, filename), "r") as fp:
-                lines = fp.readlines()
-            break
-    if not lines:
-        print("Module not found")
-        return
+def read_module(module_file_name):
+    module_name = os.path.splitext(module_file_name)[0]
+    print(module_name)
+    module = module_name.split("_")[0]
+    with open(os.path.join(MODULES_SOURCE_FOLDER, module_file_name), "r") as fp:
+        lines = fp.readlines()
+
     print()
     print(f"Module {module}")
 
@@ -231,11 +226,13 @@ def write_commands(fp):
     write_command_cycle(fp, ext, sq, qc, sq10, st)
 
 
-def write_wrapper(name, module_params, input_wires, output_wires, testbench=False):
+def write_wrapper(module_params, input_wires, output_wires, testbench=False):
     if testbench:
-        filepath = os.path.join(SIM_SOURCE_FOLDER, f"{name}_tb.v")
+        wrapper_name = "agc_tb"
+        filepath = os.path.join(SIM_SOURCE_FOLDER, f"{wrapper_name}.v")
     else:
-        filepath = os.path.join(SOURCE_FOLDER, f"{name}.v")
+        wrapper_name = "agc"
+        filepath = os.path.join(SOURCE_FOLDER, f"{wrapper_name}.v")
 
     cross_module_signals = {}
     extra_output_wires = []
@@ -255,7 +252,7 @@ def write_wrapper(name, module_params, input_wires, output_wires, testbench=Fals
     with open(filepath, "w") as fp:
         fp.write("`timescale 1ns / 1ps\n")
         fp.write("\n")
-        fp.write(f"module {name}();\n")
+        fp.write(f"module {wrapper_name}();\n")
         fp.write("\n")
 
         for iw in sorted(input_wires):
@@ -304,18 +301,20 @@ def write_wrapper(name, module_params, input_wires, output_wires, testbench=Fals
             fp.write("\tend\n\n")
 
         fp.write("endmodule\n")
+    print()
     print(f"Written {filepath}")
+
 
 if __name__ == "__main__":
     module_params = {}
     input_wires = set()
     output_wires = set()
-    for module in [f"a{n}" for n in range(1, 7)]:
-        module_name, params, inputs, outputs = read_module(module)
+    for module_file_name in sorted(os.listdir(MODULES_SOURCE_FOLDER)):
+        module_name, params, inputs, outputs = read_module(module_file_name)
         module_params[module_name] = params
         input_wires.update(inputs)
         output_wires.update(outputs)
 
-    write_wrapper("commands", module_params, input_wires, output_wires, testbench=True)
+    write_wrapper(module_params, input_wires, output_wires, testbench=False)
 
 

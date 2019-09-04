@@ -42,6 +42,7 @@ module agc();
 	reg MTCSAI = 0;
 	reg NISQ = 0;
 	reg RADRG = 0;
+	reg RB1F = 0;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
 	reg RELPLS = 0;
@@ -173,8 +174,11 @@ module agc();
 	wire A06_1_RC_;
 	wire A06_1_RG_;
 	wire A06_1_RU_;
+	wire A06_1_TOV_;
 	wire A06_1_WB_;
+	wire A06_1_WG_;
 	wire A06_1_WL_;
+	wire A06_1_WSC_;
 	wire A06_1_WYD_;
 	wire A06_1_WY_;
 	wire A06_1_WZ_;
@@ -195,6 +199,7 @@ module agc();
 	wire BR2;
 	wire BR2_;
 	wire BRDIF_;
+	wire BXVX;
 	wire CCS0;
 	wire CCS0_;
 	wire CHAT01;
@@ -227,6 +232,7 @@ module agc();
 	wire CHBT14;
 	wire CI_;
 	wire CLK;
+	wire CLXC;
 	wire CT;
 	wire CT_;
 	wire DAS0;
@@ -436,6 +442,7 @@ module agc();
 	wire MGOJAM;
 	wire MIIP;
 	wire MINHL;
+	wire MONEX;
 	wire MONEX_;
 	wire MONWT;
 	wire MP0;
@@ -640,6 +647,7 @@ module agc();
 	wire TSGU_;
 	wire TSUDO_;
 	wire TT_;
+	wire TWOX;
 	wire U2BBK;
 	wire UNF;
 	wire UNF_;
@@ -651,8 +659,10 @@ module agc();
 	wire WL_;
 	wire WOR0;
 	wire WOR0_;
+	wire WQ_;
 	wire WRITE0;
 	wire WRITE0_;
+	wire WSC_;
 	wire WS_;
 	wire WT;
 	wire WT_;
@@ -1555,20 +1565,32 @@ module agc();
 		RADRG,
 		T12USE_,
 		RRPA,
+		RB1F,
+		BR1,
+		BR1_,
+		PHS4_,
+		MONEX_,
+		PTWOX,
+		B15X,
 		L01_,
 		L02A_,
 		L15A_,
 		n1XP10,
 		n2XP3,
 		n2XP7,
+		n3XP2,
+		n3XP6,
 		n3XP7,
 		n4XP11,
 		n5XP4,
 		n5XP12,
+		n5XP15,
 		n5XP21,
 		n5XP28,
 		n6XP5,
+		n6XP8,
 		n7XP19,
+		n9XP5,
 		A06_1_A2X_,
 		A06_1_RB_,
 		A06_1_WYD_,
@@ -1579,6 +1601,9 @@ module agc();
 		A06_1_WB_,
 		A06_1_RU_,
 		A06_1_WZ_,
+		A06_1_TOV_,
+		A06_1_WSC_,
+		A06_1_WG_,
 		DVXP1,
 		L2GD_,
 		ZIP,
@@ -1588,6 +1613,11 @@ module agc();
 		MCRO_,
 		RCH_,
 		TSGU_,
+		CLXC,
+		WQ_,
+		MONEX,
+		TWOX,
+		BXVX,
 		SIM_CLK
 	);
 
@@ -1608,12 +1638,13 @@ module agc();
 	assign RZ_ = A05_1_RZ_ & A05_2_RZ_ & A05_3_RZ_;
 	assign ST2_ = A05_1_ST2_;
 	assign TMZ_ = A04_1_TMZ_ & A05_1_TMZ_ & A05_2_TMZ_;
-	assign TOV_ = A05_1_TOV_;
+	assign TOV_ = A05_1_TOV_ & A06_1_TOV_;
 	assign TSGN_ = A04_1_TSGN_ & A04_2_TSGN_ & A05_1_TSGN_ & A05_2_TSGN_;
 	assign WA_ = A05_1_WA_ & A05_2_WA_ & A05_3_WA_;
 	assign WB_ = A05_1_WB_ & A05_2_WB_ & A05_3_WB_ & A05_4_WB_ & A06_1_WB_;
-	assign WG_ = A04_1_WG_ & A04_2_WG_ & A04_3_WG_ & A05_1_WG_;
+	assign WG_ = A04_1_WG_ & A04_2_WG_ & A04_3_WG_ & A05_1_WG_ & A06_1_WG_;
 	assign WL_ = A04_1_WL_ & A05_1_WL_ & A06_1_WL_;
+	assign WSC_ = A06_1_WSC_;
 	assign WS_ = A05_1_WS_;
 	assign WY12_ = A05_1_WY12_ & A05_2_WY12_;
 	assign WYD_ = A05_1_WYD_ & A06_1_WYD_;
