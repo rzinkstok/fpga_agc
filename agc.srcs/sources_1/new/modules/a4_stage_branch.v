@@ -35,6 +35,7 @@ module a4_stage_branch(
     TS0_,
     
     // outputs
+    STG1, STG2, STG3,  // CHANGED!!!
     DIV_,
     ST376, ST376_,
     DV0, DV0_, DV1, DV1_, DV4, DV4_, DV376, DV376_, DV1376, DV1376_, DV3764,
@@ -110,7 +111,7 @@ module a4_stage_branch(
     
     wire DIVSTG, T12USE_, DVST_, TRSM_;
     wire STFFA_, STFFB_;
-    wire STG1, STG2, STG3;
+    output wire STG1, STG2, STG3; // CHANGED!!
     wire ST1D;
     wire BR1FF, BR1FF_, BR2FF, BR2FF_;
     wire TMZINP;

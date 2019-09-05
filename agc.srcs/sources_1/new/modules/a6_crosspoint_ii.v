@@ -23,7 +23,7 @@ module a6_crosspoint_ii(
     A06_1_WSC_,
     A06_1_WG_,
     
-    DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX,
+    DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_,
     
     // Input
     SIM_CLK
@@ -50,7 +50,7 @@ module a6_crosspoint_ii(
     output wire A06_1_WSC_;
     output wire A06_1_WG_;
     
-    output wire DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX;
+    output wire DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_;
     
     
     /**************************
@@ -101,6 +101,8 @@ module a6_crosspoint_ii(
     wire NOR40151_out;
     wire NOR40213_out;
     wire NOR40215_out;
+    wire NOR40217_out;
+    wire NOR40221_out;
     
     // DVXP1
     nor_3 #(1'b0) NOR40101(NOR40101_out,    T04,            T07,            T10,                        SIM_CLK);
@@ -259,5 +261,11 @@ module a6_crosspoint_ii(
     // BXVX
     nor_1 #(1'b0) NOR40216(BXVX,            NOR40215_out,                                               SIM_CLK);
     
+    nor_1 #(1'b0) NOR40217(NOR40217_out,    NOR40134_out,                                               SIM_CLK);
+    // NO40218 and NOR40219 not used
+    
+    // PIFL flip-flop
+    nor_2 #(1'b1) NOR40220(PIFL_,           DVXP1,          NOR40221_out,                               SIM_CLK);
+    nor_3 #(1'b0) NOR40221(NOR40221_out,    PIFL_,          NOR40217_out,   T02,                        SIM_CLK);
     
 endmodule

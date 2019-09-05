@@ -589,6 +589,9 @@ module agc_tb();
 	wire ST3_;
 	wire ST4_;
 	wire STD2;
+	wire STG1;
+	wire STG2;
+	wire STG3;
 	wire STOP;
 	wire STOPA;
 	wire STOP_;
@@ -1221,6 +1224,9 @@ module agc_tb();
 		MP3_,
 		MP3A,
 		TS0_,
+		STG1,
+		STG2,
+		STG3,
 		DIV_,
 		ST376,
 		ST376_,
@@ -1663,9 +1669,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1682,9 +1690,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1701,9 +1711,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1720,9 +1732,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1739,9 +1753,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1758,9 +1774,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1777,9 +1795,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1796,9 +1816,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1815,9 +1837,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1834,9 +1858,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1853,9 +1879,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1872,9 +1900,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1891,9 +1921,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 1;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 1;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 1; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1910,9 +1942,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1929,9 +1963,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1948,9 +1984,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1967,9 +2005,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -1986,9 +2026,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2005,9 +2047,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 0;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2024,9 +2068,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2043,9 +2089,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2062,9 +2110,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2081,9 +2131,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2100,9 +2152,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2119,9 +2173,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2138,9 +2194,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2157,9 +2215,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2176,9 +2236,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2195,9 +2257,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2214,9 +2278,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2233,9 +2299,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2252,9 +2320,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 1;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2271,9 +2341,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2290,9 +2362,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2309,9 +2383,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2328,9 +2404,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 1;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2347,9 +2425,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2366,9 +2446,11 @@ module agc_tb();
             WL13_ = 1;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2385,9 +2467,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 0;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 0;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 0; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2404,9 +2488,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 0;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 0;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 0; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
@@ -2423,9 +2509,11 @@ module agc_tb();
             WL13_ = 0;  // SQ bit 0
             WL14_ = 0;  // SQ bit 1
             WL16_ = 0;  // SQ bit 2
-            ST1 = 1;    // Stage counter bit 0
-            ST2 = 1;    // Stage counter bit 1
+            //ST1 = 1;    // Stage counter bit 0
+            //ST2 = 1;    // Stage counter bit 1
             EXT = 1;    // EXT bit
+            force STG1 = 1; // Stage counter 1
+            force STG2 = 1; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;

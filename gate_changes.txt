@@ -301,6 +301,8 @@ Gates 40201-40258
 40205 removed (not used)
 40211 removed (fan-out expansion)
 40212 removed (fan-out expansion)
+40218 removed (not used)
+40219 removed (not used)
 40246 removed (moved to A2 sheet 2)
 40247 removed (moved to A2 sheet 2)
 40248 removed (moved to A2 sheet 2)
