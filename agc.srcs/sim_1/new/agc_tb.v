@@ -507,6 +507,7 @@ module agc_tb();
 	wire PHS3_;
 	wire PHS4;
 	wire PHS4_;
+	wire PIFL_;
 	wire PINC;
 	wire PINC_;
 	wire PONEX;
@@ -1624,6 +1625,7 @@ module agc_tb();
 		MONEX,
 		TWOX,
 		BXVX,
+		PIFL_,
 		SIM_CLK
 	);
 

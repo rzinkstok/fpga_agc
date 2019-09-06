@@ -262,7 +262,7 @@ module a6_crosspoint_ii(
     nor_1 #(1'b0) NOR40216(BXVX,            NOR40215_out,                                               SIM_CLK);
     
     nor_1 #(1'b0) NOR40217(NOR40217_out,    NOR40134_out,                                               SIM_CLK);
-    // NO40218 and NOR40219 not used
+    //NO40218 and NOR40219 not used
     
     // PIFL flip-flop
     nor_2 #(1'b1) NOR40220(PIFL_,           DVXP1,          NOR40221_out,                               SIM_CLK);
