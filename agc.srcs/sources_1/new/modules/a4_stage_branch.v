@@ -47,7 +47,7 @@ module a4_stage_branch(
     READ0, READ0_, WRITE0, WRITE0_, RAND0, WAND0, INOUT, INOUT_,
     ROR0, WOR0, WOR0_, RXOR0, RXOR0_,
     RUPT0, RUPT0_, RUPT1, RUPT1_,
-    n8PP4, PRINC, RRPA,
+     PRINC, RRPA,
     n1XP10, n2XP3, n2XP5, n3XP2, n3XP7, n4XP5, n4XP11, n5XP4, n5XP11, n5XP28, n6XP5, n7XP19, n8XP5, n8XP6, n9XP1,
     A04_1_RA_, A04_2_RA_,
     A04_1_RB_, A04_2_RB_,
@@ -62,6 +62,7 @@ module a4_stage_branch(
     A04_1_TMZ_,
     A04_1_TSGN_, A04_2_TSGN_,
     A04_1_L16_,
+    A04_1_n8PP4, 
     R15, RB2, WCH_,
     MRSC_, MP0T10,    
     B15X, BR1B2, BR1B2_, BR12B, BR12B_, BRDIF_, BR1B2B, BR1B2B_,
@@ -443,7 +444,7 @@ module a4_stage_branch(
     output wire ROR0, WOR0, WOR0_, RXOR0, RXOR0_;
     output wire RUPT0, RUPT0_;
     output wire RUPT1, RUPT1_;
-    output wire n8PP4;
+    
     output wire PRINC;
     output wire RRPA;
     
@@ -465,23 +466,20 @@ module a4_stage_branch(
     output wire n9XP1;
     
     // Partial cross-module fan-in signals
-    
     output wire A04_1_RA_, A04_2_RA_;
     output wire A04_1_RB_, A04_2_RB_;
     output wire A04_1_RC_, A04_2_RC_;
     output wire A04_1_RB1_;
     output wire A04_1_R1C_;
     output wire A04_1_RSC_;
-    
     output wire A04_1_WG_, A04_2_WG_, A04_3_WG_;
     output wire A04_1_WL_;
     output wire A04_1_WY_, A04_2_WY_;
-    
     output wire A04_1_CI_;
-    
     output wire A04_1_TMZ_;
     output wire A04_1_TSGN_, A04_2_TSGN_;
     output wire A04_1_L16_;
+    output wire A04_1_n8PP4;
     
     output wire R15;
     output wire RB2;
@@ -598,7 +596,8 @@ module a4_stage_branch(
     nor_1 #(1'b0) NOR36324(RUPT1_,          RUPT1,                                                      SIM_CLK);
     
     // 8PP4
-    nor_3 #(1'b0) NOR36322(n8PP4,           INOUT,          DV4,            PRINC,                      SIM_CLK);
+    // Cross-module fan-in, connected to A6
+    nor_3 #(1'b0) NOR36322(A04_1_n8PP4,     INOUT,          DV4,            PRINC,                      SIM_CLK);
     
     // PRINC
     nor_2 #(1'b0) NOR36326(NOR36326_out,    QC3_,           SQEXT,                                      SIM_CLK);
