@@ -295,7 +295,6 @@ Gates 40201-40258
 40153 removed (fan-in expansion)
 40157 removed (fan-in expansion)
 40159 removed (fan-out expansion)
-
 40203 removed (fan-out expansion)
 40204 removed (fan-out expansion)
 40205 removed (not used)
@@ -303,6 +302,24 @@ Gates 40201-40258
 40212 removed (fan-out expansion)
 40218 removed (not used)
 40219 removed (not used)
+40222 removed (moved to A14 sheet 1)
+40223 removed (moved to A14 sheet 1)
+40224 removed (moved to A14 sheet 1)
+40225 removed (moved to A14 sheet 1)
+40226 removed (moved to A14 sheet 2)
+40227 removed (moved to A14 sheet 2)
+40228 removed (moved to A14 sheet 2)
+40229 removed (moved to A14 sheet 2)
+40230 removed (moved to A14 sheet 2)
+40231 removed (moved to A14 sheet 2)
+40232 removed (moved to A14 sheet 2)
+40233 removed (moved to A14 sheet 2)
+40234 removed (moved to A14 sheet 2)
+40235 removed (moved to A14 sheet 2)
+40236 removed (moved to A14 sheet 2)
+40237 removed (moved to A14 sheet 2)
+40238 removed (moved to A14 sheet 2)
+40239 removed (moved to A14 sheet 2)
 40246 removed (moved to A2 sheet 2)
 40247 removed (moved to A2 sheet 2)
 40248 removed (moved to A2 sheet 2)
@@ -329,6 +346,28 @@ Gates
 
 Module A13
 41241 removed (moved to A1 sheet 1)
+
+Module A14
+Sheet 1
+40222 added (from A6 sheet 1)
+40223 added (from A6 sheet 1)
+40224 added (from A6 sheet 1)
+40225 added (from A6 sheet 1)
+Sheet 2
+40226 added (from A6 sheet 1)
+40227 added (from A6 sheet 1)
+40228 added (from A6 sheet 1)
+40229 added (from A6 sheet 1)
+40230 added (from A6 sheet 1)
+40231 added (from A6 sheet 1)
+40232 added (from A6 sheet 1)
+40233 added (from A6 sheet 1)
+40234 added (from A6 sheet 1)
+40235 added (from A6 sheet 1)
+40236 added (from A6 sheet 1)
+40237 added (from A6 sheet 1)
+40238 added (from A6 sheet 1)
+40239 added (from A6 sheet 1)
 
 Module A18
 45159 removed (moved to A1 sheet 1)

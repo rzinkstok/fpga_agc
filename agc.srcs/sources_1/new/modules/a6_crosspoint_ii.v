@@ -6,6 +6,7 @@ module a6_crosspoint_ii(
     DV4_, DV376_, DV1376_, DIVSTG,
     RBSQ, MP1_, MP3_, RADRG, T12USE_, RRPA, RB1F, BR1, BR1_, PHS4_, MONEX_, PTWOX, B15X,
     L01_, L02A_, L15A_,
+    STBE, STBF,
     n1XP10, n2XP3, n2XP7, n3XP2, n3XP6, n3XP7, n4XP11, n5XP4, n5XP12, n5XP15, n5XP21, n5XP28, n6XP5, n6XP8, n7XP19, n9XP5,
     
     // Outputs
@@ -23,7 +24,7 @@ module a6_crosspoint_ii(
     A06_1_WSC_,
     A06_1_WG_,
     
-    DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_,
+    DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_, CGMC,
     
     // Input
     SIM_CLK
@@ -34,6 +35,7 @@ module a6_crosspoint_ii(
     input wire DV4_, DV376_, DV1376_, DIVSTG;
     input wire RBSQ, MP1_, MP3_, RADRG, T12USE_, RRPA, RB1F, BR1, BR1_, PHS4_, MONEX_, PTWOX, B15X;
     input wire L01_, L02A_, L15A_;
+    input wire STBE, STBF;
     input wire n1XP10, n2XP3, n2XP7, n3XP2, n3XP6, n3XP7, n4XP11, n5XP4, n5XP12, n5XP15, n5XP21, n5XP28, n6XP5, n6XP8, n7XP19, n9XP5;
     
     output wire A06_1_A2X_;
@@ -50,7 +52,7 @@ module a6_crosspoint_ii(
     output wire A06_1_WSC_;
     output wire A06_1_WG_;
     
-    output wire DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_;
+    output wire DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_, CGMC;
     
     
     /**************************
@@ -103,6 +105,18 @@ module a6_crosspoint_ii(
     wire NOR40215_out;
     wire NOR40217_out;
     wire NOR40221_out;
+    wire NOR40240_out;
+    wire NOR40242_out;
+    wire NOR40243_out;
+    wire NOR40244_out;
+    wire NOR40245_out;
+    wire NOR40253_out;
+    wire NOR40254_out;
+    wire NOR40255_out;
+    wire NOR40256_out;
+    wire NOR40257_out;
+    wire NOR40258_out;
+    
     
     // DVXP1
     nor_3 #(1'b0) NOR40101(NOR40101_out,    T04,            T07,            T10,                        SIM_CLK);
@@ -262,10 +276,28 @@ module a6_crosspoint_ii(
     nor_1 #(1'b0) NOR40216(BXVX,            NOR40215_out,                                               SIM_CLK);
     
     nor_1 #(1'b0) NOR40217(NOR40217_out,    NOR40134_out,                                               SIM_CLK);
-    //NO40218 and NOR40219 not used
+    // NOR40218 and NOR40219 not used
     
     // PIFL flip-flop
     nor_2 #(1'b1) NOR40220(PIFL_,           DVXP1,          NOR40221_out,                               SIM_CLK);
     nor_3 #(1'b0) NOR40221(NOR40221_out,    PIFL_,          NOR40217_out,   T02,                        SIM_CLK);
+    
+    // NOR40222, NOR40223, NOR40224 and NOR40225 moved to A14 sheet 1
+    // NOR40226 - NOR40239 moved to A14 sheet 2
+    
+    // CGMC
+    nor_3 #(1'b0) NOR40240(NOR40240_out,    STBE,           n1XP10,         STBF,                       SIM_CLK);
+    nor_2 #(1'b0) NOR40241(CGMC,            NOR40240_out,   NOR40258_out,                               SIM_CLK);
+    nor_2 #(1'b0) NOR40242(NOR40242_out,    CGMC,           NOR40243_out,                               SIM_CLK);
+    nor_2 #(1'b0) NOR40243(NOR40243_out,    NOR40242_out,   NOR40240_out,                               SIM_CLK);
+    nor_1 #(1'b0) NOR40244(NOR40244_out,    NOR40243_out,                                               SIM_CLK);
+    nor_1 #(1'b0) NOR40245(NOR40245_out,    NOR40244_out,                                               SIM_CLK);
+    nor_1 #(1'b0) NOR40253(NOR40253_out,    NOR40245_out,                                               SIM_CLK);
+    nor_1 #(1'b0) NOR40254(NOR40254_out,    NOR40253_out,                                               SIM_CLK);
+    nor_1 #(1'b0) NOR40255(NOR40255_out,    NOR40254_out,                                               SIM_CLK);
+    nor_1 #(1'b0) NOR40256(NOR40256_out,    NOR40255_out,                                               SIM_CLK);
+    nor_1 #(1'b0) NOR40257(NOR40257_out,    NOR40256_out,                                               SIM_CLK);
+    nor_1 #(1'b0) NOR40258(NOR40258_out,    NOR40257_out,                                               SIM_CLK);
+    
     
 endmodule
