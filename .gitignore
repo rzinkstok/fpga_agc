@@ -89,3 +89,4 @@
 *.bak
 *~
 .idea/
+venv/
