@@ -47,7 +47,7 @@ module a4_stage_branch(
     READ0, READ0_, WRITE0, WRITE0_, RAND0, WAND0, INOUT, INOUT_,
     ROR0, WOR0, WOR0_, RXOR0, RXOR0_,
     RUPT0, RUPT0_, RUPT1, RUPT1_,
-    BPP4, PRINC, RRPA,
+    n8PP4, PRINC, RRPA,
     n1XP10, n2XP3, n2XP5, n3XP2, n3XP7, n4XP5, n4XP11, n5XP4, n5XP11, n5XP28, n6XP5, n7XP19, n8XP5, n8XP6, n9XP1,
     A04_1_RA_, A04_2_RA_,
     A04_1_RB_, A04_2_RB_,
@@ -443,7 +443,7 @@ module a4_stage_branch(
     output wire ROR0, WOR0, WOR0_, RXOR0, RXOR0_;
     output wire RUPT0, RUPT0_;
     output wire RUPT1, RUPT1_;
-    output wire BPP4;
+    output wire n8PP4;
     output wire PRINC;
     output wire RRPA;
     
@@ -597,8 +597,8 @@ module a4_stage_branch(
     // NOR36325 merged into NOR36323
     nor_1 #(1'b0) NOR36324(RUPT1_,          RUPT1,                                                      SIM_CLK);
     
-    // BPP4
-    nor_3 #(1'b0) NOR36322(BPP4,            INOUT,          DV4,            PRINC,                      SIM_CLK);
+    // 8PP4
+    nor_3 #(1'b0) NOR36322(n8PP4,           INOUT,          DV4,            PRINC,                      SIM_CLK);
     
     // PRINC
     nor_2 #(1'b0) NOR36326(NOR36326_out,    QC3_,           SQEXT,                                      SIM_CLK);

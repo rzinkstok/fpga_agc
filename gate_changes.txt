@@ -329,7 +329,13 @@ Gates 40201-40258
 40252 removed (fan-out expansion)
 
 Sheet 2
-Gates
+Gates 40301-40358
+40301 removed (not used)
+40308 removed (not used)
+40316 removed (not used)
+40319 removed (not used)
+40332 removed (not used)
+40339 removed (fan-in expansion)
 40428 removed (moved to A4 sheet 2)
 
 Module A7
