@@ -90,17 +90,17 @@ def write_command_cycle(fp, ext, sq, qc, sq10, st):
             WL16_ = {inv((sq & 4) >> 2)};  // SQ bit 2
             //ST1 = {st & 1};    // Stage counter bit 0
             //ST2 = {(st & 2) >> 1};    // Stage counter bit 1
-            EXT = {ext};    // EXT bit
-            force STG1 = {st & 1}; // Stage counter 1
-            force STG2 = {(st & 2) >> 1}; // Stage counter 2
+            //EXT = {ext};    // EXT bit
+            //force STG1 = {st & 1}; // Stage counter 1
+            //force STG2 = {(st & 2) >> 1}; // Stage counter 2
         end
         #700 NISQ = 1;
         #100 NISQ = 0;
         #2
-        begin
-            ST1 = 0;
-            ST2 = 0;
-        end
+        //begin
+        //    ST1 = 0;
+        //    ST2 = 0;
+        //end
         #10900"""
     )
 

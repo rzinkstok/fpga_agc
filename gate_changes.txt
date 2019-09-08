@@ -330,13 +330,21 @@ Gates 40201-40258
 
 Sheet 2
 Gates 40301-40358
+Gates 40401-40441
 40301 removed (not used)
 40308 removed (not used)
 40316 removed (not used)
 40319 removed (not used)
 40332 removed (not used)
 40339 removed (fan-in expansion)
+40404 removed (not used)
+40406 removed (fan-in expansion)
+40422 removed (fan-in expansion)
+40424 removed (fan-in expansion)
 40428 removed (moved to A4 sheet 2)
+40429 removed (not used)
+40433 removed (fan-in expansion)
+40437 removed (not connected)
 
 Module A7
 Gates
