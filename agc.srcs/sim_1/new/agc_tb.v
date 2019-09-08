@@ -51,7 +51,6 @@ module agc_tb();
 	reg PCDU = 0;
 	reg RADRG = 0;
 	reg RADRZ = 0;
-	reg RB1F = 0;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
 	reg RELPLS = 0;
@@ -559,6 +558,7 @@ module agc_tb();
 	wire RAD;
 	wire RAND0;
 	wire RA_;
+	wire RB1F;
 	wire RB1_;
 	wire RB2;
 	wire RBSQ;
@@ -1625,10 +1625,8 @@ module agc_tb();
 		MP3_,
 		T12USE_,
 		RRPA,
-		RB1F,
 		BR1,
 		BR1_,
-		BR2,
 		BR2_,
 		BR12B_,
 		BR1B2B,
@@ -1758,6 +1756,7 @@ module agc_tb();
 		ZAP,
 		ZAP_,
 		MCRO_,
+		RB1F,
 		RCH_,
 		TSGU_,
 		CLXC,

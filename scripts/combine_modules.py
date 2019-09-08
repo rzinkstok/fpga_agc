@@ -317,6 +317,5 @@ if __name__ == "__main__":
         input_wires.update(inputs)
         output_wires.update(outputs)
 
+    write_wrapper(module_params, input_wires, output_wires, testbench=False)
     write_wrapper(module_params, input_wires, output_wires, testbench=True)
-
-

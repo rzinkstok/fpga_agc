@@ -4,7 +4,7 @@ module a6_crosspoint_ii(
     // Inputs
     T01, T01_, T02, T02_, T03, T03_, T04, T04_, T05, T06, T06_, T07, T07_, T08, T08_, T09, T10, T10_, T11, T11_, T12,
     DV4_, DV376_, DV1376_, DIVSTG, DV4B1B,
-    RBSQ, MP1, MP1_, MP3_, T12USE_, RRPA, RB1F, BR1, BR1_, BR2, BR2_, BR12B_, BR1B2B, BR1B2_, BR1B2B_, PHS4_, MONEX_, PTWOX, B15X,
+    RBSQ, MP1, MP1_, MP3_, T12USE_, RRPA, BR1, BR1_, BR2_, BR12B_, BR1B2B, BR1B2_, BR1B2B_, PHS4_, MONEX_, PTWOX, B15X,
     AUG0_, DIM0_, INCR0, PRINC, DINC, DINC_, PINC, MINC, MCDU, PCDU, CDUSTB_, DAS0, DAS1, DAS1_, MSU0, WAND0, RAND0, INOTLD, SHIFT, INKL,
     MONpCH, MON_, FETCH1, DXCH0, RUPT0, RUPT1, MASK0, DV1376, CCS0, CCS0_, ADS0, NDXX1_, AD0, DCA0, DCS0, SU0, RADRZ, RADRG,
     IC6, IC7, IC9, IC11, IC17,
@@ -43,7 +43,7 @@ module a6_crosspoint_ii(
     A06_1_ST2_,
     A06_1_n8PP4, A06_2_n8PP4, A06_3_n8PP4,
     
-    DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_, CGMC,
+    DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RB1F, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_, CGMC,
     POUT, MOUT, ZOUT, WOVR, RDBANK, EXT, ST1, ST2, RUS_, NEAC, PONEX, PSEUDO,
     n6XP10, n7XP14, n8XP4, n8XP10,
     
@@ -54,7 +54,7 @@ module a6_crosspoint_ii(
     input wire SIM_CLK;
     input wire T01, T01_, T02, T02_, T03, T03_, T04, T04_, T05, T06, T06_, T07, T07_, T08, T08_, T09, T10, T10_, T11, T11_, T12;
     input wire DV4_, DV376_, DV1376_, DIVSTG, DV4B1B;
-    input wire RBSQ, MP1, MP1_, MP3_, T12USE_, RRPA, RB1F, BR1, BR1_, BR2, BR2_, BR12B_, BR1B2B, BR1B2_, BR1B2B_, PHS4_, MONEX_, PTWOX, B15X;
+    input wire RBSQ, MP1, MP1_, MP3_, T12USE_, RRPA, BR1, BR1_, BR2_, BR12B_, BR1B2B, BR1B2_, BR1B2B_, PHS4_, MONEX_, PTWOX, B15X;
     input wire AUG0_, DIM0_, INCR0, PRINC, DINC, DINC_, PINC, MINC, MCDU, PCDU, CDUSTB_, DAS0, DAS1, DAS1_, MSU0, WAND0, RAND0, INOTLD,  SHIFT, INKL;
     input wire MONpCH, MON_, FETCH1, DXCH0, RUPT0, RUPT1, MASK0, DV1376, CCS0, CCS0_, ADS0, NDXX1_, AD0, DCA0, DCS0, SU0, RADRZ, RADRG;
     input wire IC6, IC7, IC9, IC11, IC17;
@@ -92,7 +92,7 @@ module a6_crosspoint_ii(
     output wire A06_1_ST2_;
     output wire A06_1_n8PP4, A06_2_n8PP4, A06_3_n8PP4;
     
-    output wire DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_, CGMC;
+    output wire DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RB1F, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_, CGMC;
     output wire POUT, MOUT, ZOUT, WOVR, RDBANK, EXT, ST1, ST2, RUS_, NEAC, PONEX, PSEUDO;
     output wire n6XP10, n7XP14, n8XP4, n8XP10;
     
@@ -352,7 +352,6 @@ module a6_crosspoint_ii(
     wire NOR40303_out;
     wire NOR40304_out;
     wire NOR40305_in;
-    wire NOR40305_out;
     wire NOR40306_out;
     wire NOR40307_out;
     wire NOR40309_out;
@@ -409,7 +408,7 @@ module a6_crosspoint_ii(
     nor_2 #(1'b0) NOR40303(NOR40303_out,    DIM0_,          BR12B_,                                     SIM_CLK);
     nor_3 #(1'b0) NOR40304(NOR40304_out,    NOR40302_out,   NOR40303_out,   INCR0,                      SIM_CLK);
     nor_2 #(1'b0) NOR40306(NOR40306_out,    PINC,           NOR40307_out,                               SIM_CLK);
-    assign NOR40305_in = NOR40304_out & NOR40305_out;
+    assign NOR40305_in = NOR40304_out & NOR40306_out;
     nor_2 #(1'b0) NOR40307(NOR40307_out,    BR12B_,         DINC_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR40305(n6XP10,          T06_,           NOR40305_in,                                SIM_CLK);
     

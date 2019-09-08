@@ -7,6 +7,7 @@ MODULES_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new", "m
 
 MODULE_RE = re.compile(r"^([a,b]\d\d?)\_")
 GATE_RE = re.compile(r"NOR(\d\d\d\d\d)\(")
+GATE_NAME_RE = re.compile(r"NOR(\d\d\d\d\d)\(NOR(\d\d\d\d\d)_out")
 
 MODULE_HEADER_RE = re.compile(r"^Module ([a,b,A,B]\d\d?)")
 GATE_ADDED_RE = re.compile(r"^(\d\d\d\d\d) added")
@@ -96,8 +97,29 @@ def read_gates_from_schematics():
                     print(f"Gate {gate} cannot be removed from module {current_module}")
     return gates
 
-            
+
+def check_names():
+    for filename in os.listdir(MODULES_SOURCE_FOLDER):
+        filepath = os.path.join(MODULES_SOURCE_FOLDER, filename)
+        res = MODULE_RE.search(filename)
+        if not res:
+            print(f"Invalid filename: {filename}")
+            continue
+        module = res.groups()[0].upper()
+
+        with open(filepath, "r") as fp:
+            for l in fp.readlines():
+                l = l.split("//")[0]
+                res = GATE_NAME_RE.search(l)
+                if res:
+                    gate_number1 = res.groups()[0]
+                    gate_number2 = res.groups()[1]
+                    if gate_number1 != gate_number2:
+                        print(f"Module {module} gate {gate_number1} output signal is named {gate_number2}")
+
+
 if __name__ == "__main__":
+    check_names()
     gates_schematics = read_gates_from_schematics()
     gates_source = read_gates_from_source()
     print()

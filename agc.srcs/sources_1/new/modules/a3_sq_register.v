@@ -347,7 +347,7 @@ module a3_sq_register(
     
     // RPTFRC flip-flop
     nor_2 #(1'b1) NOR30121(NOR30121_out,    RPTSET,         NOR30122_out,                   SIM_CLK);
-    nor_3 #(1'b0) NOR30122(NOR30122_out,    STRTFC,         T02,                            SIM_CLK);
+    nor_3 #(1'b0) NOR30122(NOR30122_out,    NOR30121_out,   STRTFC,         T02,            SIM_CLK);
     nor_1 #(1'b0) NOR30127(RPTFRC,          NOR30121_out,                                   SIM_CLK);
     //nor_1 #(1'b0) NOR30128(RPTFRC,        NOR30121_out,                                   SIM_CLK);
     
