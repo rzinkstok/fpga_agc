@@ -344,7 +344,6 @@ module a3_sq_register(
     nor_3 #(1'b0) NOR30116(A03_1_RPTSET,    FUTEXT,         NISQL_,         T12_,           SIM_CLK);
     nor_3 #(1'b0) NOR30117(A03_2_RPTSET,    PHS2_,          RUPTOR_,        MNHRPT,         SIM_CLK);
     nor_3 #(1'b0) NOR30118(A03_3_RPTSET,    OVNHRP,         INHINT,         IIP,            SIM_CLK);
-    //assign A03_RPTSET = NOR30116_out & NOR30117_out & NOR30118_out;
     
     // RPTFRC flip-flop
     nor_2 #(1'b1) NOR30121(NOR30121_out,    RPTSET,         NOR30122_out,                   SIM_CLK);
