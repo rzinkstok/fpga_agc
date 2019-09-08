@@ -43,8 +43,8 @@ module a5_crosspoint_nqi(
     NISQ_,
     DVST,
     TPZG_,
-    n2XP7, n2XP8, n3XP6, n5XP12, n5XP15, n5XP21, n6XP8, n7XP9, n9XP5, n10XP1, n10XP8, n11XP2,
-    PONEX, PTWOX,
+    n2XP7, n2XP8, n3XP6, n5XP12, n5XP15, n5XP21, n6XP8, n7XP4, n7XP9, n9XP5, n10XP1, n10XP8, n11XP2,
+    PTWOX,
     TSUDO_,
     RAD,
     RSTRT,
@@ -115,8 +115,8 @@ module a5_crosspoint_nqi(
     output wire NISQ_;
     output wire DVST;
     output wire TPZG_;
-    output wire n2XP7, n2XP8, n3XP6, n5XP12, n5XP15, n5XP21, n6XP8, n7XP9, n9XP5, n10XP1, n10XP8, n11XP2;
-    output wire PONEX, PTWOX;
+    output wire n2XP7, n2XP8, n3XP6, n5XP12, n5XP15, n5XP21, n6XP8, n7XP4, n7XP9, n9XP5, n10XP1, n10XP8, n11XP2;
+    output wire PTWOX;
     output wire TSUDO_;
     output wire RAD;
     output wire RSTRT;
@@ -306,7 +306,7 @@ module a5_crosspoint_nqi(
     nor_2 #(1'b0) NOR39149(NOR39149_out,    T07_,           IC2_,                                       SIM_CLK);
     
     // PONEX, PTWOX
-    nor_3 #(1'b0) NOR39150(PONEX,           CCS0_,          T07_,           BR2_,                       SIM_CLK);
+    nor_3 #(1'b0) NOR39150(n7XP4,           CCS0_,          T07_,           BR2_,                       SIM_CLK);
     nor_3 #(1'b0) NOR39151(PTWOX,           BR1_,           CCS0_,          T07_,                       SIM_CLK);
     
     nor_2 #(1'b0) NOR39152(NOR39152_out,    T07_,           CCS0_,                                      SIM_CLK);
@@ -377,7 +377,7 @@ module a5_crosspoint_nqi(
     
     // 8XP12
     nor_2 #(1'b0) NOR39220(n8XP12,          T08_,           DAS0_,                                      SIM_CLK);
-    nor_2 #(1'b0) NOR39221(NOR39211_out,    T08_,           TCSAJ3_,                                    SIM_CLK);
+    nor_2 #(1'b0) NOR39221(NOR39221_out,    T08_,           TCSAJ3_,                                    SIM_CLK);
     
     nor_2 #(1'b0) NOR39222(NOR39222_out,    IC2,            DV1B1B,                                     SIM_CLK);
     nor_2 #(1'b0) NOR39223(NOR39223_out,    T09_,           NOR39222_out,                               SIM_CLK);

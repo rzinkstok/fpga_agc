@@ -101,7 +101,6 @@ module agc_tb();
 	reg XT6_ = 1;
 	reg YB0_ = 1;
 	reg YT0_ = 1;
-	reg n7XP4 = 0;
 
 	wire A03_1_RPTSET;
 	wire A03_2_RPTSET;
@@ -745,6 +744,7 @@ module agc_tb();
 	wire n6XP8;
 	wire n7XP14;
 	wire n7XP19;
+	wire n7XP4;
 	wire n7XP9;
 	wire n8PP4;
 	wire n8XP10;
@@ -1560,12 +1560,12 @@ module agc_tb();
 		n5XP15,
 		n5XP21,
 		n6XP8,
+		n7XP4,
 		n7XP9,
 		n9XP5,
 		n10XP1,
 		n10XP8,
 		n11XP2,
-		PONEX,
 		PTWOX,
 		TSUDO_,
 		RAD,
