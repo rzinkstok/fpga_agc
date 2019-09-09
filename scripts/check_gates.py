@@ -126,13 +126,14 @@ if __name__ == "__main__":
     print("Comparison results")
     print("------------------")
     for m in sorted(gates_schematics.keys()):
-        if m not in [f"A{i}" for i in range(1, 7)]:
+        if m not in [f"A{i}" for i in range(1, 8)]:
             continue
         gsch = gates_schematics[m]
         try:
             gsrc = gates_source[m]
         except KeyError:
             print(f"Module {m} missing from source code")
+
         diff1, diff2 = diff_module(gsch, gsrc)
         for g in diff1:
             print(f"Gate {g} missing from source code")

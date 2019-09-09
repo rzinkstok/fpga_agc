@@ -19,15 +19,19 @@ module agc();
 	reg CDUSTB_ = 1;
 	reg CHINC_ = 1;
 	reg CLOCK = 0;
+	reg CYL_ = 1;
+	reg CYR_ = 1;
 	reg DBLTST = 0;
 	reg DINC = 0;
 	reg DINC_ = 1;
 	reg DIVSTG = 0;
+	reg EDOP_ = 1;
 	reg EXTPLS = 0;
 	reg FETCH0 = 0;
 	reg FETCH0_ = 1;
 	reg FETCH1 = 0;
 	reg GEQZRO_ = 1;
+	reg GINH = 0;
 	reg INCSET_ = 1;
 	reg INHPLS = 0;
 	reg INKL = 0;
@@ -49,6 +53,7 @@ module agc();
 	reg MTCSAI = 0;
 	reg NISQ = 0;
 	reg PCDU = 0;
+	reg PIPPLS_ = 1;
 	reg RADRG = 0;
 	reg RADRZ = 0;
 	reg RCHAT_ = 1;
@@ -62,6 +67,7 @@ module agc();
 	reg SHIFT = 0;
 	reg SHIFT_ = 1;
 	reg SIM_CLK = 1;
+	reg SR_ = 1;
 	reg STBE = 0;
 	reg STBF = 0;
 	reg STFET1_ = 1;
@@ -72,6 +78,8 @@ module agc();
 	reg SUMA16_ = 1;
 	reg SUMB16_ = 1;
 	reg T12USE_ = 1;
+	reg WCHG_ = 1;
+	reg WGA_ = 1;
 	reg WL01_ = 1;
 	reg WL02_ = 1;
 	reg WL03_ = 1;
@@ -90,6 +98,11 @@ module agc();
 	reg WL15_ = 1;
 	reg WL16 = 0;
 	reg WL16_ = 1;
+	reg WSCG_ = 1;
+	reg XB0_ = 1;
+	reg XB1_ = 1;
+	reg XB2_ = 1;
+	reg XB5_ = 1;
 	reg XB7_ = 1;
 	reg XT0_ = 1;
 	reg XT1_ = 1;
@@ -227,6 +240,8 @@ module agc();
 	wire BR2_;
 	wire BRDIF_;
 	wire BXVX;
+	wire CAG;
+	wire CBG;
 	wire CCS0;
 	wire CCS0_;
 	wire CGMC;
@@ -259,10 +274,16 @@ module agc();
 	wire CHBT13;
 	wire CHBT14;
 	wire CI_;
+	wire CLG1G;
+	wire CLG2G;
 	wire CLK;
 	wire CLXC;
+	wire CQG;
+	wire CSG;
 	wire CT;
 	wire CT_;
+	wire CUG;
+	wire CZG;
 	wire DAS0;
 	wire DAS0_;
 	wire DAS1;
@@ -508,6 +529,14 @@ module agc();
 	wire MT11;
 	wire MT12;
 	wire MTCSA_;
+	wire MWAG;
+	wire MWBG;
+	wire MWG;
+	wire MWLG;
+	wire MWQG;
+	wire MWSG;
+	wire MWYG;
+	wire MWZG;
 	wire NDR100_;
 	wire NDX0_;
 	wire NDXX1_;
@@ -541,6 +570,7 @@ module agc();
 	wire PIFL_;
 	wire PINC;
 	wire PINC_;
+	wire PIPSAM;
 	wire PONEX;
 	wire POUT;
 	wire PRINC;
@@ -693,25 +723,44 @@ module agc();
 	wire U2BBK;
 	wire UNF;
 	wire UNF_;
+	wire WAG_;
+	wire WALSG;
+	wire WALSG_;
 	wire WAND0;
 	wire WA_;
+	wire WBG_;
 	wire WB_;
 	wire WCH_;
+	wire WEDOPG_;
+	wire WG1G_;
+	wire WG2G_;
+	wire WG3G_;
+	wire WG4G_;
+	wire WG5G_;
+	wire WGNORM;
 	wire WG_;
+	wire WLG_;
 	wire WL_;
 	wire WOR0;
 	wire WOR0_;
 	wire WOVR;
+	wire WQG_;
 	wire WQ_;
 	wire WRITE0;
 	wire WRITE0_;
 	wire WSC_;
+	wire WSG_;
 	wire WS_;
 	wire WT;
 	wire WT_;
 	wire WY12_;
+	wire WYDG_;
+	wire WYDLOG_;
 	wire WYD_;
+	wire WYHIG_;
+	wire WYLOG_;
 	wire WY_;
+	wire WZG_;
 	wire WZ_;
 	wire Z15_;
 	wire Z16_;
@@ -1782,6 +1831,78 @@ module agc();
 		n7XP14,
 		n8XP4,
 		n8XP10,
+		SIM_CLK
+	);
+
+	a7_service_gates a7(
+		WT_,
+		CT_,
+		WY12_,
+		WY_,
+		WYD_,
+		WB_,
+		WGA_,
+		WZ_,
+		WSCG_,
+		WL_,
+		WCHG_,
+		WA_,
+		WS_,
+		WQ_,
+		ZAP_,
+		SHIFT,
+		NEAC,
+		GINH,
+		SR_,
+		CYR_,
+		CYL_,
+		EDOP_,
+		PIPPLS_,
+		SB2_,
+		XB5_,
+		XB1_,
+		XT0_,
+		XB0_,
+		XB2_,
+		P04_,
+		L15_,
+		PIFL_,
+		WALSG,
+		WALSG_,
+		WYLOG_,
+		WYHIG_,
+		CUG,
+		WYDG_,
+		WYDLOG_,
+		WBG_,
+		CBG,
+		WGNORM,
+		WG1G_,
+		WG2G_,
+		WG3G_,
+		WG4G_,
+		WG5G_,
+		WEDOPG_,
+		PIPSAM,
+		WZG_,
+		CZG,
+		WLG_,
+		CLG2G,
+		CLG1G,
+		WAG_,
+		CAG,
+		WSG_,
+		CSG,
+		WQG_,
+		CQG,
+		MWYG,
+		MWBG,
+		MWG,
+		MWZG,
+		MWLG,
+		MWAG,
+		MWSG,
+		MWQG,
 		SIM_CLK
 	);
 
