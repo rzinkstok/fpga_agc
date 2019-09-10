@@ -2,14 +2,16 @@
 
 module a7_service_gates(
     // inputs
-    WT_, CT_,
+    WT_, CT_, RT_,
     WY12_, WY_, WYD_, WB_, WGA_, WZ_, WSCG_, WL_, WCHG_, WA_, WS_, WQ_,
-    ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_,
-    L15_, PIFL_,
+    RC_, RQ_, RSCG_, RCHG_,
+    ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_, XB4_, XB6_, RBBK,
+    L15_, PIFL_, TT_, L2GD_, A2X_,
         
     // outputs
     WALSG, WALSG_, WYLOG_, WYHIG_, CUG, WYDG_, WYDLOG_, WBG_, CBG, WGNORM, WG1G_, WG2G_, WG3G_, WG4G_, WG5G_, WEDOPG_,
-    PIPSAM, WZG_, CZG, WLG_, CLG2G, CLG1G, WAG_, CAG, WSG_, CSG, WQG_, CQG,
+    PIPSAM, WZG_, CZG, WLG_, CLG2G, CLG1G, WAG_, CAG, WSG_, CSG, WQG_, CQG, RCG_, RQG_, RFBG_, RBBEG_, G2LSG_, L2GDG_,
+    A2XG_,
     MWYG, MWBG, MWG, MWZG, MWLG, MWAG, MWSG, MWQG,
     
     // input
@@ -17,13 +19,15 @@ module a7_service_gates(
     );
     
     input wire SIM_CLK;
-    input wire WT_, CT_;
+    input wire WT_, CT_, RT_;
     input wire WY12_, WY_, WYD_, WB_, WGA_, WZ_, WSCG_, WL_, WCHG_, WA_, WS_, WQ_;
-    input wire ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_;
-    input wire L15_, PIFL_;
+    input wire RC_, RQ_, RSCG_, RCHG_;
+    input wire ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_, XB4_, XB6_, RBBK;
+    input wire L15_, PIFL_, TT_, L2GD_, A2X_;
     
     output wire WALSG, WALSG_, WYLOG_, WYHIG_, CUG, WYDG_, WYDLOG_, WBG_, CBG, WGNORM, WG1G_, WG2G_, WG3G_, WG4G_, WG5G_, WEDOPG_;
-    output wire PIPSAM, WZG_, CZG, WLG_, CLG2G, CLG1G, WAG_, CAG, WSG_, CSG, WQG_, CQG;
+    output wire PIPSAM, WZG_, CZG, WLG_, CLG2G, CLG1G, WAG_, CAG, WSG_, CSG, WQG_, CQG, RCG_, RQG_, RFBG_, RBBEG_, G2LSG_, L2GDG_;
+    output wire A2XG_;
     output wire MWYG, MWBG, MWG, MWZG, MWLG, MWAG, MWSG, MWQG;
     
     /**************************
@@ -73,6 +77,16 @@ module a7_service_gates(
     wire NOR33246_out;
     wire NOR33251_out;
     wire NOR33255_out;
+    
+    wire NOR33401_out;
+    wire NOR33405_out;
+    wire NOR33407_out;
+    wire NOR33409_out;
+    wire NOR33411_out;
+    wire NOR33413_out;
+    wire NOR33415_out;
+    wire NOR33419_out;
+    wire NOR33423_out;
     
     wire G2LSG, P04A;
     
@@ -260,6 +274,40 @@ module a7_service_gates(
     *
     **************************/
     
+    // RCG_
+    nor_2 #(1'b0) NOR33401(NOR33401_out,    RT_,            RC_,                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33402(RCG_,            NOR33401_out,                                           SIM_CLK);
+    // NOR33403 and NOR33404 omitted
+    
+    // RQG_
+    nor_2 #(1'b0) NOR33405(NOR33405_out,    RT_,            RQ_,                                    SIM_CLK);
+    nor_2 #(1'b0) NOR33407(NOR33407_out,    RSCG_,          XB2_,                                   SIM_CLK);
+    nor_3 #(1'b0) NOR33409(NOR33409_out,    XB2_,           XT0_,           RCHG_,                  SIM_CLK);
+    nor_1 #(1'b0) NOR33406(RQG_,            NOR33405_out,   NOR33407_out,   NOR33409_out,           SIM_CLK);
+    // NOR33408 and NOR33410 omitted
+    
+    // RFBG_
+    nor_2 #(1'b0) NOR33411(NOR33411_out,    RSCG_,          XB4_,                                   SIM_CLK);
+    nor_2 #(1'b0) NOR33413(NOR33413_out,    RSCG_,          XB6_,                                   SIM_CLK);
+    nor_3 #(1'b0) NOR33412(RFBG_,           NOR33411_out,   RBBK,           NOR33413_out,           SIM_CLK);
+    
+    // RBBEG_
+    nor_2 #(1'b0) NOR33414(RBBEG_,          NOR33413_out,   RBBK,                                   SIM_CLK);
+    
+    // G2LSG, G2LSG_
+    nor_2 #(1'b0) NOR33415(G2LSG,           TT_,            ZAP_,                                   SIM_CLK);
+    nor_1 #(1'b0) NOR33416(G2LSG_,          G2LSG,                                                  SIM_CLK);
+    // NOR33417 and NOR33418 omitted
+    
+    // L2GDG_
+    nor_2 #(1'b0) NOR33419(NOR33419_out,    TT_,            L2GD_,                                  SIM_CLK);
+    nor_1 #(1'b0) NOR33420(L2GDG_,          NOR33419_out,                                           SIM_CLK);
+    // NOR33421 and NOR33422 omitted
+    
+    // A2XG_
+    nor_2 #(1'b0) NOR33423(NOR33423_out,    TT_,            A2X_,                                   SIM_CLK);
+    nor_1 #(1'b0) NOR33424(A2XG_,           NOR33423_out,                                           SIM_CLK);
+    // NOR33425 and NOR33426 omitted
     
     
 endmodule
