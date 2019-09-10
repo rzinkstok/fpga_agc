@@ -3,15 +3,19 @@
 module a7_service_gates(
     // inputs
     WT_, CT_, RT_,
-    WY12_, WY_, WYD_, WB_, WGA_, WZ_, WSCG_, WL_, WCHG_, WA_, WS_, WQ_,
+    WY12_, WY_, WYD_, WB_, WGA_, WZ_, WSCG_, WL_, WCHG_, WA_, WS_, WQ_, WG_,
     RC_, RQ_, RSCG_, RCHG_,
-    ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_, XB4_, XB6_, RBBK,
-    L15_, PIFL_, TT_, L2GD_, A2X_,
-        
+    ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_, XB4_, XB6_,
+    L15_, PIFL_, TT_, L2GD_, A2X_, CGMC, T10_, STFET1_, EAC_, MP3A, CI,
+    EAD09, EAD09_, EAD10, EAD10_, EAD11, EAD11_,
+    
     // outputs
     WALSG, WALSG_, WYLOG_, WYHIG_, CUG, WYDG_, WYDLOG_, WBG_, CBG, WGNORM, WG1G_, WG2G_, WG3G_, WG4G_, WG5G_, WEDOPG_,
     PIPSAM, WZG_, CZG, WLG_, CLG2G, CLG1G, WAG_, CAG, WSG_, CSG, WQG_, CQG, RCG_, RQG_, RFBG_, RBBEG_, G2LSG_, L2GDG_,
-    A2XG_,
+    A2XG_, CGG,
+    
+    YT0, YT0_, YT0E, YT1, YT1_, YT1E, YT2, YT2_, YT2E, YT3, YT3_, YT3E, YT4, YT4_, YT4E, YT5, YT5_, YT5E, YT6, YT6_, YT6E, YT7, YT7_, YT7E,
+    
     MWYG, MWBG, MWG, MWZG, MWLG, MWAG, MWSG, MWQG,
     
     // input
@@ -20,14 +24,16 @@ module a7_service_gates(
     
     input wire SIM_CLK;
     input wire WT_, CT_, RT_;
-    input wire WY12_, WY_, WYD_, WB_, WGA_, WZ_, WSCG_, WL_, WCHG_, WA_, WS_, WQ_;
+    input wire WY12_, WY_, WYD_, WB_, WGA_, WZ_, WSCG_, WL_, WCHG_, WA_, WS_, WQ_, WG_;
     input wire RC_, RQ_, RSCG_, RCHG_;
-    input wire ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_, XB4_, XB6_, RBBK;
-    input wire L15_, PIFL_, TT_, L2GD_, A2X_;
+    input wire ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_, XB4_, XB6_;
+    input wire L15_, PIFL_, TT_, L2GD_, A2X_, CGMC, T10_, STFET1_, EAC_, MP3A, CI;
+    input wire EAD09, EAD09_, EAD10, EAD10_, EAD11, EAD11_;
     
     output wire WALSG, WALSG_, WYLOG_, WYHIG_, CUG, WYDG_, WYDLOG_, WBG_, CBG, WGNORM, WG1G_, WG2G_, WG3G_, WG4G_, WG5G_, WEDOPG_;
     output wire PIPSAM, WZG_, CZG, WLG_, CLG2G, CLG1G, WAG_, CAG, WSG_, CSG, WQG_, CQG, RCG_, RQG_, RFBG_, RBBEG_, G2LSG_, L2GDG_;
-    output wire A2XG_;
+    output wire A2XG_, CGG;
+    output wire YT0, YT0_, YT0E, YT1, YT1_, YT1E, YT2, YT2_, YT2E, YT3, YT3_, YT3E, YT4, YT4_, YT4E, YT5, YT5_, YT5E, YT6, YT6_, YT6E, YT7, YT7_, YT7E;
     output wire MWYG, MWBG, MWG, MWZG, MWLG, MWAG, MWSG, MWQG;
     
     /**************************
@@ -87,8 +93,12 @@ module a7_service_gates(
     wire NOR33415_out;
     wire NOR33419_out;
     wire NOR33423_out;
+    wire NOR33427_out;
+    wire NOR33428_out;
+    wire NOR33429_out;
+    wire NOR33458_out;
     
-    wire G2LSG, P04A;
+    wire G2LSG, P04A, RBBK, CINORM, CIFF;
     
     // WALSG, WALSG_
     nor_2 #(1'b0) NOR33102(WALSG,           ZAP_,           WT_,                                    SIM_CLK);
@@ -308,6 +318,67 @@ module a7_service_gates(
     nor_2 #(1'b0) NOR33423(NOR33423_out,    TT_,            A2X_,                                   SIM_CLK);
     nor_1 #(1'b0) NOR33424(A2XG_,           NOR33423_out,                                           SIM_CLK);
     // NOR33425 and NOR33426 omitted
+    
+    // CGG
+    nor_2 #(1'b0) NOR33427(NOR33427_out,    L2GD_,          CT_,                                    SIM_CLK);
+    nor_2 #(1'b0) NOR33428(NOR33428_out,    CT_,            WG_,                                    SIM_CLK);
+    nor_3 #(1'b0) NOR33429(NOR33429_out,    NOR33427_out,   NOR33428_out,   CGMC,                   SIM_CLK);
+    nor_1 #(1'b0) NOR33430(CGG,             NOR33429_out,                                           SIM_CLK);
+    // NOR33431 and NOR33432 omitted
+    
+    // Erasable memory addressing - Y
+    
+    // YT0
+    nor_3 #(1'b0) NOR33433(YT0,             EAD11,          EAD10,          EAD09,                  SIM_CLK);
+    nor_1 #(1'b0) NOR33434(YT0_,            YT0,                                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33435(YT0E,            YT0_,                                                   SIM_CLK);
+    
+    // YT1
+    nor_3 #(1'b0) NOR33436(YT1,             EAD11,          EAD10,          EAD09_,                 SIM_CLK);
+    nor_1 #(1'b0) NOR33437(YT1_,            YT1,                                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33438(YT1E,            YT1_,                                                   SIM_CLK);
+    
+    // YT2
+    nor_3 #(1'b0) NOR33439(YT2,             EAD11,          EAD10_,         EAD09,                  SIM_CLK);
+    nor_1 #(1'b0) NOR33440(YT2_,            YT2,                                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33441(YT2E,            YT2_,                                                   SIM_CLK);
+    
+    // YT3
+    nor_3 #(1'b0) NOR33442(YT3,             EAD11,          EAD10_,         EAD09_,                 SIM_CLK);
+    nor_1 #(1'b0) NOR33443(YT3_,            YT3,                                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33444(YT3E,            YT3_,                                                   SIM_CLK);
+    
+    // YT4
+    nor_3 #(1'b0) NOR33445(YT4,             EAD11_,         EAD10,          EAD09,                  SIM_CLK);
+    nor_1 #(1'b0) NOR33446(YT4_,            YT4,                                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33447(YT4E,            YT4_,                                                   SIM_CLK);
+        
+    // YT5
+    nor_3 #(1'b0) NOR33448(YT5,             EAD11_,         EAD10,          EAD09_,                 SIM_CLK);
+    nor_1 #(1'b0) NOR33449(YT5_,            YT5,                                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33450(YT5E,            YT5_,                                                   SIM_CLK);
+    
+    // YT6
+    nor_3 #(1'b0) NOR33451(YT6,             EAD11_,         EAD10_,         EAD09,                  SIM_CLK);
+    nor_1 #(1'b0) NOR33452(YT6_,            YT6,                                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33453(YT6E,            YT6_,                                                   SIM_CLK);
+    
+    // YT7
+    nor_3 #(1'b0) NOR33454(YT7,             EAD11_,         EAD10_,         EAD09_,                 SIM_CLK);
+    nor_1 #(1'b0) NOR33455(YT7_,            YT7,                                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33456(YT7E,            YT7_,                                                   SIM_CLK);
+    
+    // CINORM
+    nor_2 #(1'b0) NOR33457(CINORM,          NEAC,           EAC_,           MP3A,                    SIM_CLK);
+    // NOR37360 moved here from A2 sheet 3 and merged with NOR33457
+    
+    // CIFF flip-flop
+    nor_2 #(1'b0) NOR33458(NOR33458_out,    CI,             CIFF,                                   SIM_CLK);
+    nor_2 #(1'b0) NOR33459(CIFF,            NOR33458_out,   CUG,                                    SIM_CLK);
+    
+    // RBBK
+    nor_2 #(1'b0) NOR33460(RBBK,            T10_,           STFET1_,                                SIM_CLK);
+    
     
     
 endmodule
