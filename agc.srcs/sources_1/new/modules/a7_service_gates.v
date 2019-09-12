@@ -6,17 +6,18 @@ module a7_service_gates(
     WY12_, WY_, WYD_, WB_, WGA_, WZ_, WSCG_, WL_, WCHG_, WA_, WS_, WQ_, WG_,
     RC_, RQ_, RSCG_, RCHG_,
     ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_, XB4_, XB6_,
-    L15_, PIFL_, TT_, L2GD_, A2X_, CGMC, T10_, STFET1_, EAC_, MP3A, CI,
+    L15_, PIFL_, TT_, L2GD_, A2X_, CGMC, T10_, STFET1_, EAC_, MP3A, CI, XB3_, U2BBK, RG_, RA_, RL_, RZ_, RU_, RUS_, RB_, RL10BB,
     EAD09, EAD09_, EAD10, EAD10_, EAD11, EAD11_,
     
     // outputs
     WALSG, WALSG_, WYLOG_, WYHIG_, CUG, WYDG_, WYDLOG_, WBG_, CBG, WGNORM, WG1G_, WG2G_, WG3G_, WG4G_, WG5G_, WEDOPG_,
     PIPSAM, WZG_, CZG, WLG_, CLG2G, CLG1G, WAG_, CAG, WSG_, CSG, WQG_, CQG, RCG_, RQG_, RFBG_, RBBEG_, G2LSG_, L2GDG_,
-    A2XG_, CGG,
+    A2XG_, CGG, WEBG_, CEBG, CFBG, WFBG_, WBBEG_, RGG_, RAG_, RLG_, RZG_, REBG_, RUG_, RUSG_, RULOG_, RBHG_, RBLG_,
     
     YT0, YT0_, YT0E, YT1, YT1_, YT1E, YT2, YT2_, YT2E, YT3, YT3_, YT3E, YT4, YT4_, YT4E, YT5, YT5_, YT5E, YT6, YT6_, YT6E, YT7, YT7_, YT7E,
+    CI01_,
     
-    MWYG, MWBG, MWG, MWZG, MWLG, MWAG, MWSG, MWQG,
+    MWYG, MWBG, MWG, MWZG, MWLG, MWAG, MWSG, MWQG, MWEBG, MWFBG, MWBBEG, MRGG, MRAG, MRLG, MRULOG,
     
     // input
     SIM_CLK
@@ -27,14 +28,15 @@ module a7_service_gates(
     input wire WY12_, WY_, WYD_, WB_, WGA_, WZ_, WSCG_, WL_, WCHG_, WA_, WS_, WQ_, WG_;
     input wire RC_, RQ_, RSCG_, RCHG_;
     input wire ZAP_, SHIFT, NEAC, GINH, SR_, CYR_, CYL_, EDOP_, PIPPLS_, SB2_, XB5_, XB1_, XT0_, XB0_, XB2_, P04_, XB4_, XB6_;
-    input wire L15_, PIFL_, TT_, L2GD_, A2X_, CGMC, T10_, STFET1_, EAC_, MP3A, CI;
+    input wire L15_, PIFL_, TT_, L2GD_, A2X_, CGMC, T10_, STFET1_, EAC_, MP3A, CI, XB3_, U2BBK, RG_, RA_, RL_, RZ_, RU_, RUS_, RB_, RL10BB;
     input wire EAD09, EAD09_, EAD10, EAD10_, EAD11, EAD11_;
     
     output wire WALSG, WALSG_, WYLOG_, WYHIG_, CUG, WYDG_, WYDLOG_, WBG_, CBG, WGNORM, WG1G_, WG2G_, WG3G_, WG4G_, WG5G_, WEDOPG_;
     output wire PIPSAM, WZG_, CZG, WLG_, CLG2G, CLG1G, WAG_, CAG, WSG_, CSG, WQG_, CQG, RCG_, RQG_, RFBG_, RBBEG_, G2LSG_, L2GDG_;
-    output wire A2XG_, CGG;
+    output wire A2XG_, CGG, WEBG_, CEBG, CFBG, WFBG_, WBBEG_, RGG_, RAG_, RLG_, RZG_, REBG_, RUG_, RUSG_, RULOG_, RBHG_, RBLG_;
     output wire YT0, YT0_, YT0E, YT1, YT1_, YT1E, YT2, YT2_, YT2E, YT3, YT3_, YT3E, YT4, YT4_, YT4E, YT5, YT5_, YT5E, YT6, YT6_, YT6E, YT7, YT7_, YT7E;
-    output wire MWYG, MWBG, MWG, MWZG, MWLG, MWAG, MWSG, MWQG;
+    output wire CI01_;
+    output wire MWYG, MWBG, MWG, MWZG, MWLG, MWAG, MWSG, MWQG, MWEBG, MWFBG, MWBBEG, MRGG, MRAG, MRLG, MRULOG;
     
     /**************************
     *
@@ -98,7 +100,31 @@ module a7_service_gates(
     wire NOR33429_out;
     wire NOR33458_out;
     
-    wire G2LSG, P04A, RBBK, CINORM, CIFF;
+    wire NOR33301_out;
+    wire NOR33303_out;
+    wire NOR33305_out;
+    wire NOR33307_out;
+    wire NOR33311_out;
+    wire NOR33312_out;
+    wire NOR33315_out;
+    wire NOR33320_out;
+    wire NOR33321_out;
+    wire NOR33322_out;
+    wire NOR33326_out;
+    wire NOR33327_out;
+    wire NOR33335_out;
+    wire NOR33336_out;
+    wire NOR33337_out;
+    wire NOR33341_out;
+    wire NOR33345_out;
+    wire NOR33346_out;
+    wire NOR33347_out;
+    wire NOR33350_out;
+    wire NOR33352_out;
+    wire NOR33355_out;
+    wire NOR33359_out;
+    
+    wire G2LSG, P04A, RBBK, CINORM, CIFF, RGG1, RLG1, RLG2, RLG3;
     
     // WALSG, WALSG_
     nor_2 #(1'b0) NOR33102(WALSG,           ZAP_,           WT_,                                    SIM_CLK);
@@ -197,6 +223,7 @@ module a7_service_gates(
     
     // MWZG
     nor_1 #(1'b0) NOR33207(NOR33207_out,    WZG_,                                                   SIM_CLK);
+    // Monitor output, no cross-module fan-out
     assign MWZG = NOR33207_out;
     
     // CZG
@@ -213,6 +240,7 @@ module a7_service_gates(
     // MWLG
     nor_3 #(1'b0) NOR33217(NOR33217_out,    NOR33211_out,   NOR33212_out,   NOR33213_out,           SIM_CLK);
     nor_1 #(1'b0) NOR33218(NOR33218_out,    NOR33217_out,                                           SIM_CLK);
+    // Monitor output, no cross-module fan-out
     assign MWLG = NOR33218_out;
     
     // CLG2G
@@ -235,6 +263,7 @@ module a7_service_gates(
     // MWAG
     nor_2 #(1'b0) NOR33232(NOR33232_out,    NOR33227_out,   NOR33228_out,                           SIM_CLK);
     nor_1 #(1'b0) NOR33255(NOR33255_out,    NOR33232_out,                                           SIM_CLK);
+    // Monitor output, no cross-module fan-out
     assign MWAG = NOR33255_out;
     
     // CAG
@@ -249,6 +278,7 @@ module a7_service_gates(
     
     // MWSG
     nor_1 #(1'b0) NOR33241(NOR33241_out,    WSG_,                                                   SIM_CLK);
+    // Monitor output, no cross-module fan-out
     assign MWSG = NOR33241_out;
     
     // CSG
@@ -264,6 +294,7 @@ module a7_service_gates(
     
     // MWQG
     nor_1 #(1'b0) NOR33251(NOR33251_out,    WQG_,                                                   SIM_CLK);
+    // Monitor output, no cross-module fan-out
     assign MWQG = NOR33251_out;
     
     // CQG
@@ -293,7 +324,7 @@ module a7_service_gates(
     nor_2 #(1'b0) NOR33405(NOR33405_out,    RT_,            RQ_,                                    SIM_CLK);
     nor_2 #(1'b0) NOR33407(NOR33407_out,    RSCG_,          XB2_,                                   SIM_CLK);
     nor_3 #(1'b0) NOR33409(NOR33409_out,    XB2_,           XT0_,           RCHG_,                  SIM_CLK);
-    nor_1 #(1'b0) NOR33406(RQG_,            NOR33405_out,   NOR33407_out,   NOR33409_out,           SIM_CLK);
+    nor_3 #(1'b0) NOR33406(RQG_,            NOR33405_out,   NOR33407_out,   NOR33409_out,           SIM_CLK);
     // NOR33408 and NOR33410 omitted
     
     // RFBG_
@@ -369,7 +400,7 @@ module a7_service_gates(
     nor_1 #(1'b0) NOR33456(YT7E,            YT7_,                                                   SIM_CLK);
     
     // CINORM
-    nor_2 #(1'b0) NOR33457(CINORM,          NEAC,           EAC_,           MP3A,                    SIM_CLK);
+    nor_3 #(1'b0) NOR33457(CINORM,          NEAC,           EAC_,           MP3A,                    SIM_CLK);
     // NOR37360 moved here from A2 sheet 3 and merged with NOR33457
     
     // CIFF flip-flop
@@ -379,6 +410,105 @@ module a7_service_gates(
     // RBBK
     nor_2 #(1'b0) NOR33460(RBBK,            T10_,           STFET1_,                                SIM_CLK);
     
+    // WEBG_
+    nor_2 #(1'b0) NOR33301(NOR33301_out,    WSCG_,          XB3_,                                   SIM_CLK);
+    nor_1 #(1'b0) NOR33302(WEBG_,           NOR33301_out,                                           SIM_CLK);
+    // Monitor output, no cross-module fan-out
+    nor_1 #(1'b0) NOR33303(NOR33303_out,    WEBG_,                                                  SIM_CLK);
+    assign MWEBG = NOR33303_out;
+    // NOR33304 omitted
     
+    // CEBG
+    nor_3 #(1'b0) NOR33305(NOR33305_out,    NOR33301_out,   U2BBK,          NOR33312_out,           SIM_CLK);
+    nor_2 #(1'b0) NOR33306(CEBG,            NOR33305_out,   CT_,                                    SIM_CLK);
     
+    // CFBG
+    nor_2 #(1'b0) NOR33307(NOR33307_out,    WSCG_,          XB4_,                                   SIM_CLK);
+    nor_3 #(1'b0) NOR33359(NOR33359_out,    NOR33312_out,   U2BBK,          NOR33307_out,           SIM_CLK);
+    nor_2 #(1'b0) NOR33310(CFBG,            CT_,            NOR33359_out,                           SIM_CLK);
+    
+    // WFBG_, MWFBG
+    nor_2 #(1'b0) NOR33308(WFBG_,           NOR33312_out,   NOR33307_out,                           SIM_CLK);
+    // NOR33309 merged with NOR33308
+    // Monitor output, no cross-module fan-out
+    nor_2 #(1'b0) NOR33311(NOR33311_out,    WFBG_,                                                  SIM_CLK);
+    assign MWFBG = NOR33311_out;
+    
+    // WBBEG_, MWBBEG
+    nor_2 #(1'b0) NOR33312(NOR33312_out,    WSCG_,          XB6_,                                   SIM_CLK);
+    nor_1 #(1'b0) NOR33313(WBBEG_,          NOR33312_out,                                           SIM_CLK);
+    // NOR33314 merged with NOR33313
+    // Monitor output, no cross-module fan-out
+    nor_1 #(1'b0) NOR33315(NOR33315_out,    WBBEG_,                                                 SIM_CLK);
+    assign MWBBEG = NOR33315_out;
+    
+    // RGG_, MRGG
+    nor_2 #(1'b0) NOR33316(RGG1,            RT_,            RG_,                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33317(RGG_,            RGG1,                                                   SIM_CLK);
+    // NOR33318 and NOR33319 omitted
+    nor_1 #(1'b0) NOR33320(NOR33320_out,    RGG_,                                                   SIM_CLK);
+    // Monitor output, no cross-module fan-out
+    assign MRGG = NOR33320_out;
+    
+    // RAG_, MRAG
+    nor_2 #(1'b0) NOR33321(NOR33321_out,    RT_,            RA_,                                    SIM_CLK);
+    nor_2 #(1'b0) NOR33322(NOR33322_out,    XB0_,           RSCG_,                                  SIM_CLK);
+    nor_2 #(1'b0) NOR33323(RAG_,            NOR33321_out,   NOR33322_out,                           SIM_CLK);
+    // NOR33324, NOR33325 and NOR 33357 omitted
+    nor_1 #(1'b0) NOR33326(NOR33326_out,    RAG_,                                                   SIM_CLK);
+    // Monitor output, no cross-module fan-out
+    assign MRAG = NOR33326_out;
+    
+    // RLG1, RLG2, RLG3, RLG_, MRLG
+    nor_2 #(1'b0) NOR33329(RLG2,            RT_,            RL_,                                    SIM_CLK);
+    nor_2 #(1'b0) NOR33331(RLG1,            RSCG_,          XB1_,                                   SIM_CLK);
+    nor_3 #(1'b0) NOR33333(RLG3,            XB1_,           XT0_,           RCHG_,                  SIM_CLK);
+    nor_3 #(1'b0) NOR33330(RLG_,            RLG1,           RLG2,           RLG3,                   SIM_CLK);
+    // NOR33332 and NOR33334 omitted
+    nor_1 #(1'b0) NOR33335(NOR33335_out,    RLG_,                                                   SIM_CLK);
+    // Monitor output, no cross-module fan-out
+    assign MRLG = NOR33335_out;
+    
+    // RZG_
+    nor_2 #(1'b0) NOR33336(NOR33336_out,    RT_,            RZ_,                                    SIM_CLK);
+    nor_2 #(1'b0) NOR33337(NOR33337_out,    XB5_,           RSCG_,                                  SIM_CLK);
+    nor_2 #(1'b0) NOR33338(RZG_,            NOR33336_out,   NOR33337_out,                           SIM_CLK);
+    // NOR33339 and NOR33340 omitted
+    
+    // REBG_
+    nor_2 #(1'b0) NOR33327(NOR33327_out,    RSCG_,          XB3_,                                   SIM_CLK);
+    nor_1 #(1'b0) NOR33328(REBG_,           NOR33327_out,                                           SIM_CLK);
+    
+    // RUG_
+    nor_2 #(1'b0) NOR33341(NOR33341_out,    RT_,            RU_,                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33348(RUG_,            NOR33341_out,                                           SIM_CLK);
+    
+    // RUSG_
+    nor_2 #(1'b0) NOR33345(NOR33345_out,    RT_,            RUS_,                                   SIM_CLK);
+    nor_1 #(1'b0) NOR33349(RUSG_,           NOR33345_out,                                           SIM_CLK);
+    
+    // RULOG_, MRULOG
+    nor_2 #(1'b0) NOR33342(RULOG_,          NOR33345_out,   NOR33341_out,                           SIM_CLK);
+    // NOR33343 and NOR33344 omitted
+    nor_2 #(1'b0) NOR33346(NOR33346_out,    NOR33345_out,   NOR33341_out,                           SIM_CLK);
+    
+    nor_1 #(1'b0) NOR33347(NOR33347_out,    NOR33346_out,                                           SIM_CLK);
+    // Monitor output, no cross-module fan-out
+    assign MRULOG = NOR33347_out;
+    
+    // RBHG_
+    nor_2 #(1'b0) NOR33350(NOR33350_out,    RT_,            RB_,                                    SIM_CLK);
+    nor_1 #(1'b0) NOR33351(RBHG_,           NOR33350_out,                                           SIM_CLK);
+    // NOR33360 and NOR33361 omitted
+    
+    // RBLG_
+    nor_1 #(1'b0) NOR33355(NOR33355_out,    RL10BB,                                                 SIM_CLK);
+    nor_2 #(1'b0) NOR33352(NOR33352_out,    RT_,            NOR33355_out,                           SIM_CLK);
+    nor_2 #(1'b0) NOR33353(RBLG_,           NOR33350_out,   NOR33352_out,                           SIM_CLK);
+    // NOR33354 omitted
+    
+    // CI01_
+    nor_2 #(1'b0) NOR33356(CI01_,           CIFF,           CINORM,                                 SIM_CLK);
+    
+    // NOR33358 not connected
 endmodule

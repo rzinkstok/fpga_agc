@@ -18,6 +18,7 @@ module agc();
 	reg C44P = 0;
 	reg CDUSTB_ = 1;
 	reg CHINC_ = 1;
+	reg CI = 0;
 	reg CLOCK = 0;
 	reg CYL_ = 1;
 	reg CYR_ = 1;
@@ -25,6 +26,13 @@ module agc();
 	reg DINC = 0;
 	reg DINC_ = 1;
 	reg DIVSTG = 0;
+	reg EAC_ = 1;
+	reg EAD09 = 0;
+	reg EAD09_ = 1;
+	reg EAD10 = 0;
+	reg EAD10_ = 1;
+	reg EAD11 = 0;
+	reg EAD11_ = 1;
 	reg EDOP_ = 1;
 	reg EXTPLS = 0;
 	reg FETCH0 = 0;
@@ -58,7 +66,10 @@ module agc();
 	reg RADRZ = 0;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
+	reg RCHG_ = 1;
 	reg RELPLS = 0;
+	reg RQ_ = 1;
+	reg RSCG_ = 1;
 	reg RUPTOR_ = 1;
 	reg S11 = 0;
 	reg S12 = 0;
@@ -102,7 +113,10 @@ module agc();
 	reg XB0_ = 1;
 	reg XB1_ = 1;
 	reg XB2_ = 1;
+	reg XB3_ = 1;
+	reg XB4_ = 1;
 	reg XB5_ = 1;
+	reg XB6_ = 1;
 	reg XB7_ = 1;
 	reg XT0_ = 1;
 	reg XT1_ = 1;
@@ -112,7 +126,6 @@ module agc();
 	reg XT5_ = 1;
 	reg XT6_ = 1;
 	reg YB0_ = 1;
-	reg YT0_ = 1;
 
 	wire A03_1_RPTSET;
 	wire A03_2_RPTSET;
@@ -223,6 +236,7 @@ module agc();
 	wire A06_2_n8PP4;
 	wire A06_3_RU_;
 	wire A06_3_n8PP4;
+	wire A2XG_;
 	wire A2X_;
 	wire AD0;
 	wire ADS0;
@@ -244,6 +258,9 @@ module agc();
 	wire CBG;
 	wire CCS0;
 	wire CCS0_;
+	wire CEBG;
+	wire CFBG;
+	wire CGG;
 	wire CGMC;
 	wire CHAT01;
 	wire CHAT02;
@@ -273,6 +290,7 @@ module agc();
 	wire CHBT12;
 	wire CHBT13;
 	wire CHBT14;
+	wire CI01_;
 	wire CI_;
 	wire CLG1G;
 	wire CLG2G;
@@ -447,6 +465,7 @@ module agc();
 	wire FS32;
 	wire FS33;
 	wire FUTEXT;
+	wire G2LSG_;
 	wire GNHNC;
 	wire GOJ1;
 	wire GOJ1_;
@@ -483,6 +502,7 @@ module agc();
 	wire INOUT_;
 	wire KRPT;
 	wire L16_;
+	wire L2GDG_;
 	wire L2GD_;
 	wire MASK0;
 	wire MASK0_;
@@ -503,7 +523,11 @@ module agc();
 	wire MP1_;
 	wire MP3A;
 	wire MP3_;
+	wire MRAG;
+	wire MRGG;
+	wire MRLG;
 	wire MRSC_;
+	wire MRULOG;
 	wire MSQ10;
 	wire MSQ11;
 	wire MSQ12;
@@ -530,7 +554,10 @@ module agc();
 	wire MT12;
 	wire MTCSA_;
 	wire MWAG;
+	wire MWBBEG;
 	wire MWBG;
+	wire MWEBG;
+	wire MWFBG;
 	wire MWG;
 	wire MWLG;
 	wire MWQG;
@@ -586,26 +613,36 @@ module agc();
 	wire R1C_;
 	wire R6;
 	wire RAD;
+	wire RAG_;
 	wire RAND0;
 	wire RA_;
 	wire RB1F;
 	wire RB1_;
 	wire RB2;
+	wire RBBEG_;
+	wire RBHG_;
+	wire RBLG_;
 	wire RBSQ;
 	wire RB_;
+	wire RCG_;
 	wire RCH_;
 	wire RC_;
 	wire RDBANK;
 	wire READ0;
 	wire READ0_;
+	wire REBG_;
+	wire RFBG_;
+	wire RGG_;
 	wire RG_;
 	wire RINGA_;
 	wire RINGB_;
 	wire RL10BB;
+	wire RLG_;
 	wire RL_;
 	wire ROR0;
 	wire RPTSET;
 	wire RQ;
+	wire RQG_;
 	wire RRPA;
 	wire RSCT;
 	wire RSC_;
@@ -615,14 +652,18 @@ module agc();
 	wire RSTSTG;
 	wire RT;
 	wire RT_;
+	wire RUG_;
+	wire RULOG_;
 	wire RUPT0;
 	wire RUPT0_;
 	wire RUPT1;
 	wire RUPT1_;
+	wire RUSG_;
 	wire RUS_;
 	wire RU_;
 	wire RXOR0;
 	wire RXOR0_;
+	wire RZG_;
 	wire RZ_;
 	wire SB0;
 	wire SB0_;
@@ -728,10 +769,13 @@ module agc();
 	wire WALSG_;
 	wire WAND0;
 	wire WA_;
+	wire WBBEG_;
 	wire WBG_;
 	wire WB_;
 	wire WCH_;
+	wire WEBG_;
 	wire WEDOPG_;
+	wire WFBG_;
 	wire WG1G_;
 	wire WG2G_;
 	wire WG3G_;
@@ -762,6 +806,30 @@ module agc();
 	wire WY_;
 	wire WZG_;
 	wire WZ_;
+	wire YT0;
+	wire YT0E;
+	wire YT0_;
+	wire YT1;
+	wire YT1E;
+	wire YT1_;
+	wire YT2;
+	wire YT2E;
+	wire YT2_;
+	wire YT3;
+	wire YT3E;
+	wire YT3_;
+	wire YT4;
+	wire YT4E;
+	wire YT4_;
+	wire YT5;
+	wire YT5E;
+	wire YT5_;
+	wire YT6;
+	wire YT6E;
+	wire YT6_;
+	wire YT7;
+	wire YT7E;
+	wire YT7_;
 	wire Z15_;
 	wire Z16_;
 	wire ZAP;
@@ -1837,6 +1905,7 @@ module agc();
 	a7_service_gates a7(
 		WT_,
 		CT_,
+		RT_,
 		WY12_,
 		WY_,
 		WYD_,
@@ -1849,6 +1918,11 @@ module agc();
 		WA_,
 		WS_,
 		WQ_,
+		WG_,
+		RC_,
+		RQ_,
+		RSCG_,
+		RCHG_,
 		ZAP_,
 		SHIFT,
 		NEAC,
@@ -1865,8 +1939,35 @@ module agc();
 		XB0_,
 		XB2_,
 		P04_,
+		XB4_,
+		XB6_,
 		L15_,
 		PIFL_,
+		TT_,
+		L2GD_,
+		A2X_,
+		CGMC,
+		T10_,
+		STFET1_,
+		EAC_,
+		MP3A,
+		CI,
+		XB3_,
+		U2BBK,
+		RG_,
+		RA_,
+		RL_,
+		RZ_,
+		RU_,
+		RUS_,
+		RB_,
+		RL10BB,
+		EAD09,
+		EAD09_,
+		EAD10,
+		EAD10_,
+		EAD11,
+		EAD11_,
 		WALSG,
 		WALSG_,
 		WYLOG_,
@@ -1895,6 +1996,54 @@ module agc();
 		CSG,
 		WQG_,
 		CQG,
+		RCG_,
+		RQG_,
+		RFBG_,
+		RBBEG_,
+		G2LSG_,
+		L2GDG_,
+		A2XG_,
+		CGG,
+		WEBG_,
+		CEBG,
+		CFBG,
+		WFBG_,
+		WBBEG_,
+		RGG_,
+		RAG_,
+		RLG_,
+		RZG_,
+		REBG_,
+		RUG_,
+		RUSG_,
+		RULOG_,
+		RBHG_,
+		RBLG_,
+		YT0,
+		YT0_,
+		YT0E,
+		YT1,
+		YT1_,
+		YT1E,
+		YT2,
+		YT2_,
+		YT2E,
+		YT3,
+		YT3_,
+		YT3E,
+		YT4,
+		YT4_,
+		YT4E,
+		YT5,
+		YT5_,
+		YT5E,
+		YT6,
+		YT6_,
+		YT6E,
+		YT7,
+		YT7_,
+		YT7E,
+		CI01_,
 		MWYG,
 		MWBG,
 		MWG,
@@ -1903,6 +2052,13 @@ module agc();
 		MWAG,
 		MWSG,
 		MWQG,
+		MWEBG,
+		MWFBG,
+		MWBBEG,
+		MRGG,
+		MRAG,
+		MRLG,
+		MRULOG,
 		SIM_CLK
 	);
 

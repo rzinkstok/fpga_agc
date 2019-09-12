@@ -402,7 +402,41 @@ Gates 33201-33259
 33258 removed (fan-out expansion)
 33259 removed (fan-out expansion)
 
+Sheet 2
+Gates 33301-33361
+Gates 33401-33460
+33304 removed (fan-out expansion)
+33309 removed (fan-in expansion)
+33314 removed (fan-in expansion)
+33318 removed (fan-out expansion)
+33319 removed (fan-out expansion)
+33324 removed (fan-out expansion)
+33325 removed (fan-out expansion)
+33332 removed (fan-out expansion)
+33334 removed (fan-out expansion)
+33339 removed (fan-out expansion)
+33340 removed (fan-out expansion)
+33343 removed (fan-out expansion)
+33344 removed (fan-out expansion)
+33354 removed (fan-out expansion)
+33357 removed (fan-out expansion)
+33358 removed (fan-out expansion)
+33360 removed (not used)
+33361 removed (fan-out expansion)
+33403 removed (fan-out expansion)
+33404 removed (fan-out expansion)
+33408 removed (fan-out expansion)
+33410 removed (fan-out expansion)
+33417 removed (fan-out expansion)
+33418 removed (fan-out expansion)
+33421 removed (fan-out expansion)
+33422 removed (fan-out expansion)
+33425 removed (fan-out expansion)
+33426 removed (fan-out expansion)
+33431 removed (fan-out expansion)
+33432 removed (fan-out expansion)
 37360 added from A2 sheet 3 (fan-in expansion)
+37360 removed (fan-in expansion)
 
 Module A12
 Gates
