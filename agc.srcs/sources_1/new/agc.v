@@ -2062,6 +2062,11 @@ module agc();
 		SIM_CLK
 	);
 
+	a8_four_bit_1 a8(
+		A2XG_,
+		SIM_CLK
+	);
+
 	assign A2X_ = A05_1_A2X_ & A05_2_A2X_ & A06_1_A2X_;
 	assign CI_ = A04_1_CI_ & A05_1_CI_ & A05_2_CI_ & A06_1_CI_;
 	assign L16_ = A04_1_L16_;
