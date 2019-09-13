@@ -42,6 +42,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_4.v
   C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v
   C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a7_service_gates.v
+  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a8_four_bit_1.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
