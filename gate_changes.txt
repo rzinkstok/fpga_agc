@@ -454,6 +454,16 @@ Gates 51201-51263
 51256 removed (fan-out expansion)
 51259 removed (not used)
 51260 removed (not used)
+51263 removed (fan-in expansion)
+
+Sheet 2
+Gates 51401-51463
+51416 removed (not used)
+51455 removed (fan-out expansion)
+51456 removed (fan-out expansion)
+51459 removed (not used)
+51460 removed (not used)
+
 
 
 Module A12

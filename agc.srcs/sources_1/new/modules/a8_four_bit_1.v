@@ -10,28 +10,28 @@ module a8_four_bit_1(
     WBG_, CBG, RBLG_, RCG_,
     WG3G_, WG4G_, L2GDG_, MCRO_, WG1G_, CGG, RGG_,
     WL05_, WL16_,
-    SA01, SA02,
-    G01ED, G02ED,
+    SA01, SA02, SA03,
+    G01ED, G02ED, G03ED,
     RB1, R15, R1C, RB2,
-    RL01_, RL02_,
+    RL01_, RL02_, RL03_,
     CH01, CH02, CH03,
-    G05_,
-    MDT01, MDT02,
+    G05_, G06_,
+    MDT01, MDT02, MDT03,
     SETAB_,
     S08, S08_,
-    XUY05_,
+    XUY05_, XUY06_,
     
     // outputs
-    WL01, WL01_, MWL01, WL02, WL02_, MWL02, WL03_, WL04_,
-    A08_1_CO04, A08_2_CO04,
+    WL01, WL01_, MWL01, WL02, WL02_, MWL02, WL03, WL03_, MWL03, WL04_,
+    A08_1_CO04, A08_2_CO04, CO06,
     XUY01_, XUY02_,
     SUMA01_, SUMB01_, SUMA02_, SUMB02_, SUMA03_, SUMB03_,
-    G01, G01_, GEM01, G02, GEM02, G04_,
+    G01, G01_, GEM01, G02, GEM02, G04_, G03, G03_, GEM03,
     L01_, L02_,
     A08_1_RL01_, A08_2_RL01_, A08_3_RL01_, A08_4_RL01_,
     A08_1_RL02_, A08_2_RL02_, A08_3_RL02_, A08_4_RL02_,
     A08_1_RL03_, A08_2_RL03_, A08_3_RL03_, A08_4_RL03_,
-    CLEARA,
+    CLEARA, CLEARB,
     
     //input
     SIM_CLK
@@ -47,27 +47,27 @@ module a8_four_bit_1(
     input wire WBG_, CBG, RBLG_, RCG_;
     input wire WG3G_, WG4G_, L2GDG_, MCRO_, WG1G_, CGG, RGG_;
     input wire WL05_, WL16_;
-    input wire SA01, SA02;
-    input wire G01ED, G02ED;
+    input wire SA01, SA02, SA03;
+    input wire G01ED, G02ED, G03ED;
     input wire RB1, R15, R1C, RB2;
-    input wire RL01_, RL02_;
+    input wire RL01_, RL02_, RL03_;
     input wire CH01, CH02, CH03;
-    input wire G05_;
-    input wire MDT01, MDT02;
+    input wire G05_, G06_;
+    input wire MDT01, MDT02, MDT03;
     input wire SETAB_;
     input wire S08, S08_;
-    input wire XUY05_;
+    input wire XUY05_, XUY06_;
     
-    output wire WL01, WL01_, MWL01, WL02, WL02_, MWL02, WL03_, WL04_;
-    output wire A08_1_CO04, A08_2_CO04;
+    output wire WL01, WL01_, MWL01, WL02, WL02_, MWL02, WL03, WL03_, MWL03, WL04_;
+    output wire A08_1_CO04, A08_2_CO04, CO06;
     output wire XUY01_, XUY02_;
     output wire SUMA01_, SUMB01_, SUMA02_, SUMB02_, SUMA03_, SUMB03_;
-    output wire G01, G01_, GEM01, G02, GEM02, G04_;
+    output wire G01, G01_, GEM01, G02, GEM02, G03, G03_, GEM03, G04_;
     output wire L01_, L02_;
     output wire A08_1_RL01_, A08_2_RL01_, A08_3_RL01_, A08_4_RL01_;
     output wire A08_1_RL02_, A08_2_RL02_, A08_3_RL02_, A08_4_RL02_;
     output wire A08_1_RL03_, A08_2_RL03_, A08_3_RL03_, A08_4_RL03_;
-    output wire CLEARA;
+    output wire CLEARA, CLEARB;
     
     /**************************
     *
@@ -115,6 +115,7 @@ module a8_four_bit_1(
     wire NOR51148_out;
     wire NOR51151_out;
     wire NOR51153_out;
+    
     wire NOR51202_out;
     wire NOR51203_out;
     wire NOR51204_out;
@@ -171,12 +172,39 @@ module a8_four_bit_1(
     wire NOR51419_out;
     wire NOR51421_out;
     wire NOR51422_out;
+    wire NOR51424_out;
+    wire NOR51425_out;
+    wire NOR51427_out;
+    wire NOR51428_out;
+    wire NOR51429_out;
+    wire NOR51430_out;
+    wire NOR51431_out;
+    wire NOR51432_out;
+    wire NOR51434_out;
+    wire NOR51436_out;
+    wire NOR51437_out;
+    wire NOR51438_out;
+    wire NOR51439_out;
+    wire NOR51440_out;
+    wire NOR51441_out;
+    wire NOR51442_out;
+    wire NOR51443_out;
+    wire NOR51444_out;
+    wire NOR51445_out;
+    wire NOR51446_out;
+    wire NOR51447_out;
+    wire NOR51448_out;
+    wire NOR51451_out;
+    wire NOR51453_out;
+    
+    wire NOR51301_out;
     
     wire A01_, A02_, A03_;
     wire XUY03_, XUY04_;
     wire CI02_, CI03_, CI04_;
-    wire Z01_, Z02_;
+    wire Z01_, Z02_, Z03_;
     wire G02_;
+    wire L03_;
     wire S08A, S08A_;
     
     // Bit column 1
@@ -478,6 +506,91 @@ module a8_four_bit_1(
     // RL03_ part 1
     // Cross-module fan-in, connected to A15
     nor_3 #(1'b0) NOR51423(A08_1_RL03_,     NOR51417_out,   NOR51422_out,   CH03,                       SIM_CLK);
+    
+    // L register flip-flop
+    nor_2 #(1'b0) NOR51424(NOR51424_out,    WLG_,           WL03_,                                      SIM_CLK);
+    nor_2 #(1'b0) NOR51425(NOR51425_out,    G06_,           G2LSG_,                                     SIM_CLK);
+    
+    nor_3 #(1'b0) NOR51426(L03_,            NOR51424_out,   NOR51425_out,   NOR51427_out,               SIM_CLK);
+    nor_2 #(1'b0) NOR51427(NOR51427_out,    L03_,           CLG1G,                                      SIM_CLK);
+    
+    nor_2 #(1'b0) NOR51428(NOR51428_out,    RLG_,           L03_,                                       SIM_CLK);
+    
+    // Q register flip-flop
+    nor_2 #(1'b0) NOR51429(NOR51429_out,    WQG_,           WL03_,                                      SIM_CLK);
+    
+    nor_2 #(1'b0) NOR51430(NOR51430_out,    NOR51429_out,   NOR51431_out,                               SIM_CLK);
+    nor_2 #(1'b0) NOR51431(NOR51431_out,    NOR51430_out,   CQG,                                        SIM_CLK);
+    
+    nor_2 #(1'b0) NOR51432(NOR51432_out,    RQG_,           NOR51430_out,                               SIM_CLK);
+    
+    // Z register flip-flop
+    nor_2 #(1'b0) NOR51434(NOR51434_out,    WZG_,           WL03_,                                      SIM_CLK);
+    
+    nor_2 #(1'b0) NOR51435(Z03_,            NOR51434_out,   NOR51436_out,                               SIM_CLK);
+    nor_2 #(1'b0) NOR51436(NOR51436_out,    Z03_,           CZG,                                        SIM_CLK);
+    
+    nor_2 #(1'b0) NOR51437(NOR51437_out,    RZG_,           Z03_,                                       SIM_CLK);
+    
+    // RL03_ part 2
+    // Cross-module fan-in, connected to A15
+    nor_3 #(1'b0) NOR51433(A08_2_RL03_,     NOR51428_out,   NOR51432_out,   NOR51437_out,               SIM_CLK);
+    
+    // B register flip-flop
+    nor_2 #(1'b0) NOR51438(NOR51438_out,    WBG_,           WL03_,                                      SIM_CLK);
+    
+    nor_2 #(1'b0) NOR51439(NOR51439_out,    NOR51438_out,   NOR51440_out,                               SIM_CLK);
+    nor_2 #(1'b0) NOR51440(NOR51440_out,    NOR51439_out,   CBG,                                        SIM_CLK);
+    
+    nor_2 #(1'b0) NOR51441(NOR51441_out,    RBLG_,          NOR51439_out,                               SIM_CLK);
+    nor_2 #(1'b0) NOR51442(NOR51442_out,    NOR51440_out,   RCG_,                                       SIM_CLK);
+    
+    // G register flip-flop
+    nor_2 #(1'b0) NOR51443(NOR51443_out,    WL02_,          WG3G_,                                      SIM_CLK);
+    nor_2 #(1'b0) NOR51444(NOR51444_out,    WL04_,          WG4G_,                                      SIM_CLK);
+    nor_2 #(1'b0) NOR51445(NOR51445_out,    L2GDG_,         L02_,                                       SIM_CLK);
+    nor_2 #(1'b0) NOR51446(NOR51446_out,    WG1G_,          WL03_,                                      SIM_CLK);
+    
+    nor_4 #(1'b0) NOR51447(NOR51447_out,    SA03,           NOR51443_out,   NOR51444_out,   G03ED,      SIM_CLK);
+    // NOR51263 merged with NOR51447
+    nor_3 #(1'b0) NOR51448(NOR51448_out,    NOR51445_out,   NOR51446_out,   G03,                        SIM_CLK);
+    assign G03_ = NOR51447_out & NOR51448_out;
+    nor_2 #(1'b0) NOR51449(G03,             G03_,           CGG,                                        SIM_CLK);
+    
+    nor_1 #(1'b0) NOR51450(GEM03,           G03_,                                                       SIM_CLK);
+    nor_2 #(1'b0) NOR51451(NOR51451_out,    RGG_,           G03_,                                       SIM_CLK);
+    
+    // RL03_ part 3
+    // Cross-module fan-in, connected to A15
+    nor_3 #(1'b0) NOR51457(A08_3_RL03_,     NOR51441_out,   NOR51442_out,   NOR51451_out,               SIM_CLK);
+    
+    // RL03_ part 4
+    // Cross-module fan-in,  to A15
+    nor_3 #(1'b0) NOR51458(A08_4_RL03_,     MDT03,          R1C,            R15,                        SIM_CLK);
+    
+    // WL03
+    nor_1 #(1'b0) NOR51452(WL03,            RL03_,                                                      SIM_CLK);
+    
+    // MWL03
+    nor_1 #(1'b0) NOR51453(NOR51453_out,    RL03_,                                                      SIM_CLK);
+    assign MWL03 = NOR51453_out;
+    
+    // WL03_
+    nor_1 #(1'b0) NOR51454(WL03_,           WL03,                                                       SIM_CLK);
+    // NOR51455 and NOR51456 omitted
+    
+    // CLEARB
+    nor_2 #(1'b0) NOR51461(CLEARB,          SETAB_,         S08A,                                       SIM_CLK);
+    
+    
+    // Bit column 4
+    
+    // CO06
+    // No cross-module fan-in
+    nor_2 #(1'b0) NOR51301(NOR51301_out,    XUY06_,         XUY04_,                                     SIM_CLK);
+    assign CO06 = NOR51401_out & NOR51301_out;
+    
+    
     
     
 endmodule
