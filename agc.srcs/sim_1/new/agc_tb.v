@@ -269,8 +269,6 @@ module agc_tb();
 	wire A06_2_n8PP4;
 	wire A06_3_RU_;
 	wire A06_3_n8PP4;
-	wire A08_1_CO04;
-	wire A08_2_CO04;
 	wire A2XG_;
 	wire A2X_;
 	wire AD0;
@@ -336,7 +334,6 @@ module agc_tb();
 	wire CLG2G;
 	wire CLK;
 	wire CLXC;
-	wire CO04;
 	wire CO06;
 	wire CQG;
 	wire CSG;
@@ -2232,8 +2229,6 @@ module agc_tb();
 		WL04,
 		WL04_,
 		MWL04,
-		A08_1_CO04,
-		A08_2_CO04,
 		CO06,
 		CI05_,
 		XUY01_,
@@ -2267,7 +2262,6 @@ module agc_tb();
 
 	assign A2X_ = A05_1_A2X_ & A05_2_A2X_ & A06_1_A2X_;
 	assign CI_ = A04_1_CI_ & A05_1_CI_ & A05_2_CI_ & A06_1_CI_;
-	assign CO04 = A08_1_CO04 & A08_2_CO04;
 	assign L16_ = A04_1_L16_;
 	assign MONEX_ = A05_1_MONEX_ & A06_1_MONEX_;
 	assign R1C_ = A04_1_R1C_ & A06_1_R1C_;

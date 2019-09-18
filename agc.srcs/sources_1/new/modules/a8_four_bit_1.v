@@ -26,7 +26,7 @@ module a8_four_bit_1(
     
     // outputs
     WL01, WL01_, MWL01, WL02, WL02_, MWL02, WL03, WL03_, MWL03, WL04, WL04_, MWL04,
-    A08_1_CO04, A08_2_CO04, CO06,
+    CO06,
     CI05_,
     XUY01_, XUY02_,
     SUMA01_, SUMB01_, SUMA02_, SUMB02_, SUMA03_, SUMB03_, SUMA04_, SUMB04_,
@@ -63,7 +63,7 @@ module a8_four_bit_1(
     input wire RB1F, R6, RPTAD3, RPTAD4;
     
     output wire WL01, WL01_, MWL01, WL02, WL02_, MWL02, WL03, WL03_, MWL03, WL04, WL04_, MWL04;
-    output wire A08_1_CO04, A08_2_CO04, CO06;
+    output wire CO06;
     output wire CI05_;
     output wire XUY01_, XUY02_;
     output wire SUMA01_, SUMB01_, SUMA02_, SUMB02_, SUMA03_, SUMB03_, SUMA04_, SUMB04_;
@@ -315,8 +315,8 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51118(NOR51118_out,    WAG_,           WL01_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51119(NOR51119_out,    WL03_,          WALSG_,                                     SIM_CLK);
     
-    nor_3 #(1'b0) NOR51120(A01_,            NOR51118_out,   NOR51119_out,   NOR51121_out,               SIM_CLK);
-    nor_2 #(1'b0) NOR51121(NOR51121_out,    CAG,                                                        SIM_CLK);
+    nor_3 #(1'b1) NOR51120(A01_,            NOR51118_out,   NOR51119_out,   NOR51121_out,               SIM_CLK);
+    nor_2 #(1'b0) NOR51121(NOR51121_out,    A01_,           CAG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51122(NOR51122_out,    RAG_,           A01_,                                       SIM_CLK);
     

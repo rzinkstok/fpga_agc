@@ -6,7 +6,7 @@ BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
 SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new")
 MODULES_SOURCE_FOLDER = os.path.join(SOURCE_FOLDER, "modules")
-SIM_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sim_1", "new")
+SIM_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs")
 
 MODULE_ARGS_START_RE = re.compile(r"^module [A-Za-z0-9\_]+\(")
 MODULE_ARGS_END_RE = re.compile(r"^\);")
@@ -228,12 +228,12 @@ def write_commands(fp):
     write_command_cycle(fp, ext, sq, qc, sq10, st)
 
 
-def write_wrapper(module_params, input_wires, output_wires, testbench=False):
-    if testbench:
-        wrapper_name = "agc_tb"
-        filepath = os.path.join(SIM_SOURCE_FOLDER, f"{wrapper_name}.v")
+def write_wrapper(module_params, input_wires, output_wires, sim_name=None, sim_code=False, wrapper_name=None):
+    if sim_name:
+        wrapper_name = wrapper_name or "agc_tb"
+        filepath = os.path.join(SIM_SOURCE_FOLDER, sim_name, "new", f"{wrapper_name}.v")
     else:
-        wrapper_name = "agc"
+        wrapper_name = wrapper_name or "agc"
         filepath = os.path.join(SOURCE_FOLDER, f"{wrapper_name}.v")
 
     cross_module_signals = {}
@@ -288,17 +288,17 @@ def write_wrapper(module_params, input_wires, output_wires, testbench=False):
                 fp.write("\n")
             fp.write("\t);\n\n")
 
-
         for signal in sorted(cross_module_signals.keys()):
             fp.write(f"\tassign {signal} = ")
             fp.write(" & ".join(sorted(cross_module_signals[signal])))
             fp.write(";\n")
         fp.write("\n")
 
-        if testbench:
+        if sim_name:
             fp.write("\tinitial\n")
             fp.write("\tbegin\n")
-            write_commands(fp)
+            if sim_code:
+                write_commands(fp)
             fp.write("\t\t$stop;\n")
             fp.write("\tend\n\n")
 
@@ -317,5 +317,14 @@ if __name__ == "__main__":
         input_wires.update(inputs)
         output_wires.update(outputs)
 
-    write_wrapper(module_params, input_wires, output_wires, testbench=False)
-    write_wrapper(module_params, input_wires, output_wires, testbench=True)
+    write_wrapper(module_params, input_wires, output_wires)
+    write_wrapper(module_params, input_wires, output_wires, sim_name="sim_1", sim_code=True)
+
+    module_params = {}
+    input_wires = set()
+    output_wires = set()
+    module_name, params, inputs, outputs = read_module("a8_four_bit_1.v")
+    module_params[module_name] = params
+    input_wires.update(inputs)
+    output_wires.update(outputs)
+    write_wrapper(module_params, input_wires, output_wires, sim_name="a8_sim", wrapper_name="a8_four_bit_1_tb")
