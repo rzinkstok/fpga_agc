@@ -31,7 +31,7 @@ module a8_four_bit_1(
     XUY01_, XUY02_,
     SUMA01_, SUMB01_, SUMA02_, SUMB02_, SUMA03_, SUMB03_, SUMA04_, SUMB04_,
     G01, G01_, GEM01, G02, GEM02, G03, GEM03, G04, GEM04,
-    L01_, L02_, L04_,
+    L01_, L02_, L03_, L04_,
     CLEARA, CLEARB, CLEARC, CLEARD,
     
     //input
@@ -68,7 +68,7 @@ module a8_four_bit_1(
     output wire XUY01_, XUY02_;
     output wire SUMA01_, SUMB01_, SUMA02_, SUMB02_, SUMA03_, SUMB03_, SUMA04_, SUMB04_;
     output wire G01, G01_, GEM01, G02, GEM02, G03, GEM03, G04, GEM04;
-    output wire L01_, L02_, L04_;
+    output wire L01_, L02_, L03_, L04_;
     output wire CLEARA, CLEARB, CLEARC, CLEARD;
     
     /**************************
@@ -273,7 +273,6 @@ module a8_four_bit_1(
     wire CO04;
     wire Z01_, Z02_, Z03_, Z04_;
     wire G02_, G03_, G04_;
-    wire L03_;
     wire S08A, S08A_;
     
     // Bit column 1
@@ -700,7 +699,7 @@ module a8_four_bit_1(
     // X register flip-flop
     nor_2 #(1'b0) NOR51302(NOR51302_out,    A2XG_,          A04_,                                       SIM_CLK);
     
-    nor_3 #(1'b1) NOR51303(NOR51303_out,    MONEX,          NOR51304_out,                               SIM_CLK);
+    nor_3 #(1'b1) NOR51303(NOR51303_out,    MONEX,          NOR51302_out,   NOR51304_out,               SIM_CLK);
     nor_3 #(1'b0) NOR51304(NOR51304_out,    NOR51303_out,   CLXC,           CUG,                        SIM_CLK);
     
     // Y register flip-flop

@@ -8,6 +8,7 @@ MODULES_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new", "m
 MODULE_RE = re.compile(r"^([a,b]\d\d?)\_")
 GATE_RE = re.compile(r"NOR(\d\d\d\d\d)\(")
 GATE_NAME_RE = re.compile(r"NOR(\d\d\d\d\d)\(NOR(\d\d\d\d\d)_out")
+GATE_ARG_RE = re.compile(r"nor_(\d)\s+#\(1'b[0,1]\)\s+NOR\d\d\d\d\d\(([a-zA-Z0-9\s\,\_]+)\);")
 
 MODULE_HEADER_RE = re.compile(r"^Module ([a,b,A,B]\d\d?)")
 GATE_ADDED_RE = re.compile(r"^(\d\d\d\d\d) added")
@@ -99,6 +100,7 @@ def read_gates_from_schematics():
 
 
 def check_names():
+    status = True
     for filename in os.listdir(MODULES_SOURCE_FOLDER):
         filepath = os.path.join(MODULES_SOURCE_FOLDER, filename)
         res = MODULE_RE.search(filename)
@@ -116,10 +118,41 @@ def check_names():
                     gate_number2 = res.groups()[1]
                     if gate_number1 != gate_number2:
                         print(f"Module {module} gate {gate_number1} output signal is named {gate_number2}")
+                        status = False
+    return status
+
+
+def check_arguments():
+    status = True
+    for filename in os.listdir(MODULES_SOURCE_FOLDER):
+        filepath = os.path.join(MODULES_SOURCE_FOLDER, filename)
+        res = MODULE_RE.search(filename)
+        if not res:
+            print(f"Invalid filename: {filename}")
+            continue
+        module = res.groups()[0].upper()
+
+        with open(filepath, "r") as fp:
+            for l in fp.readlines():
+                l = l.split("//")[0]
+                res = GATE_ARG_RE.search(l);
+                if res:
+                    multiplicity = int(res.groups()[0])
+                    args = [x.strip() for x in res.groups()[1].split(",")]
+                    if(len(args) != multiplicity + 2):
+                        res = GATE_NAME_RE.search(l)
+                        gate_number = res.groups()[0]
+
+                        print(f"Module {module} gate {gate_number} has incorrect number of arguments")
+                        status = False
+    return status
 
 
 if __name__ == "__main__":
-    check_names()
+    import sys
+    if (not check_names()) or (not check_arguments()):
+        sys.exit()
+
     gates_schematics = read_gates_from_schematics()
     gates_source = read_gates_from_source()
     print()

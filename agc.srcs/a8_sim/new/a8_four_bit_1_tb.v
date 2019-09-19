@@ -102,6 +102,7 @@ module a8_four_bit_1_tb();
 	wire GEM04;
 	wire L01_;
 	wire L02_;
+	wire L03_;
 	wire L04_;
 	wire MWL01;
 	wire MWL02;
@@ -246,6 +247,7 @@ module a8_four_bit_1_tb();
 		GEM04,
 		L01_,
 		L02_,
+		L03_,
 		L04_,
 		CLEARA,
 		CLEARB,
@@ -291,8 +293,9 @@ module a8_four_bit_1_tb();
 	   #100 CAG = 0;
 	   
 	   // Register L write test 2
-	   #800 CLG1G = 1;
+	   #900 CLG1G = 1;
 	   #100 CLG1G = 0;
+	   #100
 	   begin
 	       SA04 = 1;
 	       force G05_ = 0;
@@ -354,7 +357,7 @@ module a8_four_bit_1_tb();
 	   #100 CZG = 0;
 	   #900
 	    
-	   // Register B read test / register G read test
+	   // Register B read test / register G write test
 	   #100 RBLG_ = 0;
 	   #900 WG1G_ = 0;
 	   #100
@@ -363,7 +366,84 @@ module a8_four_bit_1_tb();
 	       WG1G_ = 1;
 	   end
 	   
+	   // Register B clear test
+	   #100 CBG = 1;
+	   #100 CBG = 0;
 	   
+	   // Register G write test 2
+	   #900 CGG = 1;
+	   #100 CGG = 0;
+	   #100
+	   begin
+	       force WL16_ = 0;
+	       force WL01 = 1;
+	       force WL02 = 1;
+	       force WL03 = 1;
+	       WG3G_ = 0;
+	   end
+	   #100
+	   begin
+	       release WL16_;
+	       release WL01;
+	       release WL02;
+	       release WL03;
+	       WG3G_ = 1;
+	   end
+	   
+	   // Register G write test 3
+	   #900 CGG = 1;
+	   #100 CGG = 0;
+	   #100
+	   begin
+	       force WL02 = 1;
+	       force WL03 = 1;
+	       force WL04 = 1;
+	       force WL05_ = 0;
+	       WG4G_ = 0;
+	   end
+	   #100
+	   begin
+	       release WL02;
+	       release WL03;
+	       release WL04;
+	       release WL05_;
+	       WG4G_ = 1;
+	   end
+	   
+	   // Register G write test 4
+	   #900 CGG = 1;
+	   #100 CGG = 0;
+	   #100
+	   begin
+	       MCRO_ = 0;
+	       force L01_ = 0;
+	       force L02_ = 0;
+	       force L03_ = 0;
+	       L2GDG_ = 0;
+	   end
+	   #100
+	   begin
+	       MCRO_ = 1;
+	       release L01_;
+	       release L02_;
+	       release L03_;
+	       L2GDG_ = 1;
+	   end
+	   #900
+	   
+	   // Register G read test / register Y write test
+	   #100 RGG_ = 0;
+	   #900 WYLOG_ = 0;
+	   #100 
+	   begin
+	       RGG_ = 1;
+	       WYLOG_ = 1;
+	   end
+	   
+	   // Register G clear test
+	   #100 CGG = 1;
+	   #100 CGG = 0;
+	   #900 
 	   
 	   #1000 $stop;
 	end

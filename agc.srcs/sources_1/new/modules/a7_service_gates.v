@@ -431,7 +431,7 @@ module a7_service_gates(
     nor_2 #(1'b1) NOR33308(WFBG_,           NOR33312_out,   NOR33307_out,                           SIM_CLK);
     // NOR33309 merged with NOR33308
     // Monitor output, no cross-module fan-out
-    nor_2 #(1'b0) NOR33311(NOR33311_out,    WFBG_,                                                  SIM_CLK);
+    nor_1 #(1'b0) NOR33311(NOR33311_out,    WFBG_,                                                  SIM_CLK);
     assign MWFBG = NOR33311_out;
     
     // WBBEG_, MWBBEG
