@@ -257,18 +257,115 @@ module a8_four_bit_1_tb();
 
 	initial
 	begin
-	   #100
+	   #1000
+	   
+	   // Register A write test
 	   begin
 	       force WL01 = 1;
+	       force WL02 = 1;
+	       force WL03 = 1;
+	       force WL04 = 1;
 	       WAG_ = 0;
 	   end
 	   #100
 	   begin
 	       release WL01;
+	       release WL02;
+	       release WL03;
+	       release WL04;
 	       WAG_ = 1;
 	   end
+	   #900
 	   
-	   #10000 $stop;
+	   // Register A read test / register L write test
+	   #100 RAG_ = 0;
+	   #900 WLG_ = 0;
+	   #100
+	   begin
+	       RAG_ = 1;
+	       WLG_ = 1;
+	   end
+	   
+	   // Register A clear test
+	   #100 CAG = 1;
+	   #100 CAG = 0;
+	   
+	   // Register L write test 2
+	   #800 CLG1G = 1;
+	   #100 CLG1G = 0;
+	   begin
+	       SA04 = 1;
+	       force G05_ = 0;
+	       force G06_ = 0;
+	       force G07_ = 0;
+	       G2LSG_ = 0;
+	   end
+	   #100
+	   begin
+	       SA04 = 0;
+	       release G05_;
+	       release G06_;
+	       release G07_;
+	       G2LSG_ = 1;
+	   end
+	   #100 CGG = 1; 
+	   #100 CGG = 0;
+	   #700
+	   
+	   // Register L read test / register Q write test
+	   #100 RLG_ = 0;
+	   #900 WQG_ = 0;
+	   #100
+	   begin
+	       RLG_ = 1;
+	       WQG_ = 1;
+	   end
+	       
+	   // Register L clear test
+	   #100 CLG1G = 1;
+	   #100 CLG1G = 0;
+	   #900
+	   
+	   // Register Q read test / register Z write test
+	   #100 RQG_ = 0;
+	   #900 WZG_ = 0;
+	   #100 
+	   begin
+	       RQG_ = 1;
+	       WZG_ = 1;
+	   end
+	   
+	   // Register Q clear test
+	   #100 CQG = 1;
+	   #100 CQG = 0;
+	   #900 
+	   
+	   // Register Z read test / register B write test
+	   #100 RZG_ = 0;
+	   #900 WBG_ = 0;
+	   #100
+	   begin
+	       RZG_ = 1;
+	       WBG_ = 1;
+	   end
+	   
+	   // Register Z clear test
+	   #100 CZG = 1;
+	   #100 CZG = 0;
+	   #900
+	    
+	   // Register B read test / register G read test
+	   #100 RBLG_ = 0;
+	   #900 WG1G_ = 0;
+	   #100
+	   begin
+	       RBLG_ = 1;
+	       WG1G_ = 1;
+	   end
+	   
+	   
+	   
+	   #1000 $stop;
 	end
 
 endmodule

@@ -285,14 +285,14 @@ module a8_four_bit_1(
     // X flip-flop
     nor_2 #(1'b0) NOR51102(NOR51102_out,    A2XG_,          A01_,                                       SIM_CLK);
     
-    nor_3 #(1'b0) NOR51103(NOR51103_out,    PONEX,          NOR51102_out,   NOR51104_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51103(NOR51103_out,    PONEX,          NOR51102_out,   NOR51104_out,               SIM_CLK);
     nor_3 #(1'b0) NOR51104(NOR51104_out,    NOR51103_out,   CLXC,           CUG,                        SIM_CLK);
     
     // Y flip-flop
     nor_2 #(1'b0) NOR51105(NOR51105_out,    WYLOG_,         WL01_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51106(NOR51106_out,    WL16_,          WYDLOG_,                                    SIM_CLK);
     
-    nor_3 #(1'b0) NOR51107(NOR51107_out,    NOR51105_out,   NOR51106_out,   NOR51108_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51107(NOR51107_out,    NOR51105_out,   NOR51106_out,   NOR51108_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51108(NOR51108_out,    NOR51107_out,   CUG,                                        SIM_CLK);
     
     // Adder
@@ -328,7 +328,7 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51124(NOR51124_out,    WLG_,           WL01_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51125(NOR51125_out,    G04_,           G2LSG_,                                     SIM_CLK);
     
-    nor_3 #(1'b0) NOR51126(L01_,            NOR51124_out,   NOR51125_out,   NOR51127_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51126(L01_,            NOR51124_out,   NOR51125_out,   NOR51127_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51127(NOR51127_out,    L01_,           CLG1G,                                      SIM_CLK);
     
     nor_2 #(1'b0) NOR51128(NOR51128_out,    RLG_,           L01_,                                       SIM_CLK);
@@ -336,7 +336,7 @@ module a8_four_bit_1(
     // Q register flip-flop
     nor_2 #(1'b0) NOR51129(NOR51129_out,    WQG_,           WL01_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51130(NOR51130_out,    NOR51129_out,   NOR51131_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51130(NOR51130_out,    NOR51129_out,   NOR51131_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51131(NOR51131_out,    NOR51130_out,   CQG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51132(NOR51132_out,    RQG_,           NOR51130_out,                               SIM_CLK);
@@ -344,7 +344,7 @@ module a8_four_bit_1(
     // Z register flip-flop
     nor_2 #(1'b0) NOR51134(NOR51134_out,    WZG_,           WL01_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51135(Z01_,            NOR51134_out,   NOR51136_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51135(Z01_,            NOR51134_out,   NOR51136_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51136(NOR51136_out,    Z01_,           CZG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51137(NOR51137_out,    RZG_,           Z01_,                                       SIM_CLK);
@@ -356,7 +356,7 @@ module a8_four_bit_1(
     // B register flip-flop
     nor_2 #(1'b0) NOR51138(NOR51138_out,    WBG_,           WL01_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51139(NOR51139_out,    NOR51138_out,   NOR51130_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51139(NOR51139_out,    NOR51138_out,   NOR51140_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51140(NOR51140_out,    NOR51139_out,   CBG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51141(NOR51141_out,    RBLG_,          NOR51139_out,                               SIM_CLK);
@@ -368,9 +368,9 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51145(NOR51145_out,    L2GDG_,         MCRO_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51146(NOR51146_out,    WG1G_,          WL01_,                                      SIM_CLK);
     
-    nor_4 #(1'b0) NOR51147(NOR51147_out,    SA01,           NOR51143_out,   NOR51144_out,   G01ED,      SIM_CLK);
+    nor_4 #(1'b1) NOR51147(NOR51147_out,    SA01,           NOR51143_out,   NOR51144_out,   G01ED,      SIM_CLK);
     // NOR51162 merged into NOR51147
-    nor_3 #(1'b0) NOR51148(NOR51148_out,    NOR51145_out,   NOR51146_out,   G01,                        SIM_CLK);
+    nor_3 #(1'b1) NOR51148(NOR51148_out,    NOR51145_out,   NOR51146_out,   G01,                        SIM_CLK);
     assign G01_ = NOR51147_out & NOR51148_out;
     nor_2 #(1'b0) NOR51149(G01,             G01_,           CGG,                                        SIM_CLK);
     
@@ -422,14 +422,14 @@ module a8_four_bit_1(
     // X flip-flop
     nor_2 #(1'b0) NOR51202(NOR51202_out,    A2XG_,          A02_,                                       SIM_CLK);
     
-    nor_3 #(1'b0) NOR51203(NOR51203_out,    TWOX,           NOR51202_out,   NOR51204_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51203(NOR51203_out,    TWOX,           NOR51202_out,   NOR51204_out,               SIM_CLK);
     nor_3 #(1'b0) NOR51204(NOR51204_out,    NOR51203_out,   CLXC,           CUG,                        SIM_CLK);
     
     // Y flip-flop
     nor_2 #(1'b0) NOR51205(NOR51205_out,    WYLOG_,         WL02_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51206(NOR51206_out,    WL01_,          WYDG_,                                      SIM_CLK);
     
-    nor_3 #(1'b0) NOR51207(NOR51207_out,    NOR51205_out,   NOR51206_out,   NOR51208_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51207(NOR51207_out,    NOR51205_out,   NOR51206_out,   NOR51208_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51208(NOR51208_out,    NOR51207_out,   CUG,                                        SIM_CLK);
     
     // Adder
@@ -453,7 +453,7 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51218(NOR51218_out,    WAG_,           WL02_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51219(NOR51219_out,    WL04_,          WALSG_,                                     SIM_CLK);
     
-    nor_3 #(1'b0) NOR51220(A02_,            NOR51218_out,   NOR51219_out,   NOR51221_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51220(A02_,            NOR51218_out,   NOR51219_out,   NOR51221_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51221(NOR51221_out,    A02_,           CAG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51222(NOR51222_out,    RAG_,           A02_,                                       SIM_CLK);
@@ -466,7 +466,7 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51224(NOR51224_out,    WLG_,           WL02_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51225(NOR51225_out,    G05_,           G2LSG_,                                     SIM_CLK);
     
-    nor_3 #(1'b0) NOR51226(L02_,            NOR51224_out,   NOR51225_out,   NOR51227_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51226(L02_,            NOR51224_out,   NOR51225_out,   NOR51227_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51227(NOR51227_out,    L02_,           CLG1G,                                      SIM_CLK);
     
     nor_2 #(1'b0) NOR51228(NOR51228_out,    RLG_,           L02_,                                       SIM_CLK);
@@ -474,7 +474,7 @@ module a8_four_bit_1(
     // Q register flip-flop
     nor_2 #(1'b0) NOR51229(NOR51229_out,    WQG_,           WL02_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51230(NOR51230_out,    NOR51229_out,   NOR51231_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51230(NOR51230_out,    NOR51229_out,   NOR51231_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51231(NOR51231_out,    NOR51230_out,   CQG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51232(NOR51232_out,    RQG_,           NOR51230_out,                               SIM_CLK);
@@ -482,7 +482,7 @@ module a8_four_bit_1(
     // Z register flip-flop
     nor_2 #(1'b0) NOR51234(NOR51234_out,    WZG_,           WL02_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51235(Z02_,            NOR51234_out,   NOR51236_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51235(Z02_,            NOR51234_out,   NOR51236_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51236(NOR51236_out,    Z02_,           CZG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51237(NOR51237_out,    RZG_,           Z02_,                                       SIM_CLK);
@@ -494,7 +494,7 @@ module a8_four_bit_1(
     // B register flip-flop
     nor_2 #(1'b0) NOR51238(NOR51238_out,    WBG_,           WL02_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51239(NOR51239_out,    NOR51238_out,   NOR51240_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51239(NOR51239_out,    NOR51238_out,   NOR51240_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51240(NOR51240_out,    NOR51239_out,   CBG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51241(NOR51241_out,    RBLG_,          NOR51239_out,                               SIM_CLK);
@@ -506,8 +506,8 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51245(NOR51245_out,    L2GDG_,         L01_,                                       SIM_CLK);
     nor_2 #(1'b0) NOR51246(NOR51246_out,    WG1G_,          WL02_,                                      SIM_CLK);
     
-    nor_4 #(1'b0) NOR51247(NOR51247_out,    SA02,           NOR51243_out,   NOR51244_out,   G02ED,      SIM_CLK);
-    nor_3 #(1'b0) NOR51248(NOR51248_out,    NOR51245_out,   NOR51246_out,   G02,                        SIM_CLK);
+    nor_4 #(1'b1) NOR51247(NOR51247_out,    SA02,           NOR51243_out,   NOR51244_out,   G02ED,      SIM_CLK);
+    nor_3 #(1'b1) NOR51248(NOR51248_out,    NOR51245_out,   NOR51246_out,   G02,                        SIM_CLK);
     assign G02_ = NOR51247_out & NOR51248_out;
     nor_2 #(1'b0) NOR51249(G02,             G02_,           CGG,                                        SIM_CLK);
     
@@ -564,14 +564,14 @@ module a8_four_bit_1(
     // X register flip-flop
     nor_2 #(1'b0) NOR51402(NOR51402_out,    A2XG_,          A03_,                                       SIM_CLK);
     
-    nor_3 #(1'b0) NOR51403(NOR51403_out,    MONEX,          NOR51402_out,   NOR51404_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51403(NOR51403_out,    MONEX,          NOR51402_out,   NOR51404_out,               SIM_CLK);
     nor_3 #(1'b0) NOR51404(NOR51404_out,    NOR51403_out,   CLXC,           CUG,                        SIM_CLK);
     
     // Y register flip-flop
     nor_2 #(1'b0) NOR51405(NOR51405_out,    WYLOG_,         WL03_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51406(NOR51406_out,    WL02_,          WYDG_,                                      SIM_CLK);
     
-    nor_3 #(1'b0) NOR51407(NOR51407_out,    NOR51405_out,   NOR51406_out,   NOR51408_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51407(NOR51407_out,    NOR51405_out,   NOR51406_out,   NOR51408_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51408(NOR51408_out,    NOR51407_out,   CUG,                                        SIM_CLK);
     
     // Adder
@@ -592,7 +592,7 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51418(NOR51418_out,    WAG_,           WL03_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51419(NOR51419_out,    WL05_,          WALSG_,                                     SIM_CLK);
     
-    nor_3 #(1'b0) NOR51420(A03_,            NOR51418_out,   NOR51419_out,   NOR51421_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51420(A03_,            NOR51418_out,   NOR51419_out,   NOR51421_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51421(NOR51421_out,    A03_,           CAG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51422(NOR51422_out,    RAG_,           A03_,                                       SIM_CLK);
@@ -605,7 +605,7 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51424(NOR51424_out,    WLG_,           WL03_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51425(NOR51425_out,    G06_,           G2LSG_,                                     SIM_CLK);
     
-    nor_3 #(1'b0) NOR51426(L03_,            NOR51424_out,   NOR51425_out,   NOR51427_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51426(L03_,            NOR51424_out,   NOR51425_out,   NOR51427_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51427(NOR51427_out,    L03_,           CLG1G,                                      SIM_CLK);
     
     nor_2 #(1'b0) NOR51428(NOR51428_out,    RLG_,           L03_,                                       SIM_CLK);
@@ -613,7 +613,7 @@ module a8_four_bit_1(
     // Q register flip-flop
     nor_2 #(1'b0) NOR51429(NOR51429_out,    WQG_,           WL03_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51430(NOR51430_out,    NOR51429_out,   NOR51431_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51430(NOR51430_out,    NOR51429_out,   NOR51431_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51431(NOR51431_out,    NOR51430_out,   CQG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51432(NOR51432_out,    RQG_,           NOR51430_out,                               SIM_CLK);
@@ -621,7 +621,7 @@ module a8_four_bit_1(
     // Z register flip-flop
     nor_2 #(1'b0) NOR51434(NOR51434_out,    WZG_,           WL03_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51435(Z03_,            NOR51434_out,   NOR51436_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51435(Z03_,            NOR51434_out,   NOR51436_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51436(NOR51436_out,    Z03_,           CZG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51437(NOR51437_out,    RZG_,           Z03_,                                       SIM_CLK);
@@ -633,7 +633,7 @@ module a8_four_bit_1(
     // B register flip-flop
     nor_2 #(1'b0) NOR51438(NOR51438_out,    WBG_,           WL03_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51439(NOR51439_out,    NOR51438_out,   NOR51440_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51439(NOR51439_out,    NOR51438_out,   NOR51440_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51440(NOR51440_out,    NOR51439_out,   CBG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51441(NOR51441_out,    RBLG_,          NOR51439_out,                               SIM_CLK);
@@ -645,9 +645,9 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51445(NOR51445_out,    L2GDG_,         L02_,                                       SIM_CLK);
     nor_2 #(1'b0) NOR51446(NOR51446_out,    WG1G_,          WL03_,                                      SIM_CLK);
     
-    nor_4 #(1'b0) NOR51447(NOR51447_out,    SA03,           NOR51443_out,   NOR51444_out,   G03ED,      SIM_CLK);
+    nor_4 #(1'b1) NOR51447(NOR51447_out,    SA03,           NOR51443_out,   NOR51444_out,   G03ED,      SIM_CLK);
     // NOR51263 merged with NOR51447
-    nor_3 #(1'b0) NOR51448(NOR51448_out,    NOR51445_out,   NOR51446_out,   G03,                        SIM_CLK);
+    nor_3 #(1'b1) NOR51448(NOR51448_out,    NOR51445_out,   NOR51446_out,   G03,                        SIM_CLK);
     assign G03_ = NOR51447_out & NOR51448_out;
     nor_2 #(1'b0) NOR51449(G03,             G03_,           CGG,                                        SIM_CLK);
     
@@ -700,14 +700,14 @@ module a8_four_bit_1(
     // X register flip-flop
     nor_2 #(1'b0) NOR51302(NOR51302_out,    A2XG_,          A04_,                                       SIM_CLK);
     
-    nor_3 #(1'b0) NOR51303(NOR51303_out,    MONEX,          NOR51304_out,                               SIM_CLK);
+    nor_3 #(1'b1) NOR51303(NOR51303_out,    MONEX,          NOR51304_out,                               SIM_CLK);
     nor_3 #(1'b0) NOR51304(NOR51304_out,    NOR51303_out,   CLXC,           CUG,                        SIM_CLK);
     
     // Y register flip-flop
     nor_2 #(1'b0) NOR51305(NOR51305_out,    WYLOG_,         WL04_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51306(NOR51306_out,    WL03_,          WYDG_,                                      SIM_CLK);
     
-    nor_3 #(1'b0) NOR51307(NOR51307_out,    NOR51305_out,   NOR51306_out,   NOR51308_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51307(NOR51307_out,    NOR51305_out,   NOR51306_out,   NOR51308_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51308(NOR51308_out,    NOR51307_out,   CUG,                                        SIM_CLK);
     
     // Adder
@@ -729,7 +729,7 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51318(NOR51318_out,    WAG_,           WL04_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51319(NOR51319_out,    WL06_,          WALSG_,                                     SIM_CLK);
     
-    nor_3 #(1'b0) NOR51320(A04_,            NOR51318_out,   NOR51319_out,   NOR51321_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51320(A04_,            NOR51318_out,   NOR51319_out,   NOR51321_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51321(NOR51321_out,    A04_,           CAG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51322(NOR51322_out,    RAG_,           A04_,                                       SIM_CLK);
@@ -742,7 +742,7 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51324(NOR51324_out,    WLG_,           WL04_,                                      SIM_CLK);
     nor_2 #(1'b0) NOR51325(NOR51325_out,    G07_,           G2LSG_,                                     SIM_CLK);
     
-    nor_3 #(1'b0) NOR51326(L04_,            NOR51324_out,   NOR51325_out,   NOR51327_out,               SIM_CLK);
+    nor_3 #(1'b1) NOR51326(L04_,            NOR51324_out,   NOR51325_out,   NOR51327_out,               SIM_CLK);
     nor_2 #(1'b0) NOR51327(NOR51327_out,    L04_,           CLG1G,                                      SIM_CLK);
     
     nor_2 #(1'b0) NOR51328(NOR51328_out,    RLG_,           L04_,                                       SIM_CLK);
@@ -750,7 +750,7 @@ module a8_four_bit_1(
     // Q register flip-flop
     nor_2 #(1'b0) NOR51329(NOR51329_out,    WQG_,           WL04_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51330(NOR51330_out,    NOR51329_out,   NOR51331_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51330(NOR51330_out,    NOR51329_out,   NOR51331_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51331(NOR51331_out,    NOR51330_out,   CQG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51332(NOR51332_out,    RQG_,           NOR51330_out,                               SIM_CLK);
@@ -758,7 +758,7 @@ module a8_four_bit_1(
     // Z register flip-flop
     nor_2 #(1'b0) NOR51334(NOR51334_out,    WZG_,           WL04_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51335(Z04_,            NOR51334_out,   NOR51336_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51335(Z04_,            NOR51334_out,   NOR51336_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51336(NOR51336_out,    Z04_,           CZG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51337(NOR51337_out,    RZG_,           Z04_,                                       SIM_CLK);
@@ -770,7 +770,7 @@ module a8_four_bit_1(
     // B register flip-flop
     nor_2 #(1'b0) NOR51338(NOR51338_out,    WBG_,           WL04_,                                      SIM_CLK);
     
-    nor_2 #(1'b0) NOR51339(NOR51339_out,    NOR51338_out,   NOR51340_out,                               SIM_CLK);
+    nor_2 #(1'b1) NOR51339(NOR51339_out,    NOR51338_out,   NOR51340_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR51340(NOR51340_out,    NOR51339_out,   CBG,                                        SIM_CLK);
     
     nor_2 #(1'b0) NOR51341(NOR51341_out,    RBLG_,          NOR51339_out,                               SIM_CLK);
@@ -782,9 +782,9 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51345(NOR51345_out,    L2GDG_,         L03_,                                       SIM_CLK);
     nor_2 #(1'b0) NOR51346(NOR51346_out,    WG1G_,          WL04_,                                      SIM_CLK);
     
-    nor_4 #(1'b0) NOR51347(NOR51347_out,    SA04,           NOR51343_out,   NOR51344_out,   G04ED,      SIM_CLK);
+    nor_4 #(1'b1) NOR51347(NOR51347_out,    SA04,           NOR51343_out,   NOR51344_out,   G04ED,      SIM_CLK);
     // NOR51462 merged into NOR51347
-    nor_3 #(1'b0) NOR51348(NOR51348_out,    NOR51345_out,   NOR51346_out,   G04,                        SIM_CLK);
+    nor_3 #(1'b1) NOR51348(NOR51348_out,    NOR51345_out,   NOR51346_out,   G04,                        SIM_CLK);
     assign G04_ = NOR51347_out & NOR51348_out;
     nor_2 #(1'b0) NOR51349(G04,             G04_,           CGG,                                        SIM_CLK);
     

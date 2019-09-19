@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="a8_four_bit_1_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="a8_four_bit_1_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="3233333333fs"></ZoomStartTime>
+      <ZoomEndTime time="16033333334fs"></ZoomEndTime>
+      <Cursor1Time time="13900000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="204"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="11" />
+   <wvobject fp_name="/a8_four_bit_1_tb/SIM_CLK" type="logic">
+      <obj_property name="ElementShortName">SIM_CLK</obj_property>
+      <obj_property name="ObjectShortName">SIM_CLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/a8_four_bit_1_tb/WL01" type="logic">
+      <obj_property name="ElementShortName">WL01</obj_property>
+      <obj_property name="ObjectShortName">WL01</obj_property>
+   </wvobject>
+   <wvobject fp_name="/a8_four_bit_1_tb/WL02" type="logic">
+      <obj_property name="ElementShortName">WL02</obj_property>
+      <obj_property name="ObjectShortName">WL02</obj_property>
+   </wvobject>
+   <wvobject fp_name="/a8_four_bit_1_tb/WL03" type="logic">
+      <obj_property name="ElementShortName">WL03</obj_property>
+      <obj_property name="ObjectShortName">WL03</obj_property>
+   </wvobject>
+   <wvobject fp_name="/a8_four_bit_1_tb/WL04" type="logic">
+      <obj_property name="ElementShortName">WL04</obj_property>
+      <obj_property name="ObjectShortName">WL04</obj_property>
+   </wvobject>
+   <wvobject fp_name="group927" type="group">
+      <obj_property name="label">A register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/a8_four_bit_1_tb/WAG_" type="logic">
+         <obj_property name="ElementShortName">WAG_</obj_property>
+         <obj_property name="ObjectShortName">WAG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/CAG" type="logic">
+         <obj_property name="ElementShortName">CAG</obj_property>
+         <obj_property name="ObjectShortName">CAG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/RAG_" type="logic">
+         <obj_property name="ElementShortName">RAG_</obj_property>
+         <obj_property name="ObjectShortName">RAG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/A01_" type="logic">
+         <obj_property name="ElementShortName">A01_</obj_property>
+         <obj_property name="ObjectShortName">A01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/A02_" type="logic">
+         <obj_property name="ElementShortName">A02_</obj_property>
+         <obj_property name="ObjectShortName">A02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/A03_" type="logic">
+         <obj_property name="ElementShortName">A03_</obj_property>
+         <obj_property name="ObjectShortName">A03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/A04_" type="logic">
+         <obj_property name="ElementShortName">A04_</obj_property>
+         <obj_property name="ObjectShortName">A04_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group929" type="group">
+      <obj_property name="label">L register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/a8_four_bit_1_tb/WLG_" type="logic">
+         <obj_property name="ElementShortName">WLG_</obj_property>
+         <obj_property name="ObjectShortName">WLG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/G2LSG_" type="logic">
+         <obj_property name="ElementShortName">G2LSG_</obj_property>
+         <obj_property name="ObjectShortName">G2LSG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/CLG1G" type="logic">
+         <obj_property name="ElementShortName">CLG1G</obj_property>
+         <obj_property name="ObjectShortName">CLG1G</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/RLG_" type="logic">
+         <obj_property name="ElementShortName">RLG_</obj_property>
+         <obj_property name="ObjectShortName">RLG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/L01_" type="logic">
+         <obj_property name="ElementShortName">L01_</obj_property>
+         <obj_property name="ObjectShortName">L01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/L02_" type="logic">
+         <obj_property name="ElementShortName">L02_</obj_property>
+         <obj_property name="ObjectShortName">L02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/L03_" type="logic">
+         <obj_property name="ElementShortName">L03_</obj_property>
+         <obj_property name="ObjectShortName">L03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/L04_" type="logic">
+         <obj_property name="ElementShortName">L04_</obj_property>
+         <obj_property name="ObjectShortName">L04_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group961" type="group">
+      <obj_property name="label">Q resister</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/WQG_" type="logic">
+         <obj_property name="ElementShortName">WQG_</obj_property>
+         <obj_property name="ObjectShortName">WQG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/CQG" type="logic">
+         <obj_property name="ElementShortName">CQG</obj_property>
+         <obj_property name="ObjectShortName">CQG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/RQG_" type="logic">
+         <obj_property name="ElementShortName">RQG_</obj_property>
+         <obj_property name="ObjectShortName">RQG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51130_out" type="logic">
+         <obj_property name="ElementShortName">NOR51130_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51130_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51230_out" type="logic">
+         <obj_property name="ElementShortName">NOR51230_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51230_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51430_out" type="logic">
+         <obj_property name="ElementShortName">NOR51430_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51430_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51330_out" type="logic">
+         <obj_property name="ElementShortName">NOR51330_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51330_out</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group969" type="group">
+      <obj_property name="label">Z register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/a8_four_bit_1_tb/WZG_" type="logic">
+         <obj_property name="ElementShortName">WZG_</obj_property>
+         <obj_property name="ObjectShortName">WZG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/CZG" type="logic">
+         <obj_property name="ElementShortName">CZG</obj_property>
+         <obj_property name="ObjectShortName">CZG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/RZG_" type="logic">
+         <obj_property name="ElementShortName">RZG_</obj_property>
+         <obj_property name="ObjectShortName">RZG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/Z01_" type="logic">
+         <obj_property name="ElementShortName">Z01_</obj_property>
+         <obj_property name="ObjectShortName">Z01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/Z02_" type="logic">
+         <obj_property name="ElementShortName">Z02_</obj_property>
+         <obj_property name="ObjectShortName">Z02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/Z03_" type="logic">
+         <obj_property name="ElementShortName">Z03_</obj_property>
+         <obj_property name="ObjectShortName">Z03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/Z04_" type="logic">
+         <obj_property name="ElementShortName">Z04_</obj_property>
+         <obj_property name="ObjectShortName">Z04_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group977" type="group">
+      <obj_property name="label">B register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/a8_four_bit_1_tb/WBG_" type="logic">
+         <obj_property name="ElementShortName">WBG_</obj_property>
+         <obj_property name="ObjectShortName">WBG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/CBG" type="logic">
+         <obj_property name="ElementShortName">CBG</obj_property>
+         <obj_property name="ObjectShortName">CBG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/RBLG_" type="logic">
+         <obj_property name="ElementShortName">RBLG_</obj_property>
+         <obj_property name="ObjectShortName">RBLG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/RCG_" type="logic">
+         <obj_property name="ElementShortName">RCG_</obj_property>
+         <obj_property name="ObjectShortName">RCG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51139_out" type="logic">
+         <obj_property name="ElementShortName">NOR51139_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51139_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51239_out" type="logic">
+         <obj_property name="ElementShortName">NOR51239_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51239_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51439_out" type="logic">
+         <obj_property name="ElementShortName">NOR51439_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51439_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51339_out" type="logic">
+         <obj_property name="ElementShortName">NOR51339_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51339_out</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group986" type="group">
+      <obj_property name="label">G register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/a8_four_bit_1_tb/WG1G_" type="logic">
+         <obj_property name="ElementShortName">WG1G_</obj_property>
+         <obj_property name="ObjectShortName">WG1G_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/WG3G_" type="logic">
+         <obj_property name="ElementShortName">WG3G_</obj_property>
+         <obj_property name="ObjectShortName">WG3G_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/WG4G_" type="logic">
+         <obj_property name="ElementShortName">WG4G_</obj_property>
+         <obj_property name="ObjectShortName">WG4G_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/L2GDG_" type="logic">
+         <obj_property name="ElementShortName">L2GDG_</obj_property>
+         <obj_property name="ObjectShortName">L2GDG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/CGG" type="logic">
+         <obj_property name="ElementShortName">CGG</obj_property>
+         <obj_property name="ObjectShortName">CGG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/RGG_" type="logic">
+         <obj_property name="ElementShortName">RGG_</obj_property>
+         <obj_property name="ObjectShortName">RGG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/G01_" type="logic">
+         <obj_property name="ElementShortName">G01_</obj_property>
+         <obj_property name="ObjectShortName">G01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/G02_" type="logic">
+         <obj_property name="ElementShortName">G02_</obj_property>
+         <obj_property name="ObjectShortName">G02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/G03_" type="logic">
+         <obj_property name="ElementShortName">G03_</obj_property>
+         <obj_property name="ObjectShortName">G03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/G04_" type="logic">
+         <obj_property name="ElementShortName">G04_</obj_property>
+         <obj_property name="ObjectShortName">G04_</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
