@@ -445,6 +445,100 @@ module a8_four_bit_1_tb();
 	   #100 CGG = 0;
 	   #900 
 	   
+	   // Register Y write test 2
+	   #100 CUG = 1;
+	   #100 CUG = 0;
+	   #100
+	   begin
+	       WL16_ = 0;
+	       force WL01 = 1;
+	       force WL02 = 1;
+	       force WL03 = 1;
+	       WYDLOG_ = 0;
+	       WYDG_ = 0;
+	   end
+	   #100
+	   begin
+	       WL16_ = 1;
+	       release WL01;
+	       release WL02;
+	       release WL03;
+	       WYDLOG_ = 1;
+	       WYDG_ = 1;
+	   end
+	   
+	   // Register Y clear test
+	   #900 CUG = 1;
+	   #100 CUG = 0;
+	   	   
+	   // X register write test
+	   #100
+	   begin
+	       force WL01_ = 0;
+	       force WL02_ = 0;
+	       force WL03_ = 0;
+	       force WL04_ = 0;
+	       WAG_ = 0;
+	   end
+	   #100
+	   begin
+	       release WL01_;
+	       release WL02_;
+	       release WL03_;
+	       release WL04_;
+	       WAG_ = 1;
+	   end
+	   #100 A2XG_ = 0;
+	   #100 
+	   begin
+	       A2XG_ = 1;
+	       CAG = 1;
+	   end
+	   #100 CAG = 0;
+	   
+	   // X register write test 2
+	   #900 CLXC = 1;
+	   #100 
+	   begin
+	       CLXC = 0;
+	       PONEX = 1;
+	   end
+	   #100 PONEX = 0;
+	   
+	   // register write test 3
+	   #900 CLXC = 1;
+	   #100 
+	   begin
+	       CLXC = 0;
+	       TWOX = 1;
+	   end
+	   #100 TWOX = 0;
+	   
+	   // X register write test 4
+	   #900 CLXC = 1;
+	   #100 
+	   begin
+	       CLXC = 0;
+	       MONEX = 1;
+	   end
+	   #100 MONEX = 0;
+	   
+	   // Sum test
+	   #900 CUG = 1;
+	   #100 
+	   begin
+	       CUG = 0;
+	       PONEX = 1;
+	       force WL02_ = 0;
+	       WYLOG_ = 0;
+	   end
+	   #100
+	   begin
+	       PONEX = 0;
+	       release WL02_;
+	       WYLOG_ = 1;
+	   end
+	   
 	   #1000 $stop;
 	end
 
