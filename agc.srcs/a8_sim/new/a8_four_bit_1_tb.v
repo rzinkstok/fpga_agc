@@ -538,6 +538,47 @@ module a8_four_bit_1_tb();
 	       release WL02_;
 	       WYLOG_ = 1;
 	   end
+	   #100 RULOG_ = 0;
+	   #900 RULOG_ = 1;
+	   
+	   // Sum test 2
+	   #100 CUG = 1;
+	   #100 
+	   begin
+	       CUG = 0;
+	       PONEX = 1;
+	       force WL01_ = 0;
+	       WYLOG_ = 0;
+	   end
+	   #100
+	   begin
+	       PONEX = 0;
+	       release WL01_;
+	       WYLOG_ = 1;
+	   end
+	   #100 RULOG_ = 0;
+	   #900 RULOG_ = 1;
+	   
+	   // Sum test 2
+	   #100 CUG = 1;
+	   #100 
+	   begin
+	       CUG = 0;
+	       PONEX = 1;
+	       TWOX = 1;
+	       force WL01_ = 0;
+	       WYLOG_ = 0;
+	   end
+	   #100
+	   begin
+	       PONEX = 0;
+	       TWOX = 0;
+	       release WL01_;
+	       WYLOG_ = 1;
+	   end
+	   #100 RULOG_ = 0;
+	   #900 RULOG_ = 1;
+	   
 	   
 	   #1000 $stop;
 	end

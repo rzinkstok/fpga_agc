@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="13283333333fs"></ZoomStartTime>
-      <ZoomEndTime time="28783333334fs"></ZoomEndTime>
-      <Cursor1Time time="26200000000fs"></Cursor1Time>
+      <ZoomStartTime time="8150000000fs"></ZoomStartTime>
+      <ZoomEndTime time="35450000001fs"></ZoomEndTime>
+      <Cursor1Time time="29302980000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="204"></NameColumnWidth>
@@ -344,6 +344,10 @@
       <obj_property name="label">Sum register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/a8_four_bit_1_tb/RULOG_" type="logic">
+         <obj_property name="ElementShortName">RULOG_</obj_property>
+         <obj_property name="ObjectShortName">RULOG_</obj_property>
+      </wvobject>
       <wvobject fp_name="/a8_four_bit_1_tb/SUMA01_" type="logic">
          <obj_property name="ElementShortName">SUMA01_</obj_property>
          <obj_property name="ObjectShortName">SUMA01_</obj_property>
@@ -375,6 +379,22 @@
       <wvobject fp_name="/a8_four_bit_1_tb/SUMB04_" type="logic">
          <obj_property name="ElementShortName">SUMB04_</obj_property>
          <obj_property name="ObjectShortName">SUMB04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51117_out" type="logic">
+         <obj_property name="ElementShortName">NOR51117_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51117_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51217_out" type="logic">
+         <obj_property name="ElementShortName">NOR51217_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51217_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51417_out" type="logic">
+         <obj_property name="ElementShortName">NOR51417_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51417_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51317_out" type="logic">
+         <obj_property name="ElementShortName">NOR51317_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51317_out</obj_property>
       </wvobject>
       <wvobject fp_name="/a8_four_bit_1_tb/a8/CI01_" type="logic">
          <obj_property name="ElementShortName">CI01_</obj_property>
