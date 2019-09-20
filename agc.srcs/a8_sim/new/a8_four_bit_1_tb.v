@@ -259,328 +259,326 @@ module a8_four_bit_1_tb();
 
 	initial
 	begin
-	   #1000
-	   
-	   // Register A write test
-	   begin
-	       force WL01 = 1;
-	       force WL02 = 1;
-	       force WL03 = 1;
-	       force WL04 = 1;
-	       WAG_ = 0;
-	   end
-	   #100
-	   begin
-	       release WL01;
-	       release WL02;
-	       release WL03;
-	       release WL04;
-	       WAG_ = 1;
-	   end
-	   #900
-	   
-	   // Register A read test / register L write test
-	   #100 RAG_ = 0;
-	   #900 WLG_ = 0;
-	   #100
-	   begin
-	       RAG_ = 1;
-	       WLG_ = 1;
-	   end
-	   
-	   // Register A clear test
-	   #100 CAG = 1;
-	   #100 CAG = 0;
-	   
-	   // Register L write test 2
-	   #900 CLG1G = 1;
-	   #100 CLG1G = 0;
-	   #100
-	   begin
-	       SA04 = 1;
-	       force G05_ = 0;
-	       force G06_ = 0;
-	       force G07_ = 0;
-	       G2LSG_ = 0;
-	   end
-	   #100
-	   begin
-	       SA04 = 0;
-	       release G05_;
-	       release G06_;
-	       release G07_;
-	       G2LSG_ = 1;
-	   end
-	   #100 CGG = 1; 
-	   #100 CGG = 0;
-	   #700
-	   
-	   // Register L read test / register Q write test
-	   #100 RLG_ = 0;
-	   #900 WQG_ = 0;
-	   #100
-	   begin
-	       RLG_ = 1;
-	       WQG_ = 1;
-	   end
-	       
-	   // Register L clear test
-	   #100 CLG1G = 1;
-	   #100 CLG1G = 0;
-	   #900
-	   
-	   // Register Q read test / register Z write test
-	   #100 RQG_ = 0;
-	   #900 WZG_ = 0;
-	   #100 
-	   begin
-	       RQG_ = 1;
-	       WZG_ = 1;
-	   end
-	   
-	   // Register Q clear test
-	   #100 CQG = 1;
-	   #100 CQG = 0;
-	   #900 
-	   
-	   // Register Z read test / register B write test
-	   #100 RZG_ = 0;
-	   #900 WBG_ = 0;
-	   #100
-	   begin
-	       RZG_ = 1;
-	       WBG_ = 1;
-	   end
-	   
-	   // Register Z clear test
-	   #100 CZG = 1;
-	   #100 CZG = 0;
-	   #900
-	    
-	   // Register B read test / register G write test
-	   #100 RBLG_ = 0;
-	   #900 WG1G_ = 0;
-	   #100
-	   begin
-	       RBLG_ = 1;
-	       WG1G_ = 1;
-	   end
-	   
-	   // Register B clear test
-	   #100 CBG = 1;
-	   #100 CBG = 0;
-	   
-	   // Register G write test 2
-	   #900 CGG = 1;
-	   #100 CGG = 0;
-	   #100
-	   begin
-	       force WL16_ = 0;
-	       force WL01 = 1;
-	       force WL02 = 1;
-	       force WL03 = 1;
-	       WG3G_ = 0;
-	   end
-	   #100
-	   begin
-	       release WL16_;
-	       release WL01;
-	       release WL02;
-	       release WL03;
-	       WG3G_ = 1;
-	   end
-	   
-	   // Register G write test 3
-	   #900 CGG = 1;
-	   #100 CGG = 0;
-	   #100
-	   begin
-	       force WL02 = 1;
-	       force WL03 = 1;
-	       force WL04 = 1;
-	       force WL05_ = 0;
-	       WG4G_ = 0;
-	   end
-	   #100
-	   begin
-	       release WL02;
-	       release WL03;
-	       release WL04;
-	       release WL05_;
-	       WG4G_ = 1;
-	   end
-	   
-	   // Register G write test 4
-	   #900 CGG = 1;
-	   #100 CGG = 0;
-	   #100
-	   begin
-	       MCRO_ = 0;
-	       force L01_ = 0;
-	       force L02_ = 0;
-	       force L03_ = 0;
-	       L2GDG_ = 0;
-	   end
-	   #100
-	   begin
-	       MCRO_ = 1;
-	       release L01_;
-	       release L02_;
-	       release L03_;
-	       L2GDG_ = 1;
-	   end
-	   #900
-	   
-	   // Register G read test / register Y write test
-	   #100 RGG_ = 0;
-	   #900 WYLOG_ = 0;
-	   #100 
-	   begin
-	       RGG_ = 1;
-	       WYLOG_ = 1;
-	   end
-	   
-	   // Register G clear test
-	   #100 CGG = 1;
-	   #100 CGG = 0;
-	   #900 
-	   
-	   // Register Y write test 2
-	   #100 CUG = 1;
-	   #100 CUG = 0;
-	   #100
-	   begin
-	       WL16_ = 0;
-	       force WL01 = 1;
-	       force WL02 = 1;
-	       force WL03 = 1;
-	       WYDLOG_ = 0;
-	       WYDG_ = 0;
-	   end
-	   #100
-	   begin
-	       WL16_ = 1;
-	       release WL01;
-	       release WL02;
-	       release WL03;
-	       WYDLOG_ = 1;
-	       WYDG_ = 1;
-	   end
-	   
-	   // Register Y clear test
-	   #900 CUG = 1;
-	   #100 CUG = 0;
-	   	   
-	   // X register write test
-	   #100
-	   begin
-	       force WL01_ = 0;
-	       force WL02_ = 0;
-	       force WL03_ = 0;
-	       force WL04_ = 0;
-	       WAG_ = 0;
-	   end
-	   #100
-	   begin
-	       release WL01_;
-	       release WL02_;
-	       release WL03_;
-	       release WL04_;
-	       WAG_ = 1;
-	   end
-	   #100 A2XG_ = 0;
-	   #100 
-	   begin
-	       A2XG_ = 1;
-	       CAG = 1;
-	   end
-	   #100 CAG = 0;
-	   
-	   // X register write test 2
-	   #900 CLXC = 1;
-	   #100 
-	   begin
-	       CLXC = 0;
-	       PONEX = 1;
-	   end
-	   #100 PONEX = 0;
-	   
-	   // register write test 3
-	   #900 CLXC = 1;
-	   #100 
-	   begin
-	       CLXC = 0;
-	       TWOX = 1;
-	   end
-	   #100 TWOX = 0;
-	   
-	   // X register write test 4
-	   #900 CLXC = 1;
-	   #100 
-	   begin
-	       CLXC = 0;
-	       MONEX = 1;
-	   end
-	   #100 MONEX = 0;
-	   
-	   // Sum test
-	   #900 CUG = 1;
-	   #100 
-	   begin
-	       CUG = 0;
-	       PONEX = 1;
-	       force WL02_ = 0;
-	       WYLOG_ = 0;
-	   end
-	   #100
-	   begin
-	       PONEX = 0;
-	       release WL02_;
-	       WYLOG_ = 1;
-	   end
-	   #100 RULOG_ = 0;
-	   #900 RULOG_ = 1;
-	   
-	   // Sum test 2
-	   #100 CUG = 1;
-	   #100 
-	   begin
-	       CUG = 0;
-	       PONEX = 1;
-	       force WL01_ = 0;
-	       WYLOG_ = 0;
-	   end
-	   #100
-	   begin
-	       PONEX = 0;
-	       release WL01_;
-	       WYLOG_ = 1;
-	   end
-	   #100 RULOG_ = 0;
-	   #900 RULOG_ = 1;
-	   
-	   // Sum test 2
-	   #100 CUG = 1;
-	   #100 
-	   begin
-	       CUG = 0;
-	       PONEX = 1;
-	       TWOX = 1;
-	       force WL01_ = 0;
-	       WYLOG_ = 0;
-	   end
-	   #100
-	   begin
-	       PONEX = 0;
-	       TWOX = 0;
-	       release WL01_;
-	       WYLOG_ = 1;
-	   end
-	   #100 RULOG_ = 0;
-	   #900 RULOG_ = 1;
-	   
-	   
-	   #1000 $stop;
+        #1000
+        
+        // Register A write test
+        begin
+            force WL01 = 1;
+            force WL02 = 1;
+            force WL03 = 1;
+            force WL04 = 1;
+            WAG_ = 0;
+        end
+        #100
+        begin
+            release WL01;
+            release WL02;
+            release WL03;
+            release WL04;
+            WAG_ = 1;
+        end
+        #900
+        
+        // Register A read test / register L write test
+        #100 RAG_ = 0;
+        #900 WLG_ = 0;
+        #100
+        begin
+            RAG_ = 1;
+            WLG_ = 1;
+        end
+        
+        // Register A clear test
+        #100 CAG = 1;
+        #100 CAG = 0;
+        
+        // Register L write test 2
+        #900 CLG1G = 1;
+        #100 CLG1G = 0;
+        #100
+        begin
+            SA04 = 1;
+            force G05_ = 0;
+            force G06_ = 0;
+            force G07_ = 0;
+            G2LSG_ = 0;
+        end
+        #100
+        begin
+            SA04 = 0;
+            release G05_;
+            release G06_;
+            release G07_;
+            G2LSG_ = 1;
+        end
+        #100 CGG = 1; 
+        #100 CGG = 0;
+        #700
+        
+        // Register L read test / register Q write test
+        #100 RLG_ = 0;
+        #900 WQG_ = 0;
+        #100
+        begin
+            RLG_ = 1;
+            WQG_ = 1;
+        end
+           
+        // Register L clear test
+        #100 CLG1G = 1;
+        #100 CLG1G = 0;
+        #900
+        
+        // Register Q read test / register Z write test
+        #100 RQG_ = 0;
+        #900 WZG_ = 0;
+        #100 
+        begin
+            RQG_ = 1;
+            WZG_ = 1;
+        end
+        
+        // Register Q clear test
+        #100 CQG = 1;
+        #100 CQG = 0;
+        #900 
+        
+        // Register Z read test / register B write test
+        #100 RZG_ = 0;
+        #900 WBG_ = 0;
+        #100
+        begin
+            RZG_ = 1;
+            WBG_ = 1;
+        end
+        
+        // Register Z clear test
+        #100 CZG = 1;
+        #100 CZG = 0;
+        #900
+        
+        // Register B read test / register G write test
+        #100 RBLG_ = 0;
+        #900 WG1G_ = 0;
+        #100
+        begin
+            RBLG_ = 1;
+            WG1G_ = 1;
+        end
+        
+        // Register B clear test
+        #100 CBG = 1;
+        #100 CBG = 0;
+        
+        // Register G write test 2
+        #900 CGG = 1;
+        #100 CGG = 0;
+        #100
+        begin
+            force WL16_ = 0;
+            force WL01 = 1;
+            force WL02 = 1;
+            force WL03 = 1;
+            WG3G_ = 0;
+        end
+        #100
+        begin
+            release WL16_;
+            release WL01;
+            release WL02;
+            release WL03;
+            WG3G_ = 1;
+        end
+        
+        // Register G write test 3
+        #900 CGG = 1;
+        #100 CGG = 0;
+        #100
+        begin
+            force WL02 = 1;
+            force WL03 = 1;
+            force WL04 = 1;
+            force WL05_ = 0;
+            WG4G_ = 0;
+        end
+        #100
+        begin
+            release WL02;
+            release WL03;
+            release WL04;
+            release WL05_;
+            WG4G_ = 1;
+        end
+        
+        // Register G write test 4
+        #900 CGG = 1;
+        #100 CGG = 0;
+        #100
+        begin
+            MCRO_ = 0;
+            force L01_ = 0;
+            force L02_ = 0;
+            force L03_ = 0;
+            L2GDG_ = 0;
+        end
+        #100
+        begin
+            MCRO_ = 1;
+            release L01_;
+            release L02_;
+            release L03_;
+            L2GDG_ = 1;
+        end
+        #900
+        
+        // Register G read test / register Y write test
+        #100 RGG_ = 0;
+        #900 WYLOG_ = 0;
+        #100 
+        begin
+            RGG_ = 1;
+            WYLOG_ = 1;
+        end
+        
+        // Register G clear test
+        #100 CGG = 1;
+        #100 CGG = 0;
+        #900 
+        
+        // Register Y write test 2
+        #100 CUG = 1;
+        #100 CUG = 0;
+        #100
+        begin
+            WL16_ = 0;
+            force WL01 = 1;
+            force WL02 = 1;
+            force WL03 = 1;
+            WYDLOG_ = 0;
+            WYDG_ = 0;
+        end
+        #100
+        begin
+            WL16_ = 1;
+            release WL01;
+            release WL02;
+            release WL03;
+            WYDLOG_ = 1;
+            WYDG_ = 1;
+        end
+        
+        // Register Y clear test
+        #900 CUG = 1;
+        #100 CUG = 0;
+           
+        // X register write test
+        #100
+        begin
+            force WL01_ = 0;
+            force WL02_ = 0;
+            force WL03_ = 0;
+            force WL04_ = 0;
+            WAG_ = 0;
+        end
+        #100
+        begin
+            release WL01_;
+            release WL02_;
+            release WL03_;
+            release WL04_;
+            WAG_ = 1;
+        end
+        #100 A2XG_ = 0;
+        #100 
+        begin
+            A2XG_ = 1;
+            CAG = 1;
+        end
+        #100 CAG = 0;
+        
+        // X register write test 2
+        #900 CLXC = 1;
+        #100 
+        begin
+            CLXC = 0;
+            PONEX = 1;
+        end
+        #100 PONEX = 0;
+        
+        // register write test 3
+        #900 CLXC = 1;
+        #100 
+        begin
+            CLXC = 0;
+            TWOX = 1;
+        end
+        #100 TWOX = 0;
+        
+        // X register write test 4
+        #900 CLXC = 1;
+        #100 
+        begin
+            CLXC = 0;
+            MONEX = 1;
+        end
+        #100 MONEX = 0;
+        
+        // Sum test
+        #900 CUG = 1;
+        #100 
+        begin
+            CUG = 0;
+            PONEX = 1;
+            force WL02_ = 0;
+            WYLOG_ = 0;
+        end
+        #100
+        begin
+            PONEX = 0;
+            release WL02_;
+            WYLOG_ = 1;
+        end
+        #100 RULOG_ = 0;
+        #900 RULOG_ = 1;
+        
+        // Sum test 2
+        #100 CUG = 1;
+        #100 
+        begin
+            CUG = 0;
+            PONEX = 1;
+            force WL01_ = 0;
+            WYLOG_ = 0;
+        end
+        #100
+        begin
+            PONEX = 0;
+            release WL01_;
+            WYLOG_ = 1;
+        end
+        #100 RULOG_ = 0;
+        #900 RULOG_ = 1;
+        
+        // Sum test 2
+        #100 CUG = 1;
+        #100 
+        begin
+            CUG = 0;
+            PONEX = 1;
+            TWOX = 1;
+            force WL01_ = 0;
+            WYLOG_ = 0;
+        end
+        #100
+        begin
+            PONEX = 0;
+            TWOX = 0;
+            release WL01_;
+            WYLOG_ = 1;
+        end
+        #100 RULOG_ = 0;
+        #900 RULOG_ = 1;
+		$stop;
 	end
 
 endmodule

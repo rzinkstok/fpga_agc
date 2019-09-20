@@ -551,6 +551,7 @@ module agc_tb();
 	wire KRPT;
 	wire L01_;
 	wire L02_;
+	wire L03_;
 	wire L04_;
 	wire L16_;
 	wire L2GDG_;
@@ -2252,6 +2253,7 @@ module agc_tb();
 		GEM04,
 		L01_,
 		L02_,
+		L03_,
 		L04_,
 		CLEARA,
 		CLEARB,
