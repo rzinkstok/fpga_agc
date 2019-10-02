@@ -506,6 +506,8 @@ module a8_four_bit_1(
     nor_2 #(1'b0) NOR51246(NOR51246_out,    WG1G_,          WL02_,                                      SIM_CLK);
     
     nor_4 #(1'b1) NOR51247(NOR51247_out,    SA02,           NOR51243_out,   NOR51244_out,   G02ED,      SIM_CLK);
+    // NOR51163 merged into NOR51247
+    
     nor_3 #(1'b1) NOR51248(NOR51248_out,    NOR51245_out,   NOR51246_out,   G02,                        SIM_CLK);
     assign G02_ = NOR51247_out & NOR51248_out;
     nor_2 #(1'b0) NOR51249(G02,             G02_,           CGG,                                        SIM_CLK);
@@ -554,7 +556,7 @@ module a8_four_bit_1(
     *
     **************************/
     
-    // Bit column 2
+    // Bit column 3
     
     // CO06 part 1
     // No cross-module fan-in
