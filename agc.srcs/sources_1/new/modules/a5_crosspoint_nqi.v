@@ -1,72 +1,223 @@
 `timescale 1ns / 1ps
 
 module a5_crosspoint_nqi(
-    // inputs
-    T01, T01_, T02_, T03_, T04_, T05_, T06_, T07_, T08_, T09_, T10_, T11_, T12, T12_,
-    BR1, BR1_, BR2, BR2_, BR12B_, BR1B2_, BRDIF_,
-    IC1, IC2, IC2_, IC3, IC4, IC5, IC5_, IC8_, IC9, IC10, IC10_, IC11_, IC12, IC12_, IC13, IC14, IC15_, IC16, IC16_,
-    STD2, TC0, TC0_, TCF0, RSM3, RSM3_, DIV_, MP0, MP3, MP3_, DAS0, DAS0_, DAS1, DAS1_, MASK0, MASK0_, INKL_, SHIFT, SHIFT_, MONpCH,
-    PRINC, CCS0, CCS0_, MSU0, MSU0_, FETCH0, FETCH0_, DXCH0, GOJ1, GOJ1_, TCSAJ3_, RUPT0, GOJAM, INOUT, INOUT_, CHINC_, SHANC_,
-    TS0, TS0_, QXCH0_, DV1, DV1_, DV4, DV4_, NDX0_, RAND0, WAND0, ROR0, WOR0, READ0, RXOR0, RXOR0_, STFET1_, MONWBK, ADS0, T12USE_,
-    n4XP5, n5XP11,
-    C24A, C25A, C26A, C27A, C30A, C37P, C40P, C41P, C42P, C43P, C44P,
-    INCSET_,
-    YT0_, YB0_, S11, S12,
-    XT0_, XT2_, XT3_, XT4_, XT5_, XT6_,
+    input wire T01, 
+    input wire T01_, 
+    input wire T02_, 
+    input wire T03_, 
+    input wire T04_, 
+    input wire T05_, 
+    input wire T06_, 
+    input wire T07_, 
+    input wire T08_, 
+    input wire T09_, 
+    input wire T10_, 
+    input wire T11_, 
+    input wire T12, 
+    input wire T12_,
+    input wire BR1, 
+    input wire BR1_, 
+    input wire BR2, 
+    input wire BR2_, 
+    input wire BR12B_, 
+    input wire BR1B2_, 
+    input wire BRDIF_,
+    input wire IC1, 
+    input wire IC2, 
+    input wire IC2_, 
+    input wire IC3, 
+    input wire IC4, 
+    input wire IC5, 
+    input wire IC5_, 
+    input wire IC8_,
+    input wire IC9, 
+    input wire IC10, 
+    input wire IC10_, 
+    input wire IC11_, 
+    input wire IC12, 
+    input wire IC12_, 
+    input wire IC13, 
+    input wire IC14, 
+    input wire IC15_, 
+    input wire IC16, 
+    input wire IC16_,
+    input wire STD2, 
+    input wire TC0, 
+    input wire TC0_, 
+    input wire TCF0, 
+    input wire RSM3, 
+    input wire RSM3_, 
+    input wire DIV_, 
+    input wire MP0, 
+    input wire MP3, 
+    input wire MP3_, 
+    input wire DAS0, 
+    input wire DAS0_, 
+    input wire DAS1, 
+    input wire DAS1_, 
+    input wire MASK0, 
+    input wire MASK0_, 
+    input wire INKL_, 
+    input wire SHIFT, 
+    input wire SHIFT_, 
+    input wire MONpCH,
+    input wire PRINC, 
+    input wire CCS0, 
+    input wire CCS0_, 
+    input wire MSU0, 
+    input wire MSU0_, 
+    input wire FETCH0, 
+    input wire FETCH0_, 
+    input wire DXCH0, 
+    input wire GOJ1, 
+    input wire GOJ1_, 
+    input wire TCSAJ3_, 
+    input wire RUPT0, 
+    input wire GOJAM, 
+    input wire INOUT, 
+    input wire INOUT_, 
+    input wire CHINC_, 
+    input wire SHANC_,
+    input wire TS0, 
+    input wire TS0_, 
+    input wire QXCH0_, 
+    input wire DV1, 
+    input wire DV1_, 
+    input wire DV4, 
+    input wire DV4_, 
+    input wire NDX0_, 
+    input wire RAND0, 
+    input wire WAND0, 
+    input wire ROR0, 
+    input wire WOR0, 
+    input wire READ0,
+    input wire RXOR0, 
+    input wire RXOR0_, 
+    input wire STFET1_, 
+    input wire MONWBK, 
+    input wire ADS0, 
+    input wire T12USE_,
+    input wire n4XP5, 
+    input wire n5XP11,
+    input wire C24A, 
+    input wire C25A, 
+    input wire C26A, 
+    input wire C27A, 
+    input wire C30A, 
+    input wire C37P, 
+    input wire C40P, 
+    input wire C41P, 
+    input wire C42P, 
+    input wire C43P, 
+    input wire C44P,
+    input wire INCSET_,
+    input wire YT0_, 
+    input wire YB0_, 
+    input wire S11, 
+    input wire S12,
+    input wire XT0_, 
+    input wire XT2_, 
+    input wire XT3_, 
+    input wire XT4_, 
+    input wire XT5_, 
+    input wire XT6_,
     
-    // outputs
-    A05_1_MONEX_,
-    A05_1_RZ_, A05_2_RZ_, A05_3_RZ_,
-    A05_1_RB_, A05_2_RB_, A05_3_RB_, A05_4_RB_,
-    A05_1_RA_, A05_2_RA_, A05_3_RA_,
-    A05_1_WA_, A05_2_WA_, A05_3_WA_,
-    A05_1_RL_, A05_2_RL_,
-    A05_1_TMZ_, A05_2_TMZ_,
-    A05_1_TSGN_, A05_2_TSGN_,
-    A05_1_WG_,
-    A05_1_RG_, A05_2_RG_, A05_3_RG_, A05_4_RG_,
-    A05_1_RC_, A05_2_RC_, A05_3_RC_,
-    A05_1_A2X_, A05_2_A2X_,
-    A05_1_WY_, A05_2_WY_, A05_3_WY_,
-    A05_1_CI_, A05_2_CI_,
-    A05_1_WY12_, A05_2_WY12_,
-    A05_1_WZ_, A05_2_WZ_,
-    A05_1_WB_, A05_2_WB_, A05_3_WB_, A05_4_WB_,
-    A05_1_RU_, A05_2_RU_, A05_3_RU_,
-    A05_1_ST2_,
-    A05_1_WS_,
-    A05_1_Z15_, A05_1_Z16_,
-    A05_1_TOV_,
-    A05_1_WL_,
-    A05_1_WYD_,
+    output wire A05_1_MONEX_,
+    output wire A05_1_RZ_, 
+    output wire A05_2_RZ_, 
+    output wire A05_3_RZ_,
+    output wire A05_1_RB_, 
+    output wire A05_2_RB_, 
+    output wire A05_3_RB_, 
+    output wire A05_4_RB_,
+    output wire A05_1_RA_, 
+    output wire A05_2_RA_, 
+    output wire A05_3_RA_,
+    output wire A05_1_WA_, 
+    output wire A05_2_WA_, 
+    output wire A05_3_WA_,
+    output wire A05_1_RL_, 
+    output wire A05_2_RL_,
+    output wire A05_1_TMZ_, 
+    output wire A05_2_TMZ_,
+    output wire A05_1_TSGN_, 
+    output wire A05_2_TSGN_,
+    output wire A05_1_WG_,
+    output wire A05_1_RG_, 
+    output wire A05_2_RG_, 
+    output wire A05_3_RG_, 
+    output wire A05_4_RG_,
+    output wire A05_1_RC_, 
+    output wire A05_2_RC_, 
+    output wire A05_3_RC_,
+    output wire A05_1_A2X_, 
+    output wire A05_2_A2X_,
+    output wire A05_1_WY_, 
+    output wire A05_2_WY_, 
+    output wire A05_3_WY_,
+    output wire A05_1_CI_, 
+    output wire A05_2_CI_,
+    output wire A05_1_WY12_, 
+    output wire A05_2_WY12_,
+    output wire A05_1_WZ_, 
+    output wire A05_2_WZ_,
+    output wire A05_1_WB_, 
+    output wire A05_2_WB_, 
+    output wire A05_3_WB_, 
+    output wire A05_4_WB_,
+    output wire A05_1_RU_, 
+    output wire A05_2_RU_, 
+    output wire A05_3_RU_,
+    output wire A05_1_ST2_,
+    output wire A05_1_WS_,
+    output wire A05_1_Z15_, 
+    output wire A05_1_Z16_,
+    output wire A05_1_TOV_,
+    output wire A05_1_WL_,
+    output wire A05_1_WYD_,
     
-    NISQ_,
-    DVST,
-    TPZG_,
-    n2XP7, n2XP8, n3XP6, n5XP12, n5XP15, n5XP21, n6XP8, n7XP4, n7XP9, n9XP5, n10XP1, n10XP8, n11XP2,
-    PTWOX,
-    TSUDO_,
-    RAD,
-    RSTRT,
-    GNHNC,
-    PINC, PINC_,
-    RL10BB,
-    RSCT,
-    R6,
-    RQ,
-    TRSM,
-    SCAD, SCAD_,
-    NDR100_,
-    OCTAD2, OCTAD3, OCTAD4, OCTAD5, OCTAD6,
-    U2BBK,
-    RSTSTG,
-    DV4B1B,
+    output wire NISQ_,
+    output wire DVST,
+    output wire TPZG_,
+    output wire n2XP7, 
+    output wire n2XP8, 
+    output wire n3XP6, 
+    output wire n5XP12, 
+    output wire n5XP15, 
+    output wire n5XP21, 
+    output wire n6XP8, 
+    output wire n7XP4, 
+    output wire n7XP9, 
+    output wire n9XP5, 
+    output wire n10XP1, 
+    output wire n10XP8, 
+    output wire n11XP2,
+    output wire PTWOX,
+    output wire TSUDO_,
+    output wire RAD,
+    output wire RSTRT,
+    output wire GNHNC,
+    output wire PINC, 
+    output wire PINC_,
+    output wire RL10BB,
+    output wire RSCT,
+    output wire R6,
+    output wire RQ,
+    output wire TRSM,
+    output wire SCAD, 
+    output wire SCAD_,
+    output wire NDR100_,
+    output wire OCTAD2, 
+    output wire OCTAD3, 
+    output wire OCTAD4, 
+    output wire OCTAD5, 
+    output wire OCTAD6,
+    output wire U2BBK,
+    output wire RSTSTG,
+    output wire DV4B1B,
     
-    // input
-    SIM_CLK
+    input wire SIM_CLK
     );
-    
-    input wire SIM_CLK;
     
     /**************************
     *
@@ -74,65 +225,6 @@ module a5_crosspoint_nqi(
     *  Sheet number 2005261/1
     *
     **************************/
-    
-    input wire T01, T01_, T02_, T03_, T04_, T05_, T06_, T07_, T08_, T09_, T10_, T11_, T12, T12_;
-    input wire BR1, BR1_, BR2, BR2_, BR12B_, BR1B2_, BRDIF_;
-    input wire IC1, IC2, IC2_, IC3, IC4, IC5, IC5_, IC8_, IC9, IC10, IC10_, IC11_, IC12, IC12_, IC13, IC14, IC15_, IC16, IC16_;
-    input wire STD2, TC0, TC0_, TCF0, RSM3, RSM3_, DIV_, MP0, MP3, MP3_, DAS0, DAS0_, DAS1, DAS1_, MASK0, MASK0_, INKL_, SHIFT, SHIFT_, MONpCH;
-    input wire PRINC, CCS0, CCS0_, MSU0, MSU0_, FETCH0, FETCH0_, DXCH0, GOJ1, GOJ1_, TCSAJ3_, RUPT0, GOJAM, INOUT, INOUT_, CHINC_, SHANC_;
-    input wire TS0, TS0_, QXCH0_, DV1, DV1_, DV4, DV4_, NDX0_, RAND0, WAND0, ROR0, WOR0, READ0, RXOR0, RXOR0_, STFET1_, MONWBK, ADS0, T12USE_;
-    input wire n4XP5, n5XP11;
-    input wire C24A, C25A, C26A, C27A, C30A, C37P, C40P, C41P, C42P, C43P, C44P;
-    input wire INCSET_;
-    input wire YT0_, YB0_, S11, S12;
-    input wire XT0_, XT2_, XT3_, XT4_, XT5_, XT6_;
-    
-    output wire A05_1_MONEX_;
-    output wire A05_1_RZ_, A05_2_RZ_, A05_3_RZ_;
-    output wire A05_1_RB_, A05_2_RB_, A05_3_RB_, A05_4_RB_;
-    output wire A05_1_RA_, A05_2_RA_, A05_3_RA_;
-    output wire A05_1_WA_, A05_2_WA_, A05_3_WA_;
-    output wire A05_1_RL_, A05_2_RL_;
-    output wire A05_1_TMZ_, A05_2_TMZ_;
-    output wire A05_1_TSGN_, A05_2_TSGN_;
-    output wire A05_1_WG_;
-    output wire A05_1_RG_, A05_2_RG_, A05_3_RG_, A05_4_RG_;
-    output wire A05_1_RC_, A05_2_RC_, A05_3_RC_;
-    output wire A05_1_A2X_, A05_2_A2X_;
-    output wire A05_1_WY_, A05_2_WY_, A05_3_WY_;
-    output wire A05_1_CI_, A05_2_CI_;
-    output wire A05_1_WY12_, A05_2_WY12_;
-    output wire A05_1_WZ_, A05_2_WZ_;
-    output wire A05_1_WB_, A05_2_WB_, A05_3_WB_, A05_4_WB_;
-    output wire A05_1_RU_, A05_2_RU_, A05_3_RU_;
-    output wire A05_1_ST2_;
-    output wire A05_1_WS_;
-    output wire A05_1_Z15_, A05_1_Z16_;
-    output wire A05_1_TOV_;
-    output wire A05_1_WL_;
-    output wire A05_1_WYD_;
-    
-    output wire NISQ_;
-    output wire DVST;
-    output wire TPZG_;
-    output wire n2XP7, n2XP8, n3XP6, n5XP12, n5XP15, n5XP21, n6XP8, n7XP4, n7XP9, n9XP5, n10XP1, n10XP8, n11XP2;
-    output wire PTWOX;
-    output wire TSUDO_;
-    output wire RAD;
-    output wire RSTRT;
-    output wire GNHNC;
-    output wire PINC, PINC_;
-    output wire RL10BB;
-    output wire RSCT;
-    output wire R6;
-    output wire RQ;
-    output wire TRSM;
-    output wire SCAD, SCAD_;
-    output wire NDR100_;
-    output wire OCTAD2, OCTAD3, OCTAD4, OCTAD5, OCTAD6;
-    output wire U2BBK;
-    output wire RSTSTG;
-    output wire DV4B1B;
     
     wire n3XP5, n8XP3, n8XP12, n8XP15, n10XP6, n10XP7;
     wire PARTC, DV1B1B;

@@ -1,56 +1,152 @@
 `timescale 1ns / 1ps
     
 module a3_sq_register(
-    // Inputs
-    NISQ, NISQ_, 
-    PHS2_, 
-    CT_, WT_, RT_,
-    T01_, T02, T12_, 
-    FS09, FS10, 
-    WL10_, WL11_, WL12_, WL13_, WL14_, WL16_,
-    A15_, A16_,
-    ST0_, ST1_, ST3_,
-    BR2_, BR1B2B,
-    INKL, STD2, 
-    GOJAM, MTCSAI, 
-    INHPLS, RELPLS, KRPT,
-    EXT, EXTPLS,
-    RUPTOR_, MNHRPT, 
-    RXOR0,
-    n5XP4, 
-    DBLTST,
-    RPTSET,
+    input wire NISQ, 
+    input wire NISQ_, 
+    input wire PHS2_, 
+    input wire CT_, 
+    input wire WT_, 
+    input wire RT_,
+    input wire T01_, 
+    input wire T02, 
+    input wire T12_, 
+    input wire FS09, 
+    input wire FS10, 
+    input wire WL10_, 
+    input wire WL11_, 
+    input wire WL12_, 
+    input wire WL13_, 
+    input wire WL14_, 
+    input wire WL16_,
+    input wire A15_, 
+    input wire A16_,
+    input wire ST0_, 
+    input wire ST1_, 
+    input wire ST3_,
+    input wire BR2_, 
+    input wire BR1B2B,
+    input wire INKL, 
+    input wire STD2, 
+    input wire GOJAM, 
+    input wire MTCSAI, 
+    input wire INHPLS, 
+    input wire RELPLS, 
+    input wire KRPT,
+    input wire EXT, 
+    input wire EXTPLS,
+    input wire RUPTOR_, 
+    input wire MNHRPT, 
+    input wire RXOR0,
+    input wire n5XP4, 
+    input wire DBLTST,
+    input wire RPTSET,
     
-    // Outputs
-    NISQL_,
-    RBSQ,
-    SQR10, SQR10_,  SQR12_,
-    SQ0_,  SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_,
-    QC0_, QC1_, QC2_, QC3_,
-    FUTEXT,
-    IIP, IIP_,
-    STRTFC,
-    MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT,
-    MINHL, MIIP,
+    output wire NISQL_,
+    output wire RBSQ,
+    output wire SQR10, 
+    output wire SQR10_,  
+    output wire SQR12_,
+    output wire SQ0_,  
+    output wire SQ1_, 
+    output wire SQ2_, 
+    output wire SQ3_, 
+    output wire SQ4_, 
+    output wire SQ5_, 
+    output wire SQ6_, 
+    output wire SQ7_, 
+    output wire SQEXT, 
+    output wire SQEXT_,
+    output wire QC0_, 
+    output wire QC1_, 
+    output wire QC2_, 
+    output wire QC3_,
+    output wire FUTEXT,
+    output wire IIP, 
+    output wire IIP_,
+    output wire STRTFC,
+    output wire MSQ10, 
+    output wire MSQ11, 
+    output wire MSQ12, 
+    output wire MSQ13, 
+    output wire MSQ14, 
+    output wire MSQ16, 
+    output wire MSQEXT,
+    output wire MINHL, 
+    output wire MIIP,
     
-    TC0, TC0_, TCF0, TS0, TS0_, DCS0, DCA0,
-    QXCH0_, DXCH0, DAS0, DAS0_,
-    INCR0, CCS0, CCS0_, DAS1, DAS1_, ADS0, AD0, SU0,
-    AUG0_, DIM0_, MSU0, MSU0_,
-    MP0, MP0_, MP1, MP1_, MP3_, MP3A,
-    TCSAJ3, TCSAJ3_, RSM3, RSM3_, MASK0, MASK0_,
-    NDX0_, NDXX1_, GOJ1, GOJ1_,
-    IC1, IC2, IC2_, IC3, IC4, IC5, IC5_, IC6, IC7, IC8_, IC9, IC10, IC10_, 
-    IC11, IC11_, IC12, IC12_, IC13, IC14, IC15, IC15_, IC16, IC16_, IC17, 
-    EXST0_, EXST1_, MTCSA_,
-    A03_1_RPTSET, A03_2_RPTSET, A03_3_RPTSET,
+    output wire TC0, 
+    output wire TC0_, 
+    output wire TCF0, 
+    output wire TS0, 
+    output wire TS0_, 
+    output wire DCS0, 
+    output wire DCA0,
+    output wire QXCH0_, 
+    output wire DXCH0, 
+    output wire DAS0, 
+    output wire DAS0_,
+    output wire INCR0, 
+    output wire CCS0, 
+    output wire CCS0_, 
+    output wire DAS1, 
+    output wire DAS1_, 
+    output wire ADS0, 
+    output wire AD0, 
+    output wire SU0,
+    output wire AUG0_, 
+    output wire DIM0_, 
+    output wire MSU0, 
+    output wire MSU0_,
+    output wire MP0, 
+    output wire MP0_, 
+    output wire MP1, 
+    output wire MP1_, 
+    output wire MP3_, 
+    output wire MP3A,
+    output wire TCSAJ3, 
+    output wire TCSAJ3_, 
+    output wire RSM3, 
+    output wire RSM3_, 
+    output wire MASK0, 
+    output wire MASK0_,
+    output wire NDX0_, 
+    output wire NDXX1_, 
+    output wire GOJ1, 
+    output wire GOJ1_,
+    output wire IC1, 
+    output wire IC2, 
+    output wire IC2_, 
+    output wire IC3, 
+    output wire IC4, 
+    output wire IC5, 
+    output wire IC5_, 
+    output wire IC6, 
+    output wire IC7, 
+    output wire IC8_, 
+    output wire IC9, 
+    output wire IC10, 
+    output wire IC10_, 
+    output wire IC11, 
+    output wire IC11_, 
+    output wire IC12, 
+    output wire IC12_, 
+    output wire IC13, 
+    output wire IC14, 
+    output wire IC15, 
+    output wire IC15_, 
+    output wire IC16, 
+    output wire IC16_, 
+    output wire IC17, 
+    output wire EXST0_, 
+    output wire EXST1_, 
+    output wire MTCSA_,
+    output wire A03_1_RPTSET, 
+    output wire A03_2_RPTSET, 
+    output wire A03_3_RPTSET,
     
-    // SIM_CLK
-    SIM_CLK
+    input wire SIM_CLK
 );
-    input wire SIM_CLK;
     wire MP3;
-    output wire MP3_, MP3A;
     
     /**************************
     *
@@ -59,39 +155,20 @@ module a3_sq_register(
     *
     **************************/
     
-    input wire NISQ, NISQ_, FS09, FS10, T01_, T02, T12_, CT_, WT_, RT_, INKL, STD2, DBLTST;
-    input wire GOJAM, MTCSAI, INHPLS, RELPLS, KRPT, n5XP4, EXT, EXTPLS;
-    input wire RUPTOR_, MNHRPT, PHS2_;
-    input wire WL10_, WL11_, WL12_, WL13_, WL14_, WL16_;
-    input wire A15_, A16_;
     
     wire INKBT1;
-    output wire STRTFC;
     wire RPTFRC;
-    output wire NISQL_;
-    output wire IIP;
-    output wire IIP_;
-    output wire FUTEXT;
     wire OVNHRP;
     
     wire CSQG;
-    output wire RBSQ;
     wire WSQG_;
     
-    output wire SQR10, SQR10_, SQR12_;
     wire SQR11, SQR12, SQR13, SQR14, SQR16;
-    output wire SQ0_, SQ1_, SQ2_, SQ3_, SQ4_, SQ5_, SQ6_, SQ7_, SQEXT, SQEXT_;
     wire QC0;
-    output wire QC0_, QC1_, QC2_, QC3_;
-    output wire MSQ16, MSQ14, MSQ13, MSQ12, MSQ11, MSQ10, MSQEXT, MINHL, MIIP;
-    input wire RPTSET;
-    output wire A03_1_RPTSET, A03_2_RPTSET, A03_3_RPTSET;
-
+    
     wire CON1, CON2, SCAS10;
     wire INHINT;
 
-
-    
     wire NOR30001_out;
     wire NOR30002_out;
     wire NOR30003_out;
@@ -414,62 +491,20 @@ module a3_sq_register(
     *
     **************************/
     
-    input wire ST0_, ST1_, ST3_, BR2_, BR1B2B, RXOR0;
     wire SQ5QC0_;
-    output wire IC1; 
-    output wire IC2, IC2_;
-    output wire IC3;
     wire IC3_;
-    output wire IC4;
     wire IC4_;
-    output wire IC5, IC5_;
-    output wire IC6;
-    output wire IC7;
-    output wire IC8_; 
-    output wire IC9; 
     wire IC9_;
-    output wire IC10, IC10_;
-    output wire IC11, IC11_;
-    output wire IC12, IC12_;
-    output wire IC13;
     wire IC13_;
-    output wire IC14;
-    output wire IC15, IC15_;
-    output wire IC16, IC16_;
-    output wire IC17;
     wire NEXST0, NEXST0_;
-    output wire EXST0_, EXST1_;
     wire QXCH0;
-    output wire QXCH0_;
     wire LXCH0;
-    output wire DXCH0;
-    output wire TS0, TS0_;
-    output wire TC0, TC0_, TCF0;
-    output wire DCS0, DCA0;
-    output wire DAS0, DAS0_;
     wire BZF0, BZF0_;
     wire BMF0, BMF0_;
-    output wire CCS0, CCS0_;
-    output wire DAS1, DAS1_;
-    output wire ADS0;
-    output wire MSU0, MSU0_;
-    output wire INCR0;
     wire AUG0;
-    output wire AUG0_;
     wire DIM0;
-    output wire DIM0_;
-    output wire MP0, MP0_;
-    output wire MP1, MP1_;
-    output wire TCSAJ3, TCSAJ3_, MTCSA_;
-    output wire RSM3, RSM3_;
-    output wire SU0;
-    output wire MASK0, MASK0_;
-    output wire AD0;
     wire NDX0;
-    output wire NDX0_;
     wire NDXX1;
-    output wire NDXX1_;
-    output wire GOJ1, GOJ1_;
     
     wire NOR30301_out;
     wire NOR30302_out;

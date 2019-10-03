@@ -17,7 +17,6 @@ CROSS_MODULE_SIGNAL_RE = re.compile(r"^A[0-9][0-9]\_[0-9]\_(.+)")
 
 def read_module(module_file_name):
     module_name = os.path.splitext(module_file_name)[0]
-    print(module_name)
     module = module_name.split("_")[0]
     with open(os.path.join(MODULES_SOURCE_FOLDER, module_file_name), "r") as fp:
         lines = fp.readlines()
@@ -26,7 +25,6 @@ def read_module(module_file_name):
     print(f"Module {module}")
 
     in_module_params = False
-    module_param_string = ""
     module_params = []
     input_wires = []
     output_wires = []
@@ -41,34 +39,37 @@ def read_module(module_file_name):
             res = MODULE_ARGS_END_RE.search(l)
             if res:
                 # Parse params
-                module_params = [x.strip() for x in module_param_string.split(",")]
                 print("Parameters:", module_params)
                 in_module_params = False
             else:
-                module_param_string += l.strip()
+                res = INPUT_WIRE_RE.search(l)
+                if res:
+                    l = l.rstrip(";")
+                    iws = [x.strip() for x in l[11:].split(",")]
+                    for iw in iws:
+                        if not iw:
+                            continue
+                        input_wires.append(iw)
+                        module_params.append(iw)
+
+                res = OUTPUT_WIRE_RE.search(l)
+                if res:
+                    l = l.rstrip(";")
+                    ows = [x.strip() for x in l[12:].split(",")]
+                    for ow in ows:
+                        if not ow:
+                            continue
+                        output_wires.append(ow)
+                        module_params.append(ow)
             continue
 
         res = MODULE_ARGS_START_RE.search(l)
         if res:
             in_module_params = True
             continue
-        res = INPUT_WIRE_RE.search(l)
-        if res:
-            l = l.rstrip(";")
-            iws = [x.strip() for x in l[11:].split(",")]
-            for iw in iws:
-                if iw not in module_params:
-                    print(f"Input wire not specified as module parameter: {iw}")
-                input_wires.append(iw)
-        res = OUTPUT_WIRE_RE.search(l)
-        if res:
-            l = l.rstrip(";")
-            ows = [x.strip() for x in l[12:].split(",")]
-            for ow in ows:
-                if ow not in module_params:
-                    print(f"Output wire not specified as module parameter: {ow}")
-                output_wires.append(ow)
 
+    print("Inputs:", input_wires)
+    print("Outputs:", output_wires)
     return module_name, module_params, input_wires, output_wires
 
 
@@ -226,6 +227,7 @@ def write_commands(fp):
     write_command_cycle(fp, ext, sq, qc, sq10, st)
     st = 3
     write_command_cycle(fp, ext, sq, qc, sq10, st)
+
 
 def write_a8_commands(fp):
     fp.write("""        #1000
@@ -639,6 +641,7 @@ if __name__ == "__main__":
         input_wires.update(inputs)
         output_wires.update(outputs)
 
+    print("------------------------------------------")
     write_wrapper(module_params, input_wires, output_wires)
     write_wrapper(module_params, input_wires, output_wires, sim_name="sim_1", sim_code=write_commands)
 

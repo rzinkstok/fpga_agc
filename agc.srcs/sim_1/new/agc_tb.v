@@ -23,11 +23,19 @@ module agc_tb();
 	reg CAD2 = 0;
 	reg CAD3 = 0;
 	reg CAD4 = 0;
+	reg CAD5 = 0;
+	reg CAD6 = 0;
+	reg CAD7 = 0;
+	reg CAD8 = 0;
 	reg CDUSTB_ = 1;
 	reg CH01 = 0;
 	reg CH02 = 0;
 	reg CH03 = 0;
 	reg CH04 = 0;
+	reg CH05 = 0;
+	reg CH06 = 0;
+	reg CH07 = 0;
+	reg CH08 = 0;
 	reg CHINC_ = 1;
 	reg CI = 0;
 	reg CLOCK = 0;
@@ -53,9 +61,13 @@ module agc_tb();
 	reg G02ED = 0;
 	reg G03ED = 0;
 	reg G04ED = 0;
-	reg G05_ = 1;
-	reg G06_ = 1;
-	reg G07_ = 1;
+	reg G05ED = 0;
+	reg G06ED = 0;
+	reg G07ED = 0;
+	reg G08ED = 0;
+	reg G09_ = 1;
+	reg G10_ = 1;
+	reg G11_ = 1;
 	reg GEQZRO_ = 1;
 	reg GINH = 0;
 	reg INCSET_ = 1;
@@ -71,6 +83,10 @@ module agc_tb();
 	reg MDT02 = 0;
 	reg MDT03 = 0;
 	reg MDT04 = 0;
+	reg MDT05 = 0;
+	reg MDT06 = 0;
+	reg MDT07 = 0;
+	reg MDT08 = 0;
 	reg MINC = 0;
 	reg MNHRPT = 0;
 	reg MONWBK = 0;
@@ -93,6 +109,8 @@ module agc_tb();
 	reg RELPLS = 0;
 	reg RPTAD3 = 0;
 	reg RPTAD4 = 0;
+	reg RPTAD5 = 0;
+	reg RPTAD6 = 0;
 	reg RQ_ = 1;
 	reg RSCG_ = 1;
 	reg RUPTOR_ = 1;
@@ -104,6 +122,10 @@ module agc_tb();
 	reg SA02 = 0;
 	reg SA03 = 0;
 	reg SA04 = 0;
+	reg SA05 = 0;
+	reg SA06 = 0;
+	reg SA07 = 0;
+	reg SA08 = 0;
 	reg SBY = 0;
 	reg SETAB_ = 1;
 	reg SETCD_ = 1;
@@ -126,10 +148,6 @@ module agc_tb();
 	reg WGA_ = 1;
 	reg WHOMP = 0;
 	reg WHOMPA = 0;
-	reg WL05_ = 1;
-	reg WL06_ = 1;
-	reg WL07_ = 1;
-	reg WL08_ = 1;
 	reg WL09_ = 1;
 	reg WL10_ = 1;
 	reg WL11_ = 1;
@@ -156,8 +174,8 @@ module agc_tb();
 	reg XT4_ = 1;
 	reg XT5_ = 1;
 	reg XT6_ = 1;
-	reg XUY05_ = 1;
-	reg XUY06_ = 1;
+	reg XUY09_ = 1;
+	reg XUY10_ = 1;
 	reg YB0_ = 1;
 
 	wire A03_1_RPTSET;
@@ -325,6 +343,7 @@ module agc_tb();
 	wire CHBT14;
 	wire CI01_;
 	wire CI05_;
+	wire CI09_;
 	wire CI_;
 	wire CLEARA;
 	wire CLEARB;
@@ -335,6 +354,7 @@ module agc_tb();
 	wire CLK;
 	wire CLXC;
 	wire CO06;
+	wire CO10;
 	wire CQG;
 	wire CSG;
 	wire CT;
@@ -509,11 +529,22 @@ module agc_tb();
 	wire G02;
 	wire G03;
 	wire G04;
+	wire G05;
+	wire G05_;
+	wire G06;
+	wire G06_;
+	wire G07;
+	wire G07_;
+	wire G08;
 	wire G2LSG_;
 	wire GEM01;
 	wire GEM02;
 	wire GEM03;
 	wire GEM04;
+	wire GEM05;
+	wire GEM06;
+	wire GEM07;
+	wire GEM08;
 	wire GNHNC;
 	wire GOJ1;
 	wire GOJ1_;
@@ -553,6 +584,7 @@ module agc_tb();
 	wire L02_;
 	wire L03_;
 	wire L04_;
+	wire L08_;
 	wire L16_;
 	wire L2GDG_;
 	wire L2GD_;
@@ -615,6 +647,10 @@ module agc_tb();
 	wire MWL02;
 	wire MWL03;
 	wire MWL04;
+	wire MWL05;
+	wire MWL06;
+	wire MWL07;
+	wire MWL08;
 	wire MWLG;
 	wire MWQG;
 	wire MWSG;
@@ -855,6 +891,14 @@ module agc_tb();
 	wire WL03_;
 	wire WL04;
 	wire WL04_;
+	wire WL05;
+	wire WL05_;
+	wire WL06;
+	wire WL06_;
+	wire WL07;
+	wire WL07_;
+	wire WL08;
+	wire WL08_;
 	wire WLG_;
 	wire WL_;
 	wire WOR0;
@@ -880,6 +924,8 @@ module agc_tb();
 	wire WZ_;
 	wire XUY01_;
 	wire XUY02_;
+	wire XUY05_;
+	wire XUY06_;
 	wire YT0;
 	wire YT0E;
 	wire YT0_;
@@ -1115,6 +1161,17 @@ module agc_tb();
 
 	a2_timer a2(
 		CLOCK,
+		SBY,
+		ALGA,
+		MSTRTP,
+		STRT1,
+		STRT2,
+		GOJ1,
+		MSTP,
+		WL15,
+		WL15_,
+		WL16,
+		WL16_,
 		CLK,
 		PHS2,
 		PHS2_,
@@ -1160,13 +1217,6 @@ module agc_tb();
 		SB2_,
 		SB4,
 		EDSET,
-		SBY,
-		ALGA,
-		MSTRTP,
-		STRT1,
-		STRT2,
-		GOJ1,
-		MSTP,
 		STOPA,
 		GOJAM,
 		GOJAM_,
@@ -1175,10 +1225,6 @@ module agc_tb();
 		TIMR,
 		MSTPIT_,
 		MGOJAM,
-		WL15,
-		WL15_,
-		WL16,
-		WL16_,
 		T01,
 		T01_,
 		T01DC_,
@@ -2255,6 +2301,126 @@ module agc_tb();
 		L02_,
 		L03_,
 		L04_,
+		CLEARA,
+		CLEARB,
+		CLEARC,
+		CLEARD,
+		SIM_CLK
+	);
+
+	a9_four_bit_2 a9(
+		A2XG_,
+		PONEX,
+		MONEX,
+		TWOX,
+		CLXC,
+		CUG,
+		WYLOG_,
+		WYDLOG_,
+		WYDG_,
+		CI05_,
+		RULOG_,
+		WAG_,
+		CAG,
+		WALSG_,
+		RAG_,
+		WLG_,
+		G2LSG_,
+		CLG1G,
+		RLG_,
+		WQG_,
+		CQG,
+		RQG_,
+		WZG_,
+		CZG,
+		RZG_,
+		WBG_,
+		CBG,
+		RBLG_,
+		RCG_,
+		WG3G_,
+		WG4G_,
+		L2GDG_,
+		MCRO_,
+		WG1G_,
+		CGG,
+		RGG_,
+		L04_,
+		WL04_,
+		WL09_,
+		WL10_,
+		WL16_,
+		SA05,
+		SA06,
+		SA07,
+		SA08,
+		G05ED,
+		G06ED,
+		G07ED,
+		G08ED,
+		RB1,
+		R15,
+		R1C,
+		RB2,
+		CH05,
+		CH06,
+		CH07,
+		CH08,
+		G09_,
+		G10_,
+		G11_,
+		MDT05,
+		MDT06,
+		MDT07,
+		MDT08,
+		SETAB_,
+		SETCD_,
+		S08,
+		S08_,
+		XUY09_,
+		XUY10_,
+		WHOMP,
+		WHOMPA,
+		CAD5,
+		CAD6,
+		CAD7,
+		CAD8,
+		BBK1,
+		BBK2,
+		BBK3,
+		RB1F,
+		R6,
+		RPTAD3,
+		RPTAD5,
+		RPTAD6,
+		WL05,
+		WL05_,
+		MWL05,
+		WL06,
+		WL06_,
+		MWL06,
+		WL07,
+		WL07_,
+		MWL07,
+		WL08,
+		WL08_,
+		MWL08,
+		CI09_,
+		CO10,
+		XUY05_,
+		XUY06_,
+		L08_,
+		G05,
+		G05_,
+		GEM05,
+		G06,
+		G06_,
+		GEM06,
+		G07,
+		G07_,
+		GEM07,
+		G08,
+		GEM08,
 		CLEARA,
 		CLEARB,
 		CLEARC,

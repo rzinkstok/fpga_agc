@@ -1,54 +1,136 @@
 `timescale 1ns / 1ps
 
 module a2_timer(
-    // inputs
-    CLOCK,
+    input wire CLOCK,
+    input wire SBY, 
+    input wire ALGA, 
+    input wire MSTRTP, 
+    input wire STRT1, 
+    input wire STRT2, 
+    input wire GOJ1, 
+    input wire MSTP,
+    input wire WL15, 
+    input wire WL15_, 
+    input wire WL16, 
+    input wire WL16_,
 
-    // outputs
-    CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
-    RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
-    P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_,
-    F01A, F01B, F01C, F01D, FS01, FS01_,
-    SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET,
+    output wire CLK, 
+    output wire PHS2, 
+    output wire PHS2_, 
+    output wire PHS3_, 
+    output wire PHS4, 
+    output wire PHS4_, 
+    output wire CT, 
+    output wire CT_, 
+    output wire RT, 
+    output wire RT_, 
+    output wire WT, 
+    output wire WT_, 
+    output wire TT_, 
+    output wire OVFSTB_, 
+    output wire MONWT, 
+    output wire Q2A, 
+    output wire RINGA_, 
+    output wire RINGB_, 
+    output wire ODDSET_, 
+    output wire EVNSET, 
+    output wire EVNSET_,
+    output wire P01, 
+    output wire P01_, 
+    output wire P02, 
+    output wire P02_, 
+    output wire P03, 
+    output wire P03_, 
+    output wire P04, 
+    output wire P04_, 
+    output wire P05, 
+    output wire P05_,
+    output wire F01A, 
+    output wire F01B, 
+    output wire F01C, 
+    output wire F01D, 
+    output wire FS01, 
+    output wire FS01_,
+    output wire SB0, 
+    output wire SB0_, 
+    output wire SB1, 
+    output wire SB1_, 
+    output wire SB2, 
+    output wire SB2_, 
+    output wire SB4, 
+    output wire EDSET,
 
-    // inputs
-    SBY, ALGA, MSTRTP, STRT1, STRT2, GOJ1, MSTP,
+    output wire STOPA, 
+    output wire GOJAM, 
+    output wire GOJAM_, 
+    output wire STOP, 
+    output wire STOP_, 
+    output wire TIMR,
+    output wire MSTPIT_, 
+    output wire MGOJAM,
 
-    // outputs
-    STOPA, GOJAM, GOJAM_, STOP, STOP_, TIMR,
-    MSTPIT_, MGOJAM,
+    output wire T01, 
+    output wire T01_, 
+    output wire T01DC_, 
+    output wire T02, 
+    output wire T02_, 
+    output wire T02DC_, 
+    output wire T03, 
+    output wire T03_, 
+    output wire T03DC_, 
+    output wire T04, 
+    output wire T04_, 
+    output wire T04DC_,
+    output wire T05, 
+    output wire T05_, 
+    output wire T05DC_, 
+    output wire T06, 
+    output wire T06_, 
+    output wire T06DC_, 
+    output wire T07, 
+    output wire T07_, 
+    output wire T07DC_, 
+    output wire T08, 
+    output wire T08_, 
+    output wire T08DC_,
+    output wire T09, 
+    output wire T09_, 
+    output wire T09DC_, 
+    output wire T10, 
+    output wire T10_, 
+    output wire T10DC_, 
+    output wire T11, 
+    output wire T11_,
+    output wire T12, 
+    output wire T12_, 
+    output wire T12DC_,
+    output wire MT01, 
+    output wire MT02, 
+    output wire MT03,
+    output wire MT04, 
+    output wire MT05, 
+    output wire MT06, 
+    output wire MT07, 
+    output wire MT08, 
+    output wire MT09, 
+    output wire MT10, 
+    output wire MT11, 
+    output wire MT12, 
+    output wire T12SET,
+    output wire UNF, 
+    output wire UNF_, 
+    output wire OVF, 
+    output wire OVF_,
 
-    // inputs
-    WL15, WL15_, WL16, WL16_,
-
-    // outputs
-    T01, T01_, T01DC_, T02, T02_, T02DC_, T03, T03_, T03DC_, T04, T04_, T04DC_,
-    T05, T05_, T05DC_, T06, T06_, T06DC_, T07, T07_, T07DC_, T08, T08_, T08DC_,
-    T09, T09_, T09DC_, T10, T10_, T10DC_, T11, T11_,         T12, T12_, T12DC_,
-    MT01, MT02, MT03,MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, T12SET,
-    UNF, UNF_, OVF, OVF_,
-
-    // input
-    SIM_CLK
+    input wire SIM_CLK
 );
 
-    input wire SIM_CLK;
-    
-	// output wires used in multiple sheets
-	output wire STOP, T12DC_;
-    
     /**************************
      *
      *  Module A2 sheet 1
      *  Sheet number 2005260/1
      *
      **************************/
-    
-    input wire CLOCK;
-    
-    output wire CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_;
-    output wire MONWT, Q2A; // was a wand but only single assignment
-    output wire RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_;
     
     wire NOR37101_out;
     wire NOR37102_out;
@@ -195,13 +277,6 @@ module a2_timer(
      *
      **************************/
     
-    input wire SBY, ALGA, MSTRTP, STRT1, STRT2, GOJ1, MSTP;
-    output wire P01, P01_, P02, P02_, P03, P03_, P04, P04_, P05, P05_;
-    output wire F01A, F01B, F01C, F01D, FS01, FS01_;
-    output wire SB0, SB0_, SB1, SB1_, SB2, SB2_, SB4, EDSET;
-    output wire STOPA, GOJAM, GOJAM_, STOP_, TIMR;
-    output wire MSTPIT_, MGOJAM;
-    
     wire NOR37201_out;
     wire NOR37202_out;
     wire NOR37205_out;
@@ -335,13 +410,6 @@ module a2_timer(
      *  Sheet number 2005260/3
      *
      **************************/
-     
-     input wire WL15, WL15_, WL16, WL16_;
-     output wire T01, T01_, T01DC_, T02, T02_, T02DC_, T03, T03_, T03DC_, T04, T04_, T04DC_;
-     output wire T05, T05_, T05DC_, T06, T06_, T06DC_, T07, T07_, T07DC_, T08, T08_, T08DC_;
-     output wire T09, T09_, T09DC_, T10, T10_, T10DC_, T11, T11_,         T12, T12_;
-     output wire MT01, MT02, MT03,MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, T12SET; // were wands. Single connection
-     output wire UNF, UNF_, OVF, OVF_;
      
      wire NOR37303_out;
      wire NOR37304_out;

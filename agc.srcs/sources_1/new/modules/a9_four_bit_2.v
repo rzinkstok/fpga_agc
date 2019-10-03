@@ -1,75 +1,127 @@
 `timescale 1ns / 1ps
 
 module a9_four_bit_2(
-    // inputs
-    A2XG_, PONEX, MONEX, TWOX, CLXC, CUG, WYLOG_, WYDLOG_, WYDG_, CI05_, RULOG_,
-    WAG_, CAG, WALSG_, RAG_, 
-    WLG_, G2LSG_, CLG1G, RLG_, 
-    WQG_, CQG, RQG_,
-    WZG_, CZG, RZG_,
-    WBG_, CBG, RBLG_, RCG_,
-    WG3G_, WG4G_, L2GDG_, MCRO_, WG1G_, CGG, RGG_,
-    L04_,
-    WL04_, WL09_, WL10_, WL16_,
-    SA05, SA06, SA07, SA08,
-    G05ED, G06ED, G07ED, G08ED,
-    RB1, R15, R1C, RB2,
-    CH05, CH06, CH07, CH08,
-    G09_, G10_, G11_,
-    MDT05, MDT06, MDT07, MDT08,
-    SETAB_, SETCD_,
-    S08, S08_,
-    XUY09_, XUY10_,
-    WHOMP, WHOMPA,
-    CAD5, CAD6, CAD7, CAD8,
-    BBK1, BBK2, BBK3,
-    RB1F, R6, RPTAD3, RPTAD5, RPTAD6,
+    input wire A2XG_, 
+    input wire PONEX, 
+    input wire MONEX, 
+    input wire TWOX, 
+    input wire CLXC, 
+    input wire CUG, 
+    input wire WYLOG_, 
+    input wire WYDLOG_, 
+    input wire WYDG_, 
+    input wire CI05_, 
+    input wire RULOG_,
+    input wire WAG_, 
+    input wire CAG, 
+    input wire WALSG_, 
+    input wire RAG_, 
+    input wire WLG_, 
+    input wire G2LSG_, 
+    input wire CLG1G, 
+    input wire RLG_, 
+    input wire WQG_, 
+    input wire CQG, 
+    input wire RQG_,
+    input wire WZG_, 
+    input wire CZG, 
+    input wire RZG_,
+    input wire WBG_, 
+    input wire CBG, 
+    input wire RBLG_, 
+    input wire RCG_,
+    input wire WG3G_, 
+    input wire WG4G_, 
+    input wire L2GDG_, 
+    input wire MCRO_, 
+    input wire WG1G_, 
+    input wire CGG, 
+    input wire RGG_,
+    input wire L04_,
+    input wire WL04_, 
+    input wire WL09_, 
+    input wire WL10_, 
+    input wire WL16_,
+    input wire SA05, 
+    input wire SA06, 
+    input wire SA07, 
+    input wire SA08,
+    input wire G05ED, 
+    input wire G06ED, 
+    input wire G07ED, 
+    input wire G08ED,
+    input wire RB1, 
+    input wire R15, 
+    input wire R1C, 
+    input wire RB2,
+    input wire CH05, 
+    input wire CH06, 
+    input wire CH07, 
+    input wire CH08,
+    input wire G09_, 
+    input wire G10_, 
+    input wire G11_,
+    input wire MDT05, 
+    input wire MDT06, 
+    input wire MDT07, 
+    input wire MDT08,
+    input wire SETAB_, 
+    input wire SETCD_,
+    input wire S08, 
+    input wire S08_,
+    input wire XUY09_, 
+    input wire XUY10_,
+    input wire WHOMP, 
+    input wire WHOMPA,
+    input wire CAD5, 
+    input wire CAD6, 
+    input wire CAD7, 
+    input wire CAD8,
+    input wire BBK1, 
+    input wire BBK2, 
+    input wire BBK3,
+    input wire RB1F, 
+    input wire R6, 
+    input wire RPTAD3, 
+    input wire RPTAD5, 
+    input wire RPTAD6,
     
-    // outputs
-    WL05, WL05_, MWL05, WL06, WL06_, MWL06, WL07, WL07_, MWL07, WL08, WL08_, MWL08,
-    CI09_, 
-    CO10,
-    XUY05_, XUY06_,
-    L08_,
-    G05, G05_, GEM05, G06, G06_, GEM06, G07, G07_, GEM07, G08, GEM08,
-    CLEARA, CLEARB, CLEARC, CLEARD,
+    output wire WL05, 
+    output wire WL05_, 
+    output wire MWL05, 
+    output wire WL06, 
+    output wire WL06_, 
+    output wire MWL06, 
+    output wire WL07, 
+    output wire WL07_, 
+    output wire MWL07, 
+    output wire WL08, 
+    output wire WL08_, 
+    output wire MWL08,
+    output wire CI09_, 
+    output wire CO10,
+    output wire XUY05_, 
+    output wire XUY06_,
+    output wire L08_,
+    output wire G05, 
+    output wire G05_, 
+    output wire GEM05, 
+    output wire G06, 
+    output wire G06_, 
+    output wire GEM06, 
+    output wire G07, 
+    output wire G07_, 
+    output wire GEM07, 
+    output wire G08, 
+    output wire GEM08,
+    output wire CLEARA, 
+    output wire CLEARB, 
+    output wire CLEARC, 
+    output wire CLEARD,
     
-    //input
-    SIM_CLK
-    );
+    input wire SIM_CLK
+);
     
-    input wire SIM_CLK;
-    
-    input wire A2XG_, PONEX, MONEX, TWOX, CLXC, CUG, WYLOG_, WYDLOG_, WYDG_, CI05_, RULOG_;
-    input wire WAG_, CAG, WALSG_, RAG_;
-    input wire WLG_, G2LSG_, CLG1G, RLG_;
-    input wire WQG_, CQG, RQG_;
-    input wire WZG_, CZG, RZG_;
-    input wire WBG_, CBG, RBLG_, RCG_;
-    input wire WG3G_, WG4G_, L2GDG_, MCRO_, WG1G_, CGG, RGG_;
-    input wire L04_;
-    input wire WL04_, WL09_, WL10_, WL16_;
-    input wire SA05, SA06, SA07, SA08;
-    input wire G05ED, G06ED, G07ED, G08ED;
-    input wire RB1, R15, R1C, RB2;
-    input wire CH05, CH06, CH07, CH08;
-    input wire G09_, G10_, G11_;
-    input wire MDT05, MDT06, MDT07, MDT08;
-    input wire SETAB_, SETCD_;
-    input wire S08, S08_;
-    input wire XUY09_, XUY10_;
-    input wire WHOMP, WHOMPA;
-    input wire CAD5, CAD6, CAD7, CAD8;
-    input wire BBK1, BBK2, BBK3;
-    input wire RB1F, R6, RPTAD3, RPTAD5, RPTAD6;
-    
-    output wire WL05, WL05_, MWL05, WL06, WL06_, MWL06, WL07, WL07_, MWL07, WL08, WL08_, MWL08;
-    output wire CI09_;
-    output wire CO10;
-    output wire XUY05_, XUY06_;
-    output wire L08_;
-    output wire G05, G05_, GEM05, G06, G06_, GEM06, G07, G07_, GEM07, G08, GEM08;
-    output wire CLEARA, CLEARB, CLEARC, CLEARD;
     
     /**************************
     *
@@ -258,12 +310,8 @@ module a9_four_bit_2(
     wire NOR52357_out;
     wire NOR52358_out;
     
-    wire NOR34450_out;
-    wire NOR34451_out;
-    wire NOR35359_out;
-    wire NOR35360_out;
-    wire NOR35460_out;
-    wire NOR53462_out;
+    wire NOR34452_out;
+    wire NOR34453_out;
     
     wire SUMA05_, SUMB05_, SUMA06_, SUMB06_, SUMA07_, SUMB07_, SUMA08_, SUMB08_;
     wire A05_, A06_, A07_, A08_;
@@ -274,7 +322,6 @@ module a9_four_bit_2(
     wire CO08;
     wire Z05_, Z06_, Z07_, Z08_;
     wire G08_;
-    wire S08A, S08A_;
     
     // Bit column 5
      
@@ -388,10 +435,10 @@ module a9_four_bit_2(
     // RL5_ part 5
     // No cross-module fan-in
     // Moved here from A12 sheet 2
-    nor_3 #(1'b0) NOR34452(NOR35460_out,    CAD5,           RPTAD5,                                     SIM_CLK);
+    nor_2 #(1'b0) NOR34452(NOR34452_out,    CAD5,           RPTAD5,                                     SIM_CLK);
     
     // RL05_
-    assign RL05_ = NOR52123_out & NOR52133_out & NOR52157_out & NOR52158_out & NOR35460_out;
+    assign RL05_ = NOR52123_out & NOR52133_out & NOR52157_out & NOR52158_out & NOR34452_out;
     
     // WL01
     nor_1 #(1'b0) NOR52152(WL05,            RL05_,                                                      SIM_CLK);
@@ -522,10 +569,10 @@ module a9_four_bit_2(
     // RL06_ part 5
     // No cross-module fan-in
     // Moved here from A12 sheet 2
-    nor_3 #(1'b0) NOR35360(NOR35360_out,    CAD6,           RPTAD6,                                     SIM_CLK);
+    nor_2 #(1'b0) NOR34453(NOR34453_out,    CAD6,           RPTAD6,                                     SIM_CLK);
     
     // RL06_
-    assign RL06_ = NOR52223_out & NOR52233_out & NOR52257_out & NOR52258_out & NOR35360_out;
+    assign RL06_ = NOR52223_out & NOR52233_out & NOR52257_out & NOR52258_out & NOR34453_out;
     
     // WL06
     nor_1 #(1'b0) NOR52252(WL06,            RL06_,                                                      SIM_CLK);
@@ -692,7 +739,7 @@ module a9_four_bit_2(
     nor_2 #(1'b0) NOR52309(NOR52309_out,    NOR52303_out,   NOR52307_out,                               SIM_CLK);
     nor_2 #(1'b0) NOR52310(XUY08_,          NOR52304_out,   NOR52308_out,                               SIM_CLK);
     
-    nor_4 #(1'b0) NOR52312(SUMA08_,         NOR52309_out,   XUY08_,         CI08_,                      SIM_CLK);
+    nor_3 #(1'b0) NOR52312(SUMA08_,         NOR52309_out,   XUY08_,         CI08_,                      SIM_CLK);
 
     
     nor_2 #(1'b0) NOR52313(NOR52313_out,    NOR52309_out,   XUY08_,                                     SIM_CLK);

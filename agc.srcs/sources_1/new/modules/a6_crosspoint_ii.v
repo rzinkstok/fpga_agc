@@ -1,101 +1,200 @@
 `timescale 1ns / 1ps
 
 module a6_crosspoint_ii(
-    // Inputs
-    T01, T01_, T02, T02_, T03, T03_, T04, T04_, T05, T06, T06_, T07, T07_, T08, T08_, T09, T10, T10_, T11, T11_, T12,
-    DV4_, DV376_, DV1376_, DIVSTG, DV4B1B,
-    RBSQ, MP1, MP1_, MP3_, T12USE_, RRPA, BR1, BR1_, BR2_, BR12B_, BR1B2B, BR1B2_, BR1B2B_, PHS4_, MONEX_, PTWOX, B15X,
-    AUG0_, DIM0_, INCR0, PRINC, DINC, DINC_, PINC, MINC, MCDU, PCDU, CDUSTB_, DAS0, DAS1, DAS1_, MSU0, WAND0, RAND0, INOTLD, SHIFT, INKL,
-    MONpCH, MON_, FETCH1, DXCH0, RUPT0, RUPT1, MASK0, DV1376, CCS0, CCS0_, ADS0, NDXX1_, AD0, DCA0, DCS0, SU0, RADRZ, RADRG,
-    IC6, IC7, IC9, IC11, IC17,
-    L01_, L02A_, L15A_,
-    R6, R15,
-    STBE, STBF, STFETI_,
-    n1XP10, n2XP3, n2XP5, n2XP7, n2XP8, n3XP2, n3XP6, n3XP7, n4XP11, n5XP4, n5XP12, n5XP15, n5XP21, n5XP28, 
-    n6XP5, n6XP8, n7XP4, n7XP9, n7XP19, n8XP6, n9XP1, n9XP5, n10XP1, n10XP8, n11XP2,
-    n8PP4,
-    MP0T10, TL15,
-    ST2_,
-    GOJAM,
+    input wire T01, 
+    input wire T01_, 
+    input wire T02, 
+    input wire T02_, 
+    input wire T03, 
+    input wire T03_, 
+    input wire T04, 
+    input wire T04_, 
+    input wire T05, 
+    input wire T06, 
+    input wire T06_, 
+    input wire T07, 
+    input wire T07_, 
+    input wire T08, 
+    input wire T08_, 
+    input wire T09, 
+    input wire T10, 
+    input wire T10_, 
+    input wire T11, 
+    input wire T11_, 
+    input wire T12,
+    input wire DV4_, 
+    input wire DV376_, 
+    input wire DV1376_, 
+    input wire DIVSTG, 
+    input wire DV4B1B,
+    input wire RBSQ, 
+    input wire MP1, 
+    input wire MP1_, 
+    input wire MP3_, 
+    input wire T12USE_, 
+    input wire RRPA, 
+    input wire BR1, 
+    input wire BR1_, 
+    input wire BR2_, 
+    input wire BR12B_, 
+    input wire BR1B2B, 
+    input wire BR1B2_, 
+    input wire BR1B2B_, 
+    input wire PHS4_, 
+    input wire MONEX_, 
+    input wire PTWOX, 
+    input wire B15X,
+    input wire AUG0_, 
+    input wire DIM0_, 
+    input wire INCR0, 
+    input wire PRINC, 
+    input wire DINC, 
+    input wire DINC_, 
+    input wire PINC, 
+    input wire MINC, 
+    input wire MCDU, 
+    input wire PCDU, 
+    input wire CDUSTB_, 
+    input wire DAS0, 
+    input wire DAS1, 
+    input wire DAS1_, 
+    input wire MSU0, 
+    input wire WAND0, 
+    input wire RAND0, 
+    input wire INOTLD, 
+    input wire SHIFT, 
+    input wire INKL,
+    input wire MONpCH, 
+    input wire MON_, 
+    input wire FETCH1, 
+    input wire DXCH0, 
+    input wire RUPT0, 
+    input wire RUPT1, 
+    input wire MASK0, 
+    input wire DV1376, 
+    input wire CCS0, 
+    input wire CCS0_, 
+    input wire ADS0, 
+    input wire NDXX1_, 
+    input wire AD0, 
+    input wire DCA0, 
+    input wire DCS0, 
+    input wire SU0, 
+    input wire RADRZ, 
+    input wire RADRG,
+    input wire IC6, 
+    input wire IC7, 
+    input wire IC9, 
+    input wire IC11, 
+    input wire IC17,
+    input wire L01_, 
+    input wire L02A_, 
+    input wire L15A_,
+    input wire R6, 
+    input wire R15,
+    input wire STBE, 
+    input wire STBF, 
+    input wire STFETI_,
+    input wire n1XP10, 
+    input wire n2XP3, 
+    input wire n2XP5, 
+    input wire n2XP7, 
+    input wire n2XP8, 
+    input wire n3XP2, 
+    input wire n3XP6, 
+    input wire n3XP7, 
+    input wire n4XP11, 
+    input wire n5XP4, 
+    input wire n5XP12, 
+    input wire n5XP15, 
+    input wire n5XP21, 
+    input wire n5XP28, 
+    input wire n6XP5, 
+    input wire n6XP8, 
+    input wire n7XP4, 
+    input wire n7XP9, 
+    input wire n7XP19, 
+    input wire n8XP6, 
+    input wire n9XP1, 
+    input wire n9XP5, 
+    input wire n10XP1, 
+    input wire n10XP8, 
+    input wire n11XP2,
+    input wire n8PP4,
+    input wire MP0T10, 
+    input wire TL15,
+    input wire ST2_,
+    input wire GOJAM,
     
-    // Outputs
-    A06_1_A2X_,
-    A06_1_RB_, A06_2_RB_,
-    A06_1_WYD_,
-    A06_1_WY_,
-    A06_1_RC_, A06_2_RC_,
-    A06_1_WL_,
-    A06_1_RG_,
-    A06_1_WB_,
-    A06_1_RU_, A06_2_RU_, A06_3_RU_,
-    A06_1_WZ_,
-    A06_1_TOV_,
-    A06_1_WSC_, A06_2_WSC_,
-    A06_1_WG_, A06_2_WG_,
-    A06_1_MONEX_,
-    A06_1_WA_, A06_2_WA_,
-    A06_1_RZ_,
-    A06_1_WS_,
-    A06_1_CI_,
-    A06_1_R1C_,
-    A06_1_RB1_,
-    A06_1_RPTSET,
-    A06_1_ST2_,
-    A06_1_n8PP4, A06_2_n8PP4, A06_3_n8PP4,
+    output wire A06_1_A2X_,
+    output wire A06_1_RB_, 
+    output wire A06_2_RB_,
+    output wire A06_1_WYD_,
+    output wire A06_1_WY_,
+    output wire A06_1_RC_, 
+    output wire A06_2_RC_,
+    output wire A06_1_WL_,
+    output wire A06_1_RG_,
+    output wire A06_1_WB_,
+    output wire A06_1_RU_, 
+    output wire A06_2_RU_, 
+    output wire A06_3_RU_,
+    output wire A06_1_WZ_,
+    output wire A06_1_TOV_,
+    output wire A06_1_WSC_, 
+    output wire A06_2_WSC_,
+    output wire A06_1_WG_, 
+    output wire A06_2_WG_,
+    output wire A06_1_MONEX_,
+    output wire A06_1_WA_, 
+    output wire A06_2_WA_,
+    output wire A06_1_RZ_,
+    output wire A06_1_WS_,
+    output wire A06_1_CI_,
+    output wire A06_1_R1C_,
+    output wire A06_1_RB1_,
+    output wire A06_1_RPTSET,
+    output wire A06_1_ST2_,
+    output wire A06_1_n8PP4, 
+    output wire A06_2_n8PP4, 
+    output wire A06_3_n8PP4,
     
-    DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RB1F, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_, CGMC,
-    POUT, MOUT, ZOUT, WOVR, RDBANK, EXT, ST1, ST2, RUS_, NEAC, PONEX, PSEUDO,
-    n6XP10, n7XP14, n8XP4, n8XP10,
+    output wire DVXP1, 
+    output wire L2GD_, 
+    output wire ZIP, 
+    output wire ZIPCI, 
+    output wire ZAP, 
+    output wire ZAP_, 
+    output wire MCRO_, 
+    output wire RB1F, 
+    output wire RCH_, 
+    output wire TSGU_, 
+    output wire CLXC, 
+    output wire WQ_, 
+    output wire MONEX, 
+    output wire TWOX, 
+    output wire BXVX, 
+    output wire PIFL_, 
+    output wire CGMC,
+    output wire POUT, 
+    output wire MOUT, 
+    output wire ZOUT, 
+    output wire WOVR, 
+    output wire RDBANK, 
+    output wire EXT, 
+    output wire ST1, 
+    output wire ST2, 
+    output wire RUS_, 
+    output wire NEAC, 
+    output wire PONEX, 
+    output wire PSEUDO,
+    output wire n6XP10, 
+    output wire n7XP14, 
+    output wire n8XP4, 
+    output wire n8XP10,
     
-    // Input
-    SIM_CLK
+    input wire SIM_CLK
     );
-    
-    input wire SIM_CLK;
-    input wire T01, T01_, T02, T02_, T03, T03_, T04, T04_, T05, T06, T06_, T07, T07_, T08, T08_, T09, T10, T10_, T11, T11_, T12;
-    input wire DV4_, DV376_, DV1376_, DIVSTG, DV4B1B;
-    input wire RBSQ, MP1, MP1_, MP3_, T12USE_, RRPA, BR1, BR1_, BR2_, BR12B_, BR1B2B, BR1B2_, BR1B2B_, PHS4_, MONEX_, PTWOX, B15X;
-    input wire AUG0_, DIM0_, INCR0, PRINC, DINC, DINC_, PINC, MINC, MCDU, PCDU, CDUSTB_, DAS0, DAS1, DAS1_, MSU0, WAND0, RAND0, INOTLD,  SHIFT, INKL;
-    input wire MONpCH, MON_, FETCH1, DXCH0, RUPT0, RUPT1, MASK0, DV1376, CCS0, CCS0_, ADS0, NDXX1_, AD0, DCA0, DCS0, SU0, RADRZ, RADRG;
-    input wire IC6, IC7, IC9, IC11, IC17;
-    input wire L01_, L02A_, L15A_;
-    input wire R6, R15;
-    input wire STBE, STBF, STFETI_;
-    input wire n1XP10, n2XP3, n2XP5, n2XP7, n2XP8, n3XP2, n3XP6, n3XP7, n4XP11, n5XP4, n5XP12, n5XP15, n5XP21, n5XP28;
-    input wire n6XP5, n6XP8, n7XP4, n7XP9, n7XP19, n8XP6, n9XP1, n9XP5, n10XP1, n10XP8, n11XP2;
-    input wire n8PP4;
-    input wire MP0T10, TL15;
-    input wire ST2_;
-    input wire GOJAM;
-    
-    output wire A06_1_A2X_;
-    output wire A06_1_RB_, A06_2_RB_;
-    output wire A06_1_WYD_;
-    output wire A06_1_WY_;
-    output wire A06_1_RC_, A06_2_RC_;
-    output wire A06_1_WL_;
-    output wire A06_1_RG_;
-    output wire A06_1_WB_;
-    output wire A06_1_RU_, A06_2_RU_, A06_3_RU_;
-    output wire A06_1_WZ_;
-    output wire A06_1_TOV_;
-    output wire A06_1_WSC_, A06_2_WSC_;
-    output wire A06_1_WG_, A06_2_WG_;
-    output wire A06_1_MONEX_;
-    output wire A06_1_WA_, A06_2_WA_;
-    output wire A06_1_RZ_;
-    output wire A06_1_WS_;
-    output wire A06_1_CI_;
-    output wire A06_1_R1C_;
-    output wire A06_1_RB1_;
-    output wire A06_1_RPTSET;
-    output wire A06_1_ST2_;
-    output wire A06_1_n8PP4, A06_2_n8PP4, A06_3_n8PP4;
-    
-    output wire DVXP1, L2GD_, ZIP, ZIPCI, ZAP, ZAP_, MCRO_, RB1F, RCH_, TSGU_, CLXC, WQ_, MONEX, TWOX, BXVX, PIFL_, CGMC;
-    output wire POUT, MOUT, ZOUT, WOVR, RDBANK, EXT, ST1, ST2, RUS_, NEAC, PONEX, PSEUDO;
-    output wire n6XP10, n7XP14, n8XP4, n8XP10;
-    
     
     /**************************
     *

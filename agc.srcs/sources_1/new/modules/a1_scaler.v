@@ -2,54 +2,171 @@
 
 module a1_scaler(
     // inputs
-    FS01_, RCHAT_, RCHBT_,
+    input wire FS01_, 
+    input wire RCHAT_, 
+    input wire RCHBT_,
 
     // outputs
-    FS02, FS02A, F02A, F02B,
-    FS03, FS03A, F03A, F03B, F03B_,
-    FS04, FS04A, F04A, F04B, F04B_,
-    FS05, FS05_, FS05A, F05A, F05A_, F05B, F05B_, F05D,
-    FS06, FS06_, F06A, F06B, F06B_,
-    FS07, FS07_, FS07A, F07A, F07A_, F07B, F07B_, F07C_, F07D_,
-    FS08, FS08_, F08A, F08B, F08B_,
-    FS09, FS09_, F09A, F09A_, F09B, F09B_, F09D_,
-    FS10, F10A, F10A_, F10B, F10B_,
-    FS11, F11A, F11B,
-    FS12, F12A, F12B,
-    FS13, F13A, F13B,
-    FS14, F14A, F14B,
-    FS15, F15A, F15B,
-    FS16, F16A, F16B,
-    FS17, F17A, F17A_, F17B, F17B_,
-    FS18, F18A, F18A_, F18B, F18B_, F18AX,
-    FS19, F19A, F19B,
-    FS20, F20A, F20B,
-    FS21, F21A, F21B,
-    FS22, F22A, F22B,
-    FS23, F23A, F23B,
-    FS24, F24A, F24B,
-    FS25, F25A, F25B,
-    FS26, F26A, F26B,
-    FS27, F27A, F27B,
-    FS28, F28A, F28B,
-    FS29, F29A, F29B,
-    FS30, F30A, F30B,
-    FS31, F31A, F31B,
-    FS32, F32A, F32B,
-    FS33, F33A, F33B, 
-    CHAT01, CHAT02, CHAT03, CHAT04, CHAT05, CHAT06, CHAT07, 
-    CHAT08, CHAT09, CHAT10, CHAT11, CHAT12, CHAT13, CHAT14,
-    CHBT01, CHBT02, CHBT03, CHBT04, CHBT05, CHBT06, CHBT07,
-    CHBT08, CHBT09, CHBT10, CHBT11, CHBT12, CHBT13, CHBT14,
+    output wire FS02, 
+    output wire FS02A, 
+    output wire F02A, 
+    output wire F02B,
+    output wire FS03, 
+    output wire FS03A, 
+    output wire F03A, 
+    output wire F03B, 
+    output wire F03B_,
+    output wire FS04, 
+    output wire FS04A, 
+    output wire F04A, 
+    output wire F04B, 
+    output wire F04B_,
+    output wire FS05, 
+    output wire FS05_, 
+    output wire FS05A, 
+    output wire F05A, 
+    output wire F05A_, 
+    output wire F05B, 
+    output wire F05B_, 
+    output wire F05D,
+    output wire FS06, 
+    output wire FS06_, 
+    output wire F06A, 
+    output wire F06B, 
+    output wire F06B_,
+    output wire FS07, 
+    output wire FS07_, 
+    output wire FS07A, 
+    output wire F07A, 
+    output wire F07A_, 
+    output wire F07B, 
+    output wire F07B_, 
+    output wire F07C_, 
+    output wire F07D_,
+    output wire FS08, 
+    output wire FS08_, 
+    output wire F08A, 
+    output wire F08B, 
+    output wire F08B_,
+    output wire FS09, 
+    output wire FS09_, 
+    output wire F09A, 
+    output wire F09A_, 
+    output wire F09B, 
+    output wire F09B_, 
+    output wire F09D_,
+    output wire FS10, 
+    output wire F10A, 
+    output wire F10A_, 
+    output wire F10B, 
+    output wire F10B_,
+    output wire FS11, 
+    output wire F11A, 
+    output wire F11B,
+    output wire FS12, 
+    output wire F12A, 
+    output wire F12B,
+    output wire FS13, 
+    output wire F13A, 
+    output wire F13B,
+    output wire FS14, 
+    output wire F14A, 
+    output wire F14B,
+    output wire FS15, 
+    output wire F15A, 
+    output wire F15B,
+    output wire FS16, 
+    output wire F16A, 
+    output wire F16B,
+    output wire FS17, 
+    output wire F17A, 
+    output wire F17A_, 
+    output wire F17B, 
+    output wire F17B_,
+    output wire FS18, 
+    output wire F18A, 
+    output wire F18A_, 
+    output wire F18B, 
+    output wire F18B_, 
+    output wire F18AX,
+    output wire FS19, 
+    output wire F19A, 
+    output wire F19B,
+    output wire FS20, 
+    output wire F20A, 
+    output wire F20B,
+    output wire FS21, 
+    output wire F21A, 
+    output wire F21B,
+    output wire FS22, 
+    output wire F22A, 
+    output wire F22B,
+    output wire FS23, 
+    output wire F23A, 
+    output wire F23B,
+    output wire FS24, 
+    output wire F24A, 
+    output wire F24B,
+    output wire FS25, 
+    output wire F25A, 
+    output wire F25B,
+    output wire FS26, 
+    output wire F26A, 
+    output wire F26B,
+    output wire FS27, 
+    output wire F27A, 
+    output wire F27B,
+    output wire FS28, 
+    output wire F28A, 
+    output wire F28B,
+    output wire FS29, 
+    output wire F29A, 
+    output wire F29B,
+    output wire FS30, 
+    output wire F30A, 
+    output wire F30B,
+    output wire FS31, 
+    output wire F31A, 
+    output wire F31B,
+    output wire FS32, 
+    output wire F32A, 
+    output wire F32B,
+    output wire FS33, 
+    output wire F33A, 
+    output wire F33B, 
+    output wire CHAT01, 
+    output wire CHAT02, 
+    output wire CHAT03, 
+    output wire CHAT04, 
+    output wire CHAT05, 
+    output wire CHAT06, 
+    output wire CHAT07, 
+    output wire CHAT08, 
+    output wire CHAT09, 
+    output wire CHAT10, 
+    output wire CHAT11, 
+    output wire CHAT12, 
+    output wire CHAT13, 
+    output wire CHAT14,
+    output wire CHBT01, 
+    output wire CHBT02, 
+    output wire CHBT03, 
+    output wire CHBT04, 
+    output wire CHBT05, 
+    output wire CHBT06, 
+    output wire CHBT07,
+    output wire CHBT08, 
+    output wire CHBT09, 
+    output wire CHBT10, 
+    output wire CHBT11, 
+    output wire CHBT12, 
+    output wire CHBT13, 
+    output wire CHBT14,
 
     // input
-    SIM_CLK
+    input wire SIM_CLK
 );
 
-    // input wire used in multiple sheets
-    input wire SIM_CLK, RCHAT_;
-    
-    
     /**************************
      *
      *  Module A1 sheet 1
@@ -57,11 +174,8 @@ module a1_scaler(
      *
      **************************/
     
-    input wire FS01_;    
-    
     
     // Stage 2
-    output wire FS02, FS02A, F02A, F02B;
     wire NOR38203_out, NOR38204_out, NOR38205_out;
     
     nor_1 #(1'b0) NOR38201(FS02A,           NOR38204_out,                                   SIM_CLK);
@@ -76,7 +190,6 @@ module a1_scaler(
     
     
     // Stage 3
-    output wire FS03, FS03A, F03A, F03B, F03B_;
     wire NOR38213_out, NOR38214_out, NOR38215_out;
     
     nor_1 #(1'b0) NOR38211(FS03A,           NOR38214_out,                                   SIM_CLK);
@@ -94,7 +207,6 @@ module a1_scaler(
     
     
     // Stage 4
-    output wire FS04, FS04A, F04A, F04B, F04B_;
     wire NOR38223_out, NOR38224_out, NOR38225_out;
     
     nor_1 #(1'b0) NOR38221(FS04A,           NOR38224_out,                                   SIM_CLK);
@@ -112,7 +224,6 @@ module a1_scaler(
     
     
     // Stage 5
-    output wire FS05, FS05_, FS05A, F05A, F05A_, F05B, F05B_, F05D;
     wire NOR38233_out, NOR38234_out, NOR38235_out;
     
     nor_1 #(1'b0) NOR38231(FS05A,           NOR38234_out,                                   SIM_CLK);
@@ -136,7 +247,6 @@ module a1_scaler(
     
     
     // Stage 6
-    output wire FS06,  FS06_, F06A, F06B, F06B_, CHAT01;
     wire NOR38243_out,NOR38244_out, NOR38245_out;
     
     nor_2 #(1'b0) NOR38241(CHAT01,          RCHAT_,         NOR38244_out,                   SIM_CLK);
@@ -157,7 +267,6 @@ module a1_scaler(
     
     
     // Stage 7
-    output wire FS07, FS07_, FS07A, F07A, F07A_, F07B, F07B_, F07C_, F07D_, CHAT02;
     wire NOR38253_out, NOR38254_out, NOR38255_out, NOR49355_out, NOR49356_out;
     
     nor_2 #(1'b0) NOR38251(CHAT02,          RCHAT_,         NOR38254_out,                   SIM_CLK);
@@ -190,7 +299,6 @@ module a1_scaler(
     
     
     // Stage 8
-    output wire FS08, FS08_, F08A, F08B, F08B_, CHAT03;
     wire NOR38263_out, NOR38264_out, NOR38265_out;
     
     nor_2 #(1'b0) NOR38261(CHAT03,          RCHAT_,         NOR38264_out,                   SIM_CLK);
@@ -211,7 +319,6 @@ module a1_scaler(
     
     
     // Stage 9
-    output wire FS09, FS09_, F09A, F09A_, F09B, F09B_, F09D_, CHAT04;
     wire NOR38273_out, NOR38274_out, NOR38275_out, NOR49351_out;
     
     nor_2 #(1'b0) NOR38271(CHAT04,          RCHAT_,         NOR38274_out,                   SIM_CLK);
@@ -237,7 +344,6 @@ module a1_scaler(
     
     
     // Stage 10
-    output wire FS10, F10A, F10A_, F10B, F10B_, CHAT05;
     wire NOR38103_out, NOR38104_out, NOR38105_out;
     
     nor_2 #(1'b0) NOR38101(CHAT05,          RCHAT_,         NOR38104_out,                   SIM_CLK);
@@ -257,7 +363,6 @@ module a1_scaler(
     nor_1 #(1'b0) NOR46309(F10B_,           F10B,                                           SIM_CLK);
     
     // Stage 11
-    output wire FS11, F11A, F11B, CHAT06;
     wire NOR38113_out, NOR38114_out, NOR38115_out;
     
     nor_2 #(1'b0) NOR38111(CHAT06,          RCHAT_,         NOR38114_out,                   SIM_CLK);
@@ -272,7 +377,6 @@ module a1_scaler(
     
     
     // Stage 12
-    output wire FS12, F12A, F12B, CHAT07;
     wire NOR38123_out, NOR38124_out, NOR38125_out;
     
     nor_2 #(1'b0) NOR38121(CHAT07,          RCHAT_,         NOR38124_out,                   SIM_CLK);
@@ -287,7 +391,6 @@ module a1_scaler(
     
     
     // Stage 13
-    output wire FS13, F13A, F13B, CHAT08;
     wire NOR38133_out, NOR38134_out, NOR38135_out;
     
     nor_2 #(1'b0) NOR38131(CHAT08,          RCHAT_,         NOR38134_out,                   SIM_CLK);
@@ -302,7 +405,6 @@ module a1_scaler(
     
     
     // Stage 14
-    output wire FS14, F14A, F14B, CHAT09;
     wire NOR38143_out, NOR38144_out, NOR38145_out;
     
     nor_2 #(1'b0) NOR38141(CHAT09,          RCHAT_,         NOR38144_out,                   SIM_CLK);
@@ -317,7 +419,6 @@ module a1_scaler(
     
     
     // Stage 15
-    output wire FS15, F15A, F15B, CHAT10;
     wire NOR38153_out, NOR38154_out, NOR38155_out;
     
     nor_2 #(1'b0) NOR38151(CHAT10,          RCHAT_,         NOR38154_out,                   SIM_CLK);
@@ -332,7 +433,6 @@ module a1_scaler(
     
     
     // Stage 16
-    output wire FS16, F16A, F16B, CHAT11;
     wire NOR38163_out, NOR38164_out, NOR38165_out;
     
     nor_2 #(1'b0) NOR38161(CHAT11,          RCHAT_,         NOR38164_out,                   SIM_CLK);
@@ -347,7 +447,6 @@ module a1_scaler(
     
     
     // Stage 17
-    output wire FS17, F17A, F17A_, F17B, F17B_, CHAT12;
     wire NOR38173_out, NOR38174_out, NOR38175_out;
     
     nor_2 #(1'b0) NOR38171(CHAT12,          RCHAT_,         NOR38174_out,                   SIM_CLK);
@@ -375,11 +474,8 @@ module a1_scaler(
      *
      **************************/
     
-    input wire RCHBT_;
-    
     
     // Stage 18
-    output wire FS18, F18A, F18A_, F18B, F18B_, F18AX, CHAT13;
     wire NOR38303_out, NOR38304_out, NOR38305_out;
     
     nor_2 #(1'b0) NOR38301(CHAT13,          RCHAT_,         NOR38304_out,                   SIM_CLK);
@@ -403,7 +499,6 @@ module a1_scaler(
     
     
     // Stage 19
-    output wire FS19, F19A, F19B, CHAT14;
     wire NOR38313_out, NOR38314_out, NOR38315_out;
    
     nor_2 #(1'b0) NOR38311(CHAT14,          RCHAT_,         NOR38314_out,                   SIM_CLK);
@@ -418,7 +513,6 @@ module a1_scaler(
     
     
     // Stage 20
-    output wire FS20, F20A, F20B, CHBT01;
     wire NOR38323_out, NOR38324_out, NOR38325_out;
     
     nor_2 #(1'b0) NOR38321(CHBT01,          RCHBT_,         NOR38324_out,                   SIM_CLK);
@@ -433,7 +527,6 @@ module a1_scaler(
     
     
     // Stage 21
-    output wire FS21, F21A, F21B, CHBT02;
     wire NOR38333_out, NOR38334_out, NOR38335_out;
     
     nor_2 #(1'b0) NOR38331(CHBT02,          RCHBT_,         NOR38334_out,                   SIM_CLK);
@@ -448,7 +541,6 @@ module a1_scaler(
     
     
     // Stage 22
-    output wire FS22, F22A, F22B, CHBT03;
     wire NOR38343_out, NOR38344_out, NOR38345_out;
     
     nor_2 #(1'b0) NOR38341(CHBT03,          RCHBT_,         NOR38344_out,                   SIM_CLK);
@@ -463,7 +555,6 @@ module a1_scaler(
     
     
     // Stage 23
-    output wire FS23, F23A, F23B, CHBT04;
     wire NOR38353_out, NOR38354_out, NOR38355_out;
     
     nor_2 #(1'b0) NOR38351(CHBT04,          RCHBT_,         NOR38354_out,                   SIM_CLK);
@@ -478,7 +569,6 @@ module a1_scaler(
     
     
     // Stage 24
-    output wire FS24, F24A, F24B, CHBT05;
     wire NOR38363_out, NOR38364_out, NOR38365_out;
     
     nor_2 #(1'b0) NOR38361(CHBT05,          RCHBT_,         NOR38364_out,                   SIM_CLK);
@@ -493,7 +583,6 @@ module a1_scaler(
 
     
     // Stage 25
-    output wire FS25, F25A, F25B, CHBT06;
     wire NOR38373_out, NOR38374_out, NOR38375_out;
     
     nor_2 #(1'b0) NOR38371(CHBT06,          RCHBT_,         NOR38374_out,                   SIM_CLK);
@@ -508,7 +597,6 @@ module a1_scaler(
 
 
     // Stage 26
-    output wire FS26, F26A, F26B, CHBT07;
     wire NOR38403_out, NOR38404_out, NOR38405_out;
     
     nor_2 #(1'b0) NOR38401(CHBT07,          RCHBT_,         NOR38404_out,                   SIM_CLK);
@@ -523,7 +611,6 @@ module a1_scaler(
 
     
     // Stage 27
-    output wire FS27, F27A, F27B, CHBT08;
     wire NOR38413_out, NOR38414_out, NOR38415_out;
     
     nor_2 #(1'b0) NOR38411(CHBT08,          RCHBT_,         NOR38414_out,                   SIM_CLK);
@@ -538,7 +625,6 @@ module a1_scaler(
     
     
     // Stage 28
-    output wire FS28, F28A, F28B, CHBT09;
     wire NOR38423_out, NOR38424_out, NOR38425_out;
     
     nor_2 #(1'b0) NOR38421(CHBT09,          RCHBT_,         NOR38424_out,                   SIM_CLK);
@@ -553,7 +639,6 @@ module a1_scaler(
     
     
     // Stage 29
-    output wire FS29, F29A, F29B, CHBT10;
     wire NOR38433_out, NOR38434_out, NOR38435_out;
     
     nor_2 #(1'b0) NOR38431(CHBT10,          RCHBT_,         NOR38434_out,                   SIM_CLK);
@@ -568,7 +653,6 @@ module a1_scaler(
     
     
     // Stage 30
-    output wire FS30, F30A, F30B, CHBT11;
     wire NOR38443_out, NOR38444_out, NOR38445_out;
     
     nor_2 #(1'b0) NOR38441(CHBT11,          RCHBT_,         NOR38444_out,                   SIM_CLK);
@@ -583,7 +667,6 @@ module a1_scaler(
     
     
     // Stage 31
-    output wire FS31, F31A, F31B, CHBT12;
     wire NOR38453_out, NOR38454_out, NOR38455_out;
     
     nor_2 #(1'b0) NOR38451(CHBT12,          RCHBT_,         NOR38454_out,                   SIM_CLK);
@@ -598,7 +681,6 @@ module a1_scaler(
     
     
     // Stage 32
-    output wire FS32, F32A, F32B, CHBT13;
     wire NOR38463_out, NOR38464_out, NOR38465_out;
     
     nor_2 #(1'b0) NOR38461(CHBT13,          RCHBT_,         NOR38464_out,                   SIM_CLK);
@@ -613,7 +695,6 @@ module a1_scaler(
     
     
     // Stage 33
-    output wire FS33, F33A, F33B, CHBT14;
     wire NOR38473_out, NOR38474_out, NOR38475_out;
     
     nor_2 #(1'b0) NOR38471(CHBT14,          RCHBT_,         NOR38474_out,                   SIM_CLK);

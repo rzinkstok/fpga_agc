@@ -139,10 +139,14 @@ def check_arguments():
                 if res:
                     multiplicity = int(res.groups()[0])
                     args = [x.strip() for x in res.groups()[1].split(",")]
-                    if(len(args) != multiplicity + 2):
-                        res = GATE_NAME_RE.search(l)
-                        gate_number = res.groups()[0]
-
+                    if len(args) != multiplicity + 2:
+                        res = GATE_RE.search(l)
+                        try:
+                            gate_number = res.groups()[0]
+                        except Exception as e:
+                            print("ERROR")
+                            print(l)
+                            print(e)
                         print(f"Module {module} gate {gate_number} has incorrect number of arguments")
                         status = False
     return status
@@ -159,7 +163,7 @@ if __name__ == "__main__":
     print("Comparison results")
     print("------------------")
     for m in sorted(gates_schematics.keys()):
-        if m not in [f"A{i}" for i in range(1, 9)]:
+        if m not in [f"A{i}" for i in range(1, 10)]:
             continue
         gsch = gates_schematics[m]
         try:

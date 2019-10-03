@@ -1,75 +1,132 @@
 `timescale 1ns / 1ps
 
 module a8_four_bit_1(
-    // inputs
-    A2XG_, PONEX, MONEX, TWOX, CLXC, CUG, WYLOG_, WYDLOG_, WYDG_, CI01_, RULOG_,
-    WAG_, CAG, WALSG_, RAG_, 
-    WLG_, G2LSG_, CLG1G, RLG_, 
-    WQG_, CQG, RQG_,
-    WZG_, CZG, RZG_,
-    WBG_, CBG, RBLG_, RCG_,
-    WG3G_, WG4G_, L2GDG_, MCRO_, WG1G_, CGG, RGG_,
-    WL05_, WL06_, WL16_,
-    SA01, SA02, SA03, SA04,
-    G01ED, G02ED, G03ED, G04ED,
-    RB1, R15, R1C, RB2,
-    CH01, CH02, CH03, CH04,
-    G05_, G06_, G07_,
-    MDT01, MDT02, MDT03, MDT04,
-    SETAB_, SETCD_,
-    S08, S08_,
-    XUY05_, XUY06_,
-    WHOMP, WHOMPA,
-    CAD1, CAD2, CAD3, CAD4,
-    BBK1, BBK2, BBK3,
-    RB1F, R6, RPTAD3, RPTAD4,
+    input wire A2XG_, 
+    input wire PONEX, 
+    input wire MONEX, 
+    input wire TWOX, 
+    input wire CLXC, 
+    input wire CUG, 
+    input wire WYLOG_, 
+    input wire WYDLOG_, 
+    input wire WYDG_, 
+    input wire CI01_, 
+    input wire RULOG_,
+    input wire WAG_, 
+    input wire CAG, 
+    input wire WALSG_, 
+    input wire RAG_, 
+    input wire WLG_, 
+    input wire G2LSG_, 
+    input wire CLG1G, 
+    input wire RLG_, 
+    input wire WQG_, 
+    input wire CQG, 
+    input wire RQG_,
+    input wire WZG_, 
+    input wire CZG, 
+    input wire RZG_,
+    input wire WBG_, 
+    input wire CBG, 
+    input wire RBLG_, 
+    input wire RCG_,
+    input wire WG3G_, 
+    input wire WG4G_, 
+    input wire L2GDG_, 
+    input wire MCRO_, 
+    input wire WG1G_, 
+    input wire CGG, 
+    input wire RGG_,
+    input wire WL05_, 
+    input wire WL06_, 
+    input wire WL16_,
+    input wire SA01, 
+    input wire SA02, 
+    input wire SA03, 
+    input wire SA04,
+    input wire G01ED, 
+    input wire G02ED, 
+    input wire G03ED, 
+    input wire G04ED,
+    input wire RB1, 
+    input wire R15, 
+    input wire R1C, 
+    input wire RB2,
+    input wire CH01, 
+    input wire CH02, 
+    input wire CH03, 
+    input wire CH04,
+    input wire G05_, 
+    input wire G06_, 
+    input wire G07_,
+    input wire MDT01, 
+    input wire MDT02, 
+    input wire MDT03, 
+    input wire MDT04,
+    input wire SETAB_, 
+    input wire SETCD_,
+    input wire S08, 
+    input wire S08_,
+    input wire XUY05_, 
+    input wire XUY06_,
+    input wire WHOMP, 
+    input wire WHOMPA,
+    input wire CAD1, 
+    input wire CAD2, 
+    input wire CAD3, 
+    input wire CAD4,
+    input wire BBK1, 
+    input wire BBK2, 
+    input wire BBK3,
+    input wire RB1F, 
+    input wire R6, 
+    input wire RPTAD3, 
+    input wire RPTAD4,
     
-    // outputs
-    WL01, WL01_, MWL01, WL02, WL02_, MWL02, WL03, WL03_, MWL03, WL04, WL04_, MWL04,
-    CO06,
-    CI05_,
-    XUY01_, XUY02_,
-    SUMA01_, SUMB01_, SUMA02_, SUMB02_, SUMA03_, SUMB03_, SUMA04_, SUMB04_,
-    G01, G01_, GEM01, G02, GEM02, G03, GEM03, G04, GEM04,
-    L01_, L02_, L03_, L04_,
-    CLEARA, CLEARB, CLEARC, CLEARD,
+    output wire WL01,
+    output wire WL01_, 
+    output wire MWL01, 
+    output wire WL02, 
+    output wire WL02_, 
+    output wire MWL02, 
+    output wire WL03, 
+    output wire WL03_, 
+    output wire MWL03, 
+    output wire WL04, 
+    output wire WL04_, 
+    output wire MWL04,
+    output wire CO06,
+    output wire CI05_,
+    output wire XUY01_, 
+    output wire XUY02_,
+    output wire SUMA01_, 
+    output wire SUMB01_, 
+    output wire SUMA02_, 
+    output wire SUMB02_, 
+    output wire SUMA03_, 
+    output wire SUMB03_, 
+    output wire SUMA04_, 
+    output wire SUMB04_,
+    output wire G01, 
+    output wire G01_, 
+    output wire GEM01, 
+    output wire G02, 
+    output wire GEM02, 
+    output wire G03, 
+    output wire GEM03, 
+    output wire G04, 
+    output wire GEM04,
+    output wire L01_, 
+    output wire L02_, 
+    output wire L03_, 
+    output wire L04_,
+    output wire CLEARA, 
+    output wire CLEARB, 
+    output wire CLEARC, 
+    output wire CLEARD,
     
-    //input
-    SIM_CLK
-    );
-    
-    input wire SIM_CLK;
-    
-    input wire A2XG_, PONEX, MONEX, TWOX, CLXC, CUG, WYLOG_, WYDLOG_, WYDG_, CI01_, RULOG_;
-    input wire WAG_, CAG, WALSG_, RAG_;
-    input wire WLG_, G2LSG_, CLG1G, RLG_;
-    input wire WQG_, CQG, RQG_;
-    input wire WZG_, CZG, RZG_;
-    input wire WBG_, CBG, RBLG_, RCG_;
-    input wire WG3G_, WG4G_, L2GDG_, MCRO_, WG1G_, CGG, RGG_;
-    input wire WL05_, WL06_, WL16_;
-    input wire SA01, SA02, SA03, SA04;
-    input wire G01ED, G02ED, G03ED, G04ED;
-    input wire RB1, R15, R1C, RB2;
-    input wire CH01, CH02, CH03, CH04;
-    input wire G05_, G06_, G07_;
-    input wire MDT01, MDT02, MDT03, MDT04;
-    input wire SETAB_, SETCD_;
-    input wire S08, S08_;
-    input wire XUY05_, XUY06_;
-    input wire WHOMP, WHOMPA;
-    input wire CAD1, CAD2, CAD3, CAD4;
-    input wire BBK1, BBK2, BBK3;
-    input wire RB1F, R6, RPTAD3, RPTAD4;
-    
-    output wire WL01, WL01_, MWL01, WL02, WL02_, MWL02, WL03, WL03_, MWL03, WL04, WL04_, MWL04;
-    output wire CO06;
-    output wire CI05_;
-    output wire XUY01_, XUY02_;
-    output wire SUMA01_, SUMB01_, SUMA02_, SUMB02_, SUMA03_, SUMB03_, SUMA04_, SUMB04_;
-    output wire G01, G01_, GEM01, G02, GEM02, G03, GEM03, G04, GEM04;
-    output wire L01_, L02_, L03_, L04_;
-    output wire CLEARA, CLEARB, CLEARC, CLEARD;
+    input wire SIM_CLK
+);
     
     /**************************
     *
