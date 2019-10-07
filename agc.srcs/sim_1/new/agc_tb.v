@@ -36,6 +36,10 @@ module agc_tb();
 	reg CH06 = 0;
 	reg CH07 = 0;
 	reg CH08 = 0;
+	reg CH09 = 0;
+	reg CH10 = 0;
+	reg CH11 = 0;
+	reg CH12 = 0;
 	reg CHINC_ = 1;
 	reg CI = 0;
 	reg CLOCK = 0;
@@ -65,9 +69,9 @@ module agc_tb();
 	reg G06ED = 0;
 	reg G07ED = 0;
 	reg G08ED = 0;
-	reg G09_ = 1;
-	reg G10_ = 1;
-	reg G11_ = 1;
+	reg G13_ = 1;
+	reg G14_ = 1;
+	reg G15_ = 1;
 	reg GEQZRO_ = 1;
 	reg GINH = 0;
 	reg INCSET_ = 1;
@@ -87,6 +91,10 @@ module agc_tb();
 	reg MDT06 = 0;
 	reg MDT07 = 0;
 	reg MDT08 = 0;
+	reg MDT09 = 0;
+	reg MDT10 = 0;
+	reg MDT11 = 0;
+	reg MDT12 = 0;
 	reg MINC = 0;
 	reg MNHRPT = 0;
 	reg MONWBK = 0;
@@ -126,6 +134,10 @@ module agc_tb();
 	reg SA06 = 0;
 	reg SA07 = 0;
 	reg SA08 = 0;
+	reg SA09 = 0;
+	reg SA10 = 0;
+	reg SA11 = 0;
+	reg SA12 = 0;
 	reg SBY = 0;
 	reg SETAB_ = 1;
 	reg SETCD_ = 1;
@@ -148,10 +160,6 @@ module agc_tb();
 	reg WGA_ = 1;
 	reg WHOMP = 0;
 	reg WHOMPA = 0;
-	reg WL09_ = 1;
-	reg WL10_ = 1;
-	reg WL11_ = 1;
-	reg WL12_ = 1;
 	reg WL13_ = 1;
 	reg WL14_ = 1;
 	reg WL15 = 0;
@@ -176,6 +184,8 @@ module agc_tb();
 	reg XT6_ = 1;
 	reg XUY09_ = 1;
 	reg XUY10_ = 1;
+	reg XUY12_ = 1;
+	reg XUY14_ = 1;
 	reg YB0_ = 1;
 
 	wire A03_1_RPTSET;
@@ -287,6 +297,22 @@ module agc_tb();
 	wire A06_2_n8PP4;
 	wire A06_3_RU_;
 	wire A06_3_n8PP4;
+	wire A10_1_RL09_;
+	wire A10_1_RL10_;
+	wire A10_1_RL11_;
+	wire A10_1_RL12_;
+	wire A10_2_RL09_;
+	wire A10_2_RL10_;
+	wire A10_2_RL11_;
+	wire A10_2_RL12_;
+	wire A10_3_RL09_;
+	wire A10_3_RL10_;
+	wire A10_3_RL11_;
+	wire A10_3_RL12_;
+	wire A10_4_RL09_;
+	wire A10_4_RL10_;
+	wire A10_4_RL11_;
+	wire A10_4_RL12_;
 	wire A2XG_;
 	wire A2X_;
 	wire AD0;
@@ -344,6 +370,7 @@ module agc_tb();
 	wire CI01_;
 	wire CI05_;
 	wire CI09_;
+	wire CI13_;
 	wire CI_;
 	wire CLEARA;
 	wire CLEARB;
@@ -355,6 +382,7 @@ module agc_tb();
 	wire CLXC;
 	wire CO06;
 	wire CO10;
+	wire CO14;
 	wire CQG;
 	wire CSG;
 	wire CT;
@@ -536,6 +564,13 @@ module agc_tb();
 	wire G07;
 	wire G07_;
 	wire G08;
+	wire G09;
+	wire G09_;
+	wire G10;
+	wire G10_;
+	wire G11;
+	wire G11_;
+	wire G12;
 	wire G2LSG_;
 	wire GEM01;
 	wire GEM02;
@@ -545,6 +580,10 @@ module agc_tb();
 	wire GEM06;
 	wire GEM07;
 	wire GEM08;
+	wire GEM09;
+	wire GEM10;
+	wire GEM11;
+	wire GEM12;
 	wire GNHNC;
 	wire GOJ1;
 	wire GOJ1_;
@@ -585,6 +624,7 @@ module agc_tb();
 	wire L03_;
 	wire L04_;
 	wire L08_;
+	wire L12_;
 	wire L16_;
 	wire L2GDG_;
 	wire L2GD_;
@@ -651,6 +691,10 @@ module agc_tb();
 	wire MWL06;
 	wire MWL07;
 	wire MWL08;
+	wire MWL09;
+	wire MWL10;
+	wire MWL11;
+	wire MWL12;
 	wire MWLG;
 	wire MWQG;
 	wire MWSG;
@@ -728,7 +772,11 @@ module agc_tb();
 	wire RG_;
 	wire RINGA_;
 	wire RINGB_;
+	wire RL09_;
 	wire RL10BB;
+	wire RL10_;
+	wire RL11_;
+	wire RL12_;
 	wire RLG_;
 	wire RL_;
 	wire ROR0;
@@ -899,6 +947,14 @@ module agc_tb();
 	wire WL07_;
 	wire WL08;
 	wire WL08_;
+	wire WL09;
+	wire WL09_;
+	wire WL10;
+	wire WL10_;
+	wire WL11;
+	wire WL11_;
+	wire WL12;
+	wire WL12_;
 	wire WLG_;
 	wire WL_;
 	wire WOR0;
@@ -926,6 +982,7 @@ module agc_tb();
 	wire XUY02_;
 	wire XUY05_;
 	wire XUY06_;
+	wire XUY13_;
 	wire YT0;
 	wire YT0E;
 	wire YT0_;
@@ -996,6 +1053,145 @@ module agc_tb();
 
 	always
 		#244.140625 CLOCK = !CLOCK;  // 2.048 MHz clock
+
+	a10_four_bit_3 a10(
+		A2XG_,
+		PONEX,
+		MONEX,
+		TWOX,
+		CLXC,
+		CUG,
+		WYLOG_,
+		WYDLOG_,
+		WYDG_,
+		CI09_,
+		CO10,
+		RULOG_,
+		WAG_,
+		CAG,
+		WALSG_,
+		RAG_,
+		WLG_,
+		G2LSG_,
+		CLG1G,
+		RLG_,
+		WQG_,
+		CQG,
+		RQG_,
+		WZG_,
+		CZG,
+		RZG_,
+		WBG_,
+		CBG,
+		RBLG_,
+		RCG_,
+		WG3G_,
+		WG4G_,
+		L2GDG_,
+		MCRO_,
+		WG1G_,
+		CGG,
+		RGG_,
+		L04_,
+		WL08_,
+		WL13_,
+		WL14_,
+		SA09,
+		SA10,
+		SA11,
+		SA12,
+		RB1,
+		R15,
+		R1C,
+		RB2,
+		CH09,
+		CH10,
+		CH11,
+		CH12,
+		G13_,
+		G14_,
+		G15_,
+		MDT09,
+		MDT10,
+		MDT11,
+		MDT12,
+		SETAB_,
+		SETCD_,
+		S08,
+		S08_,
+		XUY09_,
+		XUY10_,
+		XUY12_,
+		XUY14_,
+		WHOMP,
+		WHOMPA,
+		CAD5,
+		CAD6,
+		CAD7,
+		CAD8,
+		BBK1,
+		BBK2,
+		BBK3,
+		RB1F,
+		R6,
+		RPTAD3,
+		RPTAD5,
+		RPTAD6,
+		RL09_,
+		RL10_,
+		RL11_,
+		RL12_,
+		A10_1_RL09_,
+		A10_2_RL09_,
+		A10_3_RL09_,
+		A10_4_RL09_,
+		A10_1_RL10_,
+		A10_2_RL10_,
+		A10_3_RL10_,
+		A10_4_RL10_,
+		A10_1_RL11_,
+		A10_2_RL11_,
+		A10_3_RL11_,
+		A10_4_RL11_,
+		A10_1_RL12_,
+		A10_2_RL12_,
+		A10_3_RL12_,
+		A10_4_RL12_,
+		WL09,
+		WL09_,
+		MWL09,
+		WL10,
+		WL10_,
+		MWL10,
+		WL11,
+		WL11_,
+		MWL11,
+		WL12,
+		WL12_,
+		MWL12,
+		CI13_,
+		CO14,
+		XUY13_,
+		XUY06_,
+		L08_,
+		L12_,
+		G09,
+		G09_,
+		GEM09,
+		G10,
+		G10_,
+		GEM10,
+		G11,
+		G11_,
+		GEM11,
+		G12,
+		GEM12,
+		CLEARA,
+		CLEARB,
+		CLEARC,
+		CLEARD,
+		SIM_CLK
+	);
 
 	a1_scaler a1(
 		FS01_,
@@ -2319,6 +2515,7 @@ module agc_tb();
 		WYDLOG_,
 		WYDG_,
 		CI05_,
+		CO06,
 		RULOG_,
 		WAG_,
 		CAG,
@@ -2438,6 +2635,10 @@ module agc_tb();
 	assign RB_ = A04_1_RB_ & A04_2_RB_ & A05_1_RB_ & A05_2_RB_ & A05_3_RB_ & A05_4_RB_ & A06_1_RB_ & A06_2_RB_;
 	assign RC_ = A04_1_RC_ & A04_2_RC_ & A05_1_RC_ & A05_2_RC_ & A05_3_RC_ & A06_1_RC_ & A06_2_RC_;
 	assign RG_ = A05_1_RG_ & A05_2_RG_ & A05_3_RG_ & A05_4_RG_ & A06_1_RG_;
+	assign RL09_ = A10_1_RL09_ & A10_2_RL09_ & A10_3_RL09_ & A10_4_RL09_;
+	assign RL10_ = A10_1_RL10_ & A10_2_RL10_ & A10_3_RL10_ & A10_4_RL10_;
+	assign RL11_ = A10_1_RL11_ & A10_2_RL11_ & A10_3_RL11_ & A10_4_RL11_;
+	assign RL12_ = A10_1_RL12_ & A10_2_RL12_ & A10_3_RL12_ & A10_4_RL12_;
 	assign RL_ = A05_1_RL_ & A05_2_RL_;
 	assign RPTSET = A03_1_RPTSET & A03_2_RPTSET & A03_3_RPTSET & A06_1_RPTSET;
 	assign RSC_ = A04_1_RSC_;

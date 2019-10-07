@@ -163,7 +163,7 @@ if __name__ == "__main__":
     print("Comparison results")
     print("------------------")
     for m in sorted(gates_schematics.keys()):
-        if m not in [f"A{i}" for i in range(1, 10)]:
+        if m not in [f"A{i}" for i in range(1, 11)]:
             continue
         gsch = gates_schematics[m]
         try:

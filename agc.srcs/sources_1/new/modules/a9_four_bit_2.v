@@ -11,6 +11,7 @@ module a9_four_bit_2(
     input wire WYDLOG_, 
     input wire WYDG_, 
     input wire CI05_, 
+    input wire CO06,
     input wire RULOG_,
     input wire WAG_, 
     input wire CAG, 
@@ -485,7 +486,7 @@ module a9_four_bit_2(
     nor_1 #(1'b0) NOR52211(NOR52211_out,    CI06_,                                                      SIM_CLK);
     nor_2 #(1'b0) NOR52215(SUMB06_,         NOR52213_out,   NOR52211_out,                               SIM_CLK);
     
-    nor_2 #(1'b0) NOR52214(CI07_,           NOR52209_out,   SUMA06_,                                    SIM_CLK);
+    nor_3 #(1'b0) NOR52214(CI07_,           NOR52209_out,   SUMA06_,        CO06,                       SIM_CLK);
     
     nor_3 #(1'b0) NOR52217(NOR52217_out,    SUMA06_,        SUMB06_,        RULOG_,                     SIM_CLK);
     
@@ -730,7 +731,7 @@ module a9_four_bit_2(
     
     // Y register flip-flop
     nor_2 #(1'b0) NOR52305(NOR52305_out,    WYLOG_,         WL08_,                                      SIM_CLK);
-    nor_2 #(1'b0) NOR52306(NOR52306_out,    WL05_,          WYDG_,                                      SIM_CLK);
+    nor_2 #(1'b0) NOR52306(NOR52306_out,    WL07_,          WYDG_,                                      SIM_CLK);
     
     nor_3 #(1'b1) NOR52307(NOR52307_out,    NOR52305_out,   NOR52306_out,   NOR52308_out,               SIM_CLK);
     nor_2 #(1'b0) NOR52308(NOR52308_out,    NOR52307_out,   CUG,                                        SIM_CLK);
