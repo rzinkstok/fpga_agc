@@ -55,6 +55,7 @@ def read_gates_from_source():
         total_gates += len(gates[module])
         print(f"Number of gates: {len(gates[module])}")
 
+    print()
     print(f"Total number of gates: {total_gates}")
     return gates
 

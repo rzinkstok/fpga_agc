@@ -447,7 +447,7 @@ module a10_four_bit_3(
     // NOR53155 and NOR53156 omitted
     
     
-    // Bit column 6
+    // Bit column 10
     
     // CO12 part 2
     // No cross-module fan-in
