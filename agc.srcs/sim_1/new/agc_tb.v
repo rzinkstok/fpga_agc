@@ -187,6 +187,7 @@ module agc_tb();
 	reg XUY12_ = 1;
 	reg XUY14_ = 1;
 	reg YB0_ = 1;
+	reg reset = 0;
 
 	wire A03_1_RPTSET;
 	wire A03_2_RPTSET;
@@ -1210,6 +1211,7 @@ module agc_tb();
 		CHBT12,
 		CHBT13,
 		CHBT14,
+		reset,
 		SIM_CLK
 	);
 
@@ -1331,6 +1333,7 @@ module agc_tb();
 		UNF_,
 		OVF,
 		OVF_,
+		reset,
 		SIM_CLK
 	);
 
@@ -1475,6 +1478,7 @@ module agc_tb();
 		A03_1_RPTSET,
 		A03_2_RPTSET,
 		A03_3_RPTSET,
+		reset,
 		SIM_CLK
 	);
 
@@ -1664,6 +1668,7 @@ module agc_tb();
 		BR1B2B_,
 		TL15,
 		KRPT,
+		reset,
 		SIM_CLK
 	);
 
@@ -1880,6 +1885,7 @@ module agc_tb();
 		U2BBK,
 		RSTSTG,
 		DV4B1B,
+		reset,
 		SIM_CLK
 	);
 
@@ -2073,6 +2079,7 @@ module agc_tb();
 		n7XP14,
 		n8XP4,
 		n8XP10,
+		reset,
 		SIM_CLK
 	);
 
@@ -2233,6 +2240,7 @@ module agc_tb();
 		MRAG,
 		MRLG,
 		MRULOG,
+		reset,
 		SIM_CLK
 	);
 
@@ -2359,6 +2367,7 @@ module agc_tb();
 		CLEARB,
 		CLEARC,
 		CLEARD,
+		reset,
 		SIM_CLK
 	);
 
@@ -2480,6 +2489,7 @@ module agc_tb();
 		CLEARB,
 		CLEARC,
 		CLEARD,
+		reset,
 		SIM_CLK
 	);
 
@@ -2619,6 +2629,7 @@ module agc_tb();
 		CLEARB,
 		CLEARC,
 		CLEARD,
+		reset,
 		SIM_CLK
 	);
 
@@ -2661,7 +2672,7 @@ module agc_tb();
 
 	initial
 	begin
-		#100000 $stop;
+		$stop;
 	end
 
 endmodule

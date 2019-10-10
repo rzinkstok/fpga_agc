@@ -84,6 +84,7 @@ module a08_four_bit_1_tb();
 	reg WZG_ = 1;
 	reg XUY05_ = 1;
 	reg XUY06_ = 1;
+	reg reset = 0;
 
 	wire CI05_;
 	wire CLEARA;
@@ -253,6 +254,7 @@ module a08_four_bit_1_tb();
 		CLEARB,
 		CLEARC,
 		CLEARD,
+		reset,
 		SIM_CLK
 	);
 
@@ -263,6 +265,7 @@ module a08_four_bit_1_tb();
         
         // Register A write test
         begin
+            reset = 0;
             force WL01 = 1;
             force WL02 = 1;
             force WL03 = 1;

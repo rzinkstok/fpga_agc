@@ -5,6 +5,7 @@ module a01_scaler_tb;
     reg RCHAT_ = 1;
     reg RCHBT_ = 1;
     reg SIM_CLK = 1;
+    reg reset = 0;
     
     wire FS02, FS02A, F02A, F02B,
         FS03, FS03A, F03A, F03B, F03B_,
@@ -88,6 +89,7 @@ module a01_scaler_tb;
         CHAT08, CHAT09, CHAT10, CHAT11, CHAT12, CHAT13, CHAT14,
         CHBT01, CHBT02, CHBT03, CHBT04, CHBT05, CHBT06, CHBT07,
         CHBT08, CHBT09, CHBT10, CHBT11, CHBT12, CHBT13, CHBT14,
+        reset,
         SIM_CLK
     );
 
