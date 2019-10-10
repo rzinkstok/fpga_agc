@@ -25,8 +25,6 @@ module agc();
 	reg CAD4 = 0;
 	reg CAD5 = 0;
 	reg CAD6 = 0;
-	reg CAD7 = 0;
-	reg CAD8 = 0;
 	reg CDUSTB_ = 1;
 	reg CH01 = 0;
 	reg CH02 = 0;
@@ -68,7 +66,6 @@ module agc();
 	reg G05ED = 0;
 	reg G06ED = 0;
 	reg G07ED = 0;
-	reg G08ED = 0;
 	reg G13_ = 1;
 	reg G14_ = 1;
 	reg G15_ = 1;
@@ -181,9 +178,7 @@ module agc();
 	reg XT4_ = 1;
 	reg XT5_ = 1;
 	reg XT6_ = 1;
-	reg XUY09_ = 1;
-	reg XUY10_ = 1;
-	reg XUY12_ = 1;
+	reg XUY13_ = 1;
 	reg XUY14_ = 1;
 	reg YB0_ = 1;
 	reg prop_clk = 1;
@@ -983,7 +978,9 @@ module agc();
 	wire XUY02_;
 	wire XUY05_;
 	wire XUY06_;
-	wire XUY13_;
+	wire XUY09_;
+	wire XUY10_;
+	wire XUY12_;
 	wire YT0;
 	wire YT0E;
 	wire YT0_;
@@ -2373,13 +2370,10 @@ module agc();
 
 	a09_four_bit_2 a09(
 		A2XG_,
-		PONEX,
 		MONEX,
-		TWOX,
 		CLXC,
 		CUG,
 		WYLOG_,
-		WYDLOG_,
 		WYDG_,
 		CI05_,
 		CO06,
@@ -2405,7 +2399,6 @@ module agc();
 		WG3G_,
 		WG4G_,
 		L2GDG_,
-		MCRO_,
 		WG1G_,
 		CGG,
 		RGG_,
@@ -2413,7 +2406,6 @@ module agc();
 		WL04_,
 		WL09_,
 		WL10_,
-		WL16_,
 		SA05,
 		SA06,
 		SA07,
@@ -2421,11 +2413,7 @@ module agc();
 		G05ED,
 		G06ED,
 		G07ED,
-		G08ED,
-		RB1,
-		R15,
 		R1C,
-		RB2,
 		CH05,
 		CH06,
 		CH07,
@@ -2437,24 +2425,11 @@ module agc();
 		MDT06,
 		MDT07,
 		MDT08,
-		SETAB_,
-		SETCD_,
-		S08,
-		S08_,
 		XUY09_,
 		XUY10_,
 		WHOMP,
-		WHOMPA,
 		CAD5,
 		CAD6,
-		CAD7,
-		CAD8,
-		BBK1,
-		BBK2,
-		BBK3,
-		RB1F,
-		R6,
-		RPTAD3,
 		RPTAD5,
 		RPTAD6,
 		WL05,
@@ -2485,23 +2460,16 @@ module agc();
 		GEM07,
 		G08,
 		GEM08,
-		CLEARA,
-		CLEARB,
-		CLEARC,
-		CLEARD,
 		reset,
 		prop_clk
 	);
 
 	a10_four_bit_3 a10(
 		A2XG_,
-		PONEX,
 		MONEX,
-		TWOX,
 		CLXC,
 		CUG,
 		WYLOG_,
-		WYDLOG_,
 		WYDG_,
 		CI09_,
 		CO10,
@@ -2527,11 +2495,9 @@ module agc();
 		WG3G_,
 		WG4G_,
 		L2GDG_,
-		MCRO_,
 		WG1G_,
 		CGG,
 		RGG_,
-		L04_,
 		WL08_,
 		WL13_,
 		WL14_,
@@ -2539,10 +2505,8 @@ module agc();
 		SA10,
 		SA11,
 		SA12,
-		RB1,
-		R15,
 		R1C,
-		RB2,
+		L08_,
 		CH09,
 		CH10,
 		CH11,
@@ -2554,28 +2518,9 @@ module agc();
 		MDT10,
 		MDT11,
 		MDT12,
-		SETAB_,
-		SETCD_,
-		S08,
-		S08_,
-		XUY09_,
-		XUY10_,
-		XUY12_,
+		XUY13_,
 		XUY14_,
-		WHOMP,
 		WHOMPA,
-		CAD5,
-		CAD6,
-		CAD7,
-		CAD8,
-		BBK1,
-		BBK2,
-		BBK3,
-		RB1F,
-		R6,
-		RPTAD3,
-		RPTAD5,
-		RPTAD6,
 		RL09_,
 		RL10_,
 		RL11_,
@@ -2610,9 +2555,9 @@ module agc();
 		MWL12,
 		CI13_,
 		CO14,
-		XUY13_,
-		XUY06_,
-		L08_,
+		XUY09_,
+		XUY10_,
+		XUY12_,
 		L12_,
 		G09,
 		G09_,
@@ -2625,10 +2570,6 @@ module agc();
 		GEM11,
 		G12,
 		GEM12,
-		CLEARA,
-		CLEARB,
-		CLEARC,
-		CLEARD,
 		reset,
 		prop_clk
 	);

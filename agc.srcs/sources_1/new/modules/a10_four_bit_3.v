@@ -2,13 +2,10 @@
 
 module a10_four_bit_3(
     input wire A2XG_, 
-    input wire PONEX, 
     input wire MONEX, 
-    input wire TWOX, 
     input wire CLXC, 
     input wire CUG, 
     input wire WYLOG_, 
-    input wire WYDLOG_, 
     input wire WYDG_, 
     input wire CI09_,
     input wire CO10, 
@@ -34,11 +31,9 @@ module a10_four_bit_3(
     input wire WG3G_, 
     input wire WG4G_, 
     input wire L2GDG_, 
-    input wire MCRO_, 
     input wire WG1G_, 
     input wire CGG, 
     input wire RGG_,
-    input wire L04_,
     input wire WL08_,
     input wire WL13_, 
     input wire WL14_, 
@@ -46,10 +41,8 @@ module a10_four_bit_3(
     input wire SA10, 
     input wire SA11, 
     input wire SA12,
-    input wire RB1, 
-    input wire R15, 
     input wire R1C, 
-    input wire RB2,
+    input wire L08_,
     input wire CH09, 
     input wire CH10, 
     input wire CH11, 
@@ -61,28 +54,9 @@ module a10_four_bit_3(
     input wire MDT10, 
     input wire MDT11, 
     input wire MDT12,
-    input wire SETAB_, 
-    input wire SETCD_,
-    input wire S08, 
-    input wire S08_,
-    input wire XUY09_, 
-    input wire XUY10_,
-    input wire XUY12_,
-    input wire XUY14_,    
-    input wire WHOMP, 
-    input wire WHOMPA,
-    input wire CAD5, 
-    input wire CAD6, 
-    input wire CAD7, 
-    input wire CAD8,
-    input wire BBK1, 
-    input wire BBK2, 
-    input wire BBK3,
-    input wire RB1F, 
-    input wire R6, 
-    input wire RPTAD3, 
-    input wire RPTAD5, 
-    input wire RPTAD6,
+    input wire XUY13_,
+    input wire XUY14_,
+    input wire WHOMPA, 
     
     input wire RL09_,
     input wire RL10_,
@@ -115,14 +89,14 @@ module a10_four_bit_3(
     output wire WL11, 
     output wire WL11_, 
     output wire MWL11, 
-    output wire WL12, 
+    output wire WL12,
     output wire WL12_, 
     output wire MWL12,
     output wire CI13_, 
     output wire CO14,
-    output wire XUY13_, 
-    output wire XUY06_,
-    output wire L08_,
+    output wire XUY09_,    
+    output wire XUY10_,
+    output wire XUY12_,
     output wire L12_,
     output wire G09, 
     output wire G09_, 
@@ -135,11 +109,7 @@ module a10_four_bit_3(
     output wire GEM11, 
     output wire G12, 
     output wire GEM12,
-    output wire CLEARA, 
-    output wire CLEARB, 
-    output wire CLEARC, 
-    output wire CLEARD,
-
+    
     input wire reset,
     input wire prop_clk
 );
@@ -476,7 +446,7 @@ module a10_four_bit_3(
     
     nor_3 #(1'b0) NOR53212(SUMA10_,         NOR53209_out,   XUY10_,         CI10_,                      reset, prop_clk);
     
-    nor_2 #(1'b0) NOR53213(NOR53213_out,    NOR53209_out,   XUY06_,                                     reset, prop_clk);
+    nor_2 #(1'b0) NOR53213(NOR53213_out,    NOR53209_out,   XUY10_,                                     reset, prop_clk);
     nor_1 #(1'b0) NOR53211(NOR53211_out,    CI10_,                                                      reset, prop_clk);
     nor_2 #(1'b0) NOR53215(SUMB10_,         NOR53213_out,   NOR53211_out,                               reset, prop_clk);
     
