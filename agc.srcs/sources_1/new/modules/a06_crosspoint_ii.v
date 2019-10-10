@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a6_crosspoint_ii(
+module a06_crosspoint_ii(
     input wire T01, 
     input wire T01_, 
     input wire T02, 

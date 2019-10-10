@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a8_four_bit_1_tb();
+module a08_four_bit_1_tb();
 
 	reg A2XG_ = 1;
 	reg BBK1 = 0;
@@ -130,7 +130,7 @@ module a8_four_bit_1_tb();
 	always
 		#10 SIM_CLK = !SIM_CLK; // 20 ns gate delay
 
-	a8_four_bit_1 a8(
+	a08_four_bit_1 a08(
 		A2XG_,
 		PONEX,
 		MONEX,

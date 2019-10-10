@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a2_timer(
+module a02_timer(
     input wire CLOCK,
     input wire SBY, 
     input wire ALGA, 

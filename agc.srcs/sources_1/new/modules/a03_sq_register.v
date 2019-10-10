@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
     
-module a3_sq_register(
+module a03_sq_register(
     input wire NISQ, 
     input wire NISQ_, 
     input wire PHS2_, 

@@ -5,7 +5,7 @@
    <db_ref_list>
       <db_ref path="a8_four_bit_1_tb_behav.wdb" id="1">
          <top_modules>
-            <top_module name="a8_four_bit_1_tb" />
+            <top_module name="a08_four_bit_1_tb" />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
@@ -52,23 +52,23 @@
          <obj_property name="ElementShortName">CAG</obj_property>
          <obj_property name="ObjectShortName">CAG</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/RAG_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/RAG_" type="logic">
          <obj_property name="ElementShortName">RAG_</obj_property>
          <obj_property name="ObjectShortName">RAG_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/A01_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/A01_" type="logic">
          <obj_property name="ElementShortName">A01_</obj_property>
          <obj_property name="ObjectShortName">A01_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/A02_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/A02_" type="logic">
          <obj_property name="ElementShortName">A02_</obj_property>
          <obj_property name="ObjectShortName">A02_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/A03_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/A03_" type="logic">
          <obj_property name="ElementShortName">A03_</obj_property>
          <obj_property name="ObjectShortName">A03_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/A04_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/A04_" type="logic">
          <obj_property name="ElementShortName">A04_</obj_property>
          <obj_property name="ObjectShortName">A04_</obj_property>
       </wvobject>
@@ -93,19 +93,19 @@
          <obj_property name="ElementShortName">RLG_</obj_property>
          <obj_property name="ObjectShortName">RLG_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/L01_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/L01_" type="logic">
          <obj_property name="ElementShortName">L01_</obj_property>
          <obj_property name="ObjectShortName">L01_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/L02_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/L02_" type="logic">
          <obj_property name="ElementShortName">L02_</obj_property>
          <obj_property name="ObjectShortName">L02_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/L03_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/L03_" type="logic">
          <obj_property name="ElementShortName">L03_</obj_property>
          <obj_property name="ObjectShortName">L03_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/L04_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/L04_" type="logic">
          <obj_property name="ElementShortName">L04_</obj_property>
          <obj_property name="ObjectShortName">L04_</obj_property>
       </wvobject>
@@ -114,31 +114,31 @@
       <obj_property name="label">Q resister</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/WQG_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/WQG_" type="logic">
          <obj_property name="ElementShortName">WQG_</obj_property>
          <obj_property name="ObjectShortName">WQG_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/CQG" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/CQG" type="logic">
          <obj_property name="ElementShortName">CQG</obj_property>
          <obj_property name="ObjectShortName">CQG</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/RQG_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/RQG_" type="logic">
          <obj_property name="ElementShortName">RQG_</obj_property>
          <obj_property name="ObjectShortName">RQG_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51130_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51130_out" type="logic">
          <obj_property name="ElementShortName">NOR51130_out</obj_property>
          <obj_property name="ObjectShortName">NOR51130_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51230_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51230_out" type="logic">
          <obj_property name="ElementShortName">NOR51230_out</obj_property>
          <obj_property name="ObjectShortName">NOR51230_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51430_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51430_out" type="logic">
          <obj_property name="ElementShortName">NOR51430_out</obj_property>
          <obj_property name="ObjectShortName">NOR51430_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51330_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51330_out" type="logic">
          <obj_property name="ElementShortName">NOR51330_out</obj_property>
          <obj_property name="ObjectShortName">NOR51330_out</obj_property>
       </wvobject>
@@ -159,19 +159,19 @@
          <obj_property name="ElementShortName">RZG_</obj_property>
          <obj_property name="ObjectShortName">RZG_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/Z01_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/Z01_" type="logic">
          <obj_property name="ElementShortName">Z01_</obj_property>
          <obj_property name="ObjectShortName">Z01_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/Z02_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/Z02_" type="logic">
          <obj_property name="ElementShortName">Z02_</obj_property>
          <obj_property name="ObjectShortName">Z02_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/Z03_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/Z03_" type="logic">
          <obj_property name="ElementShortName">Z03_</obj_property>
          <obj_property name="ObjectShortName">Z03_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/Z04_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/Z04_" type="logic">
          <obj_property name="ElementShortName">Z04_</obj_property>
          <obj_property name="ObjectShortName">Z04_</obj_property>
       </wvobject>
@@ -196,19 +196,19 @@
          <obj_property name="ElementShortName">RCG_</obj_property>
          <obj_property name="ObjectShortName">RCG_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51139_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51139_out" type="logic">
          <obj_property name="ElementShortName">NOR51139_out</obj_property>
          <obj_property name="ObjectShortName">NOR51139_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51239_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51239_out" type="logic">
          <obj_property name="ElementShortName">NOR51239_out</obj_property>
          <obj_property name="ObjectShortName">NOR51239_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51439_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51439_out" type="logic">
          <obj_property name="ElementShortName">NOR51439_out</obj_property>
          <obj_property name="ObjectShortName">NOR51439_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51339_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51339_out" type="logic">
          <obj_property name="ElementShortName">NOR51339_out</obj_property>
          <obj_property name="ObjectShortName">NOR51339_out</obj_property>
       </wvobject>
@@ -241,19 +241,19 @@
          <obj_property name="ElementShortName">RGG_</obj_property>
          <obj_property name="ObjectShortName">RGG_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/G01_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/G01_" type="logic">
          <obj_property name="ElementShortName">G01_</obj_property>
          <obj_property name="ObjectShortName">G01_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/G02_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/G02_" type="logic">
          <obj_property name="ElementShortName">G02_</obj_property>
          <obj_property name="ObjectShortName">G02_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/G03_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/G03_" type="logic">
          <obj_property name="ElementShortName">G03_</obj_property>
          <obj_property name="ObjectShortName">G03_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/G04_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/G04_" type="logic">
          <obj_property name="ElementShortName">G04_</obj_property>
          <obj_property name="ObjectShortName">G04_</obj_property>
       </wvobject>
@@ -278,19 +278,19 @@
          <obj_property name="ElementShortName">CUG</obj_property>
          <obj_property name="ObjectShortName">CUG</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51107_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51107_out" type="logic">
          <obj_property name="ElementShortName">NOR51107_out</obj_property>
          <obj_property name="ObjectShortName">NOR51107_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51207_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51207_out" type="logic">
          <obj_property name="ElementShortName">NOR51207_out</obj_property>
          <obj_property name="ObjectShortName">NOR51207_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51407_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51407_out" type="logic">
          <obj_property name="ElementShortName">NOR51407_out</obj_property>
          <obj_property name="ObjectShortName">NOR51407_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51307_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51307_out" type="logic">
          <obj_property name="ElementShortName">NOR51307_out</obj_property>
          <obj_property name="ObjectShortName">NOR51307_out</obj_property>
       </wvobject>
@@ -323,19 +323,19 @@
          <obj_property name="ElementShortName">CUG</obj_property>
          <obj_property name="ObjectShortName">CUG</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51103_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51103_out" type="logic">
          <obj_property name="ElementShortName">NOR51103_out</obj_property>
          <obj_property name="ObjectShortName">NOR51103_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51203_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51203_out" type="logic">
          <obj_property name="ElementShortName">NOR51203_out</obj_property>
          <obj_property name="ObjectShortName">NOR51203_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51403_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51403_out" type="logic">
          <obj_property name="ElementShortName">NOR51403_out</obj_property>
          <obj_property name="ObjectShortName">NOR51403_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51303_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51303_out" type="logic">
          <obj_property name="ElementShortName">NOR51303_out</obj_property>
          <obj_property name="ObjectShortName">NOR51303_out</obj_property>
       </wvobject>
@@ -380,39 +380,39 @@
          <obj_property name="ElementShortName">SUMB04_</obj_property>
          <obj_property name="ObjectShortName">SUMB04_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51117_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51117_out" type="logic">
          <obj_property name="ElementShortName">NOR51117_out</obj_property>
          <obj_property name="ObjectShortName">NOR51117_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51217_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51217_out" type="logic">
          <obj_property name="ElementShortName">NOR51217_out</obj_property>
          <obj_property name="ObjectShortName">NOR51217_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51417_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51417_out" type="logic">
          <obj_property name="ElementShortName">NOR51417_out</obj_property>
          <obj_property name="ObjectShortName">NOR51417_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/NOR51317_out" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/NOR51317_out" type="logic">
          <obj_property name="ElementShortName">NOR51317_out</obj_property>
          <obj_property name="ObjectShortName">NOR51317_out</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/CI01_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/CI01_" type="logic">
          <obj_property name="ElementShortName">CI01_</obj_property>
          <obj_property name="ObjectShortName">CI01_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/CI02_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/CI02_" type="logic">
          <obj_property name="ElementShortName">CI02_</obj_property>
          <obj_property name="ObjectShortName">CI02_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/CI03_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/CI03_" type="logic">
          <obj_property name="ElementShortName">CI03_</obj_property>
          <obj_property name="ObjectShortName">CI03_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/CI04_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/CI04_" type="logic">
          <obj_property name="ElementShortName">CI04_</obj_property>
          <obj_property name="ObjectShortName">CI04_</obj_property>
       </wvobject>
-      <wvobject fp_name="/a8_four_bit_1_tb/a8/CI05_" type="logic">
+      <wvobject fp_name="/a8_four_bit_1_tb/a08/CI05_" type="logic">
          <obj_property name="ElementShortName">CI05_</obj_property>
          <obj_property name="ObjectShortName">CI05_</obj_property>
       </wvobject>

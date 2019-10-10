@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a1_scaler_tb;
+module a01_scaler_tb;
     reg FS01_ = 0;
     reg RCHAT_ = 1;
     reg RCHBT_ = 1;
@@ -50,7 +50,7 @@ module a1_scaler_tb;
         #10 SIM_CLK = !SIM_CLK;    // 20 ns gate delay
 
 
-    a1_scaler a1(
+    a01_scaler a1(
         FS01_, RCHAT_, RCHBT_,
         FS02, FS02A, F02A, F02B,
         FS03, FS03A, F03A, F03B, F03B_,

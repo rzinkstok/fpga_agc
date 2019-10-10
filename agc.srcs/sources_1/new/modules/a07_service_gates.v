@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a7_service_gates(
+module a07_service_gates(
     // inputs
     input wire WT_, 
     input wire CT_, 

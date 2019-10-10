@@ -107,6 +107,7 @@ def write_command_cycle(fp, ext, sq, qc, sq10, st):
 
 
 def write_commands(fp):
+    return
     fp.write("""        #7900""")
     ext = 0
     sq = 0
@@ -648,8 +649,8 @@ if __name__ == "__main__":
     module_params = {}
     input_wires = set()
     output_wires = set()
-    module_name, params, inputs, outputs = read_module("a8_four_bit_1.v")
+    module_name, params, inputs, outputs = read_module("a08_four_bit_1.v")
     module_params[module_name] = params
     input_wires.update(inputs)
     output_wires.update(outputs)
-    write_wrapper(module_params, input_wires, output_wires, sim_name="a8_sim", sim_code=write_a8_commands, wrapper_name="a8_four_bit_1_tb")
+    write_wrapper(module_params, input_wires, output_wires, sim_name="a8_sim", sim_code=write_a8_commands, wrapper_name="a08_four_bit_1_tb")

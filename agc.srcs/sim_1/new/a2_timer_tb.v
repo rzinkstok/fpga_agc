@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a2_timer_tb;
+module a02_timer_tb;
     reg CLOCK = 0;
     reg SIM_CLK = 1;
     
@@ -33,7 +33,7 @@ module a2_timer_tb;
     always
         #10 SIM_CLK = !SIM_CLK;    // 20 ns gate delay
 
-    a2_timer a2(
+    a02_timer a2(
         CLOCK,
         CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
         RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,

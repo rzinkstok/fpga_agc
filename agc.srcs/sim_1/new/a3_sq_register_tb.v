@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a3_sq_register_tb();
+module a03_sq_register_tb();
     reg NISQ = 0;
     wire NISQ_ = !NISQ;
    
@@ -118,7 +118,7 @@ module a3_sq_register_tb();
         CHBT01, CHBT02, CHBT03, CHBT04, CHBT05, CHBT06, CHBT07,
         CHBT08, CHBT09, CHBT10, CHBT11, CHBT12, CHBT13, CHBT14;
 
-    a1_scaler a1(
+    a01_scaler a1(
         FS01_, RCHAT_, RCHBT_,
         FS02, FS02A, F02A, F02B,
         FS03, FS03A, F03A, F03B, F03B_,
@@ -159,7 +159,7 @@ module a3_sq_register_tb();
         SIM_CLK
     );
     
-    a2_timer a2(
+    a02_timer a2(
         CLOCK,
         CLK, PHS2, PHS2_, PHS3_, PHS4, PHS4_, CT, CT_, RT, RT_, WT, WT_, TT_, OVFSTB_, MONWT, Q2A, 
         RINGA_, RINGB_, ODDSET_, EVNSET, EVNSET_,
@@ -178,7 +178,7 @@ module a3_sq_register_tb();
         SIM_CLK
     );
     
-    a3_sq_register a3(
+    a03_sq_register a3(
         // Inputs
     NISQ, NISQ_, 
     PHS2_, 

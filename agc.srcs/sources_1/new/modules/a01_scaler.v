@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a1_scaler(
+module a01_scaler(
     // inputs
     input wire FS01_, 
     input wire RCHAT_, 

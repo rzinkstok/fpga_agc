@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a8_four_bit_1(
+module a08_four_bit_1(
     input wire A2XG_, 
     input wire PONEX, 
     input wire MONEX, 
