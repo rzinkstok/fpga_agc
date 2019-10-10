@@ -63,7 +63,6 @@ module a08_four_bit_1_tb();
 	reg SA04 = 0;
 	reg SETAB_ = 1;
 	reg SETCD_ = 1;
-	reg SIM_CLK = 1;
 	reg TWOX = 0;
 	reg WAG_ = 1;
 	reg WALSG_ = 1;
@@ -84,6 +83,7 @@ module a08_four_bit_1_tb();
 	reg WZG_ = 1;
 	reg XUY05_ = 1;
 	reg XUY06_ = 1;
+	reg prop_clk = 1;
 	reg reset = 0;
 
 	wire CI05_;
@@ -129,7 +129,7 @@ module a08_four_bit_1_tb();
 	wire XUY02_;
 
 	always
-		#10 SIM_CLK = !SIM_CLK; // 20 ns gate delay
+		#10 prop_clk = !prop_clk; // 20 ns gate delay
 
 	a08_four_bit_1 a08(
 		A2XG_,
@@ -255,7 +255,7 @@ module a08_four_bit_1_tb();
 		CLEARC,
 		CLEARD,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 
@@ -265,7 +265,6 @@ module a08_four_bit_1_tb();
         
         // Register A write test
         begin
-            reset = 0;
             force WL01 = 1;
             force WL02 = 1;
             force WL03 = 1;

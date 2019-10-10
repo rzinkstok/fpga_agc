@@ -144,7 +144,6 @@ module agc_tb();
 	reg SHANC_ = 1;
 	reg SHIFT = 0;
 	reg SHIFT_ = 1;
-	reg SIM_CLK = 1;
 	reg SR_ = 1;
 	reg STBE = 0;
 	reg STBF = 0;
@@ -187,6 +186,7 @@ module agc_tb();
 	reg XUY12_ = 1;
 	reg XUY14_ = 1;
 	reg YB0_ = 1;
+	reg prop_clk = 1;
 	reg reset = 0;
 
 	wire A03_1_RPTSET;
@@ -1050,7 +1050,7 @@ module agc_tb();
 	wire n9XP5;
 
 	always
-		#10 SIM_CLK = !SIM_CLK; // 20 ns gate delay
+		#10 prop_clk = !prop_clk; // 20 ns gate delay
 
 	a01_scaler a01(
 		FS01_,
@@ -1212,7 +1212,7 @@ module agc_tb();
 		CHBT13,
 		CHBT14,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	a02_timer a02(
@@ -1334,7 +1334,7 @@ module agc_tb();
 		OVF,
 		OVF_,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	a03_sq_register a03(
@@ -1479,7 +1479,7 @@ module agc_tb();
 		A03_2_RPTSET,
 		A03_3_RPTSET,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	a04_stage_branch a04(
@@ -1669,7 +1669,7 @@ module agc_tb();
 		TL15,
 		KRPT,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	a05_crosspoint_nqi a05(
@@ -1886,7 +1886,7 @@ module agc_tb();
 		RSTSTG,
 		DV4B1B,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	a06_crosspoint_ii a06(
@@ -2080,7 +2080,7 @@ module agc_tb();
 		n8XP4,
 		n8XP10,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	a07_service_gates a07(
@@ -2241,7 +2241,7 @@ module agc_tb();
 		MRLG,
 		MRULOG,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	a08_four_bit_1 a08(
@@ -2368,7 +2368,7 @@ module agc_tb();
 		CLEARC,
 		CLEARD,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	a09_four_bit_2 a09(
@@ -2490,7 +2490,7 @@ module agc_tb();
 		CLEARC,
 		CLEARD,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	a10_four_bit_3 a10(
@@ -2630,7 +2630,7 @@ module agc_tb();
 		CLEARC,
 		CLEARD,
 		reset,
-		SIM_CLK
+		prop_clk
 	);
 
 	assign A2X_ = A05_1_A2X_ & A05_2_A2X_ & A06_1_A2X_;

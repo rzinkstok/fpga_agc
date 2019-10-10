@@ -20,9 +20,9 @@
       <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="15" />
-   <wvobject fp_name="/a08_four_bit_1_tb/SIM_CLK" type="logic">
-      <obj_property name="ElementShortName">SIM_CLK</obj_property>
-      <obj_property name="ObjectShortName">SIM_CLK</obj_property>
+   <wvobject fp_name="/a08_four_bit_1_tb/prop_clk" type="logic">
+      <obj_property name="ElementShortName">prop_clk</obj_property>
+      <obj_property name="ObjectShortName">prop_clk</obj_property>
    </wvobject>
    <wvobject fp_name="/a08_four_bit_1_tb/a08/NOR34450/reset" type="logic">
       <obj_property name="ElementShortName">reset</obj_property>

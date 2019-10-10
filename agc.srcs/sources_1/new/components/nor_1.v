@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
 
-module nor_1(y, a, reset, SIM_CLK);
+module nor_1(y, a, reset, prop_clk);
 	parameter iv = 1'b0;
-	input wire a, reset, SIM_CLK;
+	input wire a, reset, prop_clk;
 	
 	output reg y = iv;
 	reg next_val = iv;
 	
-	always @(posedge SIM_CLK or posedge reset)
+	always @(posedge prop_clk or posedge reset)
 	begin
 	    if(reset) begin
 	        y = iv;
@@ -16,7 +16,7 @@ module nor_1(y, a, reset, SIM_CLK);
 		end
 	end
 	
-	always @(negedge SIM_CLK or posedge reset)
+	always @(negedge prop_clk or posedge reset)
 	begin
 	    if(reset) begin
 	        next_val = iv;

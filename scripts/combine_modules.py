@@ -584,7 +584,7 @@ def write_wrapper(module_params, input_wires, output_wires, sim_name=None, sim_c
 
         for iw in sorted(input_wires):
             if iw not in output_wires:
-                if iw.endswith("_") or iw == "SIM_CLK":
+                if iw.endswith("_") or iw == "prop_clk":
                     val = 1
                 else:
                     val = 0
@@ -595,9 +595,9 @@ def write_wrapper(module_params, input_wires, output_wires, sim_name=None, sim_c
             fp.write(f"\twire {ow};\n")
         fp.write("\n")
 
-        if "SIM_CLK" in input_wires:
+        if "prop_clk" in input_wires:
             fp.write("\talways\n")
-            fp.write("\t\t#10 SIM_CLK = !SIM_CLK; // 20 ns gate delay\n\n")
+            fp.write("\t\t#10 prop_clk = !prop_clk; // 20 ns gate delay\n\n")
 
         if "a2_timer" in module_params.keys():
             fp.write("\talways\n")

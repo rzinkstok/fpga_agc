@@ -20,9 +20,9 @@
       <ValueColumnWidth column_width="77"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="39" />
-   <wvobject fp_name="/agc_tb/a2/SIM_CLK" type="logic">
-      <obj_property name="ElementShortName">SIM_CLK</obj_property>
-      <obj_property name="ObjectShortName">SIM_CLK</obj_property>
+   <wvobject fp_name="/agc_tb/a2/prop_clk" type="logic">
+      <obj_property name="ElementShortName">prop_clk</obj_property>
+      <obj_property name="ObjectShortName">prop_clk</obj_property>
    </wvobject>
    <wvobject fp_name="/agc_tb/a02/CLOCK" type="logic">
       <obj_property name="ElementShortName">CLOCK</obj_property>
