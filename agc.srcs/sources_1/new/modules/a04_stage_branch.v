@@ -829,8 +829,7 @@ module a04_stage_branch(
     nor_3 #(1'b0) NOR36457(n7XP19,          T07_,           BR1_,           MP3_,                       reset, prop_clk);
     
     // L16
-    nor_1 #(1'b0) NOR36460(A04_1_L16_,      NOR36451_out,                                               reset, prop_clk);
     // Cross-module fan-in, connected to A11
-    //assign A04_L16_ = NOR36460_out;
+    nor_1 #(1'b0) NOR36460(A04_1_L16_,      NOR36451_out,                                               reset, prop_clk);
     
 endmodule

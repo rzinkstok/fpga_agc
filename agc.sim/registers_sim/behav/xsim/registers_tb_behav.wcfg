@@ -1,0 +1,1138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="registers_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="registers_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="4983333333fs"></ZoomStartTime>
+      <ZoomEndTime time="34883333334fs"></ZoomEndTime>
+      <Cursor1Time time="29900000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="188"></NameColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="group295" type="group">
+      <obj_property name="label">WL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/registers_tb/WL01" type="logic">
+         <obj_property name="ElementShortName">WL01</obj_property>
+         <obj_property name="ObjectShortName">WL01</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL02" type="logic">
+         <obj_property name="ElementShortName">WL02</obj_property>
+         <obj_property name="ObjectShortName">WL02</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL03" type="logic">
+         <obj_property name="ElementShortName">WL03</obj_property>
+         <obj_property name="ObjectShortName">WL03</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL04" type="logic">
+         <obj_property name="ElementShortName">WL04</obj_property>
+         <obj_property name="ObjectShortName">WL04</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL05" type="logic">
+         <obj_property name="ElementShortName">WL05</obj_property>
+         <obj_property name="ObjectShortName">WL05</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL06" type="logic">
+         <obj_property name="ElementShortName">WL06</obj_property>
+         <obj_property name="ObjectShortName">WL06</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL07" type="logic">
+         <obj_property name="ElementShortName">WL07</obj_property>
+         <obj_property name="ObjectShortName">WL07</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL08" type="logic">
+         <obj_property name="ElementShortName">WL08</obj_property>
+         <obj_property name="ObjectShortName">WL08</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL09" type="logic">
+         <obj_property name="ElementShortName">WL09</obj_property>
+         <obj_property name="ObjectShortName">WL09</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL10" type="logic">
+         <obj_property name="ElementShortName">WL10</obj_property>
+         <obj_property name="ObjectShortName">WL10</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL11" type="logic">
+         <obj_property name="ElementShortName">WL11</obj_property>
+         <obj_property name="ObjectShortName">WL11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL12" type="logic">
+         <obj_property name="ElementShortName">WL12</obj_property>
+         <obj_property name="ObjectShortName">WL12</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL13" type="logic">
+         <obj_property name="ElementShortName">WL13</obj_property>
+         <obj_property name="ObjectShortName">WL13</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL14" type="logic">
+         <obj_property name="ElementShortName">WL14</obj_property>
+         <obj_property name="ObjectShortName">WL14</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL15" type="logic">
+         <obj_property name="ElementShortName">WL15</obj_property>
+         <obj_property name="ObjectShortName">WL15</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WL16" type="logic">
+         <obj_property name="ElementShortName">WL16</obj_property>
+         <obj_property name="ObjectShortName">WL16</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group312" type="group">
+      <obj_property name="label">X register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/registers_tb/A2XG_" type="logic">
+         <obj_property name="ElementShortName">A2XG_</obj_property>
+         <obj_property name="ObjectShortName">A2XG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/PONEX" type="logic">
+         <obj_property name="ElementShortName">PONEX</obj_property>
+         <obj_property name="ObjectShortName">PONEX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/TWOX" type="logic">
+         <obj_property name="ElementShortName">TWOX</obj_property>
+         <obj_property name="ObjectShortName">TWOX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/MONEX" type="logic">
+         <obj_property name="ElementShortName">MONEX</obj_property>
+         <obj_property name="ObjectShortName">MONEX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/BXVX" type="logic">
+         <obj_property name="ElementShortName">BXVX</obj_property>
+         <obj_property name="ObjectShortName">BXVX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CLXC" type="logic">
+         <obj_property name="ElementShortName">CLXC</obj_property>
+         <obj_property name="ObjectShortName">CLXC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CUG" type="logic">
+         <obj_property name="ElementShortName">CUG</obj_property>
+         <obj_property name="ObjectShortName">CUG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51103_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51103_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51103_out</obj_property>
+         <obj_property name="label">X01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51203_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51203_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51203_out</obj_property>
+         <obj_property name="label">X02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51403_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51403_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51403_out</obj_property>
+         <obj_property name="label">X03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51303_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51303_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51303_out</obj_property>
+         <obj_property name="label">X04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52103_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52103_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52103_out</obj_property>
+         <obj_property name="label">X05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52203_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52203_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52203_out</obj_property>
+         <obj_property name="label">X06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52403_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52403_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52403_out</obj_property>
+         <obj_property name="label">X07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52303_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52303_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52303_out</obj_property>
+         <obj_property name="label">X08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53103_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53103_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53103_out</obj_property>
+         <obj_property name="label">X09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53203_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53203_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53203_out</obj_property>
+         <obj_property name="label">X10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53403_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53403_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53403_out</obj_property>
+         <obj_property name="label">X11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53303_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53303_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53303_out</obj_property>
+         <obj_property name="label">X12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54103_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54103_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54103_out</obj_property>
+         <obj_property name="label">X13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54203_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54203_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54203_out</obj_property>
+         <obj_property name="label">X14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54403_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54403_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54403_out</obj_property>
+         <obj_property name="label">X15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54303_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54303_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54303_out</obj_property>
+         <obj_property name="label">X16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group313" type="group">
+      <obj_property name="label">Y register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/registers_tb/WYLOG_" type="logic">
+         <obj_property name="ElementShortName">WYLOG_</obj_property>
+         <obj_property name="ObjectShortName">WYLOG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WYHIG_" type="logic">
+         <obj_property name="ElementShortName">WYHIG_</obj_property>
+         <obj_property name="ObjectShortName">WYHIG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WYDLOG_" type="logic">
+         <obj_property name="ElementShortName">WYDLOG_</obj_property>
+         <obj_property name="ObjectShortName">WYDLOG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WYDG_" type="logic">
+         <obj_property name="ElementShortName">WYDG_</obj_property>
+         <obj_property name="ObjectShortName">WYDG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CUG" type="logic">
+         <obj_property name="ElementShortName">CUG</obj_property>
+         <obj_property name="ObjectShortName">CUG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51107_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51107_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51107_out</obj_property>
+         <obj_property name="label">Y01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51207_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51207_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51207_out</obj_property>
+         <obj_property name="label">Y02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51407_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51407_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51407_out</obj_property>
+         <obj_property name="label">Y03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51307_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51307_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51307_out</obj_property>
+         <obj_property name="label">Y04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52107_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52107_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52107_out</obj_property>
+         <obj_property name="label">Y05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52207_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52207_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52207_out</obj_property>
+         <obj_property name="label">Y06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52407_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52407_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52407_out</obj_property>
+         <obj_property name="label">Y07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52307_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52307_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52307_out</obj_property>
+         <obj_property name="label">Y08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53107_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53107_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53107_out</obj_property>
+         <obj_property name="label">Y09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53207_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53207_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53207_out</obj_property>
+         <obj_property name="label">Y10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53407_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53407_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53407_out</obj_property>
+         <obj_property name="label">Y11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53307_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53307_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53307_out</obj_property>
+         <obj_property name="label">Y12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54107_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54107_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54107_out</obj_property>
+         <obj_property name="label">Y13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54207_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54207_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54207_out</obj_property>
+         <obj_property name="label">Y14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54407_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54407_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54407_out</obj_property>
+         <obj_property name="label">Y15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54307_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54307_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54307_out</obj_property>
+         <obj_property name="label">Y16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group374" type="group">
+      <obj_property name="label">Sum register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/registers_tb/RULOG_" type="logic">
+         <obj_property name="ElementShortName">RULOG_</obj_property>
+         <obj_property name="ObjectShortName">RULOG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/RUG_" type="logic">
+         <obj_property name="ElementShortName">RUG_</obj_property>
+         <obj_property name="ObjectShortName">RUG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/CI01_" type="logic">
+         <obj_property name="ElementShortName">CI01_</obj_property>
+         <obj_property name="ObjectShortName">CI01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/CI02_" type="logic">
+         <obj_property name="ElementShortName">CI02_</obj_property>
+         <obj_property name="ObjectShortName">CI02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/CI03_" type="logic">
+         <obj_property name="ElementShortName">CI03_</obj_property>
+         <obj_property name="ObjectShortName">CI03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/CI04_" type="logic">
+         <obj_property name="ElementShortName">CI04_</obj_property>
+         <obj_property name="ObjectShortName">CI04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/CI05_" type="logic">
+         <obj_property name="ElementShortName">CI05_</obj_property>
+         <obj_property name="ObjectShortName">CI05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/CI06_" type="logic">
+         <obj_property name="ElementShortName">CI06_</obj_property>
+         <obj_property name="ObjectShortName">CI06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/CI07_" type="logic">
+         <obj_property name="ElementShortName">CI07_</obj_property>
+         <obj_property name="ObjectShortName">CI07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/CI08_" type="logic">
+         <obj_property name="ElementShortName">CI08_</obj_property>
+         <obj_property name="ObjectShortName">CI08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/CI09_" type="logic">
+         <obj_property name="ElementShortName">CI09_</obj_property>
+         <obj_property name="ObjectShortName">CI09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/CI10_" type="logic">
+         <obj_property name="ElementShortName">CI10_</obj_property>
+         <obj_property name="ObjectShortName">CI10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/CI11_" type="logic">
+         <obj_property name="ElementShortName">CI11_</obj_property>
+         <obj_property name="ObjectShortName">CI11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/CI12_" type="logic">
+         <obj_property name="ElementShortName">CI12_</obj_property>
+         <obj_property name="ObjectShortName">CI12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/CI13_" type="logic">
+         <obj_property name="ElementShortName">CI13_</obj_property>
+         <obj_property name="ObjectShortName">CI13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/CI14_" type="logic">
+         <obj_property name="ElementShortName">CI14_</obj_property>
+         <obj_property name="ObjectShortName">CI14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/CI15_" type="logic">
+         <obj_property name="ElementShortName">CI15_</obj_property>
+         <obj_property name="ObjectShortName">CI15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/CI16_" type="logic">
+         <obj_property name="ElementShortName">CI16_</obj_property>
+         <obj_property name="ObjectShortName">CI16_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/EAC_" type="logic">
+         <obj_property name="ElementShortName">EAC_</obj_property>
+         <obj_property name="ObjectShortName">EAC_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/SUMA01_" type="logic">
+         <obj_property name="ElementShortName">SUMA01_</obj_property>
+         <obj_property name="ObjectShortName">SUMA01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/SUMA02_" type="logic">
+         <obj_property name="ElementShortName">SUMA02_</obj_property>
+         <obj_property name="ObjectShortName">SUMA02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/SUMA03_" type="logic">
+         <obj_property name="ElementShortName">SUMA03_</obj_property>
+         <obj_property name="ObjectShortName">SUMA03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/SUMA04_" type="logic">
+         <obj_property name="ElementShortName">SUMA04_</obj_property>
+         <obj_property name="ObjectShortName">SUMA04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/SUMA05_" type="logic">
+         <obj_property name="ElementShortName">SUMA05_</obj_property>
+         <obj_property name="ObjectShortName">SUMA05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/SUMA06_" type="logic">
+         <obj_property name="ElementShortName">SUMA06_</obj_property>
+         <obj_property name="ObjectShortName">SUMA06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/SUMA07_" type="logic">
+         <obj_property name="ElementShortName">SUMA07_</obj_property>
+         <obj_property name="ObjectShortName">SUMA07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/SUMA08_" type="logic">
+         <obj_property name="ElementShortName">SUMA08_</obj_property>
+         <obj_property name="ObjectShortName">SUMA08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/SUMA09_" type="logic">
+         <obj_property name="ElementShortName">SUMA09_</obj_property>
+         <obj_property name="ObjectShortName">SUMA09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/SUMA10_" type="logic">
+         <obj_property name="ElementShortName">SUMA10_</obj_property>
+         <obj_property name="ObjectShortName">SUMA10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/SUMA11_" type="logic">
+         <obj_property name="ElementShortName">SUMA11_</obj_property>
+         <obj_property name="ObjectShortName">SUMA11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/SUMA12_" type="logic">
+         <obj_property name="ElementShortName">SUMA12_</obj_property>
+         <obj_property name="ObjectShortName">SUMA12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/SUMA13_" type="logic">
+         <obj_property name="ElementShortName">SUMA13_</obj_property>
+         <obj_property name="ObjectShortName">SUMA13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/SUMA14_" type="logic">
+         <obj_property name="ElementShortName">SUMA14_</obj_property>
+         <obj_property name="ObjectShortName">SUMA14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/SUMA15_" type="logic">
+         <obj_property name="ElementShortName">SUMA15_</obj_property>
+         <obj_property name="ObjectShortName">SUMA15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/SUMA16_" type="logic">
+         <obj_property name="ElementShortName">SUMA16_</obj_property>
+         <obj_property name="ObjectShortName">SUMA16_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/SUMB01_" type="logic">
+         <obj_property name="ElementShortName">SUMB01_</obj_property>
+         <obj_property name="ObjectShortName">SUMB01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/SUMB02_" type="logic">
+         <obj_property name="ElementShortName">SUMB02_</obj_property>
+         <obj_property name="ObjectShortName">SUMB02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/SUMB03_" type="logic">
+         <obj_property name="ElementShortName">SUMB03_</obj_property>
+         <obj_property name="ObjectShortName">SUMB03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/SUMB04_" type="logic">
+         <obj_property name="ElementShortName">SUMB04_</obj_property>
+         <obj_property name="ObjectShortName">SUMB04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/SUMB05_" type="logic">
+         <obj_property name="ElementShortName">SUMB05_</obj_property>
+         <obj_property name="ObjectShortName">SUMB05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/SUMB06_" type="logic">
+         <obj_property name="ElementShortName">SUMB06_</obj_property>
+         <obj_property name="ObjectShortName">SUMB06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/SUMB07_" type="logic">
+         <obj_property name="ElementShortName">SUMB07_</obj_property>
+         <obj_property name="ObjectShortName">SUMB07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/SUMB08_" type="logic">
+         <obj_property name="ElementShortName">SUMB08_</obj_property>
+         <obj_property name="ObjectShortName">SUMB08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/SUMB09_" type="logic">
+         <obj_property name="ElementShortName">SUMB09_</obj_property>
+         <obj_property name="ObjectShortName">SUMB09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/SUMB10_" type="logic">
+         <obj_property name="ElementShortName">SUMB10_</obj_property>
+         <obj_property name="ObjectShortName">SUMB10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/SUMB11_" type="logic">
+         <obj_property name="ElementShortName">SUMB11_</obj_property>
+         <obj_property name="ObjectShortName">SUMB11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/SUMB12_" type="logic">
+         <obj_property name="ElementShortName">SUMB12_</obj_property>
+         <obj_property name="ObjectShortName">SUMB12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/SUMB13_" type="logic">
+         <obj_property name="ElementShortName">SUMB13_</obj_property>
+         <obj_property name="ObjectShortName">SUMB13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/SUMB14_" type="logic">
+         <obj_property name="ElementShortName">SUMB14_</obj_property>
+         <obj_property name="ObjectShortName">SUMB14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/SUMB15_" type="logic">
+         <obj_property name="ElementShortName">SUMB15_</obj_property>
+         <obj_property name="ObjectShortName">SUMB15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/SUMB16_" type="logic">
+         <obj_property name="ElementShortName">SUMB16_</obj_property>
+         <obj_property name="ObjectShortName">SUMB16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group427" type="group">
+      <obj_property name="label">A register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/registers_tb/WAG_" type="logic">
+         <obj_property name="ElementShortName">WAG_</obj_property>
+         <obj_property name="ObjectShortName">WAG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WALSG_" type="logic">
+         <obj_property name="ElementShortName">WALSG_</obj_property>
+         <obj_property name="ObjectShortName">WALSG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CAG" type="logic">
+         <obj_property name="ElementShortName">CAG</obj_property>
+         <obj_property name="ObjectShortName">CAG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/RAG_" type="logic">
+         <obj_property name="ElementShortName">RAG_</obj_property>
+         <obj_property name="ObjectShortName">RAG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/A01_" type="logic">
+         <obj_property name="ElementShortName">A01_</obj_property>
+         <obj_property name="ObjectShortName">A01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/A02_" type="logic">
+         <obj_property name="ElementShortName">A02_</obj_property>
+         <obj_property name="ObjectShortName">A02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/A03_" type="logic">
+         <obj_property name="ElementShortName">A03_</obj_property>
+         <obj_property name="ObjectShortName">A03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/A04_" type="logic">
+         <obj_property name="ElementShortName">A04_</obj_property>
+         <obj_property name="ObjectShortName">A04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/A05_" type="logic">
+         <obj_property name="ElementShortName">A05_</obj_property>
+         <obj_property name="ObjectShortName">A05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/A06_" type="logic">
+         <obj_property name="ElementShortName">A06_</obj_property>
+         <obj_property name="ObjectShortName">A06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/A07_" type="logic">
+         <obj_property name="ElementShortName">A07_</obj_property>
+         <obj_property name="ObjectShortName">A07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/A08_" type="logic">
+         <obj_property name="ElementShortName">A08_</obj_property>
+         <obj_property name="ObjectShortName">A08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/A09_" type="logic">
+         <obj_property name="ElementShortName">A09_</obj_property>
+         <obj_property name="ObjectShortName">A09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/A10_" type="logic">
+         <obj_property name="ElementShortName">A10_</obj_property>
+         <obj_property name="ObjectShortName">A10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/A11_" type="logic">
+         <obj_property name="ElementShortName">A11_</obj_property>
+         <obj_property name="ObjectShortName">A11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/A12_" type="logic">
+         <obj_property name="ElementShortName">A12_</obj_property>
+         <obj_property name="ObjectShortName">A12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/A13_" type="logic">
+         <obj_property name="ElementShortName">A13_</obj_property>
+         <obj_property name="ObjectShortName">A13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/A14_" type="logic">
+         <obj_property name="ElementShortName">A14_</obj_property>
+         <obj_property name="ObjectShortName">A14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/A15_" type="logic">
+         <obj_property name="ElementShortName">A15_</obj_property>
+         <obj_property name="ObjectShortName">A15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/A16_" type="logic">
+         <obj_property name="ElementShortName">A16_</obj_property>
+         <obj_property name="ObjectShortName">A16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group448" type="group">
+      <obj_property name="label">L register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/registers_tb/WLG_" type="logic">
+         <obj_property name="ElementShortName">WLG_</obj_property>
+         <obj_property name="ObjectShortName">WLG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/G2LSG_" type="logic">
+         <obj_property name="ElementShortName">G2LSG_</obj_property>
+         <obj_property name="ObjectShortName">G2LSG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WALSG_" type="logic">
+         <obj_property name="ElementShortName">WALSG_</obj_property>
+         <obj_property name="ObjectShortName">WALSG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CLG1G" type="logic">
+         <obj_property name="ElementShortName">CLG1G</obj_property>
+         <obj_property name="ObjectShortName">CLG1G</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CLG2G" type="logic">
+         <obj_property name="ElementShortName">CLG2G</obj_property>
+         <obj_property name="ObjectShortName">CLG2G</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/RLG_" type="logic">
+         <obj_property name="ElementShortName">RLG_</obj_property>
+         <obj_property name="ObjectShortName">RLG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/L01_" type="logic">
+         <obj_property name="ElementShortName">L01_</obj_property>
+         <obj_property name="ObjectShortName">L01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/L02_" type="logic">
+         <obj_property name="ElementShortName">L02_</obj_property>
+         <obj_property name="ObjectShortName">L02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/L03_" type="logic">
+         <obj_property name="ElementShortName">L03_</obj_property>
+         <obj_property name="ObjectShortName">L03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/L04_" type="logic">
+         <obj_property name="ElementShortName">L04_</obj_property>
+         <obj_property name="ObjectShortName">L04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/L05_" type="logic">
+         <obj_property name="ElementShortName">L05_</obj_property>
+         <obj_property name="ObjectShortName">L05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/L06_" type="logic">
+         <obj_property name="ElementShortName">L06_</obj_property>
+         <obj_property name="ObjectShortName">L06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/L07_" type="logic">
+         <obj_property name="ElementShortName">L07_</obj_property>
+         <obj_property name="ObjectShortName">L07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/L08_" type="logic">
+         <obj_property name="ElementShortName">L08_</obj_property>
+         <obj_property name="ObjectShortName">L08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/L09_" type="logic">
+         <obj_property name="ElementShortName">L09_</obj_property>
+         <obj_property name="ObjectShortName">L09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/L10_" type="logic">
+         <obj_property name="ElementShortName">L10_</obj_property>
+         <obj_property name="ObjectShortName">L10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/L11_" type="logic">
+         <obj_property name="ElementShortName">L11_</obj_property>
+         <obj_property name="ObjectShortName">L11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/L12_" type="logic">
+         <obj_property name="ElementShortName">L12_</obj_property>
+         <obj_property name="ObjectShortName">L12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/L13_" type="logic">
+         <obj_property name="ElementShortName">L13_</obj_property>
+         <obj_property name="ObjectShortName">L13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/L14_" type="logic">
+         <obj_property name="ElementShortName">L14_</obj_property>
+         <obj_property name="ObjectShortName">L14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/L15_" type="logic">
+         <obj_property name="ElementShortName">L15_</obj_property>
+         <obj_property name="ObjectShortName">L15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/L16_" type="logic">
+         <obj_property name="ElementShortName">L16_</obj_property>
+         <obj_property name="ObjectShortName">L16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group471" type="group">
+      <obj_property name="label">Q register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/registers_tb/WQG_" type="logic">
+         <obj_property name="ElementShortName">WQG_</obj_property>
+         <obj_property name="ObjectShortName">WQG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CQG" type="logic">
+         <obj_property name="ElementShortName">CQG</obj_property>
+         <obj_property name="ObjectShortName">CQG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/RQG_" type="logic">
+         <obj_property name="ElementShortName">RQG_</obj_property>
+         <obj_property name="ObjectShortName">RQG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51130_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51130_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51130_out</obj_property>
+         <obj_property name="label">Q01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51230_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51230_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51230_out</obj_property>
+         <obj_property name="label">Q02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51430_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51430_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51430_out</obj_property>
+         <obj_property name="label">Q03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51330_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51330_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51330_out</obj_property>
+         <obj_property name="label">Q04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52130_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52130_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52130_out</obj_property>
+         <obj_property name="label">Q05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52230_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52230_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52230_out</obj_property>
+         <obj_property name="label">Q06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52430_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52430_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52430_out</obj_property>
+         <obj_property name="label">Q07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52330_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52330_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52330_out</obj_property>
+         <obj_property name="label">Q08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53130_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53130_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53130_out</obj_property>
+         <obj_property name="label">Q09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53230_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53230_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53230_out</obj_property>
+         <obj_property name="label">Q10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53430_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53430_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53430_out</obj_property>
+         <obj_property name="label">Q11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53330_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53330_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53330_out</obj_property>
+         <obj_property name="label">Q12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54130_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54130_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54130_out</obj_property>
+         <obj_property name="label">Q13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54230_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54230_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54230_out</obj_property>
+         <obj_property name="label">Q14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54430_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54430_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54430_out</obj_property>
+         <obj_property name="label">Q15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54330_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54330_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54330_out</obj_property>
+         <obj_property name="label">Q16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group491" type="group">
+      <obj_property name="label">Z register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/registers_tb/WZG_" type="logic">
+         <obj_property name="ElementShortName">WZG_</obj_property>
+         <obj_property name="ObjectShortName">WZG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CZG" type="logic">
+         <obj_property name="ElementShortName">CZG</obj_property>
+         <obj_property name="ObjectShortName">CZG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/RZG_" type="logic">
+         <obj_property name="ElementShortName">RZG_</obj_property>
+         <obj_property name="ObjectShortName">RZG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/Z01_" type="logic">
+         <obj_property name="ElementShortName">Z01_</obj_property>
+         <obj_property name="ObjectShortName">Z01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/Z02_" type="logic">
+         <obj_property name="ElementShortName">Z02_</obj_property>
+         <obj_property name="ObjectShortName">Z02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/Z03_" type="logic">
+         <obj_property name="ElementShortName">Z03_</obj_property>
+         <obj_property name="ObjectShortName">Z03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/Z04_" type="logic">
+         <obj_property name="ElementShortName">Z04_</obj_property>
+         <obj_property name="ObjectShortName">Z04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/Z05_" type="logic">
+         <obj_property name="ElementShortName">Z05_</obj_property>
+         <obj_property name="ObjectShortName">Z05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/Z06_" type="logic">
+         <obj_property name="ElementShortName">Z06_</obj_property>
+         <obj_property name="ObjectShortName">Z06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/Z07_" type="logic">
+         <obj_property name="ElementShortName">Z07_</obj_property>
+         <obj_property name="ObjectShortName">Z07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/Z08_" type="logic">
+         <obj_property name="ElementShortName">Z08_</obj_property>
+         <obj_property name="ObjectShortName">Z08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/Z09_" type="logic">
+         <obj_property name="ElementShortName">Z09_</obj_property>
+         <obj_property name="ObjectShortName">Z09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/Z10_" type="logic">
+         <obj_property name="ElementShortName">Z10_</obj_property>
+         <obj_property name="ObjectShortName">Z10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/Z11_" type="logic">
+         <obj_property name="ElementShortName">Z11_</obj_property>
+         <obj_property name="ObjectShortName">Z11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/Z12_" type="logic">
+         <obj_property name="ElementShortName">Z12_</obj_property>
+         <obj_property name="ObjectShortName">Z12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/Z13_" type="logic">
+         <obj_property name="ElementShortName">Z13_</obj_property>
+         <obj_property name="ObjectShortName">Z13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/Z14_" type="logic">
+         <obj_property name="ElementShortName">Z14_</obj_property>
+         <obj_property name="ObjectShortName">Z14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/Z15_" type="logic">
+         <obj_property name="ElementShortName">Z15_</obj_property>
+         <obj_property name="ObjectShortName">Z15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/Z16_" type="logic">
+         <obj_property name="ElementShortName">Z16_</obj_property>
+         <obj_property name="ObjectShortName">Z16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group511" type="group">
+      <obj_property name="label">B register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/registers_tb/WBG_" type="logic">
+         <obj_property name="ElementShortName">WBG_</obj_property>
+         <obj_property name="ObjectShortName">WBG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CBG" type="logic">
+         <obj_property name="ElementShortName">CBG</obj_property>
+         <obj_property name="ObjectShortName">CBG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/RBLG_" type="logic">
+         <obj_property name="ElementShortName">RBLG_</obj_property>
+         <obj_property name="ObjectShortName">RBLG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/RBHG_" type="logic">
+         <obj_property name="ElementShortName">RBHG_</obj_property>
+         <obj_property name="ObjectShortName">RBHG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/RCG_" type="logic">
+         <obj_property name="ElementShortName">RCG_</obj_property>
+         <obj_property name="ObjectShortName">RCG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51139_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51139_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51139_out</obj_property>
+         <obj_property name="label">B01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51239_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51239_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51239_out</obj_property>
+         <obj_property name="label">B02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51439_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51439_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51439_out</obj_property>
+         <obj_property name="label">B03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/NOR51339_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR51339_out</obj_property>
+         <obj_property name="ObjectShortName">NOR51339_out</obj_property>
+         <obj_property name="label">B04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52139_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52139_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52139_out</obj_property>
+         <obj_property name="label">B05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52239_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52239_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52239_out</obj_property>
+         <obj_property name="label">B06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52439_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52439_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52439_out</obj_property>
+         <obj_property name="label">B07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/NOR52339_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR52339_out</obj_property>
+         <obj_property name="ObjectShortName">NOR52339_out</obj_property>
+         <obj_property name="label">B08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53139_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53139_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53139_out</obj_property>
+         <obj_property name="label">B09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53239_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53239_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53239_out</obj_property>
+         <obj_property name="label">B10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53439_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53439_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53439_out</obj_property>
+         <obj_property name="label">B11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/NOR53339_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR53339_out</obj_property>
+         <obj_property name="ObjectShortName">NOR53339_out</obj_property>
+         <obj_property name="label">B12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54139_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54139_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54139_out</obj_property>
+         <obj_property name="label">B13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54239_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54239_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54239_out</obj_property>
+         <obj_property name="label">B14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54439_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54439_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54439_out</obj_property>
+         <obj_property name="label">B15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/NOR54339_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">NOR54339_out</obj_property>
+         <obj_property name="ObjectShortName">NOR54339_out</obj_property>
+         <obj_property name="label">B16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group533" type="group">
+      <obj_property name="label">G register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/registers_tb/WG1G_" type="logic">
+         <obj_property name="ElementShortName">WG1G_</obj_property>
+         <obj_property name="ObjectShortName">WG1G_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WG2G_" type="logic">
+         <obj_property name="ElementShortName">WG2G_</obj_property>
+         <obj_property name="ObjectShortName">WG2G_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WG3G_" type="logic">
+         <obj_property name="ElementShortName">WG3G_</obj_property>
+         <obj_property name="ObjectShortName">WG3G_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WG4G_" type="logic">
+         <obj_property name="ElementShortName">WG4G_</obj_property>
+         <obj_property name="ObjectShortName">WG4G_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/WG5G_" type="logic">
+         <obj_property name="ElementShortName">WG5G_</obj_property>
+         <obj_property name="ObjectShortName">WG5G_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/L2GDG_" type="logic">
+         <obj_property name="ElementShortName">L2GDG_</obj_property>
+         <obj_property name="ObjectShortName">L2GDG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/CGG" type="logic">
+         <obj_property name="ElementShortName">CGG</obj_property>
+         <obj_property name="ObjectShortName">CGG</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/RGG_" type="logic">
+         <obj_property name="ElementShortName">RGG_</obj_property>
+         <obj_property name="ObjectShortName">RGG_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/G01_" type="logic">
+         <obj_property name="ElementShortName">G01_</obj_property>
+         <obj_property name="ObjectShortName">G01_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/G02_" type="logic">
+         <obj_property name="ElementShortName">G02_</obj_property>
+         <obj_property name="ObjectShortName">G02_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/G03_" type="logic">
+         <obj_property name="ElementShortName">G03_</obj_property>
+         <obj_property name="ObjectShortName">G03_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a08/G04_" type="logic">
+         <obj_property name="ElementShortName">G04_</obj_property>
+         <obj_property name="ObjectShortName">G04_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/G05_" type="logic">
+         <obj_property name="ElementShortName">G05_</obj_property>
+         <obj_property name="ObjectShortName">G05_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/G06_" type="logic">
+         <obj_property name="ElementShortName">G06_</obj_property>
+         <obj_property name="ObjectShortName">G06_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/G07_" type="logic">
+         <obj_property name="ElementShortName">G07_</obj_property>
+         <obj_property name="ObjectShortName">G07_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a09/G08_" type="logic">
+         <obj_property name="ElementShortName">G08_</obj_property>
+         <obj_property name="ObjectShortName">G08_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/G09_" type="logic">
+         <obj_property name="ElementShortName">G09_</obj_property>
+         <obj_property name="ObjectShortName">G09_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/G10_" type="logic">
+         <obj_property name="ElementShortName">G10_</obj_property>
+         <obj_property name="ObjectShortName">G10_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/G11_" type="logic">
+         <obj_property name="ElementShortName">G11_</obj_property>
+         <obj_property name="ObjectShortName">G11_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a10/G12_" type="logic">
+         <obj_property name="ElementShortName">G12_</obj_property>
+         <obj_property name="ObjectShortName">G12_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/G13_" type="logic">
+         <obj_property name="ElementShortName">G13_</obj_property>
+         <obj_property name="ObjectShortName">G13_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/G14_" type="logic">
+         <obj_property name="ElementShortName">G14_</obj_property>
+         <obj_property name="ObjectShortName">G14_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/G15_" type="logic">
+         <obj_property name="ElementShortName">G15_</obj_property>
+         <obj_property name="ObjectShortName">G15_</obj_property>
+      </wvobject>
+      <wvobject fp_name="/registers_tb/a11/G16_" type="logic">
+         <obj_property name="ElementShortName">G16_</obj_property>
+         <obj_property name="ObjectShortName">G16_</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

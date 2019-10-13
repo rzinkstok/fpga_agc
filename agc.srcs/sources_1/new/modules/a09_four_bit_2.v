@@ -92,6 +92,7 @@ module a09_four_bit_2(
     output wire G07_, 
     output wire GEM07, 
     output wire G08, 
+    output wire G08_,
     output wire GEM08,
     
     input wire reset,
@@ -297,7 +298,6 @@ module a09_four_bit_2(
     wire CI06_, CI07_, CI08_;
     wire CO08;
     wire Z05_, Z06_, Z07_, Z08_;
-    wire G08_;
     
     // Bit column 5
      

@@ -3,20 +3,24 @@
 module a11_four_bit_4(
     input wire A2XG_, 
     input wire MONEX, 
+    input wire BXVX,
     input wire CLXC, 
     input wire CUG, 
-    input wire WYLOG_, 
+    input wire WYHIG_, 
     input wire WYDG_, 
-    input wire CI09_,
-    input wire CO10, 
+    input wire CI13_,
+    input wire CO14, 
     input wire RULOG_,
+    input wire RUG_,
     input wire WAG_, 
     input wire CAG, 
     input wire WALSG_, 
     input wire RAG_, 
     input wire WLG_, 
     input wire G2LSG_, 
-    input wire CLG1G, 
+    input wire G16SW_,
+    input wire CLG1G,
+    input wire CLG2G, 
     input wire RLG_, 
     input wire WQG_, 
     input wire CQG, 
@@ -26,89 +30,92 @@ module a11_four_bit_4(
     input wire RZG_,
     input wire WBG_, 
     input wire CBG, 
-    input wire RBLG_, 
+    input wire RBHG_, 
     input wire RCG_,
+    input wire WG2G_,
     input wire WG3G_, 
     input wire WG4G_, 
+    input wire WG5G_,
     input wire L2GDG_, 
     input wire WG1G_, 
+    input wire ONE,
     input wire CGG, 
     input wire RGG_,
-    input wire WL08_,
-    input wire WL13_, 
-    input wire WL14_, 
-    input wire SA09, 
-    input wire SA10, 
-    input wire SA11, 
-    input wire SA12,
+    input wire WL01_,
+    input wire WL02_,
+    input wire WL12_, 
+    input wire SA13, 
+    input wire SA14, 
+    input wire SA16,
     input wire R1C, 
-    input wire L08_,
-    input wire CH09, 
-    input wire CH10, 
-    input wire CH11, 
-    input wire CH12,
-    input wire G13_, 
-    input wire G14_, 
-    input wire G15_,
-    input wire MDT09, 
-    input wire MDT10, 
-    input wire MDT11, 
-    input wire MDT12,
-    input wire XUY13_,
-    input wire XUY14_,
+    input wire CH13, 
+    input wire CH14, 
+    input wire CH16,
+    input wire G01_,
+    input wire L12_,
+    input wire L16_,
+    input wire US2SG,
+    input wire MDT13, 
+    input wire MDT14, 
+    input wire MDT15, 
+    input wire MDT16,
+    input wire XUY01_,
+    input wire XUY02_,
     input wire WHOMPA, 
     
-    input wire RL09_,
-    input wire RL10_,
-    input wire RL11_,
-    input wire RL12_,
+    input wire RL13_,
+    input wire RL14_,
+    input wire RL15_,
+    input wire RL16_,
     
-    output wire A10_1_RL09_,
-    output wire A10_2_RL09_,
-    output wire A10_3_RL09_,
-    output wire A10_4_RL09_,
-    output wire A10_1_RL10_,
-    output wire A10_2_RL10_,
-    output wire A10_3_RL10_,
-    output wire A10_4_RL10_,
-    output wire A10_1_RL11_,
-    output wire A10_2_RL11_,
-    output wire A10_3_RL11_,
-    output wire A10_4_RL11_,
-    output wire A10_1_RL12_,
-    output wire A10_2_RL12_,
-    output wire A10_3_RL12_,
-    output wire A10_4_RL12_,
+    output wire A11_1_RL13_,
+    output wire A11_2_RL13_,
+    output wire A11_3_RL13_,
+    output wire A11_4_RL13_,
+    output wire A11_1_RL14_,
+    output wire A11_2_RL14_,
+    output wire A11_3_RL14_,
+    output wire A11_4_RL14_,
+    output wire A11_1_RL15_,
+    output wire A11_2_RL15_,
+    output wire A11_3_RL15_,
+    output wire A11_4_RL15_,
+    output wire A11_1_RL16_,
+    output wire A11_2_RL16_,
+    output wire A11_3_RL16_,
+    output wire A11_4_RL16_,
     
-    output wire WL09, 
-    output wire WL09_, 
-    output wire MWL09, 
-    output wire WL10, 
-    output wire WL10_, 
-    output wire MWL10, 
-    output wire WL11, 
-    output wire WL11_, 
-    output wire MWL11, 
-    output wire WL12,
-    output wire WL12_, 
-    output wire MWL12,
-    output wire CI13_, 
-    output wire CO14,
-    output wire XUY09_,    
-    output wire XUY10_,
-    output wire XUY12_,
-    output wire L12_,
-    output wire G09, 
-    output wire G09_, 
-    output wire GEM09, 
-    output wire G10, 
-    output wire G10_, 
-    output wire GEM10, 
-    output wire G11, 
-    output wire G11_, 
-    output wire GEM11, 
-    output wire G12, 
-    output wire GEM12,
+    output wire A11_1_L16_,
+     
+    output wire WL13, 
+    output wire WL13_, 
+    output wire MWL13, 
+    output wire WL14, 
+    output wire WL14_, 
+    output wire MWL14, 
+    output wire WL15, 
+    output wire WL15_, 
+    output wire MWL15, 
+    output wire WL16,
+    output wire WL16_, 
+    output wire MWL16,
+    output wire EAC_,
+    output wire CO02, 
+    output wire CO16,
+    output wire XUY13_,    
+    output wire XUY14_,
+    output wire G13, 
+    output wire G13_, 
+    output wire GEM13, 
+    output wire G14, 
+    output wire G14_, 
+    output wire GEM14, 
+    output wire G15, 
+    output wire G15_, 
+    output wire GEM15, 
+    output wire G16, 
+    output wire G16_,
+    output wire GEM16,
     
     input wire reset,
     input wire prop_clk
@@ -264,7 +271,6 @@ module a11_four_bit_4(
     wire NOR54324_out;
     wire NOR54325_out;
     wire NOR54327_out;
-    wire NOR54328_out;
     wire NOR54329_out;
     wire NOR54330_out;
     wire NOR54331_out;
@@ -286,14 +292,14 @@ module a11_four_bit_4(
     wire NOR54351_out;
     wire NOR54353_out;
     
-    wire SUMA09_, SUMB09_, SUMA10_, SUMB10_, SUMA11_, SUMB11_, SUMA12_, SUMB12_;
-    wire A09_, A10_, A11_, A12_;
-    wire L09_, L10_, L11_;
-    wire XUY11_, XUY08_;
-    wire CI10_, CI11_, CI12_;
+    wire SUMA13_, SUMB13_, SUMA14_, SUMB14_, SUMA15_, SUMB15_, SUMA16_, SUMB16_;
+    wire A13_, A14_, A15_, A16_;
+    wire L13_, L14_, L15_;
+    wire XUY15_, XUY16_;
+    wire CI14_, CI15_, CI16_;
     wire CO12;
-    wire Z09_, Z10_, Z11_, Z12_;
-    wire G12_;
+    wire Z13_, Z14_, Z15_, Z16_;
+    wire RL16;
     
     // Bit column 13
      
@@ -589,9 +595,9 @@ module a11_four_bit_4(
     
     nor_2 #(1'b0) NOR54422(NOR54422_out,    RAG_,           A15_,                                       reset, prop_clk);
     
-    // RL16_ part 1
+    // RL15_ part 1
     // Cross-module fan-in, connected to A15 sheet 1
-    nor_3 #(1'b0) NOR54423(A11_1_RL16_,     NOR54417_out,   NOR54422_out,   CH16,                       reset, prop_clk);
+    nor_3 #(1'b0) NOR54423(A11_1_RL15_,     NOR54417_out,   NOR54422_out,   CH16,                       reset, prop_clk);
     
     // L register flip-flop
     nor_2 #(1'b0) NOR54424(NOR54424_out,    WLG_,           WL15_,                                      reset, prop_clk);
@@ -660,8 +666,8 @@ module a11_four_bit_4(
     nor_1 #(1'b0) NOR54453(NOR54453_out,    RL15_,                                                      reset, prop_clk);
     assign MWL15 = NOR54453_out;
     
-    // WL11_
-    nor_1 #(1'b0) NOR54454(WL11_,           WL11,                                                       reset, prop_clk);
+    // WL15_
+    nor_1 #(1'b0) NOR54454(WL15_,           WL15,                                                       reset, prop_clk);
     // NOR54455 and NOR54456 omitted
     
     // Bit column 16
@@ -716,10 +722,11 @@ module a11_four_bit_4(
     nor_2 #(1'b0) NOR54324(NOR54324_out,    WLG_,           WL16_,                                      reset, prop_clk);
     nor_2 #(1'b0) NOR54325(NOR54325_out,    G16_,           G2LSG_,                                     reset, prop_clk);
     
-    nor_3 #(1'b1) NOR54326(L16_,            NOR54324_out,   NOR54325_out,   NOR54327_out,               reset, prop_clk);
+    // Cross-module fan-in, connected to A4 sheet 2
+    nor_3 #(1'b1) NOR54326(A11_1_L16_,      NOR54324_out,   NOR54325_out,   NOR54327_out,               reset, prop_clk);
     nor_2 #(1'b0) NOR54327(NOR54327_out,    L16_,           CLG1G,                                      reset, prop_clk);
     
-    nor_2 #(1'b0) NOR54328(NOR54328_out,    RLG_,           L16_,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR54328(RL16,            RLG_,           L16_,                                       reset, prop_clk);
     
     // Q register flip-flop
     nor_2 #(1'b0) NOR54329(NOR54329_out,    WQG_,           WL16_,                                      reset, prop_clk);
@@ -739,7 +746,7 @@ module a11_four_bit_4(
     
     // RL16_ part 2
     // Cross-module fan-in, connected to A15 sheet 1
-    nor_3 #(1'b0) NOR54333(A11_2_RL16_,     NOR54328_out,   NOR54332_out,   NOR54337_out,               reset, prop_clk);
+    nor_3 #(1'b0) NOR54333(A11_2_RL16_,     RL16,           NOR54332_out,   NOR54337_out,               reset, prop_clk);
     
     // B register flip-flop
     nor_2 #(1'b0) NOR54338(NOR54338_out,    WBG_,           WL16_,                                      reset, prop_clk);

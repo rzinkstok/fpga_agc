@@ -2,16 +2,54 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Fri Aug 23 15:24:36 2019
-# Process ID: 2628
-# Current directory: C:/Users/IEUser/fpga_agc
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2704 C:\Users\IEUser\fpga_agc\agc.xpr
-# Log file: C:/Users/IEUser/fpga_agc/vivado.log
-# Journal file: C:/Users/IEUser/fpga_agc\vivado.jou
+# Start of session at: Sun Oct 13 16:30:22 2019
+# Process ID: 11684
+# Current directory: C:/Users/rzine07792/source/rzinkstok/fpga_agc
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1612 C:\Users\rzine07792\source\rzinkstok\fpga_agc\agc.xpr
+# Log file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/vivado.log
+# Journal file: C:/Users/rzine07792/source/rzinkstok/fpga_agc\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/IEUser/fpga_agc/agc.xpr
-update_compile_order -fileset sources_1
-launch_simulation
-source a3_sq_register_tb2.tcl
+open_project C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.xpr
+create_fileset -simset registers_sim
+current_fileset -simset [ get_filesets registers_sim ]
+set_property SOURCE_SET sources_1 [get_filesets registers_sim]
+file mkdir C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.srcs/registers_sim/new
+close [ open C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.srcs/registers_sim/new/registers_tb.v w ]
+add_files -fileset registers_sim C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.srcs/registers_sim/new/registers_tb.v
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top registers_tb [get_filesets registers_sim]
+set_property top_lib xil_defaultlib [get_filesets registers_sim]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode DisplayOnly [current_project]
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+wait_on_run synth_1
+launch_simulation -simset [get_filesets registers_sim ]
+source registers_tb.tcl
+save_wave_config {C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg}
+add_files -fileset registers_sim -norecurse C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg
+set_property xsim.view C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg [get_filesets registers_sim]
+restart
+run all
+save_wave_config {C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg}
+save_wave_config {C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg}
+save_wave_config {C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg}
+restart
+run all
+save_wave_config {C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg}
+save_wave_config {C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg}
+save_wave_config {C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg}
+relaunch_sim
+relaunch_sim
+relaunch_sim
+save_wave_config {C:/Users/rzine07792/source/rzinkstok/fpga_agc/agc.sim/registers_sim/behav/xsim/registers_tb_behav.wcfg}
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
 close_sim

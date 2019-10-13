@@ -230,7 +230,7 @@ def write_commands(fp):
     write_command_cycle(fp, ext, sq, qc, sq10, st)
 
 
-def write_a8_commands(fp):
+def write_registers_commands(fp):
     fp.write("""        #1000
         
         // Register A write test
@@ -239,6 +239,18 @@ def write_a8_commands(fp):
             force WL02 = 1;
             force WL03 = 1;
             force WL04 = 1;
+            force WL05 = 1;
+            force WL06 = 1;
+            force WL07 = 1;
+            force WL08 = 1;
+            force WL09 = 1;
+            force WL10 = 1;
+            force WL11 = 1;
+            force WL12 = 1;
+            force WL13 = 1;
+            force WL14 = 1;
+            force WL15 = 1;
+            force WL16 = 1;
             WAG_ = 0;
         end
         #100
@@ -247,6 +259,18 @@ def write_a8_commands(fp):
             release WL02;
             release WL03;
             release WL04;
+            release WL05;
+            release WL06;
+            release WL07;
+            release WL08;
+            release WL09;
+            release WL10;
+            release WL11;
+            release WL12;
+            release WL13;
+            release WL14;
+            release WL15;
+            release WL16;
             WAG_ = 1;
         end
         #900
@@ -265,23 +289,57 @@ def write_a8_commands(fp):
         #100 CAG = 0;
         
         // Register L write test 2
-        #900 CLG1G = 1;
-        #100 CLG1G = 0;
-        #100
+        #900 
         begin
-            SA04 = 1;
-            force G05_ = 0;
-            force G06_ = 0;
-            force G07_ = 0;
-            G2LSG_ = 0;
+            CLG1G = 1;
+            CLG2G = 1;
         end
         #100
         begin
-            SA04 = 0;
+            CLG1G = 0;
+            CLG2G = 0;
+        end
+        #100
+        begin
+            force G04_ = 0;
+            force G05_ = 0;
+            force G06_ = 0;
+            force G07_ = 0;
+            force G08_ = 0;
+            force G09_ = 0;
+            force G10_ = 0;
+            force G11_ = 0;
+            force G12_ = 0;
+            force G13_ = 0;
+            force G14_ = 0;
+            force G15_ = 0;
+            force WL01_ = 0;
+            force WL02_ = 0;
+            force G01_ = 0;
+            force G16_ = 0;   
+            G2LSG_ = 0;
+            WALSG_ = 0;
+        end
+        #100
+        begin
+            release G04_;
             release G05_;
             release G06_;
             release G07_;
+            release G08_;
+            release G09_;
+            release G10_;
+            release G11_;
+            release G12_;
+            release G13_;
+            release G14_;
+            release G15_;
+            release WL01_;
+            release WL02_;
+            release G01_;
+            release G16_;
             G2LSG_ = 1;
+            WALSG_ = 1;
         end
         #100 CGG = 1; 
         #100 CGG = 0;
@@ -297,8 +355,16 @@ def write_a8_commands(fp):
         end
            
         // Register L clear test
-        #100 CLG1G = 1;
-        #100 CLG1G = 0;
+        #100 
+        begin
+            CLG1G = 1;
+            CLG2G = 1;
+        end
+        #100 
+        begin
+            CLG1G = 0;
+            CLG2G = 0;
+        end
         #900
         
         // Register Q read test / register Z write test
@@ -422,7 +488,7 @@ def write_a8_commands(fp):
         #100 CUG = 0;
         #100
         begin
-            WL16_ = 0;
+            force WL16 = 1;
             force WL01 = 1;
             force WL02 = 1;
             force WL03 = 1;
@@ -431,7 +497,7 @@ def write_a8_commands(fp):
         end
         #100
         begin
-            WL16_ = 1;
+            release WL16_ ;
             release WL01;
             release WL02;
             release WL03;
@@ -649,8 +715,12 @@ if __name__ == "__main__":
     module_params = {}
     input_wires = set()
     output_wires = set()
-    module_name, params, inputs, outputs = read_module("a08_four_bit_1.v")
-    module_params[module_name] = params
-    input_wires.update(inputs)
-    output_wires.update(outputs)
-    write_wrapper(module_params, input_wires, output_wires, sim_name="a8_sim", sim_code=write_a8_commands, wrapper_name="a08_four_bit_1_tb")
+    for module_file_name in sorted(os.listdir(MODULES_SOURCE_FOLDER)):
+        if module_file_name[:3] not in ["a08", "a09", "a10", "a11"]:
+            continue
+        module_name, params, inputs, outputs = read_module(module_file_name)
+        module_params[module_name] = params
+        input_wires.update(inputs)
+        output_wires.update(outputs)
+
+    write_wrapper(module_params, input_wires, output_wires, sim_name="registers_sim", sim_code=write_registers_commands, wrapper_name="registers_tb")
