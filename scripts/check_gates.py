@@ -140,7 +140,7 @@ def check_arguments():
                 if res:
                     multiplicity = int(res.groups()[0])
                     args = [x.strip() for x in res.groups()[1].split(",")]
-                    if len(args) != multiplicity + 2:
+                    if len(args) != multiplicity + 3:
                         res = GATE_RE.search(l)
                         try:
                             gate_number = res.groups()[0]
@@ -164,7 +164,7 @@ if __name__ == "__main__":
     print("Comparison results")
     print("------------------")
     for m in sorted(gates_schematics.keys()):
-        if m not in [f"A{i:02}" for i in range(1, 11)]:
+        if m not in [f"A{i:02}" for i in range(1, 12)]:
             continue
         gsch = gates_schematics[m]
         try:

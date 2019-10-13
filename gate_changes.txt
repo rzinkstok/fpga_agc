@@ -550,7 +550,42 @@ Gates 53401-53463
 53462 removed (fan-in expansion A8 sheet 2)
 53463 removed (fan-in expansion sheet 1)
 
+Module A11
+Sheet 1
+Gates 54101-54163
+Gates 54201-54263
+54116 removed (not used)
+54155 removed (fan-out expansion)
+54156 removed (fan-out expansion)
+54159 removed (not used)
+54160 removed (not used)
+54162 removed (fan-in expansion)
+54163 removed (fan-in expansion)
 
+54216 removed (not used)
+54255 removed (fan-out expansion)
+54256 removed (fan-out expansion)
+54259 removed (not used)
+54260 removed (not used)
+
+Sheet 2
+Gates 54301-54363
+Gates 54401-54463
+
+54316 removed (not used)
+54355 removed (fan-out expansion)
+54356 removed (fan-out expansion)
+54359 removed (not used)
+54360 removed (not used)
+54363 removed (fan-in expansion)
+
+54416 removed (not used)
+54455 removed (fan-out expansion)
+54456 removed (fan-out expansion)
+54459 removed (not used)
+54460 removed (not used)
+54462 removed (fan-in expansion)
+54463 removed (fan-in expansion)
 
 Module A12
 Gates
