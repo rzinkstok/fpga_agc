@@ -117,7 +117,7 @@ module a10_four_bit_3(
     
     /**************************
     *
-    *  Module A9 sheet 1
+    *  Module A10 sheet 1
     *  Sheet number 2005257/1
     *
     **************************/
@@ -659,7 +659,7 @@ module a10_four_bit_3(
     // WL11
     nor_1 #(1'b0) NOR53452(WL11,            RL11_,                                                      reset, prop_clk);
     
-    // MWL07
+    // MWL11
     nor_1 #(1'b0) NOR53453(NOR53453_out,    RL11_,                                                      reset, prop_clk);
     assign MWL11 = NOR53453_out;
     
@@ -691,8 +691,8 @@ module a10_four_bit_3(
     nor_2 #(1'b0) NOR53309(NOR53309_out,    NOR53303_out,   NOR53307_out,                               reset, prop_clk);
     nor_2 #(1'b0) NOR53310(XUY12_,          NOR53304_out,   NOR53308_out,                               reset, prop_clk);
     
-    nor_3 #(1'b0) NOR53312(SUMA12_,         NOR53309_out,   XUY12_,         CI12_,                      reset, prop_clk);
-
+    nor_4 #(1'b0) NOR53312(SUMA12_,         NOR53309_out,   XUY12_,         CI12_,          WHOMP,      reset, prop_clk);
+    // NOR54463 moved here from A11 sheet 2 and merged with NOR53312
     
     nor_2 #(1'b0) NOR53313(NOR53313_out,    NOR53309_out,   XUY12_,                                     reset, prop_clk);
     nor_1 #(1'b0) NOR53311(NOR53311_out,    CI12_,                                                      reset, prop_clk);
