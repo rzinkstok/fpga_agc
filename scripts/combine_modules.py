@@ -396,12 +396,22 @@ def write_registers_commands(fp):
         #900
         
         // Register B read test / register G write test
-        #100 RBLG_ = 0;
-        #900 WG1G_ = 0;
+        #100 
+        begin
+            RBLG_ = 0;
+            RBHG_ = 0;
+        end
+        #900 
+        begin
+            WG1G_ = 0;
+            WG2G_ = 0;
+        end
         #100
         begin
             RBLG_ = 1;
+            RBHG_ = 1;
             WG1G_ = 1;
+            WG2G_ = 1;
         end
         
         // Register B clear test
@@ -413,18 +423,40 @@ def write_registers_commands(fp):
         #100 CGG = 0;
         #100
         begin
-            force WL16_ = 0;
+            force WL16 = 1;
             force WL01 = 1;
             force WL02 = 1;
             force WL03 = 1;
+            force WL04 = 1;
+            force WL05 = 1;
+            force WL06 = 1;
+            force WL07 = 1;
+            force WL08 = 1;
+            force WL09 = 1;
+            force WL10 = 1;
+            force WL11 = 1;
+            force WL12 = 1;
+            force WL13 = 1;
+            force WL14 = 1;
             WG3G_ = 0;
         end
         #100
         begin
-            release WL16_;
+            release WL16;
             release WL01;
             release WL02;
             release WL03;
+            release WL04;
+            release WL05;
+            release WL06;
+            release WL07;
+            release WL08;
+            release WL09;
+            release WL10;
+            release WL11;
+            release WL12;
+            release WL13;
+            release WL14;
             WG3G_ = 1;
         end
         
@@ -436,16 +468,40 @@ def write_registers_commands(fp):
             force WL02 = 1;
             force WL03 = 1;
             force WL04 = 1;
-            force WL05_ = 0;
+            force WL05 = 1;
+            force WL06 = 1;
+            force WL07 = 1;
+            force WL08 = 1;
+            force WL09 = 1;
+            force WL10 = 1;
+            force WL11 = 1;
+            force WL12 = 1;
+            force WL13 = 1;
+            force WL14 = 1;
+            force WL16 = 1;
+            force WL01 = 1;
             WG4G_ = 0;
+            WG5G_ = 0;
         end
         #100
         begin
             release WL02;
             release WL03;
             release WL04;
-            release WL05_;
+            release WL05;
+            release WL06;
+            release WL07;
+            release WL08;
+            release WL09;
+            release WL10;
+            release WL11;
+            release WL12;
+            release WL13;
+            release WL14;
+            release WL16;
+            release WL01;
             WG4G_ = 1;
+            WG5G_ = 1;
         end
         
         // Register G write test 4
@@ -650,7 +706,7 @@ def write_wrapper(module_params, input_wires, output_wires, sim_name=None, sim_c
 
         for iw in sorted(input_wires):
             if iw not in output_wires:
-                if iw.endswith("_") or iw == "prop_clk":
+                if iw.endswith("_") or iw in ["prop_clk", "ONE"]:
                     val = 1
                 else:
                     val = 0

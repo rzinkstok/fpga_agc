@@ -106,7 +106,7 @@ module agc();
 	reg MSTRTP = 0;
 	reg MTCSAI = 0;
 	reg NISQ = 0;
-	reg ONE = 0;
+	reg ONE = 1;
 	reg PCDU = 0;
 	reg PIPPLS_ = 1;
 	reg R1C = 0;
