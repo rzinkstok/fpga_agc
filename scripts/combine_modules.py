@@ -546,8 +546,15 @@ def write_registers_commands(fp):
             release L14_;
             release L16_;
             L2GDG_ = 1;
+            CLG1G = 1;
+            CLG2G = 1;
         end
-        #900
+        #100
+        begin
+            CLG1G = 0;
+            CLG2G = 0;
+        end
+        #800
         
         // Register G read test / register Y write test
         #100 RGG_ = 0;
@@ -623,6 +630,18 @@ def write_registers_commands(fp):
             force WL02 = 1;
             force WL03 = 1;
             force WL04 = 1;
+            force WL05 = 1;
+            force WL06 = 1;
+            force WL07 = 1;
+            force WL08 = 1;
+            force WL09 = 1;
+            force WL10 = 1;
+            force WL11 = 1;
+            force WL12 = 1;
+            force WL13 = 1;
+            force WL14 = 1;
+            force WL15 = 1;
+            force WL16 = 1;
             WAG_ = 0;
         end
         #100
@@ -631,6 +650,18 @@ def write_registers_commands(fp):
             release WL02;
             release WL03;
             release WL04;
+            release WL05;
+            release WL06;
+            release WL07;
+            release WL08;
+            release WL09;
+            release WL10;
+            release WL11;
+            release WL12;
+            release WL13;
+            release WL14;
+            release WL15;
+            release WL16;
             WAG_ = 1;
         end
         #100 A2XG_ = 0;
@@ -650,7 +681,7 @@ def write_registers_commands(fp):
         end
         #100 PONEX = 0;
         
-        // register write test 3
+        // X register write test 3
         #900 CLXC = 1;
         #100 
         begin
@@ -668,19 +699,28 @@ def write_registers_commands(fp):
         end
         #100 MONEX = 0;
         
+        // X register write test 5
+        #900 CLXC = 1;
+        #100
+        begin
+            CLXC = 0;
+            BXVX = 1;
+        end
+        #100 BXVX = 0;
+        
         // Sum test
         #900 CUG = 1;
         #100 
         begin
             CUG = 0;
             PONEX = 1;
-            force WL02_ = 0;
+            force WL02 = 1;
             WYLOG_ = 0;
         end
         #100
         begin
             PONEX = 0;
-            release WL02_;
+            release WL02;
             WYLOG_ = 1;
         end
         #100 RULOG_ = 0;
@@ -692,13 +732,13 @@ def write_registers_commands(fp):
         begin
             CUG = 0;
             PONEX = 1;
-            force WL01_ = 0;
+            force WL01 = 1;
             WYLOG_ = 0;
         end
         #100
         begin
             PONEX = 0;
-            release WL01_;
+            release WL01;
             WYLOG_ = 1;
         end
         #100 RULOG_ = 0;
@@ -711,18 +751,71 @@ def write_registers_commands(fp):
             CUG = 0;
             PONEX = 1;
             TWOX = 1;
-            force WL01_ = 0;
+            force WL01 = 1;
             WYLOG_ = 0;
         end
         #100
         begin
             PONEX = 0;
             TWOX = 0;
-            release WL01_;
+            release WL01;
             WYLOG_ = 1;
         end
         #100 RULOG_ = 0;
         #900 RULOG_ = 1;
+        
+        // Sum test 3
+        #100 CUG = 1;
+        #100 
+        begin
+            CUG = 0;
+            PONEX = 1;
+            force WL01 = 1;
+            force WL02 = 1;
+            force WL03 = 1;
+            force WL04 = 1;
+            force WL05 = 1;
+            force WL06 = 1;
+            force WL07 = 1;
+            force WL08 = 1;
+            force WL09 = 1;
+            force WL10 = 1;
+            force WL11 = 1;
+            force WL12 = 1;
+            force WL13 = 1;
+            force WL14 = 1;
+            force WL15 = 0;
+            force WL16 = 0;
+            WYLOG_ = 0;
+            WYHIG_ = 0;
+        end
+        #100
+        begin
+            PONEX = 0;
+            release WL01;
+            release WL02;
+            release WL03;
+            release WL04;
+            release WL05;
+            release WL06;
+            release WL07;
+            release WL08;
+            release WL09;
+            release WL10;
+            release WL11;
+            release WL12;
+            release WL13;
+            release WL14;
+            release WL15;
+            release WL16;
+            WYLOG_ = 1;
+            WYHIG_ = 1;
+        end
+        #500 RULOG_ = 0;
+        #900 
+        begin
+            RULOG_ = 1;
+        end
 """)
 
 

@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="4983333333fs"></ZoomStartTime>
-      <ZoomEndTime time="34883333334fs"></ZoomEndTime>
-      <Cursor1Time time="16186176000fs"></Cursor1Time>
+      <ZoomStartTime time="24908333333fs"></ZoomStartTime>
+      <ZoomEndTime time="34258333334fs"></ZoomEndTime>
+      <Cursor1Time time="31500000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="188"></NameColumnWidth>
-      <ValueColumnWidth column_width="69"></ValueColumnWidth>
+      <NameColumnWidth column_width="231"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="10" />
    <wvobject fp_name="group295" type="group">
@@ -92,6 +92,7 @@
    <wvobject fp_name="group312" type="group">
       <obj_property name="label">X register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/registers_tb/A2XG_" type="logic">
          <obj_property name="ElementShortName">A2XG_</obj_property>
          <obj_property name="ObjectShortName">A2XG_</obj_property>
@@ -220,6 +221,7 @@
    <wvobject fp_name="group313" type="group">
       <obj_property name="label">Y register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/registers_tb/WYLOG_" type="logic">
          <obj_property name="ElementShortName">WYLOG_</obj_property>
          <obj_property name="ObjectShortName">WYLOG_</obj_property>
@@ -340,6 +342,7 @@
    <wvobject fp_name="group374" type="group">
       <obj_property name="label">Sum register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/registers_tb/RULOG_" type="logic">
          <obj_property name="ElementShortName">RULOG_</obj_property>
          <obj_property name="ObjectShortName">RULOG_</obj_property>
@@ -632,7 +635,6 @@
    <wvobject fp_name="group448" type="group">
       <obj_property name="label">L register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/registers_tb/WLG_" type="logic">
          <obj_property name="ElementShortName">WLG_</obj_property>
          <obj_property name="ObjectShortName">WLG_</obj_property>
@@ -1037,7 +1039,6 @@
    <wvobject fp_name="group533" type="group">
       <obj_property name="label">G register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/registers_tb/ONE" type="logic">
          <obj_property name="ElementShortName">ONE</obj_property>
          <obj_property name="ObjectShortName">ONE</obj_property>
