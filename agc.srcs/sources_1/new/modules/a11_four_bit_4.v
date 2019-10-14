@@ -104,6 +104,9 @@ module a11_four_bit_4(
     output wire CO16,
     output wire XUY13_,    
     output wire XUY14_,
+    output wire L13_,
+    output wire L14_,
+    output wire L15_,
     output wire G13, 
     output wire G13_, 
     output wire GEM13, 
@@ -294,7 +297,6 @@ module a11_four_bit_4(
     
     wire SUMA13_, SUMB13_, SUMA14_, SUMB14_, SUMA15_, SUMB15_, SUMA16_, SUMB16_;
     wire A13_, A14_, A15_, A16_;
-    wire L13_, L14_, L15_;
     wire XUY15_, XUY16_;
     wire CI14_, CI15_, CI16_;
     wire CO12;

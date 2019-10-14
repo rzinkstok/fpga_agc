@@ -513,6 +513,18 @@ def write_registers_commands(fp):
             force L01_ = 0;
             force L02_ = 0;
             force L03_ = 0;
+            force L04_ = 0;
+            force L05_ = 0;
+            force L06_ = 0;
+            force L07_ = 0;
+            force L08_ = 0;
+            force L09_ = 0;
+            force L10_ = 0;
+            force L11_ = 0;
+            force L12_ = 0;
+            force L13_ = 0;
+            force L14_ = 0;
+            force L16_ = 0;
             L2GDG_ = 0;
         end
         #100
@@ -521,17 +533,34 @@ def write_registers_commands(fp):
             release L01_;
             release L02_;
             release L03_;
+            release L04_;
+            release L05_;
+            release L06_;
+            release L07_;
+            release L08_;
+            release L09_;
+            release L10_;
+            release L11_;
+            release L12_;
+            release L13_;
+            release L14_;
+            release L16_;
             L2GDG_ = 1;
         end
         #900
         
         // Register G read test / register Y write test
         #100 RGG_ = 0;
-        #900 WYLOG_ = 0;
+        #900 
+        begin
+            WYLOG_ = 0;
+            WYHIG_ = 0;
+        end
         #100 
         begin
             RGG_ = 1;
             WYLOG_ = 1;
+            WYHIG_ = 1;
         end
         
         // Register G clear test
@@ -548,15 +577,37 @@ def write_registers_commands(fp):
             force WL01 = 1;
             force WL02 = 1;
             force WL03 = 1;
+            force WL04 = 1;
+            force WL05 = 1;
+            force WL06 = 1;
+            force WL07 = 1;
+            force WL08 = 1;
+            force WL09 = 1;
+            force WL10 = 1;
+            force WL11 = 1;
+            force WL12 = 1;
+            force WL13 = 1;
+            force WL14 = 1;
             WYDLOG_ = 0;
             WYDG_ = 0;
         end
         #100
         begin
-            release WL16_ ;
+            release WL16;
             release WL01;
             release WL02;
             release WL03;
+            release WL04;
+            release WL05;
+            release WL06;
+            release WL07;
+            release WL08;
+            release WL09;
+            release WL10;
+            release WL11;
+            release WL12;
+            release WL13;
+            release WL14;
             WYDLOG_ = 1;
             WYDG_ = 1;
         end
@@ -568,18 +619,18 @@ def write_registers_commands(fp):
         // X register write test
         #100
         begin
-            force WL01_ = 0;
-            force WL02_ = 0;
-            force WL03_ = 0;
-            force WL04_ = 0;
+            force WL01 = 1;
+            force WL02 = 1;
+            force WL03 = 1;
+            force WL04 = 1;
             WAG_ = 0;
         end
         #100
         begin
-            release WL01_;
-            release WL02_;
-            release WL03_;
-            release WL04_;
+            release WL01;
+            release WL02;
+            release WL03;
+            release WL04;
             WAG_ = 1;
         end
         #100 A2XG_ = 0;

@@ -81,6 +81,9 @@ module a09_four_bit_2(
     output wire CO10,
     output wire XUY05_, 
     output wire XUY06_,
+    output wire L05_,
+    output wire L06_,
+    output wire L07_,
     output wire L08_,
     output wire G05, 
     output wire G05_, 
@@ -292,7 +295,6 @@ module a09_four_bit_2(
     
     wire SUMA05_, SUMB05_, SUMA06_, SUMB06_, SUMA07_, SUMB07_, SUMA08_, SUMB08_;
     wire A05_, A06_, A07_, A08_;
-    wire L05_, L06_, L07_;
     wire RL05_, RL06_, RL07_, RL08_;
     wire XUY07_, XUY08_;
     wire CI06_, CI07_, CI08_;

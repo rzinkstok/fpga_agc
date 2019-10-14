@@ -78,7 +78,6 @@ module agc();
 	reg INOTLD = 0;
 	reg L02A_ = 1;
 	reg L15A_ = 1;
-	reg L15_ = 1;
 	reg MCDU = 0;
 	reg MDT01 = 0;
 	reg MDT02 = 0;
@@ -655,8 +654,17 @@ module agc();
 	wire L02_;
 	wire L03_;
 	wire L04_;
+	wire L05_;
+	wire L06_;
+	wire L07_;
 	wire L08_;
+	wire L09_;
+	wire L10_;
+	wire L11_;
 	wire L12_;
+	wire L13_;
+	wire L14_;
+	wire L15_;
 	wire L16_;
 	wire L2GDG_;
 	wire L2GD_;
@@ -2503,6 +2511,9 @@ module agc();
 		CO10,
 		XUY05_,
 		XUY06_,
+		L05_,
+		L06_,
+		L07_,
 		L08_,
 		G05,
 		G05_,
@@ -2615,6 +2626,9 @@ module agc();
 		XUY09_,
 		XUY10_,
 		XUY12_,
+		L09_,
+		L10_,
+		L11_,
 		L12_,
 		G09,
 		G09_,
@@ -2732,6 +2746,9 @@ module agc();
 		CO16,
 		XUY13_,
 		XUY14_,
+		L13_,
+		L14_,
+		L15_,
 		G13,
 		G13_,
 		GEM13,

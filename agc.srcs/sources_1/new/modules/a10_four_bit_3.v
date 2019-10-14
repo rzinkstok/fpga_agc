@@ -98,6 +98,9 @@ module a10_four_bit_3(
     output wire XUY09_,    
     output wire XUY10_,
     output wire XUY12_,
+    output wire L09_,
+    output wire L10_,
+    output wire L11_,
     output wire L12_,
     output wire G09, 
     output wire G09_, 
@@ -293,7 +296,6 @@ module a10_four_bit_3(
     
     wire SUMA09_, SUMB09_, SUMA10_, SUMB10_, SUMA11_, SUMB11_, SUMA12_, SUMB12_;
     wire A09_, A10_, A11_, A12_;
-    wire L09_, L10_, L11_;
     wire XUY11_, XUY08_;
     wire CI10_, CI11_, CI12_;
     wire CO12;
