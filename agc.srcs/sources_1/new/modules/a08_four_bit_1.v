@@ -114,7 +114,8 @@ module a08_four_bit_1(
     output wire GEM02, 
     output wire G03, 
     output wire GEM03, 
-    output wire G04, 
+    output wire G04,
+    output wire G04_, 
     output wire GEM04,
     output wire L01_, 
     output wire L02_, 
@@ -330,7 +331,7 @@ module a08_four_bit_1(
     wire CI02_, CI03_, CI04_;
     wire CO04;
     wire Z01_, Z02_, Z03_, Z04_;
-    wire G02_, G03_, G04_;
+    wire G02_, G03_;
     wire S08A, S08A_;
     
     // Bit column 1

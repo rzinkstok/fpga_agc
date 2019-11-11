@@ -1,237 +1,794 @@
-import os
-import re
-import glob
+`timescale 1ns / 1ps
 
-BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
-SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new")
-MODULES_SOURCE_FOLDER = os.path.join(SOURCE_FOLDER, "modules")
-SIM_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs")
+module registers_tb();
 
-MODULE_ARGS_START_RE = re.compile(r"^module [A-Za-z0-9\_]+\(")
-MODULE_ARGS_END_RE = re.compile(r"^\);")
-INPUT_WIRE_RE = re.compile(r"^input wire ")
-OUTPUT_WIRE_RE = re.compile(r"^output wire ")
-CROSS_MODULE_SIGNAL_RE = re.compile(r"^A[0-9][0-9]\_[0-9]\_(.+)")
+	reg A2XG_ = 1;
+	reg BBK1 = 0;
+	reg BBK2 = 0;
+	reg BBK3 = 0;
+	reg BXVX = 0;
+	reg CAD1 = 0;
+	reg CAD2 = 0;
+	reg CAD3 = 0;
+	reg CAD4 = 0;
+	reg CAD5 = 0;
+	reg CAD6 = 0;
+	reg CAG = 0;
+	reg CBG = 0;
+	reg CGG = 0;
+	reg CH01 = 0;
+	reg CH02 = 0;
+	reg CH03 = 0;
+	reg CH04 = 0;
+	reg CH05 = 0;
+	reg CH06 = 0;
+	reg CH07 = 0;
+	reg CH08 = 0;
+	reg CH09 = 0;
+	reg CH10 = 0;
+	reg CH11 = 0;
+	reg CH12 = 0;
+	reg CH13 = 0;
+	reg CH14 = 0;
+	reg CH16 = 0;
+	reg CI01_ = 1;
+	reg CLG1G = 0;
+	reg CLG2G = 0;
+	reg CLXC = 0;
+	reg CQG = 0;
+	reg CUG = 0;
+	reg CZG = 0;
+	reg G01ED = 0;
+	reg G02ED = 0;
+	reg G03ED = 0;
+	reg G04ED = 0;
+	reg G05ED = 0;
+	reg G06ED = 0;
+	reg G07ED = 0;
+	reg G16SW_ = 1;
+	reg G2LSG_ = 1;
+	reg L2GDG_ = 1;
+	reg MCRO_ = 1;
+	reg MDT01 = 0;
+	reg MDT02 = 0;
+	reg MDT03 = 0;
+	reg MDT04 = 0;
+	reg MDT05 = 0;
+	reg MDT06 = 0;
+	reg MDT07 = 0;
+	reg MDT08 = 0;
+	reg MDT09 = 0;
+	reg MDT10 = 0;
+	reg MDT11 = 0;
+	reg MDT12 = 0;
+	reg MDT13 = 0;
+	reg MDT14 = 0;
+	reg MDT15 = 0;
+	reg MDT16 = 0;
+	reg MONEX = 0;
+	reg ONE = 1;
+	reg PONEX = 0;
+	reg R15 = 0;
+	reg R1C = 0;
+	reg R6 = 0;
+	reg RAG_ = 1;
+	reg RB1 = 0;
+	reg RB1F = 0;
+	reg RB2 = 0;
+	reg RBHG_ = 1;
+	reg RBLG_ = 1;
+	reg RCG_ = 1;
+	reg RGG_ = 1;
+	reg RLG_ = 1;
+	reg RPTAD3 = 0;
+	reg RPTAD4 = 0;
+	reg RPTAD5 = 0;
+	reg RPTAD6 = 0;
+	reg RQG_ = 1;
+	reg RUG_ = 1;
+	reg RULOG_ = 1;
+	reg RZG_ = 1;
+	reg S08 = 0;
+	reg S08_ = 1;
+	reg SA01 = 0;
+	reg SA02 = 0;
+	reg SA03 = 0;
+	reg SA04 = 0;
+	reg SA05 = 0;
+	reg SA06 = 0;
+	reg SA07 = 0;
+	reg SA08 = 0;
+	reg SA09 = 0;
+	reg SA10 = 0;
+	reg SA11 = 0;
+	reg SA12 = 0;
+	reg SA13 = 0;
+	reg SA14 = 0;
+	reg SA16 = 0;
+	reg SETAB_ = 1;
+	reg SETCD_ = 1;
+	reg TWOX = 0;
+	reg US2SG = 0;
+	reg WAG_ = 1;
+	reg WALSG_ = 1;
+	reg WBG_ = 1;
+	reg WG1G_ = 1;
+	reg WG2G_ = 1;
+	reg WG3G_ = 1;
+	reg WG4G_ = 1;
+	reg WG5G_ = 1;
+	reg WHOMP = 0;
+	reg WHOMPA = 0;
+	reg WLG_ = 1;
+	reg WQG_ = 1;
+	reg WYDG_ = 1;
+	reg WYDLOG_ = 1;
+	reg WYHIG_ = 1;
+	reg WYLOG_ = 1;
+	reg WZG_ = 1;
+	reg prop_clk = 1;
+	reg reset = 0;
 
+	wire A10_1_RL09_;
+	wire A10_1_RL10_;
+	wire A10_1_RL11_;
+	wire A10_1_RL12_;
+	wire A10_2_RL09_;
+	wire A10_2_RL10_;
+	wire A10_2_RL11_;
+	wire A10_2_RL12_;
+	wire A10_3_RL09_;
+	wire A10_3_RL10_;
+	wire A10_3_RL11_;
+	wire A10_3_RL12_;
+	wire A10_4_RL09_;
+	wire A10_4_RL10_;
+	wire A10_4_RL11_;
+	wire A10_4_RL12_;
+	wire A11_1_L16_;
+	wire A11_1_RL13_;
+	wire A11_1_RL14_;
+	wire A11_1_RL15_;
+	wire A11_1_RL16_;
+	wire A11_2_RL13_;
+	wire A11_2_RL14_;
+	wire A11_2_RL15_;
+	wire A11_2_RL16_;
+	wire A11_3_RL13_;
+	wire A11_3_RL14_;
+	wire A11_3_RL15_;
+	wire A11_3_RL16_;
+	wire A11_4_RL13_;
+	wire A11_4_RL14_;
+	wire A11_4_RL15_;
+	wire A11_4_RL16_;
+	wire CI05_;
+	wire CI09_;
+	wire CI13_;
+	wire CLEARA;
+	wire CLEARB;
+	wire CLEARC;
+	wire CLEARD;
+	wire CO02;
+	wire CO06;
+	wire CO10;
+	wire CO14;
+	wire CO16;
+	wire EAC_;
+	wire G01;
+	wire G01_;
+	wire G02;
+	wire G03;
+	wire G04;
+	wire G04_;
+	wire G05;
+	wire G05_;
+	wire G06;
+	wire G06_;
+	wire G07;
+	wire G07_;
+	wire G08;
+	wire G08_;
+	wire G09;
+	wire G09_;
+	wire G10;
+	wire G10_;
+	wire G11;
+	wire G11_;
+	wire G12;
+	wire G12_;
+	wire G13;
+	wire G13_;
+	wire G14;
+	wire G14_;
+	wire G15;
+	wire G15_;
+	wire G16;
+	wire G16_;
+	wire GEM01;
+	wire GEM02;
+	wire GEM03;
+	wire GEM04;
+	wire GEM05;
+	wire GEM06;
+	wire GEM07;
+	wire GEM08;
+	wire GEM09;
+	wire GEM10;
+	wire GEM11;
+	wire GEM12;
+	wire GEM13;
+	wire GEM14;
+	wire GEM15;
+	wire GEM16;
+	wire L01_;
+	wire L02_;
+	wire L03_;
+	wire L04_;
+	wire L05_;
+	wire L06_;
+	wire L07_;
+	wire L08_;
+	wire L09_;
+	wire L10_;
+	wire L11_;
+	wire L12_;
+	wire L13_;
+	wire L14_;
+	wire L15_;
+	wire L16_;
+	wire MWL01;
+	wire MWL02;
+	wire MWL03;
+	wire MWL04;
+	wire MWL05;
+	wire MWL06;
+	wire MWL07;
+	wire MWL08;
+	wire MWL09;
+	wire MWL10;
+	wire MWL11;
+	wire MWL12;
+	wire MWL13;
+	wire MWL14;
+	wire MWL15;
+	wire MWL16;
+	wire RL09_;
+	wire RL10_;
+	wire RL11_;
+	wire RL12_;
+	wire RL13_;
+	wire RL14_;
+	wire RL15_;
+	wire RL16_;
+	wire SUMA01_;
+	wire SUMA02_;
+	wire SUMA03_;
+	wire SUMA04_;
+	wire SUMB01_;
+	wire SUMB02_;
+	wire SUMB03_;
+	wire SUMB04_;
+	wire WL01;
+	wire WL01_;
+	wire WL02;
+	wire WL02_;
+	wire WL03;
+	wire WL03_;
+	wire WL04;
+	wire WL04_;
+	wire WL05;
+	wire WL05_;
+	wire WL06;
+	wire WL06_;
+	wire WL07;
+	wire WL07_;
+	wire WL08;
+	wire WL08_;
+	wire WL09;
+	wire WL09_;
+	wire WL10;
+	wire WL10_;
+	wire WL11;
+	wire WL11_;
+	wire WL12;
+	wire WL12_;
+	wire WL13;
+	wire WL13_;
+	wire WL14;
+	wire WL14_;
+	wire WL15;
+	wire WL15_;
+	wire WL16;
+	wire WL16_;
+	wire XUY01_;
+	wire XUY02_;
+	wire XUY05_;
+	wire XUY06_;
+	wire XUY09_;
+	wire XUY10_;
+	wire XUY12_;
+	wire XUY13_;
+	wire XUY14_;
 
-def read_module(module_file_name):
-    module_name = os.path.splitext(module_file_name)[0]
-    module = module_name.split("_")[0]
-    with open(os.path.join(MODULES_SOURCE_FOLDER, module_file_name), "r") as fp:
-        lines = fp.readlines()
+	always
+		#10 prop_clk = !prop_clk; // 20 ns gate delay
 
-    print()
-    print(f"Module {module}")
+	a08_four_bit_1 a08(
+		A2XG_,
+		PONEX,
+		MONEX,
+		TWOX,
+		CLXC,
+		CUG,
+		WYLOG_,
+		WYDLOG_,
+		WYDG_,
+		CI01_,
+		RULOG_,
+		WAG_,
+		CAG,
+		WALSG_,
+		RAG_,
+		WLG_,
+		G2LSG_,
+		CLG1G,
+		RLG_,
+		WQG_,
+		CQG,
+		RQG_,
+		WZG_,
+		CZG,
+		RZG_,
+		WBG_,
+		CBG,
+		RBLG_,
+		RCG_,
+		WG3G_,
+		WG4G_,
+		L2GDG_,
+		MCRO_,
+		WG1G_,
+		CGG,
+		RGG_,
+		WL05_,
+		WL06_,
+		WL16_,
+		SA01,
+		SA02,
+		SA03,
+		SA04,
+		G01ED,
+		G02ED,
+		G03ED,
+		G04ED,
+		RB1,
+		R15,
+		R1C,
+		RB2,
+		CH01,
+		CH02,
+		CH03,
+		CH04,
+		G05_,
+		G06_,
+		G07_,
+		MDT01,
+		MDT02,
+		MDT03,
+		MDT04,
+		SETAB_,
+		SETCD_,
+		S08,
+		S08_,
+		XUY05_,
+		XUY06_,
+		WHOMP,
+		WHOMPA,
+		CAD1,
+		CAD2,
+		CAD3,
+		CAD4,
+		BBK1,
+		BBK2,
+		BBK3,
+		RB1F,
+		R6,
+		RPTAD3,
+		RPTAD4,
+		WL01,
+		WL01_,
+		MWL01,
+		WL02,
+		WL02_,
+		MWL02,
+		WL03,
+		WL03_,
+		MWL03,
+		WL04,
+		WL04_,
+		MWL04,
+		CO06,
+		CI05_,
+		XUY01_,
+		XUY02_,
+		SUMA01_,
+		SUMB01_,
+		SUMA02_,
+		SUMB02_,
+		SUMA03_,
+		SUMB03_,
+		SUMA04_,
+		SUMB04_,
+		G01,
+		G01_,
+		GEM01,
+		G02,
+		GEM02,
+		G03,
+		GEM03,
+		G04,
+		G04_,
+		GEM04,
+		L01_,
+		L02_,
+		L03_,
+		L04_,
+		CLEARA,
+		CLEARB,
+		CLEARC,
+		CLEARD,
+		reset,
+		prop_clk
+	);
 
-    in_module_params = False
-    module_params = []
-    input_wires = []
-    output_wires = []
+	a09_four_bit_2 a09(
+		A2XG_,
+		MONEX,
+		CLXC,
+		CUG,
+		WYLOG_,
+		WYDG_,
+		CI05_,
+		CO06,
+		RULOG_,
+		WAG_,
+		CAG,
+		WALSG_,
+		RAG_,
+		WLG_,
+		G2LSG_,
+		CLG1G,
+		RLG_,
+		WQG_,
+		CQG,
+		RQG_,
+		WZG_,
+		CZG,
+		RZG_,
+		WBG_,
+		CBG,
+		RBLG_,
+		RCG_,
+		WG3G_,
+		WG4G_,
+		L2GDG_,
+		WG1G_,
+		CGG,
+		RGG_,
+		L04_,
+		WL04_,
+		WL09_,
+		WL10_,
+		SA05,
+		SA06,
+		SA07,
+		SA08,
+		G05ED,
+		G06ED,
+		G07ED,
+		R1C,
+		CH05,
+		CH06,
+		CH07,
+		CH08,
+		G09_,
+		G10_,
+		G11_,
+		MDT05,
+		MDT06,
+		MDT07,
+		MDT08,
+		XUY09_,
+		XUY10_,
+		WHOMP,
+		CAD5,
+		CAD6,
+		RPTAD5,
+		RPTAD6,
+		WL05,
+		WL05_,
+		MWL05,
+		WL06,
+		WL06_,
+		MWL06,
+		WL07,
+		WL07_,
+		MWL07,
+		WL08,
+		WL08_,
+		MWL08,
+		CI09_,
+		CO10,
+		XUY05_,
+		XUY06_,
+		L05_,
+		L06_,
+		L07_,
+		L08_,
+		G05,
+		G05_,
+		GEM05,
+		G06,
+		G06_,
+		GEM06,
+		G07,
+		G07_,
+		GEM07,
+		G08,
+		G08_,
+		GEM08,
+		reset,
+		prop_clk
+	);
 
-    for l in lines:
-        comment = l.find("//")
-        if comment >= 0:
-            l = l[:comment]
-        l = l.strip()
+	a10_four_bit_3 a10(
+		A2XG_,
+		MONEX,
+		CLXC,
+		CUG,
+		WYLOG_,
+		WYDG_,
+		CI09_,
+		CO10,
+		RULOG_,
+		WAG_,
+		CAG,
+		WALSG_,
+		RAG_,
+		WLG_,
+		G2LSG_,
+		CLG1G,
+		RLG_,
+		WQG_,
+		CQG,
+		RQG_,
+		WZG_,
+		CZG,
+		RZG_,
+		WBG_,
+		CBG,
+		RBLG_,
+		RCG_,
+		WG3G_,
+		WG4G_,
+		L2GDG_,
+		WG1G_,
+		CGG,
+		RGG_,
+		WL08_,
+		WL13_,
+		WL14_,
+		SA09,
+		SA10,
+		SA11,
+		SA12,
+		R1C,
+		L08_,
+		CH09,
+		CH10,
+		CH11,
+		CH12,
+		G13_,
+		G14_,
+		G15_,
+		MDT09,
+		MDT10,
+		MDT11,
+		MDT12,
+		XUY13_,
+		XUY14_,
+		WHOMP,
+		WHOMPA,
+		RL09_,
+		RL10_,
+		RL11_,
+		RL12_,
+		A10_1_RL09_,
+		A10_2_RL09_,
+		A10_3_RL09_,
+		A10_4_RL09_,
+		A10_1_RL10_,
+		A10_2_RL10_,
+		A10_3_RL10_,
+		A10_4_RL10_,
+		A10_1_RL11_,
+		A10_2_RL11_,
+		A10_3_RL11_,
+		A10_4_RL11_,
+		A10_1_RL12_,
+		A10_2_RL12_,
+		A10_3_RL12_,
+		A10_4_RL12_,
+		WL09,
+		WL09_,
+		MWL09,
+		WL10,
+		WL10_,
+		MWL10,
+		WL11,
+		WL11_,
+		MWL11,
+		WL12,
+		WL12_,
+		MWL12,
+		CI13_,
+		CO14,
+		XUY09_,
+		XUY10_,
+		XUY12_,
+		L09_,
+		L10_,
+		L11_,
+		L12_,
+		G09,
+		G09_,
+		GEM09,
+		G10,
+		G10_,
+		GEM10,
+		G11,
+		G11_,
+		GEM11,
+		G12,
+		G12_,
+		GEM12,
+		reset,
+		prop_clk
+	);
 
-        if in_module_params:
-            res = MODULE_ARGS_END_RE.search(l)
-            if res:
-                # Parse params
-                print("Parameters:", module_params)
-                in_module_params = False
-            else:
-                res = INPUT_WIRE_RE.search(l)
-                if res:
-                    l = l.rstrip(";")
-                    iws = [x.strip() for x in l[11:].split(",")]
-                    for iw in iws:
-                        if not iw:
-                            continue
-                        input_wires.append(iw)
-                        module_params.append(iw)
+	a11_four_bit_4 a11(
+		A2XG_,
+		MONEX,
+		BXVX,
+		CLXC,
+		CUG,
+		WYHIG_,
+		WYDG_,
+		CI13_,
+		CO14,
+		RULOG_,
+		RUG_,
+		WAG_,
+		CAG,
+		WALSG_,
+		RAG_,
+		WLG_,
+		G2LSG_,
+		G16SW_,
+		CLG1G,
+		CLG2G,
+		RLG_,
+		WQG_,
+		CQG,
+		RQG_,
+		WZG_,
+		CZG,
+		RZG_,
+		WBG_,
+		CBG,
+		RBHG_,
+		RCG_,
+		WG2G_,
+		WG3G_,
+		WG4G_,
+		WG5G_,
+		L2GDG_,
+		WG1G_,
+		ONE,
+		CGG,
+		RGG_,
+		WL01_,
+		WL02_,
+		WL12_,
+		SA13,
+		SA14,
+		SA16,
+		R1C,
+		CH13,
+		CH14,
+		CH16,
+		G01_,
+		L12_,
+		L16_,
+		US2SG,
+		MDT13,
+		MDT14,
+		MDT15,
+		MDT16,
+		XUY01_,
+		XUY02_,
+		WHOMPA,
+		RL13_,
+		RL14_,
+		RL15_,
+		RL16_,
+		A11_1_RL13_,
+		A11_2_RL13_,
+		A11_3_RL13_,
+		A11_4_RL13_,
+		A11_1_RL14_,
+		A11_2_RL14_,
+		A11_3_RL14_,
+		A11_4_RL14_,
+		A11_1_RL15_,
+		A11_2_RL15_,
+		A11_3_RL15_,
+		A11_4_RL15_,
+		A11_1_RL16_,
+		A11_2_RL16_,
+		A11_3_RL16_,
+		A11_4_RL16_,
+		A11_1_L16_,
+		WL13,
+		WL13_,
+		MWL13,
+		WL14,
+		WL14_,
+		MWL14,
+		WL15,
+		WL15_,
+		MWL15,
+		WL16,
+		WL16_,
+		MWL16,
+		EAC_,
+		CO02,
+		CO16,
+		XUY13_,
+		XUY14_,
+		L13_,
+		L14_,
+		L15_,
+		G13,
+		G13_,
+		GEM13,
+		G14,
+		G14_,
+		GEM14,
+		G15,
+		G15_,
+		GEM15,
+		G16,
+		G16_,
+		GEM16,
+		reset,
+		prop_clk
+	);
 
-                res = OUTPUT_WIRE_RE.search(l)
-                if res:
-                    l = l.rstrip(";")
-                    ows = [x.strip() for x in l[12:].split(",")]
-                    for ow in ows:
-                        if not ow:
-                            continue
-                        output_wires.append(ow)
-                        module_params.append(ow)
-            continue
+	assign L16_ = A11_1_L16_;
+	assign RL09_ = A10_1_RL09_ & A10_2_RL09_ & A10_3_RL09_ & A10_4_RL09_;
+	assign RL10_ = A10_1_RL10_ & A10_2_RL10_ & A10_3_RL10_ & A10_4_RL10_;
+	assign RL11_ = A10_1_RL11_ & A10_2_RL11_ & A10_3_RL11_ & A10_4_RL11_;
+	assign RL12_ = A10_1_RL12_ & A10_2_RL12_ & A10_3_RL12_ & A10_4_RL12_;
+	assign RL13_ = A11_1_RL13_ & A11_2_RL13_ & A11_3_RL13_ & A11_4_RL13_;
+	assign RL14_ = A11_1_RL14_ & A11_2_RL14_ & A11_3_RL14_ & A11_4_RL14_;
+	assign RL15_ = A11_1_RL15_ & A11_2_RL15_ & A11_3_RL15_ & A11_4_RL15_;
+	assign RL16_ = A11_1_RL16_ & A11_2_RL16_ & A11_3_RL16_ & A11_4_RL16_;
 
-        res = MODULE_ARGS_START_RE.search(l)
-        if res:
-            in_module_params = True
-            continue
-
-    print("Inputs:", input_wires)
-    print("Outputs:", output_wires)
-    return module_name, module_params, input_wires, output_wires
-
-
-def inv(b):
-    if b:
-        return 0
-    return 1
-
-
-def write_command_cycle(fp, ext, sq, qc, sq10, st):
-    fp.write(
-        f"""
-        begin // EXT {ext}, SQ {sq}, QC {qc}, SQ10 {sq10},  ST {st}
-            WL10_ = {inv(sq10)};  // SQ10 bit
-            WL11_ = {inv(qc & 1)};  // QC bit 0
-            WL12_ = {inv((qc & 2) >> 1)};  // QC bit 1
-            WL13_ = {inv(sq & 1)};  // SQ bit 0
-            WL14_ = {inv((sq & 2) >> 1)};  // SQ bit 1
-            WL16_ = {inv((sq & 4) >> 2)};  // SQ bit 2
-            //ST1 = {st & 1};    // Stage counter bit 0
-            //ST2 = {(st & 2) >> 1};    // Stage counter bit 1
-            //EXT = {ext};    // EXT bit
-            //force STG1 = {st & 1}; // Stage counter 1
-            //force STG2 = {(st & 2) >> 1}; // Stage counter 2
-        end
-        #700 NISQ = 1;
-        #100 NISQ = 0;
-        #2
-        //begin
-        //    ST1 = 0;
-        //    ST2 = 0;
-        //end
-        #10900"""
-    )
-
-
-def write_commands(fp):
-    return
-    fp.write("""        #7900""")
-    ext = 0
-    sq = 0
-    qc = 0
-    sq10 = 0
-    st = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 2
-    qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    qc = 1
-    st = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    qc = 2
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    qc = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 3
-    qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 4
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 5
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    st = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    st = 0
-    qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    st = 0
-    qc = 2
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    qc = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 6
-    qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 7
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    ext = 1
-    sq = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    st = 1
-    qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    # Branching omitted
-
-    sq = 2
-    qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    qc = 2
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    qc = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 3
-    qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    sq = 4
-    st = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 5
-    st = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    sq = 6
-    st = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-    qc = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    # Branching omitted
-
-    sq = 7
-    qc = 0
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    st = 1
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-    st = 3
-    write_command_cycle(fp, ext, sq, qc, sq10, st)
-
-
-def write_registers_commands(fp):
-    fp.write("""        #1000
+	initial
+	begin
+        #1000
         
         // Register A write test
         begin
@@ -816,111 +1373,7 @@ def write_registers_commands(fp):
         begin
             RULOG_ = 1;
         end
-""")
+		$stop;
+	end
 
-
-def write_wrapper(module_params, input_wires, output_wires, sim_name=None, sim_code=None, wrapper_name=None):
-    if sim_name:
-        wrapper_name = wrapper_name or "agc_tb"
-        filepath = os.path.join(SIM_SOURCE_FOLDER, sim_name, "new", f"{wrapper_name}.v")
-    else:
-        wrapper_name = wrapper_name or "agc"
-        filepath = os.path.join(SOURCE_FOLDER, f"{wrapper_name}.v")
-
-    cross_module_signals = {}
-    extra_output_wires = []
-    for ow in sorted(output_wires):
-        res = CROSS_MODULE_SIGNAL_RE.search(ow)
-        if res:
-            signal = res.groups()[0]
-            if signal not in cross_module_signals:
-                cross_module_signals[signal] = []
-                if signal in input_wires:
-                    input_wires.remove(signal)
-                if (signal not in output_wires) and (signal not in input_wires):
-                    extra_output_wires.append(signal)
-            cross_module_signals[signal].append(ow)
-    output_wires.update(extra_output_wires)
-
-    with open(filepath, "w") as fp:
-        fp.write("`timescale 1ns / 1ps\n")
-        fp.write("\n")
-        fp.write(f"module {wrapper_name}();\n")
-        fp.write("\n")
-
-        for iw in sorted(input_wires):
-            if iw not in output_wires:
-                if iw.endswith("_") or iw in ["prop_clk", "ONE"]:
-                    val = 1
-                else:
-                    val = 0
-                fp.write(f"\treg {iw} = {val};\n")
-        fp.write("\n")
-
-        for ow in sorted(output_wires):
-            fp.write(f"\twire {ow};\n")
-        fp.write("\n")
-
-        if "prop_clk" in input_wires:
-            fp.write("\talways\n")
-            fp.write("\t\t#10 prop_clk = !prop_clk; // 20 ns gate delay\n\n")
-
-        if "a2_timer" in module_params.keys():
-            fp.write("\talways\n")
-            fp.write("\t\t#244.140625 CLOCK = !CLOCK;  // 2.048 MHz clock\n\n")
-
-        for module_name in sorted(module_params.keys()):
-            m = module_name.split("_")[0]
-            fp.write(f"\t{module_name} {m}(\n")
-            for i, param in enumerate(module_params[module_name]):
-                fp.write(f"\t\t{param}")
-                if i != (len(module_params[module_name]) - 1):
-                    fp.write(",")
-                fp.write("\n")
-            fp.write("\t);\n\n")
-
-        for signal in sorted(cross_module_signals.keys()):
-            fp.write(f"\tassign {signal} = ")
-            fp.write(" & ".join(sorted(cross_module_signals[signal])))
-            fp.write(";\n")
-        fp.write("\n")
-
-        if sim_name:
-            fp.write("\tinitial\n")
-            fp.write("\tbegin\n")
-            if sim_code:
-                sim_code(fp)
-            fp.write("\t\t$stop;\n")
-            fp.write("\tend\n\n")
-
-        fp.write("endmodule\n")
-    print()
-    print(f"Written {filepath}")
-
-
-if __name__ == "__main__":
-    module_params = {}
-    input_wires = set()
-    output_wires = set()
-    for module_file_name in sorted(os.listdir(MODULES_SOURCE_FOLDER)):
-        module_name, params, inputs, outputs = read_module(module_file_name)
-        module_params[module_name] = params
-        input_wires.update(inputs)
-        output_wires.update(outputs)
-
-    print("------------------------------------------")
-    write_wrapper(module_params, input_wires, output_wires)
-    write_wrapper(module_params, input_wires, output_wires, sim_name="sim_1", sim_code=write_commands)
-
-    module_params = {}
-    input_wires = set()
-    output_wires = set()
-    for module_file_name in sorted(os.listdir(MODULES_SOURCE_FOLDER)):
-        if module_file_name[:3] not in ["a08", "a09", "a10", "a11"]:
-            continue
-        module_name, params, inputs, outputs = read_module(module_file_name)
-        module_params[module_name] = params
-        input_wires.update(inputs)
-        output_wires.update(outputs)
-
-    write_wrapper(module_params, input_wires, output_wires, sim_name="registers_sim", sim_code=write_registers_commands, wrapper_name="registers_tb")
+endmodule

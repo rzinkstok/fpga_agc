@@ -5,12 +5,12 @@ BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
 MODULES_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new", "modules")
 
-MODULE_RE = re.compile(r"^([a,b]\d\d?)\_")
+MODULE_RE = re.compile(r"^([a,b]\d\d)\_")
 GATE_RE = re.compile(r"NOR(\d\d\d\d\d)\(")
 GATE_NAME_RE = re.compile(r"NOR(\d\d\d\d\d)\(NOR(\d\d\d\d\d)_out")
 GATE_ARG_RE = re.compile(r"nor_(\d)\s+#\(1'b[0,1]\)\s+NOR\d\d\d\d\d\(([a-zA-Z0-9\s\,\_]+)\);")
 
-MODULE_HEADER_RE = re.compile(r"^Module ([a,b,A,B]\d\d?)")
+MODULE_HEADER_RE = re.compile(r"^Module ([a,b,A,B]\d\d)")
 GATE_ADDED_RE = re.compile(r"^(\d\d\d\d\d) added")
 GATE_REMOVED_RE = re.compile(r"^(\d\d\d\d\d) removed")
 GATE_RANGE_RE = re.compile(r"^Gates (\d\d\d\d\d)-(\d\d\d\d\d)")
@@ -161,10 +161,16 @@ if __name__ == "__main__":
     gates_schematics = read_gates_from_schematics()
     gates_source = read_gates_from_source()
     print()
+    print()
+    print("==================")
     print("Comparison results")
-    print("------------------")
+    print("==================")
     for m in sorted(gates_schematics.keys()):
+        print()
+        print(f"{m}")
+        print("---")
         if m not in [f"A{i:02}" for i in range(1, 12)]:
+            print(f"Skipping")
             continue
         gsch = gates_schematics[m]
         try:
@@ -177,3 +183,5 @@ if __name__ == "__main__":
             print(f"Gate {g} missing from source code")
         for g in diff2:
             print(f"Gate {g} missing from schematics")
+        if (not diff1) and (not diff2):
+            print("No discrepancies")

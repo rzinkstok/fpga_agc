@@ -17,7 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 1
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -46,6 +45,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a06_crosspoint_ii.v
   C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a03_sq_register.v
   C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a09_four_bit_2.v
+  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a11_four_bit_4.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
