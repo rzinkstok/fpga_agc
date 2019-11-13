@@ -705,7 +705,7 @@ module a04_stage_branch(
     nor_3 #(1'b0) NOR36409(A04_2_RA_,       n1XP10,         n8XP5,          NOR36446_out,               reset, prop_clk);
     
     // RSC_
-    // Cross-module fan-in, connected to A5 and A6
+    // Cross-module fan-in, connected to A5
     nor_3 #(1'b0) NOR36410(A04_1_RSC_,      NOR36407_out,   NOR36435_out,   NOR36456_out,               reset, prop_clk);
     
     // Monitor uses full signal
@@ -719,7 +719,7 @@ module a04_stage_branch(
     
     // TMZ_
     // Cross-module fan-in, connected to A5
-    nor_2 #(1'b0) NOR36412(A04_1_TMZ_,       n1XP10,         n2XP5,                                      reset, prop_clk);
+    nor_2 #(1'b0) NOR36412(A04_1_TMZ_,       n1XP10,         n2XP5,                                     reset, prop_clk);
     
     // WY_ part 1
     nor_2 #(1'b0) NOR36413(NOR36413_out,    MP0_,           T03_,                                       reset, prop_clk);

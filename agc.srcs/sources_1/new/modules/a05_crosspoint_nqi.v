@@ -143,6 +143,7 @@ module a05_crosspoint_nqi(
     output wire A05_1_TSGN_, 
     output wire A05_2_TSGN_,
     output wire A05_1_WG_,
+    output wire A05_1_RSC_,
     output wire A05_1_RG_, 
     output wire A05_2_RG_, 
     output wire A05_3_RG_, 
@@ -228,6 +229,7 @@ module a05_crosspoint_nqi(
     **************************/
     
     wire n3XP5, n8XP3, n8XP12, n8XP15, n10XP6, n10XP7;
+    wire BRXP3;
     wire PARTC, DV1B1B;
     wire nPINCSET;
     
@@ -325,6 +327,9 @@ module a05_crosspoint_nqi(
     nor_2 #(1'b0) NOR39120(n3XP5,           T03_,           IC2_,                                       reset, prop_clk);
     nor_2 #(1'b0) NOR39121(NOR39121_out,    T01_,           IC15_,                                      reset, prop_clk);
     nor_2 #(1'b0) NOR39122(n3XP6,           T03_,           TC0_,                                       reset, prop_clk);
+   
+    // NOR34253 moved here from A12 sheet 1
+    nor_2 #(1'b0) NOR34253(BRXP3,           IC15_,          T03_,                                       reset, prop_clk);
     
     // RA_ part 1
     // Cross-module fan-in, connected to A4
@@ -367,7 +372,14 @@ module a05_crosspoint_nqi(
     
     // WG_ 
     // Cross-module fan-in, connected to A4, A6 and A12
-    nor_3 #(1'b0) NOR39139(A05_1_WG_,       n9XP5,          NOR39121_out,   NOR39138_out,               reset, prop_clk);
+    nor_4 #(1'b0) NOR39139(A05_1_WG_,       n9XP5,          NOR39121_out,   NOR39138_out,   BRXP3,      reset, prop_clk);
+    // NOR34159 moved here from A12 sheet 1 and merged with NOR39139
+    
+    // RSC_
+    // Cross-module fan-in, connected to A4
+    // NOR34158 moved here from A12 sheet 1
+    nor_1 #(1'b0) NOR34158(A05_1_RSC_,      BRXP3,                                                      reset, prop_clk);
+    
     
     nor_2 #(1'b0) NOR39140(NOR39140_out,    T06_,           DAS0_,                                      reset, prop_clk);
     

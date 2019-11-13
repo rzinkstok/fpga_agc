@@ -588,8 +588,15 @@ Gates 54401-54463
 54463 removed (fan-in expansion)
 
 Module A12
-Gates
+Sheet 1
+Gates 34101-34159
+Gates 34201-34254
+34158 removed (fan-in expansion, moved to A5 sheet 1)
+34159 removed (fan-in expansion, moved to A5 sheet 1)
+34253 removed (moved to A5 sheet 1)
+
 Sheet 2
+Gates
 34305 removed (fan-out expansion A2 sheet 2)
 34308 removed (fan-out expansion A2 sheet 2)
 34313 removed (fan-out expansion A2 sheet 2)
