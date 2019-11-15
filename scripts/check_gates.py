@@ -81,20 +81,20 @@ def read_gates_from_schematics():
                 r2 = int(res.groups()[1]) + 1
                 for i in range(r1, r2):
                     gates[current_module].append(str(i))
-                print(f"Gates {r1}-{r2-1}")
+                #print(f"Gates {r1}-{r2-1}")
                 continue
             res = GATE_ADDED_RE.search(l)
             if res:
                 gate = res.groups()[0]
                 gates[current_module].append(gate)
-                print(f"Added gate {gate}")
+                #print(f"Added gate {gate}")
                 continue
             res = GATE_REMOVED_RE.search(l)
             if res:
                 gate = res.groups()[0]
                 if gate in gates[current_module]:
                     gates[current_module].remove(gate)
-                    print(f"Removed gate {gate}")
+                    #print(f"Removed gate {gate}")
                 else:
                     print(f"Gate {gate} cannot be removed from module {current_module}")
     return gates
@@ -153,6 +153,7 @@ def check_arguments():
     return status
 
 
+
 if __name__ == "__main__":
     import sys
     if (not check_names()) or (not check_arguments()):
@@ -169,7 +170,7 @@ if __name__ == "__main__":
         print()
         print(f"{m}")
         print("---")
-        if m not in [f"A{i:02}" for i in range(1, 12)]:
+        if m not in [f"A{i:02}" for i in range(1, 13)]:
             print(f"Skipping")
             continue
         gsch = gates_schematics[m]

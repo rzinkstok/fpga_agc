@@ -23,7 +23,13 @@ module a12_parity_s_register(
     input wire T12A,
     input wire RAD,
     
-    
+    input wire CGG,
+    input wire MONPAR,
+    input wire SAP,
+    input wire SCAD,
+    input wire GOJAM,
+    input wire TPARG_,
+    input wire n8XP5,
     
     output wire EXTPLS,
     output wire RELPLS,
@@ -32,6 +38,13 @@ module a12_parity_s_register(
     output wire RADRZ,
     output wire RADRG,
 
+    output wire PC15_,
+    output wire MGP_,
+    output wire GEMP,
+    output wire MSP,
+    output wire PALE,
+    output wire MPAL,
+    
     input wire reset,
     input wire prop_clk
 );
@@ -64,6 +77,8 @@ module a12_parity_s_register(
     wire PB09_;
     wire PB15;
     wire PB15_;
+    
+    wire PC15;
     
     
     wire GNZRO_1;
@@ -128,6 +143,18 @@ module a12_parity_s_register(
     wire NOR34230_out;
     wire NOR34234_out;
     wire NOR34235_out;
+    wire NOR34238_out;
+    wire NOR34239_out;
+    wire NOR34241_out;
+    wire NOR34243_out;
+    wire NOR34244_out;
+    wire NOR34245_out;
+    wire NOR34246_out;
+    wire NOR34247_out;
+    wire NOR34248_out;
+    wire NOR34250_out;
+    wire NOR34251_out;
+    wire NOR34252_out;
     
     
     // PA03
@@ -263,5 +290,39 @@ module a12_parity_s_register(
     nor_2 #(1'b0) NOR34236(PB15,            NOR34234_out,   NOR34235_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR34237(PB15_,           PB15,                                                           reset, prop_clk);
     
+    // PC15
+    nor_2 #(1'b0) NOR34238(NOR34238_out,    PB09_,          PB15,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR34239(NOR34239_out,    PB09,           PB15_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR34240(PC15,            NOR34238_out,   NOR34239_out,                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR34241(NOR34241_out,    PC15,                                                           reset, prop_clk);
+    // Single monitor fan-in output, no cross-module fan-in
+    assign MGP_ = NOR34241_out;
+    nor_1 #(1'b0) NOR34242(PC15_,           PC15,                                                           reset, prop_clk);
+    
+    // GEMP
+    nor_1 #(1'b0) NOR34243(NOR34243_out,    PC15_,                                                          reset, prop_clk);
+    assign GEMP = NOR34243_out;
+    
+    // Memory parity flip-flop
+    nor_2 #(1'b0) NOR34246(NOR34246_out,    CGG,            NOR34245_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR34245(NOR34245_out,    NOR34246_out,   MONPAR,         SAP,                            reset, prop_clk);
+    
+    // MSP
+    nor_1 #(1'b0) NOR34244(NOR34244_out,    NOR34245_out,                                                   reset, prop_clk);
+    assign MSP = NOR34244_out;
+    
+    // PALE
+    nor_2 #(1'b0) NOR34247(NOR34247_out,    PC15_,          NOR34245_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34248(NOR34248_out,    NOR34246_out,   PC15,                                           reset, prop_clk);
+    nor_3 #(1'b0) NOR34250(NOR34250_out,    SCAD,           NOR34248_out,   GOJAM,                          reset, prop_clk);
+    nor_3 #(1'b0) NOR34251(NOR34251_out,    TPARG_,         n8XP5,          NOR34247_out,                   reset, prop_clk);
+    assign PALE = NOR34250_out & NOR34251_out;
+    
+    // MPAL
+    nor_1 #(1'b0) NOR34252(NOR34252_out,    PALE,                                                           reset, prop_clk);
+    // Single monitor fan-in output, no cross-module fan-in
+    assign MPAL = NOR34252_out;
+    
     // NOR34253 moved to A4 sheet 2
+    // NOR34254 moved to A13 sheet 1
 endmodule
