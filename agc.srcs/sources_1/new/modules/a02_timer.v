@@ -102,7 +102,8 @@ module a02_timer(
     output wire T11, 
     output wire T11_,
     output wire T12, 
-    output wire T12_, 
+    output wire T12_,
+    output wire T12A,
     output wire T12DC_,
     output wire MT01, 
     output wire MT02, 
@@ -639,6 +640,8 @@ module a02_timer(
      nor_1 #(1'b0) NOR37454(NOR37454_out,   T12_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT12 = NOR37454_out;
+     // Moved here from A12 sheet 2
+     nor_1 #(1'b0) NOR34329(T12A,           T12_,                                           reset, prop_clk);
      
      // OVF/UNF detection (gates NOR37353 and NOR37354 from above) 
      

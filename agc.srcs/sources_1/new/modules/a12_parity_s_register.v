@@ -45,6 +45,71 @@ module a12_parity_s_register(
     output wire PALE,
     output wire MPAL,
     
+    input wire WL01_,
+    input wire WL02_,
+    input wire WL03_,
+    input wire WL04_,
+    input wire WL05_,
+    input wire WL06_,
+    input wire WL07_,
+    input wire WL08_,
+    input wire WL09_,
+    input wire WL10_,
+    input wire WL11_,
+    input wire WL12_,
+    input wire WL13_,
+    input wire WL14_,
+    
+    input wire WEDOPG_,
+    input wire WSG_,
+    input wire CSG,
+    
+    output wire G01ED,
+    output wire G02ED,
+    output wire G03ED,
+    output wire G04ED,
+    output wire G05ED,
+    output wire G06ED,
+    output wire G07ED,
+    
+    output wire S01,
+    output wire S01_,
+    output wire S02,
+    output wire S02_,
+    output wire S03,
+    output wire S03_,
+    output wire S04,
+    output wire S04_,
+    output wire S05,
+    output wire S05_,
+    output wire S06,
+    output wire S06_,
+    output wire S07,
+    output wire S07_,
+    output wire S08,
+    output wire S08_,
+    output wire S09,
+    output wire S09_,
+    output wire S10,
+    output wire S10_,
+    output wire S11,
+    output wire S11_,
+    output wire S12,
+    output wire S12_,
+    
+    input wire OCTAD2,
+    input wire T02_,
+    input wire XB0_,
+    input wire XB1_,
+    input wire XB2_,
+    input wire XB3_, 
+    
+    output wire CYR_,
+    output wire SR_,
+    output wire CYL_,
+    output wire EDOP_,
+    output wire GINH,
+    
     input wire reset,
     input wire prop_clk
 );
@@ -305,7 +370,7 @@ module a12_parity_s_register(
     
     // Memory parity flip-flop
     nor_2 #(1'b0) NOR34246(NOR34246_out,    CGG,            NOR34245_out,                                   reset, prop_clk);
-    nor_3 #(1'b0) NOR34245(NOR34245_out,    NOR34246_out,   MONPAR,         SAP,                            reset, prop_clk);
+    nor_3 #(1'b1) NOR34245(NOR34245_out,    NOR34246_out,   MONPAR,         SAP,                            reset, prop_clk);
     
     // MSP
     nor_1 #(1'b0) NOR34244(NOR34244_out,    NOR34245_out,                                                   reset, prop_clk);
@@ -325,4 +390,126 @@ module a12_parity_s_register(
     
     // NOR34253 moved to A4 sheet 2
     // NOR34254 moved to A13 sheet 1
+    
+    
+    /**************************
+    *
+    *  Module A12 sheet 2
+    *  Sheet number 2005253/2
+    *
+    **************************/
+
+    wire NOR34302_out;
+    wire NOR34303_out;
+    wire NOR34304_out;
+    wire NOR34310_out;
+    wire NOR34311_out;
+    wire NOR34312_out;
+    wire NOR34318_out;
+    wire NOR34319_out;
+    wire NOR34320_out;
+    wire NOR34326_out;
+    wire NOR34327_out;
+    wire NOR34328_out;
+    wire NOR34334_out;
+    wire NOR34335_out;
+    wire NOR34336_out;
+    wire NOR34343_out;
+    wire NOR34344_out;
+    wire NOR34345_out;
+    wire NOR34346_out;
+    wire NOR34347_out;
+    wire NOR34349_out;
+    wire NOR34351_out;
+    wire NOR34353_out;
+    wire NOR34355_out;
+    wire NOR34356_out;
+    
+    
+    // S register part 2
+    
+    // S08
+    nor_2 #(1'b0) NOR34301(G01ED,           WEDOPG_,        WL08_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR34302(NOR34302_out,    WL08_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34303(NOR34303_out,    NOR34302_out,   NOR34304_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34304(NOR34304_out,    NOR34303_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34306(S08,             NOR34303_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR34307(S08_,            NOR34304_out,                                                   reset, prop_clk);
+    
+    // S09
+    nor_2 #(1'b0) NOR34309(G02ED,           WEDOPG_,        WL09_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR34310(NOR34310_out,    WL08_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34311(NOR34311_out,    NOR34310_out,   NOR34312_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34312(NOR34312_out,    NOR34311_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34314(S09,             NOR34311_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR34315(S09_,            NOR34312_out,                                                   reset, prop_clk);
+    // NOR34316 omitted (fan-out expansion)
+    
+    // S10
+    nor_2 #(1'b0) NOR34317(G03ED,           WEDOPG_,        WL10_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR34318(NOR34318_out,    WL10_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34319(NOR34319_out,    NOR34318_out,   NOR34320_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34320(NOR34320_out,    NOR34319_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34322(S10,             NOR34319_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR34323(S10_,            NOR34320_out,                                                   reset, prop_clk);
+    
+    // S11
+    nor_2 #(1'b0) NOR34325(G04ED,           WEDOPG_,        WL11_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR34326(NOR34326_out,    WL11_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34327(NOR34327_out,    NOR34326_out,   NOR34328_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34328(NOR34328_out,    NOR34327_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34330(S11,             NOR34327_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR34331(S11_,            NOR34328_out,                                                   reset, prop_clk);
+    
+    // S12
+    nor_2 #(1'b0) NOR34333(G05ED,           WEDOPG_,        WL12_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR34334(NOR34334_out,    WL12_,          WSG_,                                           reset, prop_clk);
+    nor_3 #(1'b1) NOR34335(n8XP5,           NOR34335_out,    NOR34334_out,   NOR34336_out,                  reset, prop_clk);
+    nor_2 #(1'b0) NOR34336(NOR34336_out,    NOR34335_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34338(S12,             NOR34335_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR34339(S12_,            NOR34336_out,                                                   reset, prop_clk);
+    
+    // NOR34340 moved to A21 sheet 1
+    
+    // G06ED
+    nor_2 #(1'b0) NOR34341(G06ED,           WEDOPG_,        WL13_,                                          reset, prop_clk);
+    
+    // G07ED
+    nor_2 #(1'b0) NOR34342(G07ED,           WEDOPG_,        WL14_,                                          reset, prop_clk);
+    
+    
+    // Editing control
+    nor_1 #(1'b0) NOR34343(NOR34343_out,    OCTAD2,                                                         reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR34344(NOR34344_out,    XB0_,           T02_,           NOR34343_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR34345(NOR34345_out,    XB1_,           T02_,           NOR34343_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR34346(NOR34346_out,    XB2_,           T02_,           NOR34343_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR34347(NOR34347_out,    XB3_,           T02_,           NOR34343_out,                   reset, prop_clk);
+    
+    // CYR_
+    nor_2 #(1'b0) NOR34348(CYR_,            NOR34344_out,   NOR34349_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34349(NOR34349_out,    CYR_,           T12A,                                           reset, prop_clk);
+    
+    // SR_
+    nor_2 #(1'b0) NOR34350(SR_ ,            NOR34345_out,   NOR34351_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34351(NOR34351_out,    SR_,            T12A,                                           reset, prop_clk);
+    
+    // CYL_
+    nor_2 #(1'b0) NOR34352(CYL_,            NOR34346_out,   NOR34353_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34353(NOR34353_out,    CYL_,           T12A,                                           reset, prop_clk);
+    
+    // EDOP_
+    nor_2 #(1'b0) NOR34354(EDOP_,           NOR34347_out,   NOR34355_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34355(NOR34355_out,    EDOP_,          T12A,                                           reset, prop_clk);
+    
+    // GINH
+    nor_4 #(1'b0) NOR34356(NOR34356_out,    NOR34349_out,   NOR34351_out,   NOR34353_out,   NOR34355_out,   reset, prop_clk);
+    // NOR34357 merged with NOR34356
+    nor_1 #(1'b0) NOR34358(GINH,            NOR34356_out,                                                   reset, prop_clk);
+    
+    // NOR34359 omitted (not used)
+    // NOR34360 omitted (not used)
+    // NOR34361 omitted (not connected)
+    // NOR34362 moved to A21 sheet 1
+    
 endmodule
