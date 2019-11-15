@@ -329,6 +329,10 @@ Gates 40201-40258
 40250 removed (moved to A2 sheet 2)
 40251 removed (moved to A2 sheet 2)
 40252 removed (fan-out expansion)
+34462 added (moved here from A12 sheet 2)
+34463 added (moved here from A12 sheet 2)
+34464 added (moved here from A12 sheet 2)
+34465 added (moved here from A12 sheet 2)
 
 Sheet 2
 Gates 40301-40358
@@ -403,6 +407,8 @@ Gates 33201-33259
 33256 removed (fan-out expansion)
 33258 removed (fan-out expansion)
 33259 removed (fan-out expansion)
+34446 added (moved here from A12 sheet 2)
+34467 added (moved here from A12 sheet 2)
 
 Sheet 2
 Gates 33301-33361
@@ -618,6 +624,7 @@ Gates 34201-34254
 
 Sheet 2
 Gates 34301-34362
+Gates 34401-34467
 34305 removed (fan-out expansion A2 sheet 2)
 34308 removed (fan-out expansion A2 sheet 2)
 34313 removed (fan-out expansion A2 sheet 2)
@@ -628,16 +635,33 @@ Gates 34301-34362
 34332 removed (fan-out expansion)
 34337 removed (fan-out expansion)
 34340 removed (moved to A21 sheet 1)
-34450 removed (fan-in expansion A8 sheet 2)
-34451 removed (fan-in expansion A8 sheet 2)
-34452 removed (fan-in expansion A9 sheet 1)
-34453 removed (fan-in expansion A9 sheet 1)
 34357 removed (fan-out expansion)
 34359 removed (not used)
 34360 removed (not used)
 34361 removed (not connected)
 34362 removed (moved to A21 sheet 1)
 
+
+
+34446 removed (moved to A7 sheet 1)
+34448 removed (fan-out expansion)
+34450 removed (fan-in expansion A8 sheet 2)
+34451 removed (fan-in expansion A8 sheet 2)
+34452 removed (fan-in expansion A9 sheet 1)
+34453 removed (fan-in expansion A9 sheet 1)
+34454 removed (not used)
+34455 removed (not used)
+34456 removed (not used)
+34457 removed (not used)
+34458 removed (not used)
+34459 removed (not used)
+34460 removed (not used)
+34461 removed (not connected)
+34462 removed (moved to A6 sheet 1)
+34463 removed (moved to A6 sheet 1)
+34464 removed (moved to A6 sheet 1)
+34465 removed (moved to A6 sheet 1)
+34467 removed (moved to A7 sheet 1)
 
 
 Module A13

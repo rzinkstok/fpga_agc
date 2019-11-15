@@ -34,7 +34,8 @@ def read_gates_from_source():
     gates = {}
     total_gates = 0
 
-    for filename in os.listdir(MODULES_SOURCE_FOLDER):
+
+    for filename in sorted(os.listdir(MODULES_SOURCE_FOLDER)):
         filepath = os.path.join(MODULES_SOURCE_FOLDER, filename)
         res = MODULE_RE.search(filename)
         if not res:
@@ -170,7 +171,8 @@ if __name__ == "__main__":
         print()
         print(f"{m}")
         print("---")
-        if m not in [f"A{i:02}" for i in range(1, 13)]:
+        #if m not in [f"A{i:02}" for i in range(1, 13)]:
+        if m not in [f"A{i:02}" for i in range(1, 25)]:
             print(f"Skipping")
             continue
         gsch = gates_schematics[m]
@@ -178,6 +180,7 @@ if __name__ == "__main__":
             gsrc = gates_source[m]
         except KeyError:
             print(f"Module {m} missing from source code")
+            continue
 
         diff1, diff2 = diff_module(gsch, gsrc)
         for g in diff1:

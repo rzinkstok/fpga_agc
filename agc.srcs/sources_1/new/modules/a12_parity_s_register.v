@@ -512,4 +512,19 @@ module a12_parity_s_register(
     // NOR34361 omitted (not connected)
     // NOR34362 moved to A21 sheet 1
     
+    
+    
+    // Add G16SW from A13? fits with G01A generation of NOR34466
+    
+    
+    // NOR34446 moved to A7 sheet 1
+    // NOR34448 removed (fan-out expansion)
+    // NOR34461 removed (not connected)
+    // NOR34462 moved to A6 sheet 1
+    // NOR34463 moved to A6 sheet 1
+    // NOR34464 moved to A6 sheet 1
+    // NOR34465 moved to A6 sheet 1
+    // NOR34467 moved to A7 sheet 1
+    
+    
 endmodule

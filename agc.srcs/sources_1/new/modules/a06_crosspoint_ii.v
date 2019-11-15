@@ -87,9 +87,9 @@ module a06_crosspoint_ii(
     input wire IC9, 
     input wire IC11, 
     input wire IC17,
-    input wire L01_, 
-    input wire L02A_, 
-    input wire L15A_,
+    input wire L01_,
+    input wire L02_,
+    inout wire L15_,
     input wire R6, 
     input wire R15,
     input wire STBE, 
@@ -259,6 +259,11 @@ module a06_crosspoint_ii(
     wire NOR40257_out;
     wire NOR40258_out;
     
+    wire NOR34462_out;
+    wire NOR34464_out;
+    wire L02A_;
+    wire L15A_;
+    
     
     // DVXP1
     nor_3 #(1'b0) NOR40101(NOR40101_out,    T04,            T07,            T10,                        reset, prop_clk);
@@ -299,6 +304,15 @@ module a06_crosspoint_ii(
     // WY_
     // Cross-module fan-in, connected to A4 and A5
     nor_1 #(1'b1) NOR40119(A06_1_WY_,       NOR40115_out,                                               reset, prop_clk);
+    
+    // Moved here from A12 sheet 2
+    nor_1 #(1'b0) NOR34462(NOR34462_out,    L02_,                                                       reset, prop_clk);
+    nor_1 #(1'b0) NOR34463(L02A_,           NOR34462_out,                                               reset, prop_clk);
+    
+    // Moved here from A12 sheet 2
+    nor_1 #(1'b0) NOR34464(NOR34464_out,    L15_,                                                       reset, prop_clk);
+    nor_1 #(1'b0) NOR34465(L15A_,           NOR34464_out,                                               reset, prop_clk);
+    
     
     nor_1 #(1'b0) NOR40120(NOR40120_out,    L01_,                                                       reset, prop_clk);
     nor_1 #(1'b0) NOR40121(NOR40121_out,    L02A_,                                                      reset, prop_clk);

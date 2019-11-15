@@ -324,7 +324,6 @@ module a08_four_bit_1(
     wire NOR35460_out;
     wire NOR53462_out;
     
-    
     wire A01_, A02_, A03_, A04_;
     wire RL01_, RL02_, RL03_, RL04_;
     wire XUY03_, XUY04_;

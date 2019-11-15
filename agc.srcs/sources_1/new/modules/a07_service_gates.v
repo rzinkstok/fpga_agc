@@ -8,7 +8,7 @@ module a07_service_gates(
     input wire WY_, 
     input wire WYD_, 
     input wire WB_, 
-    input wire WGA_, 
+    //input wire WGA_, 
     input wire WZ_, 
     input wire WSCG_, 
     input wire WL_, 
@@ -250,7 +250,9 @@ module a07_service_gates(
     wire NOR33352_out;
     wire NOR33355_out;
     wire NOR33359_out;
+    wire NOR34467_out;
     
+    wire WGA_;
     wire G2LSG, P04A, RBBK, CINORM, CIFF, RGG1, RLG1, RLG2, RLG3;
     
     // WALSG, WALSG_
@@ -304,6 +306,10 @@ module a07_service_gates(
     // CBG
     nor_2 #(1'b0) NOR33136(CBG,             WBG_,           CT_,                                    reset, prop_clk);
     // NOR33137 and NOR33138 omitted
+    
+    // WGA_
+    nor_1 #(1'b0) NOR34467(NOR34467_out,    WG_,                                                    reset, prop_clk);
+    nor_1 #(1'b0) NOR34446(WGA_,            NOR34467_out,                                           reset, prop_clk);
     
     // MWG
     nor_1 #(1'b0) NOR33139(NOR33139_out,    WGA_,                                                   reset, prop_clk);
