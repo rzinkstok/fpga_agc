@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module a12_parity_s_register (
+module a12_parity_s_register(
     input wire G01,
     input wire G02,
     input wire G03,
@@ -18,16 +18,19 @@ module a12_parity_s_register (
     input wire G15,
     input wire G16,
     
-    output wire PA03,
-    output wire PA03_,
-    output wire PA06,
-    output wire PA06_,
-    output wire PA09,
-    output wire PA09_,
-    output wire PA12,
-    output wire PA12_,
-    output wire PA15,
-    output wire PA15_,
+    input wire TSUDO_,
+    input wire T7PHS4_,
+    input wire T12A,
+    input wire RAD,
+    
+    
+    
+    output wire EXTPLS,
+    output wire RELPLS,
+    output wire INHPLS,
+    output wire GEQZRO_,
+    output wire RADRZ,
+    output wire RADRG,
 
     input wire reset,
     input wire prop_clk
@@ -45,10 +48,29 @@ module a12_parity_s_register (
     wire G03_;
     wire GSIX;
     wire G16A_;
+    
+    wire PA03;
+    wire PA03_;
+    wire PA06;
+    wire PA06_;
+    wire PA09;
+    wire PA09_;
+    wire PA12;
+    wire PA12_;
+    wire PA15;
+    wire PA15_;
+    
+    wire PB09;
+    wire PB09_;
+    wire PB15;
+    wire PB15_;
+    
+    
     wire GNZRO_1;
     wire GNZRO_2;
     wire GNZRO_3;
     wire GNZRO;
+    
     
 
     wire NOR34104_out;
@@ -86,6 +108,27 @@ module a12_parity_s_register (
     wire NOR34149_out;
     wire NOR34150_out;
     wire NOR34154_out;
+    
+    wire NOR34201_out;
+    wire NOR34202_out;
+    wire NOR34203_out;
+    wire NOR34204_out;
+    wire NOR34205_out;
+    wire NOR34206_out;
+    wire NOR34207_out;
+    wire NOR34208_out;
+    wire NOR34210_out;
+    wire NOR34211_out;
+    wire NOR34214_out;
+    wire NOR34215_out;
+    wire NOR34216_out;
+    wire NOR34227_out;
+    wire NOR34228_out;
+    wire NOR34229_out;
+    wire NOR34230_out;
+    wire NOR34234_out;
+    wire NOR34235_out;
+    
     
     // PA03
     nor_1 #(1'b0) NOR34101(G01A_,           G01,                                                            reset, prop_clk);
@@ -170,5 +213,55 @@ module a12_parity_s_register (
     // NOR34158 and NOR34159 moved to A5 sheet 1
     
     
+    nor_2 #(1'b0) NOR34201(NOR34201_out,    TSUDO_,         T7PHS4_,                                        reset, prop_clk);
+    nor_1 #(1'b0) NOR34202(NOR34202_out,    NOR34201_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR34203(NOR34203_out,    GSIX,                                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR34204(NOR34204_out,    GNZRO,                                                          reset, prop_clk);
     
+    // EXTPLS
+    nor_3 #(1'b0) NOR34205(EXTPLS,          NOR34203_out,   NOR34204_out,   NOR34202_out,                   reset, prop_clk);
+    
+    // RELPLS
+    nor_3 #(1'b0) NOR34206(NOR34206_out,    NOR34204_out,   NOR34202_out,   G01A_,                          reset, prop_clk);
+    nor_2 #(1'b0) NOR34207(NOR34207_out,    G02_,           G03,                                            reset, prop_clk);
+    assign RELPLS = NOR34206_out & NOR34207_out;
+    
+    // INHPLS
+    nor_3 #(1'b0) NOR34214(NOR34214_out,    NOR34204_out,   G01,            NOR34202_out,                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34215(NOR34215_out,    G02,            G03_,                                           reset, prop_clk);
+    assign INHPLS = NOR34214_out & NOR34215_out;
+    
+    // GEQZRO_
+    nor_4 #(1'b0) NOR34216(NOR34216_out,    NOR34204_out,   G02,            G01,            G03,            reset, prop_clk);
+    // NOR34217 merged into NOR34216
+    nor_1 #(1'b0) NOR34218(GEQZRO_,         NOR34216_out,                                                   reset, prop_clk);
+    
+    // NOR34219 - NOR34226 moved to A14 sheet 2
+    
+    
+    // Special instruction flip-flop
+    nor_4 #(1'b1) NOR34208(NOR34208_out,    EXTPLS,         RELPLS,         INHPLS,         NOR34210_out,   reset, prop_clk);
+    // NOR34209 merged with NOR34208
+    nor_2 #(1'b0) NOR34210(NOR34210_out,    NOR34208_out,   T12A,                                           reset, prop_clk);
+    
+    // RADRZ, RADRG
+    nor_1 #(1'b0) NOR34211(NOR34211_out,    RAD,                                                            reset, prop_clk);
+    nor_2 #(1'b0) NOR34212(RADRZ,           NOR34208_out,   NOR34211_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34213(RADRG,           NOR34211_out,   NOR34210_out,                                   reset, prop_clk);
+    
+    // Parity logic: PB09, PB15
+    nor_3 #(1'b0) NOR34227(NOR34227_out,    PA03,           PA06,           PA09,                           reset, prop_clk);
+    nor_3 #(1'b0) NOR34228(NOR34228_out,    PA03,           PA06_,          PA09_,                          reset, prop_clk);
+    nor_3 #(1'b0) NOR34229(NOR34229_out,    PA03_,          PA06,           PA09_,                          reset, prop_clk);
+    nor_3 #(1'b0) NOR34230(NOR34230_out,    PA03_,          PA06_,          PA09_,                          reset, prop_clk);
+    nor_4 #(1'b0) NOR34231(PB09,            NOR34227_out,   NOR34228_out,   NOR34229_out,   NOR34230_out,   reset, prop_clk);
+    // NOR34232 merged into NOR34231
+    nor_1 #(1'b0) NOR34233(PB09_,           PB09,                                                           reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR34234(NOR34234_out,    PA12,           PA15,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR34235(NOR34235_out,    PA12_,          PA15_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR34236(PB15,            NOR34234_out,   NOR34235_out,                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR34237(PB15_,           PB15,                                                           reset, prop_clk);
+    
+    // NOR34253 moved to A4 sheet 2
 endmodule

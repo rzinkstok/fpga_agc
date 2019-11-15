@@ -22,30 +22,31 @@ create_project -in_memory -part xc7z020clg484-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/rzinkstok/fpga_agc/agc.cache/wt [current_project]
-set_property parent.project_path C:/Users/rzinkstok/fpga_agc/agc.xpr [current_project]
+set_property webtalk.parent_dir /home/rzinkstok/fpga_agc/agc.cache/wt [current_project]
+set_property parent.project_path /home/rzinkstok/fpga_agc/agc.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part numato.com:styx:part0:1.0 [current_project]
-set_property ip_output_repo c:/Users/rzinkstok/fpga_agc/agc.cache/ip [current_project]
+set_property ip_output_repo /home/rzinkstok/fpga_agc/agc.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_1.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_2.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_3.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_4.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a10_four_bit_3.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a07_service_gates.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a08_four_bit_1.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a05_crosspoint_nqi.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a01_scaler.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a02_timer.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a04_stage_branch.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a06_crosspoint_ii.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a03_sq_register.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a09_four_bit_2.v
-  C:/Users/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a11_four_bit_4.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_1.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_2.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_3.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_4.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a10_four_bit_3.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a07_service_gates.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a08_four_bit_1.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a05_crosspoint_nqi.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a01_scaler.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a02_timer.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a04_stage_branch.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a06_crosspoint_ii.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a03_sq_register.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a09_four_bit_2.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a11_four_bit_4.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a12_parity_s_register.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

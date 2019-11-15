@@ -75,6 +75,7 @@ module a04_stage_branch(
     input wire IC12, 
     input wire IC13, 
     input wire IC15,
+    input wire IC15_,
     input wire n7XP14,
     input wire RSM3, 
     input wire RSM3_,
@@ -195,6 +196,7 @@ module a04_stage_branch(
 );
     
     wire TSGN2;
+    
     
     /**************************
     *
@@ -518,6 +520,7 @@ module a04_stage_branch(
     **************************/
     
     wire n2PP1;
+    wire BRXP3;
     
     wire NOR36303_out;
     wire NOR36304_out;
@@ -526,60 +529,41 @@ module a04_stage_branch(
     wire NOR36329_out;
     wire NOR36333_out;
     wire NOR36334_out;
-    //wire NOR36335_out;
     wire NOR36337_out;
     wire NOR36338_out;
-    //wire NOR36339_out;
     wire NOR36340_out;
     wire NOR36342_out;
     wire NOR36343_out;
     wire NOR36344_out;
-    //wire NOR36345_out;
     wire NOR36346_out;
-    //wire NOR36347_out;
     wire NOR36348_out;
     wire NOR36349_out;
     wire NOR36351_out;
     wire NOR36353_out;
     wire NOR36354_out;
-    //wire NOR36355_out;
     wire NOR36360_out;
     wire NOR36401_out;
     wire NOR36405_out;
     wire NOR40428_out;
     wire NOR36406_out;
     wire NOR36407_out;
-    //wire NOR36409_out;
-    //wire NOR36410_out;
     wire NOR36411_out;
-    //wire NOR36412_out;
     wire NOR36413_out;
     wire NOR36414_out;
-    //wire NOR36415_out;
     wire NOR36424_out;
     wire NOR36425_out;
-    //wire NOR36426_out;
     wire NOR36427_out;
-    //wire NOR36428_out;
-    //wire NOR36430_out;
     wire NOR36431_out;
     wire NOR36435_out;
     wire NOR36436_out;
     wire NOR36437_out;
     wire NOR36438_out;
     wire NOR36439_out;
-    //wire NOR36440_out;
-    //wire NOR36441_out;
-    //wire NOR36442_out;
     wire NOR36444_out;
     wire NOR36446_out;
     wire NOR36451_out;
-    //wire NOR36452_out;
-    //wire NOR36453_out;
-    //wire NOR36454_out;
     wire NOR36456_out;
     wire NOR36459_out;
-    //wire NOR36460_out;
     
     // NOR36301 moved to sheet 1
     // NOR36302 removed (fan-out expansion)
@@ -650,6 +634,10 @@ module a04_stage_branch(
     // 5XP28
     nor_2 #(1'b0) NOR36341(n5XP28,          DV4_,           T05_,                                       reset, prop_clk);
     
+    // BRXP3
+    nor_2 #(1'b0) NOR34253(BRXP3,           IC15_,          T03_,                                       reset, prop_clk);
+    // NOR34253 moved here from A12 sheet 1
+    
     // WG_
     nor_2 #(1'b0) NOR36351(NOR36351_out,    T02_,           WRITE0_,                                    reset, prop_clk);
     nor_2 #(1'b0) NOR36340(NOR36340_out,    T09_,           RUPT0_,                                     reset, prop_clk);
@@ -657,7 +645,9 @@ module a04_stage_branch(
     nor_2 #(1'b0) NOR36343(NOR36343_out,    T09_,           NOR36342_out,                               reset, prop_clk);
     // Cross-module fan-in, connected to A5, A6 and A12
     nor_3 #(1'b0) NOR36345(A04_1_WG_,       n9XP1,          NOR36340_out,   NOR36354_out,               reset, prop_clk);
-    nor_2 #(1'b0) NOR36347(A04_2_WG_,       NOR36343_out,   NOR36351_out,                               reset, prop_clk);
+    nor_3 #(1'b0) NOR36347(A04_2_WG_,       NOR36343_out,   NOR36351_out,   BRXP3,                      reset, prop_clk);
+    // NOR34159 moved here from A12 sheet 1 and merged with NOR36347
+    
     
     // 5XP11
     nor_3 #(1'b0) NOR36344(NOR36344_out,    T05_,           INOUT_,         READ0,                      reset, prop_clk);
@@ -705,8 +695,8 @@ module a04_stage_branch(
     nor_3 #(1'b0) NOR36409(A04_2_RA_,       n1XP10,         n8XP5,          NOR36446_out,               reset, prop_clk);
     
     // RSC_
-    // Cross-module fan-in, connected to A5
-    nor_3 #(1'b0) NOR36410(A04_1_RSC_,      NOR36407_out,   NOR36435_out,   NOR36456_out,               reset, prop_clk);
+    nor_4 #(1'b0) NOR36410(A04_1_RSC_,      NOR36407_out,   NOR36435_out,   NOR36456_out,   BRXP3,      reset, prop_clk);
+    // NOR34158 moved here from A12 sheet 1 and merged into NOR36410
     
     // Monitor uses full signal
     nor_1 #(1'b0) NOR36459(NOR36459_out,    RSC_,                                                       reset, prop_clk);

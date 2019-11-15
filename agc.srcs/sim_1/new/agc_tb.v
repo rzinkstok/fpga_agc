@@ -769,6 +769,16 @@ module agc_tb();
 	wire P04_;
 	wire P05;
 	wire P05_;
+	wire PA03;
+	wire PA03_;
+	wire PA06;
+	wire PA06_;
+	wire PA09;
+	wire PA09_;
+	wire PA12;
+	wire PA12_;
+	wire PA15;
+	wire PA15_;
 	wire PHS2;
 	wire PHS2_;
 	wire PHS3_;
@@ -1615,6 +1625,7 @@ module agc_tb();
 		IC12,
 		IC13,
 		IC15,
+		IC15_,
 		n7XP14,
 		RSM3,
 		RSM3_,
@@ -2761,6 +2772,37 @@ module agc_tb();
 		G16,
 		G16_,
 		GEM16,
+		reset,
+		prop_clk
+	);
+
+	a12_parity_s_register a12(
+		G01,
+		G02,
+		G03,
+		G04,
+		G05,
+		G06,
+		G07,
+		G08,
+		G09,
+		G10,
+		G11,
+		G12,
+		G13,
+		G14,
+		G15,
+		G16,
+		PA03,
+		PA03_,
+		PA06,
+		PA06_,
+		PA09,
+		PA09_,
+		PA12,
+		PA12_,
+		PA15,
+		PA15_,
 		reset,
 		prop_clk
 	);
