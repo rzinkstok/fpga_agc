@@ -2,6 +2,7 @@
 
 module a12_parity_s_register(
     input wire G01,
+    input wire G01A,
     input wire G02,
     input wire G03,
     input wire G04,
@@ -109,6 +110,10 @@ module a12_parity_s_register(
     output wire CYL_,
     output wire EDOP_,
     output wire GINH,
+    
+    input wire SUMA16_,
+    input wire SUMB16_,
+    output wire G16SW_,
     
     input wire reset,
     input wire prop_clk
@@ -425,6 +430,29 @@ module a12_parity_s_register(
     wire NOR34355_out;
     wire NOR34356_out;
     
+    wire NOR34401_out;
+    wire NOR34402_out;
+    wire NOR34403_out;
+    wire NOR34408_out;
+    wire NOR34409_out;
+    wire NOR34410_out;
+    wire NOR34415_out;
+    wire NOR34416_out;
+    wire NOR34417_out;
+    wire NOR34422_out;
+    wire NOR34423_out;
+    wire NOR34424_out;
+    wire NOR34429_out;
+    wire NOR34430_out;
+    wire NOR34431_out;
+    wire NOR34436_out;
+    wire NOR34437_out;
+    wire NOR34438_out;
+    wire NOR34443_out;
+    wire NOR34444_out;
+    wire NOR34445_out;
+    wire NOR41129_out;
+    wire NOR41130_out;
     
     // S register part 2
     
@@ -513,9 +541,75 @@ module a12_parity_s_register(
     // NOR34362 moved to A21 sheet 1
     
     
+    // S register part 1
     
+    // S01
+    nor_2 #(1'b0) NOR34401(NOR34401_out,    WL01_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34402(NOR34402_out,    NOR34401_out,   NOR34403_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34403(NOR34403_out,    NOR34402_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34404(S01,             NOR34402_out,                                                   reset, prop_clk);
+    // NOR34405 merged with NOR34404
+    nor_1 #(1'b0) NOR34406(S01_,            NOR34403_out,                                                   reset, prop_clk);
+    // NOR34407 merged with NOR34406
     
-    // Add G16SW from A13? fits with G01A generation of NOR34466
+    // S02
+    nor_2 #(1'b0) NOR34408(NOR34408_out,    WL02_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34409(NOR34409_out,    NOR34408_out,   NOR34410_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34410(NOR34410_out,    NOR34409_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34411(S02,             NOR34409_out,                                                   reset, prop_clk);
+    // NOR34412 merged with NOR34411
+    nor_1 #(1'b0) NOR34413(S02_,            NOR34410_out,                                                   reset, prop_clk);
+    // NOR34414 merged with NOR34413
+    
+    // S03
+    nor_2 #(1'b0) NOR34415(NOR34415_out,    WL03_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34416(NOR34416_out,    NOR34415_out,   NOR34417_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34417(NOR34417_out,    NOR34416_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34418(S03,             NOR34416_out,                                                   reset, prop_clk);
+    // NOR34419 merged with NOR34418
+    nor_1 #(1'b0) NOR34420(S03_,            NOR34417_out,                                                   reset, prop_clk);
+    // NOR34421 merged with NOR34420
+    
+    // S04
+    nor_2 #(1'b0) NOR34422(NOR34422_out,    WL04_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34423(NOR34423_out,    NOR34422_out,   NOR34424_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34424(NOR34424_out,    NOR34423_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34425(S04,             NOR34423_out,                                                   reset, prop_clk);
+    // NOR34426 merged with NOR34425
+    nor_1 #(1'b0) NOR34427(S04_,            NOR34424_out,                                                   reset, prop_clk);
+    // NOR34428 merged with NOR34427
+    
+    // S05
+    nor_2 #(1'b0) NOR34429(NOR34429_out,    WL05_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34430(NOR34430_out,    NOR34429_out,   NOR34431_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34431(NOR34431_out,    NOR34430_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34432(S05,             NOR34430_out,                                                   reset, prop_clk);
+    // NOR34433 merged with NOR34432
+    nor_1 #(1'b0) NOR34434(S05_,            NOR34431_out,                                                   reset, prop_clk);
+    // NOR34435 merged with NOR34434
+    
+    // S06
+    nor_2 #(1'b0) NOR34436(NOR34436_out,    WL06_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34437(NOR34437_out,    NOR34436_out,   NOR34438_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34438(NOR34438_out,    NOR34437_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34439(S06,             NOR34437_out,                                                   reset, prop_clk);
+    // NOR34439 merged with NOR34440
+    nor_1 #(1'b0) NOR34441(S06_,            NOR34438_out,                                                   reset, prop_clk);
+    // NOR34442 merged with NOR34441
+    
+    // S07
+    nor_2 #(1'b0) NOR34443(NOR34443_out,    WL07_,          WSG_,                                           reset, prop_clk);
+    nor_2 #(1'b1) NOR34444(NOR34444_out,    NOR34443_out,   NOR34445_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34445(NOR34445_out,    NOR34444_out,   CSG,                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR34447(S07,             NOR34444_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR34449(S07_,            NOR34445_out,                                                   reset, prop_clk);
+    
+    // G01A
+    nor_1 #(1'b0) NOR34466(G01A,            G01A_,                                                          reset, prop_clk);
+    // G16SW_ (moved here from A13)
+    nor_2 #(1'b0) NOR41129(NOR41129_out,    G01A,           G16A_,                                          reset, prop_clk);
+    nor_3 #(1'b0) NOR41130(NOR41130_out,    SUMA16_,        SUMB16_,            G01A_,                      reset, prop_clk);
+    nor_2 #(1'b0) NOR41131(G16SW_,          NOR41129_out,   NOR41130_out,                                   reset, prop_clk);
     
     
     // NOR34446 moved to A7 sheet 1
