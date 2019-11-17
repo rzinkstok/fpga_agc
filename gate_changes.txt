@@ -336,6 +336,9 @@ Gates 40201-40258
 34463 added (moved here from A12 sheet 2)
 34464 added (moved here from A12 sheet 2)
 34465 added (moved here from A12 sheet 2)
+54161 added (moved here from A11 sheet 1)
+54262 added (moved here from A11 sheet 1)
+42157 added (moved here from A14 sheet 1)
 
 Sheet 2
 Gates 40301-40358
@@ -728,11 +731,13 @@ Gates 41201-41247
 
 Module A14
 Sheet 1
+42157 removed (moved to A06 sheet 1)
 42257 removed (moved to A13)
 40222 added (from A6 sheet 1)
 40223 added (from A6 sheet 1)
 40224 added (from A6 sheet 1)
 40225 added (from A6 sheet 1)
+
 Sheet 2
 42459 removed (moved to A13)
 40226 added (from A6 sheet 1)
