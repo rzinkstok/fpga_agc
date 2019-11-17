@@ -483,6 +483,8 @@ Gates 51301-51363
 51356 removed (fan-out expansion)
 51359 removed (not used)
 51360 removed (not used)
+51463 removed (moved to A09 sheet 1 and merged)
+51363 removed (moved to A09 sheet 1 and merged)
 35359 added from A15 sheet 2 (fan-in expansion)
 34450 added from A12 sheet 2 (fan-in expansion)
 34451 added from A12 sheet 2 (fan-in expansion)
@@ -506,6 +508,7 @@ Gates 52201-52263
 52260 removed (not used)
 34452 added (moved here from A12 sheet 2)
 34453 added (moved here from A12 sheet 2)
+52161 removed (fan-out expansion for A11 sheet 2)
 
 Sheet 2
 Gates 52301-52363
@@ -570,6 +573,7 @@ Gates 54201-54263
 54156 removed (fan-out expansion)
 54159 removed (not used)
 54160 removed (not used)
+54161 removed (moved to A06 sheet 1)
 54162 removed (fan-in expansion)
 54163 removed (fan-in expansion)
 
@@ -578,6 +582,8 @@ Gates 54201-54263
 54256 removed (fan-out expansion)
 54259 removed (not used)
 54260 removed (not used)
+54262 removed (moved to A06 sheet 1)
+54263 removed (moved to A06 sheet 1)
 
 Sheet 2
 Gates 54301-54363

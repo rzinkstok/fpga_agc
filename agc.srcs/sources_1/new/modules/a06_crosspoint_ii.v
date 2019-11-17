@@ -125,6 +125,7 @@ module a06_crosspoint_ii(
     input wire TL15,
     input wire ST2_,
     input wire GOJAM,
+    input wire NISQ,
     
     output wire A06_1_A2X_,
     output wire A06_1_RB_, 
@@ -158,6 +159,9 @@ module a06_crosspoint_ii(
     output wire A06_1_n8PP4, 
     output wire A06_2_n8PP4, 
     output wire A06_3_n8PP4,
+    output wire WHOMP,
+    output wire WHOMP_,
+    output wire WHOMPA,
     
     output wire DVXP1, 
     output wire L2GD_, 
@@ -454,6 +458,14 @@ module a06_crosspoint_ii(
     nor_1 #(1'b0) NOR40256(NOR40256_out,    NOR40255_out,                                               reset, prop_clk);
     nor_1 #(1'b0) NOR40257(NOR40257_out,    NOR40256_out,                                               reset, prop_clk);
     nor_1 #(1'b0) NOR40258(NOR40258_out,    NOR40257_out,                                               reset, prop_clk);
+    
+    // WHOMP
+    nor_4 #(1'b0) NOR54262(WHOMP,           DVXP1,          NISQ,           GOJAM,      WHOMP_,         reset, prop_clk);
+    // NOR54263 merged into NOR54262
+    nor_2 #(1'b1) NOR54161(WHOMP_,          WHOMP,          CLXC,                                       reset, prop_clk);
+    
+    // WHOMPA
+    nor_1 #(1'b0) NOR42157(WHOMPA,          WHOMP_,                                                     reset, prop_clk);
     
     /**************************
     *
