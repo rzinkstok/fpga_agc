@@ -158,6 +158,9 @@ Gates 30101-30161
 30050 removed (fan-out expansion)
 30051 removed (fan-out expansion)
 30052 removed (not used)
+30057 removed (moved to A13)
+30058 removed (moved to A13)
+30059 removed (moved to A13)
 30060 removed (not connected)
 30102 removed (not used)
 30125 removed (fan-out expansion)
@@ -677,19 +680,49 @@ Gates 34401-34467
 41131 added (moved here from A13)
 
 Module A13
+Sheet 1
+Gates 41101-41158
+Gates 41201-41244
 41129 removed (moved to A12 sheet 2)
 41130 removed (moved to A12 sheet 2)
 41131 removed (moved to A12 sheet 2)
 41241 removed (moved to A1 sheet 1)
+41152 removed (not used)
+41153 removed (not used)
+41154 removed (not used)
+41155 omitted (fan-out expansion for gate on A14 sheet 2)
+41156 omitted (fan-out expansion for gate on A14 sheet 2)
+41157 omitted (fan-out expansion for gate on A14 sheet 2)
+41158 omitted (fan-out expansion for gate on A14 sheet 2)
 
+30057 added (moved here from A3 sheet 1)
+30058 added (moved here from A3 sheet 1)
+30059 added (moved here from A3 sheet 1)
+
+42257 added (moved here from A14 sheet 1)
+42459 added (moved here from A14 sheet 2)
+47161 added (moved here from A22 sheet 1)
+47162 added (moved here from A22 sheet 1)
+47262 added (moved here from A22 sheet 1)
+49435 added (moved here from A24 sheet 2)
+49436 added (moved here from A24 sheet 2)
+49437 added (moved here from A24 sheet 2)
+49438 added (moved here from A24 sheet 2)
+49439 added (moved here from A24 sheet 2)
+49440 added (moved here from A24 sheet 2)
+49441 added (moved here from A24 sheet 2)
+49442 added (moved here from A24 sheet 2)
+49443 added (moved here from A24 sheet 2)
 
 Module A14
 Sheet 1
+42257 removed (moved to A13)
 40222 added (from A6 sheet 1)
 40223 added (from A6 sheet 1)
 40224 added (from A6 sheet 1)
 40225 added (from A6 sheet 1)
 Sheet 2
+42459 removed (moved to A13)
 40226 added (from A6 sheet 1)
 40227 added (from A6 sheet 1)
 40228 added (from A6 sheet 1)
@@ -727,6 +760,12 @@ Gates
 32257 removed (merged with gate on A3 sheet 1)
 34340 added from A12 sheet 2
 34362 added from A12 sheet 2
+
+Module A22
+Gates
+47161 removed (moved to A13)
+47162 removed (moved to A13)
+47262 removed (moved to A13)
 
 Module A23
 Gates

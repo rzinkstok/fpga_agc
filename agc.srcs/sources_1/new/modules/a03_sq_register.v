@@ -10,8 +10,6 @@ module a03_sq_register(
     input wire T01_, 
     input wire T02, 
     input wire T12_, 
-    input wire FS09, 
-    input wire FS10, 
     input wire WL10_, 
     input wire WL11_, 
     input wire WL12_, 
@@ -38,7 +36,6 @@ module a03_sq_register(
     input wire MNHRPT, 
     input wire RXOR0,
     input wire n5XP4, 
-    input wire DBLTST,
     input wire RPTSET,
     
     output wire NISQL_,
@@ -167,7 +164,6 @@ module a03_sq_register(
     wire SQR11, SQR12, SQR13, SQR14, SQR16;
     wire QC0;
     
-    wire CON1, CON2, SCAS10;
     wire INHINT;
 
     wire NOR30001_out;
@@ -341,11 +337,9 @@ module a03_sq_register(
     nor_1 #(1'b0) NOR30055(SQ6_,            NOR30043_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR30056(SQ7_,            NOR30044_out,                                   reset, prop_clk);
     
-    // SCAS10 generation
-    // These next 3 gates are probably better moved to another module
-    nor_2 #(1'b0) NOR30057(CON1,            DBLTST,         1'b0,                           reset, prop_clk);
-    nor_2 #(1'b0) NOR30058(CON2,            CON1,           FS09,                           reset, prop_clk);
-    nor_2 #(1'b0) NOR30059(SCAS10,          CON2,           FS10,                           reset, prop_clk);
+    // NOR30057 moved to A13
+    // NOR30058 moved to A13
+    // NOR30059 moved to A13
     // NOR30060 not connected
     
     // INKBT1 signal
