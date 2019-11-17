@@ -682,25 +682,31 @@ Gates 34401-34467
 Module A13
 Sheet 1
 Gates 41101-41158
-Gates 41201-41244
+Gates 41201-41247
+41115 removed (fan-out expansion)
+41120 removed (fan-in expansion)
+41128 removed (fan-out expansion)
 41129 removed (moved to A12 sheet 2)
 41130 removed (moved to A12 sheet 2)
 41131 removed (moved to A12 sheet 2)
-41241 removed (moved to A1 sheet 1)
+41145 removed (fan-out expansion)
 41152 removed (not used)
 41153 removed (not used)
 41154 removed (not used)
-41155 omitted (fan-out expansion for gate on A14 sheet 2)
-41156 omitted (fan-out expansion for gate on A14 sheet 2)
-41157 omitted (fan-out expansion for gate on A14 sheet 2)
-41158 omitted (fan-out expansion for gate on A14 sheet 2)
+41155 removed (fan-out expansion for gate on A14 sheet 2)
+41156 removed (fan-out expansion for gate on A14 sheet 2)
+41157 removed (fan-out expansion for gate on A14 sheet 2)
+41158 removed (fan-out expansion for gate on A14 sheet 2)
+41218 removed (fan-in expansion)
+41241 removed (moved to A1 sheet 1)
+41244 removed (not connected)
 
 30057 added (moved here from A3 sheet 1)
 30058 added (moved here from A3 sheet 1)
 30059 added (moved here from A3 sheet 1)
-
 42257 added (moved here from A14 sheet 1)
 42459 added (moved here from A14 sheet 2)
+45262 added (moved here from A18 sheet 1)
 47161 added (moved here from A22 sheet 1)
 47162 added (moved here from A22 sheet 1)
 47262 added (moved here from A22 sheet 1)

@@ -6,13 +6,15 @@ module a13_alarms(
     input wire F05B_,
     input wire F07A,
     input wire F07B_,
+    input wire F08B,
     input wire F10A,
     input wire F10B,
     input wire F12B,
-    input wire FS13,
     input wire F14B,
+    input wire FS01,
     input wire FS09,
     input wire FS10,
+    input wire FS13,
     input wire FS14,
     input wire PIPAFL,
     input wire IIP,
@@ -23,6 +25,7 @@ module a13_alarms(
     input wire T03_,
     input wire T04_,
     input wire T09_,
+    input wire T10,
     input wire PALE,
     input wire WATCHP,
     input wire NHALGA,
@@ -77,8 +80,23 @@ module a13_alarms(
     input wire STNDBY_,
     input wire DBLTST,
     input wire n2FSFAL,
+    input wire SB0_,
     input wire SB2_,
     input wire ALTEST,
+    input wire P02,
+    input wire P02_,
+    input wire P03,
+    input wire P03_,
+    input wire CT_,
+    input wire SCAFAL,
+    input wire FLTOUT,
+    input wire CCH33,
+    input wire TEMPIN,
+    input wire TMPOUT,
+    input wire STRT2,
+    input wire SBY,
+    input wire GOJAM,
+    input wire ERRST,
     
     output wire MSTRTP,
     output wire MPIPAL_,
@@ -88,6 +106,18 @@ module a13_alarms(
     output wire MCTRAL_,
     output wire MVFAIL_,
     output wire SCAS10,
+    output wire FILTIN,
+    output wire SYNC4_,
+    output wire SYNC14_,
+    output wire MSCAFL_,
+    output wire MWARNF_,
+    output wire AGCWAR,
+    output wire CGCWAR,
+    output wire TMPCAU,
+    output wire MOSCAL_,
+    output wire OSCALM,
+    output wire RESTRT,
+    output wire STRT1,
     
     input wire reset,
     input wire prop_clk
@@ -164,6 +194,26 @@ module a13_alarms(
     wire NOR41210_out;
     wire NOR41211_out;
     wire NOR41212_out;
+    wire NOR41213_out;
+    wire NOR41214_out;
+    wire NOR41215_out;
+    wire NOR41216_out;
+    wire NOR41217_out;
+    wire NOR41220_out;
+    wire NOR41222_out;
+    wire NOR41223_out;
+    wire NOR41224_out;
+    wire NOR41225_out;
+    wire NOR41229_out;
+    wire NOR41231_out;
+    wire NOR41232_out;
+    wire NOR41234_out;
+    wire NOR41235_out;
+    wire NOR41237_out;
+    wire NOR41238_out;
+    wire NOR41239_out;
+    wire NOR41245_out;
+    wire NOR41247_out;
     
     wire F12B_;
     wire FS13_;
@@ -178,6 +228,9 @@ module a13_alarms(
     wire CON3;
     wire SCADBL;
     wire WRNFLTFF;
+    wire WARN;
+    wire TEMPIN_;
+    wire SBYEXT;
     
     // MSTRTP
     nor_1 #(1'b0) NOR41101(NOR41101_out,    MSTRT,                                                          reset, prop_clk);
@@ -325,7 +378,61 @@ module a13_alarms(
     assign WRNFLTFF = NOR41208_out & NOR41211_out;
     nor_2 #(1'b0) NOR41212(NOR41212_out,    NOR41211_out,   NOR41210_out,                                   reset, prop_clk);
     
+    nor_3 #(1'b0) NOR41213(NOR41213_out,    NOR41209_out,   WRNFLTFF,       SB0_,                           reset, prop_clk);
+    
+    nor_2 #(1'b1) NOR41214(NOR41214_out,    NOR41213_out,   NOR41215_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR41215(NOR41215_out,    NOR41214_out,   F08B,                                           reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR41216(NOR41216_out,    NOR41214_out,                                                   reset, prop_clk);
+    assign FILTIN = NOR41216_out;
+    
+    
+    nor_4 #(1'b0) NOR41217(NOR41217_out,    FS01,           P02,            P03_,           CT_,            reset, prop_clk);
+    // NOR41218 merged with NOR41217
+    nor_1 #(1'b0) NOR41219(SYNC4_,          NOR41217_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR41220(NOR41220_out,    CT_,            P02_,           P03,                            reset, prop_clk);
+    nor_1 #(1'b0) NOR41221(SYNC14_,         NOR41220_out,                                                   reset, prop_clk);
+    
+    
+    nor_1 #(1'b0) NOR41222(NOR41222_out,    SCAFAL,                                                         reset, prop_clk);
+    assign MSCAFL_ = NOR41222_out;
+    nor_1 #(1'b0) NOR41223(NOR41223_out,    FLTOUT,                                                         reset, prop_clk);
+    assign MWARNF_ = NOR41223_out;
+    
+    nor_2 #(1'b0) NOR41224(NOR41224_out,    FLTOUT,         SCAFAL,                                         reset, prop_clk);
+    nor_3 #(1'b1) NOR41225(NOR41225_out,    FLTOUT,         SCAFAL,         AGCWAR,                         reset, prop_clk);
+    nor_2 #(1'b0) NOR41226(AGCWAR,          NOR41225_out,   CCH33,                                          reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR41227(WARN,            NOR41224_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR41228(CGCWAR,          WARN,                                                           reset, prop_clk);
+    
+    // Moved here from A18 sheet 1
+    nor_1 #(1'b0) NOR45262(TEMPIN_,         TEMPIN,                                                         reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR41229(NOR41229_out,    TEMPIN_,        TMPOUT,                                         reset, prop_clk);
+    nor_1 #(1'b0) NOR41230(TMPCAU,          NOR41229_out,                                                   reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR41231(NOR41231_out,    STRT2,                                                          reset, prop_clk);
+    assign MOSCAL_ = NOR41231_out;
+    
+    nor_2 #(1'b1) NOR41232(NOR41232_out,    STRT2,          OSCALM,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR41233(OSCALM,          NOR41232_out,   CCH33,                                          reset, prop_clk);
+    
+    nor_2 #(1'b1) NOR41234(NOR41234_out,    SBY,            NOR41235_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR41235(NOR41235_out,    NOR41234_out,   T10,                                            reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR41236(SBYEXT,          NOR41234_out,                                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR41237(NOR41237_out,    GOJAM,          NOR41238_out,                                   reset, prop_clk);
+    nor_3 #(1'b1) NOR41238(NOR41238_out,    NOR41237_out,   ERRST,          SBYEXT,                         reset, prop_clk);
+    nor_2 #(1'b0) NOR41239(NOR41239_out,    ALTEST,         NOR41238_out,                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR41240(RESTRT,          NOR41239_out,                                                   reset, prop_clk);
     
     // NOR41241 moved to A18 sheet 1
+    // NOR41244 not connected
+    
+    nor_2 #(1'b0) NOR41245(NOR41245_out,    NOR41204_out,   F05A_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR41246(STRT1,           NOR41247_out,   NOR41245_out,                                   reset, prop_clk);
+    nor_2 #(1'b1) NOR41247(NOR41247_out,    NOR41205_out,   STRT1,                                          reset, prop_clk);
     
 endmodule
