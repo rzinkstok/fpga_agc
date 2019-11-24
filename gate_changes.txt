@@ -339,6 +339,7 @@ Gates 40201-40258
 54161 added (moved here from A11 sheet 1)
 54262 added (moved here from A11 sheet 1)
 42157 added (moved here from A14 sheet 1)
+41426 added (moved here from A14 sheet 2)
 
 Sheet 2
 Gates 40301-40358
@@ -738,26 +739,49 @@ Gates 41201-41247
 Module A14
 Sheet 1
 Gates 42101-42158
+Gates 42201-42257
 42102 removed (fan-out expansion)
 42149 removed (fan-out expansion)
 42153 removed (fan-out expansion)
 42157 removed (moved to A06 sheet 1)
 42158 removed (not connected)
+42223 removed (fan-out expansion)
+42231 removed (fan-out expansion)
+42253 removed (fan-out expansion)
+42257 removed (moved to A13)
 51161 added (moved here from A8 sheet 1)
 51261 added (moved here from A8 sheet 1)
 51262 added (moved here from A8 sheet 1)
 51361 added (moved here from A8 sheet 2)
 51362 added (moved here from A8 sheet 2)
 51461 added (moved here from A8 sheet 2)
-
-
-42257 removed (moved to A13)
 40222 added (from A6 sheet 1)
 40224 added (from A6 sheet 1)
 40225 added (from A6 sheet 1)
 
 Sheet 2
+Gates 42301-42357
+Gates 42401-42460
+42303 removed (fan-out expansion)
+42304 removed (fan-out expansion)
+42305 removed (fan-out expansion)
+42309 removed (fan-out expansion)
+42310 removed (fan-out expansion)
+43314 removed (fan-out expansion)
+42315 removed (fan-out expansion)
+42329 removed (fan-out expansion)
+42330 removed (fan-out expansion)
+43334 removed (fan-out expansion)
+42335 removed (fan-out expansion)
+42340 removed (fan-out expansion)
+42357 removed (moved to A20 sheet ?)
+42426 removed (moved to A6 sheet 1)
+42430 removed (fan-out expansion for A11 sheet 2)
+
+
+42448 - 42453 to be moved to A7 sheet 1 (WSCG) and sheet 2 (RSCG)
 42459 removed (moved to A13)
+
 40226 added (from A6 sheet 1)
 40227 added (from A6 sheet 1)
 40228 added (from A6 sheet 1)
