@@ -308,7 +308,7 @@ Gates 40201-40258
 40218 removed (not used)
 40219 removed (not used)
 40222 removed (moved to A14 sheet 1)
-40223 removed (moved to A14 sheet 1)
+40223 removed (fan-out expansion)
 40224 removed (moved to A14 sheet 1)
 40225 removed (moved to A14 sheet 1)
 40226 removed (moved to A14 sheet 2)
@@ -461,6 +461,7 @@ Gates 51201-51263
 51156 removed (fan-out expansion)
 51159 removed (not used)
 51160 removed (not used)
+51161 removed (moved to A14 sheet 1)
 51162 removed (fan-in expansion)
 51163 removed (fan-in expansion)
 51216 removed (not used)
@@ -468,6 +469,8 @@ Gates 51201-51263
 51256 removed (fan-out expansion)
 51259 removed (not used)
 51260 removed (not used)
+51261 removed (moved to A14 sheet 1)
+51262 removed (moved to A14 sheet 1)
 51263 removed (fan-in expansion)
 35360 added from A15 sheet 2 (fan-in expansion)
 35460 added from A15 sheet 2 (fan-in expansion)
@@ -486,8 +489,11 @@ Gates 51301-51363
 51356 removed (fan-out expansion)
 51359 removed (not used)
 51360 removed (not used)
-51463 removed (moved to A09 sheet 1 and merged)
+51361 removed (moved to A14 sheet 1)
+51362 removed (moved to A14 sheet 1)
 51363 removed (moved to A09 sheet 1 and merged)
+51461 removed (moved to A14 sheet 1)
+51463 removed (moved to A09 sheet 1 and merged)
 35359 added from A15 sheet 2 (fan-in expansion)
 34450 added from A12 sheet 2 (fan-in expansion)
 34451 added from A12 sheet 2 (fan-in expansion)
@@ -731,10 +737,22 @@ Gates 41201-41247
 
 Module A14
 Sheet 1
+Gates 42101-42158
+42102 removed (fan-out expansion)
+42149 removed (fan-out expansion)
+42153 removed (fan-out expansion)
 42157 removed (moved to A06 sheet 1)
+42158 removed (not connected)
+51161 added (moved here from A8 sheet 1)
+51261 added (moved here from A8 sheet 1)
+51262 added (moved here from A8 sheet 1)
+51361 added (moved here from A8 sheet 2)
+51362 added (moved here from A8 sheet 2)
+51461 added (moved here from A8 sheet 2)
+
+
 42257 removed (moved to A13)
 40222 added (from A6 sheet 1)
-40223 added (from A6 sheet 1)
 40224 added (from A6 sheet 1)
 40225 added (from A6 sheet 1)
 

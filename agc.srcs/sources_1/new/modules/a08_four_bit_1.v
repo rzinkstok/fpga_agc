@@ -461,9 +461,7 @@ module a08_four_bit_1(
     nor_1 #(1'b0) NOR51154(WL01_,           WL01,                                                       reset, prop_clk);
     // NOR51155 and NOR51156 omitted
     
-    // CLEARA
-    nor_2 #(1'b0) NOR51161(CLEARA,          SETAB_,         S08A_,                                      reset, prop_clk);
-    
+    // NOR51161 moved to A14 sheet 1
     
     // Bit column 2
     
@@ -600,11 +598,7 @@ module a08_four_bit_1(
     nor_1 #(1'b0) NOR51254(WL02_,           WL02,                                                       reset, prop_clk);
     // NOR51255 and NOR51256 omitted
     
-    // S08A_
-    nor_1 #(1'b0) NOR51261(S08A_,           S08,                                                        reset, prop_clk);
-    
-    // S08A
-    nor_1 #(1'b0) NOR51262(S08A,            S08_,                                                       reset, prop_clk);
+    // NOR51261 and NOR51262 moved to A14 sheet 1
     
     
     /**************************
@@ -745,9 +739,7 @@ module a08_four_bit_1(
     nor_1 #(1'b0) NOR51454(WL03_,           WL03,                                                       reset, prop_clk);
     // NOR51455 and NOR51456 omitted
     
-    // CLEARB
-    nor_2 #(1'b0) NOR51461(CLEARB,          SETAB_,         S08A,                                       reset, prop_clk);
-    
+    // NOR51461 moved to A14 sheet 1
     
     // Bit column 4
     
@@ -876,11 +868,7 @@ module a08_four_bit_1(
     nor_1 #(1'b0) NOR51354(WL04_,           WL04,                                                       reset, prop_clk);
     // NOR51355 and NOR51356 omitted
     
-    // CLEARC
-    nor_2 #(1'b0) NOR51361(CLEARC,          SETCD_,         S08A_,                                      reset, prop_clk);
-    
-    // CLEARD
-    nor_2 #(1'b0) NOR51362(CLEARD,          SETCD_,         S08A,                                       reset, prop_clk);
+    // NOR51361 and NOR51362 moved to A14 sheet 1
     
     
 endmodule
