@@ -45,8 +45,13 @@ module a14_memory_timing_addressing(
     input wire S08_,
     input wire S09,
     input wire S09_,
+    input wire S10_,
     input wire S11,
     input wire S12,
+    
+    input wire EB9,
+    input wire EB10,
+    input wire EB11_,
     
     input wire TIMR,
     input wire GOJAM,
@@ -154,6 +159,34 @@ module a14_memory_timing_addressing(
     output wire XT7,
     output wire XT7_,
     output wire XT7E,
+    
+    output wire YT0, 
+    output wire YT0_, 
+    output wire YT0E, 
+    output wire YT1, 
+    output wire YT1_, 
+    output wire YT1E, 
+    output wire YT2, 
+    output wire YT2_, 
+    output wire YT2E, 
+    output wire YT3, 
+    output wire YT3_, 
+    output wire YT3E, 
+    output wire YT4, 
+    output wire YT4_, 
+    output wire YT4E, 
+    output wire YT5, 
+    output wire YT5_, 
+    output wire YT5E, 
+    output wire YT6, 
+    output wire YT6_, 
+    output wire YT6E, 
+    output wire YT7, 
+    output wire YT7_, 
+    output wire YT7E,
+    
+    output wire ILP,
+    output wire ILP_,
     
     input wire reset,
     input wire prop_clk
@@ -461,11 +494,26 @@ module a14_memory_timing_addressing(
     
     wire NOR42433_out;
     wire NOR42435_out;
+    wire NOR42436_out;
+    wire NOR42437_out;
+    wire NOR42438_out;
+    wire NOR42439_out;
     wire NOR42440_out;
     wire NOR42442_out;
+    wire NOR42443_out;
+    wire NOR42445_out;
+    
+    wire NOR34219_out;
+    wire NOR34220_out;
     
     wire RILP1;
     wire RILP1_;
+    wire EAD09;
+    wire EAD09_;
+    wire EAD10;
+    wire EAD10_;
+    wire EAD11;
+    wire EAD11_;
     
     // X bottom signals
     
@@ -534,7 +582,6 @@ module a14_memory_timing_addressing(
     
     // NOR42357 moved to A20 sheet ?
     
-    
     // X top signals
     nor_3 #(1'b0) NOR42401(XT0,             S06,            S05,            S04,                            reset, prop_clk);
     nor_1 #(1'b0) NOR42402(XT0_,            XT0,                                                            reset, prop_clk);
@@ -577,6 +624,7 @@ module a14_memory_timing_addressing(
     // NOR42426 moved to A6 sheet 1
     // NOR42430 omitted (fan-out expansion for A11 sheet 2)
     
+    // ILP
     nor_4 #(1'b0) NOR42433(NOR42433_out,    XT0,            XT3,            XT5,            XT6,            reset, prop_clk);
     // NOR42434 merged into NOR42433
     nor_1 #(1'b0) NOR42435(NOR42435_out,    NOR42433_out,                                                   reset, prop_clk);
@@ -586,7 +634,64 @@ module a14_memory_timing_addressing(
     nor_1 #(1'b0) NOR42442(NOR42442_out,    NOR42440_out,                                                   reset, prop_clk);
     
     nor_3 #(1'b0) NOR42436(NOR42436_out,    NOR42440_out,   RILP1,          NOR42433_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR42437(NOR42437_out,    NOR42442_out,   RILP1,          NOR42435_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR42438(NOR42438_out,    NOR42442_out,   RILP1_,         NOR42433_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR42439(NOR42439_out,    NOR42440_out,   RILP1_,         NOR42435_out,                   reset, prop_clk);
     
+    nor_4 #(1'b0) NOR42443(NOR42443_out,    NOR42436_out,   NOR42437_out,   NOR42438_out,   NOR42439_out,   reset, prop_clk);
+    // NOR42444 omitted (fan-in expansion)
+    nor_1 #(1'b0) NOR42445(NOR42445_out,    NOR42443_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR42446(ILP,             NOR42445_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR42447(ILP_,            NOR42443_out,                                                   reset, prop_clk);
+    
+    // NOR42448 - NOR42453 moved to A7 sheet 2
+    // NOR42454 moved to A4 sheet 2
+    // NOR42455 and NOR42456 removed (fan-in expansion)
+    
+    // EAD09 - EAD11 (moved here from A12 sheet 1)
+    nor_2 #(1'b0) NOR34219(NOR34219_out,    EB9,            S10_,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR34220(NOR34220_out,    EB10,           S09_,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR34221(EAD09,           S09_,           NOR34219_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR34222(EAD10,           S10_,           NOR34220_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR34223(EAD11,           S10_,           S09_,           EB11_,                          reset, prop_clk);
+    nor_1 #(1'b0) NOR34224(EAD09_,          EAD09,                                                          reset, prop_clk);
+    nor_1 #(1'b0) NOR34225(EAD10_,          EAD10,                                                          reset, prop_clk);
+    nor_1 #(1'b0) NOR34226(EAD11_,          EAD11,                                                          reset, prop_clk);
+    
+    // Y top signals (moved here from A7 sheet 2)
+    nor_3 #(1'b0) NOR33433(YT0,             EAD11,          EAD10,          EAD09,                          reset, prop_clk);
+    nor_1 #(1'b0) NOR33434(YT0_,            YT0,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR33435(YT0E,            YT0_,                                                           reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR33436(YT1,             EAD11,          EAD10,          EAD09_,                         reset, prop_clk);
+    nor_1 #(1'b0) NOR33437(YT1_,            YT1,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR33438(YT1E,            YT1_,                                                           reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR33439(YT2,             EAD11,          EAD10_,         EAD09,                          reset, prop_clk);
+    nor_1 #(1'b0) NOR33440(YT2_,            YT2,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR33441(YT2E,            YT2_,                                                           reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR33442(YT3,             EAD11,          EAD10_,         EAD09_,                         reset, prop_clk);
+    nor_1 #(1'b0) NOR33443(YT3_,            YT3,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR33444(YT3E,            YT3_,                                                           reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR33445(YT4,             EAD11_,         EAD10,          EAD09,                          reset, prop_clk);
+    nor_1 #(1'b0) NOR33446(YT4_,            YT4,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR33447(YT4E,            YT4_,                                                           reset, prop_clk);
+        
+    nor_3 #(1'b0) NOR33448(YT5,             EAD11_,         EAD10,          EAD09_,                         reset, prop_clk);
+    nor_1 #(1'b0) NOR33449(YT5_,            YT5,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR33450(YT5E,            YT5_,                                                           reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR33451(YT6,             EAD11_,         EAD10_,         EAD09,                          reset, prop_clk);
+    nor_1 #(1'b0) NOR33452(YT6_,            YT6,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR33453(YT6E,            YT6_,                                                           reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR33454(YT7,             EAD11_,         EAD10_,         EAD09_,                         reset, prop_clk);
+    nor_1 #(1'b0) NOR33455(YT7_,            YT7,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR33456(YT7E,            YT7_,                                                           reset, prop_clk);
+    
+    // Inhibit lines
     
     
 endmodule

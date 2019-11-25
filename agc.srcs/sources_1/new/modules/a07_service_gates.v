@@ -10,7 +10,8 @@ module a07_service_gates(
     input wire WB_, 
     //input wire WGA_, 
     input wire WZ_, 
-    input wire WSCG_, 
+    //input wire WSCG_, 
+    input wire WSC_,
     input wire WL_, 
     input wire WCHG_, 
     input wire WA_, 
@@ -19,7 +20,8 @@ module a07_service_gates(
     input wire WG_,
     input wire RC_, 
     input wire RQ_, 
-    input wire RSCG_, 
+    //input wire RSCG_,
+    input wire RSC_, 
     input wire RCHG_,
     input wire ZAP_, 
     input wire SHIFT, 
@@ -66,6 +68,7 @@ module a07_service_gates(
     input wire EAD10_, 
     input wire EAD11, 
     input wire EAD11_,
+    input wire SCAD_,
     
     output wire WALSG, 
     output wire WALSG_, 
@@ -118,31 +121,6 @@ module a07_service_gates(
     output wire RULOG_, 
     output wire RBHG_, 
     output wire RBLG_,
-    
-    output wire YT0, 
-    output wire YT0_, 
-    output wire YT0E, 
-    output wire YT1, 
-    output wire YT1_, 
-    output wire YT1E, 
-    output wire YT2, 
-    output wire YT2_, 
-    output wire YT2E, 
-    output wire YT3, 
-    output wire YT3_, 
-    output wire YT3E, 
-    output wire YT4, 
-    output wire YT4_, 
-    output wire YT4E, 
-    output wire YT5, 
-    output wire YT5_, 
-    output wire YT5E, 
-    output wire YT6, 
-    output wire YT6_, 
-    output wire YT6E, 
-    output wire YT7, 
-    output wire YT7_, 
-    output wire YT7E,
     output wire CI01_,
     
     output wire MWYG, 
@@ -252,8 +230,13 @@ module a07_service_gates(
     wire NOR33359_out;
     wire NOR34467_out;
     
+    wire NOR42448_out;
+    wire NOR42451_out;
+    
     wire WGA_;
     wire G2LSG, P04A, RBBK, CINORM, CIFF, RGG1, RLG1, RLG2, RLG3;
+    wire RSCG_;
+    wire WSCG_;
     
     // WALSG, WALSG_
     nor_2 #(1'b0) NOR33102(WALSG,           ZAP_,           WT_,                                    reset, prop_clk);
@@ -448,6 +431,12 @@ module a07_service_gates(
     *
     **************************/
     
+    // RSCG_ and WSCG_ moved here from A14 sheet 2
+    nor_3 #(1'b0) NOR42448(NOR42448_out,    RSC_,           RT_,            SCAD_,                  reset, prop_clk);
+    nor_1 #(1'b0) NOR42449(RSCG_,           NOR42448_out,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR42451(NOR42451_out,    WSC_,           SCAD_,                                  reset, prop_clk);
+    nor_1 #(1'b0) NOR42452(WSCG_,           NOR42451_out,                                           reset, prop_clk);
+    
     // RCG_
     nor_2 #(1'b0) NOR33401(NOR33401_out,    RT_,            RC_,                                    reset, prop_clk);
     nor_1 #(1'b0) NOR33402(RCG_,            NOR33401_out,                                           reset, prop_clk);
@@ -490,47 +479,7 @@ module a07_service_gates(
     nor_1 #(1'b0) NOR33430(CGG,             NOR33429_out,                                           reset, prop_clk);
     // NOR33431 and NOR33432 omitted
     
-    // Erasable memory addressing - Y
-    
-    // YT0
-    nor_3 #(1'b0) NOR33433(YT0,             EAD11,          EAD10,          EAD09,                  reset, prop_clk);
-    nor_1 #(1'b0) NOR33434(YT0_,            YT0,                                                    reset, prop_clk);
-    nor_1 #(1'b0) NOR33435(YT0E,            YT0_,                                                   reset, prop_clk);
-    
-    // YT1
-    nor_3 #(1'b0) NOR33436(YT1,             EAD11,          EAD10,          EAD09_,                 reset, prop_clk);
-    nor_1 #(1'b0) NOR33437(YT1_,            YT1,                                                    reset, prop_clk);
-    nor_1 #(1'b0) NOR33438(YT1E,            YT1_,                                                   reset, prop_clk);
-    
-    // YT2
-    nor_3 #(1'b0) NOR33439(YT2,             EAD11,          EAD10_,         EAD09,                  reset, prop_clk);
-    nor_1 #(1'b0) NOR33440(YT2_,            YT2,                                                    reset, prop_clk);
-    nor_1 #(1'b0) NOR33441(YT2E,            YT2_,                                                   reset, prop_clk);
-    
-    // YT3
-    nor_3 #(1'b0) NOR33442(YT3,             EAD11,          EAD10_,         EAD09_,                 reset, prop_clk);
-    nor_1 #(1'b0) NOR33443(YT3_,            YT3,                                                    reset, prop_clk);
-    nor_1 #(1'b0) NOR33444(YT3E,            YT3_,                                                   reset, prop_clk);
-    
-    // YT4
-    nor_3 #(1'b0) NOR33445(YT4,             EAD11_,         EAD10,          EAD09,                  reset, prop_clk);
-    nor_1 #(1'b0) NOR33446(YT4_,            YT4,                                                    reset, prop_clk);
-    nor_1 #(1'b0) NOR33447(YT4E,            YT4_,                                                   reset, prop_clk);
-        
-    // YT5
-    nor_3 #(1'b0) NOR33448(YT5,             EAD11_,         EAD10,          EAD09_,                 reset, prop_clk);
-    nor_1 #(1'b0) NOR33449(YT5_,            YT5,                                                    reset, prop_clk);
-    nor_1 #(1'b0) NOR33450(YT5E,            YT5_,                                                   reset, prop_clk);
-    
-    // YT6
-    nor_3 #(1'b0) NOR33451(YT6,             EAD11_,         EAD10_,         EAD09,                  reset, prop_clk);
-    nor_1 #(1'b0) NOR33452(YT6_,            YT6,                                                    reset, prop_clk);
-    nor_1 #(1'b0) NOR33453(YT6E,            YT6_,                                                   reset, prop_clk);
-    
-    // YT7
-    nor_3 #(1'b0) NOR33454(YT7,             EAD11_,         EAD10_,         EAD09_,                 reset, prop_clk);
-    nor_1 #(1'b0) NOR33455(YT7_,            YT7,                                                    reset, prop_clk);
-    nor_1 #(1'b0) NOR33456(YT7E,            YT7_,                                                   reset, prop_clk);
+    // Gates NOR33433 - NOR33456 moved to A14 sheet 2
     
     // CINORM
     nor_3 #(1'b0) NOR33457(CINORM,          NEAC,           EAC_,           MP3A,                    reset, prop_clk);

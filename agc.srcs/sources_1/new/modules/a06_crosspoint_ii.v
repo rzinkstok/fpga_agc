@@ -153,7 +153,6 @@ module a06_crosspoint_ii(
     output wire A06_1_RZ_,
     output wire A06_1_WS_,
     output wire A06_1_CI_,
-    output wire A06_1_R1C_,
     output wire A06_1_RB1_,
     output wire A06_1_RPTSET,
     output wire A06_1_ST2_,
@@ -195,7 +194,8 @@ module a06_crosspoint_ii(
     output wire PONEX, 
     output wire PSEUDO,
     output wire n6XP10, 
-    output wire n7XP14, 
+    output wire n7XP11,
+    output wire n7XP14,
     output wire n8XP4, 
     output wire n8XP10,
 
@@ -531,7 +531,7 @@ module a06_crosspoint_ii(
     wire NOR40432_out;
     wire NOR40439_out;
     
-    wire n6XP12, n7XP7, n7XP10, n7XP11, n7XP15, n10XP9;
+    wire n6XP12, n7XP7, n7XP10, n7XP15, n10XP9;
     
     // NOR40301 not used
     
@@ -713,9 +713,7 @@ module a06_crosspoint_ii(
     // NOR40433 merged into NOR40432
     nor_1 #(1'b0) NOR40434(PONEX,           NOR40432_out,                                               reset, prop_clk);
     
-    // R1C_
-    // Cross-module fan-in, connected to A4
-    nor_1 #(1'b0) NOR40435(A06_1_R1C_,      n7XP11,                                                     reset, prop_clk);
+    // NOR40435 merged to A4 sheet 2
     
     // RB1_
     // Cross-module fan-in, connected to A4

@@ -86,6 +86,7 @@ module a04_stage_branch(
     input wire MP3_, 
     input wire MP3A,
     input wire TS0_,
+    input wire n7XP11,
     
     output wire STG1, 
     output wire STG2, 
@@ -161,7 +162,6 @@ module a04_stage_branch(
     output wire A04_1_RC_, 
     output wire A04_2_RC_,
     output wire A04_1_RB1_,
-    output wire A04_1_R1C_,
     output wire A04_1_RSC_,
     output wire A04_1_WG_, 
     output wire A04_2_WG_, 
@@ -174,7 +174,8 @@ module a04_stage_branch(
     output wire A04_1_TSGN_, 
     output wire A04_2_TSGN_,
     output wire A04_1_L16_,
-    output wire A04_1_n8PP4, 
+    output wire A04_1_n8PP4,
+    output wire R1C,
     output wire R15, 
     output wire RB2, 
     output wire WCH_,
@@ -521,6 +522,7 @@ module a04_stage_branch(
     
     wire n2PP1;
     wire BRXP3;
+    wire R1C_;
     
     wire NOR36303_out;
     wire NOR36304_out;
@@ -802,8 +804,10 @@ module a04_stage_branch(
     nor_2 #(1'b0) NOR36452(A04_1_RB1_,      NOR36436_out,   NOR36451_out,                               reset, prop_clk);
     
     // R1C
-    // Cross-module fan-in, connected to A6
-    nor_2 #(1'b0) NOR36453(A04_1_R1C_,      NOR36451_out,   NOR36438_out,                               reset, prop_clk);
+    nor_3 #(1'b0) NOR36453(R1C_,            NOR36451_out,   NOR36438_out,   n7XP11,                     reset, prop_clk);
+    // NOR40435 moved here from A6 and merged into NOR36453
+    // Moved here from A14 sheet 2
+    nor_1 #(1'b0) NOR42454(R1C,             R1C_,                                                       reset, prop_clk);
     
     // TSGN part 2
     // Cross-module fan-in, connected to A5
