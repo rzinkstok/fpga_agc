@@ -2,8 +2,6 @@
 
 module agc();
 
-	reg A15_ = 1;
-	reg A16_ = 1;
 	reg ALTEST = 0;
 	reg ALTM = 0;
 	reg BBK1 = 0;
@@ -58,6 +56,7 @@ module agc();
 	reg CH13 = 0;
 	reg CH14 = 0;
 	reg CH16 = 0;
+	reg CHINC = 0;
 	reg CHINC_ = 1;
 	reg CI = 0;
 	reg CLOCK = 0;
@@ -72,6 +71,9 @@ module agc();
 	reg EAD10_ = 1;
 	reg EAD11 = 0;
 	reg EAD11_ = 1;
+	reg EB10 = 0;
+	reg EB11_ = 1;
+	reg EB9 = 0;
 	reg EMSD = 0;
 	reg ERRST = 0;
 	reg FETCH0 = 0;
@@ -86,6 +88,7 @@ module agc();
 	reg INLNKM = 0;
 	reg INLNKP = 0;
 	reg INOTLD = 0;
+	reg MAMU = 0;
 	reg MCDU = 0;
 	reg MDT01 = 0;
 	reg MDT02 = 0;
@@ -105,6 +108,7 @@ module agc();
 	reg MDT16 = 0;
 	reg MINC = 0;
 	reg MNHRPT = 0;
+	reg MNHSBF = 0;
 	reg MONPAR = 0;
 	reg MONWBK = 0;
 	reg MON_ = 1;
@@ -127,8 +131,6 @@ module agc();
 	reg PIPYP = 0;
 	reg PIPZM = 0;
 	reg PIPZP = 0;
-	reg R1C = 0;
-	reg RB1 = 0;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
 	reg RCHG_ = 1;
@@ -139,7 +141,6 @@ module agc();
 	reg RPTAD5 = 0;
 	reg RPTAD6 = 0;
 	reg RQ_ = 1;
-	reg RSCG_ = 1;
 	reg RUPTOR_ = 1;
 	reg SA01 = 0;
 	reg SA02 = 0;
@@ -159,16 +160,12 @@ module agc();
 	reg SAP = 0;
 	reg SBY = 0;
 	reg SCAFAL = 0;
-	reg SETAB_ = 1;
-	reg SETCD_ = 1;
 	reg SHAFTD = 0;
 	reg SHAFTM = 0;
 	reg SHAFTP = 0;
 	reg SHANC_ = 1;
 	reg SHIFT = 0;
 	reg SHIFT_ = 1;
-	reg STBE = 0;
-	reg STBF = 0;
 	reg STFET1_ = 1;
 	reg STFETI_ = 1;
 	reg STNDBY_ = 1;
@@ -187,7 +184,6 @@ module agc();
 	reg TEMPIN = 0;
 	reg THRSTD = 0;
 	reg TMPOUT = 0;
-	reg TPARG_ = 1;
 	reg TRNM = 0;
 	reg TRNP = 0;
 	reg TRUND = 0;
@@ -195,23 +191,6 @@ module agc();
 	reg VFAIL = 0;
 	reg WATCHP = 0;
 	reg WCHG_ = 1;
-	reg WSCG_ = 1;
-	reg XB0_ = 1;
-	reg XB1_ = 1;
-	reg XB2_ = 1;
-	reg XB3_ = 1;
-	reg XB4_ = 1;
-	reg XB5_ = 1;
-	reg XB6_ = 1;
-	reg XB7_ = 1;
-	reg XT0_ = 1;
-	reg XT1_ = 1;
-	reg XT2_ = 1;
-	reg XT3_ = 1;
-	reg XT4_ = 1;
-	reg XT5_ = 1;
-	reg XT6_ = 1;
-	reg YB0_ = 1;
 	reg n2FSFAL = 0;
 	reg prop_clk = 1;
 	reg reset = 0;
@@ -221,7 +200,6 @@ module agc();
 	wire A03_3_RPTSET;
 	wire A04_1_CI_;
 	wire A04_1_L16_;
-	wire A04_1_R1C_;
 	wire A04_1_RA_;
 	wire A04_1_RB1_;
 	wire A04_1_RB_;
@@ -296,7 +274,6 @@ module agc();
 	wire A06_1_A2X_;
 	wire A06_1_CI_;
 	wire A06_1_MONEX_;
-	wire A06_1_R1C_;
 	wire A06_1_RB1_;
 	wire A06_1_RB_;
 	wire A06_1_RC_;
@@ -358,6 +335,8 @@ module agc();
 	wire A11_4_RL14_;
 	wire A11_4_RL15_;
 	wire A11_4_RL16_;
+	wire A15_;
+	wire A16_;
 	wire A2XG_;
 	wire A2X_;
 	wire AD0;
@@ -427,6 +406,7 @@ module agc();
 	wire CLG1G;
 	wire CLG2G;
 	wire CLK;
+	wire CLROPE;
 	wire CLXC;
 	wire CO02;
 	wire CO06;
@@ -467,6 +447,8 @@ module agc();
 	wire EAC_;
 	wire EDOP_;
 	wire EDSET;
+	wire ERAS;
+	wire ERAS_;
 	wire EVNSET;
 	wire EVNSET_;
 	wire EXST0_;
@@ -563,6 +545,7 @@ module agc();
 	wire F33A;
 	wire F33B;
 	wire FILTIN;
+	wire FNERAS_;
 	wire FS01;
 	wire FS01_;
 	wire FS02;
@@ -695,8 +678,25 @@ module agc();
 	wire IC7;
 	wire IC8_;
 	wire IC9;
+	wire IHENV;
 	wire IIP;
 	wire IIP_;
+	wire IL01;
+	wire IL01_;
+	wire IL02;
+	wire IL02_;
+	wire IL03;
+	wire IL03_;
+	wire IL04;
+	wire IL04_;
+	wire IL05;
+	wire IL05_;
+	wire IL06;
+	wire IL06_;
+	wire IL07;
+	wire IL07_;
+	wire ILP;
+	wire ILP_;
 	wire INCR0;
 	wire INHPLS;
 	wire INOUT;
@@ -857,7 +857,7 @@ module agc();
 	wire QC3_;
 	wire QXCH0_;
 	wire R15;
-	wire R1C_;
+	wire R1C;
 	wire R6;
 	wire RAD;
 	wire RADRG;
@@ -865,6 +865,7 @@ module agc();
 	wire RAG_;
 	wire RAND0;
 	wire RA_;
+	wire RB1;
 	wire RB1F;
 	wire RB1_;
 	wire RB2;
@@ -881,7 +882,13 @@ module agc();
 	wire READ0_;
 	wire REBG_;
 	wire RELPLS;
+	wire RESETA;
+	wire RESETB;
+	wire RESETC;
+	wire RESETD;
 	wire RESTRT;
+	wire REX;
+	wire REY;
 	wire RFBG_;
 	wire RGG_;
 	wire RG_;
@@ -898,6 +905,7 @@ module agc();
 	wire RL16_;
 	wire RLG_;
 	wire RL_;
+	wire ROP_;
 	wire ROR0;
 	wire RPTSET;
 	wire RQ;
@@ -907,6 +915,8 @@ module agc();
 	wire RSC_;
 	wire RSM3;
 	wire RSM3_;
+	wire RSTKX_;
+	wire RSTKY_;
 	wire RSTRT;
 	wire RSTSTG;
 	wire RT;
@@ -955,9 +965,16 @@ module agc();
 	wire SB2;
 	wire SB2_;
 	wire SB4;
+	wire SBE;
+	wire SBF;
 	wire SCAD;
 	wire SCAD_;
 	wire SCAS10;
+	wire SETAB;
+	wire SETAB_;
+	wire SETCD;
+	wire SETCD_;
+	wire SETEK;
 	wire SGUM;
 	wire SQ0_;
 	wire SQ1_;
@@ -983,6 +1000,8 @@ module agc();
 	wire ST376_;
 	wire ST3_;
 	wire ST4_;
+	wire STBE;
+	wire STBF;
 	wire STD2;
 	wire STG1;
 	wire STG2;
@@ -990,6 +1009,7 @@ module agc();
 	wire STOP;
 	wire STOPA;
 	wire STOP_;
+	wire STRGAT;
 	wire STRT1;
 	wire STRTFC;
 	wire SU0;
@@ -1050,6 +1070,7 @@ module agc();
 	wire TMPCAU;
 	wire TMZ_;
 	wire TOV_;
+	wire TPARG_;
 	wire TPZG_;
 	wire TRSM;
 	wire TS0;
@@ -1073,6 +1094,8 @@ module agc();
 	wire WCH_;
 	wire WEBG_;
 	wire WEDOPG_;
+	wire WEX;
+	wire WEY;
 	wire WFBG_;
 	wire WG1G_;
 	wire WG2G_;
@@ -1139,6 +1162,54 @@ module agc();
 	wire WY_;
 	wire WZG_;
 	wire WZ_;
+	wire XB0;
+	wire XB0E;
+	wire XB0_;
+	wire XB1;
+	wire XB1E;
+	wire XB1_;
+	wire XB2;
+	wire XB2E;
+	wire XB2_;
+	wire XB3;
+	wire XB3E;
+	wire XB3_;
+	wire XB4;
+	wire XB4E;
+	wire XB4_;
+	wire XB5;
+	wire XB5E;
+	wire XB5_;
+	wire XB6;
+	wire XB6E;
+	wire XB6_;
+	wire XB7;
+	wire XB7E;
+	wire XB7_;
+	wire XT0;
+	wire XT0E;
+	wire XT0_;
+	wire XT1;
+	wire XT1E;
+	wire XT1_;
+	wire XT2;
+	wire XT2E;
+	wire XT2_;
+	wire XT3;
+	wire XT3E;
+	wire XT3_;
+	wire XT4;
+	wire XT4E;
+	wire XT4_;
+	wire XT5;
+	wire XT5E;
+	wire XT5_;
+	wire XT6;
+	wire XT6E;
+	wire XT6_;
+	wire XT7;
+	wire XT7E;
+	wire XT7_;
 	wire XUY01_;
 	wire XUY02_;
 	wire XUY05_;
@@ -1148,6 +1219,18 @@ module agc();
 	wire XUY12_;
 	wire XUY13_;
 	wire XUY14_;
+	wire YB0;
+	wire YB0E;
+	wire YB0_;
+	wire YB1;
+	wire YB1E;
+	wire YB1_;
+	wire YB2;
+	wire YB2E;
+	wire YB2_;
+	wire YB3;
+	wire YB3E;
+	wire YB3_;
 	wire YT0;
 	wire YT0E;
 	wire YT0_;
@@ -1176,6 +1259,7 @@ module agc();
 	wire Z16_;
 	wire ZAP;
 	wire ZAP_;
+	wire ZID;
 	wire ZIP;
 	wire ZIPCI;
 	wire ZOUT;
@@ -1201,6 +1285,7 @@ module agc();
 	wire n6XP10;
 	wire n6XP5;
 	wire n6XP8;
+	wire n7XP11;
 	wire n7XP14;
 	wire n7XP19;
 	wire n7XP4;
@@ -1729,6 +1814,7 @@ module agc();
 		MP3_,
 		MP3A,
 		TS0_,
+		n7XP11,
 		STG1,
 		STG2,
 		STG3,
@@ -1802,7 +1888,6 @@ module agc();
 		A04_1_RC_,
 		A04_2_RC_,
 		A04_1_RB1_,
-		A04_1_R1C_,
 		A04_1_RSC_,
 		A04_1_WG_,
 		A04_2_WG_,
@@ -1816,6 +1901,7 @@ module agc();
 		A04_2_TSGN_,
 		A04_1_L16_,
 		A04_1_n8PP4,
+		R1C,
 		R15,
 		RB2,
 		WCH_,
@@ -2177,6 +2263,7 @@ module agc();
 		ST2_,
 		GOJAM,
 		NISQ,
+		RB1_,
 		A06_1_A2X_,
 		A06_1_RB_,
 		A06_2_RB_,
@@ -2202,7 +2289,6 @@ module agc();
 		A06_1_RZ_,
 		A06_1_WS_,
 		A06_1_CI_,
-		A06_1_R1C_,
 		A06_1_RB1_,
 		A06_1_RPTSET,
 		A06_1_ST2_,
@@ -2212,6 +2298,7 @@ module agc();
 		WHOMP,
 		WHOMP_,
 		WHOMPA,
+		RB1,
 		DVXP1,
 		L2GD_,
 		ZIP,
@@ -2242,6 +2329,7 @@ module agc();
 		PONEX,
 		PSEUDO,
 		n6XP10,
+		n7XP11,
 		n7XP14,
 		n8XP4,
 		n8XP10,
@@ -2258,7 +2346,7 @@ module agc();
 		WYD_,
 		WB_,
 		WZ_,
-		WSCG_,
+		WSC_,
 		WL_,
 		WCHG_,
 		WA_,
@@ -2267,7 +2355,7 @@ module agc();
 		WG_,
 		RC_,
 		RQ_,
-		RSCG_,
+		RSC_,
 		RCHG_,
 		ZAP_,
 		SHIFT,
@@ -2314,6 +2402,7 @@ module agc();
 		EAD10_,
 		EAD11,
 		EAD11_,
+		SCAD_,
 		WALSG,
 		WALSG_,
 		WYLOG_,
@@ -2365,30 +2454,6 @@ module agc();
 		RULOG_,
 		RBHG_,
 		RBLG_,
-		YT0,
-		YT0_,
-		YT0E,
-		YT1,
-		YT1_,
-		YT1E,
-		YT2,
-		YT2_,
-		YT2E,
-		YT3,
-		YT3_,
-		YT3E,
-		YT4,
-		YT4_,
-		YT4E,
-		YT5,
-		YT5_,
-		YT5E,
-		YT6,
-		YT6_,
-		YT6E,
-		YT7,
-		YT7_,
-		YT7E,
 		CI01_,
 		MWYG,
 		MWBG,
@@ -2867,6 +2932,8 @@ module agc();
 		G16,
 		G16_,
 		GEM16,
+		A15_,
+		A16_,
 		reset,
 		prop_clk
 	);
@@ -3098,11 +3165,202 @@ module agc();
 		prop_clk
 	);
 
+	a14_memory_timing_addressing a14(
+		PHS2_,
+		PHS3_,
+		PHS4_,
+		T01,
+		T01_,
+		T02_,
+		T03,
+		T03_,
+		T04_,
+		T05,
+		T05_,
+		T06,
+		T06_,
+		T07,
+		T07_,
+		T08,
+		T08_,
+		T09,
+		T10,
+		T10_,
+		T11,
+		T12_,
+		T12A,
+		S01,
+		S01_,
+		S02,
+		S02_,
+		S03,
+		S03_,
+		S04,
+		S04_,
+		S05,
+		S05_,
+		S06,
+		S06_,
+		S07,
+		S07_,
+		S08,
+		S08_,
+		S09,
+		S09_,
+		S10_,
+		S11,
+		S12,
+		EB9,
+		EB10,
+		EB11_,
+		TIMR,
+		GOJAM,
+		GOJ1,
+		TCSAJ3,
+		DV3764,
+		MP1,
+		MNHSBF,
+		INOUT,
+		CHINC,
+		MAMU,
+		STRT2,
+		SCAD,
+		ROP_,
+		IHENV,
+		SETAB,
+		SETAB_,
+		SETCD,
+		SETCD_,
+		STBF,
+		SBF,
+		RESETA,
+		RESETB,
+		RESETC,
+		RESETD,
+		STRGAT,
+		CLROPE,
+		ERAS,
+		ERAS_,
+		FNERAS_,
+		WEX,
+		WEY,
+		RSTKX_,
+		RSTKY_,
+		ZID,
+		SETEK,
+		REX,
+		REY,
+		SBE,
+		STBE,
+		TPARG_,
+		XB0,
+		XB0_,
+		XB0E,
+		XB1,
+		XB1_,
+		XB1E,
+		XB2,
+		XB2_,
+		XB2E,
+		XB3,
+		XB3_,
+		XB3E,
+		XB4,
+		XB4_,
+		XB4E,
+		XB5,
+		XB5_,
+		XB5E,
+		XB6,
+		XB6_,
+		XB6E,
+		XB7,
+		XB7_,
+		XB7E,
+		YB0,
+		YB0_,
+		YB0E,
+		YB1,
+		YB1_,
+		YB1E,
+		YB2,
+		YB2_,
+		YB2E,
+		YB3,
+		YB3_,
+		YB3E,
+		XT0,
+		XT0_,
+		XT0E,
+		XT1,
+		XT1_,
+		XT1E,
+		XT2,
+		XT2_,
+		XT2E,
+		XT3,
+		XT3_,
+		XT3E,
+		XT4,
+		XT4_,
+		XT4E,
+		XT5,
+		XT5_,
+		XT5E,
+		XT6,
+		XT6_,
+		XT6E,
+		XT7,
+		XT7_,
+		XT7E,
+		YT0,
+		YT0_,
+		YT0E,
+		YT1,
+		YT1_,
+		YT1E,
+		YT2,
+		YT2_,
+		YT2E,
+		YT3,
+		YT3_,
+		YT3E,
+		YT4,
+		YT4_,
+		YT4E,
+		YT5,
+		YT5_,
+		YT5E,
+		YT6,
+		YT6_,
+		YT6E,
+		YT7,
+		YT7_,
+		YT7E,
+		IL01,
+		IL01_,
+		IL02,
+		IL02_,
+		IL03,
+		IL03_,
+		IL04,
+		IL04_,
+		IL05,
+		IL05_,
+		IL06,
+		IL06_,
+		IL07,
+		IL07_,
+		ILP,
+		ILP_,
+		reset,
+		prop_clk
+	);
+
 	assign A2X_ = A05_1_A2X_ & A05_2_A2X_ & A06_1_A2X_;
 	assign CI_ = A04_1_CI_ & A05_1_CI_ & A05_2_CI_ & A06_1_CI_;
 	assign L16_ = A04_1_L16_ & A11_1_L16_;
 	assign MONEX_ = A05_1_MONEX_ & A06_1_MONEX_;
-	assign R1C_ = A04_1_R1C_ & A06_1_R1C_;
 	assign RA_ = A04_1_RA_ & A04_2_RA_ & A05_1_RA_ & A05_2_RA_ & A05_3_RA_;
 	assign RB1_ = A04_1_RB1_ & A06_1_RB1_;
 	assign RB_ = A04_1_RB_ & A04_2_RB_ & A05_1_RB_ & A05_2_RB_ & A05_3_RB_ & A05_4_RB_ & A06_1_RB_ & A06_2_RB_;

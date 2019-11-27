@@ -185,6 +185,20 @@ module a14_memory_timing_addressing(
     output wire YT7_, 
     output wire YT7E,
     
+    output wire IL01,
+    output wire IL01_,
+    output wire IL02,
+    output wire IL02_,
+    output wire IL03,
+    output wire IL03_,
+    output wire IL04,
+    output wire IL04_,
+    output wire IL05,
+    output wire IL05_,
+    output wire IL06,
+    output wire IL06_,
+    output wire IL07,
+    output wire IL07_,
     output wire ILP,
     output wire ILP_,
     
@@ -621,7 +635,7 @@ module a14_memory_timing_addressing(
     nor_1 #(1'b0) NOR42431(XT7_,            XT7,                                                            reset, prop_clk);
     nor_1 #(1'b0) NOR42432(XT7E,            XT7_,                                                           reset, prop_clk);
     
-    // NOR42426 moved to A6 sheet 1
+    // NOR42426 omitted (fan-out expansion for A6 sheet 1
     // NOR42430 omitted (fan-out expansion for A11 sheet 2)
     
     // ILP
@@ -647,6 +661,11 @@ module a14_memory_timing_addressing(
     // NOR42448 - NOR42453 moved to A7 sheet 2
     // NOR42454 moved to A4 sheet 2
     // NOR42455 and NOR42456 removed (fan-in expansion)
+    // NOR42457 moved to A18 sheet 1
+    // NOR42458 removed (fan-out expansion)
+    // NOR42459 moved to A13
+    // NOR42460 removed (fan-out expansion)
+    
     
     // EAD09 - EAD11 (moved here from A12 sheet 1)
     nor_2 #(1'b0) NOR34219(NOR34219_out,    EB9,            S10_,                                           reset, prop_clk);
@@ -692,6 +711,25 @@ module a14_memory_timing_addressing(
     nor_1 #(1'b0) NOR33456(YT7E,            YT7_,                                                           reset, prop_clk);
     
     // Inhibit lines
+    nor_1 #(1'b0) NOR40226(IL01,            S01,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR40227(IL01_,           S01_,                                                           reset, prop_clk);
     
+    nor_1 #(1'b0) NOR40228(IL02,            S02,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR40229(IL02_,           S02_,                                                           reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR40230(IL03,            S03,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR40231(IL03_,           S03_,                                                           reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR40232(IL04,            S04,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR40233(IL04_,           S04_,                                                           reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR40234(IL05,            S05,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR40235(IL05_,           S05_,                                                           reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR40236(IL06,            S06,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR40237(IL06_,           S06_,                                                           reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR40238(IL07,            S07,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR40239(IL07_,           S07_,                                                           reset, prop_clk);
     
 endmodule

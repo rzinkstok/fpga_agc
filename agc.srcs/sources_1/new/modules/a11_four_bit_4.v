@@ -119,6 +119,8 @@ module a11_four_bit_4(
     output wire G16, 
     output wire G16_,
     output wire GEM16,
+    output wire A15_,
+    output wire A16_,
     
     input wire reset,
     input wire prop_clk
@@ -296,7 +298,7 @@ module a11_four_bit_4(
     wire NOR54353_out;
     
     wire SUMA13_, SUMB13_, SUMA14_, SUMB14_, SUMA15_, SUMB15_, SUMA16_, SUMB16_;
-    wire A13_, A14_, A15_, A16_;
+    wire A13_, A14_;
     wire XUY15_, XUY16_;
     wire CI14_, CI15_, CI16_;
     wire CO12;

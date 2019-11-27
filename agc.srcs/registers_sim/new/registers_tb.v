@@ -162,6 +162,8 @@ module registers_tb();
 	wire A11_4_RL14_;
 	wire A11_4_RL15_;
 	wire A11_4_RL16_;
+	wire A15_;
+	wire A16_;
 	wire CI05_;
 	wire CI09_;
 	wire CI13_;
@@ -772,6 +774,8 @@ module registers_tb();
 		G16,
 		G16_,
 		GEM16,
+		A15_,
+		A16_,
 		reset,
 		prop_clk
 	);
