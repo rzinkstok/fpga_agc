@@ -917,6 +917,7 @@ Gates 35201-35251
 53363 added (from A10 sheet 2)
 
 Sheet 2
+Gates 35301-35360
 35359 removed (fan-in expansion A8 sheet 2)
 35360 removed (fan-in expansion A8 sheet 1)
 35460 removed (fan-in expansion A8 sheet 1)
