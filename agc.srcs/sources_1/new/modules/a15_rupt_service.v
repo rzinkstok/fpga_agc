@@ -41,6 +41,8 @@ module a15_rupt_service(
     input wire RSTRT,
     input wire RPTA12,
     
+    input wire S10,
+    input wire S10_,
     input wire S11_,
     input wire S12_,
     
@@ -77,6 +79,9 @@ module a15_rupt_service(
     input wire MKRPT,
     input wire UPRUPT,
     input wire DLKPLS,
+    input wire RRPA,
+    
+    input wire STRGAT,
     
     output wire A15_1_RL09_,
     output wire A15_1_RL10_,
@@ -122,11 +127,19 @@ module a15_rupt_service(
     output wire F16,
     output wire F16_,
     
+    output wire RPTAD3,
+    output wire RPTAD4,
+    output wire RPTAD5,
     output wire RPTAD6,
     output wire RUPTOR_,
     output wire T6RPT,
     
     output wire WOVR_,
+    
+    output wire STR412,
+    output wire STR311,
+    output wire STR210,
+    output wire STR19,
     
     input wire reset,
     input wire prop_clk
@@ -372,10 +385,26 @@ module a15_rupt_service(
     wire NOR35342_out;
     wire NOR35343_out;
     wire NOR35346_out;
+    wire NOR35350_out;
+    wire NOR35351_out;
+    wire NOR35353_out;
+    wire NOR35354_out;
+    wire NOR35356_out;
+    wire NOR35357_out;
+    
+    wire NOR35401_out;
+    wire NOR35405_out;
+    wire NOR35408_out;
+    wire NOR35411_out;
+    wire NOR35414_out;
+    
     
     wire KY1RST;
     wire KY2RST;
     wire DRPRST;
+    wire RPTAD3_in;
+    wire RPTAD4_in;
+    wire RPTAD5_in;
    
     // Rupt service 1
     
@@ -434,5 +463,70 @@ module a15_rupt_service(
     nor_2 #(1'b1) NOR35346(NOR35346_out,    DLKPLS,         DNRPTA,                                         reset, prop_clk);
     nor_3 #(1'b0) NOR35347(DNRPTA,          NOR35346_out,   DRPRST,         GOJAM,                          reset, prop_clk);
     nor_2 #(1'b0) NOR35348(PRPOR2,          PRPOR1,         NOR35346_out,                                   reset, prop_clk);
-        
+    
+    nor_1 #(1'b0) NOR35349(RRPA1_,          RRPA,                                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR35350(NOR35350_out,    NOR35309_out,   NOR35319_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR35351(NOR35351_out,    NOR35330_out,   PRPOR3,                                         reset, prop_clk);
+    assign RPTAD3_in = NOR35350_out & NOR35351_out;
+    nor_2 #(1'b0) NOR35352(RPTAD3,          RRPA1_,         RPTAD3_in,                                      reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR35353(NOR35353_out,    NOR35314_out,   NOR35319_out,   NOR35336_out,                   reset, prop_clk);
+    nor_2 #(1'b0) NOR35354(NOR35354_out,    NOR35342_out,   PRPOR4,                                         reset, prop_clk);
+    assign RPTAD4_in = NOR35353_out & NOR35354_out;
+    nor_2 #(1'b0) NOR35355(RPTAD4,          RRPA1_,         RPTAD4_in,                                      reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR35356(NOR35356_out,    NOR35330_out,   NOR35324_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR35357(NOR35357_out,    NOR35336_out,   NOR35342_out,                                   reset, prop_clk);
+    assign RPTAD5_in = NOR35356_out & NOR35357_out;
+    nor_2 #(1'b0) NOR35358(RPTAD5,          RRPA1_,         RPTAD5_in,                                      reset, prop_clk);
+    
+    // NOR35359 moved to A8 sheet 2
+    // NOR35360 moved to A8 sheet 1
+    
+    
+    // Fixed memory rope, module and strand selection
+    
+    nor_1 #(1'b0) NOR35401(NOR35401_out,    STRGAT,                                                         reset, prop_clk);
+    // NOR35402 omitted (fan-out expansion)
+    
+    nor_3 #(1'b0) NOR35403(STR412,          NOR35401_out,   NOR35408_out,   NOR35405_out,                   reset, prop_clk);
+    // NOR35404 merged into NOR35403
+    nor_1 #(1'b0) NOR35405(NOR35405_out,    F11,                                                            reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR35406(STR311,          NOR35401_out,   NOR35414_out,   NOR35405_out,                   reset, prop_clk);
+    // NOR35407 merged into NOR35406
+    nor_1 #(1'b0) NOR35408(NOR35408_out,    S10,                                                            reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR35409(STR210,          NOR35401_out,   NOR35408_out,   NOR35411_out,                   reset, prop_clk);
+    // NOR35410 merged into NOR35409
+    nor_1 #(1'b0) NOR35411(NOR35411_out,    F11_,                                                           reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR35412(STR19,           NOR35401_out,   NOR35414_out,   NOR35411_out,                   reset, prop_clk);
+    // NOR35413 merged into NOR35412
+    nor_1 #(1'b0) NOR35414(NOR35414_out,    S10_,                                                           reset, prop_clk);
+    
+    
+    nor_2 #(1'b0) NOR35415(NOR35415_out,    F16,            F15,                                            reset, prop_clk);
+    nor_2 #(1'b0) NOR35442(NOR35442_out,    F16,            F15_,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR35450(NOR35450_out,    F15,            F16_,                                           reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR35416(NOR35416_out,    NOR35415_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR35443(NOR35443_out,    NOR35442_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR35451(NOR35451_out,    NOR35450_out,                                                   reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR35423(NOR35423_out,    F14_,                                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR35430(NOR35430_out,    F13_,                                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR35431(NOR35431_out,    F13,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR35437(NOR35437_out,    F14,                                                            reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR35417(NE00,            NOR35416_out,   NOR35423_out,   NOR35430_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR35424(NE01,            NOR35416_out,   NOR35423_out,   NOR35431_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR35425(NE02,            NOR35416_out,   NOR35437_out,   NOR35430_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR35432(NE03,            NOR35416_out,   NOR35437_out,   NOR35431_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR35438(NE04,            NOR35443_out,   NOR35423_out,   NOR35430_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR35444(NE05,            NOR35443_out,   NOR35423_out,   NOR35431_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR35445(NE06,            NOR35443_out,   NOR35437_out,   NOR35430_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR35452(NE07,            NOR35443_out,   NOR35437_out,   NOR35431_out,                   reset, prop_clk);
+    
+    
 endmodule
