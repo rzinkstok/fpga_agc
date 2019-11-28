@@ -29,7 +29,9 @@ module agc();
 	reg CAD4 = 0;
 	reg CAD5 = 0;
 	reg CAD6 = 0;
+	reg CCH12 = 0;
 	reg CCH33 = 0;
+	reg CCHG_ = 1;
 	reg CDUSTB_ = 1;
 	reg CDUXD = 0;
 	reg CDUXM = 0;
@@ -55,8 +57,24 @@ module agc();
 	reg CH13 = 0;
 	reg CH14 = 0;
 	reg CH16 = 0;
+	reg CH3201 = 0;
+	reg CH3202 = 0;
+	reg CH3203 = 0;
+	reg CH3204 = 0;
+	reg CH3205 = 0;
+	reg CH3206 = 0;
+	reg CH3207 = 0;
+	reg CH3208 = 0;
 	reg CHINC = 0;
 	reg CHINC_ = 1;
+	reg CHWL01_ = 1;
+	reg CHWL02_ = 1;
+	reg CHWL03_ = 1;
+	reg CHWL04_ = 1;
+	reg CHWL05_ = 1;
+	reg CHWL06_ = 1;
+	reg CHWL07_ = 1;
+	reg CHWL08_ = 1;
 	reg CI = 0;
 	reg CLOCK = 0;
 	reg CTROR = 0;
@@ -64,9 +82,11 @@ module agc();
 	reg DINC = 0;
 	reg DINC_ = 1;
 	reg DIVSTG = 0;
+	reg DLKPLS = 0;
 	reg DNRPTA = 0;
 	reg E5 = 0;
 	reg E6 = 0;
+	reg E7_ = 1;
 	reg EAD09 = 0;
 	reg EAD09_ = 1;
 	reg EAD10 = 0;
@@ -89,6 +109,8 @@ module agc();
 	reg INLNKM = 0;
 	reg INLNKP = 0;
 	reg INOTLD = 0;
+	reg KYRPT1 = 0;
+	reg KYRPT2 = 0;
 	reg MAMU = 0;
 	reg MCDU = 0;
 	reg MDT01 = 0;
@@ -108,6 +130,7 @@ module agc();
 	reg MDT15 = 0;
 	reg MDT16 = 0;
 	reg MINC = 0;
+	reg MKRPT = 0;
 	reg MNHRPT = 0;
 	reg MNHSBF = 0;
 	reg MONPAR = 0;
@@ -133,15 +156,14 @@ module agc();
 	reg PIPZM = 0;
 	reg PIPZP = 0;
 	reg RADRPT = 0;
+	reg RCH05_ = 1;
+	reg RCH12_ = 1;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
 	reg RCHG_ = 1;
 	reg RNRADM = 0;
 	reg RNRADP = 0;
 	reg RPTA12 = 0;
-	reg RPTAD3 = 0;
-	reg RPTAD4 = 0;
-	reg RPTAD5 = 0;
 	reg RQ_ = 1;
 	reg SA01 = 0;
 	reg SA02 = 0;
@@ -197,9 +219,11 @@ module agc();
 	reg TRNP = 0;
 	reg TRUND = 0;
 	reg U2BBKG_ = 1;
+	reg UPRUPT = 0;
 	reg US2SG = 0;
 	reg VFAIL = 0;
 	reg WATCHP = 0;
+	reg WCH12_ = 1;
 	reg WCHG_ = 1;
 	reg ZOUT_ = 1;
 	reg n2FSFAL = 0;
@@ -356,6 +380,14 @@ module agc();
 	wire A15_1_RL15_;
 	wire A15_1_RL16_;
 	wire A16_;
+	wire A16_1_CHOR01_;
+	wire A16_1_CHOR02_;
+	wire A16_1_CHOR03_;
+	wire A16_1_CHOR04_;
+	wire A16_1_CHOR05_;
+	wire A16_1_CHOR06_;
+	wire A16_1_CHOR07_;
+	wire A16_1_CHOR08_;
 	wire A2XG_;
 	wire A2X_;
 	wire AD0;
@@ -388,6 +420,7 @@ module agc();
 	wire CGCWAR;
 	wire CGG;
 	wire CGMC;
+	wire CH1208;
 	wire CHAT01;
 	wire CHAT02;
 	wire CHAT03;
@@ -416,6 +449,14 @@ module agc();
 	wire CHBT12;
 	wire CHBT13;
 	wire CHBT14;
+	wire CHOR01_;
+	wire CHOR02_;
+	wire CHOR03_;
+	wire CHOR04_;
+	wire CHOR05_;
+	wire CHOR06_;
+	wire CHOR07_;
+	wire CHOR08_;
 	wire CI01_;
 	wire CI05_;
 	wire CI09_;
@@ -704,6 +745,7 @@ module agc();
 	wire GOJ1_;
 	wire GOJAM;
 	wire GOJAM_;
+	wire HIMOD;
 	wire IC1;
 	wire IC10;
 	wire IC10_;
@@ -770,6 +812,7 @@ module agc();
 	wire L16_;
 	wire L2GDG_;
 	wire L2GD_;
+	wire LOMOD;
 	wire MASK0;
 	wire MASK0_;
 	wire MBR1;
@@ -927,6 +970,14 @@ module agc();
 	wire RCG_;
 	wire RCH_;
 	wire RC_;
+	wire RCmXmP;
+	wire RCmXmY;
+	wire RCmXpP;
+	wire RCmXpY;
+	wire RCpXmP;
+	wire RCpXmY;
+	wire RCpXpP;
+	wire RCpXpY;
 	wire RDBANK;
 	wire READ0;
 	wire READ0_;
@@ -955,8 +1006,14 @@ module agc();
 	wire RL16_;
 	wire RLG_;
 	wire RL_;
+	wire ROPER;
+	wire ROPES;
+	wire ROPET;
 	wire ROP_;
 	wire ROR0;
+	wire RPTAD3;
+	wire RPTAD4;
+	wire RPTAD5;
 	wire RPTAD6;
 	wire RPTSET;
 	wire RQ;
@@ -1061,6 +1118,13 @@ module agc();
 	wire STOP;
 	wire STOPA;
 	wire STOP_;
+	wire STR14;
+	wire STR19;
+	wire STR210;
+	wire STR311;
+	wire STR412;
+	wire STR58;
+	wire STR912;
 	wire STRGAT;
 	wire STRT1;
 	wire STRTFC;
@@ -1132,6 +1196,7 @@ module agc();
 	wire TSGU_;
 	wire TSUDO_;
 	wire TT_;
+	wire TVCNAB;
 	wire TWOX;
 	wire U2BBK;
 	wire UNF;
@@ -1354,6 +1419,9 @@ module agc();
 
 	always
 		#10 prop_clk = !prop_clk; // 20 ns gate delay
+
+	always
+		#244.140625 CLOCK = !CLOCK;  // 2.048 MHz clock
 
 	a01_scaler a01(
 		FS01_,
@@ -2281,6 +2349,7 @@ module agc();
 		IC17,
 		L01_,
 		L02_,
+		L15_,
 		R6,
 		R15,
 		STBE,
@@ -3449,16 +3518,22 @@ module agc();
 		RBBEG_,
 		RSTRT,
 		RPTA12,
+		S10,
+		S10_,
 		S11_,
 		S12_,
 		E5,
 		E6,
+		E7_,
 		XB0_,
 		XB1_,
 		XB4_,
 		XB6_,
+		XB7_,
 		XT0_,
 		XT1_,
+		XT2_,
+		XT3_,
 		XT4_,
 		XT5_,
 		T10,
@@ -3472,6 +3547,13 @@ module agc();
 		CA2_,
 		CA3_,
 		ZOUT_,
+		KYRPT1,
+		KYRPT2,
+		MKRPT,
+		UPRUPT,
+		DLKPLS,
+		RRPA,
+		STRGAT,
 		A15_1_RL09_,
 		A15_1_RL10_,
 		A15_1_RL11_,
@@ -3511,15 +3593,86 @@ module agc();
 		F15_,
 		F16,
 		F16_,
+		RPTAD3,
+		RPTAD4,
+		RPTAD5,
 		RPTAD6,
 		RUPTOR_,
 		T6RPT,
 		WOVR_,
+		STR412,
+		STR311,
+		STR210,
+		STR19,
+		STR14,
+		STR58,
+		STR912,
+		LOMOD,
+		HIMOD,
+		ROPER,
+		ROPES,
+		ROPET,
+		reset,
+		prop_clk
+	);
+
+	a16_inout_i a16(
+		CHWL01_,
+		CHWL02_,
+		CHWL03_,
+		CHWL04_,
+		CHWL05_,
+		CHWL06_,
+		CHWL07_,
+		CHWL08_,
+		GOJAM,
+		XB5_,
+		XT0_,
+		WCHG_,
+		CCHG_,
+		RCH05_,
+		CH3201,
+		CH3202,
+		CH3203,
+		CH3204,
+		CH3205,
+		CH3206,
+		CH3207,
+		CH3208,
+		WCH12_,
+		CCH12,
+		RCH12_,
+		RCpXpP,
+		RCmXmP,
+		RCmXpP,
+		RCpXmP,
+		RCpXpY,
+		RCmXmY,
+		RCmXpY,
+		RCpXmY,
+		A16_1_CHOR01_,
+		A16_1_CHOR02_,
+		A16_1_CHOR03_,
+		A16_1_CHOR04_,
+		A16_1_CHOR05_,
+		A16_1_CHOR06_,
+		A16_1_CHOR07_,
+		A16_1_CHOR08_,
+		CH1208,
+		TVCNAB,
 		reset,
 		prop_clk
 	);
 
 	assign A2X_ = A05_1_A2X_ & A05_2_A2X_ & A06_1_A2X_;
+	assign CHOR01_ = A16_1_CHOR01_;
+	assign CHOR02_ = A16_1_CHOR02_;
+	assign CHOR03_ = A16_1_CHOR03_;
+	assign CHOR04_ = A16_1_CHOR04_;
+	assign CHOR05_ = A16_1_CHOR05_;
+	assign CHOR06_ = A16_1_CHOR06_;
+	assign CHOR07_ = A16_1_CHOR07_;
+	assign CHOR08_ = A16_1_CHOR08_;
 	assign CI_ = A04_1_CI_ & A05_1_CI_ & A05_2_CI_ & A06_1_CI_;
 	assign L16_ = A04_1_L16_ & A11_1_L16_;
 	assign MONEX_ = A05_1_MONEX_ & A06_1_MONEX_;

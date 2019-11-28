@@ -48,7 +48,7 @@ module a15_rupt_service(
     
     input wire E5,
     input wire E6,
-    inout wire E7_,
+    input wire E7_,
     
     input wire XB0_,
     input wire XB1_,
@@ -140,6 +140,14 @@ module a15_rupt_service(
     output wire STR311,
     output wire STR210,
     output wire STR19,
+    output wire STR14,
+    output wire STR58,
+    output wire STR912,
+    output wire LOMOD,
+    output wire HIMOD,
+    output wire ROPER,
+    output wire ROPES,
+    output wire ROPET,
     
     input wire reset,
     input wire prop_clk
@@ -397,7 +405,21 @@ module a15_rupt_service(
     wire NOR35408_out;
     wire NOR35411_out;
     wire NOR35414_out;
-    
+    wire NOR35415_out;
+    wire NOR35416_out;
+    wire NOR35420_out;
+    wire NOR35423_out;
+    wire NOR35428_out;
+    wire NOR35430_out;
+    wire NOR35431_out;
+    wire NOR35435_out;
+    wire NOR35437_out;
+    wire NOR35442_out;
+    wire NOR35443_out;
+    wire NOR35448_out;
+    wire NOR35450_out;
+    wire NOR35451_out;
+    wire NOR35456_out;
     
     wire KY1RST;
     wire KY2RST;
@@ -405,7 +427,29 @@ module a15_rupt_service(
     wire RPTAD3_in;
     wire RPTAD4_in;
     wire RPTAD5_in;
-   
+    wire NE00;
+    wire NE01;
+    wire NE02;
+    wire NE03;
+    wire NE04;
+    wire NE05;
+    wire NE06;
+    wire NE07;
+    wire NE10;
+    wire NE036_;
+    wire NE012_;
+    wire NE147_;
+    wire NE345_;
+    wire NE2510_;
+    wire NE6710_;
+    wire n036L;
+    wire n147H;
+    wire n2510L;
+    wire n036H;
+    wire n147L;
+    wire n2510H;
+    
+    
     // Rupt service 1
     
     nor_1 #(1'b0) NOR35301(WOVR_,           WOVR,                                                           reset, prop_clk);
@@ -466,7 +510,7 @@ module a15_rupt_service(
     
     nor_1 #(1'b0) NOR35349(RRPA1_,          RRPA,                                                           reset, prop_clk);
     nor_2 #(1'b0) NOR35350(NOR35350_out,    NOR35309_out,   NOR35319_out,                                   reset, prop_clk);
-    nor_3 #(1'b0) NOR35351(NOR35351_out,    NOR35330_out,   PRPOR3,                                         reset, prop_clk);
+    nor_3 #(1'b0) NOR35351(NOR35351_out,    NOR35330_out,   NOR35442_out,   PRPOR3,                         reset, prop_clk);
     assign RPTAD3_in = NOR35350_out & NOR35351_out;
     nor_2 #(1'b0) NOR35352(RPTAD3,          RRPA1_,         RPTAD3_in,                                      reset, prop_clk);
     
@@ -527,6 +571,38 @@ module a15_rupt_service(
     nor_3 #(1'b0) NOR35444(NE05,            NOR35443_out,   NOR35423_out,   NOR35431_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR35445(NE06,            NOR35443_out,   NOR35437_out,   NOR35430_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR35452(NE07,            NOR35443_out,   NOR35437_out,   NOR35431_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR35453(NE10,            NOR35451_out,   NOR35423_out,   NOR35430_out,                   reset, prop_clk);
     
+    nor_3 #(1'b0) NOR35418(NE036_,          NE00,           NE03,           NE06,                           reset, prop_clk);
+    nor_3 #(1'b0) NOR35426(NE012_,          NE00,           NE01,           NE02,                           reset, prop_clk);
+    nor_3 #(1'b0) NOR35433(NE147_,          NE01,           NE04,           NE07,                           reset, prop_clk);
+    nor_3 #(1'b0) NOR35439(NE345_,          NE04,           NE03,           NE05,                           reset, prop_clk);
+    nor_3 #(1'b0) NOR35446(NE2510_,         NE02,           NE05,           NE10,                           reset, prop_clk);
+    nor_3 #(1'b0) NOR35454(NE6710_,         NE06,           NE07,           NE10,                           reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR35419(n036L,           NE036_,         F12,                                            reset, prop_clk);
+    nor_2 #(1'b0) NOR35427(n147H,           NE147_,         F12_,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR35434(n2510L,          NE2510_,        F12,                                            reset, prop_clk);
+    nor_2 #(1'b0) NOR35440(n036H,           NE036_,         F12_,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR35447(n147L,           NE147_,         F12,                                            reset, prop_clk);
+    nor_2 #(1'b0) NOR35455(n2510H,          NE2510_,        F12_,                                           reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR35420(NOR35420_out,    n036L,          n147H,                                          reset, prop_clk);
+    nor_3 #(1'b0) NOR35428(NOR35428_out,    n036L,          n147L,          n036H,                          reset, prop_clk);
+    nor_2 #(1'b0) NOR35435(NOR35435_out,    n2510L,         n036H,                                          reset, prop_clk);
+    nor_3 #(1'b0) NOR35448(NOR35448_out,    n147H,          n2510H,         n2510L,                         reset, prop_clk);
+    nor_2 #(1'b0) NOR35456(NOR35456_out,    n147L,          n2510H,                                         reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR35421(STR14,           NOR35420_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR35422(ROPER,           NE012_,                                                         reset, prop_clk);
+    nor_1 #(1'b0) NOR35429(LOMOD,           NOR35428_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR35436(STR58,           NOR35435_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR35441(ROPES,           NE345_,                                                         reset, prop_clk);
+    nor_1 #(1'b0) NOR35449(HIMOD,           NOR35448_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR35457(STR912,          NOR35456_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR35458(ROPET,           NE6710_,                                                        reset, prop_clk);
+    
+    // NOR35459 not used
+    // NOR35460 moved to A8 sheet 1
     
 endmodule

@@ -888,7 +888,6 @@ Module A15
 Sheet 1
 Gates 35101-35158
 Gates 35201-35251
-
 35103 removed (fan-out expansion)
 35109 removed (fan-out expansion)
 35112 removed (not used)
@@ -918,9 +917,25 @@ Gates 35201-35251
 
 Sheet 2
 Gates 35301-35360
+Gates 35401-35460
+35305 removed (fan-in expansion)
+35337 removed (not used)
+35338 removed (not used)
 35359 removed (fan-in expansion A8 sheet 2)
 35360 removed (fan-in expansion A8 sheet 1)
+35402 removed (fan-out expansion)
+35404 removed (fan-in expansion)
+35407 removed (fan-in expansion)
+35410 removed (fan-in expansion)
+35413 removed (fan-in expansion)
+35459 removed (not used)
 35460 removed (fan-in expansion A8 sheet 1)
+
+Module A16
+Sheet 1
+Gates 43101-43160
+43150 removed (fan-out expansion)
+43155 removed (fan-out expansion)
 
 
 Module A18

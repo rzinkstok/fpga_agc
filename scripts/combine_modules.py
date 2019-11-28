@@ -862,10 +862,12 @@ def write_wrapper(module_params, input_wires, output_wires, sim_name=None, sim_c
         fp.write("\n")
 
         if "prop_clk" in input_wires:
+            print("Adding prop clock")
             fp.write("\talways\n")
             fp.write("\t\t#10 prop_clk = !prop_clk; // 20 ns gate delay\n\n")
 
-        if "a2_timer" in module_params.keys():
+        if "a02_timer" in module_params.keys():
+            print("Adding clock")
             fp.write("\talways\n")
             fp.write("\t\t#244.140625 CLOCK = !CLOCK;  // 2.048 MHz clock\n\n")
 

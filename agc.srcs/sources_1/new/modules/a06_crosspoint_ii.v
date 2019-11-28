@@ -89,7 +89,7 @@ module a06_crosspoint_ii(
     input wire IC17,
     input wire L01_,
     input wire L02_,
-    inout wire L15_,
+    input wire L15_,
     input wire R6, 
     input wire R15,
     input wire STBE, 
