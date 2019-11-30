@@ -98,6 +98,7 @@ module a03_sq_register(
     output wire MP0_, 
     output wire MP1, 
     output wire MP1_, 
+    output wire MP3,
     output wire MP3_, 
     output wire MP3A,
     output wire TCSAJ3, 
@@ -144,7 +145,6 @@ module a03_sq_register(
     input wire reset,
     input wire prop_clk
 );
-    wire MP3;
     
     /**************************
     *

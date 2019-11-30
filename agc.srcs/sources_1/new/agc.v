@@ -87,20 +87,12 @@ module agc();
 	reg E5 = 0;
 	reg E6 = 0;
 	reg E7_ = 1;
-	reg EAD09 = 0;
-	reg EAD09_ = 1;
-	reg EAD10 = 0;
-	reg EAD10_ = 1;
-	reg EAD11 = 0;
-	reg EAD11_ = 1;
-	reg EB9 = 0;
 	reg EMSD = 0;
 	reg ERRST = 0;
 	reg FETCH0 = 0;
 	reg FETCH0_ = 1;
 	reg FETCH1 = 0;
 	reg FLTOUT = 0;
-	reg G01A = 0;
 	reg GYROD = 0;
 	reg HNDRPT = 0;
 	reg INCSET_ = 1;
@@ -137,7 +129,6 @@ module agc();
 	reg MONWBK = 0;
 	reg MON_ = 1;
 	reg MONpCH = 0;
-	reg MP3 = 0;
 	reg MSTP = 0;
 	reg MSTRT = 0;
 	reg MTCSAI = 0;
@@ -156,7 +147,6 @@ module agc();
 	reg PIPZM = 0;
 	reg PIPZP = 0;
 	reg RADRPT = 0;
-	reg RCH05_ = 1;
 	reg RCH12_ = 1;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
@@ -194,17 +184,6 @@ module agc();
 	reg STNDBY_ = 1;
 	reg STORE1_ = 1;
 	reg STRT2 = 0;
-	reg SUMA11_ = 1;
-	reg SUMA12_ = 1;
-	reg SUMA13_ = 1;
-	reg SUMA14_ = 1;
-	reg SUMA16_ = 1;
-	reg SUMB11_ = 1;
-	reg SUMB12_ = 1;
-	reg SUMB13_ = 1;
-	reg SUMB14_ = 1;
-	reg SUMB16_ = 1;
-	reg T12USE_ = 1;
 	reg T1P = 0;
 	reg T2P = 0;
 	reg T3P = 0;
@@ -420,6 +399,7 @@ module agc();
 	wire CGCWAR;
 	wire CGG;
 	wire CGMC;
+	wire CH1207;
 	wire CH1208;
 	wire CHAT01;
 	wire CHAT02;
@@ -508,12 +488,18 @@ module agc();
 	wire DVXP1;
 	wire DXCH0;
 	wire EAC_;
-	wire EB09;
-	wire EB09_;
+	wire EAD09;
+	wire EAD09_;
+	wire EAD10;
+	wire EAD10_;
+	wire EAD11;
+	wire EAD11_;
 	wire EB10;
 	wire EB10_;
 	wire EB11;
 	wire EB11_;
+	wire EB9;
+	wire EB9_;
 	wire EDOP_;
 	wire EDSET;
 	wire ERAS;
@@ -833,6 +819,7 @@ module agc();
 	wire MP0_;
 	wire MP1;
 	wire MP1_;
+	wire MP3;
 	wire MP3A;
 	wire MP3_;
 	wire MPAL;
@@ -914,6 +901,8 @@ module agc();
 	wire OCTAD6;
 	wire ODDSET_;
 	wire OSCALM;
+	wire OT1207;
+	wire OT1207_;
 	wire OVF;
 	wire OVFSTB_;
 	wire OVF_;
@@ -974,10 +963,18 @@ module agc();
 	wire RCmXmY;
 	wire RCmXpP;
 	wire RCmXpY;
+	wire RCmYmR;
+	wire RCmYpR;
+	wire RCmZmR;
+	wire RCmZpR;
 	wire RCpXmP;
 	wire RCpXmY;
 	wire RCpXpP;
 	wire RCpXpY;
+	wire RCpYmR;
+	wire RCpYpR;
+	wire RCpZmR;
+	wire RCpZpR;
 	wire RDBANK;
 	wire READ0;
 	wire READ0_;
@@ -1133,10 +1130,20 @@ module agc();
 	wire SUMA02_;
 	wire SUMA03_;
 	wire SUMA04_;
+	wire SUMA11_;
+	wire SUMA12_;
+	wire SUMA13_;
+	wire SUMA14_;
+	wire SUMA16_;
 	wire SUMB01_;
 	wire SUMB02_;
 	wire SUMB03_;
 	wire SUMB04_;
+	wire SUMB11_;
+	wire SUMB12_;
+	wire SUMB13_;
+	wire SUMB14_;
+	wire SUMB16_;
 	wire SYNC14_;
 	wire SYNC4_;
 	wire T01;
@@ -1175,6 +1182,7 @@ module agc();
 	wire T12A;
 	wire T12DC_;
 	wire T12SET;
+	wire T12USE_;
 	wire T12_;
 	wire T6RPT;
 	wire TC0;
@@ -1805,6 +1813,7 @@ module agc();
 		MP0_,
 		MP1,
 		MP1_,
+		MP3,
 		MP3_,
 		MP3A,
 		TCSAJ3,
@@ -1937,6 +1946,7 @@ module agc();
 		MP3A,
 		TS0_,
 		n7XP11,
+		T12USE_,
 		STG1,
 		STG2,
 		STG3,
@@ -2920,6 +2930,10 @@ module agc();
 		XUY09_,
 		XUY10_,
 		XUY12_,
+		SUMA11_,
+		SUMA12_,
+		SUMB11_,
+		SUMB12_,
 		L09_,
 		L10_,
 		L11_,
@@ -3040,6 +3054,12 @@ module agc();
 		CO16,
 		XUY13_,
 		XUY14_,
+		SUMA13_,
+		SUMA14_,
+		SUMA16_,
+		SUMB13_,
+		SUMB14_,
+		SUMB16_,
 		L13_,
 		L14_,
 		L15_,
@@ -3063,7 +3083,6 @@ module agc();
 
 	a12_parity_s_register a12(
 		G01,
-		G01A,
 		G02,
 		G03,
 		G04,
@@ -3460,6 +3479,12 @@ module agc();
 		YT7,
 		YT7_,
 		YT7E,
+		EAD09,
+		EAD09_,
+		EAD10,
+		EAD10_,
+		EAD11,
+		EAD11_,
 		IL01,
 		IL01_,
 		IL02,
@@ -3572,8 +3597,8 @@ module agc();
 		FB14_,
 		FB16,
 		FB16_,
-		EB09,
-		EB09_,
+		EB9,
+		EB9_,
 		EB10,
 		EB10_,
 		EB11,
@@ -3627,10 +3652,10 @@ module agc();
 		CHWL08_,
 		GOJAM,
 		XB5_,
+		XB6_,
 		XT0_,
 		WCHG_,
 		CCHG_,
-		RCH05_,
 		CH3201,
 		CH3202,
 		CH3203,
@@ -3650,6 +3675,14 @@ module agc();
 		RCmXmY,
 		RCmXpY,
 		RCpXmY,
+		RCpZpR,
+		RCmZmR,
+		RCmZpR,
+		RCpZmR,
+		RCpYpR,
+		RCmYmR,
+		RCmYpR,
+		RCpYmR,
 		A16_1_CHOR01_,
 		A16_1_CHOR02_,
 		A16_1_CHOR03_,
@@ -3658,7 +3691,10 @@ module agc();
 		A16_1_CHOR06_,
 		A16_1_CHOR07_,
 		A16_1_CHOR08_,
+		CH1207,
 		CH1208,
+		OT1207,
+		OT1207_,
 		TVCNAB,
 		reset,
 		prop_clk

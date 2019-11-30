@@ -98,6 +98,10 @@ module a10_four_bit_3(
     output wire XUY09_,    
     output wire XUY10_,
     output wire XUY12_,
+    output wire SUMA11_,
+    output wire SUMA12_,
+    output wire SUMB11_,
+	output wire SUMB12_,
     output wire L09_,
     output wire L10_,
     output wire L11_,
@@ -294,7 +298,7 @@ module a10_four_bit_3(
     wire NOR34452_out;
     wire NOR34453_out;
     
-    wire SUMA09_, SUMB09_, SUMA10_, SUMB10_, SUMA11_, SUMB11_, SUMA12_, SUMB12_;
+    wire SUMA09_, SUMB09_, SUMA10_, SUMB10_;
     wire A09_, A10_, A11_, A12_;
     wire XUY11_, XUY08_;
     wire CI10_, CI11_, CI12_;

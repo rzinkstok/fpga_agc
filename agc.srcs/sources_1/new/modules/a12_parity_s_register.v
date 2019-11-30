@@ -2,7 +2,6 @@
 
 module a12_parity_s_register(
     input wire G01,
-    input wire G01A,
     input wire G02,
     input wire G03,
     input wire G04,
@@ -126,6 +125,7 @@ module a12_parity_s_register(
     *
     **************************/
 
+    wire G01A;
     wire G01A_;
     wire G02_;
     wire G03_;

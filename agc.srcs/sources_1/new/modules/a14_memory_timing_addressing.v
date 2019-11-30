@@ -185,6 +185,13 @@ module a14_memory_timing_addressing(
     output wire YT7_, 
     output wire YT7E,
     
+    output wire EAD09,
+    output wire EAD09_,
+    output wire EAD10,
+    output wire EAD10_,
+    output wire EAD11,
+    output wire EAD11_,
+    
     output wire IL01,
     output wire IL01_,
     output wire IL02,
@@ -522,12 +529,6 @@ module a14_memory_timing_addressing(
     
     wire RILP1;
     wire RILP1_;
-    wire EAD09;
-    wire EAD09_;
-    wire EAD10;
-    wire EAD10_;
-    wire EAD11;
-    wire EAD11_;
     
     // X bottom signals
     

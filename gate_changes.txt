@@ -934,8 +934,14 @@ Gates 35401-35460
 Module A16
 Sheet 1
 Gates 43101-43160
+Gates 43201-43260
 43150 removed (fan-out expansion)
 43155 removed (fan-out expansion)
+43208 removed (fan-out expansion)
+43212 removed (fan-out expansion)
+43215 removed (fan-out expansion)
+43218 removed (fan-out expansion)
+43260 removed (not connected)
 
 
 Module A18

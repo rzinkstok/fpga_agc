@@ -88,6 +88,7 @@ module a04_stage_branch(
     input wire TS0_,
     input wire n7XP11,
     
+    output wire T12USE_,
     output wire STG1, 
     output wire STG2, 
     output wire STG3,  // CHANGED!!!
@@ -206,7 +207,7 @@ module a04_stage_branch(
     *
     **************************/
     
-    wire DIVSTG, T12USE_, DVST_, TRSM_;
+    wire DIVSTG, DVST_, TRSM_;
     wire STFFA_, STFFB_;
     wire ST1D;
     wire BR1FF, BR1FF_, BR2FF, BR2FF_;

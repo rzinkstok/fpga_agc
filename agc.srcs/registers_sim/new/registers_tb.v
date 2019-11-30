@@ -267,10 +267,20 @@ module registers_tb();
 	wire SUMA02_;
 	wire SUMA03_;
 	wire SUMA04_;
+	wire SUMA11_;
+	wire SUMA12_;
+	wire SUMA13_;
+	wire SUMA14_;
+	wire SUMA16_;
 	wire SUMB01_;
 	wire SUMB02_;
 	wire SUMB03_;
 	wire SUMB04_;
+	wire SUMB11_;
+	wire SUMB12_;
+	wire SUMB13_;
+	wire SUMB14_;
+	wire SUMB16_;
 	wire WL01;
 	wire WL01_;
 	wire WL02;
@@ -639,6 +649,10 @@ module registers_tb();
 		XUY09_,
 		XUY10_,
 		XUY12_,
+		SUMA11_,
+		SUMA12_,
+		SUMB11_,
+		SUMB12_,
 		L09_,
 		L10_,
 		L11_,
@@ -759,6 +773,12 @@ module registers_tb();
 		CO16,
 		XUY13_,
 		XUY14_,
+		SUMA13_,
+		SUMA14_,
+		SUMA16_,
+		SUMB13_,
+		SUMB14_,
+		SUMB16_,
 		L13_,
 		L14_,
 		L15_,

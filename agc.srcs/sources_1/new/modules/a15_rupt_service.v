@@ -103,8 +103,8 @@ module a15_rupt_service(
     output wire FB16,
     output wire FB16_,
     
-    output wire EB09,
-    output wire EB09_,
+    output wire EB9,
+    output wire EB9_,
     output wire EB10,
     output wire EB10_,
     output wire EB11,
@@ -285,11 +285,11 @@ module a15_rupt_service(
     nor_3 #(1'b0) NOR35158(NOR35158_out,    SUMA01_,        U2BBKG_,        SUMB01_,                        reset, prop_clk);
     nor_2 #(1'b0) NOR35143(NOR35143_out,    WL09_,          WEBG_,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR35144(NOR35144_out,    WL01_,          WBBEG_,                                         reset, prop_clk);
-    nor_4 #(1'b1) NOR35145(EB09_,           NOR35158_out,   NOR35143_out,   NOR35144_out,   EB09,           reset, prop_clk);
+    nor_4 #(1'b1) NOR35145(EB9_,            NOR35158_out,   NOR35143_out,   NOR35144_out,   EB9,            reset, prop_clk);
     // NOR35142 merged into NOR35145
-    nor_2 #(1'b0) NOR35146(EB09,            EB10_,          CEBG,                                           reset, prop_clk);
-    nor_2 #(1'b0) NOR35147(NOR35147_out,    REBG_,          EB09_,                                          reset, prop_clk);
-    nor_2 #(1'b0) NOR35148(BBK1,            EB09_,          RBBEG_,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR35146(EB9,             EB10_,          CEBG,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR35147(NOR35147_out,    REBG_,          EB9_,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR35148(BBK1,            EB9_,           RBBEG_,                                         reset, prop_clk);
     nor_1 #(1'b0) NOR35149(A15_1_RL09_,     NOR35147_out,                                                   reset, prop_clk);
     
     
