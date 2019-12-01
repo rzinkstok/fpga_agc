@@ -1397,7 +1397,7 @@ module registers_tb();
         begin
             RULOG_ = 1;
         end
-		$stop;
+		#100000 $stop;
 	end
 
 endmodule

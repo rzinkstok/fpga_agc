@@ -943,6 +943,21 @@ Gates 43201-43260
 43218 removed (fan-out expansion)
 43260 removed (not connected)
 
+Sheet 2
+Gates 43301-43360
+Gates 43401-43460
+43347 removed (fan-out expansion)
+43348 removed (fan-out expansion)
+43353 removed (fan-out expansion)
+43354 removed (fan-out expansion)
+43357 removed (fan-out expansion)
+43358 removed (fan-out expansion)
+43359 removed (not connected)
+43360 removed (not connected)
+43426 removed (fan-in expansion)
+43438 removed (fan-in expansion)
+43440 removed (fan-in expansion)
+
 
 Module A18
 45159 removed (moved to A1 sheet 1)

@@ -892,7 +892,7 @@ def write_wrapper(module_params, input_wires, output_wires, sim_name=None, sim_c
             fp.write("\tbegin\n")
             if sim_code:
                 sim_code(fp)
-            fp.write("\t\t$stop;\n")
+            fp.write("\t\t#100000 $stop;\n")
             fp.write("\tend\n\n")
 
         fp.write("endmodule\n")
