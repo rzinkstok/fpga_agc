@@ -30,8 +30,10 @@ module agc_tb();
 	reg CAD5 = 0;
 	reg CAD6 = 0;
 	reg CCH12 = 0;
+	reg CCH13 = 0;
 	reg CCH33 = 0;
 	reg CCHG_ = 1;
+	reg CDUFAL = 0;
 	reg CDUSTB_ = 1;
 	reg CDUXD = 0;
 	reg CDUXM = 0;
@@ -56,22 +58,42 @@ module agc_tb();
 	reg CH09 = 0;
 	reg CH10 = 0;
 	reg CH11 = 0;
+	reg CH1113 = 0;
 	reg CH12 = 0;
 	reg CH13 = 0;
+	reg CH1301 = 0;
+	reg CH1302 = 0;
+	reg CH1303 = 0;
+	reg CH1304 = 0;
+	reg CH1305 = 0;
+	reg CH1306 = 0;
+	reg CH1307 = 0;
+	reg CH1308 = 0;
+	reg CH1309 = 0;
+	reg CH1310 = 0;
+	reg CH1312 = 0;
+	reg CH1313 = 0;
+	reg CH1314 = 0;
+	reg CH1316 = 0;
 	reg CH14 = 0;
-	reg CH1501 = 0;
-	reg CH1502 = 0;
-	reg CH1503 = 0;
-	reg CH1504 = 0;
+	reg CH1401 = 0;
+	reg CH1402 = 0;
+	reg CH1403 = 0;
+	reg CH1404 = 0;
+	reg CH1405 = 0;
+	reg CH1406 = 0;
+	reg CH1407 = 0;
+	reg CH1408 = 0;
+	reg CH1409 = 0;
+	reg CH1410 = 0;
+	reg CH1411 = 0;
+	reg CH1412 = 0;
+	reg CH1413 = 0;
+	reg CH1414 = 0;
+	reg CH1416 = 0;
 	reg CH16 = 0;
-	reg CH3201 = 0;
-	reg CH3202 = 0;
-	reg CH3203 = 0;
-	reg CH3204 = 0;
-	reg CH3205 = 0;
-	reg CH3206 = 0;
-	reg CH3207 = 0;
-	reg CH3208 = 0;
+	reg CH3310 = 0;
+	reg CH3312 = 0;
 	reg CHINC = 0;
 	reg CHINC_ = 1;
 	reg CHWL01_ = 1;
@@ -88,8 +110,10 @@ module agc_tb();
 	reg CHWL12_ = 1;
 	reg CHWL13_ = 1;
 	reg CHWL14_ = 1;
+	reg CHWL16_ = 1;
 	reg CI = 0;
 	reg CLOCK = 0;
+	reg CTLSAT = 0;
 	reg CTROR = 0;
 	reg DBLTST = 0;
 	reg DINC = 0;
@@ -102,22 +126,47 @@ module agc_tb();
 	reg E7_ = 1;
 	reg EMSD = 0;
 	reg ERRST = 0;
+	reg F09D = 0;
 	reg FETCH0 = 0;
 	reg FETCH0_ = 1;
 	reg FETCH1 = 0;
 	reg FLASH_ = 1;
 	reg FLTOUT = 0;
+	reg FREFUN = 0;
+	reg GCAPCL = 0;
+	reg GUIREL = 0;
 	reg GYROD = 0;
-	reg HNDRPT = 0;
+	reg HOLFUN = 0;
+	reg IMUCAG = 0;
+	reg IMUFAL = 0;
+	reg IMUOPR = 0;
+	reg IN3008 = 0;
+	reg IN3212 = 0;
+	reg IN3213 = 0;
+	reg IN3214 = 0;
+	reg IN3216 = 0;
+	reg IN3301 = 0;
 	reg INCSET_ = 1;
 	reg INKL = 0;
 	reg INKL_ = 1;
 	reg INLNKM = 0;
 	reg INLNKP = 0;
 	reg INOTLD = 0;
-	reg KYRPT1 = 0;
+	reg ISSTOR = 0;
 	reg KYRPT2 = 0;
+	reg LEMATT = 0;
+	reg LFTOFF = 0;
+	reg LRRLSC = 0;
+	reg LVDAGD = 0;
+	reg MAINRS = 0;
 	reg MAMU = 0;
+	reg MANRmP = 0;
+	reg MANRmR = 0;
+	reg MANRmY = 0;
+	reg MANRpP = 0;
+	reg MANRpR = 0;
+	reg MANRpY = 0;
+	reg MARK = 0;
 	reg MCDU = 0;
 	reg MDT01 = 0;
 	reg MDT02 = 0;
@@ -136,22 +185,45 @@ module agc_tb();
 	reg MDT15 = 0;
 	reg MDT16 = 0;
 	reg MINC = 0;
+	reg MKEY1 = 0;
+	reg MKEY2 = 0;
+	reg MKEY3 = 0;
+	reg MKEY4 = 0;
+	reg MKEY5 = 0;
 	reg MKRPT = 0;
 	reg MNHRPT = 0;
 	reg MNHSBF = 0;
+	reg MNIMmP = 0;
+	reg MNIMmR = 0;
+	reg MNIMmY = 0;
+	reg MNIMpP = 0;
+	reg MNIMpR = 0;
+	reg MNIMpY = 0;
 	reg MONPAR = 0;
 	reg MONWBK = 0;
 	reg MON_ = 1;
 	reg MONpCH = 0;
+	reg MRKREJ = 0;
+	reg MRKRST = 0;
 	reg MSTP = 0;
 	reg MSTRT = 0;
 	reg MTCSAI = 0;
+	reg NAVRST = 0;
 	reg NHALGA = 0;
 	reg NHVFAL = 0;
 	reg NISQ = 0;
+	reg NKEY1 = 0;
+	reg NKEY2 = 0;
+	reg NKEY3 = 0;
+	reg NKEY4 = 0;
+	reg NKEY5 = 0;
 	reg ONE = 1;
+	reg OPCDFL = 0;
+	reg OPMSW2 = 0;
+	reg OPMSW3 = 0;
 	reg OTLNKM = 0;
 	reg PCDU = 0;
+	reg PCHGOF = 0;
 	reg PIPAFL = 0;
 	reg PIPPLS_ = 1;
 	reg PIPXM = 0;
@@ -162,13 +234,18 @@ module agc_tb();
 	reg PIPZP = 0;
 	reg RADRPT = 0;
 	reg RCH12_ = 1;
+	reg RCH13_ = 1;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
 	reg RCHG_ = 1;
 	reg RNRADM = 0;
 	reg RNRADP = 0;
+	reg ROLGOF = 0;
 	reg RPTA12 = 0;
 	reg RQ_ = 1;
+	reg RRPONA = 0;
+	reg RRRLSC = 0;
+	reg S4BSAB = 0;
 	reg SA01 = 0;
 	reg SA02 = 0;
 	reg SA03 = 0;
@@ -185,7 +262,7 @@ module agc_tb();
 	reg SA14 = 0;
 	reg SA16 = 0;
 	reg SAP = 0;
-	reg SBY = 0;
+	reg SBYBUT = 0;
 	reg SCAFAL = 0;
 	reg SHAFTD = 0;
 	reg SHAFTM = 0;
@@ -193,10 +270,12 @@ module agc_tb();
 	reg SHANC_ = 1;
 	reg SHIFT = 0;
 	reg SHIFT_ = 1;
+	reg SMSEPR = 0;
+	reg SPSRDY = 0;
 	reg STFET1_ = 1;
 	reg STFETI_ = 1;
-	reg STNDBY_ = 1;
 	reg STORE1_ = 1;
+	reg STRPRS = 0;
 	reg STRT2 = 0;
 	reg T1P = 0;
 	reg T2P = 0;
@@ -207,16 +286,27 @@ module agc_tb();
 	reg T7PHS4_ = 1;
 	reg TEMPIN = 0;
 	reg THRSTD = 0;
+	reg TRANmX = 0;
+	reg TRANmY = 0;
+	reg TRANmZ = 0;
+	reg TRANpX = 0;
+	reg TRANpY = 0;
+	reg TRANpZ = 0;
 	reg TRNM = 0;
 	reg TRNP = 0;
+	reg TRST10 = 0;
+	reg TRST9 = 0;
 	reg TRUND = 0;
 	reg U2BBKG_ = 1;
+	reg ULLTHR = 0;
 	reg UPRUPT = 0;
 	reg US2SG = 0;
 	reg VFAIL = 0;
 	reg WATCHP = 0;
 	reg WCH12_ = 1;
+	reg WCH13_ = 1;
 	reg WCHG_ = 1;
+	reg ZEROP = 0;
 	reg ZOUT_ = 1;
 	reg n2FSFAL = 0;
 	reg prop_clk = 1;
@@ -387,6 +477,36 @@ module agc_tb();
 	wire A16_2_CHOR05_;
 	wire A16_2_CHOR06_;
 	wire A16_2_CHOR07_;
+	wire A17_1_CHOR01_;
+	wire A17_1_CHOR02_;
+	wire A17_1_CHOR03_;
+	wire A17_1_CHOR04_;
+	wire A17_1_CHOR05_;
+	wire A17_1_CHOR06_;
+	wire A17_1_CHOR07_;
+	wire A17_1_CHOR08_;
+	wire A17_1_CHOR09_;
+	wire A17_1_CHOR10_;
+	wire A17_1_CHOR11_;
+	wire A17_1_CHOR12_;
+	wire A17_1_CHOR13_;
+	wire A17_1_CHOR14_;
+	wire A17_1_CHOR16_;
+	wire A17_2_CHOR01_;
+	wire A17_2_CHOR02_;
+	wire A17_2_CHOR03_;
+	wire A17_2_CHOR04_;
+	wire A17_2_CHOR05_;
+	wire A17_2_CHOR06_;
+	wire A17_2_CHOR07_;
+	wire A17_2_CHOR08_;
+	wire A17_2_CHOR09_;
+	wire A17_2_CHOR10_;
+	wire A17_2_CHOR11_;
+	wire A17_2_CHOR12_;
+	wire A17_2_CHOR13_;
+	wire A17_2_CHOR14_;
+	wire A17_2_CHOR16_;
 	wire A2XG_;
 	wire A2X_;
 	wire AD0;
@@ -412,6 +532,7 @@ module agc_tb();
 	wire BXVX;
 	wire CAG;
 	wire CBG;
+	wire CCH11;
 	wire CCS0;
 	wire CCS0_;
 	wire CEBG;
@@ -424,6 +545,32 @@ module agc_tb();
 	wire CH1212;
 	wire CH1213;
 	wire CH1214;
+	wire CH1311;
+	wire CH1501;
+	wire CH1502;
+	wire CH1503;
+	wire CH1504;
+	wire CH1505;
+	wire CH1601;
+	wire CH1602;
+	wire CH1603;
+	wire CH1604;
+	wire CH1605;
+	wire CH1606;
+	wire CH1607;
+	wire CH3201;
+	wire CH3202;
+	wire CH3203;
+	wire CH3204;
+	wire CH3205;
+	wire CH3206;
+	wire CH3207;
+	wire CH3208;
+	wire CH3209;
+	wire CH3210;
+	wire CH3313;
+	wire CH3314;
+	wire CH3316;
 	wire CHAT01;
 	wire CHAT02;
 	wire CHAT03;
@@ -460,6 +607,13 @@ module agc_tb();
 	wire CHOR06_;
 	wire CHOR07_;
 	wire CHOR08_;
+	wire CHOR09_;
+	wire CHOR10_;
+	wire CHOR11_;
+	wire CHOR12_;
+	wire CHOR13_;
+	wire CHOR14_;
+	wire CHOR16_;
 	wire CI01_;
 	wire CI05_;
 	wire CI09_;
@@ -760,6 +914,7 @@ module agc_tb();
 	wire GOJAM;
 	wire GOJAM_;
 	wire HIMOD;
+	wire HNDRPT;
 	wire IC1;
 	wire IC10;
 	wire IC10_;
@@ -810,6 +965,7 @@ module agc_tb();
 	wire ISSWAR;
 	wire KRPT;
 	wire KYRLS;
+	wire KYRPT1;
 	wire L01_;
 	wire L02_;
 	wire L03_;
@@ -989,6 +1145,7 @@ module agc_tb();
 	wire RBSQ;
 	wire RB_;
 	wire RCG_;
+	wire RCH11_;
 	wire RCH_;
 	wire RC_;
 	wire RCmXmP;
@@ -1034,6 +1191,17 @@ module agc_tb();
 	wire RL15_;
 	wire RL16_;
 	wire RLG_;
+	wire RLYB01;
+	wire RLYB02;
+	wire RLYB03;
+	wire RLYB04;
+	wire RLYB05;
+	wire RLYB06;
+	wire RLYB07;
+	wire RLYB08;
+	wire RLYB09;
+	wire RLYB10;
+	wire RLYB11;
 	wire RL_;
 	wire ROPER;
 	wire ROPES;
@@ -1070,6 +1238,10 @@ module agc_tb();
 	wire RU_;
 	wire RXOR0;
 	wire RXOR0_;
+	wire RYWD12;
+	wire RYWD13;
+	wire RYWD14;
+	wire RYWD16;
 	wire RZG_;
 	wire RZ_;
 	wire S01;
@@ -1108,6 +1280,9 @@ module agc_tb();
 	wire SB4;
 	wire SBE;
 	wire SBF;
+	wire SBY;
+	wire SBYLIT;
+	wire SBYREL_;
 	wire SCAD;
 	wire SCAD_;
 	wire SCAS10;
@@ -1148,6 +1323,8 @@ module agc_tb();
 	wire STG1;
 	wire STG2;
 	wire STG3;
+	wire STNDBY;
+	wire STNDBY_;
 	wire STOP;
 	wire STOPA;
 	wire STOP_;
@@ -1233,7 +1410,11 @@ module agc_tb();
 	wire TMZ_;
 	wire TOV_;
 	wire TPARG_;
+	wire TPOR_;
 	wire TPZG_;
+	wire TRP31A;
+	wire TRP31B;
+	wire TRP32;
 	wire TRSM;
 	wire TS0;
 	wire TS0_;
@@ -1256,6 +1437,7 @@ module agc_tb();
 	wire WBBEG_;
 	wire WBG_;
 	wire WB_;
+	wire WCH11_;
 	wire WCH_;
 	wire WEBG_;
 	wire WEDOPG_;
@@ -3787,15 +3969,270 @@ module agc_tb();
 		prop_clk
 	);
 
+	a17_inout_ii a17(
+		F05A_,
+		F05B_,
+		F05D,
+		XT1_,
+		XT3_,
+		XB0_,
+		XB1_,
+		XB2_,
+		XB3_,
+		WCHG_,
+		CCHG_,
+		CHWL01_,
+		CHWL02_,
+		CHWL03_,
+		CHWL04_,
+		CHWL05_,
+		CHWL06_,
+		CHWL07_,
+		CHWL08_,
+		CHWL09_,
+		CHWL10_,
+		CHWL11_,
+		CHWL12_,
+		CHWL13_,
+		CHWL14_,
+		CHWL16_,
+		WCH13_,
+		TPOR_,
+		GOJAM,
+		CH1113,
+		CH1213,
+		CH1214,
+		CH1301,
+		CH1302,
+		CH1303,
+		CH1304,
+		CH1305,
+		CH1306,
+		CH1307,
+		CH1308,
+		CH1309,
+		CH1310,
+		CH1311,
+		CH1312,
+		CH1313,
+		CH1314,
+		CH1316,
+		CH1401,
+		CH1402,
+		CH1403,
+		CH1404,
+		CH1405,
+		CH1406,
+		CH1407,
+		CH1408,
+		CH1409,
+		CH1410,
+		CH1411,
+		CH1412,
+		CH1413,
+		CH1414,
+		CH1416,
+		ULLTHR,
+		SMSEPR,
+		SPSRDY,
+		S4BSAB,
+		LFTOFF,
+		GUIREL,
+		OPCDFL,
+		IN3008,
+		IMUOPR,
+		CTLSAT,
+		IMUCAG,
+		CDUFAL,
+		IMUFAL,
+		ISSTOR,
+		TEMPIN,
+		IN3301,
+		RRPONA,
+		RRRLSC,
+		ZEROP,
+		OPMSW2,
+		OPMSW3,
+		STRPRS,
+		LVDAGD,
+		LRRLSC,
+		CH3310,
+		CH3312,
+		PIPAFL,
+		AGCWAR,
+		OSCALM,
+		MANRpP,
+		MANRmP,
+		MANRpY,
+		MANRmY,
+		MANRpR,
+		MANRmR,
+		TRANpX,
+		TRANmX,
+		TRANpY,
+		TRANmY,
+		TRANpZ,
+		TRANmZ,
+		HOLFUN,
+		FREFUN,
+		GCAPCL,
+		MNIMpP,
+		MNIMmP,
+		MNIMpY,
+		MNIMmY,
+		MNIMpR,
+		MNIMmR,
+		TRST9,
+		TRST10,
+		PCHGOF,
+		ROLGOF,
+		LEMATT,
+		IN3212,
+		IN3213,
+		IN3214,
+		IN3216,
+		A17_1_CHOR01_,
+		A17_2_CHOR01_,
+		A17_1_CHOR02_,
+		A17_2_CHOR02_,
+		A17_1_CHOR03_,
+		A17_2_CHOR03_,
+		A17_1_CHOR04_,
+		A17_2_CHOR04_,
+		A17_1_CHOR05_,
+		A17_2_CHOR05_,
+		A17_1_CHOR06_,
+		A17_2_CHOR06_,
+		A17_1_CHOR07_,
+		A17_2_CHOR07_,
+		A17_1_CHOR08_,
+		A17_2_CHOR08_,
+		A17_1_CHOR09_,
+		A17_2_CHOR09_,
+		A17_1_CHOR10_,
+		A17_2_CHOR10_,
+		A17_1_CHOR11_,
+		A17_2_CHOR11_,
+		A17_1_CHOR12_,
+		A17_2_CHOR12_,
+		A17_1_CHOR13_,
+		A17_2_CHOR13_,
+		A17_1_CHOR14_,
+		A17_2_CHOR14_,
+		A17_1_CHOR16_,
+		A17_2_CHOR16_,
+		CH3201,
+		CH3202,
+		CH3203,
+		CH3204,
+		CH3205,
+		CH3206,
+		CH3207,
+		CH3208,
+		CH3209,
+		CH3210,
+		CH3313,
+		CH3314,
+		CH3316,
+		TRP31A,
+		TRP31B,
+		TRP32,
+		HNDRPT,
+		RLYB01,
+		RLYB02,
+		RLYB03,
+		RLYB04,
+		RLYB05,
+		RLYB06,
+		RLYB07,
+		RLYB08,
+		RLYB09,
+		RLYB10,
+		RLYB11,
+		RYWD12,
+		RYWD13,
+		RYWD14,
+		RYWD16,
+		WCH11_,
+		CCH11,
+		RCH11_,
+		reset,
+		prop_clk
+	);
+
+	a18_inout_iii a18(
+		T05,
+		T11,
+		F09A_,
+		F09B_,
+		F09D,
+		F17A_,
+		F17B_,
+		XT1_,
+		XB5_,
+		XB6_,
+		CHWL11_,
+		MKEY1,
+		MKEY2,
+		MKEY3,
+		MKEY4,
+		MKEY5,
+		MAINRS,
+		NKEY1,
+		NKEY2,
+		NKEY3,
+		NKEY4,
+		NKEY5,
+		NAVRST,
+		MARK,
+		MRKREJ,
+		MRKRST,
+		SBYBUT,
+		STOP,
+		ALTEST,
+		WCH13_,
+		CCH13,
+		RCH13_,
+		CH1311,
+		CH1501,
+		CH1502,
+		CH1503,
+		CH1504,
+		CH1505,
+		CH1601,
+		CH1602,
+		CH1603,
+		CH1604,
+		CH1605,
+		CH1606,
+		CH1607,
+		TPOR_,
+		KYRPT1,
+		STNDBY,
+		STNDBY_,
+		SBY,
+		SBYLIT,
+		SBYREL_,
+		reset,
+		prop_clk
+	);
+
 	assign A2X_ = A05_1_A2X_ & A05_2_A2X_ & A06_1_A2X_;
-	assign CHOR01_ = A16_1_CHOR01_ & A16_2_CHOR01_;
-	assign CHOR02_ = A16_1_CHOR02_ & A16_2_CHOR02_;
-	assign CHOR03_ = A16_1_CHOR03_ & A16_2_CHOR03_;
-	assign CHOR04_ = A16_1_CHOR04_ & A16_2_CHOR04_;
-	assign CHOR05_ = A16_1_CHOR05_ & A16_2_CHOR05_;
-	assign CHOR06_ = A16_1_CHOR06_ & A16_2_CHOR06_;
-	assign CHOR07_ = A16_1_CHOR07_ & A16_2_CHOR07_;
-	assign CHOR08_ = A16_1_CHOR08_;
+	assign CHOR01_ = A16_1_CHOR01_ & A16_2_CHOR01_ & A17_1_CHOR01_ & A17_2_CHOR01_;
+	assign CHOR02_ = A16_1_CHOR02_ & A16_2_CHOR02_ & A17_1_CHOR02_ & A17_2_CHOR02_;
+	assign CHOR03_ = A16_1_CHOR03_ & A16_2_CHOR03_ & A17_1_CHOR03_ & A17_2_CHOR03_;
+	assign CHOR04_ = A16_1_CHOR04_ & A16_2_CHOR04_ & A17_1_CHOR04_ & A17_2_CHOR04_;
+	assign CHOR05_ = A16_1_CHOR05_ & A16_2_CHOR05_ & A17_1_CHOR05_ & A17_2_CHOR05_;
+	assign CHOR06_ = A16_1_CHOR06_ & A16_2_CHOR06_ & A17_1_CHOR06_ & A17_2_CHOR06_;
+	assign CHOR07_ = A16_1_CHOR07_ & A16_2_CHOR07_ & A17_1_CHOR07_ & A17_2_CHOR07_;
+	assign CHOR08_ = A16_1_CHOR08_ & A17_1_CHOR08_ & A17_2_CHOR08_;
+	assign CHOR09_ = A17_1_CHOR09_ & A17_2_CHOR09_;
+	assign CHOR10_ = A17_1_CHOR10_ & A17_2_CHOR10_;
+	assign CHOR11_ = A17_1_CHOR11_ & A17_2_CHOR11_;
+	assign CHOR12_ = A17_1_CHOR12_ & A17_2_CHOR12_;
+	assign CHOR13_ = A17_1_CHOR13_ & A17_2_CHOR13_;
+	assign CHOR14_ = A17_1_CHOR14_ & A17_2_CHOR14_;
+	assign CHOR16_ = A17_1_CHOR16_ & A17_2_CHOR16_;
 	assign CI_ = A04_1_CI_ & A05_1_CI_ & A05_2_CI_ & A06_1_CI_;
 	assign L16_ = A04_1_L16_ & A11_1_L16_;
 	assign MONEX_ = A05_1_MONEX_ & A06_1_MONEX_;
