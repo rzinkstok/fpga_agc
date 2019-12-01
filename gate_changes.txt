@@ -958,6 +958,43 @@ Gates 43401-43460
 43438 removed (fan-in expansion)
 43440 removed (fan-in expansion)
 
+Module A17
+Sheet 1
+Gates 44101-44160
+Gates 44201-44259
+44147 removed (fan-out expansion)
+44148 removed (fan-out expansion)
+44151 removed (fan-out expansion)
+44152 removed (fan-out expansion)
+44155 removed (fan-out expansion)
+44156 removed (fan-out expansion)
+44159 removed (fan-out expansion)
+44160 removed (fan-out expansion)
+44249 removed (fan-in expansion)
+Sheet 2
+Gates 44301-44360
+Gates 44401-44464
+44433 removed (fan-out expansion)
+44434 removed (fan-out expansion)
+44438 removed (fan-out expansion)
+44439 removed (fan-out expansion)
+44442 removed (fan-out expansion)
+44443 removed (fan-out expansion)
+44446 removed (fan-out expansion)
+44447 removed (fan-out expansion)
+44451 removed (fan-out expansion)
+44452 removed (fan-out expansion)
+44455 removed (fan-out expansion)
+44456 removed (fan-out expansion)
+44457 removed (not used)
+44458 removed (not used)
+44459 removed (not used)
+44460 removed (not used)
+44461 removed (fan-in expansion)
+44462 removed (fan-out expansion for A14 sheet 2)
+44463 removed (not connected)
+44464 removed (not connected)
+
 
 Module A18
 45159 removed (moved to A1 sheet 1)
