@@ -29,6 +29,7 @@ module agc();
 	reg CAD4 = 0;
 	reg CAD5 = 0;
 	reg CAD6 = 0;
+	reg CAURST = 0;
 	reg CCH12 = 0;
 	reg CCH13 = 0;
 	reg CCH33 = 0;
@@ -125,7 +126,6 @@ module agc();
 	reg E6 = 0;
 	reg E7_ = 1;
 	reg EMSD = 0;
-	reg ERRST = 0;
 	reg F09D = 0;
 	reg FETCH0 = 0;
 	reg FETCH0_ = 1;
@@ -153,7 +153,6 @@ module agc();
 	reg INLNKP = 0;
 	reg INOTLD = 0;
 	reg ISSTOR = 0;
-	reg KYRPT2 = 0;
 	reg LEMATT = 0;
 	reg LFTOFF = 0;
 	reg LRRLSC = 0;
@@ -190,7 +189,6 @@ module agc();
 	reg MKEY3 = 0;
 	reg MKEY4 = 0;
 	reg MKEY5 = 0;
-	reg MKRPT = 0;
 	reg MNHRPT = 0;
 	reg MNHSBF = 0;
 	reg MNIMmP = 0;
@@ -302,6 +300,7 @@ module agc();
 	reg UPRUPT = 0;
 	reg US2SG = 0;
 	reg VFAIL = 0;
+	reg W1110 = 0;
 	reg WATCHP = 0;
 	reg WCH12_ = 1;
 	reg WCH13_ = 1;
@@ -686,6 +685,7 @@ module agc();
 	wire ENEROP;
 	wire ERAS;
 	wire ERAS_;
+	wire ERRST;
 	wire EVNSET;
 	wire EVNSET_;
 	wire EXST0_;
@@ -966,6 +966,7 @@ module agc();
 	wire KRPT;
 	wire KYRLS;
 	wire KYRPT1;
+	wire KYRPT2;
 	wire L01_;
 	wire L02_;
 	wire L03_;
@@ -995,6 +996,7 @@ module agc();
 	wire MGP_;
 	wire MIIP;
 	wire MINHL;
+	wire MKRPT;
 	wire MONEX;
 	wire MONEX_;
 	wire MONWT;
@@ -4193,6 +4195,8 @@ module agc();
 		WCH13_,
 		CCH13,
 		RCH13_,
+		CAURST,
+		W1110,
 		CH1311,
 		CH1501,
 		CH1502,
@@ -4208,11 +4212,14 @@ module agc();
 		CH1607,
 		TPOR_,
 		KYRPT1,
+		KYRPT2,
+		MKRPT,
 		STNDBY,
 		STNDBY_,
 		SBY,
 		SBYLIT,
 		SBYREL_,
+		ERRST,
 		reset,
 		prop_clk
 	);
