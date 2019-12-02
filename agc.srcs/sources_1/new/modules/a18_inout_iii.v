@@ -5,15 +5,22 @@ module a18_inout_iii(
     input wire T11,
     
     input wire F09A_,
+    input wire F09B,
     input wire F09B_,
     input wire F09D,
     input wire F17A_,
     input wire F17B_,
     
+    input wire GOJAM,
+    
     input wire XT1_,
     input wire XB5_,
     input wire XB6_,
     
+    input wire CHWL01_,
+    input wire CHWL02_,
+    input wire CHWL03_,
+    input wire CHWL04_,
     input wire CHWL11_,
     
     input wire MKEY1,
@@ -42,9 +49,20 @@ module a18_inout_iii(
     input wire CCH13,
     input wire RCH13_,
     
-    input wire CAURST,
-    input wire W1110,
+    input wire F5ASB2_,
+    input wire F5BSB2_,
+    input wire GTSET_,
+    input wire GTRST_,
     
+    input wire RRIN0,
+    input wire RRIN1,
+    input wire LRIN0,
+    input wire LRIN1,
+    
+    output wire CH1301,
+    output wire CH1302,
+    output wire CH1303,
+    output wire CH1304,
     output wire CH1311,
     
     output wire CH1501,
@@ -72,6 +90,20 @@ module a18_inout_iii(
     output wire SBYREL_,
     
     output wire ERRST,
+    
+    output wire RADRPT,
+    
+    output wire RRRANG,
+    output wire RRRARA,
+    output wire LRXVEL,
+    output wire LRYVEL,
+    output wire LRZVEL,
+    output wire LRRANG,
+    
+    output wire RRSYNC,
+    output wire LRSYNC,
+    output wire RNRADP,
+    output wire RNRADM,
     
     input wire reset,
     input wire prop_clk
@@ -342,7 +374,140 @@ module a18_inout_iii(
     nor_2 #(1'b1) NOR45257(NOR45257_out,    NOR45256_out,   NOR45258_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR45258(NOR45258_out,    NOR45257_out,   MKRPT,                                          reset, prop_clk);
     
-    nor_2 #(1'b0) NOR45222(NOR45222_out,    CAURST,         W1110,                                          reset, prop_clk);
-    nor_1 #(1'b0) NOR45224(ERRST,           NOR45222_out,                                                   reset, prop_clk);
+    // NOR45222 and NOR45224 moved to A19 sheet 2
+    //nor_2 #(1'b0) NOR45222(NOR45222_out,    CAURST,         W1110,                                          reset, prop_clk);
+    //nor_1 #(1'b0) NOR45224(ERRST,           NOR45222_out,                                                   reset, prop_clk);
+
+    
+    /**************************
+    *
+    *  Module A18 sheet 2
+    *  Sheet number 2005268/2
+    *
+    **************************/
+    
+    wire NOR45301_out;
+    wire NOR45303_out;
+    wire NOR45305_out;
+    wire NOR45306_out;
+    wire NOR45307_out;
+    wire NOR45308_out;
+    wire NOR45310_out;
+    wire NOR45311_out;
+    wire NOR45312_out;
+    wire NOR45313_out;
+    wire NOR45314_out;
+    wire NOR45316_out;
+    wire NOR45317_out;
+    wire NOR45318_out;
+    wire NOR45320_out;
+    wire NOR45321_out;
+    wire NOR45322_out;
+    wire NOR45323_out;
+    wire NOR45324_out;
+    wire NOR45325_out;
+    wire NOR45326_out;
+    wire NOR45327_out;
+    wire NOR45334_out;
+    wire NOR45335_out;
+    wire NOR45336_out;
+    wire NOR45337_out;
+    wire NOR45338_out;
+    wire NOR45339_out;
+    wire NOR45340_out;
+    wire NOR45341_out;
+    wire NOR45344_out;
+    wire NOR45347_out;
+    wire NOR45348_out;
+    wire NOR45349_out;
+    wire NOR45350_out;
+    wire NOR45351_out;
+    wire NOR45353_out;
+    wire NOR45354_out;
+    wire NOR45355_out;
+    wire NOR45356_out;
+    wire NOR45357_out;
+    
+    wire ACTV_;
+    wire ADVCNT;
+    wire CNTOF9;
+    wire TPORA_;
+    wire HERB;
+    
+    
+    // Channel 13
+    
+    nor_2 #(1'b0) NOR45301(NOR45301_out,    CHWL04_,        WCH13_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR45302(ACTV_,           NOR45301_out,   NOR45303_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR45303(NOR45303_out,    ACTV_,          CCH13,          RADRPT,                         reset, prop_clk);
+    nor_2 #(1'b0) NOR45304(CH1304,          RCH13_,         ACTV_,                                          reset, prop_clk);
+    nor_1 #(1'b0) NOR45305(NOR45305_out,    NOR45303_out,                                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR45306(NOR45306_out,    CHWL03_,        WCH13_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR45307(NOR45307_out,    NOR45306_out,   NOR45308_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45308(NOR45308_out,    NOR45307_out,   CCH13,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR45309(CH1303,          RCH13_,         NOR45307_out,                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45310(NOR45310_out,    NOR45307_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45311(NOR45311_out,    NOR45308_out,                                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR45312(NOR45312_out,    CHWL02_,        WCH13_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR45313(NOR45313_out,    NOR45312_out,   NOR45314_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45314(NOR45314_out,    NOR45313_out,   CCH13,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR45315(CH1302,          RCH13_,         NOR45313_out,                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR45316(NOR45316_out,    CHWL01_,        WCH13_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR45317(NOR45317_out,    NOR45316_out,   NOR45318_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45318(NOR45318_out,    NOR45317_out,   CCH13,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR45319(CH1301,          RCH13_,         NOR45317_out,                                   reset, prop_clk);
+    
+    nor_2 #(1'b1) NOR45320(NOR45320_out,    ADVCNT,         NOR45321_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR45321(NOR45321_out,    NOR45320_out,   CNTOF9,         GOJAM,                          reset, prop_clk);
+    nor_3 #(1'b0) NOR45322(NOR45322_out,    NOR45310_out,   NOR45320_out,   F5BSB2_,                        reset, prop_clk);
+    nor_3 #(1'b0) NOR45323(NOR45323_out,    F5BSB2_,        NOR45320_out,   NOR45311_out,                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45324(NOR45324_out,    NOR45322_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45325(NOR45325_out,    NOR45323_out,                                                   reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR45326(NOR45326_out,    CNTOF9,                                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR45327(NOR45327_out,    NOR45326_out,   GTSET_,                                         reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR45328(RRRANG,          NOR45314_out,   NOR45317_out,   NOR45324_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR45329(RRRARA,          NOR45324_out,   NOR45318_out,   NOR45313_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR45330(LRXVEL,          NOR45318_out,   NOR45314_out,   NOR45325_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR45331(LRYVEL,          NOR45325_out,   NOR45317_out,   NOR45314_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR45332(LRZVEL,          NOR45325_out,   NOR45313_out,   NOR45318_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR45333(LRRANG,          NOR45325_out,   NOR45313_out,   NOR45317_out,                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45334(NOR45334_out,    NOR45318_out,   NOR45314_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45335(NOR45335_out,    NOR45334_out,   NOR45310_out,                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45336(NOR45336_out,    NOR45335_out,                                                   reset, prop_clk);
+    
+    nor_2 #(1'b1) NOR45337(NOR45337_out,    NOR45327_out,   NOR45338_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR45338(NOR45338_out,    NOR45337_out,   RADRPT,         GOJAM,                          reset, prop_clk);
+    nor_2 #(1'b0) NOR45339(NOR45339_out,    F5ASB2_,        NOR45337_out,                                   reset, prop_clk);
+    nor_2 #(1'b1) NOR45340(NOR45340_out,    NOR45339_out,   NOR45341_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR45341(NOR45341_out,    NOR45340_out,   GOJAM,          F09B,                           reset, prop_clk);
+    nor_3 #(1'b0) NOR45342(RADRPT,          NOR45340_out,   TPORA_,         GTRST_,                         reset, prop_clk);
+    // NOR45343 merged into NOR45342
+    
+    nor_1 #(1'b0) NOR45344(NOR45344_out,    NOR45339_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45345(RRSYNC,          NOR45336_out,   NOR45344_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45346(LRSYNC,          NOR45344_out,   NOR45311_out,                                   reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR45347(NOR45347_out,    RRIN1,                                                          reset, prop_clk);
+    nor_3 #(1'b0) NOR45348(NOR45348_out,    NOR45336_out,   NOR45347_out,   NOR45305_out,                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45349(NOR45349_out,    RRIN0,                                                          reset, prop_clk);
+    nor_3 #(1'b0) NOR45350(NOR45350_out,    NOR45336_out,   NOR45349_out,   NOR45305_out,                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45353(NOR45353_out,    LRIN1,                                                          reset, prop_clk);
+    nor_3 #(1'b0) NOR45354(NOR45354_out,    NOR45311_out,   NOR45353_out,   NOR45305_out,                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45355(NOR45355_out,    LRIN0,                                                          reset, prop_clk);
+    nor_3 #(1'b0) NOR45356(NOR45356_out,    NOR45311_out,   NOR45355_out,   NOR45305_out,                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR45351(NOR45351_out,    NOR45348_out,   NOR45354_out,                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45352(RNRADP,          NOR45351_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45357(NOR45357_out,    NOR45350_out,   NOR45356_out,                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR45358(RNRADM,          NOR45357_out,                                                   reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR45359(TPORA_,          HERB,                                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR45360(HERB,            TPOR_,                                                          reset, prop_clk);
+    
 endmodule
 

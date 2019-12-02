@@ -29,7 +29,6 @@ module agc_tb();
 	reg CAD4 = 0;
 	reg CAD5 = 0;
 	reg CAD6 = 0;
-	reg CAURST = 0;
 	reg CCH12 = 0;
 	reg CCH13 = 0;
 	reg CCH33 = 0;
@@ -62,10 +61,6 @@ module agc_tb();
 	reg CH1113 = 0;
 	reg CH12 = 0;
 	reg CH13 = 0;
-	reg CH1301 = 0;
-	reg CH1302 = 0;
-	reg CH1303 = 0;
-	reg CH1304 = 0;
 	reg CH1305 = 0;
 	reg CH1306 = 0;
 	reg CH1307 = 0;
@@ -127,6 +122,8 @@ module agc_tb();
 	reg E7_ = 1;
 	reg EMSD = 0;
 	reg F09D = 0;
+	reg F5ASB2_ = 1;
+	reg F5BSB2_ = 1;
 	reg FETCH0 = 0;
 	reg FETCH0_ = 1;
 	reg FETCH1 = 0;
@@ -134,6 +131,8 @@ module agc_tb();
 	reg FLTOUT = 0;
 	reg FREFUN = 0;
 	reg GCAPCL = 0;
+	reg GTRST_ = 1;
+	reg GTSET_ = 1;
 	reg GUIREL = 0;
 	reg GYROD = 0;
 	reg HOLFUN = 0;
@@ -155,6 +154,8 @@ module agc_tb();
 	reg ISSTOR = 0;
 	reg LEMATT = 0;
 	reg LFTOFF = 0;
+	reg LRIN0 = 0;
+	reg LRIN1 = 0;
 	reg LRRLSC = 0;
 	reg LVDAGD = 0;
 	reg MAINRS = 0;
@@ -230,17 +231,16 @@ module agc_tb();
 	reg PIPYP = 0;
 	reg PIPZM = 0;
 	reg PIPZP = 0;
-	reg RADRPT = 0;
 	reg RCH12_ = 1;
 	reg RCH13_ = 1;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
 	reg RCHG_ = 1;
-	reg RNRADM = 0;
-	reg RNRADP = 0;
 	reg ROLGOF = 0;
 	reg RPTA12 = 0;
 	reg RQ_ = 1;
+	reg RRIN0 = 0;
+	reg RRIN1 = 0;
 	reg RRPONA = 0;
 	reg RRRLSC = 0;
 	reg S4BSAB = 0;
@@ -300,7 +300,6 @@ module agc_tb();
 	reg UPRUPT = 0;
 	reg US2SG = 0;
 	reg VFAIL = 0;
-	reg W1110 = 0;
 	reg WATCHP = 0;
 	reg WCH12_ = 1;
 	reg WCH13_ = 1;
@@ -544,6 +543,10 @@ module agc_tb();
 	wire CH1212;
 	wire CH1213;
 	wire CH1214;
+	wire CH1301;
+	wire CH1302;
+	wire CH1303;
+	wire CH1304;
 	wire CH1311;
 	wire CH1501;
 	wire CH1502;
@@ -986,6 +989,11 @@ module agc_tb();
 	wire L2GDG_;
 	wire L2GD_;
 	wire LOMOD;
+	wire LRRANG;
+	wire LRSYNC;
+	wire LRXVEL;
+	wire LRYVEL;
+	wire LRZVEL;
 	wire MASK0;
 	wire MASK0_;
 	wire MBR1;
@@ -1133,6 +1141,7 @@ module agc_tb();
 	wire R6;
 	wire RAD;
 	wire RADRG;
+	wire RADRPT;
 	wire RADRZ;
 	wire RAG_;
 	wire RAND0;
@@ -1205,6 +1214,8 @@ module agc_tb();
 	wire RLYB10;
 	wire RLYB11;
 	wire RL_;
+	wire RNRADM;
+	wire RNRADP;
 	wire ROPER;
 	wire ROPES;
 	wire ROPET;
@@ -1218,6 +1229,9 @@ module agc_tb();
 	wire RQ;
 	wire RQG_;
 	wire RRPA;
+	wire RRRANG;
+	wire RRRARA;
+	wire RRSYNC;
 	wire RSCT;
 	wire RSC_;
 	wire RSM3;
@@ -4166,13 +4180,19 @@ module agc_tb();
 		T05,
 		T11,
 		F09A_,
+		F09B,
 		F09B_,
 		F09D,
 		F17A_,
 		F17B_,
+		GOJAM,
 		XT1_,
 		XB5_,
 		XB6_,
+		CHWL01_,
+		CHWL02_,
+		CHWL03_,
+		CHWL04_,
 		CHWL11_,
 		MKEY1,
 		MKEY2,
@@ -4195,8 +4215,18 @@ module agc_tb();
 		WCH13_,
 		CCH13,
 		RCH13_,
-		CAURST,
-		W1110,
+		F5ASB2_,
+		F5BSB2_,
+		GTSET_,
+		GTRST_,
+		RRIN0,
+		RRIN1,
+		LRIN0,
+		LRIN1,
+		CH1301,
+		CH1302,
+		CH1303,
+		CH1304,
 		CH1311,
 		CH1501,
 		CH1502,
@@ -4220,6 +4250,17 @@ module agc_tb();
 		SBYLIT,
 		SBYREL_,
 		ERRST,
+		RADRPT,
+		RRRANG,
+		RRRARA,
+		LRXVEL,
+		LRYVEL,
+		LRZVEL,
+		LRRANG,
+		RRSYNC,
+		LRSYNC,
+		RNRADP,
+		RNRADM,
 		reset,
 		prop_clk
 	);

@@ -1004,6 +1004,8 @@ Gates 45201-45262
 45158 removed (not connected)
 45159 removed (moved to A1 sheet 1)
 45160 removed (fan-in expansion)
+45222 removed (moved to A19 sheet 2)
+45224 removed (moved to A19 sheet 2)
 45237 removed (fan-out expansion)
 45243 removed (fan-in expansion)
 45253 removed (not used)
@@ -1012,12 +1014,17 @@ Gates 45201-45262
 45261 removed (moved to A1 sheet 1)
 45262 removed (moved to A13)
 42457 added from A14 sheet 2
+Sheet 2
+Gates 45301-45360
+45343 removed (fan-in expansion)
 
 Module A19
 46316 removed (moved to A1 sheet 1)
 46312 removed (moved to A1 sheet 1)
 46314 removed (moved to A1 sheet 1)
 46309 removed (moved to A1 sheet 1)
+45222 added from A18 sheet 1
+45224 added from A18 sheet 1
 
 Module A21
 Gates
