@@ -39,7 +39,6 @@ module a15_rupt_service(
     input wire U2BBKG_,
     input wire RBBEG_,
     input wire RSTRT,
-    input wire RPTA12,
     
     input wire S10,
     input wire S10_,
@@ -210,6 +209,7 @@ module a15_rupt_service(
     wire PRPOR3;
     wire PRPOR4;
     wire RRPA1_;
+    wire RPTA12;
     
     
     // Fixed bank register

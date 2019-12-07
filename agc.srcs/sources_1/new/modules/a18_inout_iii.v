@@ -64,6 +64,40 @@ module a18_inout_iii(
     input wire LRIN0,
     input wire LRIN1,
     
+    input wire CHAT11,
+    input wire CHBT11,
+    input wire CHAT12,
+    input wire CHBT12,
+    input wire CHAT13,
+    input wire CHBT13,
+    input wire CHAT14,
+    input wire CHBT14,
+    
+    input wire CH1111,
+    input wire CH1112,
+    input wire CH1114,
+    input wire CH1116,
+    
+    input wire CH1211,
+    input wire CH1212,
+    input wire CH1216,
+    
+    input wire CH3311,
+    input wire CH3313,
+    input wire CH3314,
+    input wire CH3316,
+    
+    input wire RCHG_,
+    input wire CHOR11_,       
+    input wire CHOR12_,
+    input wire CHOR13_,
+    input wire CHOR14_,
+    input wire CHOR16_,
+    
+    input wire DKEND,
+    input wire CCH33,
+    input wire RCH33_,
+    
     output wire CH1301,
     output wire CH1302,
     output wire CH1303,
@@ -109,6 +143,24 @@ module a18_inout_iii(
     output wire LRSYNC,
     output wire RNRADP,
     output wire RNRADM,
+    
+    output wire A18_1_CHOR11_,
+    output wire A18_2_CHOR11_,
+    output wire A18_1_CHOR12_,
+    output wire A18_2_CHOR12_,
+    output wire A18_1_CHOR13_,
+    output wire A18_1_CHOR14_,
+    output wire A18_2_CHOR14_,
+    output wire A18_1_CHOR16_,
+    output wire CH11,
+    output wire CH12,
+    output wire CH13,
+    output wire CH14,
+    output wire CH16,
+    
+    output wire END,
+    output wire DLKRPT,
+    output wire CH3312,
     
     input wire reset,
     input wire prop_clk
@@ -461,6 +513,13 @@ module a18_inout_iii(
     wire NOR45432_out;
     wire NOR45433_out;
     wire NOR45434_out;
+    wire NOR45447_out;
+    wire NOR45450_out;
+    wire NOR45451_out;
+    wire NOR45452_out;
+    wire NOR45453_out;
+    wire NOR45454_out;
+    wire NOR45455_out;
     
     wire ACTV_;
     wire ADVCNT;
@@ -592,7 +651,47 @@ module a18_inout_iii(
     nor_3 #(1'b0) NOR45434(NOR45434_out,    NOR45418_out,   F10A,           NOR45410_out,                   reset, prop_clk);
     assign CNTOF9 = NOR45433_out & NOR45434_out;
     
+    // CH11
+    nor_3 #(1'b0) NOR45435(A18_1_CHOR11_,   CHAT11,         CHBT11,         CH1111,                         reset, prop_clk);
+    nor_2 #(1'b0) NOR45436(A18_2_CHOR11_,   CH3311,         CH1211,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR45437(CH11,            RCHG_,          CHOR11_,                                        reset, prop_clk);
     
+    // CH12
+    nor_2 #(1'b0) NOR45438(A18_1_CHOR12_,   CHAT12,         CHBT12,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR45439(A18_2_CHOR12_,   CH1212,         CH1112,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR45440(CH12,            RCHG_,          CHOR12_,                                        reset, prop_clk);
+    
+    // CH13
+    nor_3 #(1'b0) NOR45441(A18_1_CHOR13_,   CHAT13,         CHBT13,         CH3313,                         reset, prop_clk);
+    nor_2 #(1'b0) NOR45442(CH13,            RCHG_,          CHOR13_,                                        reset, prop_clk);
+    
+    // CH14
+    nor_3 #(1'b0) NOR45443(A18_1_CHOR14_,   CHAT14,         CHBT14,         CH3314,                         reset, prop_clk);
+    nor_1 #(1'b0) NOR45458(A18_2_CHOR14_,   CH1114,                                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR45444(CH14,            RCHG_,          CHOR14_,                                        reset, prop_clk);
+    
+    // CH16
+    nor_3 #(1'b0) NOR45445(A18_1_CHOR16_,   CH1116,         CH1216,         CH3316,                         reset, prop_clk);
+    nor_2 #(1'b0) NOR45446(CH16,            RCHG_,          CHOR16_,                                        reset, prop_clk);
+    
+    
+    // Channel 33 bit 12
+    nor_1 #(1'b1) NOR45447(NOR45447_out,    DKEND,                                                          reset, prop_clk);
+    nor_1 #(1'b0) NOR45448(END,             NOR45447_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45449(DLKRPT,          NOR45447_out,   NOR45450_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45450(NOR45450_out,    DLKRPT,         NOR45451_out,                                   reset, prop_clk);
+    nor_2 #(1'b1) NOR45451(NOR45451_out,    DLKRPT,         NOR45452_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45452(NOR45452_out,    NOR45451_out,   F10A,                                           reset, prop_clk);
+    nor_3 #(1'b0) NOR45453(NOR45453_out,    NOR45447_out,   DLKRPT,         NOR45451_out,                   reset, prop_clk);
+    nor_2 #(1'b1) NOR45454(NOR45454_out,    NOR45453_out,   NOR45455_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR45455(NOR45455_out,    NOR45454_out,   CCH33,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR45456(CH3312,          NOR45455_out,   RCH33_,                                         reset, prop_clk);
+    
+    // NOR45457 not connected
+    
+    
+    
+    // CH
     
 endmodule
 
