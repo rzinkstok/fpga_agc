@@ -1030,12 +1030,13 @@ Gates 46101-46160
 Gates 46201-46261
 46210 removed (fan-in expansion)
 46260 removed (not used)
+
+
+Sheet 2
 46309 removed (moved to A1 sheet 1)
 46312 removed (moved to A1 sheet 1)
 46314 removed (moved to A1 sheet 1)
 46316 removed (moved to A1 sheet 1)
-
-Sheet 2
 45222 added from A18 sheet 1
 45224 added from A18 sheet 1
 

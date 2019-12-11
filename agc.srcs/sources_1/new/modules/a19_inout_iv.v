@@ -357,4 +357,69 @@ module a19_inout_iv(
     nor_2 #(1'b0) NOR46258(EMSm,            NOR46256_out,   F5ASB0_,                                        reset, prop_clk);
     nor_2 #(1'b0) NOR46259(NOR46259_out,    NOR46250_out,   ZOUT_,                                          reset, prop_clk);
     
+    
+    /**************************
+    *
+    *  Module A19 sheet 2
+    *  Sheet number 2005270/2
+    *
+    **************************/
+    
+    nor_2 #(1'b0) NOR46401(NOR46401_out,    CHWL10_,        WCH14_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46402(NOR46402_out,    NOR46401_out,   NOR46403_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR46403(NOR46403_out,    NOR46402_out,   NOR46439_out,   CCH14,                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46404(CH1410,          RCH14_,         NOR46402_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46405(GYROD,           NOR46402_out,   F5ASB2_,                                        reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46406(NOR46406_out,    CHWL09_,        WCH14_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46407(NOR46407_out,    NOR46406_out,   NOR46408_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46408(NOR46408_out,    NOR46407_out,   CCH14,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46409(CH1409,          RCH14_,         NOR46407_out,                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46410(NOR46410_out,    CHWL08_,        WCH14_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46411(NOR46411_out,    NOR46410_out,   NOR46412_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46412(NOR46412_out,    NOR46411_out,   CCH14,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46413(CH1408,          RCH14_,         NOR46411_out,                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46414(NOR46414_out,    CHWL07_,        WCH14_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46415(NOR46415_out,    NOR46414_out,   NOR46416_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46416(NOR46416_out,    NOR46415_out,   CCH14,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46417(CH1407,          RCH14_,         NOR46415_out,                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46418(NOR46418_out,    CHWL06_,        WCH14_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46419(NOR46419_out,    NOR46418_out,   NOR46420_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46420(NOR46420_out,    NOR46419_out,   CCH14,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46421(CH1406,          RCH14_,         NOR46419_out,                                   reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR46422(NOR46422_out,    SB1_,           NOR46412_out,   NOR46415_out,                   reset, prop_clk);
+    nor_1 #(1'b0) NOR46423(NOR46423_out,    NOR46422_out,                                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46424(GYXP,            NOR46408_out,   NOR46423_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46425(GYXM,            NOR46423_out,   NOR46407_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46426(GYYP,            NOR46408_out,   NOR46429_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46427(GYYM,            NOR46429_out,   NOR46407_out,                                   reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR46428(NOR46428_out,    SB1_,           NOR46416_out,   NOR46411_out,                   reset, prop_clk);
+    nor_1 #(1'b0) NOR46429(NOR46429_out,    NOR46428_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR46430(NOR46430_out,    SB1_,           NOR46411_out,   NOR46415_out,                   reset, prop_clk);
+    nor_1 #(1'b0) NOR46431(NOR46431_out,    NOR46430_out,                                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46432(GYZP,            NOR46408_out,   NOR46431_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46433(GYZM,            NOR46431_out,   NOR46407_out,                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46434(GYENAB,          SB1_,           NOR46419_out,                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46435(NOR46435_out,    CA4_,           XB7_,                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR46436(NOR46436_out,    NOR46435_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46437(NOR46437_out,    POUT_,          NOR46436_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46438(NOR46438_out,    NOR46436_out,   MOUT_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46439(NOR46439_out,    NOR46436_out,   ZOUT_,                                          reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR46440(NOR46440_out,    NOR46441_out,   NOR46437_out,   NOR46438_out,                   reset, prop_clk);
+    nor_2 #(1'b1) NOR46441(NOR46441_out,    NOR46402_out,   NOR46440_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46442(GYRSET,          F5ASB2_,        NOR46440_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46443(GYRRST,          F5ASB2_,        NOR46441_out,                                   reset, prop_clk);
+    
+    
+    
 endmodule
