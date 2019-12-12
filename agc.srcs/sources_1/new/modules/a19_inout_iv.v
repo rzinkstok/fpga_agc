@@ -11,8 +11,17 @@ module a19_inout_iv(
     input wire CHWL04_,
     input wire CHWL05_,
     input wire CHWL06_,
-    
+    input wire CHWL07_,
+    input wire CHWL08_,
+    input wire CHWL09_,
+    input wire CHWL10_,
+    input wire CHWL11_,
+    input wire CHWL12_,
     input wire CCHG_,
+    
+    input wire WCH11_,
+    input wire CCH11,
+    input wire RCH11_,
     
     input wire WCH13_,
     input wire CCH13,
@@ -27,6 +36,7 @@ module a19_inout_iv(
     input wire SHINC_,
     input wire CSG,
     input wire CA2_,
+    input wire CA4_,
     input wire CA5_,
     input wire CA6_,
     input wire CXB0_,
@@ -36,6 +46,7 @@ module a19_inout_iv(
     input wire XB3_,
     input wire XB5_,
     input wire XB6_,
+    input wire XB7_,
     
     input wire BR1,
     input wire BR1_,
@@ -46,6 +57,7 @@ module a19_inout_iv(
     input wire GTONE,
     
     input wire SB0_,
+    input wire SB1_,
     input wire SB2_,
     
     input wire WOVR_,
@@ -64,14 +76,12 @@ module a19_inout_iv(
     input wire MOUT_,
     input wire ZOUT_,
     
+    input wire CAURST,
+    
     output wire ALT0,
     output wire ALT1,
     output wire ALRT0,
     output wire ALRT1,
-    
-    output wire CH1401,
-    output wire CH1402,
-    output wire CH1403,
     
     output wire ALTM,
     output wire ALTSNC,
@@ -97,8 +107,16 @@ module a19_inout_iv(
     output wire CH1305,
     output wire CH1306,
     
+    output wire CH1401,
+    output wire CH1402,
+    output wire CH1403,
     output wire CH1404,
     output wire CH1405,
+    output wire CH1406,
+    output wire CH1407,
+    output wire CH1408,
+    output wire CH1409,
+    output wire CH1410,
     
     output wire THRSTD,
     output wire EMSD,
@@ -106,6 +124,30 @@ module a19_inout_iv(
     output wire THRSTm,
     output wire EMSp,
     output wire EMSm,
+    
+    output wire GYROD,
+    output wire GYXP,
+    output wire GYXM,
+    output wire GYYP,
+    output wire GYYM,
+    output wire GYZP,
+    output wire GYZM,
+    output wire GYENAB,
+    output wire GYRSET,
+    output wire GYRRST,
+    
+    output wire FF1109_,
+    output wire FF1110_,
+    output wire FF1111_,
+    output wire FF1112_,
+    
+    output wire CH1109,
+    output wire CH1110,
+    output wire CH1111,
+    output wire CH1112,
+    
+    output wire ERRST,
+    output wire UPRUPT,
     
     input wire reset,
     input wire prop_clk
@@ -365,6 +407,46 @@ module a19_inout_iv(
     *
     **************************/
     
+    wire NOR46401_out;
+    wire NOR46402_out;
+    wire NOR46403_out;
+    wire NOR46406_out;
+    wire NOR46407_out;
+    wire NOR46408_out;
+    wire NOR46410_out;
+    wire NOR46411_out;
+    wire NOR46412_out;
+    wire NOR46414_out;
+    wire NOR46415_out;
+    wire NOR46416_out;
+    wire NOR46418_out;
+    wire NOR46419_out;
+    wire NOR46420_out;
+    wire NOR46422_out;
+    wire NOR46423_out;
+    wire NOR46428_out;
+    wire NOR46429_out;
+    wire NOR46430_out;
+    wire NOR46431_out;
+    wire NOR46435_out;
+    wire NOR46436_out;
+    wire NOR46437_out;
+    wire NOR46438_out;
+    wire NOR46439_out;
+    wire NOR46440_out;
+    wire NOR46441_out;
+    wire NOR46444_out;
+    wire NOR46452_out;
+    wire NOR46456_out;
+    
+    wire NOR45222_out;
+    wire W1110;
+    wire FF1109;
+    wire FF1110;
+    wire FF1111;
+    wire FF1112;
+    
+    // Channel 14
     nor_2 #(1'b0) NOR46401(NOR46401_out,    CHWL10_,        WCH14_,                                         reset, prop_clk);
     nor_2 #(1'b1) NOR46402(NOR46402_out,    NOR46401_out,   NOR46403_out,                                   reset, prop_clk);
     nor_3 #(1'b0) NOR46403(NOR46403_out,    NOR46402_out,   NOR46439_out,   CCH14,                          reset, prop_clk);
@@ -421,5 +503,41 @@ module a19_inout_iv(
     nor_2 #(1'b0) NOR46443(GYRRST,          F5ASB2_,        NOR46441_out,                                   reset, prop_clk);
     
     
+    // Channel 11
+    nor_2 #(1'b0) NOR46444(NOR46444_out,    CHWL09_,        WCH11_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46445(FF1109_,         NOR46444_out,   FF1109,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR46446(FF1109,          FF1109_,        CCH11,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46447(CH1109,          FF1109_,        RCH11_,                                         reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46448(W1110,           CHWL10_,        WCH11_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46449(FF1110_,         W1110,          FF1110,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR46450(FF1110,          FF1110_,        CCH11,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46451(CH1110,          FF1110_,        RCH11_,                                         reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46452(NOR46452_out,    CHWL11_,        WCH11_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46453(FF1111_,         NOR46452_out,   FF1111,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR46454(FF1111,          FF1111_,        CCH11,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46455(CH1111,          FF1111_,        RCH11_,                                         reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46456(NOR46456_out,    CHWL12_,        WCH11_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46457(FF1112_,         NOR46456_out,   FF1112,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR46458(FF1112,          FF1112_,        CCH11,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46459(CH1112,          FF1112_,        RCH11_,                                         reset, prop_clk);
+    
+    // NOR46459 omitted (fan-out expansion for A19 sheet 1)
+    
+    // NOR45222 and NOR45224 moved here from A18 sheet 1
+    nor_2 #(1'b0) NOR45222(NOR45222_out,    CAURST,         W1110,                                          reset, prop_clk);
+    nor_1 #(1'b0) NOR45224(ERRST,           NOR45222_out,                                                   reset, prop_clk);
+
+    
+    // UPRUPT 
+    nor_2 #(1'b0) NOR46303(UPRUPT,          BR1_,           C45R_,                                          reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR46304(UPL0_,           UPL0,                                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR46305(UPL1_,           UPL1,                                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR46306(XLNK0_,          XLNK0,                                                          reset, prop_clk);
+    nor_1 #(1'b0) NOR46307(XLNK1_,          XLNK1,                                                          reset, prop_clk);
+    nor_1 #(1'b0) NOR46308(BLKUPL,          BLKUPL_,                                                        reset, prop_clk);
     
 endmodule
