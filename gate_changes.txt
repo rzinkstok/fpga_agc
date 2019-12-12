@@ -1030,15 +1030,26 @@ Gates 46101-46160
 Gates 46201-46261
 46210 removed (fan-in expansion)
 46260 removed (not used)
-
-
 Sheet 2
+Gates 46301-46359
+Gates 46401-46461
+46301 removed (not used)
+46302 removed (not used)
 46309 removed (moved to A1 sheet 1)
 46312 removed (moved to A1 sheet 1)
 46314 removed (moved to A1 sheet 1)
 46316 removed (moved to A1 sheet 1)
+46460 removed (not used)
+46461 removed (fan-out expansion for A19 sheet 1)
 45222 added from A18 sheet 1
 45224 added from A18 sheet 1
+49331 added from A24 sheet 2
+49355 added from A24 sheet 2
+49356 added from A24 sheet 2
+49357 added from A24 sheet 2
+49358 added from A24 sheet 2
+49359 added from A24 sheet 2
+49360 added from A24 sheet 2
 
 Module A21
 Gates

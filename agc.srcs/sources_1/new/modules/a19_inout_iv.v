@@ -5,6 +5,15 @@ module a19_inout_iv(
     input wire F04A,
     input wire F05A_,
     input wire F05B_,
+    input wire F06B_,
+    input wire F07B,
+    input wire FS07A,
+    input wire FS07_,
+    input wire F09B_,
+    input wire F10A_,
+    input wire F10B_,
+    input wire FS10,
+    
     input wire CHWL01_,
     input wire CHWL02_,
     input wire CHWL03_,
@@ -58,17 +67,18 @@ module a19_inout_iv(
     
     input wire SB0_,
     input wire SB1_,
+    input wire SB2,
     input wire SB2_,
     
     input wire WOVR_,
     input wire OVF_,
     
-    input wire UPL0_,
-    input wire UPL1_,
-    input wire BLKUPL,
+    input wire UPL0,
+    input wire UPL1,
+    input wire BLKUPL_,
     
-    input wire XLNK0_,
-    input wire XLNK1_,
+    input wire XLNK0,
+    input wire XLNK1,
     
     input wire C45R,
     
@@ -77,6 +87,21 @@ module a19_inout_iv(
     input wire ZOUT_,
     
     input wire CAURST,
+    input wire T6ON_,
+    
+    input wire SIGNX,
+    input wire SIGNY,
+    input wire SIGNZ,
+    input wire GATEX_,
+    input wire GATEY_,
+    input wire GATEZ_,
+    
+    input wire BMGXP,
+    input wire BMGXM,
+    input wire BMGYP,
+    input wire BMGYM,
+    input wire BMGZP,
+    input wire BMGZM,
     
     output wire ALT0,
     output wire ALT1,
@@ -96,7 +121,12 @@ module a19_inout_iv(
     output wire OTLNK0,
     output wire OTLNK1,
     
+    output wire T1P,
     output wire T2P,
+    output wire T3P,
+    output wire T4P,
+    output wire T5P,
+    output wire T6P,
     
     output wire INLNKM,
     output wire INLNKP,
@@ -104,8 +134,11 @@ module a19_inout_iv(
     output wire CCH33,
     output wire CH3310,
     output wire CH3311,
+    
     output wire CH1305,
     output wire CH1306,
+    output wire CH1308,
+    output wire CH1309,
     
     output wire CH1401,
     output wire CH1402,
@@ -148,6 +181,14 @@ module a19_inout_iv(
     
     output wire ERRST,
     output wire UPRUPT,
+    
+    output wire RHCGO,
+    output wire BMAGXP,
+    output wire BMAGXM,
+    output wire BMAGYP,
+    output wire BMAGYM,
+    output wire BMAGZP,
+    output wire BMAGZM,
     
     input wire reset,
     input wire prop_clk
@@ -250,6 +291,11 @@ module a19_inout_iv(
     wire SH3MS_;
     wire F5ASB0;
     wire C45R_;
+    wire UPL0_;
+    wire UPL1_;
+    wire XLNK0_;
+    wire XLNK1_;
+    wire BLKUPL;
     
     // Altitude meter
     //r_4 #(1'b0) NOR45127(NOR45127_out,    NOR45123_out,   F09A_,          MKEY15,         NOR45135_out,   reset, prop_clk);
@@ -322,10 +368,6 @@ module a19_inout_iv(
     nor_2 #(1'b0) NOR46156(F5BSB2,          SB2_,           F05B_,                                          reset, prop_clk);
     nor_1 #(1'b0) NOR46157(F5BSB2_,         F5BSB2,                                                         reset, prop_clk);
     
-    // T2P
-    nor_2 #(1'b0) NOR46160(NOR46160_out,    CA2_,           XB5_,                                           reset, prop_clk);
-    nor_2 #(1'b0) NOR46261(NOR46261_out,    WOVR_,          OVF_,                                           reset, prop_clk);
-    assign T2P = NOR46160_out & NOR46261_out;
     
     // Inlink
     nor_3 #(1'b0) NOR46201(NOR46201_out,    NOR46225_out,   UPL0_,          BLKUPL,                         reset, prop_clk);
@@ -407,6 +449,40 @@ module a19_inout_iv(
     *
     **************************/
     
+    wire NOR46318_out;
+    wire NOR46319_out;
+    wire NOR46320_out;
+    wire NOR46322_out;
+    wire NOR46323_out;
+    wire NOR46324_out;
+    wire NOR46325_out;
+    wire NOR46327_out;
+    wire NOR46328_out;
+    wire NOR46329_out;
+    wire NOR46331_out;
+    wire NOR46332_out;
+    wire NOR46333_out;
+    wire NOR46334_out;
+    wire NOR46335_out;
+    wire NOR46336_out;
+    wire NOR46337_out;
+    wire NOR46338_out;
+    wire NOR46341_out;
+    wire NOR46342_out;
+    wire NOR46343_out;
+    wire NOR46344_out;
+    wire NOR46345_out;
+    wire NOR46346_out;
+    wire NOR46347_out;
+    wire NOR46350_out;
+    wire NOR46351_out;
+    wire NOR46352_out;
+    wire NOR46353_out;
+    wire NOR46354_out;
+    wire NOR46355_out;
+    wire NOR46356_out;
+    wire NOR46357_out;
+    
     wire NOR46401_out;
     wire NOR46402_out;
     wire NOR46403_out;
@@ -440,11 +516,22 @@ module a19_inout_iv(
     wire NOR46456_out;
     
     wire NOR45222_out;
+    wire NOR49355_out;
+    wire NOR49356_out;
+    wire NOR49359_out;
+     
+    
     wire W1110;
     wire FF1109;
     wire FF1110;
     wire FF1111;
     wire FF1112;
+    wire CNTRSB_;
+    wire F07C_;
+    wire F07D_;
+    wire F7CSB1_;
+    
+    
     
     // Channel 14
     nor_2 #(1'b0) NOR46401(NOR46401_out,    CHWL10_,        WCH14_,                                         reset, prop_clk);
@@ -524,7 +611,7 @@ module a19_inout_iv(
     nor_2 #(1'b0) NOR46458(FF1112,          FF1112_,        CCH11,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR46459(CH1112,          FF1112_,        RCH11_,                                         reset, prop_clk);
     
-    // NOR46459 omitted (fan-out expansion for A19 sheet 1)
+    // NOR46461 omitted (fan-out expansion for A19 sheet 1)
     
     // NOR45222 and NOR45224 moved here from A18 sheet 1
     nor_2 #(1'b0) NOR45222(NOR45222_out,    CAURST,         W1110,                                          reset, prop_clk);
@@ -534,10 +621,88 @@ module a19_inout_iv(
     // UPRUPT 
     nor_2 #(1'b0) NOR46303(UPRUPT,          BR1_,           C45R_,                                          reset, prop_clk);
     
+    // Up/crosslink signals
     nor_1 #(1'b0) NOR46304(UPL0_,           UPL0,                                                           reset, prop_clk);
     nor_1 #(1'b0) NOR46305(UPL1_,           UPL1,                                                           reset, prop_clk);
     nor_1 #(1'b0) NOR46306(XLNK0_,          XLNK0,                                                          reset, prop_clk);
     nor_1 #(1'b0) NOR46307(XLNK1_,          XLNK1,                                                          reset, prop_clk);
     nor_1 #(1'b0) NOR46308(BLKUPL,          BLKUPL_,                                                        reset, prop_clk);
+    
+    // CNTRSB_ moved here from A24 sheet 2
+    nor_1 #(1'b0) NOR49331(CNTRSB_,         SB2,                                                            reset, prop_clk);
+    
+    // T1P - T6P
+    // NOR46309, NOR46312, NOR46314 and NOR46316 moved to A1 sheet 1
+    nor_2 #(1'b0) NOR46310(T1P,             CNTRSB_,        F10B_,                                          reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46160(NOR46160_out,    CA2_,           XB5_,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR46261(NOR46261_out,    WOVR_,          OVF_,                                           reset, prop_clk);
+    assign T2P = NOR46160_out & NOR46261_out;
+    
+    nor_2 #(1'b0) NOR46311(T3P,             F10B_,          CNTRSB_,                                        reset, prop_clk);
+    nor_3 #(1'b0) NOR46313(T4P,             FS10,           F09B_,          CNTRSB_,                        reset, prop_clk);
+    nor_2 #(1'b0) NOR46315(T5P,             F10A_,          CNTRSB_,                                        reset, prop_clk);
+    nor_3 #(1'b0) NOR46317(T6P,             CNTRSB_,        F06B_,          T6ON_,                          reset, prop_clk);
+    
+      
+    // Extra scaler signals moved here from A24 sheet 2
+    nor_2 #(1'b0) NOR49355(NOR49355_out,    FS07_,          F06B_,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR49356(NOR49356_out,    F06B_,          FS07A,                                          reset, prop_clk);
+    nor_1 #(1'b0) NOR49357(F07D_,           NOR49355_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR49358(F07C_,           NOR49356_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR49359(NOR49359_out,    F07C_,          SB1_,                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR49360(F7CSB1_,         NOR49359_out,                                                   reset, prop_clk);
+    
+    // Channel 13
+  
+    nor_2 #(1'b0) NOR46318(NOR46318_out,    CHWL08_,        WCH13_,                                         reset, prop_clk);
+    nor_2 #(1'b1) NOR46319(NOR46319_out,    NOR46318_out,   NOR46320_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46320(NOR46320_out,    NOR46319_out,   CCH13,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46321(CH1308,          NOR46319_out,   RCH13_,                                         reset, prop_clk);
+    nor_1 #(1'b0) NOR46322(NOR46322_out,    NOR46320_out,                                                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR46323(NOR46323_out,    WCH13_,         CHWL09_,                                        reset, prop_clk);
+    nor_2 #(1'b1) NOR46324(NOR46324_out,    NOR46323_out,   NOR46325_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR46325(NOR46325_out,    NOR46324_out,   CCH13,          RHCGO,                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46326(CH1309,          NOR46324_out,   RCH13_,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR46327(NOR46327_out,    NOR46324_out,   F07D_,                                          reset, prop_clk);
+    
+    nor_2 #(1'b1) NOR46328(NOR46328_out,    NOR46327_out,   NOR46329_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46329(NOR46329_out,    NOR46328_out,   F07B,                                           reset, prop_clk);
+    nor_3 #(1'b0) NOR46330(RHCGO,           SB2_,           NOR46328_out,   F07C_,                          reset, prop_clk);
+    nor_1 #(1'b0) NOR46331(NOR46331_out,    NOR46329_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR46351(NOR46351_out,    NOR46331_out,   F07C_,          SB0_,                           reset, prop_clk);
+    
+    // BMAG outputs
+    nor_3 #(1'b0) NOR46332(NOR46332_out,    SIGNX,          F7CSB1_,        NOR46331_out,                   reset, prop_clk);
+    nor_2 #(1'b1) NOR46333(NOR46333_out,    NOR46332_out,   NOR46334_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46334(NOR46334_out,    NOR46333_out,   NOR46351_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR46335(NOR46335_out,    F5ASB2_,        NOR46333_out,   GATEX_,                         reset, prop_clk);
+    nor_3 #(1'b0) NOR46336(NOR46336_out,    GATEX_,         NOR46334_out,   F5ASB2_,                        reset, prop_clk);
+    nor_2 #(1'b0) NOR46337(NOR46337_out,    BMGXP,          NOR46335_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46338(NOR46338_out,    NOR46336_out,   BMGXM,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46339(BMAGXP,          NOR46322_out,   NOR46337_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46340(BMAGXM,          NOR46322_out,   NOR46338_out,                                   reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR46341(NOR46341_out,    SIGNY,          F7CSB1_,        NOR46331_out,                   reset, prop_clk);
+    nor_2 #(1'b1) NOR46342(NOR46342_out,    NOR46341_out,   NOR46343_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46343(NOR46343_out,    NOR46342_out,   NOR46351_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR46344(NOR46344_out,    F5ASB2_,        NOR46342_out,   GATEY_,                         reset, prop_clk);
+    nor_3 #(1'b0) NOR46345(NOR46345_out,    GATEY_,         NOR46343_out,   F5ASB2_,                        reset, prop_clk);
+    nor_2 #(1'b0) NOR46346(NOR46346_out,    BMGYP,          NOR46344_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46347(NOR46347_out,    NOR46345_out,   BMGYM,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46348(BMAGYP,          NOR46322_out,   NOR46346_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46349(BMAGYM,          NOR46322_out,   NOR46347_out,                                   reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR46350(NOR46350_out,    SIGNZ,          F7CSB1_,        NOR46331_out,                   reset, prop_clk);
+    nor_2 #(1'b1) NOR46352(NOR46352_out,    NOR46350_out,   NOR46353_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46353(NOR46353_out,    NOR46352_out,   NOR46351_out,                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR46354(NOR46354_out,    F5ASB2_,        NOR46352_out,   GATEZ_,                         reset, prop_clk);
+    nor_3 #(1'b0) NOR46355(NOR46355_out,    GATEZ_,         NOR46353_out,   F5ASB2_,                        reset, prop_clk);
+    nor_2 #(1'b0) NOR46356(NOR46356_out,    BMGZP,          NOR46354_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46357(NOR46357_out,    NOR46355_out,   BMGZM,                                          reset, prop_clk);
+    nor_2 #(1'b0) NOR46358(BMAGZP,          NOR46322_out,   NOR46356_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46359(BMAGZM,          NOR46322_out,   NOR46357_out,                                   reset, prop_clk);
+    
     
 endmodule
