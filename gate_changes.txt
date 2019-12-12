@@ -1051,6 +1051,16 @@ Gates 46401-46461
 49359 added from A24 sheet 2
 49360 added from A24 sheet 2
 
+Module A20
+Gates 31101-31159
+31149 removed (fan-in expansion)
+31151 removed (fan-in expansion)
+31155 removed (fan-in expansion)
+31156 removed (not connected)
+31157 removed (not connected)
+31159 removed (not connected)
+
+
 Module A21
 Gates
 32257 removed (merged with gate on A3 sheet 1)
