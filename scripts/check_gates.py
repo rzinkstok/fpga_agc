@@ -34,7 +34,6 @@ def read_gates_from_source():
     gates = {}
     total_gates = 0
 
-
     for filename in sorted(os.listdir(MODULES_SOURCE_FOLDER)):
         filepath = os.path.join(MODULES_SOURCE_FOLDER, filename)
         res = MODULE_RE.search(filename)

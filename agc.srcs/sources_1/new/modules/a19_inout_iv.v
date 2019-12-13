@@ -7,8 +7,8 @@ module a19_inout_iv(
     input wire F05B_,
     input wire F06B_,
     input wire F07B,
-    input wire FS07A,
-    input wire FS07_,
+    input wire F07C_
+    input wire F07D_,
     input wire F09B_,
     input wire F10A_,
     input wire F10B_,
@@ -351,7 +351,7 @@ module a19_inout_iv(
     nor_3 #(1'b0) NOR46142(NOR46142_out,    NOR46141_out,   GTSET,          GOJAM,                          reset, prop_clk);
     nor_2 #(1'b0) NOR46143(OTLNKM,          F5ASB0_,        NOR46141_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR46144(NOR46144_out,    NOR46136_out,   NOR46142_out,                                   reset, prop_clk);
-    nor_2 #(!'b0) NOR46145(CH1401,          NOR46144_out,   RCH14_,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR46145(CH1401,          NOR46144_out,   RCH14_,                                         reset, prop_clk);
     
     nor_3 #(1'b0) NOR46146(NOR46146_out,    BR1_,           SH3MS_,         NOR46151_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR46147(OTLNK0,          NOR46151_out,   SH3MS_,         BR1,                            reset, prop_clk);
@@ -527,8 +527,6 @@ module a19_inout_iv(
     wire FF1111;
     wire FF1112;
     wire CNTRSB_;
-    wire F07C_;
-    wire F07D_;
     wire F7CSB1_;
     
     
@@ -646,10 +644,6 @@ module a19_inout_iv(
     
       
     // Extra scaler signals moved here from A24 sheet 2
-    nor_2 #(1'b0) NOR49355(NOR49355_out,    FS07_,          F06B_,                                          reset, prop_clk);
-    nor_2 #(1'b0) NOR49356(NOR49356_out,    F06B_,          FS07A,                                          reset, prop_clk);
-    nor_1 #(1'b0) NOR49357(F07D_,           NOR49355_out,                                                   reset, prop_clk);
-    nor_1 #(1'b0) NOR49358(F07C_,           NOR49356_out,                                                   reset, prop_clk);
     nor_2 #(1'b0) NOR49359(NOR49359_out,    F07C_,          SB1_,                                           reset, prop_clk);
     nor_1 #(1'b0) NOR49360(F7CSB1_,         NOR49359_out,                                                   reset, prop_clk);
     
