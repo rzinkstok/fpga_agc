@@ -354,7 +354,7 @@ module a20_counter_cell_i(
     
     // NOR31254 and NOR31255 removed (fan-out expansion)
     
-    nor_1 #(!'b0) NOR31256(CXB2_,           XB2,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR31256(CXB2_,           XB2,                                                            reset, prop_clk);
     // NOR31257 removed (fan-out expansion)
     nor_1 #(1'b0) NOR31258(CXB7_,           XB7,                                                            reset, prop_clk);
     
