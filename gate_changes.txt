@@ -809,7 +809,7 @@ Gates 42401-42460
 42338 removed (not used)
 42340 removed (fan-out expansion)
 42344 removed (not used)
-42357 removed (moved to A20 sheet ?)
+42357 removed (moved to A20 sheet 2)
 
 42403 removed (fan-out expansion)
 42407 removed (fan-out expansion)
@@ -1048,14 +1048,25 @@ Gates 46401-46461
 49360 added from A24 sheet 2
 
 Module A20
+Sheet 1
 Gates 31101-31159
+Gates 31201-31259
 31149 removed (fan-in expansion)
 31151 removed (fan-in expansion)
 31155 removed (fan-in expansion)
 31156 removed (not connected)
 31157 removed (not connected)
 31159 removed (not connected)
+31249 removed (fan-in expansion)
+31251 removed (fan-in expansion)
+31254 removed (fan-out expansion)
+31255 removed (fan-out expansion)
+31257 removed (fan-out expansion)
+31259 removed (not connected)
 
+
+Sheet 2
+42357 added from A14 sheet 2
 
 Module A21
 Gates

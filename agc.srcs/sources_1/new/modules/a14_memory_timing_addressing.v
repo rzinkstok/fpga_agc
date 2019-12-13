@@ -595,7 +595,7 @@ module a14_memory_timing_addressing(
     nor_2 #(1'b0) NOR42355(RILP1,           YB0,            YB3,                                            reset, prop_clk);
     nor_1 #(1'b0) NOR42356(RILP1_,          RILP1,                                                          reset, prop_clk);
     
-    // NOR42357 moved to A20 sheet ?
+    // NOR42357 moved to A20 sheet 2
     
     // X top signals
     nor_3 #(1'b0) NOR42401(XT0,             S06,            S05,            S04,                            reset, prop_clk);

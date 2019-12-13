@@ -3,6 +3,7 @@
 module agc();
 
 	reg ALTEST = 0;
+	reg BKTF_ = 1;
 	reg BLKUPL_ = 1;
 	reg BMGXM = 0;
 	reg BMGXP = 0;
@@ -10,11 +11,6 @@ module agc();
 	reg BMGYP = 0;
 	reg BMGZM = 0;
 	reg BMGZP = 0;
-	reg C24A = 0;
-	reg C25A = 0;
-	reg C26A = 0;
-	reg C27A = 0;
-	reg C30A = 0;
 	reg C37P = 0;
 	reg C40P = 0;
 	reg C41P = 0;
@@ -100,6 +96,9 @@ module agc();
 	reg CTLSAT = 0;
 	reg CTROR = 0;
 	reg CXB0_ = 1;
+	reg CXB1_ = 1;
+	reg CXB5_ = 1;
+	reg CXB6_ = 1;
 	reg CXB7_ = 1;
 	reg DBLTST = 0;
 	reg DINC = 0;
@@ -235,6 +234,7 @@ module agc();
 	reg RRIN1 = 0;
 	reg RRPONA = 0;
 	reg RRRLSC = 0;
+	reg RSSB = 0;
 	reg S4BSAB = 0;
 	reg SA01 = 0;
 	reg SA02 = 0;
@@ -542,6 +542,24 @@ module agc();
 	wire BR2_;
 	wire BRDIF_;
 	wire BXVX;
+	wire C24A;
+	wire C25A;
+	wire C26A;
+	wire C27A;
+	wire C30A;
+	wire C31A;
+	wire C32A;
+	wire C32M;
+	wire C32P;
+	wire C33A;
+	wire C33M;
+	wire C33P;
+	wire C34A;
+	wire C34M;
+	wire C34P;
+	wire C35A;
+	wire C35M;
+	wire C35P;
 	wire CAG;
 	wire CBG;
 	wire CCH11;
@@ -4400,8 +4418,8 @@ module agc();
 		F05B_,
 		F06B_,
 		F07B,
-		FS07A,
-		FS07_,
+		F07C_,
+		F07D_,
 		F09B_,
 		F10A_,
 		F10B_,
@@ -4549,6 +4567,52 @@ module agc();
 		BMAGYM,
 		BMAGZP,
 		BMAGZM,
+		reset,
+		prop_clk
+	);
+
+	a20_counter_cell_i a20(
+		BKTF_,
+		RSSB,
+		CDUXP,
+		CDUXM,
+		CDUYP,
+		CDUYM,
+		CDUZP,
+		CDUZM,
+		TRNP,
+		TRNM,
+		T1P,
+		T2P,
+		T3P,
+		T4P,
+		T5P,
+		T6P,
+		OCTAD3,
+		CXB0_,
+		CXB1_,
+		XB2,
+		CXB5_,
+		CXB6_,
+		XB7,
+		C24A,
+		C25A,
+		C26A,
+		C27A,
+		C30A,
+		C31A,
+		C32A,
+		C32P,
+		C32M,
+		C33A,
+		C33P,
+		C33M,
+		C34A,
+		C34P,
+		C34M,
+		C35A,
+		C35P,
+		C35M,
 		reset,
 		prop_clk
 	);

@@ -7,7 +7,7 @@ module a19_inout_iv(
     input wire F05B_,
     input wire F06B_,
     input wire F07B,
-    input wire F07C_
+    input wire F07C_,
     input wire F07D_,
     input wire F09B_,
     input wire F10A_,
