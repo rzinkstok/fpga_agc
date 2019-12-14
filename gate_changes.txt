@@ -1066,6 +1066,19 @@ Gates 31201-31259
 
 
 Sheet 2
+Gates 31301-31359
+Gates 31401-31459
+31349 removed (fan-in expansion)
+31351 removed (fan-in expansion)
+31354 removed (fan-out expansion)
+31355 removed (fan-out expansion)
+31357 removed (fan-out expansion)
+31359 removed (not connected)
+31449 removed (fan-in expansion)
+31451 removed (fan-in expansion)
+31455 removed (fan-out expansion)
+31457 removed (fan-out expansion)
+31459 removed (not connected)
 42357 added from A14 sheet 2
 
 Module A21
