@@ -11,19 +11,22 @@ module agc();
 	reg BMGYP = 0;
 	reg BMGZM = 0;
 	reg BMGZP = 0;
+	reg C42A = 0;
 	reg C42P = 0;
+	reg C43A = 0;
 	reg C43P = 0;
+	reg C44A = 0;
 	reg C44P = 0;
+	reg C45A = 0;
 	reg C45R = 0;
+	reg C46A = 0;
+	reg C47A = 0;
+	reg C56A = 0;
+	reg C57A = 0;
+	reg C60A = 0;
 	reg CA2_ = 1;
 	reg CA3_ = 1;
 	reg CA5_ = 1;
-	reg CAD1 = 0;
-	reg CAD2 = 0;
-	reg CAD3 = 0;
-	reg CAD4 = 0;
-	reg CAD5 = 0;
-	reg CAD6 = 0;
 	reg CAURST = 0;
 	reg CCH12 = 0;
 	reg CCH13 = 0;
@@ -97,8 +100,6 @@ module agc();
 	reg CXB6_ = 1;
 	reg CXB7_ = 1;
 	reg DBLTST = 0;
-	reg DINC = 0;
-	reg DINC_ = 1;
 	reg DIVSTG = 0;
 	reg DKEND = 0;
 	reg DLKPLS = 0;
@@ -132,7 +133,6 @@ module agc();
 	reg IN3214 = 0;
 	reg IN3216 = 0;
 	reg IN3301 = 0;
-	reg INCSET_ = 1;
 	reg INKL = 0;
 	reg INKL_ = 1;
 	reg INOTLD = 0;
@@ -152,7 +152,6 @@ module agc();
 	reg MANRpR = 0;
 	reg MANRpY = 0;
 	reg MARK = 0;
-	reg MCDU = 0;
 	reg MDT01 = 0;
 	reg MDT02 = 0;
 	reg MDT03 = 0;
@@ -169,7 +168,6 @@ module agc();
 	reg MDT14 = 0;
 	reg MDT15 = 0;
 	reg MDT16 = 0;
-	reg MINC = 0;
 	reg MKEY1 = 0;
 	reg MKEY2 = 0;
 	reg MKEY3 = 0;
@@ -206,7 +204,6 @@ module agc();
 	reg OPCDFL = 0;
 	reg OPMSW2 = 0;
 	reg OPMSW3 = 0;
-	reg PCDU = 0;
 	reg PCHGOF = 0;
 	reg PIPAFL = 0;
 	reg PIPPLS_ = 1;
@@ -230,6 +227,7 @@ module agc();
 	reg RRIN1 = 0;
 	reg RRPONA = 0;
 	reg RRRLSC = 0;
+	reg RSCT_ = 1;
 	reg RSSB = 0;
 	reg S4BSAB = 0;
 	reg SA01 = 0;
@@ -253,10 +251,6 @@ module agc();
 	reg SHAFTD = 0;
 	reg SHAFTM = 0;
 	reg SHAFTP = 0;
-	reg SHANC_ = 1;
-	reg SHIFT = 0;
-	reg SHIFT_ = 1;
-	reg SHINC_ = 1;
 	reg SIGNX = 0;
 	reg SIGNY = 0;
 	reg SIGNZ = 0;
@@ -576,6 +570,12 @@ module agc();
 	wire C55A;
 	wire CA4_;
 	wire CA6_;
+	wire CAD1;
+	wire CAD2;
+	wire CAD3;
+	wire CAD4;
+	wire CAD5;
+	wire CAD6;
 	wire CAG;
 	wire CBG;
 	wire CCH11;
@@ -730,6 +730,8 @@ module agc();
 	wire DCA0;
 	wire DCS0;
 	wire DIM0_;
+	wire DINC;
+	wire DINC_;
 	wire DISDAC;
 	wire DIV_;
 	wire DLKRPT;
@@ -1064,6 +1066,7 @@ module agc();
 	wire ILP;
 	wire ILP_;
 	wire INCR0;
+	wire INCSET_;
 	wire INHPLS;
 	wire INLNKM;
 	wire INLNKP;
@@ -1102,11 +1105,15 @@ module agc();
 	wire MASK0_;
 	wire MBR1;
 	wire MBR2;
+	wire MCDU;
+	wire MCDU_;
 	wire MCRO_;
 	wire MCTRAL_;
 	wire MGOJAM;
 	wire MGP_;
 	wire MIIP;
+	wire MINC;
+	wire MINC_;
 	wire MINHL;
 	wire MKRPT;
 	wire MONEX;
@@ -1223,6 +1230,8 @@ module agc();
 	wire P05_;
 	wire PALE;
 	wire PC15_;
+	wire PCDU;
+	wire PCDU_;
 	wire PHS2;
 	wire PHS2_;
 	wire PHS3_;
@@ -1416,6 +1425,12 @@ module agc();
 	wire SETCD_;
 	wire SETEK;
 	wire SGUM;
+	wire SHANC;
+	wire SHANC_;
+	wire SHIFT;
+	wire SHIFT_;
+	wire SHINC;
+	wire SHINC_;
 	wire SQ0_;
 	wire SQ1_;
 	wire SQ2_;
@@ -4677,6 +4692,76 @@ module agc();
 		C53A,
 		C54A,
 		C55A,
+		reset,
+		prop_clk
+	);
+
+	a21_counter_cell_ii a21(
+		C24A,
+		C25A,
+		C26A,
+		C27A,
+		C30A,
+		C31A,
+		C32A,
+		C33A,
+		C34A,
+		C35A,
+		C36A,
+		C37A,
+		C40A,
+		C41A,
+		C42A,
+		C43A,
+		C44A,
+		C45A,
+		C46A,
+		C47A,
+		C50A,
+		C51A,
+		C52A,
+		C53A,
+		C54A,
+		C55A,
+		C56A,
+		C57A,
+		C60A,
+		C32P,
+		C32M,
+		C33P,
+		C33M,
+		C34P,
+		C34M,
+		C35P,
+		C35M,
+		C36P,
+		C36M,
+		C37M,
+		C40M,
+		C41M,
+		RSCT_,
+		T12A,
+		CAD1,
+		CAD2,
+		CAD3,
+		CAD4,
+		CAD5,
+		CAD6,
+		INCSET_,
+		SHINC,
+		SHINC_,
+		SHANC,
+		SHANC_,
+		DINC,
+		DINC_,
+		SHIFT,
+		SHIFT_,
+		MINC,
+		MINC_,
+		PCDU,
+		PCDU_,
+		MCDU,
+		MCDU_,
 		reset,
 		prop_clk
 	);

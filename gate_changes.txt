@@ -1082,6 +1082,25 @@ Gates 31401-31459
 42357 added from A14 sheet 2
 
 Module A21
+Sheet 1
+Gates 32001-32069
+32009 removed (not used)
+32010 removed (not used)
+32017 removed (not used)
+32018 removed (not used)
+32019 removed (not used)
+32020 removed (not used)
+32025 removed (no inputs)
+32027 removed (not used)
+32028 removed (not used)
+32029 removed (not used)
+32030 removed (not used)
+32037 removed (not used)
+32038 removed (not used)
+32039 removed (not used)
+32040 removed (not used)
+32057 removed (no inputs)
+
 Gates
 32257 removed (merged with gate on A3 sheet 1)
 34340 added from A12 sheet 2
@@ -1102,6 +1121,10 @@ Gates
 35249 added from A15 sheet 1
 35250 added from A15 sheet 1
 
+Sheet 2
+Gates
+Sheet 3
+Gates
 
 Module A22
 Gates
