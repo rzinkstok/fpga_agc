@@ -41,12 +41,22 @@ module a21_counter_cell_ii(
     input wire C35M,
     input wire C36P,
     input wire C36M,
+    input wire C37P,
     input wire C37M,
+    input wire C40P,
     input wire C40M,
+    input wire C41P,
     input wire C41M,
+    input wire C42P,
+    input wire C43P,
+    input wire C44P,
     
     input wire RSCT_,
+    input wire T01,
+    input wire T12,
     input wire T12A,
+    
+    input wire GOJAM,
     
     output wire CAD1,
     output wire CAD2,
@@ -64,6 +74,8 @@ module a21_counter_cell_ii(
     output wire DINC_,
     output wire SHIFT,
     output wire SHIFT_,
+    output wire PINC,
+    output wire PINC_,
     output wire MINC,
     output wire MINC_,
     output wire PCDU,
@@ -133,6 +145,12 @@ module a21_counter_cell_ii(
     wire NOR35247_out;
     wire NOR35248_out;
     
+    wire NOR39250_out;
+    wire NOR39251_out;
+    wire NOR39252_out;
+    wire NOR39253_out;
+    wire NOR39254_out;
+    
     wire nCAD1_in;
     wire nCAD2_in;
     wire nCAD3_in;
@@ -157,6 +175,7 @@ module a21_counter_cell_ii(
     wire nSHANCSET_;
     wire nDINCSET_;
     wire DINCNC_;
+    wire nPINCSET_;
     wire nMINCSET_;
     wire nPCDUSET_;
     wire nMCDUSET_;
@@ -249,6 +268,17 @@ module a21_counter_cell_ii(
     nor_2 #(1'b0) NOR32047(DINC,            DINCNC_,        T12A,                                           reset, prop_clk);
     nor_1 #(1'b0) NOR32045(DINC_,           DINC,                                                           reset, prop_clk);
     
+    // PINC (moved here from A5 sheet 1)
+    nor_3 #(1'b0) NOR39250(NOR39250_out,    C24A,           C25A,           C26A,                           reset, prop_clk);
+    nor_2 #(1'b0) NOR39251(NOR39251_out,    C27A,           C30A,                                           reset, prop_clk);
+    nor_3 #(1'b0) NOR39252(NOR39252_out,    C37P,           C40P,           C41P,                           reset, prop_clk);
+    nor_3 #(1'b0) NOR39253(NOR39253_out,    C42P,           C43P,           C44P,                           reset, prop_clk);
+    assign nPINCSET_ = NOR39250_out & NOR39251_out & NOR39252_out & NOR39253_out;
+    
+    nor_2 #(1'b0) NOR39254(NOR39254_out,    INCSET_,        nPINCSET_,                                      reset, prop_clk);
+    nor_2 #(1'b0) NOR39255(PINC_,           NOR39254_out,   PINC,                                           reset, prop_clk);
+    nor_2 #(1'b0) NOR39256(PINC,            PINC_,          T12,                                            reset, prop_clk);
+    
     // MINC (moved here from A15 sheet 1)
     nor_3 #(1'b0) NOR35237(NOR35237_out,    C42M,           C43M,           C44M,                           reset, prop_clk);
     nor_3 #(1'b0) NOR35236(NOR35236_out,    C37M,           C40M,           C41M,                           reset, prop_clk);
@@ -272,5 +302,22 @@ module a21_counter_cell_ii(
     nor_2 #(1'b0) NOR35248(NOR35248_out,    INCSET_,        nMCDUSET_,                                      reset, prop_clk);
     nor_2 #(1'b1) NOR35249(MCDU_,           NOR35248_out,   MCDU,                                           reset, prop_clk);
     nor_2 #(1'b0) NOR35250(MCDU,            MCDU_,          T12A,                                           reset, prop_clk);
+    
+    
+    /**************************
+    *
+    *  Module A21 sheet 2
+    *  Sheet number 2005250/2
+    *
+    **************************/
+    
+    wire NOR39248_out;
+    
+    wire GNHNC;
+    
+    // GNHNC flip-flop (moved here from A05 sheet 1
+    nor_2 #(1'b1) NOR39248(NOR39248_out,    GOJAM,          GNHNC,                                      reset, prop_clk);
+    nor_2 #(1'b0) NOR39249(GNHNC,           NOR39248_out,   T01,                                        reset, prop_clk);
+    
     
 endmodule

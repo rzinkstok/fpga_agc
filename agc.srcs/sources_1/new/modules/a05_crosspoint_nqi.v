@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
 module a05_crosspoint_nqi(
-    input wire T01, 
     input wire T01_, 
     input wire T02_, 
     input wire T03_, 
@@ -12,7 +11,6 @@ module a05_crosspoint_nqi(
     input wire T09_, 
     input wire T10_, 
     input wire T11_, 
-    input wire T12, 
     input wire T12_,
     input wire BR1, 
     input wire BR1_, 
@@ -72,7 +70,6 @@ module a05_crosspoint_nqi(
     input wire GOJ1_, 
     input wire TCSAJ3_, 
     input wire RUPT0, 
-    input wire GOJAM, 
     input wire INOUT, 
     input wire INOUT_, 
     input wire CHINC_, 
@@ -98,18 +95,6 @@ module a05_crosspoint_nqi(
     input wire T12USE_,
     input wire n4XP5, 
     input wire n5XP11,
-    input wire C24A, 
-    input wire C25A, 
-    input wire C26A, 
-    input wire C27A, 
-    input wire C30A, 
-    input wire C37P, 
-    input wire C40P, 
-    input wire C41P, 
-    input wire C42P, 
-    input wire C43P, 
-    input wire C44P,
-    input wire INCSET_,
     input wire YT0_, 
     input wire YB0_, 
     input wire S11, 
@@ -195,9 +180,6 @@ module a05_crosspoint_nqi(
     output wire TSUDO_,
     output wire RAD,
     output wire RSTRT,
-    output wire GNHNC,
-    output wire PINC, 
-    output wire PINC_,
     output wire RL10BB,
     output wire RSCT,
     output wire R6,
@@ -228,7 +210,6 @@ module a05_crosspoint_nqi(
     
     wire n3XP5, n8XP3, n8XP12, n8XP15, n10XP6, n10XP7;
     wire PARTC, DV1B1B;
-    wire nPINCSET;
     
     wire NOR39101_out;
     wire NOR39102_out;
@@ -276,12 +257,6 @@ module a05_crosspoint_nqi(
     wire NOR39241_out;
     wire NOR39243_out;
     wire NOR39245_out;
-    wire NOR39248_out;
-    wire NOR39250_out;
-    wire NOR39251_out;
-    wire NOR39252_out;
-    wire NOR39253_out;
-    wire NOR39254_out;
     
     nor_3 #(1'b0) NOR39101(NOR39101_out,    IC10,           IC3,            IC2,                        reset, prop_clk);
     nor_2 #(1'b0) NOR39102(NOR39102_out,    T01_,           NOR39101_out,                               reset, prop_clk);
@@ -538,20 +513,7 @@ module a05_crosspoint_nqi(
     // NOR39246 not used
     // NOR39247 not used
     
-    // GNHNC flip-flop
-    nor_2 #(1'b1) NOR39248(NOR39248_out,    GOJAM,          GNHNC,                                      reset, prop_clk);
-    nor_2 #(1'b0) NOR39249(GNHNC,           NOR39248_out,   T01,                                        reset, prop_clk);
-    
-    // PINC flip-flop
-    nor_3 #(1'b0) NOR39250(NOR39250_out,    C24A,           C25A,           C26A,                       reset, prop_clk);
-    nor_2 #(1'b0) NOR39251(NOR39251_out,    C27A,           C30A,                                       reset, prop_clk);
-    nor_3 #(1'b0) NOR39252(NOR39252_out,    C37P,           C40P,           C41P,                       reset, prop_clk);
-    nor_3 #(1'b0) NOR39253(NOR39253_out,    C42P,           C43P,           C44P,                       reset, prop_clk);
-    assign nPINCSET = NOR39250_out & NOR39251_out & NOR39252_out & NOR39253_out;
-    
-    nor_2 #(1'b0) NOR39254(NOR39254_out,    INCSET_,        nPINCSET,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR39255(PINC_,           NOR39254_out,   PINC,                                       reset, prop_clk);
-    nor_2 #(1'b0) NOR39256(PINC,            PINC_,          T12,                                        reset, prop_clk);
+    // NOR39248 - NOR39256 moved to A21 sheet 1
     
     // NOR39257 not used
     // NOR39258 not used

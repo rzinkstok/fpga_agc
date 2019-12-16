@@ -492,7 +492,7 @@ module a12_parity_s_register(
     // S12
     nor_2 #(1'b0) NOR34333(G05ED,           WEDOPG_,        WL12_,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR34334(NOR34334_out,    WL12_,          WSG_,                                           reset, prop_clk);
-    nor_3 #(1'b1) NOR34335(n8XP5,           NOR34335_out,    NOR34334_out,   NOR34336_out,                  reset, prop_clk);
+    nor_3 #(1'b1) NOR34335(NOR34335_out,    n8XP5,          NOR34334_out,   NOR34336_out,                  reset, prop_clk);
     nor_2 #(1'b0) NOR34336(NOR34336_out,    NOR34335_out,   CSG,                                            reset, prop_clk);
     nor_1 #(1'b0) NOR34338(S12,             NOR34335_out,                                                   reset, prop_clk);
     nor_1 #(1'b0) NOR34339(S12_,            NOR34336_out,                                                   reset, prop_clk);

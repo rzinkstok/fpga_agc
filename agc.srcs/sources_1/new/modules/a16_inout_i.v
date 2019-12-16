@@ -45,6 +45,10 @@ module a16_inout_i(
     input wire CH3207,
     input wire CH3208,
     
+    input wire WCH11_,
+    input wire CCH11,
+    input wire RCH11_,
+    
     input wire WCH12_,
     input wire CCH12,
     input wire RCH12_,
@@ -456,10 +460,6 @@ module a16_inout_i(
     wire NOR43456_out;
     wire NOR43457_out;
     wire NOR43458_out;
-    
-    wire WCH11_;
-    wire CCH11;
-    wire RCH11_;
     
     
     // Channel 12

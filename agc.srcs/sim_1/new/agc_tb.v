@@ -1005,7 +1005,6 @@ module agc_tb();
 	wire GEMP;
 	wire GEQZRO_;
 	wire GINH;
-	wire GNHNC;
 	wire GOJ1;
 	wire GOJ1_;
 	wire GOJAM;
@@ -2427,7 +2426,6 @@ module agc_tb();
 	);
 
 	a05_crosspoint_nqi a05(
-		T01,
 		T01_,
 		T02_,
 		T03_,
@@ -2439,7 +2437,6 @@ module agc_tb();
 		T09_,
 		T10_,
 		T11_,
-		T12,
 		T12_,
 		BR1,
 		BR1_,
@@ -2499,7 +2496,6 @@ module agc_tb();
 		GOJ1_,
 		TCSAJ3_,
 		RUPT0,
-		GOJAM,
 		INOUT,
 		INOUT_,
 		CHINC_,
@@ -2525,18 +2521,6 @@ module agc_tb();
 		T12USE_,
 		n4XP5,
 		n5XP11,
-		C24A,
-		C25A,
-		C26A,
-		C27A,
-		C30A,
-		C37P,
-		C40P,
-		C41P,
-		C42P,
-		C43P,
-		C44P,
-		INCSET_,
 		YT0_,
 		YB0_,
 		S11,
@@ -2620,9 +2604,6 @@ module agc_tb();
 		TSUDO_,
 		RAD,
 		RSTRT,
-		GNHNC,
-		PINC,
-		PINC_,
 		RL10BB,
 		RSCT,
 		R6,
@@ -4736,11 +4717,20 @@ module agc_tb();
 		C35M,
 		C36P,
 		C36M,
+		C37P,
 		C37M,
+		C40P,
 		C40M,
+		C41P,
 		C41M,
+		C42P,
+		C43P,
+		C44P,
 		RSCT_,
+		T01,
+		T12,
 		T12A,
+		GOJAM,
 		CAD1,
 		CAD2,
 		CAD3,
@@ -4756,6 +4746,8 @@ module agc_tb();
 		DINC_,
 		SHIFT,
 		SHIFT_,
+		PINC,
+		PINC_,
 		MINC,
 		MINC_,
 		PCDU,

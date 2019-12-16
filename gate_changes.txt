@@ -270,6 +270,15 @@ Gates 39201-39261
 39218 removed (not used)
 39246 removed (not used)
 39247 removed (not used)
+39248 removed (moved to A21 sheet 2)
+39249 removed (moved to A21 sheet 2)
+39250 removed (moved to A21 sheet 1)
+39251 removed (moved to A21 sheet 1)
+39252 removed (moved to A21 sheet 1)
+39253 removed (moved to A21 sheet 1)
+39254 removed (moved to A21 sheet 1)
+39255 removed (moved to A21 sheet 1)
+39256 removed (moved to A21 sheet 1)
 39257 removed (not used)
 39258 removed (not used)
 39259 removed (not used)
@@ -1100,6 +1109,13 @@ Gates 32001-32069
 32039 removed (not used)
 32040 removed (not used)
 32057 removed (no inputs)
+39250 added from A5 sheet 1
+39251 added from A5 sheet 1
+39252 added from A5 sheet 1
+39253 added from A5 sheet 1
+39254 added from A5 sheet 1
+39255 added from A5 sheet 1
+39256 added from A5 sheet 1
 
 Gates
 32257 removed (merged with gate on A3 sheet 1)
@@ -1122,7 +1138,10 @@ Gates
 35250 added from A15 sheet 1
 
 Sheet 2
-Gates
+Gatesx 32201-32258
+39248 added from A5 sheet 1
+39249 added from A5 sheet 1
+
 Sheet 3
 Gates
 

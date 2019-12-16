@@ -121,11 +121,7 @@ module a08_four_bit_1(
     output wire L02_, 
     output wire L03_, 
     output wire L04_,
-    output wire CLEARA, 
-    output wire CLEARB, 
-    output wire CLEARC, 
-    output wire CLEARD,
-
+    
     input wire reset,
     input wire prop_clk
 );
