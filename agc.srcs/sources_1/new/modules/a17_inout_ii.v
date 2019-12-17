@@ -55,9 +55,6 @@ module a17_inout_ii(
     input wire CH1309,
     input wire CH1310,
     input wire CH1311,
-    input wire CH1312,
-    input wire CH1313,
-    input wire CH1314,
     input wire CH1316,
     
     // Channel 14
@@ -649,7 +646,7 @@ module a17_inout_ii(
     nor_2 #(1'b0) NOR44409(NOR44409_out,    NOR44408_out,   CCH10,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR44410(NOR44410_out,    RCH10_,         NOR44408_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR44411(RYWD12,          NOR44408_out,                                                   reset, prop_clk);
-    nor_3 #(1'b0) NOR44412(A17_2_CHOR12_,   CH3312,         NOR44410_out,   CH1411,                         reset, prop_clk);
+    nor_3 #(1'b0) NOR44412(A17_2_CHOR12_,   CH3312,         NOR44410_out,   CH1412,                         reset, prop_clk);
     
     nor_2 #(1'b0) NOR44413(NOR44413_out,    CHWL13_,        WCH10_,                                         reset, prop_clk);
     nor_2 #(1'b1) NOR44414(NOR44414_out,    NOR44413_out,   NOR44415_out,                                   reset, prop_clk);

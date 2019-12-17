@@ -65,7 +65,6 @@ module a15_rupt_service(
     input wire RADRPT,
     input wire GOJAM,
     input wire HNDRPT,
-    input wire DNRPTA,
     
     input wire WOVR,
     input wire OVF_,
@@ -203,6 +202,7 @@ module a15_rupt_service(
     wire NOR35212_out;
     
     wire BK16;
+    wire DNRPTA;
     wire KRPTA_;
     wire PRPOR1;
     wire PRPOR2;

@@ -49,10 +49,6 @@ module a16_inout_i(
     input wire CCH11,
     input wire RCH11_,
     
-    input wire WCH12_,
-    input wire CCH12,
-    input wire RCH12_,
-    
     input wire FLASH_,
     
     output wire RCpXpP,
@@ -215,6 +211,10 @@ module a16_inout_i(
     wire WCH06_;
     wire CCH06;
     wire RCH06_;
+    wire WCH12_;
+    wire CCH12;
+    wire RCH12_;
+    
     
     // Channel 5
     

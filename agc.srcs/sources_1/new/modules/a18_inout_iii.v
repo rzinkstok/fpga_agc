@@ -128,8 +128,6 @@ module a18_inout_iii(
     output wire SBYLIT,
     output wire SBYREL_,
     
-    output wire ERRST,
-    
     output wire RADRPT,
     
     output wire RRRANG,

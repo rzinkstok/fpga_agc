@@ -56,7 +56,6 @@ module a20_counter_cell_i(
     input wire CA5_,
     
     input wire CXB0_,
-    input wire CXB1_,
     input wire CXB5_,
     input wire CXB6_,
     
@@ -214,6 +213,7 @@ module a20_counter_cell_i(
     
     wire CA2_;
     wire CA3_;
+    wire CXB1_;
     wire CXB2_;
     wire CXB3_;
     wire CXB7_;

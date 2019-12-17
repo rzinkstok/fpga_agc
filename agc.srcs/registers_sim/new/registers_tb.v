@@ -88,8 +88,6 @@ module registers_tb();
 	reg RUG_ = 1;
 	reg RULOG_ = 1;
 	reg RZG_ = 1;
-	reg S08 = 0;
-	reg S08_ = 1;
 	reg SA01 = 0;
 	reg SA02 = 0;
 	reg SA03 = 0;
@@ -105,8 +103,6 @@ module registers_tb();
 	reg SA13 = 0;
 	reg SA14 = 0;
 	reg SA16 = 0;
-	reg SETAB_ = 1;
-	reg SETCD_ = 1;
 	reg TWOX = 0;
 	reg US2SG = 0;
 	reg WAG_ = 1;
@@ -167,10 +163,6 @@ module registers_tb();
 	wire CI05_;
 	wire CI09_;
 	wire CI13_;
-	wire CLEARA;
-	wire CLEARB;
-	wire CLEARC;
-	wire CLEARD;
 	wire CO02;
 	wire CO06;
 	wire CO10;
@@ -389,10 +381,6 @@ module registers_tb();
 		MDT02,
 		MDT03,
 		MDT04,
-		SETAB_,
-		SETCD_,
-		S08,
-		S08_,
 		XUY05_,
 		XUY06_,
 		WHOMP,
@@ -446,10 +434,6 @@ module registers_tb();
 		L02_,
 		L03_,
 		L04_,
-		CLEARA,
-		CLEARB,
-		CLEARC,
-		CLEARD,
 		reset,
 		prop_clk
 	);

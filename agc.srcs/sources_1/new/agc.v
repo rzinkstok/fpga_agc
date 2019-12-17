@@ -28,7 +28,6 @@ module agc();
 	reg CA3_ = 1;
 	reg CA5_ = 1;
 	reg CAURST = 0;
-	reg CCH12 = 0;
 	reg CCH13 = 0;
 	reg CCH14 = 0;
 	reg CCHG_ = 1;
@@ -64,9 +63,6 @@ module agc();
 	reg CH1216 = 0;
 	reg CH1307 = 0;
 	reg CH1310 = 0;
-	reg CH1312 = 0;
-	reg CH1313 = 0;
-	reg CH1314 = 0;
 	reg CH1316 = 0;
 	reg CH1411 = 0;
 	reg CH1412 = 0;
@@ -95,7 +91,6 @@ module agc();
 	reg CTLSAT = 0;
 	reg CTROR = 0;
 	reg CXB0_ = 1;
-	reg CXB1_ = 1;
 	reg CXB5_ = 1;
 	reg CXB6_ = 1;
 	reg CXB7_ = 1;
@@ -103,7 +98,6 @@ module agc();
 	reg DIVSTG = 0;
 	reg DKEND = 0;
 	reg DLKPLS = 0;
-	reg DNRPTA = 0;
 	reg E5 = 0;
 	reg E6 = 0;
 	reg E7_ = 1;
@@ -214,7 +208,6 @@ module agc();
 	reg PIPZM = 0;
 	reg PIPZP = 0;
 	reg POUT_ = 1;
-	reg RCH12_ = 1;
 	reg RCH13_ = 1;
 	reg RCH14_ = 1;
 	reg RCH33_ = 1;
@@ -282,7 +275,6 @@ module agc();
 	reg US2SG = 0;
 	reg VFAIL = 0;
 	reg WATCHP = 0;
-	reg WCH12_ = 1;
 	reg WCH13_ = 1;
 	reg WCH14_ = 1;
 	reg WCHG_ = 1;
@@ -698,10 +690,6 @@ module agc();
 	wire CI09_;
 	wire CI13_;
 	wire CI_;
-	wire CLEARA;
-	wire CLEARB;
-	wire CLEARC;
-	wire CLEARD;
 	wire CLG1G;
 	wire CLG2G;
 	wire CLK;
@@ -2883,12 +2871,6 @@ module agc();
 		RUS_,
 		RB_,
 		RL10BB,
-		EAD09,
-		EAD09_,
-		EAD10,
-		EAD10_,
-		EAD11,
-		EAD11_,
 		SCAD_,
 		WALSG,
 		WALSG_,
@@ -3024,10 +3006,6 @@ module agc();
 		MDT02,
 		MDT03,
 		MDT04,
-		SETAB_,
-		SETCD_,
-		S08,
-		S08_,
 		XUY05_,
 		XUY06_,
 		WHOMP,
@@ -3081,10 +3059,6 @@ module agc();
 		L02_,
 		L03_,
 		L04_,
-		CLEARA,
-		CLEARB,
-		CLEARC,
-		CLEARD,
 		reset,
 		prop_clk
 	);
@@ -3918,7 +3892,6 @@ module agc();
 		RADRPT,
 		GOJAM,
 		HNDRPT,
-		DNRPTA,
 		WOVR,
 		OVF_,
 		KRPT,
@@ -4032,9 +4005,9 @@ module agc();
 		CH3206,
 		CH3207,
 		CH3208,
-		WCH12_,
-		CCH12,
-		RCH12_,
+		WCH11_,
+		CCH11,
+		RCH11_,
 		FLASH_,
 		RCpXpP,
 		RCmXmP,
@@ -4142,9 +4115,6 @@ module agc();
 		CH1309,
 		CH1310,
 		CH1311,
-		CH1312,
-		CH1313,
-		CH1314,
 		CH1316,
 		CH1401,
 		CH1402,
@@ -4394,7 +4364,6 @@ module agc();
 		SBY,
 		SBYLIT,
 		SBYREL_,
-		ERRST,
 		RADRPT,
 		RRRANG,
 		RRRARA,
@@ -4629,7 +4598,6 @@ module agc();
 		OCTAD6,
 		CA5_,
 		CXB0_,
-		CXB1_,
 		CXB5_,
 		CXB6_,
 		CA4_,
