@@ -311,13 +311,52 @@ module a21_counter_cell_ii(
     *
     **************************/
     
+    wire NOR32201_out;
+    wire NOR32202_out;
+    
+    
     wire NOR39248_out;
     
     wire GNHNC;
+    wire NOR32203_in;
+    
     
     // GNHNC flip-flop (moved here from A05 sheet 1
     nor_2 #(1'b1) NOR39248(NOR39248_out,    GOJAM,          GNHNC,                                      reset, prop_clk);
     nor_2 #(1'b0) NOR39249(GNHNC,           NOR39248_out,   T01,                                        reset, prop_clk);
+    
+    
+    nor_3 #(1'b0) NOR32201(NOR32201_out,    T12_,           PHS4_,          NISQL_,                     reset, prop_clk);
+    nor_2 #(1'b0) NOR32202(NOR32202_out,    GNHNC,          PSEUDO,                                     reset, prop_clk);
+    assign NOR32203_in = NOR32201_out & NOR32202_out;
+    nor_1 #(1'b0) NOR32203(NOR32203_out,    NOR32203_in,                                                reset, prop_clk);
+    
+    // MLOAD
+    nor_1 #(1'b0) NOR32204(NOR32204_out,    MLOAD,                                                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32205(NOR32205_out,    NOR32203_out,   NOR32204_out,   NOR32238_out,               reset, prop_clk);
+    nor_2 #(1'b1) NOR32206(NOR32206_out,    NOR32205_out,   NOR32207_out,                               reset, prop_clk);
+    nor_3 #(1'b0) NOR32207(NOR32207_out,    NOR32206_out,   GOJAM,          NOR32218_out,               reset, prop_clk);
+    
+    // STORE1
+    nor_2 #(1'b0) NOR32208(STORE1,          ST1_,           NOR32206_out,                               reset, prop_clk);
+    nor_1 #(1'b0) NOR32209(STORE1_,         STORE1,                                                     reset, prop_clk);
+    
+    
+    // MREAD
+    nor_1 #(1'b0) NOR32211(NOR32211_out,    MREAD,                                                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32212(NOR32212_out,    NOR32203_out,   NOR32211_out,   NOR32238_out,               reset, prop_clk);
+    nor_2 #(1'b1) NOR32213(NOR32213_out,    NOR32212_out,   NOR32214_out,                               reset, prop_clk);
+    nor_3 #(1'b0) NOR32214(NOR32214_out,    NOR32213_out,   GOJAM,          NOR32218_out,               reset, prop_clk);
+    
+    // FETCH1
+    nor_2 #(1'b0) NOR32216(FETCH1,          ST1_,           NOR32213_out,                               reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR32210(STFET1_,         STORE1,         FETCH1,                                     reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR32215(MON_,            NOR32207_out,   NOR32214_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32217(FETCH0,          ST0_,           MON_,                                       reset, prop_clk);
+    nor_1 #(1'b0) NOR32219(FETCH0_,         FETCH0,                                                     reset, prop_clk);
+    nor_3 #(1'b0) NOR32218(NOR32218_out,    MON_,           NOR32234_out,   ST1_,                       reset, prop_clk);
     
     
 endmodule
