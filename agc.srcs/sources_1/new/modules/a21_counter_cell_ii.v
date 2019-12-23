@@ -15,21 +15,12 @@ module a21_counter_cell_ii(
     input wire C37A,
     input wire C40A,
     input wire C41A,
-    input wire C42A,
-    input wire C43A,
-    input wire C44A,
-    input wire C45A,
-    input wire C46A,
-    input wire C47A,
     input wire C50A,
     input wire C51A,
     input wire C52A,
     input wire C53A,
     input wire C54A,
     input wire C55A,
-    input wire C56A,
-    input wire C57A,
-    input wire C60A,
     
     input wire C32P,
     input wire C32M,
@@ -47,16 +38,66 @@ module a21_counter_cell_ii(
     input wire C40M,
     input wire C41P,
     input wire C41M,
-    input wire C42P,
-    input wire C43P,
-    input wire C44P,
     
     input wire RSCT_,
     input wire T01,
+    input wire T02_,
+    input wire T07_,
+    input wire T10_,
+    input wire T11_,
     input wire T12,
+    input wire T12_,
     input wire T12A,
+    input wire FS17,
     
     input wire GOJAM,
+    
+    input wire PSEUDO,
+    input wire CT,
+    input wire PHS2_,
+    input wire PHS3_,
+    input wire PHS4_,
+    input wire NISQL_,
+    input wire ST0_,
+    input wire ST1_,
+    input wire MLOAD,
+    input wire MREAD,
+    input wire MLDCH,
+    input wire MRDCH,
+    input wire MNHNC,
+    input wire DOSCAL,
+    
+    input wire OCTAD5,
+    input wire XB0,
+    input wire XB5,
+    input wire XB6,
+    
+    input wire CA4_,
+    input wire CA6_,
+    input wire CXB2_,
+    input wire CXB3_,
+    input wire CXB4_,
+    input wire CXB7_,
+    
+    input wire CG13,
+    input wire CG23,
+    
+    input wire BMAGXP,
+    input wire BMAGXM,
+    input wire BMAGYP,
+    input wire BMAGYM,
+    input wire BMAGZP,
+    input wire BMAGZM,
+    input wire EMSD,
+    input wire OTLNKM,
+    input wire ALTM,
+    input wire INLNKP,
+    input wire INLNKM,
+    input wire RNRADP,
+    input wire RNRADM,
+    input wire GYROD,
+    
+    input wire RQ,
     
     output wire CAD1,
     output wire CAD2,
@@ -82,6 +123,36 @@ module a21_counter_cell_ii(
     output wire PCDU_,
     output wire MCDU,
     output wire MCDU_,
+    
+    output wire FETCH0,
+    output wire FETCH0_,
+    output wire FETCH1,
+    output wire STORE1_,
+    output wire STFET1_,
+    
+    output wire MON_,
+    output wire CHINC,
+    output wire CHINC_,
+    output wire INOTLD,
+    output wire MREQIN,
+    output wire MONpCH,
+    output wire INKL,
+    output wire INKL_,
+    output wire MINKL,
+    output wire SCAS17,
+    output wire RSSB,
+    output wire BKTF_,
+    output wire CTROR,
+    
+    output wire CA5_,
+    output wire CXB0_,
+    output wire CXB5_,
+    output wire CXB6_,
+    
+    output wire CG26,
+    output wire C45R,
+    
+    output wire RQ_,
     
     input wire reset,
     input wire prop_clk
@@ -162,14 +233,31 @@ module a21_counter_cell_ii(
     wire n30SUM;
     wire n50SUM;
     
+    wire C42A;
+    wire C42P;
     wire C42M;
+    
+    wire C43A;
+    wire C43P;
     wire C43M;
+    
+    wire C44A;
+    wire C44P;
     wire C44M;
     
+    wire C45A;
     wire C45P;
     wire C45M;
+    
+    wire C46A;
     wire C46P;
     wire C46M;
+    
+    wire C47A;
+    
+    wire C56A;
+    wire C57A;
+    wire C60A;
     
     wire nSHINCSET_;
     wire nSHANCSET_;
@@ -313,12 +401,54 @@ module a21_counter_cell_ii(
     
     wire NOR32201_out;
     wire NOR32202_out;
-    
+    wire NOR32203_out;
+    wire NOR32204_out;
+    wire NOR32205_out;
+    wire NOR32206_out;
+    wire NOR32207_out;
+    wire NOR32211_out;
+    wire NOR32212_out;
+    wire NOR32213_out;
+    wire NOR32214_out;
+    wire NOR32218_out;
+    wire NOR32220_out;
+    wire NOR32221_out;
+    wire NOR32222_out;
+    wire NOR32224_out;
+    wire NOR32225_out;
+    wire NOR32226_out;
+    wire NOR32228_out;
+    wire NOR32229_out;
+    wire NOR32232_out;
+    wire NOR32233_out;
+    wire NOR32234_out;
+    wire NOR32235_out;
+    wire NOR32236_out;
+    wire NOR32237_out;
+    wire NOR32238_out;
+    wire NOR32239_out;
+    wire NOR32240_out;
+    wire NOR32241_out;
+    wire NOR32242_out;
+    wire NOR32243_out;
+    wire NOR32244_out;
+    wire NOR32245_out;
+    wire NOR32246_out;
+    wire NOR32249_out;
+    wire NOR32250_out;
+    wire NOR32259_out;
     
     wire NOR39248_out;
     
-    wire GNHNC;
     wire NOR32203_in;
+    wire NOR32230_in;
+    wire NOR32237_in;
+    wire NOR32244_in;
+    
+    wire GNHNC;
+    wire STORE1;
+    wire INOTRD;
+    wire CTROR_;
     
     
     // GNHNC flip-flop (moved here from A05 sheet 1
@@ -351,12 +481,315 @@ module a21_counter_cell_ii(
     // FETCH1
     nor_2 #(1'b0) NOR32216(FETCH1,          ST1_,           NOR32213_out,                               reset, prop_clk);
     
+    // STFET1_
     nor_2 #(1'b0) NOR32210(STFET1_,         STORE1,         FETCH1,                                     reset, prop_clk);
     
+    // MON
     nor_2 #(1'b0) NOR32215(MON_,            NOR32207_out,   NOR32214_out,                               reset, prop_clk);
+    
+    // FETCH0
     nor_2 #(1'b0) NOR32217(FETCH0,          ST0_,           MON_,                                       reset, prop_clk);
     nor_1 #(1'b0) NOR32219(FETCH0_,         FETCH0,                                                     reset, prop_clk);
+    
     nor_3 #(1'b0) NOR32218(NOR32218_out,    MON_,           NOR32234_out,   ST1_,                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32259(NOR32259_out,    FETCH1,         STORE1,         CHINC,                      reset, prop_clk);
+    
+    // INOTLD
+    nor_1 #(1'b0) NOR32220(NOR32220_out,    MLDCH,                                                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32221(NOR32221_out,    NOR32203_out,   NOR32220_out,   NOR32238_out,               reset, prop_clk);
+    nor_2 #(1'b1) NOR32222(NOR32222_out,    NOR32221_out,   INOTLD,                                     reset, prop_clk);
+    nor_2 #(1'b0) NOR32223(INOTLD,          NOR32222_out,   NOR32233_out,                               reset, prop_clk);
+    
+    // INOTRD
+    nor_1 #(1'b0) NOR32224(NOR32224_out,    MRDCH,                                                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32225(NOR32225_out,    NOR32203_out,   NOR32224_out,   NOR32238_out,               reset, prop_clk);
+    nor_2 #(1'b1) NOR32226(NOR32226_out,    NOR32225_out,   INOTRD,                                     reset, prop_clk);
+    nor_2 #(1'b0) NOR32227(INOTRD,          NOR32226_out,   NOR32233_out,                               reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR32228(NOR32228_out,    NOR32207_out,   NOR32214_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32229(NOR32229_out,    INOTLD,         INOTRD,                                     reset, prop_clk);
+    assign NOR32230_in = NOR32228_out & NOR32229_out;
+    
+    nor_1 #(1'b0) NOR32230(MREQIN,          NOR32230_in,                                                reset, prop_clk);
+    nor_1 #(1'b0) NOR32231(MONpCH,          NOR32230_in,                                                reset, prop_clk);
+    nor_2 #(1'b0) NOR32232(NOR32232_out,    NOR32259_out,   T11_,                                       reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR32233(NOR32233_out,    T12_,           CT,             PHS2_,                      reset, prop_clk);
+    nor_1 #(1'b0) NOR32234(NOR32234_out,    NOR32233_out,                                               reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR32235(NOR32235_out,    MLDCH,          MRDCH,                                      reset, prop_clk);
+    nor_2 #(1'b0) NOR32236(NOR32236_out,    MREAD,          MLOAD,                                      reset, prop_clk);
+    assign NOR32237_in = NOR32235_out & NOR32236_out;
+    
+    nor_2 #(1'b0) NOR32237(NOR32237_out,    PHS2_,          NOR32237_in,                                reset, prop_clk);
+    nor_2 #(1'b1) NOR32238(NOR32238_out,    NOR32237_out,   NOR32239_out,                               reset, prop_clk);
+    nor_3 #(1'b0) NOR32239(NOR32239_out,    NOR32238_out,   GOJAM,          NOR32232_out,               reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR32240(NOR32240_out,    NOR32203_out,   MNHNC,                                      reset, prop_clk);
+    nor_2 #(1'b0) NOR32241(NOR32241_out,    NOR32239_out,   CTROR_,                                     reset, prop_clk);
+    assign NOR32244_in = NOR32240_out & NOR32241_out;
+    
+    nor_2 #(1'b0) NOR32242(NOR32242_out,    CTROR_,         NOR32239_out,                               reset, prop_clk);
+    nor_3 #(1'b0) NOR32243(NOR32243_out,    NOR32242_out,   T12_,           PHS3_,                      reset, prop_clk);
+    
+    nor_2 #(1'b1) NOR32244(NOR32244_out,    NOR32244_in,    NOR32245_out,                               reset, prop_clk);
+    nor_3 #(1'b0) NOR32245(NOR32245_out,    NOR32244_out,   NOR32243_out,   GOJAM,                      reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR32246(NOR32246_out,    T02_,           NOR32244_out,                               reset, prop_clk);
+    nor_1 #(1'b0) NOR32247(INCSET_,         NOR32246_out,                                               reset, prop_clk);
+    // NOR32248 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR32249(NOR32249_out,    NOR32245_out,                                               reset, prop_clk);
+    nor_1 #(1'b0) NOR32250(NOR32250_out,    MONpCH,                                                     reset, prop_clk);
+    assign INKL_ = NOR32249_out & NOR32250_out;
+    nor_1 #(1'b0) NOR32251(INKL,            INKL_,                                                      reset, prop_clk);
+    // NOR32252 removed (fan-out expansion)
+    
+    nor_1 #(1'b0) NOR32253(MINKL,           INKL_,                                                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32254(RSSB,            NOR32244_out,   T07_,           PHS3_,                      reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR32255(BKTF_,           T10_,                                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32256(CHINC_,          INOTLD,         INOTRD,                                     reset, prop_clk);
+    // NOR32257 removed (merged into gate on A3 sheet 1
+    nor_2 #(1'b0) NOR32258(SCAS17,          FS17,           DOSCAL,                                     reset, prop_clk);
     
     
+    /**************************
+    *
+    *  Module A21 sheet 3
+    *  Sheet number 2005250/3
+    *
+    **************************/
+    
+    wire NOR32501_out;
+    wire NOR32502_out;
+    wire NOR32503_out;
+    wire NOR32504_out;
+    wire NOR32505_out;
+    wire NOR32506_out;
+    wire NOR32507_out;
+    wire NOR32509_out;
+    wire NOR32510_out;
+    wire NOR32511_out;
+    wire NOR32515_out;
+    wire NOR32516_out;
+    wire NOR32517_out;
+    wire NOR32518_out;
+    wire NOR32519_out;
+    wire NOR32520_out;
+    wire NOR32522_out;
+    wire NOR32524_out;
+    wire NOR32525_out;
+    wire NOR32529_out;
+    wire NOR32530_out;
+    wire NOR32531_out;
+    wire NOR32532_out;
+    wire NOR32533_out;
+    wire NOR32536_out;
+    wire NOR32537_out;
+    wire NOR32538_out;
+    wire NOR32539_out;
+    wire NOR32540_out;
+    wire NOR32543_out;
+    wire NOR32544_out;
+    wire NOR32545_out;
+    wire NOR32546_out;
+    wire NOR32547_out;
+    wire NOR32548_out;
+    wire NOR32549_out;
+    wire NOR32550_out;
+    wire NOR32551_out;
+    
+    wire NOR32601_out;
+    wire NOR32602_out;
+    wire NOR32603_out;
+    wire NOR32604_out;
+    wire NOR32605_out;
+    wire NOR32606_out;
+    wire NOR32607_out;
+    wire NOR32609_out;
+    wire NOR32610_out;
+    wire NOR32611_out;
+    wire NOR32615_out;
+    wire NOR32616_out;
+    wire NOR32617_out;
+    wire NOR32618_out;
+    wire NOR32619_out;
+    wire NOR32620_out;
+    wire NOR32622_out;
+    wire NOR32624_out;
+    wire NOR32625_out;
+    wire NOR32629_out;
+    wire NOR32630_out;
+    wire NOR32631_out;
+    wire NOR32632_out;
+    wire NOR32633_out;
+    wire NOR32636_out;
+    wire NOR32637_out;
+    wire NOR32638_out;
+    wire NOR32643_out;
+    wire NOR32644_out;
+    wire NOR32645_out;
+    wire NOR32646_out;
+    wire NOR32647_out;
+    wire NOR32650_out;
+    
+    wire C42R;
+    wire C43R;
+    wire C44R;
+    wire C46R;
+    wire C47R;
+    wire C56R;
+    wire C57R;
+    wire C60R;
+    
+    wire CG15;
+    wire CG16;
+    
+    
+    nor_1 #(1'b0) NOR32501(NOR32501_out,    BKTF_,                                                      reset, prop_clk);
+    
+    // Counter 42
+    nor_2 #(1'b1) NOR32502(NOR32502_out,    BMAGXP,         NOR32503_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32503(NOR32503_out,    NOR32502_out,   C42R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32504(NOR32504_out,    NOR32503_out,   NOR32510_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32505(NOR32505_out,    NOR32501_out,   NOR32504_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32506(NOR32506_out,    NOR32505_out,   NOR32507_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32507(NOR32507_out,    NOR32506_out,   C42R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32508(C42A,            CG13,           NOR32506_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32509(NOR32509_out,    BMAGXM,         NOR32510_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32510(NOR32510_out,    NOR32509_out,   C42R,                                       reset, prop_clk);
+    nor_1 #(1'b0) NOR32511(NOR32511_out,    RSSB,                                                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32512(C42R,            NOR32511_out,   CA4_,           CXB2_,                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32513(C42P,            NOR32502_out,   CA4_,           CXB2_,                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32514(C42M,            NOR32509_out,   CA4_,           CXB2_,                      reset, prop_clk);
+    
+    // Counter 43
+    nor_2 #(1'b1) NOR32515(NOR32515_out,    BMAGYP,         NOR32516_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32516(NOR32516_out,    NOR32515_out,   C43R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32517(NOR32517_out,    NOR32516_out,   NOR32525_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32518(NOR32518_out,    NOR32501_out,   NOR32517_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32519(NOR32519_out,    NOR32518_out,   NOR32520_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32520(NOR32520_out,    NOR32519_out,   C43R,                                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32521(C43A,            CG13,           NOR32507_out,   NOR32519_out,               reset, prop_clk);
+    nor_3 #(1'b0) NOR32522(NOR32522_out,    CG13,           NOR32520_out,   NOR32507_out,               reset, prop_clk);
+    nor_1 #(1'b0) NOR32523(CG15,            NOR32522_out,                                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32524(NOR32524_out,    BMAGYM,         NOR32525_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32525(NOR32525_out,    NOR32524_out,   C43R,                                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32526(C43R,            NOR32511_out,   CA4_,           CXB3_,                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32527(C43P,            NOR32515_out,   CA4_,           CXB3_,                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32528(C43M,            NOR32524_out,   CA4_,           CXB3_,                      reset, prop_clk);
+    
+    // Counter 56
+    nor_2 #(1'b1) NOR32529(NOR32529_out,    EMSD,           NOR32530_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32530(NOR32530_out,    NOR32529_out,   C56R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32531(NOR32531_out,    NOR32501_out,   NOR32529_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32532(NOR32532_out,    NOR32531_out,   NOR32533_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32533(NOR32533_out,    NOR32532_out,   C56R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32534(C56A,            NOR32532_out,   CG23,                                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32535(C56R,            NOR32511_out,   CA5_,           CXB6_,                      reset, prop_clk);
+    
+    // Counter 57
+    nor_2 #(1'b1) NOR32536(NOR32536_out,    OTLNKM,         NOR32537_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32537(NOR32537_out,    NOR32536_out,   C57R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32538(NOR32538_out,    NOR32501_out,   NOR32536_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32539(NOR32539_out,    NOR32538_out,   NOR32540_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32540(NOR32540_out,    NOR32539_out,   C57R,                                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32541(C57A,            CG23,           NOR32539_out,   NOR32533_out,               reset, prop_clk);
+    nor_3 #(1'b0) NOR32542(C57R,            NOR32511_out,   CA5_,           CXB7_,                      reset, prop_clk);
+    
+    // Counter 60
+    nor_2 #(1'b1) NOR32543(NOR32543_out,    ALTM,           NOR32544_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32544(NOR32544_out,    NOR32543_out,   C60R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32545(NOR32545_out,    NOR32501_out,   NOR32543_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32546(NOR32546_out,    NOR32545_out,   NOR32547_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32547(NOR32547_out,    NOR32546_out,   C60R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32548(NOR32548_out,    CG23,           NOR32533_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32549(NOR32549_out,    NOR32540_out,   NOR32546_out,                               reset, prop_clk);
+    assign C60A = NOR32548_out & NOR32549_out;
+    nor_2 #(1'b0) NOR32550(NOR32550_out,    CG23,           NOR32533_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32551(NOR32551_out,    NOR32540_out,   NOR32547_out,                               reset, prop_clk);
+    assign CTROR_ = NOR32550_out & NOR32551_out;
+    nor_1 #(1'b0) NOR32552(CTROR,           CTROR_,                                                     reset, prop_clk);
+    nor_3 #(1'b0) NOR32553(C60R,            NOR32511_out,   CA6_,           CXB0_,                      reset, prop_clk);
+    
+    // Addressing
+    
+    nor_1 #(1'b0) NOR32554(CA5_,            OCTAD5,                                                     reset, prop_clk);
+    // NOR32555 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR32556(CXB5_,           XB5,                                                        reset, prop_clk);
+    // NOR32557 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR32558(CHINC,           CHINC_,                                                     reset, prop_clk);
+    // NOR32559 removed (not connected)
+    
+    
+    nor_1 #(1'b0) NOR32601(NOR32601_out,    BKTF_,                                                      reset, prop_clk);
+    
+    // Counter 44
+    nor_2 #(1'b1) NOR32602(NOR32602_out,    BMAGZP,         NOR32603_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32603(NOR32603_out,    NOR32602_out,   C44R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32604(NOR32604_out,    NOR32603_out,   NOR32610_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32605(NOR32605_out,    NOR32601_out,   NOR32604_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32606(NOR32606_out,    NOR32605_out,   NOR32607_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32607(NOR32607_out,    NOR32606_out,   C44R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32608(C44A,            CG15,           NOR32606_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32609(NOR32609_out,    BMAGZM,         NOR32610_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32610(NOR32610_out,    NOR32609_out,   C44R,                                       reset, prop_clk);
+    nor_1 #(1'b0) NOR32611(NOR32611_out,    RSSB,                                                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32612(C44R,            NOR32611_out,   CA4_,           CXB4_,                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32613(C44P,            NOR32602_out,   CA4_,           CXB4_,                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32614(C44M,            NOR32609_out,   CA4_,           CXB4_,                      reset, prop_clk);
+    
+    // Counter 45
+    nor_2 #(1'b1) NOR32615(NOR32615_out,    INLNKP,         NOR32616_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32616(NOR32616_out,    NOR32615_out,   C45R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32617(NOR32617_out,    NOR32616_out,   NOR32625_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32618(NOR32618_out,    NOR32601_out,   NOR32617_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32619(NOR32619_out,    NOR32618_out,   NOR32620_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32620(NOR32620_out,    NOR32619_out,   C45R,                                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32621(C45A,            CG15,           NOR32607_out,   NOR32619_out,               reset, prop_clk);
+    nor_3 #(1'b0) NOR32622(NOR32622_out,    CG15,           NOR32620_out,   NOR32607_out,               reset, prop_clk);
+    nor_1 #(1'b0) NOR32623(CG16,            NOR32622_out,                                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32624(NOR32624_out,    INLNKM,         NOR32625_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32625(NOR32625_out,    NOR32624_out,   C45R,                                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32626(C45R,            NOR32611_out,   CA4_,           CXB5_,                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32627(C45P,            NOR32615_out,   CA4_,           CXB5_,                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32628(C45M,            NOR32624_out,   CA4_,           CXB5_,                      reset, prop_clk);
+   
+    // Counter 46
+    nor_2 #(1'b1) NOR32629(NOR32629_out,    RNRADP,         NOR32630_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32630(NOR32630_out,    NOR32629_out,   C46R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32631(NOR32631_out,    NOR32601_out,   NOR32638_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32632(NOR32632_out,    NOR32631_out,   NOR32633_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32633(NOR32633_out,    NOR32632_out,   C46R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32634(C46A,            NOR32632_out,   CG16,                                       reset, prop_clk);
+    nor_3 #(1'b0) NOR32635(C46R,            NOR32611_out,   CA4_,           CXB6_,                      reset, prop_clk);
+    nor_2 #(1'b1) NOR32636(NOR32636_out,    RNRADM,         NOR32637_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32637(NOR32637_out,    NOR32636_out,   C46R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32638(NOR32638_out,    NOR32630_out,   NOR32637_out,                               reset, prop_clk);
+    nor_3 #(1'b0) NOR32639(C46P,            NOR32629_out,   CA4_,           CXB6_,                      reset, prop_clk);
+    nor_3 #(1'b0) NOR32640(C46M,            CXB6_,          CA4_,           NOR32636_out,               reset, prop_clk);
+    // NOR32641 removed (not connected)
+    // NOR32642 removed (not used)
+    
+    // Counter 47
+    nor_2 #(1'b1) NOR32643(NOR32643_out,    GYROD,          NOR32644_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32644(NOR32644_out,    NOR32643_out,   C47R,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR32645(NOR32645_out,    NOR32601_out,   NOR32643_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR32646(NOR32646_out,    NOR32645_out,   NOR32647_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR32647(NOR32647_out,    NOR32646_out,   C47R,                                       reset, prop_clk);
+    // NOR32648 removed (not connected)
+    nor_3 #(1'b0) NOR32649(C47A,            CG16,           NOR32646_out,   NOR32633_out,               reset, prop_clk);
+    nor_3 #(1'b0) NOR32650(NOR32650_out,    CG16,           NOR32647_out,   NOR32633_out,               reset, prop_clk);
+    nor_1 #(1'b0) NOR32652(CG26,            NOR32650_out,                                               reset, prop_clk);
+    nor_3 #(1'b0) NOR32653(C47R,            NOR32611_out,   CA4_,           CXB6_,                      reset, prop_clk);
+    
+    // Addressing
+    // NOR32651 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR32654(CXB0_,           XB0,                                                        reset, prop_clk);
+    // NOR32655 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR32656(CXB6_,           XB6,                                                        reset, prop_clk);
+    // NOR32657 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR32658(RQ_,             RQ,                                                         reset, prop_clk);
+    // NOR32659 removed (not connected)
+
 endmodule

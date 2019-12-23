@@ -1071,6 +1071,7 @@ Gates 31201-31259
 31254 removed (fan-out expansion)
 31255 removed (fan-out expansion)
 31257 removed (fan-out expansion)
+31258 removed (fan-out expansion)
 31259 removed (not connected)
 
 
@@ -1116,8 +1117,6 @@ Gates 32001-32069
 39254 added from A5 sheet 1
 39255 added from A5 sheet 1
 39256 added from A5 sheet 1
-
-Gates
 32257 removed (merged with gate on A3 sheet 1)
 34340 added from A12 sheet 2
 34362 added from A12 sheet 2
@@ -1138,12 +1137,26 @@ Gates
 35250 added from A15 sheet 1
 
 Sheet 2
-Gatesx 32201-32258
+Gates 32201-32259
+32248 removed (fan-out expansion)
+32252 removed (fan-out expansion)
+32257 removed (merged into gate on A3 sheet 1
 39248 added from A5 sheet 1
 39249 added from A5 sheet 1
 
 Sheet 3
-Gates
+Gates 32501-32559
+Gates 32601-32659
+32555 removed (fan-out expansion)
+32557 removed (fan-out expansion)
+32559 removed (not connected)
+32641 removed (not connected)
+32642 removed (not used)
+32648 removed (not connected)
+32651 removed (fan-out expansion)
+32655 removed (fan-out expansion)
+32657 removed (fan-out expansion)
+32659 removed (not connected)
 
 Module A22
 Gates
@@ -1187,6 +1200,8 @@ Gates
 49225 removed (fan-out expansion)
 49226 removed (moved to A2 sheet 2)
 49227 removed (fan-out expansion)
+49349 removed (fan-out expansion)
+49350 removed (fan-out expansion)
 49355 removed (moved to A1 sheet 1)
 49356 removed (moved to A1 sheet 1)
 49357 removed (moved to A1 sheet 1)

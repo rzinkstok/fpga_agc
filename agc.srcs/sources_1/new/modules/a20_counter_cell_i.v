@@ -59,10 +59,15 @@ module a20_counter_cell_i(
     input wire CXB5_,
     input wire CXB6_,
     
+    output wire CA2_,
+    output wire CA3_,
     output wire CA4_,
     output wire CA6_,
     
+    output wire CXB2_,
+    output wire CXB3_,
     output wire CXB4_,
+    output wire CXB7_,
     output wire CG13,
     output wire CG23,
     
@@ -211,12 +216,7 @@ module a20_counter_cell_i(
     wire CG21;
     wire CG22;
     
-    wire CA2_;
-    wire CA3_;
     wire CXB1_;
-    wire CXB2_;
-    wire CXB3_;
-    wire CXB7_;
     
     
     // Counter 32
@@ -414,7 +414,7 @@ module a20_counter_cell_i(
     // NOR31254 and NOR31255 removed (fan-out expansion)
     nor_1 #(1'b0) NOR31256(CXB2_,           XB2,                                                            reset, prop_clk);
     // NOR31257 removed (fan-out expansion)
-    nor_1 #(1'b0) NOR31258(CXB7_,           XB7,                                                            reset, prop_clk);
+    // NOR31258 removed (fan-out expansion)
     // NOR31259 removed (not connected)
 
     

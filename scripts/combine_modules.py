@@ -926,3 +926,8 @@ if __name__ == "__main__":
         output_wires.update(outputs)
 
     write_wrapper(module_params, input_wires, output_wires, sim_name="registers_sim", sim_code=write_registers_commands, wrapper_name="registers_tb")
+
+
+
+# After module A21 sheet 2: 273 registers in agc.v
+# After module A21 sheet 3: 252 registers in agc.v (inc reset/prop_clk)

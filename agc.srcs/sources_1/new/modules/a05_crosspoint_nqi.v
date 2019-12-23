@@ -513,7 +513,7 @@ module a05_crosspoint_nqi(
     // NOR39246 not used
     // NOR39247 not used
     
-    // NOR39248 - NOR39256 moved to A21 sheet 1
+    // NOR39248 - NOR39256 moved to A21 sheet 2
     
     // NOR39257 not used
     // NOR39258 not used
