@@ -1159,10 +1159,36 @@ Gates 32601-32659
 32659 removed (not connected)
 
 Module A22
-Gates
+Sheet 1
+Gates 47101-47162
+Gates 47201-47262
+47103 removed (fan-out expansion)
+47146 removed (not used)
+47152 removed (not used)
+47160 removed (not connected)
 47161 removed (moved to A13)
 47162 removed (moved to A13)
+47203 removed (fan-out expansion)
+47204 removed (fan-out expansion)
+47208 removed (fan-out expansion)
+47209 removed (fan-out expansion)
+47212 removed (fan-out expansion)
+47213 removed (fan-out expansion)
+47216 removed (fan-out expansion)
+47217 removed (fan-out expansion)
+47221 removed (fan-out expansion)
+47222 removed (fan-out expansion)
+47225 removed (fan-out expansion)
+47226 removed (fan-out expansion)
+47257 removed (not used)
+47258 removed (not used)
+47259 removed (not used)
+47260 removed (not used)
 47262 removed (moved to A13)
+
+Sheet 2
+Gates 47301-47360
+Gates 47401-47460
 
 Module A23
 Gates

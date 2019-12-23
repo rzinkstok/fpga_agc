@@ -12,7 +12,7 @@ MODULE_ARGS_START_RE = re.compile(r"^module [A-Za-z0-9\_]+\(")
 MODULE_ARGS_END_RE = re.compile(r"^\);")
 INPUT_WIRE_RE = re.compile(r"^input wire ")
 OUTPUT_WIRE_RE = re.compile(r"^output wire ")
-CROSS_MODULE_SIGNAL_RE = re.compile(r"^A[0-9][0-9]\_[0-9]\_(.+)")
+CROSS_MODULE_SIGNAL_RE = re.compile(r"^A[0-9][0-9]\_[0-9]+\_(.+)")
 
 
 def read_module(module_file_name):
@@ -819,6 +819,10 @@ def write_registers_commands(fp):
 """)
 
 
+def inhibit_alarms(fp):
+    fp.write("\t\t#1 NHALGA = 1;\n")
+
+
 def write_wrapper(module_params, input_wires, output_wires, sim_name=None, sim_code=None, wrapper_name=None):
     if sim_name:
         wrapper_name = wrapper_name or "agc_tb"
@@ -912,7 +916,7 @@ if __name__ == "__main__":
 
     print("------------------------------------------")
     write_wrapper(module_params, input_wires, output_wires)
-    write_wrapper(module_params, input_wires, output_wires, sim_name="sim_1", sim_code=write_commands)
+    write_wrapper(module_params, input_wires, output_wires, sim_name="sim_1", sim_code=inhibit_alarms)
 
     module_params = {}
     input_wires = set()
@@ -931,3 +935,5 @@ if __name__ == "__main__":
 
 # After module A21 sheet 2: 273 registers in agc.v
 # After module A21 sheet 3: 252 registers in agc.v (inc reset/prop_clk)
+# After module A22 sheet 1: 251
+# After module A22 sheet 2: 255

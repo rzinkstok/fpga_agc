@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Tue Dec 17 17:09:33 2019
-# Process ID: 4787
+# Start of session at: Mon Dec 23 19:21:32 2019
+# Process ID: 86642
 # Current directory: /home/rzinkstok/fpga_agc/agc.runs/synth_1
 # Command line: vivado -log agc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source agc.tcl
 # Log file: /home/rzinkstok/fpga_agc/agc.runs/synth_1/agc.vds
@@ -15,13 +15,13 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 4802 
+INFO: Helper process launched with PID 86660 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1483.457 ; gain = 81.609 ; free physical = 6327 ; free virtual = 10684
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1482.852 ; gain = 70.641 ; free physical = 3735 ; free virtual = 9362
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'agc' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v:3]
-WARNING: [Synth 8-85] always block has no event control specified [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v:1788]
-WARNING: [Synth 8-85] always block has no event control specified [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v:1791]
+WARNING: [Synth 8-85] always block has no event control specified [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v:1812]
+WARNING: [Synth 8-85] always block has no event control specified [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v:1815]
 INFO: [Synth 8-6157] synthesizing module 'a01_scaler' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a01_scaler.v:3]
 INFO: [Synth 8-6157] synthesizing module 'nor_1' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_1.v:3]
 	Parameter iv bound to: 1'b0 
@@ -87,32 +87,26 @@ INFO: [Synth 8-6155] done synthesizing module 'a19_inout_iv' (23#1) [/home/rzink
 INFO: [Synth 8-6157] synthesizing module 'a20_counter_cell_i' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a20_counter_cell_i.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'a20_counter_cell_i' (24#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a20_counter_cell_i.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a21_counter_cell_ii' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:3]
-WARNING: [Synth 8-3848] Net INCSET_ in module/entity a21_counter_cell_ii does not have driver. [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:68]
-WARNING: [Synth 8-3848] Net C45M in module/entity a21_counter_cell_ii does not have driver. [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:170]
-WARNING: [Synth 8-3848] Net C46M in module/entity a21_counter_cell_ii does not have driver. [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:172]
-WARNING: [Synth 8-3848] Net C45P in module/entity a21_counter_cell_ii does not have driver. [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:169]
-WARNING: [Synth 8-3848] Net C46P in module/entity a21_counter_cell_ii does not have driver. [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:171]
-WARNING: [Synth 8-3848] Net C42M in module/entity a21_counter_cell_ii does not have driver. [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:165]
-WARNING: [Synth 8-3848] Net C43M in module/entity a21_counter_cell_ii does not have driver. [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:166]
-WARNING: [Synth 8-3848] Net C44M in module/entity a21_counter_cell_ii does not have driver. [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:167]
 INFO: [Synth 8-6155] done synthesizing module 'a21_counter_cell_ii' (25#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'agc' (26#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v:3]
+INFO: [Synth 8-6157] synthesizing module 'a22_inout_v' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a22_inout_v.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a22_inout_v' (26#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a22_inout_v.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'agc' (27#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v:3]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1555.145 ; gain = 153.297 ; free physical = 6330 ; free virtual = 10688
+Finished Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1558.539 ; gain = 146.328 ; free physical = 3735 ; free virtual = 9363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1572.957 ; gain = 171.109 ; free physical = 6337 ; free virtual = 10695
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1576.352 ; gain = 164.141 ; free physical = 3743 ; free virtual = 9372
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1580.961 ; gain = 179.113 ; free physical = 6337 ; free virtual = 10695
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1584.355 ; gain = 172.145 ; free physical = 3743 ; free virtual = 9371
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 1686.562 ; gain = 284.715 ; free physical = 6150 ; free virtual = 10510
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1717.684 ; gain = 305.473 ; free physical = 3542 ; free virtual = 9173
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'a02/NOR37131' (nor_1) to 'a02/NOR37135'
 INFO: [Synth 8-223] decloning instance 'a02/NOR37454' (nor_1) to 'a02/NOR34329'
@@ -172,8 +166,16 @@ INFO: [Synth 8-223] decloning instance 'a20/NOR31111' (nor_1) to 'a20/NOR31311'
 INFO: [Synth 8-223] decloning instance 'a21/NOR32003' (nor_3) to 'a21/NOR32005'
 INFO: [Synth 8-223] decloning instance 'a21/NOR32003' (nor_3) to 'a21/NOR39250'
 INFO: [Synth 8-223] decloning instance 'a21/NOR32043' (nor_3) to 'a21/NOR32069'
+INFO: [Synth 8-223] decloning instance 'a21/NOR32635' (nor_3) to 'a21/NOR32653'
 INFO: [Synth 8-223] decloning instance 'a21/NOR32042' (nor_2__parameterized0) to 'a21/NOR32054'
-INFO: [Synth 8-223] decloning instance 'a21/NOR32055' (nor_2__parameterized0) to 'a21/NOR32061'
+INFO: [Synth 8-223] decloning instance 'a21/NOR32215' (nor_2__parameterized0) to 'a21/NOR32228'
+INFO: [Synth 8-223] decloning instance 'a21/NOR32229' (nor_2__parameterized0) to 'a21/NOR32256'
+INFO: [Synth 8-223] decloning instance 'a21/NOR32548' (nor_2__parameterized0) to 'a21/NOR32550'
+INFO: [Synth 8-223] decloning instance 'a21/NOR32230' (nor_1) to 'a21/NOR32231'
+INFO: [Synth 8-223] decloning instance 'a21/NOR32251' (nor_1) to 'a21/NOR32253'
+INFO: [Synth 8-223] decloning instance 'a21/NOR32501' (nor_1) to 'a21/NOR32601'
+INFO: [Synth 8-223] decloning instance 'a21/NOR32511' (nor_1) to 'a21/NOR32611'
+INFO: [Synth 8-223] decloning instance 'a22/NOR47256' (nor_3) to 'a22/NOR47261'
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -186,9 +188,9 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Registers : 
-	                1 Bit    Registers := 11513 
+	                1 Bit    Registers := 12589 
 +---Muxes : 
-	   2 Input      1 Bit        Muxes := 595   
+	   2 Input      1 Bit        Muxes := 672   
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -251,9 +253,8 @@ No constraint files found.
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-4471] merging register 'NOR31258/next_val_reg' into 'NOR31158/next_val_reg' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_1.v:22]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1773.039 ; gain = 371.191 ; free physical = 6043 ; free virtual = 10406
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:57 . Memory (MB): peak = 1784.254 ; gain = 372.043 ; free physical = 3436 ; free virtual = 9069
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -266,7 +267,7 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Finished Timing Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:58 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -278,7 +279,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Finished Technology Mapping : Time (s): cpu = 00:00:47 ; elapsed = 00:00:58 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -302,7 +303,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Finished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:01:00 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -315,7 +316,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:01:00 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -327,25 +328,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:49 ; elapsed = 00:01:00 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:49 ; elapsed = 00:01:00 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:49 ; elapsed = 00:01:00 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:49 ; elapsed = 00:01:00 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -370,25 +371,25 @@ Report Instance Areas:
 |1     |top      |       |     0|
 +------+---------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:49 ; elapsed = 00:01:00 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 10 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1796.852 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
-Synthesis Optimization Complete : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1796.859 ; gain = 395.004 ; free physical = 6043 ; free virtual = 10406
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:49 ; elapsed = 00:01:00 . Memory (MB): peak = 1808.066 ; gain = 395.855 ; free physical = 3434 ; free virtual = 9068
+Synthesis Optimization Complete : Time (s): cpu = 00:00:49 ; elapsed = 00:01:00 . Memory (MB): peak = 1808.074 ; gain = 395.855 ; free physical = 3449 ; free virtual = 9083
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1823.602 ; gain = 0.000 ; free physical = 6013 ; free virtual = 10376
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1831.848 ; gain = 0.000 ; free physical = 3407 ; free virtual = 9041
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-128 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
+137 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 1823.602 ; gain = 421.832 ; free physical = 6114 ; free virtual = 10476
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1823.602 ; gain = 0.000 ; free physical = 6114 ; free virtual = 10476
+synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:01:02 . Memory (MB): peak = 1831.848 ; gain = 419.715 ; free physical = 3507 ; free virtual = 9140
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1831.848 ; gain = 0.000 ; free physical = 3507 ; free virtual = 9140
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/agc.runs/synth_1/agc.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file agc_utilization_synth.rpt -pb agc_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Dec 17 17:10:17 2019...
+INFO: [Common 17-206] Exiting Vivado at Mon Dec 23 19:22:43 2019...

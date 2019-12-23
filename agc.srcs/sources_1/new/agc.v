@@ -11,8 +11,8 @@ module agc();
 	reg BMGZM = 0;
 	reg BMGZP = 0;
 	reg CAURST = 0;
-	reg CCH13 = 0;
-	reg CCH14 = 0;
+	reg CCH34 = 0;
+	reg CCH35 = 0;
 	reg CCHG_ = 1;
 	reg CDUFAL = 0;
 	reg CDUSTB_ = 1;
@@ -43,7 +43,6 @@ module agc();
 	reg CH1116 = 0;
 	reg CH1211 = 0;
 	reg CH1216 = 0;
-	reg CH1307 = 0;
 	reg CH1310 = 0;
 	reg CH1316 = 0;
 	reg CH1411 = 0;
@@ -71,7 +70,9 @@ module agc();
 	reg CTLSAT = 0;
 	reg DBLTST = 0;
 	reg DIVSTG = 0;
+	reg DKBSNC = 0;
 	reg DKEND = 0;
+	reg DKSTRT = 0;
 	reg DLKPLS = 0;
 	reg DOSCAL = 0;
 	reg E5 = 0;
@@ -90,6 +91,10 @@ module agc();
 	reg GTSET = 0;
 	reg GTSET_ = 1;
 	reg GUIREL = 0;
+	reg HIGH0_ = 1;
+	reg HIGH1_ = 1;
+	reg HIGH2_ = 1;
+	reg HIGH3_ = 1;
 	reg HOLFUN = 0;
 	reg IMUCAG = 0;
 	reg IMUFAL = 0;
@@ -181,8 +186,6 @@ module agc();
 	reg PIPZM = 0;
 	reg PIPZP = 0;
 	reg POUT_ = 1;
-	reg RCH13_ = 1;
-	reg RCH14_ = 1;
 	reg RCH33_ = 1;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
@@ -244,8 +247,8 @@ module agc();
 	reg US2SG = 0;
 	reg VFAIL = 0;
 	reg WATCHP = 0;
-	reg WCH13_ = 1;
-	reg WCH14_ = 1;
+	reg WCH34_ = 1;
+	reg WCH35_ = 1;
 	reg WCHG_ = 1;
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
@@ -458,6 +461,16 @@ module agc();
 	wire A18_2_CHOR11_;
 	wire A18_2_CHOR12_;
 	wire A18_2_CHOR14_;
+	wire A22_10_DATA_;
+	wire A22_1_DATA_;
+	wire A22_2_DATA_;
+	wire A22_3_DATA_;
+	wire A22_4_DATA_;
+	wire A22_5_DATA_;
+	wire A22_6_DATA_;
+	wire A22_7_DATA_;
+	wire A22_8_DATA_;
+	wire A22_9_DATA_;
 	wire A2XG_;
 	wire A2X_;
 	wire AD0;
@@ -545,6 +558,8 @@ module agc();
 	wire CAG;
 	wire CBG;
 	wire CCH11;
+	wire CCH13;
+	wire CCH14;
 	wire CCH33;
 	wire CCS0;
 	wire CCS0_;
@@ -574,6 +589,7 @@ module agc();
 	wire CH1304;
 	wire CH1305;
 	wire CH1306;
+	wire CH1307;
 	wire CH1308;
 	wire CH1309;
 	wire CH1311;
@@ -699,6 +715,7 @@ module agc();
 	wire DAS0_;
 	wire DAS1;
 	wire DAS1_;
+	wire DATA_;
 	wire DCA0;
 	wire DCS0;
 	wire DIM0_;
@@ -706,6 +723,8 @@ module agc();
 	wire DINC_;
 	wire DISDAC;
 	wire DIV_;
+	wire DKDATA;
+	wire DKDATB;
 	wire DLKRPT;
 	wire DV0;
 	wire DV0_;
@@ -1073,6 +1092,8 @@ module agc();
 	wire L2GDG_;
 	wire L2GD_;
 	wire LOMOD;
+	wire LOW6_;
+	wire LOW7_;
 	wire LRRANG;
 	wire LRSYNC;
 	wire LRXVEL;
@@ -1254,6 +1275,8 @@ module agc();
 	wire RB_;
 	wire RCG_;
 	wire RCH11_;
+	wire RCH13_;
+	wire RCH14_;
 	wire RCH_;
 	wire RC_;
 	wire RCmXmP;
@@ -1573,6 +1596,8 @@ module agc();
 	wire WBG_;
 	wire WB_;
 	wire WCH11_;
+	wire WCH13_;
+	wire WCH14_;
 	wire WCH_;
 	wire WEBG_;
 	wire WEDOPG_;
@@ -4790,6 +4815,66 @@ module agc();
 		prop_clk
 	);
 
+	a22_inout_v a22(
+		DKSTRT,
+		END,
+		CHWL01_,
+		CHWL02_,
+		CHWL03_,
+		CHWL04_,
+		CHWL05_,
+		CHWL06_,
+		CHWL07_,
+		CHWL08_,
+		CHWL09_,
+		CHWL10_,
+		CHWL11_,
+		CHWL12_,
+		CHWL13_,
+		CHWL14_,
+		CHWL16_,
+		GOJAM,
+		XB3_,
+		XB4_,
+		XT1_,
+		WCHG_,
+		CCHG_,
+		WCH34_,
+		CCH34,
+		WCH35_,
+		CCH35,
+		DATA_,
+		HIGH0_,
+		HIGH1_,
+		HIGH2_,
+		HIGH3_,
+		DKBSNC,
+		PC15_,
+		WCH13_,
+		CCH13,
+		RCH13_,
+		WCH14_,
+		CCH14,
+		RCH14_,
+		CH1307,
+		LOW6_,
+		LOW7_,
+		A22_1_DATA_,
+		A22_2_DATA_,
+		A22_3_DATA_,
+		A22_4_DATA_,
+		A22_5_DATA_,
+		A22_6_DATA_,
+		A22_7_DATA_,
+		A22_8_DATA_,
+		A22_9_DATA_,
+		A22_10_DATA_,
+		DKDATA,
+		DKDATB,
+		reset,
+		prop_clk
+	);
+
 	assign A2X_ = A05_1_A2X_ & A05_2_A2X_ & A06_1_A2X_;
 	assign CHOR01_ = A16_1_CHOR01_ & A16_2_CHOR01_ & A17_1_CHOR01_ & A17_2_CHOR01_;
 	assign CHOR02_ = A16_1_CHOR02_ & A16_2_CHOR02_ & A17_1_CHOR02_ & A17_2_CHOR02_;
@@ -4807,6 +4892,7 @@ module agc();
 	assign CHOR14_ = A17_1_CHOR14_ & A17_2_CHOR14_ & A18_1_CHOR14_ & A18_2_CHOR14_;
 	assign CHOR16_ = A17_1_CHOR16_ & A17_2_CHOR16_ & A18_1_CHOR16_;
 	assign CI_ = A04_1_CI_ & A05_1_CI_ & A05_2_CI_ & A06_1_CI_;
+	assign DATA_ = A22_10_DATA_ & A22_1_DATA_ & A22_2_DATA_ & A22_3_DATA_ & A22_4_DATA_ & A22_5_DATA_ & A22_6_DATA_ & A22_7_DATA_ & A22_8_DATA_ & A22_9_DATA_;
 	assign L16_ = A04_1_L16_ & A11_1_L16_;
 	assign MONEX_ = A05_1_MONEX_ & A06_1_MONEX_;
 	assign RA_ = A04_1_RA_ & A04_2_RA_ & A05_1_RA_ & A05_2_RA_ & A05_3_RA_;

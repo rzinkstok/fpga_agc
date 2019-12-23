@@ -56,6 +56,7 @@ read_verilog -library xil_defaultlib {
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a19_inout_iv.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a20_counter_cell_i.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a22_inout_v.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
