@@ -256,6 +256,7 @@ module a14_memory_timing_addressing(
     wire NOR42148_out;
     wire NOR42150_out;
     wire NOR42151_out;
+    wire NOR42152_out;
     wire NOR42154_out;
     wire NOR42155_out;
     wire NOR42156_out;
@@ -302,6 +303,7 @@ module a14_memory_timing_addressing(
     
     
     wire NOR40222_out;
+    wire NOR52162_out;
     
     wire SBFSET;
     wire CLEARA;
@@ -320,7 +322,7 @@ module a14_memory_timing_addressing(
     
     // ROP_
     nor_2 #(1'b0) NOR42101(ROP_,            S11,            S12,                                            reset, prop_clk);
-    // NOR42102 omitted (fan-out expansion)
+    // NOR42102 removed (fan-out expansion)
     
     // IHENV
     nor_2 #(1'b0) NOR42103(NOR42103_out,    T08_,           PHS3_,                                          reset, prop_clk);
@@ -406,14 +408,17 @@ module a14_memory_timing_addressing(
     
     nor_1 #(1'b0) NOR42147(NOR42147_out,    ROP_,                                                           reset, prop_clk);
     nor_3 #(1'b0) NOR42148(NOR42148_out,    T02_,           NOR42147_out,   NOR42155_out,                   reset, prop_clk);
-    // NOR42149 omitted (fan-out expansion)
+    // NOR42149 removed (fan-out expansion)
     nor_2 #(1'b1) NOR42150(NOR42150_out,    NOR42148_out,   NOR42151_out,                                   reset, prop_clk);
     nor_3 #(1'b0) NOR42151(NOR42151_out,    NOR42150_out,   T07,            GOJAM,                          reset, prop_clk);
-    nor_1 #(1'b0) NOR42152(CLROPE,          NOR42150_out,                                                   reset, prop_clk);
-    // NOR42153 omitted (fan-out expansion)
+    nor_1 #(1'b0) NOR42152(NOR42152_out,    NOR42150_out,                                                   reset, prop_clk);
+    // NOR42153 removed (fan-out expansion)
+    // NOR52162 added from A09 sheet 1
+    nor_1 #(1'b0) NOR52162(NOR52162_out,    STRT2,                                                          reset, prop_clk);
+    assign CLROPE = NOR42152_out & NOR52162_out;
     
     // NOR42157 moved to A06 sheet 1
-    // NOR42158 omitted (not connected)
+    // NOR42158 removed (not connected)
     
     
     // Erasable memory timing
@@ -424,7 +429,7 @@ module a14_memory_timing_addressing(
     nor_2 #(1'b0) NOR42256(NOR42256_out,    MP1,            MAMU,                                           reset, prop_clk);
     assign ERAS = NOR42254_out & NOR42255_out & NOR42256_out;
     nor_1 #(1'b0) NOR42252(ERAS_,           ERAS,                                                           reset, prop_clk);
-    // NOR42253 omitted (fan-out expansion)
+    // NOR42253 removed (fan-out expansion)
     
     nor_2 #(1'b0) NOR42224(NOR42224_out,    T05_,           ERAS_,                                          reset, prop_clk);
     nor_2 #(1'b1) NOR42225(FNERAS_,         NOR42224_out,   NOR42226_out,                                   reset, prop_clk);
@@ -469,7 +474,7 @@ module a14_memory_timing_addressing(
     nor_2 #(1'b1) NOR42228(NOR42228_out,    NOR42227_out,   NOR42229_out,                                   reset, prop_clk);
     nor_3 #(1'b0) NOR42229(NOR42229_out,    NOR42228_out,   NOR42232_out,   GOJAM,                          reset, prop_clk);
     nor_2 #(1'b0) NOR42230(SETEK,           NOR42228_out,   STRT2,                                          reset, prop_clk);
-    // NOR42231 omitted (fan-out expansion)
+    // NOR42231 removed (fan-out expansion)
     
     // REDRST
     nor_2 #(1'b0) NOR42244(NOR42244_out,    T05_,           PHS3_,                                          reset, prop_clk);
@@ -514,18 +519,25 @@ module a14_memory_timing_addressing(
     **************************/
     
     wire NOR42433_out;
+    wire NOR42434_out;
     wire NOR42435_out;
     wire NOR42436_out;
     wire NOR42437_out;
     wire NOR42438_out;
     wire NOR42439_out;
     wire NOR42440_out;
+    wire NOR42441_out;
     wire NOR42442_out;
     wire NOR42443_out;
+    wire NOR42444_out;
     wire NOR42445_out;
     
     wire NOR34219_out;
     wire NOR34220_out;
+    
+    wire NOR42435_in;
+    wire NOR42442_in;
+    wire NOR42445_in;
     
     wire RILP1;
     wire RILP1_;
@@ -534,43 +546,43 @@ module a14_memory_timing_addressing(
     
     nor_3 #(1'b0) NOR42301(XB0,             S01,            S02,            S03,                            reset, prop_clk);
     nor_1 #(1'b0) NOR42302(XB0_,            XB0,                                                            reset, prop_clk);
-    // NOR42303-42305 omitted (fan-out expansion)
+    // NOR42303-42305 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42306(XB0E,            XB0_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42307(XB1,             S01_,           S02,            S03,                            reset, prop_clk);
     nor_1 #(1'b0) NOR42308(XB1_,            XB1,                                                            reset, prop_clk);
-    // NOR42309 and NOR42310 omitted (fan-out expansion)
+    // NOR42309 and NOR42310 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42311(XB1E,            XB1_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42312(XB2,             S01,            S02_,           S03,                            reset, prop_clk);
     nor_1 #(1'b0) NOR42313(XB2_,            XB2,                                                            reset, prop_clk);
-    // NOR42314 and NOR42315 omitted (fan-out expansion)
+    // NOR42314 and NOR42315 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42316(XB2E,            XB2_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42317(XB3,             S01_,           S02_,           S03,                            reset, prop_clk);
     nor_1 #(1'b0) NOR42318(XB3_,            XB3,                                                            reset, prop_clk);
-    // NOR42319 and NOR42320 omitted (fan-out expansion)
+    // NOR42319 and NOR42320 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42321(XB3E,            XB3_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42322(XB4,             S01,            S02,            S03_,                           reset, prop_clk);
     nor_1 #(1'b0) NOR42323(XB4_,            XB4,                                                            reset, prop_clk);
-    // NOR42324 and NOR42325 omitted (fan-out expansion)
+    // NOR42324 and NOR42325 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42326(XB4E,            XB4_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42327(XB5,             S01_,           S02,            S03_,                           reset, prop_clk);
     nor_1 #(1'b0) NOR42328(XB5_,            XB5,                                                            reset, prop_clk);
-    // NOR42329 and NOR42330 omitted (fan-out expansion)
+    // NOR42329 and NOR42330 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42331(XB5E,            XB5_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42332(XB6,             S01,            S02_,           S03_,                           reset, prop_clk);
     nor_1 #(1'b0) NOR42333(XB6_,            XB6,                                                            reset, prop_clk);
-    // NOR42334 and NOR42335 omitted (fan-out expansion)
+    // NOR42334 and NOR42335 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42336(XB6E,            XB6_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42337(XB7,             S01_,           S02_,           S03_,                           reset, prop_clk);
     nor_1 #(1'b0) NOR42339(XB7_,            XB7,                                                            reset, prop_clk);
-    // NOR42338 omitted (not used)
-    // NOR42340 omitted (fan-out expansion)
+    // NOR42338 removed (not used)
+    // NOR42340 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42341(XB7E,            XB7_,                                                           reset, prop_clk);
     
     
@@ -600,28 +612,28 @@ module a14_memory_timing_addressing(
     // X top signals
     nor_3 #(1'b0) NOR42401(XT0,             S06,            S05,            S04,                            reset, prop_clk);
     nor_1 #(1'b0) NOR42402(XT0_,            XT0,                                                            reset, prop_clk);
-    // NOR42403 omitted (fan-out expansion)
+    // NOR42403 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42404(XT0E,            XT0_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42405(XT1,             S06,            S05,            S04_,                           reset, prop_clk);
     nor_1 #(1'b0) NOR42406(XT1_,            XT1,                                                            reset, prop_clk);
-    // NOR42407 omitted (fan-out expansion)
+    // NOR42407 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42408(XT1E,            XT1_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42409(XT2,             S06,            S05_,           S04,                            reset, prop_clk);
     nor_1 #(1'b0) NOR42410(XT2_,            XT2,                                                            reset, prop_clk);
-    // NOR42411 omitted (fan-out expansion)
+    // NOR42411 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42412(XT2E,            XT2_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42413(XT3,             S06,            S05_,           S04_,                           reset, prop_clk);
     nor_1 #(1'b0) NOR42414(XT3_,            XT3,                                                            reset, prop_clk);
-    // NOR42415 omitted (fan-out expansion)
-    // NOR42422 omitted (fan-out expansion)
+    // NOR42415 removed (fan-out expansion)
+    // NOR42422 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42416(XT3E,            XT3_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42417(XT4,             S06_,           S05,            S04,                            reset, prop_clk);
     nor_1 #(1'b0) NOR42418(XT4_,            XT4,                                                            reset, prop_clk);
-    // NOR42419 omitted (fan-out expansion)
+    // NOR42419 removed (fan-out expansion)
     nor_1 #(1'b0) NOR42420(XT4E,            XT4_,                                                           reset, prop_clk);
     
     nor_3 #(1'b0) NOR42421(XT5,             S06_,           S05,            S04_,                           reset, prop_clk);
@@ -636,28 +648,35 @@ module a14_memory_timing_addressing(
     nor_1 #(1'b0) NOR42431(XT7_,            XT7,                                                            reset, prop_clk);
     nor_1 #(1'b0) NOR42432(XT7E,            XT7_,                                                           reset, prop_clk);
     
-    // NOR42426 omitted (fan-out expansion for A6 sheet 1
-    // NOR42430 omitted (fan-out expansion for A11 sheet 2)
+    // NOR42426 removed (fan-out expansion for A6 sheet 1
+    // NOR42430 removed (fan-out expansion for A11 sheet 2)
     
     // ILP
-    nor_4 #(1'b0) NOR42433(NOR42433_out,    XT0,            XT3,            XT5,            XT6,            reset, prop_clk);
-    // NOR42434 merged into NOR42433
-    nor_1 #(1'b0) NOR42435(NOR42435_out,    NOR42433_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR42433(NOR42433_out,    XT0,            XT3,                                            reset, prop_clk);
+    nor_2 #(1'b0) NOR42434(NOR42434_out,    XT5,            XT6,                                            reset, prop_clk);
+    assign NOR42435_in = NOR42433_out & NOR42434_out;
     
-    nor_4 #(1'b0) NOR42440(NOR42440_out,    XB0,            XB3,            XB5,            XB6,            reset, prop_clk);
-    // NOR42441 merged into NOR42440
-    nor_1 #(1'b0) NOR42442(NOR42442_out,    NOR42440_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR42435(NOR42435_out,    NOR42435_in,                                                    reset, prop_clk);
     
-    nor_3 #(1'b0) NOR42436(NOR42436_out,    NOR42440_out,   RILP1,          NOR42433_out,                   reset, prop_clk);
+    nor_2 #(1'b0) NOR42440(NOR42440_out,    XB0,            XB3,                                            reset, prop_clk);
+    nor_2 #(1'b0) NOR42441(NOR42441_out,    XB5,            XB6,                                            reset, prop_clk);
+    assign NOR42442_in = NOR42440_out & NOR42441_out;
+    
+    nor_1 #(1'b0) NOR42442(NOR42442_out,    NOR42442_in,                                                    reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR42436(NOR42436_out,    NOR42442_in,    RILP1,          NOR42435_in,                    reset, prop_clk);
     nor_3 #(1'b0) NOR42437(NOR42437_out,    NOR42442_out,   RILP1,          NOR42435_out,                   reset, prop_clk);
-    nor_3 #(1'b0) NOR42438(NOR42438_out,    NOR42442_out,   RILP1_,         NOR42433_out,                   reset, prop_clk);
-    nor_3 #(1'b0) NOR42439(NOR42439_out,    NOR42440_out,   RILP1_,         NOR42435_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR42438(NOR42438_out,    NOR42442_out,   RILP1_,         NOR42435_in,                    reset, prop_clk);
+    nor_3 #(1'b0) NOR42439(NOR42439_out,    NOR42442_in,    RILP1_,         NOR42435_out,                   reset, prop_clk);
     
-    nor_4 #(1'b0) NOR42443(NOR42443_out,    NOR42436_out,   NOR42437_out,   NOR42438_out,   NOR42439_out,   reset, prop_clk);
-    // NOR42444 omitted (fan-in expansion)
-    nor_1 #(1'b0) NOR42445(NOR42445_out,    NOR42443_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR42443(NOR42443_out,    NOR42436_out,   NOR42437_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR42444(NOR42444_out,    NOR42438_out,   NOR42439_out,                                   reset, prop_clk);
+    assign NOR42445_in = NOR42443_out & NOR42444_out;
+    
+    // NOR42444 removed (fan-in expansion)
+    nor_1 #(1'b0) NOR42445(NOR42445_out,    NOR42445_in,                                                    reset, prop_clk);
     nor_1 #(1'b0) NOR42446(ILP,             NOR42445_out,                                                   reset, prop_clk);
-    nor_1 #(1'b0) NOR42447(ILP_,            NOR42443_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR42447(ILP_,            NOR42445_in,                                                    reset, prop_clk);
     
     // NOR42448 - NOR42453 moved to A7 sheet 2
     // NOR42454 moved to A4 sheet 2

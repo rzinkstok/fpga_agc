@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1456313794fs"></ZoomStartTime>
-      <ZoomEndTime time="119709937242fs"></ZoomEndTime>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="124645711202fs"></ZoomEndTime>
       <Cursor1Time time="100001000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="184"></NameColumnWidth>
-      <ValueColumnWidth column_width="122"></ValueColumnWidth>
+      <ValueColumnWidth column_width="118"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="43" />
    <wvobject type="logic" fp_name="/agc_tb/a02/CLOCK">
@@ -414,6 +414,7 @@
    <wvobject type="group" fp_name="group516">
       <obj_property name="label">SQ register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/agc_tb/a03/SQR10">
          <obj_property name="ElementShortName">SQR10</obj_property>
          <obj_property name="ObjectShortName">SQR10</obj_property>
@@ -494,6 +495,7 @@
    <wvobject type="group" fp_name="group560">
       <obj_property name="label">Stage counter</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/agc_tb/a04/T12USE_">
          <obj_property name="ElementShortName">T12USE_</obj_property>
          <obj_property name="ObjectShortName">T12USE_</obj_property>
@@ -578,6 +580,7 @@
    <wvobject type="group" fp_name="group585">
       <obj_property name="label">Branch register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/agc_tb/a04/BR1">
          <obj_property name="ElementShortName">BR1</obj_property>
          <obj_property name="ObjectShortName">BR1</obj_property>
@@ -822,6 +825,7 @@
    <wvobject type="group" fp_name="group357">
       <obj_property name="label">Erasable bank</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/agc_tb/a15/WEBG_">
          <obj_property name="ElementShortName">WEBG_</obj_property>
          <obj_property name="ObjectShortName">WEBG_</obj_property>
@@ -850,6 +854,11 @@
    <wvobject type="group" fp_name="group364">
       <obj_property name="label">Fixed bank</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/agc_tb/WFBG_">
+         <obj_property name="ElementShortName">WFBG_</obj_property>
+         <obj_property name="ObjectShortName">WFBG_</obj_property>
+      </wvobject>
       <wvobject type="logic" fp_name="/agc_tb/CFBG">
          <obj_property name="ElementShortName">CFBG</obj_property>
          <obj_property name="ObjectShortName">CFBG</obj_property>
@@ -857,10 +866,6 @@
       <wvobject type="logic" fp_name="/agc_tb/RFBG_">
          <obj_property name="ElementShortName">RFBG_</obj_property>
          <obj_property name="ObjectShortName">RFBG_</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/agc_tb/WFBG_">
-         <obj_property name="ElementShortName">WFBG_</obj_property>
-         <obj_property name="ObjectShortName">WFBG_</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/agc_tb/FB11">
          <obj_property name="ElementShortName">FB11</obj_property>
@@ -882,6 +887,7 @@
    <wvobject type="group" fp_name="group778">
       <obj_property name="label">Channel write lines</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/agc_tb/CHWL01_">
          <obj_property name="ElementShortName">CHWL01_</obj_property>
          <obj_property name="ObjectShortName">CHWL01_</obj_property>

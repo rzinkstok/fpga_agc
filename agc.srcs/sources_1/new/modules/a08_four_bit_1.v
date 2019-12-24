@@ -173,6 +173,8 @@ module a08_four_bit_1(
     wire NOR51153_out;
     wire NOR51157_out;
     wire NOR51158_out;
+    wire NOR51162_out;
+    wire NOR51163_out;
     
     wire NOR51201_out;
     wire NOR51202_out;
@@ -184,6 +186,7 @@ module a08_four_bit_1(
     wire NOR51208_out;
     wire NOR51209_out;
     wire NOR51211_out;
+    wire NOR51212_out;
     wire NOR51213_out;
     wire NOR51217_out;
     wire NOR51218_out;
@@ -218,6 +221,7 @@ module a08_four_bit_1(
     wire NOR51253_out;
     wire NOR51257_out;
     wire NOR51258_out;
+    wire NOR51263_out;
     
     wire NOR51401_out;
     wire NOR51402_out;
@@ -263,6 +267,7 @@ module a08_four_bit_1(
     wire NOR51453_out;
     wire NOR51457_out;
     wire NOR51458_out;
+    wire NOR51462_out;
     
     wire NOR51301_out;
     wire NOR51302_out;
@@ -274,6 +279,7 @@ module a08_four_bit_1(
     wire NOR51308_out;
     wire NOR51309_out;
     wire NOR51311_out;
+    wire NOR51312_out;
     wire NOR51313_out;
     wire NOR51317_out;
     wire NOR51318_out;
@@ -315,15 +321,31 @@ module a08_four_bit_1(
     wire NOR35360_out;
     wire NOR35460_out;
     wire NOR53462_out;
+    wire NOR54162_out;
+    wire NOR54163_out;
     
-    wire A01_, A02_, A03_, A04_;
-    wire RL01_, RL02_, RL03_, RL04_;
-    wire XUY03_, XUY04_;
-    wire CI02_, CI03_, CI04_;
+    wire A01_;
+    wire A02_;
+    wire A03_;
+    wire A04_;
+    wire RL01_;
+    wire RL02_;
+    wire RL03_;
+    wire RL04_;
+    wire XUY03_;
+    wire XUY04_;
+    wire CI02_;
+    wire CI03_;
+    wire CI04_;
     wire CO04;
-    wire Z01_, Z02_, Z03_, Z04_;
-    wire G02_, G03_;
-    wire S08A, S08A_;
+    wire Z01_;
+    wire Z02_;
+    wire Z03_;
+    wire Z04_;
+    wire G02_;
+    wire G03_;
+    wire S08A;
+    wire S08A_;
     
     // Bit column 1
      
@@ -358,7 +380,7 @@ module a08_four_bit_1(
     
     nor_3 #(1'b0) NOR51117(NOR51117_out,    SUMA01_,        SUMB01_,        RULOG_,                     reset, prop_clk);
     
-    // NOR51116 not used
+    // NOR51116 removed (not used)
     
     // A register flip-flop
     nor_2 #(1'b0) NOR51118(NOR51118_out,    WAG_,           WL01_,                                      reset, prop_clk);
@@ -417,10 +439,10 @@ module a08_four_bit_1(
     nor_2 #(1'b0) NOR51145(NOR51145_out,    L2GDG_,         MCRO_,                                      reset, prop_clk);
     nor_2 #(1'b0) NOR51146(NOR51146_out,    WG1G_,          WL01_,                                      reset, prop_clk);
     
-    nor_4 #(1'b1) NOR51147(NOR51147_out,    SA01,           NOR51143_out,   NOR51144_out,   G01ED,      reset, prop_clk);
-    // NOR51162 merged into NOR51147
+    nor_3 #(1'b1) NOR51147(NOR51147_out,    SA01,           NOR51143_out,   NOR51144_out,               reset, prop_clk);
+    nor_1 #(1'b1) NOR51162(NOR51162_out,    G01ED,                                                      reset, prop_clk);
     nor_3 #(1'b1) NOR51148(NOR51148_out,    NOR51145_out,   NOR51146_out,   G01,                        reset, prop_clk);
-    assign G01_ = NOR51147_out & NOR51148_out;
+    assign G01_ = NOR51147_out & NOR51162_out & NOR51148_out;
     nor_2 #(1'b0) NOR51149(G01,             G01_,           CGG,                                        reset, prop_clk);
     
     nor_1 #(1'b0) NOR51150(GEM01,           G01_,                                                       reset, prop_clk);
@@ -451,9 +473,10 @@ module a08_four_bit_1(
     
     // WL01_
     nor_1 #(1'b0) NOR51154(WL01_,           WL01,                                                       reset, prop_clk);
-    // NOR51155 and NOR51156 omitted
+    // NOR51155 and NOR51156 removed (fan-out expansion)
     
     // NOR51161 moved to A14 sheet 1
+    
     
     // Bit column 2
     
@@ -483,8 +506,10 @@ module a08_four_bit_1(
     nor_2 #(1'b0) NOR51209(NOR51209_out,    NOR51203_out,   NOR51207_out,                               reset, prop_clk);
     nor_2 #(1'b0) NOR51210(XUY02_,          NOR51204_out,   NOR51208_out,                               reset, prop_clk);
     
-    nor_4 #(1'b0) NOR51212(SUMA02_,         NOR51209_out,   XUY02_,         CI02_,          WHOMP,      reset, prop_clk);
-    // NOR54162 merged into NOR51212
+    nor_3 #(1'b0) NOR51212(NOR51212_out,    NOR51209_out,   XUY02_,         CI02_,                      reset, prop_clk);
+    // NOR54162 added from A11 sheet 1
+    nor_1 #(1'b0) NOR54162(NOR54162_out,    WHOMP,                                                      reset, prop_clk);
+    assign SUMA02_ = NOR51212_out & NOR54162_out;
     
     nor_2 #(1'b0) NOR51213(NOR51213_out,    NOR51209_out,   XUY02_,                                     reset, prop_clk);
     nor_1 #(1'b0) NOR51211(NOR51211_out,    CI02_,                                                      reset, prop_clk);
@@ -494,7 +519,7 @@ module a08_four_bit_1(
     
     nor_3 #(1'b0) NOR51217(NOR51217_out,    SUMA02_,        SUMB02_,        RULOG_,                     reset, prop_clk);
     
-    // NOR51216 not used
+    // NOR51216 removed (not used)
     
     // A register flip-flop
     nor_2 #(1'b0) NOR51218(NOR51218_out,    WAG_,           WL02_,                                      reset, prop_clk);
@@ -553,11 +578,10 @@ module a08_four_bit_1(
     nor_2 #(1'b0) NOR51245(NOR51245_out,    L2GDG_,         L01_,                                       reset, prop_clk);
     nor_2 #(1'b0) NOR51246(NOR51246_out,    WG1G_,          WL02_,                                      reset, prop_clk);
     
-    nor_4 #(1'b1) NOR51247(NOR51247_out,    SA02,           NOR51243_out,   NOR51244_out,   G02ED,      reset, prop_clk);
-    // NOR51163 merged into NOR51247
-    
+    nor_3 #(1'b1) NOR51247(NOR51247_out,    SA02,           NOR51243_out,   NOR51244_out,               reset, prop_clk);
+    nor_1 #(1'b1) NOR51163(NOR51163_out,    G02ED,                                                      reset, prop_clk);
     nor_3 #(1'b1) NOR51248(NOR51248_out,    NOR51245_out,   NOR51246_out,   G02,                        reset, prop_clk);
-    assign G02_ = NOR51247_out & NOR51248_out;
+    assign G02_ = NOR51247_out & NOR51163_out & NOR51248_out;
     nor_2 #(1'b0) NOR51249(G02,             G02_,           CGG,                                        reset, prop_clk);
     
     nor_1 #(1'b0) NOR51250(GEM02,           G02_,                                                       reset, prop_clk);
@@ -588,7 +612,7 @@ module a08_four_bit_1(
     
     // WL02_
     nor_1 #(1'b0) NOR51254(WL02_,           WL02,                                                       reset, prop_clk);
-    // NOR51255 and NOR51256 omitted
+    // NOR51255 and NOR51256 removed (fan-out expansion)
     
     // NOR51261 and NOR51262 moved to A14 sheet 1
     
@@ -690,10 +714,10 @@ module a08_four_bit_1(
     nor_2 #(1'b0) NOR51445(NOR51445_out,    L2GDG_,         L02_,                                       reset, prop_clk);
     nor_2 #(1'b0) NOR51446(NOR51446_out,    WG1G_,          WL03_,                                      reset, prop_clk);
     
-    nor_4 #(1'b1) NOR51447(NOR51447_out,    SA03,           NOR51443_out,   NOR51444_out,   G03ED,      reset, prop_clk);
-    // NOR51263 merged with NOR51447
+    nor_3 #(1'b1) NOR51447(NOR51447_out,    SA03,           NOR51443_out,   NOR51444_out,               reset, prop_clk);
+    nor_1 #(1'b1) NOR51263(NOR51263_out,    G03ED,                                                      reset, prop_clk);
     nor_3 #(1'b1) NOR51448(NOR51448_out,    NOR51445_out,   NOR51446_out,   G03,                        reset, prop_clk);
-    assign G03_ = NOR51447_out & NOR51448_out;
+    assign G03_ = NOR51447_out & NOR51263_out & NOR51448_out;
     nor_2 #(1'b0) NOR51449(G03,             G03_,           CGG,                                        reset, prop_clk);
     
     nor_1 #(1'b0) NOR51450(GEM03,           G03_,                                                       reset, prop_clk);
@@ -729,9 +753,10 @@ module a08_four_bit_1(
     
     // WL03_
     nor_1 #(1'b0) NOR51454(WL03_,           WL03,                                                       reset, prop_clk);
-    // NOR51455 and NOR51456 omitted
+    // NOR51455 and NOR51456 removed (fan-out expansion)
     
     // NOR51461 moved to A14 sheet 1
+    
     
     // Bit column 4
     
@@ -757,8 +782,10 @@ module a08_four_bit_1(
     nor_2 #(1'b0) NOR51309(NOR51309_out,    NOR51303_out,   NOR51307_out,                               reset, prop_clk);
     nor_2 #(1'b0) NOR51310(XUY04_,          NOR51304_out,   NOR51308_out,                               reset, prop_clk);
     
-    nor_4 #(1'b0) NOR51312(SUMA04_,         NOR51309_out,   XUY04_,         CI04_,          WHOMP,      reset, prop_clk);
-    // NOR54163 from A11 sheet 1 merged into NOR51312
+    nor_3 #(1'b0) NOR51312(NOR51312_out,    NOR51309_out,   XUY04_,         CI04_,                      reset, prop_clk);
+    nor_1 #(1'b0) NOR54163(NOR54163_out,    WHOMP,                                                      reset, prop_clk);
+    assign SUMA04_ = NOR51312_out & NOR54163_out;
+    // NOR54163 moved here from A11 sheet 1
     
     nor_2 #(1'b0) NOR51313(NOR51313_out,    NOR51309_out,   XUY04_,                                     reset, prop_clk);
     nor_1 #(1'b0) NOR51311(NOR51311_out,    CI04_,                                                      reset, prop_clk);
@@ -825,10 +852,10 @@ module a08_four_bit_1(
     nor_2 #(1'b0) NOR51345(NOR51345_out,    L2GDG_,         L03_,                                       reset, prop_clk);
     nor_2 #(1'b0) NOR51346(NOR51346_out,    WG1G_,          WL04_,                                      reset, prop_clk);
     
-    nor_4 #(1'b1) NOR51347(NOR51347_out,    SA04,           NOR51343_out,   NOR51344_out,   G04ED,      reset, prop_clk);
-    // NOR51462 merged into NOR51347
+    nor_3 #(1'b1) NOR51347(NOR51347_out,    SA04,           NOR51343_out,   NOR51344_out,               reset, prop_clk);
+    nor_1 #(1'b1) NOR51462(NOR51462_out,    G04ED,                                                      reset, prop_clk);
     nor_3 #(1'b1) NOR51348(NOR51348_out,    NOR51345_out,   NOR51346_out,   G04,                        reset, prop_clk);
-    assign G04_ = NOR51347_out & NOR51348_out;
+    assign G04_ = NOR51347_out & NOR51462_out & NOR51348_out;
     nor_2 #(1'b0) NOR51349(G04,             G04_,           CGG,                                        reset, prop_clk);
     
     nor_1 #(1'b0) NOR51350(GEM04,           G04_,                                                       reset, prop_clk);
@@ -858,7 +885,7 @@ module a08_four_bit_1(
     
     // WL04_
     nor_1 #(1'b0) NOR51354(WL04_,           WL04,                                                       reset, prop_clk);
-    // NOR51355 and NOR51356 omitted
+    // NOR51355 and NOR51356 removed (fan-out expansion)
     
     // NOR51361 and NOR51362 moved to A14 sheet 1
     

@@ -168,6 +168,7 @@ module a17_inout_ii(
     output wire A17_2_CHOR12_,
     output wire A17_1_CHOR13_,
     output wire A17_2_CHOR13_,
+    output wire A17_3_CHOR13_,
     output wire A17_1_CHOR14_,
     output wire A17_2_CHOR14_,
     output wire A17_1_CHOR16_,
@@ -299,6 +300,7 @@ module a17_inout_ii(
     wire NOR44246_out;
     wire NOR44247_out;
     wire NOR44248_out;
+    wire NOR44249_out;
     wire NOR44250_out;
     wire NOR44251_out;
     wire NOR44252_out;
@@ -412,19 +414,19 @@ module a17_inout_ii(
     
     nor_2 #(1'b0) NOR44145(NOR44145_out,    XT3_,           XB0_,                                           reset, prop_clk);
     nor_1 #(1'b0) NOR44146(RCH30_,          NOR44145_out,                                                   reset, prop_clk);
-    // NOR44147 and NOR 44148 removed (fan-out expansion)
+    // NOR44147 and NOR44148 removed (fan-out expansion)
     
     nor_2 #(1'b0) NOR44149(NOR44149_out,    XT3_,           XB1_,                                           reset, prop_clk);
     nor_1 #(1'b0) NOR44150(RCH31_,          NOR44149_out,                                                   reset, prop_clk);
-    // NOR44151 and NOR 44152 removed (fan-out expansion)
+    // NOR44151 and NOR44152 removed (fan-out expansion)
     
     nor_2 #(1'b0) NOR44153(NOR44153_out,    XT3_,           XB2_,                                           reset, prop_clk);
     nor_1 #(1'b0) NOR44154(RCH32_,          NOR44153_out,                                                   reset, prop_clk);
-    // NOR44155 and NOR 44156 removed (fan-out expansion)
+    // NOR44155 and NOR44156 removed (fan-out expansion)
     
     nor_2 #(1'b0) NOR44157(NOR44157_out,    XT3_,           XB3_,                                           reset, prop_clk);
     nor_1 #(1'b0) NOR44158(RCH33_,          NOR44157_out,                                                   reset, prop_clk);
-    // NOR44159 and NOR 44160 removed (fan-out expansion)
+    // NOR44159 and NOR44160 removed (fan-out expansion)
     
     
     // Channel 13
@@ -461,9 +463,10 @@ module a17_inout_ii(
     // Bit 14
     nor_3 #(1'b0) NOR44246(NOR44246_out,    ROLGOF,         PCHGOF,         TRST10,                         reset, prop_clk);
     nor_3 #(1'b0) NOR44247(NOR44247_out,    TRST9,          MNIMmR,         MNIMpR,                         reset, prop_clk);
-    nor_4 #(1'b0) NOR44248(NOR44248_out,    MNIMmY,         MNIMpY,         MNIMmP,         MNIMpP,         reset, prop_clk);
-    // NOR44249 merged into NOR44248
-    assign noMNIM = NOR44246_out & NOR44247_out & NOR44248_out;
+    nor_3 #(1'b0) NOR44248(NOR44248_out,    MNIMmY,         MNIMpY,         MNIMmP,                         reset, prop_clk);
+    nor_1 #(1'b0) NOR44249(NOR44249_out,    MNIMpP,                                                         reset, prop_clk);
+    
+    assign noMNIM = NOR44246_out & NOR44247_out & NOR44248_out & NOR44249_out;
     
     nor_3 #(1'b0) NOR44250(NOR44250_out,    NOR44255_out,   F05A_,          noMNIM,                         reset, prop_clk);
     nor_2 #(1'b1) NOR44251(NOR44251_out,    NOR44250_out,   NOR44252_out,                                   reset, prop_clk);
@@ -653,8 +656,8 @@ module a17_inout_ii(
     nor_2 #(1'b0) NOR44415(NOR44415_out,    NOR44414_out,   CCH10,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR44416(NOR44416_out,    RCH10_,         NOR44414_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR44417(RYWD13,          NOR44414_out,                                                   reset, prop_clk);
-    nor_4 #(1'b0) NOR44418(A17_2_CHOR13_,   CH1213,         NOR44416_out,   CH1413,         CH1113,         reset, prop_clk);
-    // NOR44461 merged into NOR44418
+    nor_3 #(1'b0) NOR44418(A17_2_CHOR13_,   CH1213,         NOR44416_out,   CH1413,                         reset, prop_clk);
+    nor_1 #(1'b0) NOR44461(A17_3_CHOR13_,   CH1113,                                                         reset, prop_clk);
     
     nor_2 #(1'b0) NOR44419(NOR44419_out,    CHWL14_,        WCH10_,                                         reset, prop_clk);
     nor_2 #(1'b1) NOR44420(NOR44420_out,    NOR44419_out,   NOR44421_out,                                   reset, prop_clk);
@@ -698,7 +701,7 @@ module a17_inout_ii(
     nor_1 #(1'b0) NOR44454(RCH11_,          NOR44453_out,                                                   reset, prop_clk);
     // NOR44455 and NOR44456 removed (fan-out expansion)
     
-    // NOR44457 - NOR44460 not used
+    // NOR44457 - NOR44460 removed (not used)
     // NOR44462 removed (fan-out expansion for A14 sheet 2)
     // NOR44463 and NOR44464 removed (not connected)
     

@@ -549,7 +549,7 @@ module a21_counter_cell_ii(
     
     nor_1 #(1'b0) NOR32255(BKTF_,           T10_,                                                       reset, prop_clk);
     nor_2 #(1'b0) NOR32256(CHINC_,          INOTLD,         INOTRD,                                     reset, prop_clk);
-    // NOR32257 removed (merged into gate on A3 sheet 1
+    // NOR32257 removed (moved to A3 sheet 1
     nor_2 #(1'b0) NOR32258(SCAS17,          FS17,           DOSCAL,                                     reset, prop_clk);
     
     

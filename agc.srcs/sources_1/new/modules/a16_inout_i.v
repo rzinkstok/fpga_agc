@@ -277,7 +277,7 @@ module a16_inout_i(
     // WCH05
     nor_3 #(1'b0) NOR43151(NOR43151_out,    XB5_,           XT0_,           WCHG_,                          reset, prop_clk);
     nor_1 #(1'b0) NOR43149(WCH05_,          NOR43151_out,                                                   reset, prop_clk);
-    // NOR43150 omitted
+    // NOR43150 removed (fan-out expansion)
     
     // CCH05
     nor_3 #(1'b0) NOR43152(NOR43152_out,    CCHG_,          XB5_,           XT0_,                           reset, prop_clk);
@@ -287,7 +287,7 @@ module a16_inout_i(
     // RCH05
     nor_2 #(1'b0) NOR43216(NOR43216_out,    XT0_,           XB5_,                                           reset, prop_clk);
     nor_1 #(1'b0) NOR43217(RCH05_,          NOR43216_out,                                                   reset, prop_clk);
-    // NOR43218 merged into NOR43217
+    // NOR43218 removed (fan-out expansion)
     
     
     // Channel 12 bit 7
@@ -359,20 +359,20 @@ module a16_inout_i(
     // WCH06
     nor_3 #(1'b0) NOR43206(NOR43206_out,    XB6_,           WCHG_,          XT0_,                           reset, prop_clk);
     nor_1 #(1'b0) NOR43207(WCH06_,          NOR43206_out,                                                   reset, prop_clk);
-    // NOR43208 merged into NOR43207
+    // NOR43208 removed (fan-out expansion)
     
     // CCH06
     nor_3 #(1'b0) NOR43209(NOR43209_out,    XT0_,           CCHG_,          XB6_,                           reset, prop_clk);
     nor_2 #(1'b0) NOR43210(NOR43210_out,    GOJAM,          NOR43209_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR43211(CCH06,           NOR43210_out,                                                   reset, prop_clk);
-    // NOR43212 merged into NOR43211
+    // NOR43212 removed (fan-out expansion)
     
     // RCH06
     nor_2 #(1'b0) NOR43213(NOR43213_out,    XB6_,           XT0_,                                           reset, prop_clk);
     nor_1 #(1'b0) NOR43214(RCH06_,          NOR43213_out,                                                   reset, prop_clk);
-    // NOR43215 merged into NOR43214
+    // NOR43215 removed (fan-out expansion)
     
-    // NOR43260 omitted (not connected)
+    // NOR43260 removed (not connected)
     
     
     /**************************
@@ -439,6 +439,8 @@ module a16_inout_i(
     wire NOR43421_out;
     wire NOR43422_out;
     wire NOR43423_out;
+    wire NOR43426_out;
+    wire NOR43427_out;
     wire NOR43428_out;
     wire NOR43429_out;
     wire NOR43430_out;
@@ -446,7 +448,11 @@ module a16_inout_i(
     wire NOR43432_out;
     wire NOR43433_out;
     wire NOR43434_out;
+    wire NOR43435_out;
     wire NOR43436_out;
+    wire NOR43438_out;
+    wire NOR43440_out;
+    wire NOR43441_out;
     wire NOR43442_out;
     wire NOR43443_out;
     wire NOR43444_out;
@@ -567,24 +573,27 @@ module a16_inout_i(
     nor_2 #(1'b1) NOR43430(NOR43430_out,    NOR43431_out,   NOR43429_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR43429(NOR43429_out,    NOR43430_out,   CCH11,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR43428(NOR43428_out,    RCH11_,         NOR43430_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR43427(KYRLS,           NOR43430_out,   FLASH_,                                         reset, prop_clk);
-    // NOR43426 merged into NOR43427
+    nor_1 #(1'b0) NOR43427(NOR43427_out,    NOR43430_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR43426(NOR43426_out,    FLASH_,                                                         reset, prop_clk);
+    assign KYRLS = NOR43427_out & NOR43426_out;
     nor_3 #(1'b0) NOR43425(A16_2_CHOR05_,   NOR43321_out,   NOR43428_out,   CH0705,                         reset, prop_clk);
     
     nor_2 #(1'b0) NOR43432(NOR43432_out,    CHWL06_,        WCH12_,                                         reset, prop_clk);
     nor_2 #(1'b1) NOR43434(NOR43434_out,    NOR43432_out,   NOR43433_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR43433(NOR43433_out,    NOR43434_out,   CCH11,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR43436(NOR43436_out,    RCH11_,         NOR43434_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR43435(VNFLSH,          NOR43434_out,   FLASH_,                                         reset, prop_clk);
-    // NOR43438 merged into NOR43435
+    nor_1 #(1'b0) NOR43435(NOR43435_out,    NOR43434_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR43438(NOR43438_out,    FLASH_,                                                         reset, prop_clk);
+    assign VNFLSH = NOR43435_out & NOR43438_out;
     nor_3 #(1'b0) NOR43437(A16_2_CHOR06_,   NOR43329_out,   NOR43434_out,   CH0706,                         reset, prop_clk);
     
     nor_2 #(1'b0) NOR43445(NOR43445_out,    CHWL07_,        WCH11_,                                         reset, prop_clk);
     nor_2 #(1'b1) NOR43444(NOR43444_out,    NOR43445_out,   NOR43443_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR43443(NOR43443_out,    NOR43444_out,   CCH11,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR43442(NOR43442_out,    RCH11_,         NOR43444_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR43441(OPEROR,          NOR43444_out,   FLASH_,                                         reset, prop_clk);
-    // NOR43440 merged into NOR43441
+    nor_1 #(1'b0) NOR43441(NOR43441_out,    NOR43444_out,                                                   reset, prop_clk);
+    nor_1 #(1'b0) NOR43440(NOR43440_out,    FLASH_,                                                         reset, prop_clk);
+    assign OPEROR = NOR43441_out & NOR43440_out;
     nor_3 #(1'b0) NOR43439(A16_2_CHOR07_,   CH1207,         NOR43442_out,   CH0707,                         reset, prop_clk);
     
     

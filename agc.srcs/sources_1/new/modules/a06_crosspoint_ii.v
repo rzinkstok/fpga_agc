@@ -137,10 +137,13 @@ module a06_crosspoint_ii(
     output wire A06_2_RC_,
     output wire A06_1_WL_,
     output wire A06_1_RG_,
+    output wire A06_2_RG_,
     output wire A06_1_WB_,
+    output wire A06_2_WB_,
     output wire A06_1_RU_, 
     output wire A06_2_RU_, 
     output wire A06_3_RU_,
+    output wire A06_4_RU_,
     output wire A06_1_WZ_,
     output wire A06_1_TOV_,
     output wire A06_1_WSC_, 
@@ -156,6 +159,7 @@ module a06_crosspoint_ii(
     output wire A06_1_RB1_,
     output wire A06_1_RPTSET,
     output wire A06_1_ST2_,
+    output wire A06_2_ST2_,
     output wire A06_1_n8PP4, 
     output wire A06_2_n8PP4, 
     output wire A06_3_n8PP4,
@@ -249,6 +253,10 @@ module a06_crosspoint_ii(
     wire NOR40150_in;
     wire NOR40150_out;
     wire NOR40151_out;
+    
+    wire NOR40202_out;
+    wire NOR40203_out;
+    wire NOR40204_out;
     wire NOR40213_out;
     wire NOR40215_out;
     wire NOR40217_out;
@@ -267,6 +275,9 @@ module a06_crosspoint_ii(
     
     wire NOR34462_out;
     wire NOR34464_out;
+    wire NOR54262_out;
+    wire NOR54263_out;
+    
     wire L02A_;
     wire L15A_;
     
@@ -356,16 +367,19 @@ module a06_crosspoint_ii(
     // Cross-module fan-in, connected to A4 and A5
     nor_2 #(1'b1) NOR40140(A06_1_WL_,       NOR40138_out,   n5XP12,                                     reset, prop_clk);
     
-    // RG_
+    // RG_ part 1
     // Cross-module fan-in, connected to A5
-    nor_4 #(1'b0) NOR40141(A06_1_RG_,       n5XP4,          RADRG,          NOR40138_out,       n5XP28, reset, prop_clk);
-    // NOR40146 merged into NOR40141
+    nor_2 #(1'b0) NOR40141(A06_1_RG_,       n5XP4,          RADRG,                                      reset, prop_clk);
     
     nor_3 #(1'b1) NOR40142(NOR40142_out,    T06,            T09,            T12,                        reset, prop_clk);
     nor_3 #(1'b0) NOR40143(NOR40143_out,    DV376_,         NOR40142_out,   T12USE_,                    reset, prop_clk);
     nor_2 #(1'b1) NOR40144(NOR40144_out,    NOR40143_out,   DIVSTG,                                     reset, prop_clk);
     nor_1 #(1'b0) NOR40145(NOR40145_out,    NOR40144_out,                                               reset, prop_clk);
-    // NOR40146 merged with NOR40141
+    
+    // RG_ part 2
+    // Cross-module fan-in, connected to A5
+    nor_2 #(1'b0) NOR40146(A06_2_RG_,       NOR40138_out,       n5XP28,                                 reset, prop_clk);
+    
     nor_3 #(1'b1) NOR40147(NOR40147_out,    T02,            T04,            T06,                        reset, prop_clk);
     nor_2 #(1'b1) NOR40148(NOR40148_out,    T08,            T10,                                        reset, prop_clk);
     assign NOR40150_in = NOR40147_out & NOR40148_out;
@@ -376,25 +390,27 @@ module a06_crosspoint_ii(
     // ZAP_
     nor_2 #(1'b1) NOR40152(ZAP_,            NOR40150_out,   NOR40151_out,                               reset, prop_clk);
     
-    // NOR40153 merged with NOR40155
+    // WB_ part 1
+    // Cross-module fan-in, connected to A5
+    nor_1 #(1'b0) NOR40153(A06_1_WB_,       n2XP3,                                                      reset, prop_clk);
     
     // ZAP
     nor_1 #(1'b0) NOR40154(ZAP,             ZAP_,                                                       reset, prop_clk);
     
-    // WB_
+    // WB_ part 2
     // Cross-module fan-in, connected to A5
-    nor_4 #(1'b1) NOR40155(A06_1_WB_,       n5XP28,         n1XP10,         NOR40145_out,   n2XP3,      reset, prop_clk);
+    nor_3 #(1'b1) NOR40155(A06_2_WB_,       n5XP28,         n1XP10,         NOR40145_out,               reset, prop_clk);
     
-    // RU_ part 1
+    // RU_ part 1 and 2
     // Cross-module fan-in, connected to A5
-    nor_4 #(1'b0) NOR40156(A06_1_RU_,       NOR40145_out,   ZAP,            n5XP12,         n6XP5,      reset, prop_clk);
-    // NOR40157 merged with NOR40156
+    nor_2 #(1'b0) NOR40156(A06_1_RU_,       NOR40145_out,   ZAP,                                        reset, prop_clk);
+    nor_2 #(1'b0) NOR40157(A06_2_RU_,       n5XP12,         n6XP5,                                      reset, prop_clk);
     
     // WZ_
     // Cross-module fan-in, connected to A5
     nor_2 #(1'b1) NOR40158(A06_1_WZ_,       RRPA,           n5XP4,                                      reset, prop_clk);
     
-    // NOR40159 omitted (fan-out expansion)
+    // NOR40159 removed (fan-out expansion)
     
     // MCRO_
     nor_1 #(1'b0) NOR40160(MCRO_,           NOR40129_out,                                               reset, prop_clk);
@@ -403,10 +419,12 @@ module a06_crosspoint_ii(
     nor_3 #(1'b0) NOR40201(RB1F,            BR1_,           PHS4_,          TSGU_,                      reset, prop_clk);
     
     // CLXC
-    nor_3 #(1'b0) NOR40202(CLXC,            TSGU_,          BR1,            PHS4_,                      reset, prop_clk);
-    // NOR40203 and NOR40204 merged into NOR40202
+    nor_1 #(1'b0) NOR40202(NOR40202_out,    TSGU_,                                                      reset, prop_clk);
+    nor_1 #(1'b0) NOR40203(NOR40203_out,    BR1,                                                        reset, prop_clk);
+    nor_1 #(1'b0) NOR40204(NOR40204_out,    PHS4_,                                                      reset, prop_clk);
+    assign CLXC = NOR40202_out & NOR40203_out & NOR40204_out;
     
-    // NOR40205 not used
+    // NOR40205 removed (not used)
     
     // WQ_
     nor_2 #(1'b1) NOR40206(WQ_,             n5XP15,         n3XP6,                                      reset, prop_clk);
@@ -425,7 +443,8 @@ module a06_crosspoint_ii(
     
     // MONEX
     nor_1 #(1'b0) NOR40210(MONEX,           MONEX_,                                                     reset, prop_clk);
-    // NOR40211 and NOR40212 merged into NOR40210
+    // NOR40211 removed (fan-out expansion)
+    // NOR40212 removed (fan-out expansion)
     
     nor_2 #(1'b1) NOR40213(NOR40213_out,    PTWOX,          MONEX,                                      reset, prop_clk);
     
@@ -438,7 +457,8 @@ module a06_crosspoint_ii(
     nor_1 #(1'b0) NOR40216(BXVX,            NOR40215_out,                                               reset, prop_clk);
     
     nor_1 #(1'b0) NOR40217(NOR40217_out,    NOR40134_out,                                               reset, prop_clk);
-    // NOR40218 and NOR40219 not used
+    // NOR40218 removed (not used)
+    // NOR40219 removed (not used)
     
     // PIFL flip-flop
     nor_2 #(1'b1) NOR40220(PIFL_,           DVXP1,          NOR40221_out,                               reset, prop_clk);
@@ -461,16 +481,21 @@ module a06_crosspoint_ii(
     nor_1 #(1'b0) NOR40257(NOR40257_out,    NOR40256_out,                                               reset, prop_clk);
     nor_1 #(1'b0) NOR40258(NOR40258_out,    NOR40257_out,                                               reset, prop_clk);
     
-    // WHOMP
-    nor_4 #(1'b0) NOR54262(WHOMP,           DVXP1,          NISQ,           GOJAM,      WHOMP_,         reset, prop_clk);
-    // NOR54263 merged into NOR54262
+    // WHOMP flip-flop
+    
+    // Moved here from A11 sheet 1
+    nor_2 #(1'b0) NOR54262(NOR54262_out,    DVXP1,          WHOMP_,                                     reset, prop_clk);
+    nor_2 #(1'b0) NOR54263(NOR54263_out,    NISQ,           GOJAM,                                      reset, prop_clk);
+    assign WHOMP = NOR54262_out & NOR54263_out;
+    
+    // Moved here from A11 sheet 1
     nor_2 #(1'b1) NOR54161(WHOMP_,          WHOMP,          CLXC,                                       reset, prop_clk);
     
-    // WHOMPA
+    // Moved here from A14 sheet 1
     nor_1 #(1'b0) NOR42157(WHOMPA,          WHOMP_,                                                     reset, prop_clk);
     
     // RB1
-    nor_1 #(1'b0) NOR41426(RB1,             RB1_,                                                       reset, prop_clk);
+    nor_1 #(1'b0) NOR42426(RB1,             RB1_,                                                       reset, prop_clk);
     
     
     /**************************
@@ -483,11 +508,9 @@ module a06_crosspoint_ii(
     wire NOR40302_out;
     wire NOR40303_out;
     wire NOR40304_out;
-    wire NOR40305_in;
     wire NOR40306_out;
     wire NOR40307_out;
     wire NOR40309_out;
-    wire NOR40310_in;
     wire NOR40310_out;
     wire NOR40312_out;
     wire NOR40313_out;
@@ -503,7 +526,7 @@ module a06_crosspoint_ii(
     wire NOR40335_out;
     wire NOR40336_out;
     wire NOR40338_out;
-    wire NOR40438_out;
+    wire NOR40339_out;
     wire NOR40340_out;
     wire NOR40345_out;
     wire NOR40346_out;
@@ -511,29 +534,46 @@ module a06_crosspoint_ii(
     wire NOR40351_out;
     wire NOR40352_out;
     wire NOR40353_out;
-    wire NOR40354_in;
     wire NOR40354_out;
     wire NOR40355_out;
     wire NOR40356_out;
     
     wire NOR40401_out;
     wire NOR40405_out;
+    wire NOR40406_out;
     wire NOR40407_out;
     wire NOR40408_out;
     wire NOR40409_out;
-    wire NOR40410_in;
     wire NOR40410_out;
     wire NOR40411_out;
     wire NOR40412_out;
     wire NOR40413_out;
     wire NOR40421_out;
+    wire NOR40422_out;
     wire NOR40426_out;
     wire NOR40432_out;
+    wire NOR40433_out;
+    wire NOR40438_out;
     wire NOR40439_out;
     
-    wire n6XP12, n7XP7, n7XP10, n7XP15, n10XP9;
+    wire NOR40305_in;
+    wire NOR40310_in;
+    wire NOR40338_in;
+    wire NOR40354_in;
+    wire NOR40403_in;
+    wire NOR40410_in;
+    wire NOR40423_in;
+    wire NOR40434_in;
     
-    // NOR40301 not used
+    
+    wire n6XP12;
+    wire n7XP7;
+    wire n7XP10;
+    wire n7XP15;
+    wire n10XP9;
+    
+    
+    // NOR40301 removed (not used)
     
     // 6XP10
     nor_2 #(1'b0) NOR40302(NOR40302_out,    BR1,            AUG0_,                                      reset, prop_clk);
@@ -544,7 +584,7 @@ module a06_crosspoint_ii(
     nor_2 #(1'b0) NOR40307(NOR40307_out,    BR12B_,         DINC_,                                      reset, prop_clk);
     nor_2 #(1'b0) NOR40305(n6XP10,          T06_,           NOR40305_in,                                reset, prop_clk);
     
-    // NOR40308 not used
+    // NOR40308 removed (not used)
     
     // MONEX
     nor_2 #(1'b0) NOR40312(NOR40312_out,    AUG0_,          BR1_,                                       reset, prop_clk);
@@ -557,13 +597,13 @@ module a06_crosspoint_ii(
     // Cross-module fan-in, connected to A5
     nor_1 #(1'b1) NOR40311(A06_1_MONEX_,    NOR40310_out,                                               reset, prop_clk);
     
-    // NOR40316 not used
+    // NOR40316 removed (not used)
     
     // 6XP12
     nor_2 #(1'b0) NOR40318(NOR40318_out,    PCDU,           MCDU,                                       reset, prop_clk);
     nor_2 #(1'b0) NOR40317(n6XP12,          T06_,           NOR40318_out,                               reset, prop_clk);
     
-    // NOR40319 not used
+    // NOR40319 removed (not used)
     
     // POUT, MOUT, ZOUT
     nor_3 #(1'b0) NOR40320(POUT,            BR1B2B_,        CDUSTB_,        DINC_,                      reset, prop_clk);
@@ -583,7 +623,7 @@ module a06_crosspoint_ii(
     nor_2 #(1'b0) NOR40329(NOR40329_out,    WAND0,          INOTLD,                                     reset, prop_clk);
     nor_2 #(1'b0) NOR40331(n7XP14,          T07_,           NOR40329_out,                               reset, prop_clk);
     
-    // NOR40332 not used
+    // NOR40332 removed (not used)
 
     // 7XP10
     nor_3 #(1'b0) NOR40333(n7XP10,          DAS1_,          T07_,           BR1B2_,                     reset, prop_clk);
@@ -597,10 +637,12 @@ module a06_crosspoint_ii(
     
     // RU_ part 2
     // Cross-module fan-in, connected to A5
-    nor_4 #(1'b0) NOR40336(NOR40336_out,    PRINC,          PINC,           MINC,           DINC,       reset, prop_clk);
-    // NOR40339 merged into NOR40446
+    nor_3 #(1'b0) NOR40336(NOR40336_out,    PRINC,          PINC,           MINC,                       reset, prop_clk);
+    nor_1 #(1'b0) NOR40339(NOR40339_out,    DINC,                                                       reset, prop_clk);
+    assign NOR40338_in = NOR40336_out & NOR40339_out;
+    
     nor_2 #(1'b0) NOR40338(NOR40338_out,    NOR40336_out,   T07_,                                       reset, prop_clk);
-    nor_3 #(1'b0) NOR40344(A06_2_RU_,       NOR40338_out,   NOR40438_out,   NOR40354_out,               reset, prop_clk);
+    nor_3 #(1'b0) NOR40344(A06_3_RU_,       NOR40338_out,   NOR40438_out,   NOR40354_out,               reset, prop_clk);
     
     // WOVR
     nor_2 #(1'b0) NOR40340(NOR40340_out,    PRINC,          INKL,                                       reset, prop_clk);
@@ -648,17 +690,19 @@ module a06_crosspoint_ii(
     
     // RU part 3
     // Cross-module fan-in, connected to A5
-    nor_1 #(1'b0) NOR40358(A06_3_RU_,       RDBANK,                                                     reset, prop_clk);
+    nor_1 #(1'b0) NOR40358(A06_4_RU_,       RDBANK,                                                     reset, prop_clk);
     
     // EXT
     nor_2 #(1'b0) NOR40402(EXT,             T10_,           NDXX1_,                                     reset, prop_clk);
     
     // 10XP9
     nor_2 #(1'b0) NOR40405(NOR40405_out,    CCS0_,          BR1B2B_,                                    reset, prop_clk);
-    nor_4 #(1'b0) NOR40401(NOR40401_out,    IC6,            DCA0,           AD0,        NOR40405_out,   reset, prop_clk);
-    // NOR40406 merged into NOR40401
-    nor_2 #(1'b0) NOR40403(n10XP9,          T10_,           NOR40401_out,                               reset, prop_clk);
-    // NOR40404 nut used
+    nor_3 #(1'b0) NOR40401(NOR40401_out,    IC6,            DCA0,           AD0,                        reset, prop_clk);
+    nor_1 #(1'b0) NOR40406(NOR40406_out,    NOR40405_out,                                               reset, prop_clk);
+    assign NOR40403_in = NOR40401_out & NOR40406_out;
+    
+    nor_2 #(1'b0) NOR40403(n10XP9,          T10_,           NOR40403_in,                                reset, prop_clk);
+    // NOR40404 removed (not used)
     
     // WA_ part 2
     // Cross-module fan-in, connected to A5
@@ -677,14 +721,15 @@ module a06_crosspoint_ii(
     
     // ST1
     nor_2 #(1'b0) NOR40413(NOR40413_out,    T10_,           MP1_,                                       reset, prop_clk);
-    nor_4 #(1'b0) NOR40421(NOR40421_out,    n2XP8,          n10XP1,         MP0T10,     NOR40413_out,   reset, prop_clk);
-    // NOR40422 merged into NOR40421
-    nor_1 #(1'b0) NOR40423(ST1,             NOR40421_out,                                               reset, prop_clk);
+    nor_3 #(1'b0) NOR40421(NOR40421_out,    n2XP8,          n10XP1,         MP0T10,                     reset, prop_clk);
+    nor_1 #(1'b0) NOR40422(NOR40422_out,    NOR40413_out,                                               reset, prop_clk);
+    assign NOR40423_in = NOR40421_out & NOR40422_out;
+    nor_1 #(1'b0) NOR40423(ST1,             NOR40423_in,                                                reset, prop_clk);
     
     // ST2
     // Cross-module fan-in, connected to A5
-    nor_3 #(1'b0) NOR40416(A06_1_ST2_,      n8XP4,          NOR40413_out,   RADRZ,                      reset, prop_clk);
-    // NOR40424 merged into NOR40416
+    nor_2 #(1'b0) NOR40416(A06_1_ST2_,      n8XP4,          NOR40413_out,                               reset, prop_clk);
+    nor_1 #(1'b0) NOR40424(A06_2_ST2_,      RADRZ,                                                      reset, prop_clk);
     nor_1 #(1'b0) NOR40425(ST2,             ST2_,                                                       reset, prop_clk);
     
     // RUS_
@@ -709,17 +754,18 @@ module a06_crosspoint_ii(
     nor_2 #(1'b0) NOR40431(A06_1_CI_,       ZIPCI,          n6XP12,                                     reset, prop_clk);
     
     // PONEX
-    nor_4 #(1'b1) NOR40432(NOR40432_out,    n8XP6,          n7XP4,          n10XP8,         n6XP10,     reset, prop_clk);
-    // NOR40433 merged into NOR40432
-    nor_1 #(1'b0) NOR40434(PONEX,           NOR40432_out,                                               reset, prop_clk);
+    nor_3 #(1'b1) NOR40432(NOR40432_out,    n8XP6,          n7XP4,          n10XP8,                     reset, prop_clk);
+    nor_1 #(1'b1) NOR40433(NOR40433_out,    n6XP10,                                                     reset, prop_clk);
+    assign NOR40434_in = NOR40432_out & NOR40433_out;
+    nor_1 #(1'b0) NOR40434(PONEX,           NOR40434_in,                                                reset, prop_clk);
     
-    // NOR40435 merged to A4 sheet 2
+    // NOR40435 moved to A4 sheet 2
     
     // RB1_
     // Cross-module fan-in, connected to A4
     nor_1 #(1'b0) NOR40436(A06_1_RB1_,      n7XP10,                                                     reset, prop_clk);
     
-    // NOR40437 not connected
+    // NOR40437 removed (not connected)
     
     nor_3 #(1'b0) NOR40438(NOR40438_out,    DAS1_,          ADS0,           T03_,                       reset, prop_clk);
     

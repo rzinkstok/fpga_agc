@@ -281,6 +281,7 @@ module agc_tb();
 	wire A05_2_TSGN_;
 	wire A05_2_WA_;
 	wire A05_2_WB_;
+	wire A05_2_WL_;
 	wire A05_2_WY12_;
 	wire A05_2_WY_;
 	wire A05_2_WZ_;
@@ -294,6 +295,7 @@ module agc_tb();
 	wire A05_3_WB_;
 	wire A05_3_WY_;
 	wire A05_4_RB_;
+	wire A05_4_RC_;
 	wire A05_4_RG_;
 	wire A05_4_WB_;
 	wire A06_1_A2X_;
@@ -320,13 +322,17 @@ module agc_tb();
 	wire A06_1_n8PP4;
 	wire A06_2_RB_;
 	wire A06_2_RC_;
+	wire A06_2_RG_;
 	wire A06_2_RU_;
+	wire A06_2_ST2_;
 	wire A06_2_WA_;
+	wire A06_2_WB_;
 	wire A06_2_WG_;
 	wire A06_2_WSC_;
 	wire A06_2_n8PP4;
 	wire A06_3_RU_;
 	wire A06_3_n8PP4;
+	wire A06_4_RU_;
 	wire A10_1_RL09_;
 	wire A10_1_RL10_;
 	wire A10_1_RL11_;
@@ -417,6 +423,7 @@ module agc_tb();
 	wire A17_2_CHOR13_;
 	wire A17_2_CHOR14_;
 	wire A17_2_CHOR16_;
+	wire A17_3_CHOR13_;
 	wire A18_1_CHOR11_;
 	wire A18_1_CHOR12_;
 	wire A18_1_CHOR13_;
@@ -2613,6 +2620,7 @@ module agc_tb();
 		A05_1_RC_,
 		A05_2_RC_,
 		A05_3_RC_,
+		A05_4_RC_,
 		A05_1_A2X_,
 		A05_2_A2X_,
 		A05_1_WY_,
@@ -2637,6 +2645,7 @@ module agc_tb();
 		A05_1_Z16_,
 		A05_1_TOV_,
 		A05_1_WL_,
+		A05_2_WL_,
 		A05_1_WYD_,
 		NISQ_,
 		DVST,
@@ -2814,10 +2823,13 @@ module agc_tb();
 		A06_2_RC_,
 		A06_1_WL_,
 		A06_1_RG_,
+		A06_2_RG_,
 		A06_1_WB_,
+		A06_2_WB_,
 		A06_1_RU_,
 		A06_2_RU_,
 		A06_3_RU_,
+		A06_4_RU_,
 		A06_1_WZ_,
 		A06_1_TOV_,
 		A06_1_WSC_,
@@ -2833,6 +2845,7 @@ module agc_tb();
 		A06_1_RB1_,
 		A06_1_RPTSET,
 		A06_1_ST2_,
+		A06_2_ST2_,
 		A06_1_n8PP4,
 		A06_2_n8PP4,
 		A06_3_n8PP4,
@@ -3971,6 +3984,7 @@ module agc_tb();
 		DLKPLS,
 		RRPA,
 		STRGAT,
+		STRT2,
 		A15_1_RL09_,
 		A15_1_RL10_,
 		A15_1_RL11_,
@@ -4282,6 +4296,7 @@ module agc_tb();
 		A17_2_CHOR12_,
 		A17_1_CHOR13_,
 		A17_2_CHOR13_,
+		A17_3_CHOR13_,
 		A17_1_CHOR14_,
 		A17_2_CHOR14_,
 		A17_1_CHOR16_,
@@ -5117,7 +5132,7 @@ module agc_tb();
 	assign CHOR10_ = A17_1_CHOR10_ & A17_2_CHOR10_ & A23_1_CHOR10_ & A23_2_CHOR10_;
 	assign CHOR11_ = A17_1_CHOR11_ & A17_2_CHOR11_ & A18_1_CHOR11_ & A18_2_CHOR11_;
 	assign CHOR12_ = A17_1_CHOR12_ & A17_2_CHOR12_ & A18_1_CHOR12_ & A18_2_CHOR12_;
-	assign CHOR13_ = A17_1_CHOR13_ & A17_2_CHOR13_ & A18_1_CHOR13_;
+	assign CHOR13_ = A17_1_CHOR13_ & A17_2_CHOR13_ & A17_3_CHOR13_ & A18_1_CHOR13_;
 	assign CHOR14_ = A17_1_CHOR14_ & A17_2_CHOR14_ & A18_1_CHOR14_ & A18_2_CHOR14_;
 	assign CHOR16_ = A17_1_CHOR16_ & A17_2_CHOR16_ & A18_1_CHOR16_;
 	assign CI_ = A04_1_CI_ & A05_1_CI_ & A05_2_CI_ & A06_1_CI_;
@@ -5127,8 +5142,8 @@ module agc_tb();
 	assign RA_ = A04_1_RA_ & A04_2_RA_ & A05_1_RA_ & A05_2_RA_ & A05_3_RA_;
 	assign RB1_ = A04_1_RB1_ & A06_1_RB1_;
 	assign RB_ = A04_1_RB_ & A04_2_RB_ & A05_1_RB_ & A05_2_RB_ & A05_3_RB_ & A05_4_RB_ & A06_1_RB_ & A06_2_RB_;
-	assign RC_ = A04_1_RC_ & A04_2_RC_ & A05_1_RC_ & A05_2_RC_ & A05_3_RC_ & A06_1_RC_ & A06_2_RC_;
-	assign RG_ = A05_1_RG_ & A05_2_RG_ & A05_3_RG_ & A05_4_RG_ & A06_1_RG_;
+	assign RC_ = A04_1_RC_ & A04_2_RC_ & A05_1_RC_ & A05_2_RC_ & A05_3_RC_ & A05_4_RC_ & A06_1_RC_ & A06_2_RC_;
+	assign RG_ = A05_1_RG_ & A05_2_RG_ & A05_3_RG_ & A05_4_RG_ & A06_1_RG_ & A06_2_RG_;
 	assign RL09_ = A10_1_RL09_ & A10_2_RL09_ & A10_3_RL09_ & A10_4_RL09_ & A15_1_RL09_;
 	assign RL10_ = A10_1_RL10_ & A10_2_RL10_ & A10_3_RL10_ & A10_4_RL10_ & A15_1_RL10_;
 	assign RL11_ = A10_1_RL11_ & A10_2_RL11_ & A10_3_RL11_ & A10_4_RL11_ & A15_1_RL11_;
@@ -5140,16 +5155,16 @@ module agc_tb();
 	assign RL_ = A05_1_RL_ & A05_2_RL_;
 	assign RPTSET = A03_1_RPTSET & A03_2_RPTSET & A03_3_RPTSET & A06_1_RPTSET;
 	assign RSC_ = A04_1_RSC_ & A12_1_RSC_;
-	assign RU_ = A05_1_RU_ & A05_2_RU_ & A05_3_RU_ & A06_1_RU_ & A06_2_RU_ & A06_3_RU_;
+	assign RU_ = A05_1_RU_ & A05_2_RU_ & A05_3_RU_ & A06_1_RU_ & A06_2_RU_ & A06_3_RU_ & A06_4_RU_;
 	assign RZ_ = A05_1_RZ_ & A05_2_RZ_ & A05_3_RZ_ & A06_1_RZ_;
-	assign ST2_ = A05_1_ST2_ & A06_1_ST2_;
+	assign ST2_ = A05_1_ST2_ & A06_1_ST2_ & A06_2_ST2_;
 	assign TMZ_ = A04_1_TMZ_ & A05_1_TMZ_ & A05_2_TMZ_;
 	assign TOV_ = A05_1_TOV_ & A06_1_TOV_;
 	assign TSGN_ = A04_1_TSGN_ & A04_2_TSGN_ & A05_1_TSGN_ & A05_2_TSGN_;
 	assign WA_ = A05_1_WA_ & A05_2_WA_ & A05_3_WA_ & A06_1_WA_ & A06_2_WA_;
-	assign WB_ = A05_1_WB_ & A05_2_WB_ & A05_3_WB_ & A05_4_WB_ & A06_1_WB_;
+	assign WB_ = A05_1_WB_ & A05_2_WB_ & A05_3_WB_ & A05_4_WB_ & A06_1_WB_ & A06_2_WB_;
 	assign WG_ = A04_1_WG_ & A04_2_WG_ & A04_3_WG_ & A05_1_WG_ & A06_1_WG_ & A06_2_WG_ & A12_1_WG_;
-	assign WL_ = A04_1_WL_ & A05_1_WL_ & A06_1_WL_;
+	assign WL_ = A04_1_WL_ & A05_1_WL_ & A05_2_WL_ & A06_1_WL_;
 	assign WSC_ = A06_1_WSC_ & A06_2_WSC_;
 	assign WS_ = A05_1_WS_ & A06_1_WS_;
 	assign WY12_ = A05_1_WY12_ & A05_2_WY12_;

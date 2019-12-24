@@ -134,6 +134,7 @@ module a05_crosspoint_nqi(
     output wire A05_1_RC_, 
     output wire A05_2_RC_, 
     output wire A05_3_RC_,
+    output wire A05_4_RC_,
     output wire A05_1_A2X_, 
     output wire A05_2_A2X_,
     output wire A05_1_WY_, 
@@ -158,6 +159,7 @@ module a05_crosspoint_nqi(
     output wire A05_1_Z16_,
     output wire A05_1_TOV_,
     output wire A05_1_WL_,
+    output wire A05_2_WL_,
     output wire A05_1_WYD_,
     
     output wire NISQ_,
@@ -208,9 +210,6 @@ module a05_crosspoint_nqi(
     *
     **************************/
     
-    wire n3XP5, n8XP3, n8XP12, n8XP15, n10XP6, n10XP7;
-    wire PARTC, DV1B1B;
-    
     wire NOR39101_out;
     wire NOR39102_out;
     wire NOR39103_out;
@@ -235,8 +234,11 @@ module a05_crosspoint_nqi(
     wire NOR39145_out;
     wire NOR39149_out;
     wire NOR39152_out;
+    
     wire NOR39201_out;
     wire NOR39203_out;
+    wire NOR39205_out;
+    wire NOR39206_out;
     wire NOR39209_out;
     wire NOR39211_out;
     wire NOR39213_out;
@@ -257,6 +259,16 @@ module a05_crosspoint_nqi(
     wire NOR39241_out;
     wire NOR39243_out;
     wire NOR39245_out;
+    
+    wire n3XP5;
+    wire n8XP3;
+    wire n8XP12;
+    wire n8XP15;
+    wire n10XP6;
+    wire n10XP7;
+    wire PARTC;
+    wire DV1B1B;
+    
     
     nor_3 #(1'b0) NOR39101(NOR39101_out,    IC10,           IC3,            IC2,                        reset, prop_clk);
     nor_2 #(1'b0) NOR39102(NOR39102_out,    T01_,           NOR39101_out,                               reset, prop_clk);
@@ -286,7 +298,7 @@ module a05_crosspoint_nqi(
     // NISQ_
     nor_3 #(1'b0) NOR39113(NISQ_,           NOR39112_out,   n2XP7,          n8XP15,                     reset, prop_clk);
     
-    // NOR39114 not used
+    // NOR39114 removed (not used)
     
     // DVST
     nor_3 #(1'b0) NOR39115(DVST,            T02_,           STD2,           DIV_,                       reset, prop_clk);
@@ -294,7 +306,8 @@ module a05_crosspoint_nqi(
     nor_2 #(1'b0) NOR39116(NOR39116_out,    MP3_,           T10_,                                       reset, prop_clk);
     nor_2 #(1'b0) NOR39117(n2XP7,           T01_,           MP3_,                                       reset, prop_clk);
     
-    // NOR39118 and NOR39119 not used
+    // NOR39118 removed (not used)
+    // NOR39119 removed (not used)
     
     nor_2 #(1'b0) NOR39120(n3XP5,           T03_,           IC2_,                                       reset, prop_clk);
     nor_2 #(1'b0) NOR39121(NOR39121_out,    T01_,           IC15_,                                      reset, prop_clk);
@@ -351,7 +364,7 @@ module a05_crosspoint_nqi(
     // Cross-module fan-in, connected to A6
     nor_3 #(1'b0) NOR39141(A05_1_RG_,       NOR39134_out,   NOR39149_out,   NOR39140_out,               reset, prop_clk);
     
-    // NOR39142 not used
+    // NOR39142 removed (not used)
     
     nor_2 #(1'b0) NOR39143(NOR39143_out,    MSU0_,          T06_,                                       reset, prop_clk);
     
@@ -409,8 +422,9 @@ module a05_crosspoint_nqi(
     nor_2 #(1'b0) NOR39204(A05_3_RB_,       NOR39203_out,   NOR39223_out,                               reset, prop_clk);
     
     // TSUDO_
-    nor_4 #(1'b0) NOR39205(TSUDO_,          IC3,            RSM3,           MP3,            IC16,       reset, prop_clk);
-    // NOR39206 merged into NOR39205
+    nor_3 #(1'b0) NOR39205(NOR39205_out,    IC3,            RSM3,           MP3,                        reset, prop_clk);
+    nor_1 #(1'b0) NOR39206(NOR39206_out,    IC16,                                                       reset, prop_clk);
+    assign TSUDO_ = NOR39205_out & NOR39206_out;
     
     // RAD
     nor_2 #(1'b0) NOR39207(RAD,             TSUDO_,         T08_,                                       reset, prop_clk);
@@ -439,7 +453,7 @@ module a05_crosspoint_nqi(
     nor_3 #(1'b0) NOR39216(NOR39216_out,    DXCH0,          GOJ1,           DAS0,                       reset, prop_clk);
     nor_2 #(1'b0) NOR39217(NOR39217_out,    T08_,           NOR39216_out,                               reset, prop_clk);
     
-    // NOR39218 not used
+    // NOR39218 removed (not used)
     
     // RSTRT
     nor_2 #(1'b0) NOR39219(RSTRT,           T08_,           GOJ1_,                                      reset, prop_clk);
@@ -510,16 +524,17 @@ module a05_crosspoint_nqi(
     
     nor_2 #(1'b0) NOR39245(NOR39245_out,    MSU0,           IC14,                                       reset, prop_clk);
     
-    // NOR39246 not used
-    // NOR39247 not used
+    // NOR39246 removed (not used)
+    // NOR39247 removed (not used)
     
     // NOR39248 - NOR39256 moved to A21 sheet 2
     
-    // NOR39257 not used
-    // NOR39258 not used
-    // NOR39259 not used
-    // NOR39260 not used
-    // NOR39261 moved to A2 sheet 1 and merged 
+    // NOR39257 removed (not used)
+    // NOR39258 removed (not used)
+    // NOR39259 removed (not used)
+    // NOR39260 removed (not used)
+    // NOR39261 moved to A2 sheet 1
+    
     
     /**************************
     *
@@ -553,6 +568,7 @@ module a05_crosspoint_nqi(
     wire NOR39345_out;
     wire NOR39346_out;
     wire NOR39348_out;
+    wire NOR39349_out;
     wire NOR39401_out;
     wire NOR39403_out;
     wire NOR39404_out;
@@ -582,7 +598,16 @@ module a05_crosspoint_nqi(
     wire NOR39451_out;
     wire NOR39452_out;
     
-    wire n5XP9, n5XP13, n5XP19, n6XP2, n6XP7, n10XP10, n11XP6;
+    wire NOR39350_in;
+    
+    wire n5XP9;
+    wire n5XP13;
+    wire n5XP19;
+    wire n6XP2;
+    wire n6XP7;
+    wire n10XP10;
+    wire n11XP6;
+    
     
     nor_3 #(1'b0) NOR39301(NOR39301_out,    IC12,           DAS0,           DAS1,                       reset, prop_clk);
     nor_2 #(1'b0) NOR39302(NOR39302_out,    IC9,            DXCH0,                                      reset, prop_clk);
@@ -622,7 +647,7 @@ module a05_crosspoint_nqi(
     nor_3 #(1'b1) NOR39315(A05_2_WB_,       NOR39312_out,   RQ,             NOR39313_out,               reset, prop_clk);
     nor_3 #(1'b1) NOR39316(A05_3_WB_,       NOR39320_out,   NOR39324_out,   n6XP2,                      reset, prop_clk);
     
-    // NOR39317 not used
+    // NOR39317 removed (not used)
     
     nor_3 #(1'b0) NOR39318(NOR39318_out,    DV1,            INOUT,          IC2,                        reset, prop_clk);
     nor_2 #(1'b0) NOR39319(NOR39319_out,    T04_,           DV1_,                                       reset, prop_clk);
@@ -701,10 +726,11 @@ module a05_crosspoint_nqi(
     nor_1 #(1'b0) NOR39347(SCAD_,           SCAD,                                                       reset, prop_clk);
     
     // NDR100_
-    nor_4 #(1'b0) NOR39348(NOR39348_out,    YB0_,           YT0_,           S12,            S11,        reset, prop_clk);
-    // NOR39349 merged with NOR39348
-    nor_1 #(1'b0) NOR39350(NDR100_,         NOR39348_out,                                               reset, prop_clk);
-    // NOR39351 merged with NOR39350
+    nor_2 #(1'b0) NOR39348(NOR39348_out,    YB0_,           YT0_,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR39349(NOR39349_out,    S12,            S11,                                        reset, prop_clk);
+    assign NOR39350_in = NOR39348_out & NOR39349_out;
+    nor_1 #(1'b0) NOR39350(NDR100_,         NOR39350_in,                                                reset, prop_clk);
+    // NOR39351 removed (fan-out expansion)
     
     // OCTAD2 - OCTAD6
     nor_2 #(1'b0) NOR39352(OCTAD2,          XT2_,           NDR100_,                                    reset, prop_clk);
@@ -749,7 +775,7 @@ module a05_crosspoint_nqi(
     
     // RC_ part 3
     // Cross-module fan-in, connected to A4 and A6
-    nor_4 #(1'b0) NOR39418(A05_3_RC_,       NOR39406_out,   NOR39432_out,   NOR39439_out,   NOR39451_out,   reset, prop_clk);
+    nor_2 #(1'b0) NOR39418(A05_3_RC_,       NOR39406_out,   NOR39432_out,                               reset, prop_clk);
     
     // 6XP8
     nor_2 #(1'b0) NOR39419(n6XP8,           T06_,           DAS1_,                                      reset, prop_clk);
@@ -764,7 +790,9 @@ module a05_crosspoint_nqi(
     // Cross-module fan-in, connected to A6
     nor_2 #(1'b1) NOR39422(A05_3_WA_,       NOR39412_out,   NOR39432_out,                               reset, prop_clk);
     
-    // NOR39423 merged into NOR39418
+    // RC_ part 4
+    // Cross-module fan-in, connected to A4 and A6
+    nor_2 #(1'b0) NOR39423(A05_4_RC_,       NOR39439_out,   NOR39451_out,                               reset, prop_clk);
     
     // TOV_
     // Cross-module fan-in, connected to A6
@@ -805,8 +833,8 @@ module a05_crosspoint_nqi(
     
     // WL_
     // Cross-module fan-in, connected to A4 and A6
-    nor_4 #(1'b1) NOR39437(A05_1_WL_,       n5XP13,         NOR39452_out,   NOR39436_out,   NOR39449_out,   reset, prop_clk);
-    // NOR39438 merged into NOR39437
+    nor_2 #(1'b1) NOR39437(A05_1_WL_,       n5XP13,         NOR39452_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR39438(A05_2_WL_,       NOR39436_out,   NOR39449_out,                               reset, prop_clk);
     
     nor_2 #(1'b0) NOR39439(NOR39439_out,    T09_,           DAS1_,                                      reset, prop_clk);
     
@@ -842,6 +870,6 @@ module a05_crosspoint_nqi(
     nor_2 #(1'b0) NOR39451(NOR39451_out,    T11_,           RXOR0_,                                     reset, prop_clk);
     nor_3 #(1'b0) NOR39452(NOR39452_out,    T12_,           T12USE_,        DV1_,                       reset, prop_clk);
     
-    // NOR39453 - NOR39460 not used
-    // NOR39461 not connected
+    // NOR39453 - NOR39460 removed (not used)
+    // NOR39461 removed (not connected)
 endmodule

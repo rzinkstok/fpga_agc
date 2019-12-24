@@ -273,6 +273,7 @@ module a11_four_bit_4(
     wire NOR54308_out;
     wire NOR54309_out;
     wire NOR54311_out;
+    wire NOR54312_out;
     wire NOR54313_out;
     wire NOR54317_out;
     wire NOR54318_out;
@@ -302,13 +303,22 @@ module a11_four_bit_4(
     wire NOR54348_out;
     wire NOR54351_out;
     wire NOR54353_out;
+    wire NOR54363_out;
     
-    wire SUMA15_, SUMB15_;
-    wire A13_, A14_;
-    wire XUY15_, XUY16_;
-    wire CI14_, CI15_, CI16_;
+    wire SUMA15_;
+    wire SUMB15_;
+    wire A13_;
+    wire A14_;
+    wire XUY15_;
+    wire XUY16_;
+    wire CI14_;
+    wire CI15_;
+    wire CI16_;
     wire CO12;
-    wire Z13_, Z14_, Z15_, Z16_;
+    wire Z13_;
+    wire Z14_;
+    wire Z15_;
+    wire Z16_;
     wire RL16;
     
     // Bit column 13
@@ -344,7 +354,7 @@ module a11_four_bit_4(
     
     nor_3 #(1'b0) NOR54117(NOR54117_out,    SUMA13_,        SUMB13_,        RULOG_,                     reset, prop_clk);
     
-    // NOR54116 not used
+    // NOR54116 removed (not used)
     
     // A register flip-flop
     nor_2 #(1'b0) NOR54118(NOR54118_out,    WAG_,           WL13_,                                      reset, prop_clk);
@@ -428,16 +438,19 @@ module a11_four_bit_4(
     
     // WL13_
     nor_1 #(1'b0) NOR54154(WL13_,           WL13,                                                       reset, prop_clk);
-    // NOR54155 and NOR54156 omitted
+    // NOR54155 and NOR54156 removed (fan-out expansion)
     
+    
+    // NOR54161 removed (moved to A06 sheet 1)
+    // NOR54162 removed (moved to A08 sheet 1)
+    // NOR54163 removed (moved to A08 sheet 2)
+
     
     // Bit column 14
     
     // CO16 part 2
     // No cross-module fan-in
     nor_2 #(1'b0) NOR54201(NOR54201_out,    XUY16_,         XUY14_,                                     reset, prop_clk);
-    // NOR54463 moved here from sheet 2 and merged with NOR54201
-    
     assign CO16 = NOR54101_out & NOR54201_out;
     
     // X flip-flop
@@ -467,7 +480,7 @@ module a11_four_bit_4(
     
     nor_3 #(1'b0) NOR54217(NOR54217_out,    SUMA14_,        SUMB14_,        RULOG_,                     reset, prop_clk);
     
-    // NOR54216 not used
+    // NOR54216 removed (not used)
     
     // A register flip-flop
     nor_2 #(1'b0) NOR54218(NOR54218_out,    WAG_,           WL14_,                                      reset, prop_clk);
@@ -553,7 +566,12 @@ module a11_four_bit_4(
     
     // WL14_
     nor_1 #(1'b0) NOR54254(WL14_,           WL14,                                                       reset, prop_clk);
-    // NOR54255 and NOR54256 omitted
+    // NOR54255 and NOR54256 removed (fan-out expansion)
+    
+    // NOR54261
+    // NOR54262 removed (moved to A06 sheet 1)
+    // NOR54263 removed (moved to A06 sheet 1)
+
     
     
     /**************************
@@ -678,7 +696,12 @@ module a11_four_bit_4(
     
     // WL15_
     nor_1 #(1'b0) NOR54454(WL15_,           WL15,                                                       reset, prop_clk);
-    // NOR54455 and NOR54456 omitted
+    // NOR54455 and NOR54456 removed (fan-out expansion)
+    
+    // NOR54461 removed (moved to A23 sheet 1)
+    // NOR54462 removed (fan-in expansion)
+    // NOR54463 removed (fan-in expansion)
+
     
     // Bit column 16
     
@@ -704,8 +727,9 @@ module a11_four_bit_4(
     nor_2 #(1'b0) NOR54309(NOR54309_out,    NOR54303_out,   NOR54307_out,                               reset, prop_clk);
     nor_2 #(1'b0) NOR54310(XUY16_,          NOR54304_out,   NOR54308_out,                               reset, prop_clk);
     
-    nor_4 #(1'b0) NOR54312(SUMA16_,         NOR54309_out,   XUY16_,         CI16_,          WHOMPA,     reset, prop_clk);
-    // NOR54363 merged with NOR54312
+    nor_3 #(1'b0) NOR54312(NOR54312_out,    NOR54309_out,   XUY16_,         CI16_,                      reset, prop_clk);
+    nor_1 #(1'b0) NOR54363(NOR54363_out,    WHOMPA,                                                     reset, prop_clk);
+    assign SUMA16_ = NOR54312_out & NOR54363_out;
     
     nor_2 #(1'b0) NOR54313(NOR54313_out,    NOR54309_out,   XUY16_,                                     reset, prop_clk);
     nor_1 #(1'b0) NOR54311(NOR54311_out,    CI16_,                                                      reset, prop_clk);
@@ -798,7 +822,11 @@ module a11_four_bit_4(
     
     // WL16_
     nor_1 #(1'b0) NOR54354(WL16_,           WL16,                                                       reset, prop_clk);
-    // NOR54355 and NOR54356 omitted
+    // NOR54355 and NOR54356 removed (fan-out expansion)
+    
+    // NOR54361
+    // NOR54362
+    
     
 endmodule
 

@@ -146,6 +146,7 @@ module a13_alarms(
     wire NOR41116_out;
     wire NOR41117_out;
     wire NOR41119_out;
+    wire NOR41120_out;
     wire NOR41121_out;
     wire NOR41122_out;
     wire NOR41123_out;
@@ -199,6 +200,7 @@ module a13_alarms(
     wire NOR41215_out;
     wire NOR41216_out;
     wire NOR41217_out;
+    wire NOR41218_out;
     wire NOR41220_out;
     wire NOR41222_out;
     wire NOR41223_out;
@@ -214,6 +216,9 @@ module a13_alarms(
     wire NOR41239_out;
     wire NOR41245_out;
     wire NOR41247_out;
+    
+    wire NOR41123_in;
+    wire NOR41219_in;
     
     wire F12B_;
     wire FS13_;
@@ -262,25 +267,26 @@ module a13_alarms(
     nor_2 #(1'b0) NOR41113(NOR41113_out,    F14H,           NOR41110_out,                                   reset, prop_clk);
     
     nor_2 #(1'b0) NOR41114(NOR41114_out,    NOR41112_out,   NOR41113_out,                                   reset, prop_clk);
-    // NOR41115 omitted (fan-out expansion)
+    // NOR41115 removed (fan-out expansion)
     assign MRPTAL_ = NOR41114_out;
     
     
     // Transfer control flip-flops
-    nor_4 #(1'b0) NOR41119(NOR41119_out,    TCF0,           TC0,            INKL,           T04_,           reset, prop_clk);
-    // NOR41120 merged into NOR41119
-    
+    nor_2 #(1'b0) NOR41119(NOR41119_out,    TCF0,           TC0,                                            reset, prop_clk);
+    nor_2 #(1'b0) NOR41120(NOR41120_out,    INKL,           T04_,                                           reset, prop_clk);
+    assign NOR41123_in = NOR41119_out & NOR41120_out;
+     
     nor_3 #(1'b1) NOR41121(NOR41121_out,    TC0,            TCF0,           NOR41122_out,                   reset, prop_clk);
     nor_2 #(1'b0) NOR41122(NOR41122_out,    NOR41121_out,   F10B,                                           reset, prop_clk);
     
-    nor_2 #(1'b0) NOR41123(NOR41123_out,    NOR41119_out,   NOR41124_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR41123(NOR41123_out,    NOR41123_in,    NOR41124_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR41124(NOR41124_out,    NOR41123_out,   F10B,                                           reset, prop_clk);
     
     nor_2 #(1'b0) NOR41125(NOR41125_out,    F10A,           NOR41122_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR41126(NOR41126_out,    F10A,           NOR41124_out,                                   reset, prop_clk);
     
     nor_2 #(1'b0) NOR41127(NOR41127_out,    NOR41125_out,   NOR41126_out,                                   reset, prop_clk);
-    // NOR41128 omitted (fan-out expansion)
+    // NOR41128 removed (fan-out expansion)
     assign MTCAL_ = NOR41127_out;
     
     // CKTAL_
@@ -333,20 +339,20 @@ module a13_alarms(
     nor_2 #(1'b0) NOR41151(NOR41151_out,    NOR41150_out,   F07B_,                                          reset, prop_clk);
     
     nor_2 #(1'b0) NOR41144(NOR41144_out,    NOR41143_out,   NOR41151_out,                                   reset, prop_clk);
-    // NOR41145 omitted (fan-out expansion)
+    // NOR41145 removed (fan-out expansion)
     // Single monitor fan-in output, no cross-module fan-in
     assign MCTRAL_ = NOR41144_out;
     
     nor_2 #(1'b0) NOR41146(NOR41146_out,    NOR41143_out,   NOR41151_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR41147(DOFILT,          NOR41146_out,                                                   reset, prop_clk);
     
-    // NOR41152 omitted (not used)
-    // NOR41153 omitted (not used)
-    // NOR41154 omitted (not used)
-    // NOR41155 omitted (fan-out expansion for gate on A14 sheet 2)
-    // NOR41156 omitted (fan-out expansion for gate on A14 sheet 2)
-    // NOR41157 omitted (fan-out expansion for gate on A14 sheet 2)
-    // NOR41158 omitted (fan-out expansion for gate on A14 sheet 2)
+    // NOR41152 removed (not used)
+    // NOR41153 removed (not used)
+    // NOR41154 removed (not used)
+    // NOR41155 removed (fan-out expansion for gate on A14 sheet 2)
+    // NOR41156 removed (fan-out expansion for gate on A14 sheet 2)
+    // NOR41157 removed (fan-out expansion for gate on A14 sheet 2)
+    // NOR41158 removed (fan-out expansion for gate on A14 sheet 2)
     
     
     nor_1 #(1'b0) NOR41201(NOR41201_out,    VFAIL,                                                          reset, prop_clk);
@@ -387,12 +393,13 @@ module a13_alarms(
     assign FILTIN = NOR41216_out;
     
     
-    nor_4 #(1'b0) NOR41217(NOR41217_out,    FS01,           P02,            P03_,           CT_,            reset, prop_clk);
-    // NOR41218 merged with NOR41217
-    nor_1 #(1'b0) NOR41219(SYNC4_,          NOR41217_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR41217(NOR41217_out,    FS01,           P02,                                            reset, prop_clk);
+    nor_2 #(1'b0) NOR41218(NOR41218_out,    P03_,           CT_,                                            reset, prop_clk);
+    assign NOR41219_in = NOR41217_out & NOR41218_out;
+    
+    nor_1 #(1'b0) NOR41219(SYNC4_,          NOR41219_in,                                                    reset, prop_clk);
     nor_3 #(1'b0) NOR41220(NOR41220_out,    CT_,            P02_,           P03,                            reset, prop_clk);
     nor_1 #(1'b0) NOR41221(SYNC14_,         NOR41220_out,                                                   reset, prop_clk);
-    
     
     nor_1 #(1'b0) NOR41222(NOR41222_out,    SCAFAL,                                                         reset, prop_clk);
     assign MSCAFL_ = NOR41222_out;
@@ -429,7 +436,7 @@ module a13_alarms(
     nor_1 #(1'b0) NOR41240(RESTRT,          NOR41239_out,                                                   reset, prop_clk);
     
     // NOR41241 moved to A18 sheet 1
-    // NOR41244 not connected
+    // NOR41244 removed (not connected)
     
     nor_2 #(1'b0) NOR41245(NOR41245_out,    NOR41204_out,   F05A_,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR41246(STRT1,           NOR41247_out,   NOR41245_out,                                   reset, prop_clk);

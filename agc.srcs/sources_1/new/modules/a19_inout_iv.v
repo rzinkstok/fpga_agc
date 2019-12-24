@@ -251,6 +251,7 @@ module a19_inout_iv(
     wire NOR46207_out;
     wire NOR46208_out;
     wire NOR46209_out;
+    wire NOR46210_out;
     wire NOR46211_out;
     wire NOR46213_out;
     wire NOR46214_out;
@@ -288,6 +289,8 @@ module a19_inout_iv(
     wire NOR46259_out;
     wire NOR46261_out;
     
+    wire NOR46211_in;
+    
     wire SH3MS_;
     wire F5ASB0;
     wire C45R_;
@@ -298,8 +301,6 @@ module a19_inout_iv(
     wire BLKUPL;
     
     // Altitude meter
-    //r_4 #(1'b0) NOR45127(NOR45127_out,    NOR45123_out,   F09A_,          MKEY15,         NOR45135_out,   reset, prop_clk);
-    
     nor_2 #(1'b0) NOR46101(NOR46101_out,    SHINC_,         T06_,                                           reset, prop_clk);
     nor_2 #(1'b1) NOR46102(SH3MS_,          NOR46101_out,   NOR46103_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR46103(NOR46103_out,    SH3MS_,         CSG,                                            reset, prop_clk);
@@ -380,9 +381,11 @@ module a19_inout_iv(
     // Crosslink
     nor_2 #(1'b0) NOR46207(NOR46207_out,    XLNK0_,         NOR46224_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR46208(NOR46208_out,    XLNK1_,         NOR46224_out,                                   reset, prop_clk);
-    nor_4 #(1'b0) NOR46209(NOR46209_out,    NOR46201_out,   NOR46204_out,   NOR46207_out,   NOR46208_out,   reset, prop_clk);
-    // NOR46210 merged into NOR46209
-    nor_2 #(1'b0) NOR46211(NOR46211_out,    NOR46209_out,   NOR46217_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46209(NOR46209_out,    NOR46201_out,   NOR46204_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR46210(NOR46210_out,    NOR46207_out,   NOR46208_out,                                   reset, prop_clk);
+    assign NOR46211_in = NOR46209_out & NOR46210_out;
+    
+    nor_2 #(1'b0) NOR46211(NOR46211_out,    NOR46211_in,    NOR46217_out,                                   reset, prop_clk);
     nor_3 #(1'b0) NOR46212(CCH33,           CCHG_,          XT3_,           XB3_,                           reset, prop_clk);
     nor_2 #(1'b1) NOR46213(NOR46213_out,    NOR46211_out,   NOR46214_out,                                   reset, prop_clk);
     nor_3 #(1'b0) NOR46214(NOR46214_out,    NOR46213_out,   CCH33,          GOJAM,                          reset, prop_clk);
@@ -609,7 +612,7 @@ module a19_inout_iv(
     nor_2 #(1'b0) NOR46458(FF1112,          FF1112_,        CCH11,                                          reset, prop_clk);
     nor_2 #(1'b0) NOR46459(CH1112,          FF1112_,        RCH11_,                                         reset, prop_clk);
     
-    // NOR46461 omitted (fan-out expansion for A19 sheet 1)
+    // NOR46461 removed (fan-out expansion for A19 sheet 1)
     
     // NOR45222 and NOR45224 moved here from A18 sheet 1
     nor_2 #(1'b0) NOR45222(NOR45222_out,    CAURST,         W1110,                                          reset, prop_clk);

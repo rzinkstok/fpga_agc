@@ -162,7 +162,10 @@ module a20_counter_cell_i(
     wire NOR31145_out;
     wire NOR31146_out;
     wire NOR31147_out;
+    wire NOR31148_out;
+    wire NOR31149_out;
     wire NOR31150_out;
+    wire NOR31151_out;
     
     wire NOR31201_out;
     wire NOR31202_out;
@@ -198,7 +201,13 @@ module a20_counter_cell_i(
     wire NOR31245_out;
     wire NOR31246_out;
     wire NOR31247_out;
+    wire NOR31248_out;
+    wire NOR31249_out;
     wire NOR31250_out;
+    wire NOR31251_out;
+    
+    wire NOR31152_in;
+    wire NOR31252_in;
     
     wire C24R;
     wire C25R;
@@ -301,21 +310,25 @@ module a20_counter_cell_i(
     nor_2 #(1'b1) NOR31146(NOR31146_out,    NOR31145_out,   NOR31147_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR31147(NOR31147_out,    NOR31146_out,   C26R,                                           reset, prop_clk);
     
-    nor_4 #(1'b0) NOR31148(C26A,            1'b0,           NOR31133_out,   NOR31140_out,   NOR31146_out,   reset, prop_clk);
-    // NOR31149 merged into NOR31148
-    nor_4 #(1'b0) NOR31150(NOR31150_out,    1'b0,           NOR31133_out,   NOR31140_out,   NOR31147_out,   reset, prop_clk);
-    // NOR31151 merged into NOR31150
-    nor_1 #(1'b0) NOR31152(CG21,            NOR31150_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31148(NOR31148_out,    1'b0,           NOR31133_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31149(NOR31149_out,    NOR31140_out,   NOR31146_out,                                   reset, prop_clk);
+    assign C26A = NOR31148_out & NOR31149_out;
+    
+    nor_2 #(1'b0) NOR31150(NOR31150_out,    1'b0,           NOR31133_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31151(NOR31151_out,    NOR31140_out,   NOR31147_out,                                   reset, prop_clk);
+    assign NOR31152_in = NOR31150_out & NOR31151_out;
+    
+    nor_1 #(1'b0) NOR31152(CG21,            NOR31152_in,                                                    reset, prop_clk);
     nor_3 #(1'b0) NOR31153(C26R,            NOR31111_out,   CA2_,           CXB6_,                          reset, prop_clk);
     
     
     // Addressing
     
     nor_1 #(1'b0) NOR31154(CA3_,            OCTAD3,                                                         reset, prop_clk);
-    // NOR31155 omitted (fan-out expansion)
-    // NOR31156 and NOR31157 omitted (not connected)
+    // NOR31155 removed (fan-out expansion)
+    // NOR31156 and NOR31157 removed (not connected)
     nor_1 #(1'b0) NOR31158(CXB7_,           XB7,                                                            reset, prop_clk);
-    // NOR31159 omitted (not connected)
+    // NOR31159 removed (not connected)
     
     
     // Counter 34
@@ -401,11 +414,15 @@ module a20_counter_cell_i(
     nor_2 #(1'b1) NOR31246(NOR31246_out,    NOR31245_out,   NOR31247_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR31247(NOR31247_out,    NOR31246_out,   C31R,                                           reset, prop_clk);
     
-    nor_4 #(1'b0) NOR31248(C31A,            CG21,           NOR31233_out,   NOR31240_out,   NOR31246_out,   reset, prop_clk);
-    // NOR31249 merged into NOR31248
-    nor_4 #(1'b0) NOR31250(NOR31250_out,    CG21,           NOR31233_out,   NOR31240_out,   NOR31247_out,   reset, prop_clk);
-    // NOR31251 merged into NOR31250
-    nor_1 #(1'b0) NOR31252(CG22,            NOR31250_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31248(NOR31248_out,    CG21,           NOR31233_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31249(NOR31249_out,    NOR31240_out,   NOR31246_out,                                   reset, prop_clk);
+    assign C31A = NOR31248_out & NOR31249_out;
+    
+    nor_2 #(1'b0) NOR31250(NOR31250_out,    CG21,           NOR31233_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31251(NOR31251_out,    NOR31240_out,   NOR31247_out,                                   reset, prop_clk);
+    assign NOR31252_in = NOR31250_out & NOR31251_out;
+    
+    nor_1 #(1'b0) NOR31252(CG22,            NOR31252_in,                                                    reset, prop_clk);
     nor_3 #(1'b0) NOR31253(C31R,            NOR31211_out,   CA3_,           CXB1_,                          reset, prop_clk);
     
     
@@ -459,7 +476,10 @@ module a20_counter_cell_i(
     wire NOR31445_out;
     wire NOR31446_out;
     wire NOR31447_out;
+    wire NOR31448_out;
+    wire NOR31449_out;
     wire NOR31450_out;
+    wire NOR31451_out;
     
     wire NOR31301_out;
     wire NOR31302_out;
@@ -495,7 +515,13 @@ module a20_counter_cell_i(
     wire NOR31345_out;
     wire NOR31346_out;
     wire NOR31347_out;
+    wire NOR31348_out;
+    wire NOR31349_out;
     wire NOR31350_out;
+    wire NOR31351_out;
+    
+    wire NOR31452_in;
+    wire NOR31352_in;
     
     wire CG14;
     wire CG24;
@@ -595,11 +621,15 @@ module a20_counter_cell_i(
     nor_2 #(1'b1) NOR31446(NOR31446_out,    NOR31445_out,   NOR31447_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR31447(NOR31447_out,    NOR31446_out,   C55R,                                           reset, prop_clk);
     
-    nor_4 #(1'b0) NOR31448(C55A,            CG24,           NOR31433_out,   NOR31440_out,   NOR31446_out,   reset, prop_clk);
-    // NOR31449 merged into NOR31448
-    nor_4 #(1'b0) NOR31450(NOR31450_out,    CG24,           NOR31433_out,   NOR31440_out,   NOR31447_out,   reset, prop_clk);
-    // NOR31451 merged into NOR31450
-    nor_1 #(1'b0) NOR31452(CG23,            NOR31450_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31448(NOR31448_out,    CG24,           NOR31433_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31449(NOR31449_out,    NOR31440_out,   NOR31446_out,                                   reset, prop_clk);
+    assign C55A = NOR31448_out & NOR31449_out;
+    
+    nor_2 #(1'b0) NOR31450(NOR31450_out,    CG24,           NOR31433_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31451(NOR31451_out,    NOR31440_out,   NOR31447_out,                                   reset, prop_clk);
+    assign NOR31452_in = NOR31450_out & NOR31451_out;
+    
+    nor_1 #(1'b0) NOR31452(CG23,            NOR31452_in,                                                    reset, prop_clk);
     nor_3 #(1'b0) NOR31453(C55R,            NOR31411_out,   CA5_,           CXB5_,                          reset, prop_clk);
     
     
@@ -696,11 +726,15 @@ module a20_counter_cell_i(
     nor_2 #(1'b1) NOR31346(NOR31346_out,    NOR31345_out,   NOR31347_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR31347(NOR31347_out,    NOR31346_out,   C52R,                                           reset, prop_clk);
     
-    nor_4 #(1'b0) NOR31348(C52A,            CG26,           NOR31333_out,   NOR31340_out,   NOR31346_out,   reset, prop_clk);
-    // NOR31349 merged into NOR31348
-    nor_4 #(1'b0) NOR31350(NOR31350_out,    CG26,           NOR31333_out,   NOR31340_out,   NOR31347_out,   reset, prop_clk);
-    // NOR31351 merged into NOR31350
-    nor_1 #(1'b0) NOR31352(CG24,            NOR31350_out,                                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31348(NOR31348_out,    CG26,           NOR31333_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31349(NOR31349_out,    NOR31340_out,   NOR31346_out,                                   reset, prop_clk);
+    assign C52A = NOR31348_out & NOR31349_out;
+    
+    nor_2 #(1'b0) NOR31350(NOR31350_out,    CG26,           NOR31333_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR31351(NOR31351_out,    NOR31340_out,   NOR31347_out,                                   reset, prop_clk);
+    assign NOR31352_in = NOR31350_out & NOR31351_out;
+    
+    nor_1 #(1'b0) NOR31352(CG24,            NOR31352_in,                                                    reset, prop_clk);
     nor_3 #(1'b0) NOR31353(C52R,            NOR31311_out,   CA5_,           CXB2_,                          reset, prop_clk);
     
    

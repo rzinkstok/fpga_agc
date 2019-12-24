@@ -276,6 +276,7 @@ module a02_timer(
     wire NOR37206_out;
     wire NOR37209_out;
     wire NOR37210_out;
+    wire NOR37211_out;
     wire NOR37213_out;
     wire NOR37214_out;
     wire NOR37217_out;
@@ -300,8 +301,12 @@ module a02_timer(
     wire NOR40246_out;
     wire NOR40247_out;
     wire NOR40248_out;
+    wire NOR40249_out;
     wire NOR40250_out;
     wire NOR40251_out;
+    wire NOR40250_in;
+    
+    wire NOR39261_out;
     
     wire GOSET_;
     
@@ -319,8 +324,9 @@ module a02_timer(
     
     nor_2 #(1'b0) NOR37209(NOR37209_out,    RINGB_,         P02,                            reset, prop_clk);
     nor_2 #(1'b0) NOR37210(NOR37210_out,    RINGA_,         P02_,                           reset, prop_clk);
-    nor_3 #(1'b0) NOR37211(P03,             EDSET,          NOR37209_out,   P03_,           reset, prop_clk);
-    // NOR39261 moved here from A5 sheet 1 and merged into NOR37211
+    nor_2 #(1'b0) NOR37211(NOR37211_out,    NOR37209_out,   P03_,                           reset, prop_clk);
+    nor_1 #(1'b0) NOR39261(NOR39261_out,    EDSET,                                          reset, prop_clk);
+    assign P03 = NOR37211_out & NOR39261_out;
     nor_2 #(1'b1) NOR37212(P03_,            P03,            NOR37210_out,                   reset, prop_clk);
     
     nor_2 #(1'b0) NOR37213(NOR37213_out,    RINGA_,         P03,                            reset, prop_clk);
@@ -397,8 +403,10 @@ module a02_timer(
     // TIMR generation moved here from A6 sheet 1
     nor_2 #(1'b0) NOR40246(NOR40246_out,    P01,            NOR40247_out,                   reset, prop_clk);
     nor_2 #(1'b0) NOR40247(NOR40247_out,    NOR40246_out,   STOP_,                          reset, prop_clk);
-    nor_4 #(1'b0) NOR40248(NOR40248_out,    P04,            P05_,           NOR40246_out,   NOR40247_out,   reset, prop_clk);
-    nor_2 #(1'b0) NOR40250(NOR40250_out,    STRT2,          NOR40247_out,                   reset, prop_clk);
+    nor_2 #(1'b0) NOR40248(NOR40248_out,    P04,            P05_,                           reset, prop_clk);
+    nor_2 #(1'b0) NOR40249(NOR40249_out,    NOR40246_out,   NOR40247_out,                   reset, prop_clk);
+    assign NOR40250_in = NOR40248_out & NOR40249_out;
+    nor_2 #(1'b0) NOR40250(NOR40250_out,    STRT2,          NOR40250_in,                    reset, prop_clk);
     nor_1 #(1'b0) NOR40251(TIMR,            NOR40250_out,                                   reset, prop_clk);
     
     
