@@ -2,7 +2,6 @@
 
 module agc_tb();
 
-	reg ALTEST = 0;
 	reg BLKUPL_ = 1;
 	reg BMGXM = 0;
 	reg BMGXP = 0;
@@ -11,6 +10,7 @@ module agc_tb();
 	reg BMGZM = 0;
 	reg BMGZP = 0;
 	reg CAURST = 0;
+	reg CCH12 = 0;
 	reg CCHG_ = 1;
 	reg CDUFAL = 0;
 	reg CDUSTB_ = 1;
@@ -20,18 +20,9 @@ module agc_tb();
 	reg CDUYP = 0;
 	reg CDUZM = 0;
 	reg CDUZP = 0;
-	reg CH0705 = 0;
-	reg CH0706 = 0;
-	reg CH0707 = 0;
-	reg CH09 = 0;
-	reg CH10 = 0;
-	reg CH1113 = 0;
-	reg CH1114 = 0;
-	reg CH1116 = 0;
+	reg CH1209 = 0;
+	reg CH1210 = 0;
 	reg CH1211 = 0;
-	reg CH1216 = 0;
-	reg CH1310 = 0;
-	reg CH1316 = 0;
 	reg CHWL01_ = 1;
 	reg CHWL02_ = 1;
 	reg CHWL03_ = 1;
@@ -57,9 +48,6 @@ module agc_tb();
 	reg DKSTRT = 0;
 	reg DLKPLS = 0;
 	reg DOSCAL = 0;
-	reg E5 = 0;
-	reg E6 = 0;
-	reg E7_ = 1;
 	reg F09D = 0;
 	reg FLASH_ = 1;
 	reg FLTOUT = 0;
@@ -165,6 +153,7 @@ module agc_tb();
 	reg PIPPLS_ = 1;
 	reg PIPZM = 0;
 	reg PIPZP = 0;
+	reg RCH12_ = 1;
 	reg RCH33_ = 1;
 	reg RCHAT_ = 1;
 	reg RCHBT_ = 1;
@@ -204,7 +193,6 @@ module agc_tb();
 	reg STFETI_ = 1;
 	reg STRPRS = 0;
 	reg STRT2 = 0;
-	reg T6ON_ = 1;
 	reg TEMPIN = 0;
 	reg TRANmX = 0;
 	reg TRANmY = 0;
@@ -223,6 +211,7 @@ module agc_tb();
 	reg US2SG = 0;
 	reg VFAIL = 0;
 	reg WATCHP = 0;
+	reg WCH12_ = 1;
 	reg WCHG_ = 1;
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
@@ -371,6 +360,8 @@ module agc_tb();
 	wire A11_4_RL14_;
 	wire A11_4_RL15_;
 	wire A11_4_RL16_;
+	wire A12_1_RSC_;
+	wire A12_1_WG_;
 	wire A15_;
 	wire A15_1_RL09_;
 	wire A15_1_RL10_;
@@ -452,9 +443,13 @@ module agc_tb();
 	wire A23_1_CHOR06_;
 	wire A23_1_CHOR07_;
 	wire A23_1_CHOR08_;
+	wire A23_1_CHOR09_;
+	wire A23_1_CHOR10_;
 	wire A23_1_DATA_;
 	wire A23_2_CHOR05_;
 	wire A23_2_CHOR08_;
+	wire A23_2_CHOR09_;
+	wire A23_2_CHOR10_;
 	wire A2XG_;
 	wire A2X_;
 	wire AD0;
@@ -465,6 +460,7 @@ module agc_tb();
 	wire ALRT1;
 	wire ALT0;
 	wire ALT1;
+	wire ALTEST;
 	wire ALTM;
 	wire ALTSNC;
 	wire AUG0_;
@@ -573,18 +569,27 @@ module agc_tb();
 	wire CH05;
 	wire CH06;
 	wire CH07;
+	wire CH0705;
+	wire CH0706;
+	wire CH0707;
 	wire CH08;
+	wire CH09;
+	wire CH10;
 	wire CH11;
 	wire CH1109;
 	wire CH1110;
 	wire CH1111;
 	wire CH1112;
+	wire CH1113;
+	wire CH1114;
+	wire CH1116;
 	wire CH12;
 	wire CH1207;
 	wire CH1208;
 	wire CH1212;
 	wire CH1213;
 	wire CH1214;
+	wire CH1216;
 	wire CH13;
 	wire CH1301;
 	wire CH1302;
@@ -595,7 +600,9 @@ module agc_tb();
 	wire CH1307;
 	wire CH1308;
 	wire CH1309;
+	wire CH1310;
 	wire CH1311;
+	wire CH1316;
 	wire CH14;
 	wire CH1401;
 	wire CH1402;
@@ -749,6 +756,9 @@ module agc_tb();
 	wire DVST;
 	wire DVXP1;
 	wire DXCH0;
+	wire E5;
+	wire E6;
+	wire E7_;
 	wire EAC_;
 	wire EAD09;
 	wire EAD09_;
@@ -1076,6 +1086,7 @@ module agc_tb();
 	wire INOTLD;
 	wire INOUT;
 	wire INOUT_;
+	wire ISSTDC;
 	wire ISSWAR;
 	wire KRPT;
 	wire KYRLS;
@@ -1221,6 +1232,10 @@ module agc_tb();
 	wire ODDSET_;
 	wire OPEROR;
 	wire OSCALM;
+	wire OT1108;
+	wire OT1113;
+	wire OT1114;
+	wire OT1116;
 	wire OT1207;
 	wire OT1207_;
 	wire OTLNK0;
@@ -1488,7 +1503,6 @@ module agc_tb();
 	wire STFET1_;
 	wire STG1;
 	wire STG2;
-	wire STG3;
 	wire STNDBY;
 	wire STNDBY_;
 	wire STOP;
@@ -1569,6 +1583,7 @@ module agc_tb();
 	wire T3P;
 	wire T4P;
 	wire T5P;
+	wire T6ON_;
 	wire T6P;
 	wire T6RPT;
 	wire T7PHS4_;
@@ -2359,7 +2374,6 @@ module agc_tb();
 		T12USE_,
 		STG1,
 		STG2,
-		STG3,
 		DIV_,
 		ST376,
 		ST376_,
@@ -2431,9 +2445,11 @@ module agc_tb();
 		A04_2_RC_,
 		A04_1_RB1_,
 		A04_1_RSC_,
+		A12_1_RSC_,
 		A04_1_WG_,
 		A04_2_WG_,
 		A04_3_WG_,
+		A12_1_WG_,
 		A04_1_WL_,
 		A04_1_WY_,
 		A04_2_WY_,
@@ -4915,9 +4931,16 @@ module agc_tb();
 		XB3_,
 		XB4_,
 		XB5_,
+		XB7_,
+		XT0_,
 		XT3_,
 		OCTAD5,
 		CHWL01_,
+		CHWL05_,
+		CHWL06_,
+		CHWL07_,
+		CHWL08_,
+		CHWL10_,
 		CHWL11_,
 		CHWL12_,
 		CHWL13_,
@@ -4927,6 +4950,15 @@ module agc_tb();
 		CCHG_,
 		WCHG_,
 		RCHG_,
+		WCH11_,
+		CCH11,
+		RCH11_,
+		WCH12_,
+		CCH12,
+		RCH12_,
+		WCH13_,
+		CCH13,
+		RCH13_,
 		WCH14_,
 		CCH14,
 		RCH14_,
@@ -4948,6 +4980,8 @@ module agc_tb();
 		CHAT06,
 		CHAT07,
 		CHAT08,
+		CHAT09,
+		CHAT10,
 		CHBT01,
 		CHBT02,
 		CHBT03,
@@ -4956,6 +4990,8 @@ module agc_tb();
 		CHBT06,
 		CHBT07,
 		CHBT08,
+		CHBT09,
+		CHBT10,
 		CHOR01_,
 		CHOR02_,
 		CHOR03_,
@@ -4964,7 +5000,13 @@ module agc_tb();
 		CHOR06_,
 		CHOR07_,
 		CHOR08_,
+		CHOR09_,
+		CHOR10_,
+		CH1109,
+		CH1110,
 		CH1208,
+		CH1209,
+		CH1210,
 		CH1505,
 		CH1601,
 		CH1602,
@@ -4973,10 +5015,13 @@ module agc_tb();
 		CH1605,
 		CH1606,
 		CH1607,
+		CH3209,
+		CH3210,
 		POUT,
 		MOUT,
 		ZOUT,
 		FUTEXT,
+		T6RPT,
 		PIPAFL,
 		A23_1_DATA_,
 		PIPSAM_,
@@ -4994,6 +5039,10 @@ module agc_tb();
 		A23_1_CHOR07_,
 		A23_1_CHOR08_,
 		A23_2_CHOR08_,
+		A23_1_CHOR09_,
+		A23_2_CHOR09_,
+		A23_1_CHOR10_,
+		A23_2_CHOR10_,
 		CH01,
 		CH02,
 		CH03,
@@ -5002,10 +5051,25 @@ module agc_tb();
 		CH06,
 		CH07,
 		CH08,
+		CH09,
+		CH10,
 		WCH34_,
 		CCH34,
 		WCH35_,
 		CCH35,
+		CH0705,
+		CH0706,
+		CH0707,
+		CH1113,
+		CH1114,
+		CH1116,
+		OT1108,
+		OT1113,
+		OT1114,
+		OT1116,
+		CH1216,
+		CH1310,
+		CH1316,
 		CH1411,
 		CH1412,
 		CH1413,
@@ -5030,6 +5094,12 @@ module agc_tb();
 		MOUT_,
 		ZOUT_,
 		T7PHS4_,
+		E5,
+		E6,
+		E7_,
+		ISSTDC,
+		T6ON_,
+		ALTEST,
 		reset,
 		prop_clk
 	);
@@ -5043,8 +5113,8 @@ module agc_tb();
 	assign CHOR06_ = A16_1_CHOR06_ & A16_2_CHOR06_ & A17_1_CHOR06_ & A17_2_CHOR06_ & A23_1_CHOR06_;
 	assign CHOR07_ = A16_1_CHOR07_ & A16_2_CHOR07_ & A17_1_CHOR07_ & A17_2_CHOR07_ & A23_1_CHOR07_;
 	assign CHOR08_ = A16_1_CHOR08_ & A17_1_CHOR08_ & A17_2_CHOR08_ & A23_1_CHOR08_ & A23_2_CHOR08_;
-	assign CHOR09_ = A17_1_CHOR09_ & A17_2_CHOR09_;
-	assign CHOR10_ = A17_1_CHOR10_ & A17_2_CHOR10_;
+	assign CHOR09_ = A17_1_CHOR09_ & A17_2_CHOR09_ & A23_1_CHOR09_ & A23_2_CHOR09_;
+	assign CHOR10_ = A17_1_CHOR10_ & A17_2_CHOR10_ & A23_1_CHOR10_ & A23_2_CHOR10_;
 	assign CHOR11_ = A17_1_CHOR11_ & A17_2_CHOR11_ & A18_1_CHOR11_ & A18_2_CHOR11_;
 	assign CHOR12_ = A17_1_CHOR12_ & A17_2_CHOR12_ & A18_1_CHOR12_ & A18_2_CHOR12_;
 	assign CHOR13_ = A17_1_CHOR13_ & A17_2_CHOR13_ & A18_1_CHOR13_;
@@ -5069,7 +5139,7 @@ module agc_tb();
 	assign RL16_ = A11_1_RL16_ & A11_2_RL16_ & A11_3_RL16_ & A11_4_RL16_ & A15_1_RL16_;
 	assign RL_ = A05_1_RL_ & A05_2_RL_;
 	assign RPTSET = A03_1_RPTSET & A03_2_RPTSET & A03_3_RPTSET & A06_1_RPTSET;
-	assign RSC_ = A04_1_RSC_;
+	assign RSC_ = A04_1_RSC_ & A12_1_RSC_;
 	assign RU_ = A05_1_RU_ & A05_2_RU_ & A05_3_RU_ & A06_1_RU_ & A06_2_RU_ & A06_3_RU_;
 	assign RZ_ = A05_1_RZ_ & A05_2_RZ_ & A05_3_RZ_ & A06_1_RZ_;
 	assign ST2_ = A05_1_ST2_ & A06_1_ST2_;
@@ -5078,7 +5148,7 @@ module agc_tb();
 	assign TSGN_ = A04_1_TSGN_ & A04_2_TSGN_ & A05_1_TSGN_ & A05_2_TSGN_;
 	assign WA_ = A05_1_WA_ & A05_2_WA_ & A05_3_WA_ & A06_1_WA_ & A06_2_WA_;
 	assign WB_ = A05_1_WB_ & A05_2_WB_ & A05_3_WB_ & A05_4_WB_ & A06_1_WB_;
-	assign WG_ = A04_1_WG_ & A04_2_WG_ & A04_3_WG_ & A05_1_WG_ & A06_1_WG_ & A06_2_WG_;
+	assign WG_ = A04_1_WG_ & A04_2_WG_ & A04_3_WG_ & A05_1_WG_ & A06_1_WG_ & A06_2_WG_ & A12_1_WG_;
 	assign WL_ = A04_1_WL_ & A05_1_WL_ & A06_1_WL_;
 	assign WSC_ = A06_1_WSC_ & A06_2_WSC_;
 	assign WS_ = A05_1_WS_ & A06_1_WS_;

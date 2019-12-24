@@ -166,16 +166,68 @@ module a01_scaler(
 );
 
     /**************************
-     *
-     *  Module A1 sheet 1
-     *  Sheet number 2005259/1
-     *
-     **************************/
+    *
+    *  Module A1 sheet 1
+    *  Sheet number 2005259/1
+    *
+    ***************************/
+    
+    wire NOR38103_out;
+    wire NOR38104_out;
+    wire NOR38105_out;
+    wire NOR38113_out;
+    wire NOR38114_out;
+    wire NOR38115_out;
+    wire NOR38123_out;
+    wire NOR38124_out;
+    wire NOR38125_out;
+    wire NOR38133_out;
+    wire NOR38134_out;
+    wire NOR38135_out;
+    wire NOR38143_out;
+    wire NOR38144_out;
+    wire NOR38145_out;
+    wire NOR38153_out;
+    wire NOR38154_out;
+    wire NOR38155_out;
+    wire NOR38163_out;
+    wire NOR38164_out;
+    wire NOR38165_out;
+    wire NOR38173_out;
+    wire NOR38174_out;
+    wire NOR38175_out;
+    
+    wire NOR38203_out;
+    wire NOR38204_out;
+    wire NOR38205_out;
+    wire NOR38213_out;
+    wire NOR38214_out;
+    wire NOR38215_out;
+    wire NOR38223_out;
+    wire NOR38224_out;
+    wire NOR38225_out;
+    wire NOR38233_out;
+    wire NOR38234_out;
+    wire NOR38235_out;
+    wire NOR38243_out;
+    wire NOR38244_out;
+    wire NOR38245_out;
+    wire NOR38253_out;
+    wire NOR38254_out;
+    wire NOR38255_out;    
+    wire NOR38263_out;
+    wire NOR38264_out;
+    wire NOR38265_out;   
+    wire NOR38273_out;
+    wire NOR38274_out;
+    wire NOR38275_out;
+    
+    wire NOR49351_out;
+    wire NOR49355_out;
+    wire NOR49356_out;
     
     
     // Stage 2
-    wire NOR38203_out, NOR38204_out, NOR38205_out;
-    
     nor_1 #(1'b0) NOR38201(FS02A,           NOR38204_out,                                   reset, prop_clk);
     nor_2 #(1'b1) NOR38202(F02A,            NOR38204_out,   NOR38203_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38203(NOR38203_out,    F02A,           FS01_,          NOR38205_out,   reset, prop_clk);
@@ -188,8 +240,6 @@ module a01_scaler(
     
     
     // Stage 3
-    wire NOR38213_out, NOR38214_out, NOR38215_out;
-    
     nor_1 #(1'b0) NOR38211(FS03A,           NOR38214_out,                                   reset, prop_clk);
     nor_2 #(1'b1) NOR38212(F03A,            NOR38214_out,   NOR38213_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38213(NOR38213_out,    F03A,           F02A,           NOR38215_out,   reset, prop_clk);
@@ -205,8 +255,6 @@ module a01_scaler(
     
     
     // Stage 4
-    wire NOR38223_out, NOR38224_out, NOR38225_out;
-    
     nor_1 #(1'b0) NOR38221(FS04A,           NOR38224_out,                                   reset, prop_clk);
     nor_2 #(1'b1) NOR38222(F04A,            NOR38224_out,   NOR38223_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38223(NOR38223_out,    F04A,           F03A,           NOR38225_out,   reset, prop_clk);
@@ -222,8 +270,6 @@ module a01_scaler(
     
     
     // Stage 5
-    wire NOR38233_out, NOR38234_out, NOR38235_out;
-    
     nor_1 #(1'b0) NOR38231(FS05A,           NOR38234_out,                                   reset, prop_clk);
     nor_2 #(1'b1) NOR38232(F05A,            NOR38234_out,   NOR38233_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38233(NOR38233_out,    F05A,           F04A,           NOR38235_out,   reset, prop_clk);
@@ -245,8 +291,6 @@ module a01_scaler(
     
     
     // Stage 6
-    wire NOR38243_out,NOR38244_out, NOR38245_out;
-    
     nor_2 #(1'b0) NOR38241(CHAT01,          RCHAT_,         NOR38244_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38242(F06A,            NOR38244_out,   NOR38243_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38243(NOR38243_out,    F06A,           F05A,           NOR38245_out,   reset, prop_clk);
@@ -265,8 +309,6 @@ module a01_scaler(
     
     
     // Stage 7
-    wire NOR38253_out, NOR38254_out, NOR38255_out, NOR49355_out, NOR49356_out;
-    
     nor_2 #(1'b0) NOR38251(CHAT02,          RCHAT_,         NOR38254_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38252(F07A,            NOR38254_out,   NOR38253_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38253(NOR38253_out,    F07A,           F06A,           NOR38255_out,   reset, prop_clk);
@@ -297,8 +339,6 @@ module a01_scaler(
     
     
     // Stage 8
-    wire NOR38263_out, NOR38264_out, NOR38265_out;
-    
     nor_2 #(1'b0) NOR38261(CHAT03,          RCHAT_,         NOR38264_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38262(F08A,            NOR38264_out,   NOR38263_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38263(NOR38263_out,    F08A,           F07A,           NOR38265_out,   reset, prop_clk);
@@ -317,8 +357,6 @@ module a01_scaler(
     
     
     // Stage 9
-    wire NOR38273_out, NOR38274_out, NOR38275_out, NOR49351_out;
-    
     nor_2 #(1'b0) NOR38271(CHAT04,          RCHAT_,         NOR38274_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38272(F09A,            NOR38274_out,   NOR38273_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38273(NOR38273_out,    F09A,           F08A,           NOR38275_out,   reset, prop_clk);
@@ -342,8 +380,6 @@ module a01_scaler(
     
     
     // Stage 10
-    wire NOR38103_out, NOR38104_out, NOR38105_out;
-    
     nor_2 #(1'b0) NOR38101(CHAT05,          RCHAT_,         NOR38104_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38102(F10A,            NOR38104_out,   NOR38103_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38103(NOR38103_out,    F10A,           F09A,           NOR38105_out,   reset, prop_clk);
@@ -361,8 +397,6 @@ module a01_scaler(
     nor_1 #(1'b0) NOR46309(F10B_,           F10B,                                           reset, prop_clk);
     
     // Stage 11
-    wire NOR38113_out, NOR38114_out, NOR38115_out;
-    
     nor_2 #(1'b0) NOR38111(CHAT06,          RCHAT_,         NOR38114_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38112(F11A,            NOR38114_out,   NOR38113_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38113(NOR38113_out,    F11A,           F10A,           NOR38115_out,   reset, prop_clk);
@@ -375,8 +409,6 @@ module a01_scaler(
     
     
     // Stage 12
-    wire NOR38123_out, NOR38124_out, NOR38125_out;
-    
     nor_2 #(1'b0) NOR38121(CHAT07,          RCHAT_,         NOR38124_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38122(F12A,            NOR38124_out,   NOR38123_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38123(NOR38123_out,    F12A,           F11A,           NOR38125_out,   reset, prop_clk);
@@ -389,8 +421,6 @@ module a01_scaler(
     
     
     // Stage 13
-    wire NOR38133_out, NOR38134_out, NOR38135_out;
-    
     nor_2 #(1'b0) NOR38131(CHAT08,          RCHAT_,         NOR38134_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38132(F13A,            NOR38134_out,   NOR38133_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38133(NOR38133_out,    F13A,           F12A,           NOR38135_out,   reset, prop_clk);
@@ -403,8 +433,6 @@ module a01_scaler(
     
     
     // Stage 14
-    wire NOR38143_out, NOR38144_out, NOR38145_out;
-    
     nor_2 #(1'b0) NOR38141(CHAT09,          RCHAT_,         NOR38144_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38142(F14A,            NOR38144_out,   NOR38143_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38143(NOR38143_out,    F14A,           F13A,           NOR38145_out,   reset, prop_clk);
@@ -417,8 +445,6 @@ module a01_scaler(
     
     
     // Stage 15
-    wire NOR38153_out, NOR38154_out, NOR38155_out;
-    
     nor_2 #(1'b0) NOR38151(CHAT10,          RCHAT_,         NOR38154_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38152(F15A,            NOR38154_out,   NOR38153_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38153(NOR38153_out,    F15A,           F14A,           NOR38155_out,   reset, prop_clk);
@@ -431,8 +457,6 @@ module a01_scaler(
     
     
     // Stage 16
-    wire NOR38163_out, NOR38164_out, NOR38165_out;
-    
     nor_2 #(1'b0) NOR38161(CHAT11,          RCHAT_,         NOR38164_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38162(F16A,            NOR38164_out,   NOR38163_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38163(NOR38163_out,    F16A,           F15A,           NOR38165_out,   reset, prop_clk);
@@ -445,8 +469,6 @@ module a01_scaler(
     
     
     // Stage 17
-    wire NOR38173_out, NOR38174_out, NOR38175_out;
-    
     nor_2 #(1'b0) NOR38171(CHAT12,          RCHAT_,         NOR38174_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38172(F17A,            NOR38174_out,   NOR38173_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38173(NOR38173_out,    F17A,           F16A,           NOR38175_out,   reset, prop_clk);
@@ -463,19 +485,66 @@ module a01_scaler(
     // F17B_ moved here from A18 sheet 1
     nor_1 #(1'b0) NOR45261(F17B_,           F17B,                                           reset, prop_clk);
     
-    // END OF SHEET
     
     /**************************
-     *
-     *  Module A1 sheet 2
-     *  Sheet number 2005259/2
-     *
-     **************************/
+    *
+    *  Module A1 sheet 2
+    *  Sheet number 2005259/2
+    *
+    ***************************/
+    
+    wire NOR38303_out;
+    wire NOR38304_out;
+    wire NOR38305_out;
+    wire NOR38313_out;
+    wire NOR38314_out;
+    wire NOR38315_out;
+    wire NOR38323_out;
+    wire NOR38324_out;
+    wire NOR38325_out;
+    wire NOR38333_out;
+    wire NOR38334_out;
+    wire NOR38335_out;
+    wire NOR38343_out;
+    wire NOR38344_out;
+    wire NOR38345_out;
+    wire NOR38353_out;
+    wire NOR38354_out;
+    wire NOR38355_out;
+    wire NOR38363_out;
+    wire NOR38364_out;
+    wire NOR38365_out;
+    wire NOR38373_out;
+    wire NOR38374_out;
+    wire NOR38375_out;
+    
+    wire NOR38403_out;
+    wire NOR38404_out;
+    wire NOR38405_out;
+    wire NOR38413_out;
+    wire NOR38414_out;
+    wire NOR38415_out;
+    wire NOR38423_out;
+    wire NOR38424_out;
+    wire NOR38425_out;
+    wire NOR38433_out;
+    wire NOR38434_out;
+    wire NOR38435_out;
+    wire NOR38443_out;
+    wire NOR38444_out;
+    wire NOR38445_out;
+    wire NOR38453_out;
+    wire NOR38454_out;
+    wire NOR38455_out;
+    wire NOR38463_out;
+    wire NOR38464_out;
+    wire NOR38465_out;
+    wire NOR38473_out;
+    wire NOR38474_out;
+    wire NOR38475_out;
     
     
     // Stage 18
-    wire NOR38303_out, NOR38304_out, NOR38305_out;
-    
     nor_2 #(1'b0) NOR38301(CHAT13,          RCHAT_,         NOR38304_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38302(F18A,            NOR38304_out,   NOR38303_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38303(NOR38303_out,    F18A,           F17A,           NOR38305_out,   reset, prop_clk);
@@ -497,8 +566,6 @@ module a01_scaler(
     
     
     // Stage 19
-    wire NOR38313_out, NOR38314_out, NOR38315_out;
-   
     nor_2 #(1'b0) NOR38311(CHAT14,          RCHAT_,         NOR38314_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38312(F19A,            NOR38314_out,   NOR38313_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38313(NOR38313_out,    F19A,           F18A,           NOR38315_out,   reset, prop_clk);
@@ -511,8 +578,6 @@ module a01_scaler(
     
     
     // Stage 20
-    wire NOR38323_out, NOR38324_out, NOR38325_out;
-    
     nor_2 #(1'b0) NOR38321(CHBT01,          RCHBT_,         NOR38324_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38322(F20A,            NOR38324_out,   NOR38323_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38323(NOR38323_out,    F20A,           F19A,           NOR38325_out,   reset, prop_clk);
@@ -525,7 +590,6 @@ module a01_scaler(
     
     
     // Stage 21
-    wire NOR38333_out, NOR38334_out, NOR38335_out;
     
     nor_2 #(1'b0) NOR38331(CHBT02,          RCHBT_,         NOR38334_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38332(F21A,            NOR38334_out,   NOR38333_out,                   reset, prop_clk);
@@ -539,8 +603,6 @@ module a01_scaler(
     
     
     // Stage 22
-    wire NOR38343_out, NOR38344_out, NOR38345_out;
-    
     nor_2 #(1'b0) NOR38341(CHBT03,          RCHBT_,         NOR38344_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38342(F22A,            NOR38344_out,   NOR38343_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38343(NOR38343_out,    F22A,           F21A,           NOR38345_out,   reset, prop_clk);
@@ -553,8 +615,6 @@ module a01_scaler(
     
     
     // Stage 23
-    wire NOR38353_out, NOR38354_out, NOR38355_out;
-    
     nor_2 #(1'b0) NOR38351(CHBT04,          RCHBT_,         NOR38354_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38352(F23A,            NOR38354_out,   NOR38353_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38353(NOR38353_out,    F23A,           F22A,           NOR38355_out,   reset, prop_clk);
@@ -567,8 +627,6 @@ module a01_scaler(
     
     
     // Stage 24
-    wire NOR38363_out, NOR38364_out, NOR38365_out;
-    
     nor_2 #(1'b0) NOR38361(CHBT05,          RCHBT_,         NOR38364_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38362(F24A,            NOR38364_out,   NOR38363_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38363(NOR38363_out,    F24A,           F23A,           NOR38365_out,   reset, prop_clk);
@@ -581,8 +639,6 @@ module a01_scaler(
 
     
     // Stage 25
-    wire NOR38373_out, NOR38374_out, NOR38375_out;
-    
     nor_2 #(1'b0) NOR38371(CHBT06,          RCHBT_,         NOR38374_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38372(F25A,            NOR38374_out,   NOR38373_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38373(NOR38373_out,    F25A,           F24A,           NOR38375_out,   reset, prop_clk);
@@ -595,8 +651,6 @@ module a01_scaler(
 
 
     // Stage 26
-    wire NOR38403_out, NOR38404_out, NOR38405_out;
-    
     nor_2 #(1'b0) NOR38401(CHBT07,          RCHBT_,         NOR38404_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38402(F26A,            NOR38404_out,   NOR38403_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38403(NOR38403_out,    F26A,           F25A,           NOR38405_out,   reset, prop_clk);
@@ -609,8 +663,6 @@ module a01_scaler(
 
     
     // Stage 27
-    wire NOR38413_out, NOR38414_out, NOR38415_out;
-    
     nor_2 #(1'b0) NOR38411(CHBT08,          RCHBT_,         NOR38414_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38412(F27A,            NOR38414_out,   NOR38413_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38413(NOR38413_out,    F27A,           F26A,           NOR38415_out,   reset, prop_clk);
@@ -623,8 +675,6 @@ module a01_scaler(
     
     
     // Stage 28
-    wire NOR38423_out, NOR38424_out, NOR38425_out;
-    
     nor_2 #(1'b0) NOR38421(CHBT09,          RCHBT_,         NOR38424_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38422(F28A,            NOR38424_out,   NOR38423_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38423(NOR38423_out,    F28A,           F27A,           NOR38425_out,   reset, prop_clk);
@@ -637,8 +687,6 @@ module a01_scaler(
     
     
     // Stage 29
-    wire NOR38433_out, NOR38434_out, NOR38435_out;
-    
     nor_2 #(1'b0) NOR38431(CHBT10,          RCHBT_,         NOR38434_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38432(F29A,            NOR38434_out,   NOR38433_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38433(NOR38433_out,    F29A,           F28A,           NOR38435_out,   reset, prop_clk);
@@ -651,8 +699,6 @@ module a01_scaler(
     
     
     // Stage 30
-    wire NOR38443_out, NOR38444_out, NOR38445_out;
-    
     nor_2 #(1'b0) NOR38441(CHBT11,          RCHBT_,         NOR38444_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38442(F30A,            NOR38444_out,   NOR38443_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38443(NOR38443_out,    F30A,           F29A,           NOR38445_out,   reset, prop_clk);
@@ -665,8 +711,6 @@ module a01_scaler(
     
     
     // Stage 31
-    wire NOR38453_out, NOR38454_out, NOR38455_out;
-    
     nor_2 #(1'b0) NOR38451(CHBT12,          RCHBT_,         NOR38454_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38452(F31A,            NOR38454_out,   NOR38453_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38453(NOR38453_out,    F31A,           F30A,           NOR38455_out,   reset, prop_clk);
@@ -679,8 +723,6 @@ module a01_scaler(
     
     
     // Stage 32
-    wire NOR38463_out, NOR38464_out, NOR38465_out;
-    
     nor_2 #(1'b0) NOR38461(CHBT13,          RCHBT_,         NOR38464_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38462(F32A,            NOR38464_out,   NOR38463_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38463(NOR38463_out,    F32A,           F31A,           NOR38465_out,   reset, prop_clk);
@@ -693,8 +735,6 @@ module a01_scaler(
     
     
     // Stage 33
-    wire NOR38473_out, NOR38474_out, NOR38475_out;
-    
     nor_2 #(1'b0) NOR38471(CHBT14,          RCHBT_,         NOR38474_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR38472(F33A,            NOR38474_out,   NOR38473_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR38473(NOR38473_out,    F33A,           F32A,           NOR38475_out,   reset, prop_clk);

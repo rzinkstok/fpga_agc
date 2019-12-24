@@ -154,18 +154,6 @@ module a03_sq_register(
     **************************/
     
     
-    wire INKBT1;
-    wire RPTFRC;
-    wire OVNHRP;
-    
-    wire CSQG;
-    wire WSQG_;
-    
-    wire SQR11, SQR12, SQR13, SQR14, SQR16;
-    wire QC0;
-    
-    wire INHINT;
-
     wire NOR30001_out;
     wire NOR30002_out;
     wire NOR30003_out;
@@ -202,6 +190,7 @@ module a03_sq_register(
     wire NOR30054_out;
     wire NOR30055_out;
     wire NOR30056_out;
+    wire NOR30061_out;
     
     wire NOR30101_out;
     wire NOR30103_out;
@@ -243,8 +232,24 @@ module a03_sq_register(
     wire NOR49107_out;
     wire NOR49108_out;
     
+    wire NOR32257_out;
     
+    wire INKBT1;
+    wire RPTFRC;
+    wire OVNHRP;
     
+    wire CSQG;
+    wire WSQG_;
+    
+    wire SQR11;
+    wire SQR12;
+    wire SQR13;
+    wire SQR14;
+    wire SQR16;
+    wire QC0;
+    
+    wire INHINT;
+
     // NISQL flip-flop
     nor_2 #(1'b1) NOR30001(NOR30001_out,    NISQ,           NOR30002_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR30002(NOR30002_out,    NOR30001_out,   INKBT1,         STRTFC,         reset, prop_clk);
@@ -254,17 +259,15 @@ module a03_sq_register(
     nor_2 #(1'b0) NOR30005(NOR30005_out,    STRTFC,         NOR30003_out,                   reset, prop_clk);
     nor_1 #(1'b1) NOR30006(NOR30006_out,    NOR30003_out,                                   reset, prop_clk);
     
-    //
     // Sequence register
-    /////////////////////////////////
     
     // Sequence register clear, read, and write signals
     nor_3 #(1'b0) NOR30007(CSQG,            T12_,           NOR30005_out,   CT_,            reset, prop_clk);
-    //nor_3 #(1'b0) NOR30008(CSQG,          T12_,           NOR30005_out,   CT_,            reset, prop_clk);
+    // NOR30008 removed (fan-out expansion)
     nor_2 #(1'b0) NOR30009(RBSQ,            RT_,            NOR30006_out,                   reset, prop_clk);
     nor_2 #(1'b0) NOR30010(NOR30010_out,    NOR30006_out,   WT_,                            reset, prop_clk);
     nor_1 #(1'b1) NOR30011(WSQG_,           NOR30010_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR30012(WSQG_,         NOR30010_out,                                   reset, prop_clk);
+    // NOR30012 removed (fan-out expansion)
     
     // Sequence register input from write lines
     nor_2 #(1'b0) NOR30013(NOR30013_out,    WL16_,          WSQG_,                          reset, prop_clk);
@@ -299,17 +302,15 @@ module a03_sq_register(
     // Sequence register decoding
     nor_2 #(1'b0) NOR30023(NOR30023_out,    NOR30016_out,   INKL,                           reset, prop_clk);
     nor_2 #(1'b1) NOR30024(NOR30024_out,    SQR16,          INKL,                           reset, prop_clk);
-    // NOR30025 moved above
-    // NOR30026 omitted, expansion gate for NOR30018
-    // NOR30027 not found in schematics
-    // NOR30028 moved above   
-    // NOR30029 not found in schematics
-    // NOR30030 not found in schematics
+    // NOR30026 removed (fan-out expansion)
+    // NOR30027 removed (not used)
+    // NOR30029 removed (not used)
+    // NOR30030 removed (not used)
     nor_1 #(1'b0) NOR30031(NOR30031_out,    NOR30023_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR30032(NOR30032_out,    NOR30024_out,                                   reset, prop_clk);
-    // NOR30033 not found in schematics
+    // NOR30033 removed (not used)
     nor_1 #(1'b0) NOR30034(NOR30034_out,    NOR30018_out,                                   reset, prop_clk);
-    // NOR30035 not found in schematics
+    // NOR30035 removed (not used)
     nor_1 #(1'b0) NOR30036(NOR30036_out,    NOR30020_out,                                   reset, prop_clk);
     
     nor_3 #(1'b1) NOR30037(NOR30037_out,    NOR30036_out,   NOR30034_out,   NOR30032_out,   reset, prop_clk);
@@ -322,41 +323,39 @@ module a03_sq_register(
     nor_3 #(1'b0) NOR30044(NOR30044_out,    NOR30020_out,   NOR30018_out,   NOR30031_out,   reset, prop_clk);
     
     nor_1 #(1'b0) NOR30045(SQ0_,            NOR30037_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR30046(SQ0_,          NOR30037_out,                                   reset, prop_clk);
-    // NOR30047 not connected
+    // NOR30046 removed (fan-out expansion)
+    // NOR30047 removed (not connected)
     nor_1 #(1'b0) NOR30048(SQ1_,            NOR30038_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR30049(SQ2_,            NOR30040_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR30050(SQ2_,          NOR30040_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR30051(SQ2_,          NOR30040_out,                                   reset, prop_clk);
-    // NOR30052 not found in schematics
+    // NOR30050 removed (fan-out expansion)
+    // NOR30051 removed (fan-out expansion)
+    // NOR30052 removed (not used)
     nor_1 #(1'b0) NOR30053(SQ3_,            NOR30041_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR30054(SQ4_,            NOR30042_out,                                   reset, prop_clk);
     // Moved here from sheet 2
     nor_1 #(1'b0) NOR30310(SQ5_,            NOR30039_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR30312(SQ5_,          NOR30039_out,                                   reset, prop_clk);
+    // NOR30312 removed (fan-out expansion)
     nor_1 #(1'b0) NOR30055(SQ6_,            NOR30043_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR30056(SQ7_,            NOR30044_out,                                   reset, prop_clk);
     
-    // NOR30057 moved to A13
-    // NOR30058 moved to A13
-    // NOR30059 moved to A13
-    // NOR30060 not connected
+    // NOR30057 removed (moved to A13)
+    // NOR30058 removed (moved to A13)
+    // NOR30059 removed (moved to A13)
+    // NOR30060 removed (not connected)
     
-    // INKBT1 signal
-    // Combined with NOR32257 from A21 sheet 2
-    nor_3 #(1'b0) NOR30061(INKBT1,          INKL,           T01_,           STD2,           reset, prop_clk);
+    // INKBT1
+    nor_2 #(1'b0) NOR30061(NOR30061_out,    INKL,           T01_,                           reset, prop_clk);
+    // Moved here from A21 sheet 2
+    nor_1 #(1'b0) NOR32257(NOR32257_out,    STD2,                                           reset, prop_clk);
+    assign INKBT1 = NOR30061_out & NOR32257_out;
     
-    // Gates 30062-30100 not used
-    
-    //
     // Extend bit
-    /////////////////////////////////////////////
     
     // STRTFC
     nor_2 #(1'b0) NOR30101(NOR30101_out,    GOJAM,          MTCSAI,                         reset, prop_clk);
     nor_1 #(1'b0) NOR30107(STRTFC,          NOR30101_out,                                   reset, prop_clk);
     
-    // NOR30102 not used
+    // NOR30102 removed (not used)
     
     nor_2 #(1'b0) NOR30108(NOR30108_out,    NISQL_,         T12_,                           reset, prop_clk);
     
@@ -377,13 +376,11 @@ module a03_sq_register(
     // Single monitor fan-in output, no cross-module fan-in
     assign MSQEXT = NOR30123_out;
     nor_1 #(1'b1) NOR30124(SQEXT_,          NOR30120_out,                                   reset, prop_clk);
-    //nor_1 #(1'b1) NOR30125(SQEXT_,        NOR30120_out,                                   reset, prop_clk);
+    // NOR30125 removed (fan-out expansion)
     nor_1 #(1'b0) NOR30160(SQEXT,           NOR30119_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR30161(SQEXT,         NOR30119_out,                                   reset, prop_clk);
+    // NOR30161 removed (fan-out expansion)
     
-    //
     // Interupt inhibition logic
-    /////////////////////////////////////////////////////////////
     
     // INHINT flip-flop
     nor_2 #(1'b1) NOR30103(NOR30103_out,    INHPLS,         INHINT,                         reset, prop_clk);
@@ -421,11 +418,9 @@ module a03_sq_register(
     nor_2 #(1'b1) NOR30121(NOR30121_out,    RPTSET,         NOR30122_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR30122(NOR30122_out,    NOR30121_out,   STRTFC,         T02,            reset, prop_clk);
     nor_1 #(1'b0) NOR30127(RPTFRC,          NOR30121_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR30128(RPTFRC,        NOR30121_out,                                   reset, prop_clk);
+    // NOR30128 removed (fan-out expansion)
     
-    //
     // Quarter Code register, channel/interupt instruction bit
-    /////////////////////////////////////////////////////////////////////////
     
     // Quarter Code register input from write lines
     nor_2 #(1'b0) NOR30129(NOR30129_out,    WL12_,          WSQG_,                          reset, prop_clk);
@@ -463,19 +458,19 @@ module a03_sq_register(
     nor_2 #(1'b0) NOR30144(NOR30144_out,    NOR30132_out,   NOR30134_out,                   reset, prop_clk);
     
     nor_1 #(1'b0) NOR30145(QC0_,            QC0,                                            reset, prop_clk);
-    //nor_1 #(1'b0) NOR30146(QC0_,          QC0,                                            reset, prop_clk);
-    //nor_1 #(1'b0) NOR30147(QC0_,          QC0,                                            reset, prop_clk);
+    // NOR30146 removed (fan-out expansion)
+    // NOR30147 removed (fan-out expansion)
     
     nor_1 #(1'b0) NOR30148(QC1_,            NOR30142_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR30149(QC1_,          NOR30142_out,                                   reset, prop_clk);
+    // NOR30149 removed (fan-out expansion)
     
     nor_1 #(1'b0) NOR30151(QC2_,            NOR30143_out,                                   reset, prop_clk);
     
     nor_1 #(1'b0) NOR30152(QC3_,            NOR30144_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR30153(QC3_,          NOR30144_out,                                   reset, prop_clk);
+    // NOR30153 removed (fan-out expansion)
     
     nor_1 #(1'b0) NOR30154(SQR10,           NOR30136_out,                                   reset, prop_clk);
-    // NOR30155 not found
+    // NOR30155 removed (not used)
     nor_1 #(1'b0) NOR30156(SQR10_,          NOR30137_out,                                   reset, prop_clk);
     
     
@@ -486,25 +481,9 @@ module a03_sq_register(
     *
     **************************/
     
-    wire SQ5QC0_;
-    wire IC3_;
-    wire IC4_;
-    wire IC9_;
-    wire IC13_;
-    wire NEXST0, NEXST0_;
-    wire QXCH0;
-    wire LXCH0;
-    wire BZF0, BZF0_;
-    wire BMF0, BMF0_;
-    wire AUG0;
-    wire DIM0;
-    wire NDX0;
-    wire NDXX1;
-    
     wire NOR30301_out;
     wire NOR30302_out;
     wire NOR30304_out;
-    wire NOR30360_out;
     wire NOR30314_out;
     wire NOR30315_out;
     wire NOR30331_out;
@@ -512,25 +491,50 @@ module a03_sq_register(
     wire NOR30335_out;
     wire NOR30336_out;
     wire NOR30337_out;
+    wire NOR30340_out;
+    wire NOR30344_out;
     wire NOR30347_out;
+    wire NOR30360_out;
+    
     wire NOR30407_out;
     wire NOR30408_out;
     wire NOR30417_out;
+    wire NOR30418_out;
     wire NOR30438_out;
     wire NOR30455_out;
+    
+    wire NOR30419_in;
+    
+    wire SQ5QC0_;
+    wire IC3_;
+    wire IC4_;
+    wire IC9_;
+    wire IC13_;
+    wire NEXST0;
+    wire NEXST0_;
+    wire QXCH0;
+    wire LXCH0;
+    wire BZF0;
+    wire BZF0_;
+    wire BMF0;
+    wire BMF0_;
+    wire AUG0;
+    wire DIM0;
+    wire NDX0;
+    wire NDXX1;
+    
+    
     
     nor_2 #(1'b0) NOR30301(NOR30301_out,    SQ5_,           QC0_,                           reset, prop_clk);
     nor_2 #(1'b0) NOR30302(NOR30302_out,    SQ5_,           SQEXT_,                         reset, prop_clk);
     nor_1 #(1'b0) NOR30303(SQ5QC0_,         NOR30301_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR30304(NOR30304_out,    NOR30301_out,   NOR30302_out,                   reset, prop_clk);
     nor_2 #(1'b0) NOR30305(IC1,             NOR30304_out,   ST0_,                           reset, prop_clk);
-    // NOR30306 not used
+    // NOR30306 removed (not used)
     nor_2 #(1'b0) NOR30307(IC2,             NOR30304_out,   ST1_,                           reset, prop_clk);
-    //nor_2 #(1'b0) NOR30308(IC2,           NOR30304_out,   ST1_,                           reset, prop_clk);
+    // NOR30308 removed (fan-out expansion)
     nor_1 #(1'b0) NOR30309(IC2_,            IC2,                                            reset, prop_clk);
-    // NOR30310 moved to sheet 1
-    // NOR30311 not used
-    // NOR30312 moved to sheet 1
+    // NOR30311 removed (not used)
     nor_2 #(1'b0) NOR30360(NOR30360_out,    SQEXT_,         QC0,                            reset, prop_clk);
     nor_3 #(1'b0) NOR30313(IC11,            SQ6_,           NOR30360_out,   ST0_,           reset, prop_clk);
     // Moved here from A24 sheet 2
@@ -549,8 +553,8 @@ module a03_sq_register(
     nor_1 #(1'b0) NOR30322(TC0_,            TC0,                                            reset, prop_clk);
     nor_3 #(1'b0) NOR30323(IC3_,            TC0,            STD2,           TCF0,           reset, prop_clk);
     nor_1 #(1'b1) NOR30324(NEXST0_,         NEXST0,                                         reset, prop_clk);
-    //nor_1 #(1'b1) NOR30325(NEXST0_,       NEXST0,                                         reset, prop_clk);
-    //nor_1 #(1'b1) NOR30361(NEXST0_,       NEXST0,                                         reset, prop_clk);
+    // NOR30325 removed (fan-out expansion)
+    // NOR30361 removed (fan-out expansion)
     nor_1 #(1'b0) NOR30326(IC3,             IC3_,                                           reset, prop_clk);
     nor_2 #(1'b0) NOR30327(DCS0,            SQ4_,           EXST0_,                         reset, prop_clk);
     nor_2 #(1'b0) NOR30328(DCA0,            EXST0_,         SQ3_,                           reset, prop_clk);
@@ -563,14 +567,16 @@ module a03_sq_register(
     assign IC13_ = NOR30331_out & NOR30332_out;
     nor_1 #(1'b0) NOR30333(IC13,            IC13_,                                          reset, prop_clk);
     
-    // NOR30334 not used
+    // NOR30334 removed (not used)
     nor_2 #(1'b0) NOR30335(NOR30335_out,    QC1_,           ST1_,                           reset, prop_clk);
     nor_2 #(1'b0) NOR30336(NOR30336_out,    QC3_,           ST0_,                           reset, prop_clk);
     nor_2 #(1'b0) NOR30337(NOR30337_out,    NOR30335_out,   NOR30336_out,                   reset, prop_clk);
     nor_3 #(1'b0) NOR30338(IC5,             NOR30337_out,   SQ5_,           SQEXT,          reset, prop_clk);
     nor_1 #(1'b0) NOR30339(IC5_,            IC5,                                            reset, prop_clk);
-    nor_4 #(1'b0) NOR30340(IC9_,            IC5,            TS0,            QXCH0,  LXCH0,  reset, prop_clk);
-    // NOR30344 combined into 30340 (fan-in expansion)
+    nor_2 #(1'b0) NOR30340(NOR30340_out,    IC5,            TS0,                            reset, prop_clk);
+    nor_2 #(1'b0) NOR30344(NOR30344_out,    QXCH0,          LXCH0,                          reset, prop_clk);
+    assign IC9_ = NOR30340_out & NOR30344_out;
+    
     nor_1 #(1'b0) NOR30345(IC9,             IC9_,                                           reset, prop_clk);
     nor_3 #(1'b0) NOR30341(LXCH0,           NEXST0_,        QC1_,           SQ2_,           reset, prop_clk);
     nor_3 #(1'b0) NOR30342(QXCH0,           SQ2_,           QC1_,           EXST0_,         reset, prop_clk);
@@ -581,16 +587,16 @@ module a03_sq_register(
     nor_3 #(1'b0) NOR30348(TS0,             SQ5_,           QC2_,           NEXST0_,        reset, prop_clk);
     nor_1 #(1'b0) NOR30349(EXST0_,          NOR30347_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR30350(TS0_,            TS0,                                            reset, prop_clk);
-    //nor_1 #(1'b0) NOR30351(TS0_,          TS0,                                            reset, prop_clk);
+    // NOR30351 removed (fan-out expansion)
     nor_3 #(1'b0) NOR30352(DXCH0,           SQ5_,           NEXST0_,        QC1_,           reset, prop_clk);
-    //nor_3 #(1'b0) NOR30353(DXCH0,         SQ5_,           NEXST0_,        QC1_,           reset, prop_clk);
+    // NOR30353 removed (fan-out expansion)
     nor_3 #(1'b0) NOR30354(DAS0,            SQ2_,           NEXST0_,        QC0_,           reset, prop_clk);
-    //nor_3 #(1'b0) NOR30355(DAS0,          SQ2_,           NEXST0_,        QC0_,           reset, prop_clk);
+    // NOR30355 removed (fan-out expansion)
     nor_3 #(1'b0) NOR30356(IC10_,           IC4,            DXCH0,          DAS0,           reset, prop_clk);
     nor_1 #(1'b0) NOR30357(IC10,            IC10_,                                          reset, prop_clk);
     
     nor_1 #(1'b0) NOR30401(DAS0_,           DAS0,                                           reset, prop_clk);
-    //nor_1 #(1'b0) NOR30402(DAS0_,         DAS0,                                           reset, prop_clk);
+    // NOR30402 removed (fan-out expansion)
     
     nor_3 #(1'b0) NOR30403(BZF0,            SQ1_,           QC0,            EXST0_,         reset, prop_clk);
     nor_1 #(1'b0) NOR30404(BZF0_,           BZF0,                                           reset, prop_clk);
@@ -604,12 +610,13 @@ module a03_sq_register(
     nor_2 #(1'b0) NOR30412(IC17,            IC16,           IC15_,                          reset, prop_clk);
     nor_1 #(1'b0) NOR30413(IC15,            IC15_,                                          reset, prop_clk);
     
-    // NOR30414 not used
+    // NOR30414 removed (not used)
     nor_3 #(1'b0) NOR30415(CCS0,            SQ1_,           QC0_,           NEXST0_,        reset, prop_clk);
     nor_1 #(1'b0) NOR30416(CCS0_,           CCS0,                                           reset, prop_clk);
-    //nor_1 #(1'b0) NOR30458(CCS0_,         CCS0,                                           reset, prop_clk);
-    nor_4 #(1'b0) NOR30417(NOR30417_out,    SQ2_,           QC0_,           SQEXT,    ST1_, reset, prop_clk);
-    // NOR30418 incorporated into NOR30417
+    // NOR30458 removed (fan-out expansion)
+    nor_2 #(1'b0) NOR30417(NOR30417_out,    SQ2_,           QC0_,                           reset, prop_clk);
+    nor_2 #(1'b0) NOR30418(NOR30418_out,    SQEXT,          ST1_,                           reset, prop_clk);
+    assign NOR30419_in = NOR30417_out & NOR30418_out;
     nor_2 #(1'b0) NOR30419(DAS1_,           NOR30417_out,   ADS0,                           reset, prop_clk);
     // NOR30420 omitted (fan-out expansion)
     nor_1 #(1'b0) NOR30421(DAS1,            DAS1_,                                          reset, prop_clk);
@@ -627,14 +634,14 @@ module a03_sq_register(
     
     nor_3 #(1'b0) NOR30432(MP3,             ST3_,           SQ7_,           SQEXT_,         reset, prop_clk);
     nor_1 #(1'b0) NOR30433(MP3_,            MP3,                                            reset, prop_clk);
-    //nor_1 #(1'b0) NOR30434(MP3_,          MP3,                                            reset, prop_clk);
+    // NOR30434 removed (fan-out expansion)
     // NOR36108 moved here from A4 sheet 1
     nor_1 #(1'b0) NOR36108(MP3A,            MP3_,                                           reset, prop_clk);
     nor_3 #(1'b0) NOR30435(MP1,             ST1_,           SQEXT_,         SQ7_,           reset, prop_clk);
     nor_1 #(1'b0) NOR30436(MP1_,            MP1,                                            reset, prop_clk);
     nor_3 #(1'b0) NOR30437(MP0,             ST0_,           SQEXT_,         SQ7_,           reset, prop_clk);
     nor_1 #(1'b0) NOR30439(MP0_,            MP0,                                            reset, prop_clk);
-    //nor_1 #(1'b0) NOR30440(MP0_,          MP0,                                            reset, prop_clk);
+    // NOR30440 removed (fan-out expansion)
     
     nor_3 #(1'b0) NOR30441(TCSAJ3,          SQ0_,           SQEXT,          ST3_,           reset, prop_clk);
     nor_1 #(1'b0) NOR30442(TCSAJ3_,         TCSAJ3,                                         reset, prop_clk);
@@ -657,6 +664,6 @@ module a03_sq_register(
     
     nor_3 #(1'b0) NOR30455(NOR30455_out,    MASK0,          MP0,            RXOR0,          reset, prop_clk);
     nor_1 #(1'b0) NOR30456(IC14,            NOR30455_out,                                   reset, prop_clk);
-    // NOR30457 omitted (fan-out expansion)
+    // NOR30457 removed (fan-out expansion)
     
 endmodule

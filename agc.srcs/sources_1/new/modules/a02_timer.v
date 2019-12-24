@@ -128,11 +128,11 @@ module a02_timer(
 );
 
     /**************************
-     *
-     *  Module A2 sheet 1
-     *  Sheet number 2005260/1
-     *
-     **************************/
+    *
+    *  Module A2 sheet 1
+    *  Sheet number 2005260/1
+    *
+    ***************************/
     
     wire NOR37101_out;
     wire NOR37102_out;
@@ -169,7 +169,7 @@ module a02_timer(
     nor_1 #(1'b1) NOR37107(NOR37107_out,    NOR37101_out,                                   reset, prop_clk);
     nor_2 #(1'b0) NOR37108(PHS4,            NOR37107_out,   NOR37103_out,                   reset, prop_clk);
     nor_1 #(1'b0) NOR37109(PHS4_,           PHS4,                                           reset, prop_clk);
-    //nor_1 #(1'b1) NOR37110(PHS4_,         PHS4,                                           reset, prop_clk);
+    // NOR37110 removed (fan-out expansion)
     
     // Clock divider 2, part 1
     nor_2 #(1'b0) NOR37111(NOR37111_out,    NOR37117_out,   NOR37112_out,                   reset, prop_clk);
@@ -179,7 +179,7 @@ module a02_timer(
     
     // RINGA_
     nor_1 #(1'b1) NOR37115(RINGA_,          NOR37111_out,                                   reset, prop_clk);
-    //nor_1 #(1'b1) NOR37116(RINGA_,        NOR37111_out,                                   reset, prop_clk);
+    // NOR37116 removed (fan-out expansion)
     
     // Clock divider 2, part 2
     nor_2 #(1'b1) NOR37117(NOR37117_out,    NOR37112_out,   NOR37118_out,                   reset, prop_clk);
@@ -187,34 +187,34 @@ module a02_timer(
     
     // RINGB_
     nor_1 #(1'b1) NOR37119(RINGB_,          NOR37114_out,                                   reset, prop_clk);
-    //nor_1 #(1'b1) NOR37120(RINGB_,        NOR37114_out,                                   reset, prop_clk);
+    // NOR37120 removed (fan-out expansion)
     
     // ODDSET_
     nor_2 #(1'b0) NOR37121(NOR37121_out,    STOP,           RINGA_,                         reset, prop_clk);
     nor_1 #(1'b0) NOR37122(ODDSET_,         NOR37121_out,                                   reset, prop_clk);
-    //nor_1 #(1'b1) NOR37123(ODDSET_,       NOR37121_out,                                   reset, prop_clk);
-    //nor_1 #(1'b1) NOR37124(ODDSET_,       NOR37121_out,                                   reset, prop_clk);
+    // NOR37123 removed (fan-out expansion)
+    // NOR37124 removed (fan-out expansion)
     
     // EVNSET and EVNSET_
     nor_1 #(1'b0) NOR37125(EVNSET,          RINGB_,                                         reset, prop_clk);
     nor_1 #(1'b0) NOR37126(EVNSET_,         EVNSET,                                         reset, prop_clk);
-    //nor_1 #(1'b0) NOR37127(EVNSET_,       EVNSET,                                         reset, prop_clk);
-    //nor_1 #(1'b0) NOR37128(EVNSET_,       EVNSET,                                         reset, prop_clk);
+    // NOR37127 removed (fan-out expansion)
+    // NOR37128 removed (fan-out expansion)
     
     // RT
     nor_1 #(1'b0) NOR37129(RT,              NOR37103_out,                                   reset, prop_clk);
     
     // RT_, moved here from A2 sheet 3
      nor_1 #(1'b0) NOR37350(RT_,            RT,                                             reset, prop_clk);
-     //nor_1 #(1'b0) NOR37351(RT_,          RT,                                             reset, prop_clk);
-     //nor_1 #(1'b0) NOR37352(RT_,          RT,                                             reset, prop_clk);
-     
+     // NOR37351 removed (fan-out expansion)
+     // NOR37352 removed (fan-out expansion)
+    
     // WT, WT_ and TT_
     nor_1 #(1'b0) NOR37130(WT,              NOR37105_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR37131(WT_,             WT,                                             reset, prop_clk);
-    //nor_1 #(1'b0) NOR37132(WT_,           WT,                                             reset, prop_clk);
-    //nor_1 #(1'b0) NOR37133(WT_,           WT,                                             reset, prop_clk);
-    //nor_1 #(1'b0) NOR37134(WT_,           WT,                                             reset, prop_clk);
+    // NOR37132 removed (fan-out expansion)
+    // NOR37133 removed (fan-out expansion)
+    // NOR37134 removed (fan-out expansion)
     nor_1 #(1'b0) NOR37135(TT_,             WT,                                             reset, prop_clk);
     
     // MONWT
@@ -233,13 +233,13 @@ module a02_timer(
     // CT and CT_
     nor_1 #(1'b1) NOR37139(NOR37139_out,    NOR37102_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR37140(CT,              NOR37139_out,                                   reset, prop_clk);
-    //nor_1 #(1'b0) NOR37141(CT,            NOR37139_out,                                   reset, prop_clk);
+    // NOR37141 removed (fan-out expansion)
     nor_1 #(1'b1) NOR37142(CT_,             CT,                                             reset, prop_clk);
-    //nor_1 #(1'b1) NOR37143(CT_,           CT,                                             reset, prop_clk);
-    //nor_1 #(1'b1) NOR37144(CT_,           CT,                                             reset, prop_clk);
-    //nor_1 #(1'b1) NOR37145(CT_,           CT,                                             reset, prop_clk);
-    //nor_1 #(1'b1) NOR37146(CT_,           CT,                                             reset, prop_clk);
-    //nor_1 #(1'b1) NOR37147(CT_,           CT,                                             reset, prop_clk);
+    // NOR37143 removed (fan-out expansion)
+    // NOR37144 removed (fan-out expansion)
+    // NOR37145 removed (fan-out expansion)
+    // NOR37146 removed (fan-out expansion)
+    // NOR37147 removed (fan-out expansion)
     
     // PHS3_ (moved here from A24 sheet 2)
     nor_1 #(1'b0) NOR49414(PHS3_,           CT,                                             reset, prop_clk);
@@ -256,28 +256,19 @@ module a02_timer(
     // PHS2_
     nor_1 #(1'b0) NOR37155(PHS2_,           PHS2,                                           reset, prop_clk);
     
-    // Extra PHS4_
-    //nor_1 #(1'b0) NOR37156(PHS4_,         PHS4,                                           reset, prop_clk);
-    
-    // Extra WT_
-    //nor_1 #(1'b0) NOR37157(WT_,           WT,                                             reset, prop_clk);
-    
-    // NOR37158 moved to sheet 2
-    
-    // Extra EVNSET_
-    //nor_1 #(1'b0) NOR37159(EVNSET_,       EVNSET,                                         reset, prop_clk);
-    
-    // NOR37160 omitted (extra gate generating a copy of T03, see sheet 3)
-    
-    // END OF SHEET (60 gates)
+    // NOR37156 removed (fan-out expansion)
+    // NOR37157 removed (fan-out expansion)
+    // NOR37158 removed (fan-out expansion)
+    // NOR37159 removed (fan-out expansion)
+    // NOR37160 removed (fan-out expansion)
     
     
     /**************************
-     *
-     *  Module A2 sheet 2
-     *  Sheet number 2005260/2
-     *
-     **************************/
+    *
+    *  Module A2 sheet 2
+    *  Sheet number 2005260/2
+    *
+    ***************************/
     
     wire NOR37201_out;
     wire NOR37202_out;
@@ -291,7 +282,6 @@ module a02_timer(
     wire NOR37218_out;
     wire NOR37227_out;
     wire NOR37228_out;
-    wire GOSET_;
     wire NOR37229_out;
     wire NOR37230_out;
     wire NOR37231_out;
@@ -302,13 +292,18 @@ module a02_timer(
     wire NOR37237_out;
     wire NOR37238_out;
     wire NOR37239_out;
+    wire NOR37240_out;
+    wire NOR37241_out;
     wire NOR37244_out;
     wire NOR37251_out;
+    
     wire NOR40246_out;
     wire NOR40247_out;
     wire NOR40248_out;
     wire NOR40250_out;
     wire NOR40251_out;
+    
+    wire GOSET_;
     
     // Ring counter
     
@@ -322,10 +317,10 @@ module a02_timer(
     nor_2 #(1'b0) NOR37207(P02,             NOR37205_out,   P02_,                           reset, prop_clk);
     nor_2 #(1'b1) NOR37208(P02_,            P02,            NOR37206_out,                   reset, prop_clk);
     
-    // In module A5, EDSET folds back into NOR37211 via a fan-in gate attached to P03, effectively making that a 3-input NOR
     nor_2 #(1'b0) NOR37209(NOR37209_out,    RINGB_,         P02,                            reset, prop_clk);
     nor_2 #(1'b0) NOR37210(NOR37210_out,    RINGA_,         P02_,                           reset, prop_clk);
     nor_3 #(1'b0) NOR37211(P03,             EDSET,          NOR37209_out,   P03_,           reset, prop_clk);
+    // NOR39261 moved here from A5 sheet 1 and merged into NOR37211
     nor_2 #(1'b1) NOR37212(P03_,            P03,            NOR37210_out,                   reset, prop_clk);
     
     nor_2 #(1'b0) NOR37213(NOR37213_out,    RINGA_,         P03,                            reset, prop_clk);
@@ -363,26 +358,29 @@ module a02_timer(
     nor_2 #(1'b0) NOR37237(NOR37237_out,    EVNSET_,        MSTP,                           reset, prop_clk);
     nor_2 #(1'b0) NOR37238(NOR37238_out,    NOR37236_out,   NOR37239_out,                   reset, prop_clk);
     nor_2 #(1'b1) NOR37239(NOR37239_out,    NOR37238_out,   NOR37237_out,                   reset, prop_clk);
-    nor_2 #(1'b0) NOR37158(GOJAM_,          STRT2,          STOPA,                          reset, prop_clk);
-    // NOR37240 and NOR37241 are omitted here, and replaced with NOR37158, moved over from sheet 1.
-    // Not sure why this is drawn like this...
+    nor_1 #(1'b0) NOR37240(NOR37240_out,    STRT2,                                          reset, prop_clk);
+    nor_1 #(1'b0) NOR37241(NOR37241_out,    STOPA,                                          reset, prop_clk);
+    assign GOJAM_ = NOR37240_out & NOR37240_out;
+    
     nor_2 #(1'b0) NOR37242(STOP_,           STOPA,          NOR37239_out,                   reset, prop_clk);
     nor_1 #(1'b1) NOR37243(STOP,            STOP_,                                          reset, prop_clk);
     nor_1 #(1'b0) NOR37244(NOR37244_out,    STOP,                                           reset, prop_clk);
     // Single monitor fan-in output, no cross-module fan-in
     assign MSTPIT_ = NOR37244_out;
     nor_1 #(1'b1) NOR37245(GOJAM,           GOJAM_,                                         reset, prop_clk);
-    //nor_1 #(1'b1) NOR37246(GOJAM,         GOJAM_,                                         reset, prop_clk);
-    //nor_1 #(1'b1) NOR37247(GOJAM,         GOJAM_,                                         reset, prop_clk);
-    //nor_1 #(1'b1) NOR37248(GOJAM,         GOJAM_,                                         reset, prop_clk);
-    //nor_1 #(1'b1) NOR37249(GOJAM,         GOJAM_,                                         reset, prop_clk);
-    //nor_1 #(1'b1) NOR37250(GOJAM,         GOJAM_,                                         reset, prop_clk);
+    // NOR37246 removed (fan-out expansion)
+    // NOR37247 removed (fan-out expansion)
+    // NOR37248 removed (fan-out expansion)
+    // NOR37249 removed (fan-out expansion)
+    // NOR37210 removed (fan-out expansion)
+    
     nor_1 #(1'b0) NOR37251(NOR37251_out,    GOJAM_,                                         reset, prop_clk);
+    
     // Single monitor fan-in output, no cross-module fan-in
     assign MGOJAM = NOR37251_out;
-    //nor_1 #(1'b1) NOR37252(GOJAM,         GOJAM_,                                         reset, prop_clk);
-    //nor_1 #(1'b1) NOR37253(GOJAM,         GOJAM_,                                         reset, prop_clk);
-    //nor_1 #(1'b1) NOR37254(GOJAM,         GOJAM_,                                         reset, prop_clk);
+    // NOR37252 removed (fan-out expansion)
+    // NOR37253 removed (fan-out expansion)
+    // NOR37254 removed (fan-out expansion)
     
     // Strobe signals
     nor_2 #(1'b0) NOR37255(SB0,             P02_,           P05,                            reset, prop_clk);
@@ -403,15 +401,13 @@ module a02_timer(
     nor_2 #(1'b0) NOR40250(NOR40250_out,    STRT2,          NOR40247_out,                   reset, prop_clk);
     nor_1 #(1'b0) NOR40251(TIMR,            NOR40250_out,                                   reset, prop_clk);
     
-    // END OF SHEET (59 gates)
-    
     
     /**************************
-     *
-     *  Module A2 sheet 3
-     *  Sheet number 2005260/3
-     *
-     **************************/
+    *
+    *  Module A2 sheet 3
+    *  Sheet number 2005260/3
+    *
+    ***************************/
      
      wire NOR37303_out;
      wire NOR37304_out;
@@ -468,8 +464,8 @@ module a02_timer(
      wire NOR37451_out;
      wire NOR37454_out;
      
-     // Time pulse generator
      
+     // Time pulse generator    
      
      nor_2 #(1'b0) NOR37301(T12,            T12DC_,         EVNSET_,                        reset, prop_clk);
      nor_3 #(1'b1) NOR37302(T12DC_,         T12SET,         GOJAM,          NOR37303_out,   reset, prop_clk);
@@ -499,7 +495,7 @@ module a02_timer(
      nor_2 #(1'b1) NOR37321(T05DC_,         NOR37320_out,   NOR37322_out,                   reset, prop_clk);
      nor_3 #(1'b0) NOR37322(NOR37322_out,   T05DC_,         NOR37327_out,   GOJAM,          reset, prop_clk);
      nor_2 #(1'b0) NOR37323(T05,            T05DC_,         ODDSET_,                        reset, prop_clk);
-     // NOR37324 is omitted here, and incorporated in NOR37323. Perhaps an error in the schematic?
+     // NOR37324 removed (fan-out expansion)
      nor_2 #(1'b0) NOR37325(NOR37325_out,   T05DC_,         EVNSET_,                        reset, prop_clk);
      
      nor_2 #(1'b1) NOR37326(T06DC_,         NOR37327_out,   NOR37325_out,                   reset, prop_clk);
@@ -533,9 +529,6 @@ module a02_timer(
      
      nor_2 #(1'b0) NOR37349(T11,            ODDSET_,        NOR37347_out,                   reset, prop_clk);
      
-     // Gates 37350 - 37352 (RT_ generation) moved to sheet 1
-     // Gates 37353 - 37354 (part of WL OVF/UNF detection) moved below
-     
      nor_3 #(1'b0) NOR37355(NOR37355_out,   EVNSET_,        NOR37339_out,   NOR37343_out,   reset, prop_clk);
      nor_3 #(1'b0) NOR37356(NOR37356_out,   NOR37327_out,   NOR37331_out,   NOR37335_out,   reset, prop_clk);
      nor_3 #(1'b0) NOR37357(NOR37357_out,   NOR37322_out,   NOR37318_out,   NOR37314_out,   reset, prop_clk);
@@ -543,100 +536,96 @@ module a02_timer(
      // Single source, no cross-module fan-in; signal is not connected to the outside
      assign T12SET = NOR37355_out & NOR37356_out & NOR37357_out & NOR37358_out;
      
-     // NOR37359 omitted, extra gate generating a copy of T02
-     
-     // NOR37360 (creating CINORM) moved to A7 sheet 2 (fan-in expansion)
-     
-     // Gate numbers NOR37361 - NOR37400 not used
+     // NOR37359 removed (fan-out expansion)
+     // NOR37360 removed (moved to moved to A7 sheet 2, fan-in expansion)
      
      // Monitor time pulse outputs
-     
      nor_1 #(1'b1) NOR37401(T01_,           T01,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37402(T01_,         T01,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37403(T01_,         T01,                                            reset, prop_clk);
+     // NOR37402 removed (fan-out expansion)
+     // NOR37403 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37404(NOR37404_out,   T01_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT01 = NOR37404_out;
      
      nor_1 #(1'b1) NOR37405(T02_,           T02,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37406(T02_,         T02,                                            reset, prop_clk);
+     // NOR37406 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37407(NOR37407_out,   T02_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT02 = NOR37407_out;
      
      nor_1 #(1'b1) NOR37408(T03_,           T03,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37409(T03_,         T03,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37410(T03_,         T03,                                            reset, prop_clk);
+     // NOR37409 removed (fan-out expansion)
+     // NOR37410 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37411(NOR37411_out,   T03_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT03 = NOR37411_out;
      
      nor_1 #(1'b1) NOR37412(T04_,           T04,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37413(T04_,         T04,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37414(T04_,         T04,                                            reset, prop_clk);
+     // NOR37413 removed (fan-out expansion)
+     // NOR37414 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37415(NOR37415_out,   T04_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT04 = NOR37415_out;
      
      nor_1 #(1'b1) NOR37416(T05_,           T05,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37417(T05_,         T05,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37418(T05_,         T05,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37419(T05_,         T05,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37420(T05_,         T05,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37421(T05_,         T05,                                            reset, prop_clk);
+     // NOR37417 removed (fan-out expansion)
+     // NOR37418 removed (fan-out expansion)
+     // NOR37419 removed (fan-out expansion)
+     // NOR37420 removed (fan-out expansion)
+     // NOR37421 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37422(NOR37422_out,   T05_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT05 = NOR37422_out;
      
      nor_1 #(1'b1) NOR37423(T06_,           T06,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37424(T06_,         T06,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37425(T06_,         T06,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37426(T06_,         T06,                                            reset, prop_clk);
+     // NOR37424 removed (fan-out expansion)
+     // NOR37425 removed (fan-out expansion)
+     // NOR37426 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37427(NOR37427_out,   T06_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT06 = NOR37427_out;
      
      nor_1 #(1'b1) NOR37428(T07_,           T07,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37429(T07_,         T07,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37430(T07_,         T07,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37431(T07_,         T07,                                            reset, prop_clk);
+     // NOR37429 removed (fan-out expansion)
+     // NOR37430 removed (fan-out expansion)
+     // NOR37431 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37432(NOR37432_out,   T07_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT07 = NOR37432_out;
      
      nor_1 #(1'b1) NOR37433(T08_,           T08,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37434(T08_,         T08,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37435(T08_,         T08,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37436(T08_,         T08,                                            reset, prop_clk);
+     // NOR37434 removed (fan-out expansion)
+     // NOR37435 removed (fan-out expansion)
+     // NOR37436 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37437(NOR37437_out,   T08_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT08 = NOR37437_out;
      
      nor_1 #(1'b1) NOR37438(T09_,           T09,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37439(T09_,         T09,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37440(T09_,         T09,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37441(T09_,         T09,                                            reset, prop_clk);
+     // NOR37439 removed (fan-out expansion)
+     // NOR37440 removed (fan-out expansion)
+     // NOR37441 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37442(NOR37442_out,   T09_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT09 = NOR37442_out;
      
      nor_1 #(1'b1) NOR37443(T10_,           T10,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37444(T10_,         T10,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37445(T10_,         T10,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37446(T10_,         T10,                                            reset, prop_clk);
+     // NOR37444 removed (fan-out expansion)
+     // NOR37445 removed (fan-out expansion)
+     // NOR37446 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37447(NOR37447_out,   T10_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT10 = NOR37447_out;
      
      nor_1 #(1'b1) NOR37448(T11_,           T11,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37449(T11_,         T11,                                            reset, prop_clk);
+     // NOR37449 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37450(NOR37450_out,   T11_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT11 = NOR37450_out;
      
      nor_1 #(1'b1) NOR37451(T12_,           T12,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37452(T12_,         T12,                                            reset, prop_clk);
-     //nor_1 #(1'b1) NOR37453(T12_,         T12,                                            reset, prop_clk);
+     // NOR37452 removed (fan-out expansion)
+     // NOR37453 removed (fan-out expansion)
      nor_1 #(1'b0) NOR37454(NOR37454_out,   T12_,                                           reset, prop_clk);
      // Single monitor fan-in output, no cross-module fan-in
      assign MT12 = NOR37454_out;
@@ -644,13 +633,9 @@ module a02_timer(
      nor_1 #(1'b0) NOR34329(T12A,           T12_,                                           reset, prop_clk);
      
      // OVF/UNF detection (gates NOR37353 and NOR37354 from above) 
-     
      nor_3 #(1'b0) NOR37353(OVF,            WL15_,          WL16,           OVFSTB_,        reset, prop_clk);
      nor_3 #(1'b0) NOR37354(UNF,            OVFSTB_,        WL15,           WL16_,          reset, prop_clk);
      nor_1 #(1'b0) NOR37455(OVF_,           OVF,                                            reset, prop_clk);
      nor_1 #(1'b0) NOR37456(UNF_,           UNF,                                            reset, prop_clk);
      
-     // END OF SHEET (60 + 56 = 116 gates)
-     
-     // END OF MODULE (60 + 59 + 116 = 235 gates)
 endmodule

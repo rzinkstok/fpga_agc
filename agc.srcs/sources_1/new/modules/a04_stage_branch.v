@@ -91,7 +91,6 @@ module a04_stage_branch(
     output wire T12USE_,
     output wire STG1, 
     output wire STG2, 
-    output wire STG3,  // CHANGED!!!
     output wire DIV_,
     output wire ST376, 
     output wire ST376_,
@@ -164,9 +163,11 @@ module a04_stage_branch(
     output wire A04_2_RC_,
     output wire A04_1_RB1_,
     output wire A04_1_RSC_,
+    output wire A12_1_RSC_,
     output wire A04_1_WG_, 
     output wire A04_2_WG_, 
     output wire A04_3_WG_,
+    output wire A12_1_WG_,
     output wire A04_1_WL_,
     output wire A04_1_WY_, 
     output wire A04_2_WY_,
@@ -197,9 +198,6 @@ module a04_stage_branch(
     input wire prop_clk
 );
     
-    wire TSGN2;
-    
-    
     /**************************
     *
     *  Module A4 sheet 1
@@ -207,11 +205,6 @@ module a04_stage_branch(
     *
     **************************/
     
-    wire DIVSTG, DVST_, TRSM_;
-    wire STFFA_, STFFB_;
-    wire ST1D;
-    wire BR1FF, BR1FF_, BR2FF, BR2FF_;
-    wire TMZINP;
     
     wire NOR36103_out;
     wire NOR36104_out;
@@ -231,8 +224,10 @@ module a04_stage_branch(
     wire NOR36130_out;
     wire NOR36131_out;
     wire NOR36132_out;
+    wire NOR36134_out;
     wire NOR36135_out;
     wire NOR36136_out;
+    wire NOR36138_out;
     wire NOR36139_out;
     wire NOR36140_out; 
     wire NOR36142_out;
@@ -246,6 +241,7 @@ module a04_stage_branch(
     wire NOR36152_out;
     wire NOR36155_out;
     wire NOR36156_out;
+    wire NOR36159_out;
     
     wire NOR36201_out;
     wire NOR36213_out;
@@ -263,6 +259,7 @@ module a04_stage_branch(
     wire NOR36228_out;
     wire NOR36230_out;
     wire NOR36231_out;
+    wire NOR36232_out;
     wire NOR36233_out;
     wire NOR36236_out;
     wire NOR36237_out;
@@ -271,21 +268,42 @@ module a04_stage_branch(
     wire NOR36241_out;
     wire NOR36243_out;
     wire NOR36244_out;
+    wire NOR36245_out;
     wire NOR36247_out;
+    wire NOR36249_out;
     wire NOR36251_out;
     wire NOR36252_out;
     wire NOR36253_out;
     wire NOR36254_out;
     wire NOR36255_out;
     wire NOR36260_out;
+    wire NOR36261_out;
     wire NOR36262_out;
+    
+    wire NOR36129_in;
+    wire NOR36150_in;
+    wire NOR36228_in;
+    
+    wire DIVSTG;
+    wire DVST_;
+    wire STG3;
+    wire TRSM_;
+    wire STFFA_;
+    wire STFFB_;
+    wire ST1D;
+    wire TSGN2;
+    wire BR1FF;
+    wire BR1FF_;
+    wire BR2FF;
+    wire BR2FF_;
+    wire TMZINP;
     
     // Transfer to second stage time flip-flop (T03 or T12)
     nor_2 #(1'b0) NOR36101(DIVSTG,          T12USE_,        T03_,                                       reset, prop_clk);
     nor_2 #(1'b0) NOR36102(T12USE_,         DVST,           NOR36109_out,                               reset, prop_clk);
     nor_3 #(1'b0) NOR36103(NOR36103_out,    T03_,           T12USE_,        PHS3_,                      reset, prop_clk);
     nor_2 #(1'b0) NOR36104(NOR36104_out,    NOR36103_out,   NOR36110_out,                               reset, prop_clk);
-    //nor_2 #(1'b0) NOR36111(NOR361011_out, NOR36103_out,   NOR36110_out,                               reset, prop_clk);
+    // NOR36111 removed (fan-out expansion)
     nor_3 #(1'b1) NOR36109(NOR36109_out,    T12USE_,        RSTSTG,         GOJAM,                      reset, prop_clk);
     nor_3 #(1'b0) NOR36110(NOR36110_out,    PHS3_,          NOR36109_out,   T12_,                       reset, prop_clk);
     
@@ -311,7 +329,7 @@ module a04_stage_branch(
     assign MST1 = NOR36116_out;
     
     // Flip-flop B
-    nor_2 #(1'b1) NOR36129(NOR36129_out,    ST2,            NOR36142_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR36129(NOR36129_out,    ST2,            NOR36129_in,                                reset, prop_clk);
     nor_3 #(1'b1) NOR36130(NOR36130_out,    NOR36139_out,   MTCSAI,         NOR36135_out,               reset, prop_clk);
     // No cross-module fan-in; signal added for convenience
     assign STFFB_ = NOR36129_out & NOR36130_out;
@@ -319,8 +337,9 @@ module a04_stage_branch(
     
     nor_2 #(1'b0) NOR36139(NOR36139_out,    DVST_,          NOR36115_out,                               reset, prop_clk);
     nor_1 #(1'b0) NOR36263(TRSM_,           TRSM,                                                       reset, prop_clk);
-    nor_4 #(1'b0) NOR36142(NOR36142_out,    TRSM_,          XT1_,           XB7_,           NDR100_,    reset, prop_clk);
-    // NOR36261 merged into NOR36142 (fan-in expansion)
+    nor_3 #(1'b0) NOR36142(NOR36142_out,    TRSM_,          XT1_,           XB7_,                       reset, prop_clk);
+    nor_1 #(1'b0) NOR36261(NOR36261_out,    NDR100_,                                                    reset, prop_clk);
+    assign NOR36129_in = NOR36142_out & NOR36261_out;
     
     // Flip-flop B to STG2 transfer
     nor_2 #(1'b0) NOR36131(NOR36131_out,    NOR36104_out,   STFFB_,                                     reset, prop_clk);
@@ -328,7 +347,7 @@ module a04_stage_branch(
     
     // Flip-flop STG2
     nor_2 #(1'b1) NOR36132(NOR36132_out,    NOR36131_out,   STG2,                                       reset, prop_clk);
-    //nor_2 #(1'b1) NOR36133(NOR36133_out,  NOR36131_out,   STG2,                                       reset, prop_clk);
+    // NOR36133 removed (fan-out expansion)
     nor_2 #(1'b0) NOR36137(STG2,            NOR36132_out,   NOR36136_out,                               reset, prop_clk);
     nor_1 #(1'b0) NOR36125(NOR36125_out,    NOR36132_out,                                               reset, prop_clk);
     // Single monitor fan-in output, no cross-module fan-in
@@ -336,19 +355,20 @@ module a04_stage_branch(
     
     // Flip-flop C
     nor_2 #(1'b1) NOR36146(NOR36146_out,    NOR36155_out,   NOR36149_out,                               reset, prop_clk);
-    nor_4 #(1'b0) NOR36149(NOR36149_out,    NOR36146_out,   STRTFC,         T01,            RSTSTG,     reset, prop_clk);
-    // NOR36159 merged into NOR36149 (fan-in expansion)
+    nor_3 #(1'b0) NOR36149(NOR36149_out,    NOR36146_out,   STRTFC,         T01,                        reset, prop_clk);
+    nor_1 #(1'b0) NOR36159(NOR36159_out,    RSTSTG,                                                     reset, prop_clk);
+    assign NOR36150_in = NOR36149_out & NOR36159_out;
     
     nor_2 #(1'b0) NOR36155(NOR36155_out,    DVST_,          NOR36132_out,                               reset, prop_clk);
     
     // Flip-flop C to STG3 transfer
     nor_2 #(1'b0) NOR36147(NOR36147_out,    NOR36104_out,   NOR36146_out,                               reset, prop_clk);
-    nor_2 #(1'b0) NOR36150(NOR36150_out,    NOR36149_out,   NOR36104_out,                               reset, prop_clk);
+    nor_2 #(1'b0) NOR36150(NOR36150_out,    NOR36150_in,    NOR36104_out,                               reset, prop_clk);
     
     // Flip-flop STG3
     nor_2 #(1'b1) NOR36148(NOR36148_out,    NOR36147_out,   STG3,                                       reset, prop_clk);
     nor_2 #(1'b0) NOR36151(STG3,            NOR36148_out,   NOR36150_out,                               reset, prop_clk);
-    // NOR36158 omitted (fan-out expansion)
+    // NOR36158 removed (fan-out expansion)
     nor_1 #(1'b0) NOR36143(NOR36143_out,    NOR36148_out,                                               reset, prop_clk);
     
     // Stage decoding
@@ -356,13 +376,13 @@ module a04_stage_branch(
     // ST0
     nor_3 #(1'b1) NOR36105(NOR36105_out,    STG1,           STG3,           STG2,                       reset, prop_clk);
     nor_1 #(1'b0) NOR36106(ST0_,            NOR36105_out,                                               reset, prop_clk);
-    //nor_1 #(1'b0) NOR36107(ST0_,          NOR36105_out,                                               reset, prop_clk);
+    // NOR36107 removed (fan-out expansion)
     
     // ST1
     nor_3 #(1'b0) NOR36121(ST1D,            STG2,           STG3,           NOR36115_out,               reset, prop_clk);
     nor_1 #(1'b1) NOR36117(ST1_,            ST1D,                                                       reset, prop_clk);
-    //nor_1 #(1'b0) NOR36123(ST1_,          ST1D,                                                       reset, prop_clk);
-    //nor_1 #(1'b0) NOR36122(ST1_,          ST1D,                                                       reset, prop_clk);
+    // NOR36123 removed (fan-out expansion)
+    // NOR36122 removed (fan-out expansion)
     
     // DV1376
     nor_2 #(1'b0) NOR36126(ST1376_,         ST1D,           ST376,                                      reset, prop_clk);
@@ -370,8 +390,9 @@ module a04_stage_branch(
     nor_1 #(1'b0) NOR36128(DV1376_,         DV1376,                                                     reset, prop_clk);
     
     // STD2
-    nor_4 #(1'b0) NOR36138(STD2,            INKL,           STG1,           STG3,       NOR36132_out,   reset, prop_clk);
-    // NOR36134 merged into NOR36138 (fan-in expansion)
+    nor_2 #(1'b0) NOR36134(NOR36134_out,    INKL,           STG1,                                       reset, prop_clk);
+    nor_2 #(1'b0) NOR36138(NOR36138_out,    STG3,           NOR36132_out,                               reset, prop_clk);
+    assign STD2 = NOR36134_out & NOR36138_out;
     
     // ST3
     nor_3 #(1'b0) NOR36140(NOR36140_out,    STG3,           NOR36132_out,   NOR36115_out,               reset, prop_clk);
@@ -393,7 +414,7 @@ module a04_stage_branch(
     // DIV_
     nor_3 #(1'b0) NOR36201(NOR36201_out,    QC0_,           SQEXT_,         SQ1_,                       reset, prop_clk);
     nor_1 #(1'b0) NOR36202(DIV_,            NOR36201_out,                                               reset, prop_clk);
-    //nor_1 #(1'b0) NOR36203(DIV_,          NOR36201_out,                                               reset, prop_clk);
+    // NOR36203 removed (fan-out expansion)
     
     // DV0
     nor_2 #(1'b0) NOR36204(DV0,             DIV_,           ST0_,                                       reset, prop_clk);
@@ -411,8 +432,9 @@ module a04_stage_branch(
     // DV1
     nor_2 #(1'b0) NOR36209(DV1,             DIV_,           ST1_,                                       reset, prop_clk);
     nor_1 #(1'b0) NOR36210(DV1_,            DV1,                                                        reset, prop_clk);
-    //nor_1 #(1'b0) NOR36211(DV1_,          DV1,                                                        reset, prop_clk);
-    //nor_1 #(1'b0) NOR36212(DV1_,          DV1,                                                        reset, prop_clk);
+    // NOR36211 removed (fan-out expansion)
+    // NOR36212 removed (fan-out expansion)
+    
     
     // Branch register
     
@@ -443,9 +465,10 @@ module a04_stage_branch(
     nor_2 #(1'b0) NOR36230(NOR36230_out,    TOV_,           PHS2_,                                      reset, prop_clk);
     
     // BR1 resets: TSGU
-    nor_4 #(1'b0) NOR36231(NOR36231_out,    NOR36213_out,   PHS3_,          TSGU_,      PHS4,           reset, prop_clk);
-    // NOR36232 merged into NOR36231
-
+    nor_3 #(1'b0) NOR36231(NOR36231_out,    NOR36213_out,   PHS3_,          TSGU_,                      reset, prop_clk);
+    nor_1 #(1'b0) NOR36232(NOR36232_out,    PHS4,                                                       reset, prop_clk);
+    assign NOR36228_in = NOR36231_out & NOR36232_out;
+    
     // BR1 flip-flop
     nor_2 #(1'b0) NOR36219(NOR36219_out,    SGUM,           NOR36216_out,                               reset, prop_clk);
     nor_3 #(1'b0) NOR36222(NOR36222_out,    NOR36218_out,   NOR36221_out,   BR1FF,                      reset, prop_clk);
@@ -453,22 +476,22 @@ module a04_stage_branch(
     assign BR1FF_ = NOR36219_out & NOR36222_out;
     
     nor_3 #(1'b1) NOR36225(NOR36225_out,    BR1FF_,         NOR36224_out,   NOR36227_out,               reset, prop_clk);
-    nor_2 #(1'b1) NOR36228(NOR36228_out,    NOR36230_out,   NOR36231_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR36228(NOR36228_out,    NOR36230_out,   NOR36228_in,                                reset, prop_clk);
     // No cross-module fan-in; signal added for convenience
     assign BR1FF = NOR36225_out & NOR36228_out;
     
     // BR1 outputs
     nor_1 #(1'b0) NOR36220(BR1,             BR1FF_,                                                     reset, prop_clk);
-    //nor_1 #(1'b0) NOR36223(BR1,           BR1FF_,                                                     reset, prop_clk);
-    //nor_1 #(1'b0) NOR36242(BR1,           BR1FF_,                                                     reset, prop_clk);
+    // NOR36223 removed (fan-out expansion)
+    // NOR36242 removed (fan-out expansion)
     
     nor_1 #(1'b0) NOR36260(NOR36260_out,    BR1FF_,                                                     reset, prop_clk);
     // Single monitor fan-in output, no cross-module fan-in
     assign MBR1 = NOR36260_out;
     
     nor_1 #(1'b0) NOR36226(BR1_,            BR1FF,                                                      reset, prop_clk);
-    //nor_1 #(1'b0) NOR36229(BR1_,          BR1FF,                                                      reset, prop_clk);
-    //nor_1 #(1'b0) NOR36248(BR1_,          BR1FF,                                                      reset, prop_clk);
+    // NOR36229 removed (fan-out expansion)
+    // NOR36248 removed (fan-out expansion)
     
     // BR2 inputs: TPZG
     nor_3 #(1'b0) NOR36233(NOR36233_out,    GEQZRO_,        PHS4_,          TPZG_,                      reset, prop_clk);
@@ -502,16 +525,17 @@ module a04_stage_branch(
     // No cross-module fan-in; signal added for convenience
     assign BR2FF_ = NOR36237_out & NOR36241_out;
     
-    nor_4 #(1'b1) NOR36245(BR2FF,           BR2FF_,         NOR36244_out,   NOR36230_out,   NOR36252_out,   reset, prop_clk);
-    // NOR36249 merged into NOR36245
-
+    nor_2 #(1'b1) NOR36245(NOR36245_out,    BR2FF_,         NOR36244_out,                               reset, prop_clk);
+    nor_2 #(1'b1) NOR36249(NOR36249_out,    NOR36230_out,   NOR36252_out,                               reset, prop_clk);
+    assign BR2FF = NOR36245_out & NOR36249_out;
+    
     // BR2 outputs
     nor_1 #(1'b0) NOR36238(BR2,             BR2FF_,                                                     reset, prop_clk);
     nor_1 #(1'b0) NOR36262(NOR36262_out,    BR2FF_,                                                     reset, prop_clk);
     // Single monitor fan-in output, no cross-module fan-in
     assign MBR2 = NOR36262_out;
     nor_1 #(1'b0) NOR36246(BR2_,            BR2FF,                                                      reset, prop_clk);
-    //nor_1 #(1'b0) NOR36250(BR2_,          BR2FF,                                                      reset, prop_clk);
+    // NOR36250 removed (fan-out expansion)
     
     
     /**************************
@@ -521,12 +545,10 @@ module a04_stage_branch(
     *
     **************************/
     
-    wire n2PP1;
-    wire BRXP3;
-    wire R1C_;
-    
     wire NOR36303_out;
     wire NOR36304_out;
+    wire NOR36323_out;
+    wire NOR36325_out;
     wire NOR36326_out;
     wire NOR36328_out;
     wire NOR36329_out;
@@ -565,16 +587,23 @@ module a04_stage_branch(
     wire NOR36444_out;
     wire NOR36446_out;
     wire NOR36451_out;
+    wire NOR36453_out;
     wire NOR36456_out;
     wire NOR36459_out;
     
-    // NOR36301 moved to sheet 1
+    wire NOR40435_out;
+    
+    wire n2PP1;
+    wire BRXP3;
+    wire R1C_;
+    
+    
     // NOR36302 removed (fan-out expansion)
     
     // READ0, WRITE0
     nor_2 #(1'b0) NOR36303(NOR36303_out,    SQ0_,           EXST0_,                                     reset, prop_clk);
     nor_1 #(1'b0) NOR36304(NOR36304_out,    NOR36303_out,                                               reset, prop_clk);
-    //nor_1 #(1'b0) NOR36307(NOR36304_out,  NOR36303_out,                                               reset, prop_clk);
+    // NOR36307 removed (fan-out expansion)
     nor_3 #(1'b0) NOR36305(READ0,           NOR36304_out,   SQR10,          QC0_,                       reset, prop_clk);      
     nor_1 #(1'b0) NOR36306(READ0_,          READ0,                                                      reset, prop_clk);
     nor_3 #(1'b0) NOR36308(WRITE0,          QC0_,           NOR36304_out,   SQR10_,                     reset, prop_clk);
@@ -582,7 +611,7 @@ module a04_stage_branch(
     
     // RAND0, WAND0
     nor_3 #(1'b0) NOR36310(RAND0,           SQR10,          NOR36304_out,   QC1_,                       reset, prop_clk);
-    // NOR36311 not used
+    // NOR36311 removed (not used)
     nor_3 #(1'b0) NOR36312(WAND0,           QC1_,           SQR10_,         NOR36304_out,               reset, prop_clk);
     
     // INOUT
@@ -599,8 +628,9 @@ module a04_stage_branch(
     // RUPT0, RUPT1
     nor_3 #(1'b0) NOR36320(RUPT0,           QC3_,           NOR36304_out,   SQR10_,                     reset, prop_clk);
     nor_1 #(1'b0) NOR36321(RUPT0_,          RUPT0,                                                      reset, prop_clk);
-    nor_4 #(1'b0) NOR36323(RUPT1,           SQ0_,           EXST1_,         QC3_,           SQR10_,     reset, prop_clk);
-    // NOR36325 merged into NOR36323
+    nor_3 #(1'b0) NOR36323(NOR36323_out,    SQ0_,           EXST1_,         QC3_,                       reset, prop_clk);
+    nor_1 #(1'b0) NOR36325(NOR36325_out,    SQR10_,                                                     reset, prop_clk);
+    assign RUPT1 = NOR36323_out & NOR36325_out;
     nor_1 #(1'b0) NOR36324(RUPT1_,          RUPT1,                                                      reset, prop_clk);
     
     // 8PP4
@@ -610,7 +640,7 @@ module a04_stage_branch(
     // PRINC
     nor_2 #(1'b0) NOR36326(NOR36326_out,    QC3_,           SQEXT,                                      reset, prop_clk);
     nor_2 #(1'b0) NOR36327(PRINC,           NOR36326_out,   NOR36329_out,                               reset, prop_clk);
-    //nor_2 #(1'b0) NOR36330(PRINC,         NOR36326_out,   NOR36329_out,                               reset, prop_clk);
+    // NOR36330 removed (fan-out expansion)
     nor_3 #(1'b0) NOR36328(NOR36328_out,    ST0_,           SQR12_,         SQ2_,                       reset, prop_clk);
     nor_1 #(1'b0) NOR36329(NOR36329_out,    NOR36328_out,                                               reset, prop_clk);
     
@@ -648,9 +678,9 @@ module a04_stage_branch(
     nor_2 #(1'b0) NOR36343(NOR36343_out,    T09_,           NOR36342_out,                               reset, prop_clk);
     // Cross-module fan-in, connected to A5, A6 and A12
     nor_3 #(1'b0) NOR36345(A04_1_WG_,       n9XP1,          NOR36340_out,   NOR36354_out,               reset, prop_clk);
-    nor_3 #(1'b0) NOR36347(A04_2_WG_,       NOR36343_out,   NOR36351_out,   BRXP3,                      reset, prop_clk);
-    // NOR34159 moved here from A12 sheet 1 and merged with NOR36347
-    
+    nor_2 #(1'b0) NOR36347(A04_2_WG_,       NOR36343_out,   NOR36351_out,                               reset, prop_clk);
+    nor_1 #(1'b0) NOR34159(A12_1_WG_,       BRXP3,                                                      reset, prop_clk);
+    // NOR34159 moved here from A12 sheet 1
     
     // 5XP11
     nor_3 #(1'b0) NOR36344(NOR36344_out,    T05_,           INOUT_,         READ0,                      reset, prop_clk);
@@ -698,8 +728,9 @@ module a04_stage_branch(
     nor_3 #(1'b0) NOR36409(A04_2_RA_,       n1XP10,         n8XP5,          NOR36446_out,               reset, prop_clk);
     
     // RSC_
-    nor_4 #(1'b0) NOR36410(A04_1_RSC_,      NOR36407_out,   NOR36435_out,   NOR36456_out,   BRXP3,      reset, prop_clk);
-    // NOR34158 moved here from A12 sheet 1 and merged into NOR36410
+    nor_3 #(1'b0) NOR36410(A04_1_RSC_,      NOR36407_out,   NOR36435_out,   NOR36456_out,               reset, prop_clk);
+    nor_1 #(1'b0) NOR34158(A12_1_RSC_,      BRXP3,                                                      reset, prop_clk);
+    // NOR34158 moved here from A12 sheet 1
     
     // Monitor uses full signal
     nor_1 #(1'b0) NOR36459(NOR36459_out,    RSC_,                                                       reset, prop_clk);
@@ -805,8 +836,11 @@ module a04_stage_branch(
     nor_2 #(1'b0) NOR36452(A04_1_RB1_,      NOR36436_out,   NOR36451_out,                               reset, prop_clk);
     
     // R1C
-    nor_3 #(1'b0) NOR36453(R1C_,            NOR36451_out,   NOR36438_out,   n7XP11,                     reset, prop_clk);
-    // NOR40435 moved here from A6 and merged into NOR36453
+    nor_2 #(1'b0) NOR36453(NOR36453_out,    NOR36451_out,   NOR36438_out,                               reset, prop_clk);
+    nor_1 #(1'b0) NOR40435(NOR40435_out,    n7XP11,                                                     reset, prop_clk);
+    assign R1C_ = NOR36453_out & NOR40435_out;
+    // NOR40435 moved here from A6
+    
     // Moved here from A14 sheet 2
     nor_1 #(1'b0) NOR42454(R1C,             R1C_,                                                       reset, prop_clk);
     

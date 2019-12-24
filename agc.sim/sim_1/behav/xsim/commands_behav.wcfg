@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="5541067626fs"></ZoomStartTime>
-      <ZoomEndTime time="118892986475fs"></ZoomEndTime>
-      <Cursor1Time time="42000000000fs"></Cursor1Time>
+      <ZoomStartTime time="1456313794fs"></ZoomStartTime>
+      <ZoomEndTime time="119709937242fs"></ZoomEndTime>
+      <Cursor1Time time="100001000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="184"></NameColumnWidth>
-      <ValueColumnWidth column_width="126"></ValueColumnWidth>
+      <ValueColumnWidth column_width="122"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="42" />
+   <WVObjectSize size="43" />
    <wvobject type="logic" fp_name="/agc_tb/a02/CLOCK">
       <obj_property name="ElementShortName">CLOCK</obj_property>
       <obj_property name="ObjectShortName">CLOCK</obj_property>
@@ -941,6 +941,71 @@
       <wvobject type="logic" fp_name="/agc_tb/CHWL16_">
          <obj_property name="ElementShortName">CHWL16_</obj_property>
          <obj_property name="ObjectShortName">CHWL16_</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group230">
+      <obj_property name="label">Channel outputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/agc_tb/CH01">
+         <obj_property name="ElementShortName">CH01</obj_property>
+         <obj_property name="ObjectShortName">CH01</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH02">
+         <obj_property name="ElementShortName">CH02</obj_property>
+         <obj_property name="ObjectShortName">CH02</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH03">
+         <obj_property name="ElementShortName">CH03</obj_property>
+         <obj_property name="ObjectShortName">CH03</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH04">
+         <obj_property name="ElementShortName">CH04</obj_property>
+         <obj_property name="ObjectShortName">CH04</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH05">
+         <obj_property name="ElementShortName">CH05</obj_property>
+         <obj_property name="ObjectShortName">CH05</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH06">
+         <obj_property name="ElementShortName">CH06</obj_property>
+         <obj_property name="ObjectShortName">CH06</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH07">
+         <obj_property name="ElementShortName">CH07</obj_property>
+         <obj_property name="ObjectShortName">CH07</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH08">
+         <obj_property name="ElementShortName">CH08</obj_property>
+         <obj_property name="ObjectShortName">CH08</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH09">
+         <obj_property name="ElementShortName">CH09</obj_property>
+         <obj_property name="ObjectShortName">CH09</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH10">
+         <obj_property name="ElementShortName">CH10</obj_property>
+         <obj_property name="ObjectShortName">CH10</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH11">
+         <obj_property name="ElementShortName">CH11</obj_property>
+         <obj_property name="ObjectShortName">CH11</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH12">
+         <obj_property name="ElementShortName">CH12</obj_property>
+         <obj_property name="ObjectShortName">CH12</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH13">
+         <obj_property name="ElementShortName">CH13</obj_property>
+         <obj_property name="ObjectShortName">CH13</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH14">
+         <obj_property name="ElementShortName">CH14</obj_property>
+         <obj_property name="ObjectShortName">CH14</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/agc_tb/CH16">
+         <obj_property name="ElementShortName">CH16</obj_property>
+         <obj_property name="ObjectShortName">CH16</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>
