@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/agc_tb_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Mon Dec 23 19:33:41 2019" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Tue Dec 24 01:13:26 2019" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2019.1 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2552052" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "LIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "293e454c-9467-490e-b519-9934ad32dddc" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "c4c7fba8afec4bc4a1685eea80776fd8" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "40" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "44" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Ubuntu" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "Ubuntu 18.04.3 LTS" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i7-6567U CPU @ 3.30GHz" -context "user_environment"
@@ -26,7 +26,7 @@ webtalk_add_data -client xsim -key Command -value "xsim" -context "xsim\\command
 webtalk_add_data -client xsim -key trace_waveform -value "true" -context "xsim\\usage"
 webtalk_add_data -client xsim -key runtime -value "100001 ns" -context "xsim\\usage"
 webtalk_add_data -client xsim -key iteration -value "0" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Time -value "10.76_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Memory -value "141124_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 2709173260 -regid "" -xml /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/agc_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/agc_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/agc_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Simulation_Time -value "12.45_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Simulation_Memory -value "141672_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 2468465803 -regid "" -xml /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/agc_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/agc_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/agc_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

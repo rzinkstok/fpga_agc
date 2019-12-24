@@ -26,6 +26,7 @@ verilog xil_defaultlib  \
 "../../../../agc.srcs/sources_1/new/modules/a20_counter_cell_i.v" \
 "../../../../agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v" \
 "../../../../agc.srcs/sources_1/new/modules/a22_inout_v.v" \
+"../../../../agc.srcs/sources_1/new/modules/a23_inout_vi.v" \
 "../../../../agc.srcs/sim_1/new/a1_scaler_tb.v" \
 "../../../../agc.srcs/sim_1/new/a2_timer_tb.v" \
 "../../../../agc.srcs/sim_1/new/a3_sq_register_tb.v" \

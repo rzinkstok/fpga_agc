@@ -546,16 +546,16 @@ Gates 52201-52263
 52156 removed (fan-out expansion)
 52159 removed (not used)
 52160 removed (not used)
+52161 removed (fan-out expansion for A11 sheet 2)
 52163 removed (fan-in expansion)
-
 52216 removed (not used)
 52255 removed (fan-out expansion)
 52256 removed (fan-out expansion)
 52259 removed (not used)
 52260 removed (not used)
+52261 removed (moved to A23 sheet 1)
 34452 added (moved here from A12 sheet 2)
 34453 added (moved here from A12 sheet 2)
-52161 removed (fan-out expansion for A11 sheet 2)
 
 Sheet 2
 Gates 52301-52363
@@ -565,13 +565,14 @@ Gates 52401-52463
 52356 removed (fan-out expansion)
 52359 removed (not used)
 52360 removed (not used)
-
+52361 removed (moved to A23 sheet 1)
+52362 removed (moved to A23 sheet 1)
 52416 removed (not used)
 52455 removed (fan-out expansion)
 52456 removed (fan-out expansion)
 52459 removed (not used)
 52460 removed (not used)
-
+52461 removed (moved to A23 sheet 1)
 
 Module A10
 Sheet 1
@@ -582,9 +583,9 @@ Gates 53201-53263
 53156 removed (fan-out expansion)
 53159 removed (not used)
 53160 removed (not used)
+53161 removed (moved to A23 sheet 1)
 53162 removed (not connected)
 53163 removed (not connected)
-
 53216 removed (not used)
 53255 removed (fan-out expansion)
 53256 removed (fan-out expansion)
@@ -595,20 +596,20 @@ Gates 53201-53263
 Sheet 2
 Gates 53301-53363
 Gates 53401-53463
-
 53316 removed (not used)
 53355 removed (fan-out expansion)
 53356 removed (fan-out expansion)
 53359 removed (not used)
 53360 removed (not used)
+53361 removed (moved to A23 sheet 1)
+53362 removed (moved to A23 sheet 1)
 53363 removed (moved to A15 sheet 1)
-
 53416 removed (not used)
 53455 removed (fan-out expansion)
 53456 removed (fan-out expansion)
 53459 removed (not used)
 53460 removed (not used)
-
+53461 removed (moved to A23 sheet 1)
 53462 removed (fan-in expansion A8 sheet 2)
 53463 removed (fan-in expansion sheet 1)
 
@@ -624,7 +625,6 @@ Gates 54201-54263
 54161 removed (moved to A06 sheet 1)
 54162 removed (fan-in expansion)
 54163 removed (fan-in expansion)
-
 54216 removed (not used)
 54255 removed (fan-out expansion)
 54256 removed (fan-out expansion)
@@ -636,19 +636,18 @@ Gates 54201-54263
 Sheet 2
 Gates 54301-54363
 Gates 54401-54463
-
 54316 removed (not used)
 54355 removed (fan-out expansion)
 54356 removed (fan-out expansion)
 54359 removed (not used)
 54360 removed (not used)
 54363 removed (fan-in expansion)
-
 54416 removed (not used)
 54455 removed (fan-out expansion)
 54456 removed (fan-out expansion)
 54459 removed (not used)
 54460 removed (not used)
+54461 removed (moved to A23 sheet 1)
 54462 removed (fan-in expansion)
 54463 removed (fan-in expansion)
 
@@ -1191,8 +1190,34 @@ Gates 47301-47360
 Gates 47401-47460
 
 Module A23
-Gates
+Sheet 1
+Gates 48101-48157
+Gates 48201-48258
+48121 removed (fan-out expansion)
+48122 removed (fan-out expansion)
+48125 removed (fan-out expansion)
+48126 removed (fan-out expansion)
 48157 removed (moved to A1 sheet 2)
+48222 removed (fan-out expansion)
+48223 removed (fan-out expansion)
+48226 removed (fan-out expansion)
+48227 removed (fan-out expansion)
+52261 added from A9 sheet 1
+53461 added from A10 sheet 2
+53361 added from A10 sheet 2
+52461 added from A9 sheet 2
+52361 added from A9 sheet 2
+53362 added from A10 sheet 2
+54461 added from A11 sheet 2
+52362 added from A9 sheet 2
+53161 added from A10 sheet 1
+
+Sheet 2
+Gates 48301-48360
+48352 removed (fan-out expansion)
+48354 removed (fan-out expansion)
+48356 removed (fan-out expansion)
+48360 removed (not connected)
 
 Module A24
 Gates
