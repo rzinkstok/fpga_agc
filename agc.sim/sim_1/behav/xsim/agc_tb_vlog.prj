@@ -3,7 +3,6 @@ verilog xil_defaultlib  \
 "../../../../agc.srcs/sources_1/new/components/nor_1.v" \
 "../../../../agc.srcs/sources_1/new/components/nor_2.v" \
 "../../../../agc.srcs/sources_1/new/components/nor_3.v" \
-"../../../../agc.srcs/sources_1/new/components/nor_4.v" \
 "../../../../agc.srcs/sources_1/new/modules/a10_four_bit_3.v" \
 "../../../../agc.srcs/sources_1/new/modules/a07_service_gates.v" \
 "../../../../agc.srcs/sources_1/new/modules/a08_four_bit_1.v" \
@@ -27,6 +26,7 @@ verilog xil_defaultlib  \
 "../../../../agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v" \
 "../../../../agc.srcs/sources_1/new/modules/a22_inout_v.v" \
 "../../../../agc.srcs/sources_1/new/modules/a23_inout_vi.v" \
+"../../../../agc.srcs/sources_1/new/modules/a24_inout_vii.v" \
 "../../../../agc.srcs/sim_1/new/a1_scaler_tb.v" \
 "../../../../agc.srcs/sim_1/new/a2_timer_tb.v" \
 "../../../../agc.srcs/sim_1/new/a3_sq_register_tb.v" \

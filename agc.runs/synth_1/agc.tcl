@@ -33,7 +33,6 @@ read_verilog -library xil_defaultlib {
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_1.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_2.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_3.v
-  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_4.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a10_four_bit_3.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a07_service_gates.v
@@ -58,6 +57,7 @@ read_verilog -library xil_defaultlib {
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a22_inout_v.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a23_inout_vi.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a24_inout_vii.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

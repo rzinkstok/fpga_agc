@@ -128,6 +128,11 @@ module a23_inout_vi(
     input wire FUTEXT,
     input wire T6RPT,
     
+    input wire NOZP,
+    input wire NOZM,
+    input wire MISSZ,
+    input wire BOTHZ,
+    
     output wire PIPAFL,
     output wire A23_1_DATA_,
     output wire PIPSAM_,
@@ -311,14 +316,10 @@ module a23_inout_vi(
     wire NOXM;
     wire NOYP;
     wire NOYM;
-    wire NOZP;
-    wire NOZM;
     wire MISSX;
     wire MISSY;
-    wire MISSZ;
     wire BOTHX;
     wire BOTHY;
-    wire BOTHZ;
     
     wire PIPAXp_;
     wire PIPAXm_;

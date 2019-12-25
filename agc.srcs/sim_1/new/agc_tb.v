@@ -9,9 +9,9 @@ module agc_tb();
 	reg BMGYP = 0;
 	reg BMGZM = 0;
 	reg BMGZP = 0;
+	reg BOTHZ = 0;
 	reg CAURST = 0;
 	reg CCH12 = 0;
-	reg CCHG_ = 1;
 	reg CDUFAL = 0;
 	reg CDUSTB_ = 1;
 	reg CDUXM = 0;
@@ -23,16 +23,6 @@ module agc_tb();
 	reg CH1209 = 0;
 	reg CH1210 = 0;
 	reg CH1211 = 0;
-	reg CHWL01_ = 1;
-	reg CHWL02_ = 1;
-	reg CHWL03_ = 1;
-	reg CHWL04_ = 1;
-	reg CHWL05_ = 1;
-	reg CHWL06_ = 1;
-	reg CHWL07_ = 1;
-	reg CHWL08_ = 1;
-	reg CHWL09_ = 1;
-	reg CHWL10_ = 1;
 	reg CHWL11_ = 1;
 	reg CHWL12_ = 1;
 	reg CHWL13_ = 1;
@@ -44,6 +34,10 @@ module agc_tb();
 	reg DBLTST = 0;
 	reg DIVSTG = 0;
 	reg DKBSNC = 0;
+	reg DKCTR4 = 0;
+	reg DKCTR4_ = 1;
+	reg DKCTR5 = 0;
+	reg DKCTR5_ = 1;
 	reg DKEND = 0;
 	reg DKSTRT = 0;
 	reg DLKPLS = 0;
@@ -61,10 +55,6 @@ module agc_tb();
 	reg GTSET = 0;
 	reg GTSET_ = 1;
 	reg GUIREL = 0;
-	reg HIGH0_ = 1;
-	reg HIGH1_ = 1;
-	reg HIGH2_ = 1;
-	reg HIGH3_ = 1;
 	reg HOLFUN = 0;
 	reg IMUCAG = 0;
 	reg IMUFAL = 0;
@@ -135,7 +125,6 @@ module agc_tb();
 	reg NAVRST = 0;
 	reg NHALGA = 0;
 	reg NHVFAL = 0;
-	reg NISQ = 0;
 	reg NKEY1 = 0;
 	reg NKEY2 = 0;
 	reg NKEY3 = 0;
@@ -150,14 +139,12 @@ module agc_tb();
 	reg PIPAXp = 0;
 	reg PIPAYm = 0;
 	reg PIPAYp = 0;
-	reg PIPPLS_ = 1;
+	reg PIPAZm = 0;
+	reg PIPAZp = 0;
 	reg PIPZM = 0;
 	reg PIPZP = 0;
 	reg RCH12_ = 1;
 	reg RCH33_ = 1;
-	reg RCHAT_ = 1;
-	reg RCHBT_ = 1;
-	reg RCHG_ = 1;
 	reg ROLGOF = 0;
 	reg RRIN0 = 0;
 	reg RRIN1 = 0;
@@ -210,9 +197,7 @@ module agc_tb();
 	reg UPL1 = 0;
 	reg US2SG = 0;
 	reg VFAIL = 0;
-	reg WATCHP = 0;
 	reg WCH12_ = 1;
-	reg WCHG_ = 1;
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
@@ -550,8 +535,10 @@ module agc_tb();
 	wire CCH33;
 	wire CCH34;
 	wire CCH35;
+	wire CCHG_;
 	wire CCS0;
 	wire CCS0_;
+	wire CDUCLK;
 	wire CDUXD;
 	wire CDUXDM;
 	wire CDUXDP;
@@ -700,6 +687,16 @@ module agc_tb();
 	wire CHOR13_;
 	wire CHOR14_;
 	wire CHOR16_;
+	wire CHWL01_;
+	wire CHWL02_;
+	wire CHWL03_;
+	wire CHWL04_;
+	wire CHWL05_;
+	wire CHWL06_;
+	wire CHWL07_;
+	wire CHWL08_;
+	wire CHWL09_;
+	wire CHWL10_;
 	wire CI01_;
 	wire CI05_;
 	wire CI09_;
@@ -781,6 +778,8 @@ module agc_tb();
 	wire EB9_;
 	wire EDOP_;
 	wire EDSET;
+	wire ELSNCM;
+	wire ELSNCN;
 	wire EMSD;
 	wire EMSm;
 	wire EMSp;
@@ -1038,6 +1037,10 @@ module agc_tb();
 	wire GYYP;
 	wire GYZM;
 	wire GYZP;
+	wire HIGH0_;
+	wire HIGH1_;
+	wire HIGH2_;
+	wire HIGH3_;
 	wire HIMOD;
 	wire HNDRPT;
 	wire IC1;
@@ -1121,6 +1124,7 @@ module agc_tb();
 	wire LOW6_;
 	wire LOW7_;
 	wire LRRANG;
+	wire LRRST;
 	wire LRSYNC;
 	wire LRXVEL;
 	wire LRYVEL;
@@ -1140,7 +1144,10 @@ module agc_tb();
 	wire MINC_;
 	wire MINHL;
 	wire MINKL;
+	wire MISSZ;
 	wire MKRPT;
+	wire MNISQ;
+	wire MON800;
 	wire MONEX;
 	wire MONEX_;
 	wire MONWT;
@@ -1199,6 +1206,7 @@ module agc_tb();
 	wire MVFAIL_;
 	wire MWAG;
 	wire MWARNF_;
+	wire MWATCH_;
 	wire MWBBEG;
 	wire MWBG;
 	wire MWEBG;
@@ -1229,8 +1237,11 @@ module agc_tb();
 	wire NDX0_;
 	wire NDXX1_;
 	wire NEAC;
+	wire NISQ;
 	wire NISQL_;
 	wire NISQ_;
+	wire NOZM;
+	wire NOZP;
 	wire OCTAD2;
 	wire OCTAD3;
 	wire OCTAD4;
@@ -1240,6 +1251,9 @@ module agc_tb();
 	wire OPEROR;
 	wire OSCALM;
 	wire OT1108;
+	wire OT1110;
+	wire OT1111;
+	wire OT1112;
 	wire OT1113;
 	wire OT1114;
 	wire OT1116;
@@ -1274,6 +1288,10 @@ module agc_tb();
 	wire PINC;
 	wire PINC_;
 	wire PIPAFL;
+	wire PIPASW;
+	wire PIPDAT;
+	wire PIPINT;
+	wire PIPPLS_;
 	wire PIPSAM;
 	wire PIPSAM_;
 	wire PIPXM;
@@ -1315,6 +1333,9 @@ module agc_tb();
 	wire RCH11_;
 	wire RCH13_;
 	wire RCH14_;
+	wire RCHAT_;
+	wire RCHBT_;
+	wire RCHG_;
 	wire RCH_;
 	wire RC_;
 	wire RCmXmP;
@@ -1391,6 +1412,7 @@ module agc_tb();
 	wire RRPA;
 	wire RRRANG;
 	wire RRRARA;
+	wire RRRST;
 	wire RRSYNC;
 	wire RSCT;
 	wire RSC_;
@@ -1636,6 +1658,7 @@ module agc_tb();
 	wire WALSG;
 	wire WALSG_;
 	wire WAND0;
+	wire WATCHP;
 	wire WA_;
 	wire WBBEG_;
 	wire WBG_;
@@ -1645,6 +1668,7 @@ module agc_tb();
 	wire WCH14_;
 	wire WCH34_;
 	wire WCH35_;
+	wire WCHG_;
 	wire WCH_;
 	wire WEBG_;
 	wire WEDOPG_;
@@ -1825,11 +1849,17 @@ module agc_tb();
 	wire n10XP1;
 	wire n10XP8;
 	wire n11XP2;
+	wire n12KPPS;
 	wire n1XP10;
+	wire n25KPPS;
 	wire n2XP3;
 	wire n2XP5;
 	wire n2XP7;
 	wire n2XP8;
+	wire n3200A;
+	wire n3200B;
+	wire n3200C;
+	wire n3200D;
 	wire n3XP2;
 	wire n3XP6;
 	wire n3XP7;
@@ -1849,6 +1879,8 @@ module agc_tb();
 	wire n7XP19;
 	wire n7XP4;
 	wire n7XP9;
+	wire n800RST;
+	wire n800SET;
 	wire n8PP4;
 	wire n8XP10;
 	wire n8XP4;
@@ -5037,6 +5069,10 @@ module agc_tb();
 		ZOUT,
 		FUTEXT,
 		T6RPT,
+		NOZP,
+		NOZM,
+		MISSZ,
+		BOTHZ,
 		PIPAFL,
 		A23_1_DATA_,
 		PIPSAM_,
@@ -5115,6 +5151,113 @@ module agc_tb();
 		ISSTDC,
 		T6ON_,
 		ALTEST,
+		reset,
+		prop_clk
+	);
+
+	a24_inout_vii a24(
+		SB0_,
+		SB1_,
+		SB2_,
+		SB4,
+		WT_,
+		CT_,
+		RT_,
+		T02_,
+		F01A,
+		F01B,
+		FS02,
+		F02B,
+		FS03,
+		F03B_,
+		FS04,
+		F04B,
+		FS05,
+		FS05_,
+		F05A_,
+		F05B_,
+		FS07A,
+		F07A_,
+		F07B_,
+		F17A,
+		F17B,
+		F18AX,
+		F5ASB2,
+		CA6_,
+		XB3_,
+		XB4_,
+		XB7_,
+		XT0_,
+		DKCTR4,
+		DKCTR4_,
+		DKCTR5,
+		DKCTR5_,
+		WCH_,
+		RCH_,
+		WL01,
+		WL02,
+		WL03,
+		WL04,
+		WL05,
+		WL06,
+		WL07,
+		WL08,
+		WL09,
+		WL10,
+		NISQ_,
+		FF1110_,
+		FF1111_,
+		FF1112_,
+		PIPSAM_,
+		PIPAZp,
+		PIPAZm,
+		WATCHP,
+		MWATCH_,
+		HIGH0_,
+		HIGH1_,
+		HIGH2_,
+		HIGH3_,
+		WCHG_,
+		CCHG_,
+		RCHG_,
+		CHWL01_,
+		CHWL02_,
+		CHWL03_,
+		CHWL04_,
+		CHWL05_,
+		CHWL06_,
+		CHWL07_,
+		CHWL08_,
+		CHWL09_,
+		CHWL10_,
+		PIPPLS_,
+		PIPASW,
+		PIPDAT,
+		PIPINT,
+		n800SET,
+		n800RST,
+		n3200A,
+		n3200B,
+		n3200C,
+		n3200D,
+		n12KPPS,
+		n25KPPS,
+		RRRST,
+		LRRST,
+		CDUCLK,
+		NISQ,
+		MNISQ,
+		MON800,
+		RCHAT_,
+		RCHBT_,
+		ELSNCN,
+		ELSNCM,
+		OT1110,
+		OT1111,
+		OT1112,
+		NOZP,
+		NOZM,
+		MISSZ,
 		reset,
 		prop_clk
 	);
