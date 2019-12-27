@@ -94,7 +94,7 @@ module a06_crosspoint_ii(
     input wire R15,
     input wire STBE, 
     input wire STBF, 
-    input wire STFETI_,
+    input wire STFET1_,
     input wire n1XP10, 
     input wire n2XP3, 
     input wire n2XP5, 
@@ -686,7 +686,7 @@ module a06_crosspoint_ii(
     nor_2 #(1'b0) NOR40354(NOR40354_out,    T11_,           NOR40354_in,                                reset, prop_clk);
 
     // RDBANK
-    nor_2 #(1'b0) NOR40357(RDBANK,          T06_,           STFETI_,                                    reset, prop_clk);
+    nor_2 #(1'b0) NOR40357(RDBANK,          T06_,           STFET1_,                                    reset, prop_clk);
     
     // RU part 3
     // Cross-module fan-in, connected to A5

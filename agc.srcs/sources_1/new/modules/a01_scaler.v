@@ -52,7 +52,7 @@ module a01_scaler(
     output wire F09A_, 
     output wire F09B, 
     output wire F09B_, 
-    output wire F09D_,
+    output wire F09D,
     output wire FS10, 
     output wire F10A, 
     output wire F10A_, 
@@ -376,7 +376,7 @@ module a01_scaler(
     // F09D_ and FS09_ moved here from A24 sheet 2
     nor_1 #(1'b0) NOR49348(FS09_,           FS09,                                           reset, prop_clk);
     nor_2 #(1'b0) NOR49351(NOR49351_out,    F08B_,          F08B_,                          reset, prop_clk);
-    nor_2 #(1'b0) NOR49352(F09D_,           NOR49351_out,   FS09_,                          reset, prop_clk);
+    nor_2 #(1'b0) NOR49352(F09D,            NOR49351_out,   FS09_,                          reset, prop_clk);
     
     
     // Stage 10

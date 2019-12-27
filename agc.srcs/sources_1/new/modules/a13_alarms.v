@@ -26,6 +26,7 @@ module a13_alarms(
     input wire T04_,
     input wire T09_,
     input wire T10,
+    input wire T10_,
     input wire PALE,
     input wire WATCHP,
     input wire NHALGA,
@@ -98,6 +99,9 @@ module a13_alarms(
     input wire GOJAM,
     input wire ERRST,
     
+    input wire DLKRPT,
+    input wire DRPRST,
+    
     output wire MSTRTP,
     output wire MPIPAL_,
     output wire MRPTAL_,
@@ -118,6 +122,7 @@ module a13_alarms(
     output wire OSCALM,
     output wire RESTRT,
     output wire STRT1,
+    output wire DLKPLS,
     
     input wire reset,
     input wire prop_clk
@@ -172,6 +177,8 @@ module a13_alarms(
     wire NOR41149_out;
     wire NOR41150_out;
     wire NOR41151_out;
+    wire NOR41152_out;
+    wire NOR41153_out;
     
     wire NOR49435_out;
     wire NOR49436_out;
@@ -346,9 +353,10 @@ module a13_alarms(
     nor_2 #(1'b0) NOR41146(NOR41146_out,    NOR41143_out,   NOR41151_out,                                   reset, prop_clk);
     nor_1 #(1'b0) NOR41147(DOFILT,          NOR41146_out,                                                   reset, prop_clk);
     
-    // NOR41152 removed (not used)
-    // NOR41153 removed (not used)
-    // NOR41154 removed (not used)
+    nor_2 #(1'b1) NOR41152(NOR41152_out,    DLKRPT,         NOR41153_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR41153(NOR41153_out,    NOR41152_out,   DRPRST,                                         reset, prop_clk);
+    nor_2 #(1'b0) NOR41154(DLKPLS,          T10_,           NOR41152_out,                                   reset, prop_clk);
+    
     // NOR41155 removed (fan-out expansion for gate on A14 sheet 2)
     // NOR41156 removed (fan-out expansion for gate on A14 sheet 2)
     // NOR41157 removed (fan-out expansion for gate on A14 sheet 2)

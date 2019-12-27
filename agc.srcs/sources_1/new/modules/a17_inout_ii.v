@@ -187,6 +187,7 @@ module a17_inout_ii(
     output wire CH3210,
     
     // Channel 33
+    output wire RCH33_,
     output wire CH3313,
     output wire CH3314,
     output wire CH3316,
@@ -311,7 +312,6 @@ module a17_inout_ii(
     wire RCH30_;
     wire RCH31_;
     wire RCH32_;
-    wire RCH33_;
     wire noTRAN;
     wire noMANR;
     wire noMNIM;

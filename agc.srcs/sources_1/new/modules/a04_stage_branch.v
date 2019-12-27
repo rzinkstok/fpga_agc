@@ -193,7 +193,8 @@ module a04_stage_branch(
     output wire BR1B2B_,
     output wire TL15,
     output wire KRPT,
-
+    output wire DIVSTG,
+    
     input wire reset,
     input wire prop_clk
 );
@@ -284,7 +285,6 @@ module a04_stage_branch(
     wire NOR36150_in;
     wire NOR36228_in;
     
-    wire DIVSTG;
     wire DVST_;
     wire STG3;
     wire TRSM_;

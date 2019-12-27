@@ -106,9 +106,11 @@ module a11_four_bit_4(
     output wire XUY14_,
     output wire SUMA13_,
     output wire SUMA14_,
+    output wire SUMA15_,    
     output wire SUMA16_,
     output wire SUMB13_,
     output wire SUMB14_,
+    output wire SUMB15_,
     output wire SUMB16_,
     output wire L13_,
     output wire L14_,
@@ -305,8 +307,6 @@ module a11_four_bit_4(
     wire NOR54353_out;
     wire NOR54363_out;
     
-    wire SUMA15_;
-    wire SUMB15_;
     wire A13_;
     wire A14_;
     wire XUY15_;

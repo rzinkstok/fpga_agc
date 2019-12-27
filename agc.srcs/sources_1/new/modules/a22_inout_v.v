@@ -68,6 +68,10 @@ module a22_inout_v(
     
     output wire DKDATA,
     output wire DKDATB,
+    output wire DKCTR4,
+    output wire DKCTR4_,
+    output wire DKCTR5,
+    output wire DKCTR5_,
     
     input wire reset,
     input wire prop_clk
@@ -163,10 +167,6 @@ module a22_inout_v(
     wire DKCTR2_;
     wire DKCTR3;
     wire DKCTR3_;
-    wire DKCTR4;
-    wire DKCTR4_;
-    wire DKCTR5;
-    wire DKCTR5_;
     
     wire LOW0_;
     wire LOW1_;

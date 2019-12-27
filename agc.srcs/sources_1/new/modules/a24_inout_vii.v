@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 
 module a24_inout_vii(
+    input wire SB2,
     input wire SB0_,
     input wire SB1_,
     input wire SB2_,
@@ -11,6 +12,8 @@ module a24_inout_vii(
     input wire RT_,
     
     input wire T02_,
+    input wire T06,
+    input wire T08,
     
     input wire F01A,
     input wire F01B,
@@ -24,9 +27,19 @@ module a24_inout_vii(
     input wire FS05_,
     input wire F05A_,
     input wire F05B_,
+    input wire FS06,
+    input wire FS06_,
+    input wire FS07_, 
     input wire FS07A,
     input wire F07A_,
     input wire F07B_,
+    input wire F07C_,
+    input wire FS08,
+    input wire FS08_,
+    input wire FS09,
+    input wire FS09_,
+    input wire FS16,
+    input wire FS17,
     input wire F17A,
     input wire F17B,
     input wire F18AX,
@@ -57,9 +70,15 @@ module a24_inout_vii(
     input wire WL08,
     input wire WL09,
     input wire WL10,
+    input wire WL11,
+    input wire WL12,
+    input wire WL13,
+    input wire WL14,
+    input wire WL16,
     
     input wire NISQ_,
     
+    input wire FF1109_,
     input wire FF1110_,
     input wire FF1111_,
     input wire FF1112_,
@@ -67,6 +86,13 @@ module a24_inout_vii(
     input wire PIPSAM_,
     input wire PIPAZp,
     input wire PIPAZm,
+    
+    input wire RSCT,
+    input wire RUSG_,
+    input wire SUMA15_,
+    input wire SUMB15_,
+    input wire U2BBK,
+    input wire CI_,
     
     output wire WATCHP,
     output wire MWATCH_,
@@ -90,6 +116,11 @@ module a24_inout_vii(
     output wire CHWL08_,
     output wire CHWL09_,
     output wire CHWL10_,
+    output wire CHWL11_,
+    output wire CHWL12_,
+    output wire CHWL13_,
+    output wire CHWL14_,
+    output wire CHWL16_,
     
     output wire PIPPLS_,
     output wire PIPASW,
@@ -130,6 +161,33 @@ module a24_inout_vii(
     output wire NOZP,
     output wire NOZM,
     output wire MISSZ,
+    output wire BOTHZ,
+    output wire PIPZP,
+    output wire PIPZM,
+    
+    output wire CNTRSB_,
+    output wire RSCT_,
+    output wire MWCH,
+    output wire MRCH,
+    output wire US2SG,
+    output wire U2BBKG_,
+    output wire OUTCOM,
+    
+    output wire GTSET,
+    output wire GTSET_,
+    output wire GTRST,
+    output wire GTRST_,
+    output wire GTONE,
+    
+    output wire CI,
+    output wire F7CSB1_,
+    
+    output wire FLASH,
+    output wire FLASH_,
+    
+    output wire ONE,
+    
+    output wire CDUSTB_,
     
     input wire reset,
     input wire prop_clk
@@ -326,14 +384,42 @@ module a24_inout_vii(
     wire NOR49304_out;
     wire NOR49306_out;
     wire NOR49308_out;
+    wire NOR49310_out;
+    wire NOR49311_out;
+    wire NOR49312_out;
+    wire NOR49313_out;
+    wire NOR49314_out;
+    wire NOR49315_out;
+    wire NOR49316_out;
+    wire NOR49317_out;
+    wire NOR49318_out;
+    wire NOR49319_out;
+    wire NOR49320_out;
+    wire NOR49321_out;
+    wire NOR49322_out;
+    wire NOR49323_out;
+    wire NOR49324_out;
+    wire NOR49325_out;
+    wire NOR49326_out;
+    wire NOR49327_out;
+    wire NOR49328_out;
+    wire NOR49341_out;
+    wire NOR49342_out;
+    wire NOR49346_out;
+    wire NOR49347_out;
+    wire NOR49359_out;
+    wire NOR49412_out;
     
+    wire PIPAZp_;
+    wire PIPAZm_;
     wire PIPGZp;
     wire PIPGZm;
+    
+    // PIPA precount logic Z
     
     // NOR54361 and NOR54362 moved here from A11 sheet 2
     nor_1 #(1'b0) NOR54361(PIPAZp_,         PIPAZp,                                                         reset, prop_clk);
     nor_1 #(1'b0) NOR54362(PIPAZm_,         PIPAZm,                                                         reset, prop_clk);
-    
     
     // NOR53261 and NOR53262 moved here from A10 sheet 1
     nor_2 #(1'b0) NOR53261(PIPGZp,          PIPSAM_,        PIPAZp_,                                        reset, prop_clk);
@@ -351,5 +437,127 @@ module a24_inout_vii(
     nor_3 #(1'b1) NOR49307(MISSZ,           PIPGZp,         PIPGZm,         NOR49308_out,                   reset, prop_clk);
     nor_2 #(1'b0) NOR49308(NOR49308_out,    MISSZ,          F5ASB2,                                         reset, prop_clk);
     
+    nor_2 #(1'b0) NOR49309(BOTHZ,           NOR49301_out,   NOR49302_out,                                   reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR49310(NOR49310_out,    NOR49302_out,   NOR49328_out,   NOR49317_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR49311(NOR49311_out,    NOR49316_out,   NOR49328_out,   NOR49301_out,                   reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR49312(NOR49312_out,    NOR49310_out,   NOR49313_out,                                   reset, prop_clk);
+    nor_2 #(1'b1) NOR49313(NOR49313_out,    NOR49312_out,   NOR49311_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR49314(NOR49314_out,    NOR49318_out,   NOR49312_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR49315(NOR49315_out,    NOR49318_out,   NOR49313_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR49316(NOR49316_out,    NOR49314_out,   NOR49317_out,                                   reset, prop_clk);
+    nor_2 #(1'b1) NOR49317(NOR49317_out,    NOR49316_out,   NOR49315_out,                                   reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR49318(NOR49318_out,    F5ASB2,                                                         reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR49319(NOR49319_out,    NOR49317_out,   NOR49328_out,   NOR49301_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR49320(NOR49320_out,    NOR49316_out,   NOR49328_out,   NOR49302_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR49321(NOR49321_out,    NOR49317_out,   NOR49327_out,   NOR49302_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR49322(NOR49322_out,    NOR49316_out,   NOR49327_out,   NOR49301_out,                   reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR49323(NOR49323_out,    NOR49319_out,   NOR49320_out,   NOR49324_out,                   reset, prop_clk);
+    nor_3 #(1'b1) NOR49324(NOR49324_out,    NOR49323_out,   NOR49321_out,   NOR49322_out,                   reset, prop_clk);
+    nor_2 #(1'b0) NOR49325(NOR49325_out,    NOR49318_out,   NOR49323_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR49326(NOR49326_out,    NOR49318_out,   NOR49324_out,                                   reset, prop_clk);
+    nor_2 #(1'b0) NOR49327(NOR49327_out,    NOR49325_out,   NOR49328_out,                                   reset, prop_clk);
+    nor_2 #(1'b1) NOR49328(NOR49328_out,    NOR49327_out,   NOR49326_out,                                   reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR49329(PIPZP,           NOR49317_out,   NOR49327_out,   NOR49301_out,                   reset, prop_clk);
+    nor_3 #(1'b0) NOR49330(PIPZM,           NOR49316_out,   NOR49327_out,   NOR49302_out,                   reset, prop_clk);
+    
+    
+    nor_1 #(1'b0) NOR49331(CNTRSB_,         SB2,                                                            reset, prop_clk);
+    nor_1 #(1'b0) NOR49332(RSCT_,           RSCT,                                                           reset, prop_clk);
+    // NOR49333 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR49334(MWCH,            WCH_,                                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR49335(MRCH,            RCH_,                                                           reset, prop_clk);
+    
+    nor_3 #(1'b0) NOR49336(US2SG,           RUSG_,          SUMA15_,        SUMB15_,                        reset, prop_clk);
+    nor_1 #(1'b0) NOR49337(U2BBKG_,         U2BBK,                                                          reset, prop_clk);
+    // NOR49338 removed (fan-out expansion)
+    
+    nor_1 #(1'b0) NOR49339(OUTCOM,          FF1109_,                                                        reset, prop_clk);
+    // NOR49340 removed (fan-out expansion)
+    
+    nor_3 #(1'b0) NOR49341(NOR49341_out,    FS07_,          FS08_,          FS09_,                          reset, prop_clk);
+    nor_1 #(1'b0) NOR49342(NOR49342_out,    NOR49341_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0) NOR49343(GTSET,           FS06_,          F05B_,          NOR49342_out,                   reset, prop_clk);
+    nor_1 #(1'b0) NOR49344(GTSET_,          GTSET,                                                          reset, prop_clk);
+    nor_3 #(1'b0) NOR49345(GTRST,           NOR49342_out,   F05B_,          FS06,                           reset, prop_clk);
+    nor_3 #(1'b0) NOR49346(NOR49346_out,    FS06,           F05B_,          FS07A,                          reset, prop_clk);
+    nor_2 #(1'b0) NOR49347(NOR49347_out,    FS08,           FS09,                                           reset, prop_clk);
+    assign GTONE = NOR49346_out & NOR49347_out;
+    
+    // Moved here from A11 sheet 1
+    nor_1 #(1'b0) NOR54261(GTRST_,          GTRST,                                                          reset, prop_clk);
+    
+    // NOR49348 removed (moved to A1 sheet 1)
+    // NOR49349 removed (fan-out expansion)
+    // NOR49350 removed (fan-out expansion)
+    // NOR49351 removed (moved to A1 sheet 1)
+    // NOR49352 removed (moved to A1 sheet 1)
+    // NOR49353 removed (moved to A1 sheet 1)
+
+    nor_1 #(1'b0) NOR49354(CI,              CI_,                                                            reset, prop_clk);
+    
+    // NOR49355 removed (moved to A1 sheet 1)
+    // NOR49356 removed (moved to A1 sheet 1)
+    // NOR49357 removed (moved to A1 sheet 1)
+    // NOR49358 removed (moved to A1 sheet 1)
+    
+    nor_2 #(1'b0) NOR49359(NOR49359_out,    F07C_,          SB1_,                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR49360(F7CSB1_,         NOR49359_out,                                                   reset, prop_clk);
+    
+    
+    // NOR49401 removed (fan-out expansion)
+    // NOR49402 removed (fan-out expansion)
+    // NOR49403 removed (fan-out expansion)
+    // NOR49404 removed (fan-out expansion)
+    // NOR49405 removed (fan-out expansion)
+    // NOR49406 removed (fan-out expansion)
+    // NOR49407 removed (fan-out expansion)
+    // NOR49408 removed (fan-out expansion)
+    
+    nor_2 #(1'b0) NOR49409(FLASH,           FS17,           FS16,                                           reset, prop_clk);
+    nor_1 #(1'b0) NOR49410(FLASH_,          FLASH,                                                          reset, prop_clk);
+    
+    nor_1 #(1'b0) NOR49411(ONE,             1'b0,                                                           reset, prop_clk);
+    
+    nor_2 #(1'b0) NOR49412(NOR49412_out,    T08,            CDUSTB_,                                        reset, prop_clk);
+    nor_2 #(1'b1) NOR49413(CDUSTB_,         NOR49412_out,   T06,                                            reset, prop_clk);
+    
+    // NOR49414 removed (moved to A2 sheet 1)
+    // NOR49415 removed (fan-out expansion)
+    // NOR49416 removed (fan-out expansion)
+    // NOR49417 removed (fan-out expansion)
+    // NOR49418 removed (moved to A1 sheet 1)
+    // NOR49419 removed (moved to A3 sheet 2)
+    // NOR49420 removed (moved to A1 sheet 1)
+    // NOR49421 removed (fan-out expansion A2 sheet 2)
+    // NOR49422 removed (fan-out expansion A2 sheet 2)
+    // NOR49423 removed (fan-out expansion A2 sheet 2)
+    // NOR49424 removed (fan-out expansion A2 sheet 2)
+    
+    nor_1 #(1'b0) NOR49425(CHWL11_,         WL11,                                                           reset, prop_clk);
+    // NOR49426 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR49427(CHWL12_,         WL12,                                                           reset, prop_clk);
+    // NOR49428 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR49429(CHWL13_,         WL13,                                                           reset, prop_clk);
+    // NOR49430 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR49431(CHWL14_,         WL14,                                                           reset, prop_clk);
+    // NOR49432 removed (fan-out expansion)
+    nor_1 #(1'b0) NOR49433(CHWL16_,         WL16,                                                           reset, prop_clk);
+    // NOR49434 removed (fan-out expansion)
+    
+    // NOR49435 removed (moved to A13 sheet 1)
+    // NOR49436 removed (moved to A13 sheet 1)
+    // NOR49437 removed (moved to A13 sheet 1)
+    // NOR49438 removed (moved to A13 sheet 1)
+    // NOR49439 removed (moved to A13 sheet 1)
+    // NOR49440 removed (moved to A13 sheet 1)
+    // NOR49441 removed (moved to A13 sheet 1)
+    // NOR49442 removed (moved to A13 sheet 1)
+    // NOR49443 removed (moved to A13 sheet 1)
     
 endmodule
