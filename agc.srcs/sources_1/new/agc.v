@@ -168,7 +168,10 @@ module agc();
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
+	reg n0VDCA = 0;
 	reg n2FSFAL = 0;
+	reg p4SW = 1;
+	reg p4VDC = 1;
 	reg prop_clk = 1;
 	reg reset = 0;
 
@@ -2062,6 +2065,9 @@ module agc();
 		CHBT12,
 		CHBT13,
 		CHBT14,
+		n0VDCA,
+		p4VDC,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -2185,6 +2191,9 @@ module agc();
 		UNF_,
 		OVF,
 		OVF_,
+		n0VDCA,
+		p4VDC,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -2328,6 +2337,8 @@ module agc();
 		A03_1_RPTSET,
 		A03_2_RPTSET,
 		A03_3_RPTSET,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -2523,6 +2534,8 @@ module agc();
 		TL15,
 		KRPT,
 		DIVSTG,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -2724,6 +2737,8 @@ module agc();
 		U2BBK,
 		RSTSTG,
 		DV4B1B,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -2928,6 +2943,8 @@ module agc();
 		n7XP14,
 		n8XP4,
 		n8XP10,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -3059,6 +3076,8 @@ module agc();
 		MRAG,
 		MRLG,
 		MRULOG,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -3179,6 +3198,8 @@ module agc();
 		L02_,
 		L03_,
 		L04_,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -3279,6 +3300,8 @@ module agc();
 		G08,
 		G08_,
 		GEM08,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -3398,6 +3421,8 @@ module agc();
 		G12,
 		G12_,
 		GEM12,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -3527,6 +3552,8 @@ module agc();
 		GEM16,
 		A15_,
 		A16_,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -3633,6 +3660,8 @@ module agc();
 		SUMA16_,
 		SUMB16_,
 		G16SW_,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -3757,6 +3786,9 @@ module agc();
 		RESTRT,
 		STRT1,
 		DLKPLS,
+		n0VDCA,
+		p4VDC,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -3955,6 +3987,8 @@ module agc();
 		IL07_,
 		ILP,
 		ILP_,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -4090,6 +4124,8 @@ module agc();
 		ROPER,
 		ROPES,
 		ROPET,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -4200,6 +4236,8 @@ module agc();
 		MROLGT,
 		S4BSEQ,
 		S4BOFF,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -4390,6 +4428,8 @@ module agc();
 		WCH11_,
 		CCH11,
 		RCH11_,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -4526,6 +4566,9 @@ module agc();
 		END,
 		DLKRPT,
 		CH3312,
+		n0VDCA,
+		p4VDC,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -4686,6 +4729,8 @@ module agc();
 		BMAGYM,
 		BMAGZP,
 		BMAGZM,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -4781,6 +4826,8 @@ module agc();
 		C53A,
 		C54A,
 		C55A,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -4922,6 +4969,8 @@ module agc();
 		CG26,
 		C45R,
 		RQ_,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -4986,6 +5035,9 @@ module agc();
 		DKCTR4_,
 		DKCTR5,
 		DKCTR5_,
+		n0VDCA,
+		p4VDC,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -5177,6 +5229,8 @@ module agc();
 		ISSTDC,
 		T6ON_,
 		ALTEST,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -5335,6 +5389,9 @@ module agc();
 		FLASH_,
 		ONE,
 		CDUSTB_,
+		n0VDCA,
+		p4VDC,
+		p4SW,
 		reset,
 		prop_clk
 	);

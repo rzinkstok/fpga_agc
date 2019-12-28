@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Fri Dec 27 13:05:40 2019
-# Process ID: 14639
+# Start of session at: Sat Dec 28 13:03:27 2019
+# Process ID: 4904
 # Current directory: /home/rzinkstok/fpga_agc/agc.runs/synth_1
 # Command line: vivado -log agc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source agc.tcl
 # Log file: /home/rzinkstok/fpga_agc/agc.runs/synth_1/agc.vds

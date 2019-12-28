@@ -1,10 +1,16 @@
 `timescale 1ns / 1ps
 
-module nor_3(y, a, b, c, reset, prop_clk);
+module nor_3(y, a, b, c, power, reset, prop_clk);
 	parameter iv = 1'b0;
-	input wire a, b, c, reset, prop_clk;
+	input wire a;
+	input wire b;
+	input wire c;
+	input wire power;
+	input wire reset;
+	input wire prop_clk;
 	
 	output reg y = iv;
+	
 	reg next_val = iv;
 	reg prev_val = iv;
 	wire result;
@@ -13,7 +19,7 @@ module nor_3(y, a, b, c, reset, prop_clk);
 	
 	always @(posedge prop_clk or posedge reset)
 	begin
-	    if(reset) begin
+	    if(reset || !power) begin
 	        prev_val = iv;
 	        y = iv;
 	    end else begin
@@ -24,7 +30,7 @@ module nor_3(y, a, b, c, reset, prop_clk);
 	
 	always @(negedge prop_clk or posedge reset)
 	begin
-	    if(reset) begin
+	    if(reset || !power) begin
 	        next_val = iv;
 	    end else begin
 		    next_val = ((result == prev_val) && (y == iv)) ? iv : result;

@@ -854,7 +854,7 @@ def write_wrapper(module_params, input_wires, output_wires, sim_name=None, sim_c
 
         for iw in sorted(input_wires):
             if iw not in output_wires:
-                if iw.endswith("_") or iw in ["prop_clk", "ONE"]:
+                if iw.endswith("_") or iw in ["prop_clk", "p4VDC", "p4SW"]:
                     val = 1
                 else:
                     val = 0

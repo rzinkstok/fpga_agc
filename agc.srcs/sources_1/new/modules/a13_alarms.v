@@ -124,6 +124,9 @@ module a13_alarms(
     output wire STRT1,
     output wire DLKPLS,
     
+    input wire n0VDCA,
+    input wire p4VDC,
+    input wire p4SW,
     input wire reset,
     input wire prop_clk
     );
@@ -245,117 +248,117 @@ module a13_alarms(
     wire SBYEXT;
     
     // MSTRTP
-    nor_1 #(1'b0) NOR41101(NOR41101_out,    MSTRT,                                                          reset, prop_clk);
-    nor_2 #(1'b0) NOR41102(NOR41102_out,    F05B_,          NOR41101_out,                                   reset, prop_clk);
-    nor_2 #(1'b1) NOR41103(NOR41103_out,    NOR41102_out,   NOR41104_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41104(NOR41104_out,    NOR41103_out,   NOR41101_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41105(MSTRTP,          F05A_,          NOR41103_out,                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41101(NOR41101_out,   MSTRT,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41102(NOR41102_out,   F05B_,          NOR41101_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41103(NOR41103_out,   NOR41102_out,   NOR41104_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41104(NOR41104_out,   NOR41103_out,   NOR41101_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41105(MSTRTP,         F05A_,          NOR41103_out,   n0VDCA,         p4SW, reset, prop_clk);
     
     // MPIPAL_
-    nor_1 #(1'b0) NOR41106(NOR41106_out,    PIPAFL,                                                         reset, prop_clk);
+    nor_3 #(1'b0)  NOR41106(NOR41106_out,   PIPAFL,         n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     // Single monitor fan-in output, no cross-module fan-in
     assign MPIPAL_ = NOR41106_out;
     
     // Interrupt flip-flops
-    nor_2 #(1'b1) NOR41107(NOR41107_out,    IIP,            NOR41108_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41108(NOR41108_out,    NOR41107_out,   F14B,                                           reset, prop_clk);
+    nor_3 #(1'b1)  NOR41107(NOR41107_out,   IIP,            NOR41108_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41108(NOR41108_out,   NOR41107_out,   F14B,           n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_2 #(1'b1) NOR41109(NOR41109_out,    IIP_,           NOR41110_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41110(NOR41110_out,    NOR41109_out,   F14B,                                           reset, prop_clk);
+    nor_3 #(1'b1)  NOR41109(NOR41109_out,   IIP_,           NOR41110_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41110(NOR41110_out,   NOR41109_out,   F14B,           n0VDCA,         p4SW, reset, prop_clk);
     
     // F14H
     // Moved here from A22 sheet 1
-    nor_1 #(1'b0) NOR47161(F12B_,           F12B,                                                           reset, prop_clk);
-    nor_1 #(1'b0) NOR47262(FS13_,           FS13,                                                           reset, prop_clk);
-    nor_3 #(1'b0) NOR47162(F14H,            F12B_,          FS14,           FS13_,                          reset, prop_clk);
+    nor_3 #(1'b0)  NOR47161(F12B_,          F12B,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR47262(FS13_,          FS13,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR47162(F14H,           F12B_,          FS14,           FS13_,          p4SW, reset, prop_clk);
     
-    nor_1 #(1'b0) NOR41111(NOR41111_out,    F14H,                                                           reset, prop_clk);
-    nor_2 #(1'b0) NOR41112(NOR41112_out,    NOR41108_out,   F14H,                                           reset, prop_clk);
-    nor_2 #(1'b0) NOR41113(NOR41113_out,    F14H,           NOR41110_out,                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41111(NOR41111_out,   F14H,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41112(NOR41112_out,   NOR41108_out,   F14H,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41113(NOR41113_out,   F14H,           NOR41110_out,   n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_2 #(1'b0) NOR41114(NOR41114_out,    NOR41112_out,   NOR41113_out,                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41114(NOR41114_out,   NOR41112_out,   NOR41113_out,   n0VDCA,         p4SW, reset, prop_clk);
     // NOR41115 removed (fan-out expansion)
     assign MRPTAL_ = NOR41114_out;
     
     
     // Transfer control flip-flops
-    nor_2 #(1'b0) NOR41119(NOR41119_out,    TCF0,           TC0,                                            reset, prop_clk);
-    nor_2 #(1'b0) NOR41120(NOR41120_out,    INKL,           T04_,                                           reset, prop_clk);
+    nor_3 #(1'b0)  NOR41119(NOR41119_out,   TCF0,           TC0,            n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41120(NOR41120_out,   INKL,           T04_,           n0VDCA,         p4SW, reset, prop_clk);
     assign NOR41123_in = NOR41119_out & NOR41120_out;
      
-    nor_3 #(1'b1) NOR41121(NOR41121_out,    TC0,            TCF0,           NOR41122_out,                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41122(NOR41122_out,    NOR41121_out,   F10B,                                           reset, prop_clk);
+    nor_3 #(1'b1)  NOR41121(NOR41121_out,   TC0,            TCF0,           NOR41122_out,   p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41122(NOR41122_out,   NOR41121_out,   F10B,           n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_2 #(1'b0) NOR41123(NOR41123_out,    NOR41123_in,    NOR41124_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41124(NOR41124_out,    NOR41123_out,   F10B,                                           reset, prop_clk);
+    nor_3 #(1'b0)  NOR41123(NOR41123_out,   NOR41123_in,    NOR41124_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41124(NOR41124_out,   NOR41123_out,   F10B,           n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_2 #(1'b0) NOR41125(NOR41125_out,    F10A,           NOR41122_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41126(NOR41126_out,    F10A,           NOR41124_out,                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41125(NOR41125_out,   F10A,           NOR41122_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41126(NOR41126_out,   F10A,           NOR41124_out,   n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_2 #(1'b0) NOR41127(NOR41127_out,    NOR41125_out,   NOR41126_out,                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41127(NOR41127_out,   NOR41125_out,   NOR41126_out,   n0VDCA,         p4SW, reset, prop_clk);
     // NOR41128 removed (fan-out expansion)
     assign MTCAL_ = NOR41127_out;
     
     // CKTAL_
-    nor_3 #(1'b0) NOR41116(NOR41116_out,    PALE,           NOR41112_out,   NOR41113_out,                   reset, prop_clk);
-    nor_3 #(1'b0) NOR41117(NOR41117_out,    NOR41125_out,   NOR41126_out,   WATCHP,                         reset, prop_clk);
+    nor_3 #(1'b0)  NOR41116(NOR41116_out,   PALE,           NOR41112_out,   NOR41113_out,   p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41117(NOR41117_out,   NOR41125_out,   NOR41126_out,   WATCHP,         p4SW, reset, prop_clk);
     assign CKTAL_ = NOR41116_out & NOR41117_out;
     
     // ALGA
-    nor_2 #(1'b0) NOR41118(ALGA,            NHALGA,         CKTAL_,                                         reset, prop_clk);
+    nor_3 #(1'b0)  NOR41118(ALGA,           NHALGA,         CKTAL_,         n0VDCA,         p4SW, reset, prop_clk);
     
     // CTPLS_
     // First 9 gates of CTPLS_ moved here from A24 sheet 2
-    nor_3 #(1'b1) NOR49435(NOR49435_out,    T1P,            T2P,            T3P,                            reset, prop_clk);
-    nor_3 #(1'b1) NOR49436(NOR49436_out,    T4P,            T5P,            T6P,                            reset, prop_clk);
-    nor_3 #(1'b1) NOR49437(NOR49437_out,    CDUXP,          CDUXM,          CDUYP,                          reset, prop_clk);
-    nor_3 #(1'b1) NOR49438(NOR49438_out,    CDUYM,          CDUZP,          CDUZM,                          reset, prop_clk);
-    nor_3 #(1'b1) NOR49439(NOR49439_out,    TRNP,           TRNM,           SHAFTP,                         reset, prop_clk);
-    nor_3 #(1'b1) NOR49440(NOR49440_out,    SHAFTM,         PIPXP,          PIPXM,                          reset, prop_clk);
-    nor_3 #(1'b1) NOR49441(NOR49441_out,    PIPYP,          PIPYM,          PIPZP,                          reset, prop_clk);
-    nor_3 #(1'b1) NOR49442(NOR49442_out,    PIPZM,          BMAGXP,         BMAGXM,                         reset, prop_clk);
-    nor_3 #(1'b1) NOR49443(NOR49443_out,    BMAGYP,         BMAGYM,         BMAGZP,                         reset, prop_clk);
-    nor_3 #(1'b1) NOR41132(NOR41132_out,    BMAGZM,         INLNKP,         INLNKM,                         reset, prop_clk);
-    nor_3 #(1'b1) NOR41133(NOR41133_out,    RNRADP,         RNRADM,         GYROD,                          reset, prop_clk);
-    nor_3 #(1'b1) NOR41134(NOR41134_out,    CDUXD,          CDUYD,          CDUZD,                          reset, prop_clk);
-    nor_3 #(1'b1) NOR41135(NOR41135_out,    TRUND,          SHAFTD,         THRSTD,                         reset, prop_clk);
-    nor_3 #(1'b1) NOR41136(NOR41136_out,    EMSD,           OTLNKM,         ALTM,                           reset, prop_clk);
+    nor_3 #(1'b1)  NOR49435(NOR49435_out,   T1P,            T2P,            T3P,            p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR49436(NOR49436_out,   T4P,            T5P,            T6P,            p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR49437(NOR49437_out,   CDUXP,          CDUXM,          CDUYP,          p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR49438(NOR49438_out,   CDUYM,          CDUZP,          CDUZM,          p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR49439(NOR49439_out,   TRNP,           TRNM,           SHAFTP,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR49440(NOR49440_out,   SHAFTM,         PIPXP,          PIPXM,          p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR49441(NOR49441_out,   PIPYP,          PIPYM,          PIPZP,          p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR49442(NOR49442_out,   PIPZM,          BMAGXP,         BMAGXM,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR49443(NOR49443_out,   BMAGYP,         BMAGYM,         BMAGZP,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41132(NOR41132_out,   BMAGZM,         INLNKP,         INLNKM,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41133(NOR41133_out,   RNRADP,         RNRADM,         GYROD,          p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41134(NOR41134_out,   CDUXD,          CDUYD,          CDUZD,          p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41135(NOR41135_out,   TRUND,          SHAFTD,         THRSTD,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41136(NOR41136_out,   EMSD,           OTLNKM,         ALTM,           p4SW, reset, prop_clk);
     assign CTPLS_ = 
         NOR49435_out & NOR49436_out & NOR49437_out & NOR49438_out & NOR49439_out & 
         NOR49440_out & NOR49441_out & NOR49442_out & NOR49443_out &
         NOR41132_out & NOR41133_out & NOR41134_out & NOR41135_out & NOR41136_out;
     
-    nor_1 #(1'b0) NOR41137(NOR41137_out,    CTPLS_,                                                         reset, prop_clk);
-    nor_2 #(1'b1) NOR41138(NOR41138_out,    NOR41137_out,   NOR41139_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41139(NOR41139_out,    NOR41138_out,   INKL,                                           reset, prop_clk);
+    nor_3 #(1'b0)  NOR41137(NOR41137_out,   CTPLS_,         n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41138(NOR41138_out,   NOR41137_out,   NOR41139_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41139(NOR41139_out,   NOR41138_out,   INKL,           n0VDCA,         p4SW, reset, prop_clk);
     
     // NOTEST_ moved here from A14 sheet 1
-    nor_2 #(1'b0) NOR42257(NOTEST_,         PSEUDO,         NISQL_,                                         reset, prop_clk);
+    nor_3 #(1'b0)  NOR42257(NOTEST_,        PSEUDO,         NISQL_,         n0VDCA,         p4SW, reset, prop_clk);
     
     // NOTEST moved here from A14 sheet 2
-    nor_1 #(1'b0) NOR42459(NOTEST,          NOTEST_,                                                        reset, prop_clk);
+    nor_3 #(1'b0)  NOR42459(NOTEST,         NOTEST_,        n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b0) NOR41140(NOR41140_out,    NOTEST,         NOR41138_out,   T09_,                           reset, prop_clk);
-    nor_2 #(1'b1) NOR41141(NOR41141_out,    NOR41140_out,   NOR41142_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41142(NOR41142_out,    NOR41141_out,   INKL,                                           reset, prop_clk);
-    nor_2 #(1'b0) NOR41143(NOR41143_out,    T03_,           NOR41142_out,                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41140(NOR41140_out,   NOTEST,         NOR41138_out,   T09_,           p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41141(NOR41141_out,   NOR41140_out,   NOR41142_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41142(NOR41142_out,   NOR41141_out,   INKL,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41143(NOR41143_out,   T03_,           NOR41142_out,   n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b0) NOR41148(NOR41148_out,    T03_,           INKL,           CTROR,                          reset, prop_clk);
-    nor_2 #(1'b1) NOR41149(NOR41149_out,    NOR41148_out,   NOR41150_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41150(NOR41150_out,    NOR41149_out,   F07A,                                           reset, prop_clk);
-    nor_2 #(1'b0) NOR41151(NOR41151_out,    NOR41150_out,   F07B_,                                          reset, prop_clk);
+    nor_3 #(1'b0)  NOR41148(NOR41148_out,   T03_,           INKL,           CTROR,          p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41149(NOR41149_out,   NOR41148_out,   NOR41150_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41150(NOR41150_out,   NOR41149_out,   F07A,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41151(NOR41151_out,   NOR41150_out,   F07B_,          n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_2 #(1'b0) NOR41144(NOR41144_out,    NOR41143_out,   NOR41151_out,                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41144(NOR41144_out,   NOR41143_out,   NOR41151_out,   n0VDCA,         p4SW, reset, prop_clk);
     // NOR41145 removed (fan-out expansion)
     // Single monitor fan-in output, no cross-module fan-in
     assign MCTRAL_ = NOR41144_out;
     
-    nor_2 #(1'b0) NOR41146(NOR41146_out,    NOR41143_out,   NOR41151_out,                                   reset, prop_clk);
-    nor_1 #(1'b0) NOR41147(DOFILT,          NOR41146_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41146(NOR41146_out,   NOR41143_out,   NOR41151_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41147(DOFILT,         NOR41146_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_2 #(1'b1) NOR41152(NOR41152_out,    DLKRPT,         NOR41153_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41153(NOR41153_out,    NOR41152_out,   DRPRST,                                         reset, prop_clk);
-    nor_2 #(1'b0) NOR41154(DLKPLS,          T10_,           NOR41152_out,                                   reset, prop_clk);
+    nor_3 #(1'b1)  NOR41152(NOR41152_out,   DLKRPT,         NOR41153_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41153(NOR41153_out,   NOR41152_out,   DRPRST,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41154(DLKPLS,         T10_,           NOR41152_out,   n0VDCA,         p4SW, reset, prop_clk);
     
     // NOR41155 removed (fan-out expansion for gate on A14 sheet 2)
     // NOR41156 removed (fan-out expansion for gate on A14 sheet 2)
@@ -363,91 +366,91 @@ module a13_alarms(
     // NOR41158 removed (fan-out expansion for gate on A14 sheet 2)
     
     
-    nor_1 #(1'b0) NOR41201(NOR41201_out,    VFAIL,                                                          reset, prop_clk);
-    nor_2 #(1'b0) NOR41202(NOR41202_out,    F05B_,          NOR41201_out,                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41201(NOR41201_out,   VFAIL,          n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41202(NOR41202_out,   F05B_,          NOR41201_out,   n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_2 #(1'b1) NOR41203(NOR41203_out,    NOR41202_out,   NOR41204_out,                                   reset, prop_clk);
-    nor_3 #(1'b0) NOR41204(NOR41204_out,    NOR41203_out,   NOR41201_out,   NHVFAL,                         reset, prop_clk);
+    nor_3 #(1'b1)  NOR41203(NOR41203_out,   NOR41202_out,   NOR41204_out,   n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41204(NOR41204_out,   NOR41203_out,   NOR41201_out,   NHVFAL,         p4VDC, reset, prop_clk);
     
-    nor_3 #(1'b0) NOR41205(NOR41205_out,    F05A_,          NOR41203_out,   NHVFAL,                         reset, prop_clk);
-    nor_3 #(1'b0) NOR41206(NOR41206_out,    F05A_,          NOR41203_out,   STNDBY_,                        reset, prop_clk);
+    nor_3 #(1'b0)  NOR41205(NOR41205_out,   F05A_,          NOR41203_out,   NHVFAL,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41206(NOR41206_out,   F05A_,          NOR41203_out,   STNDBY_,        p4VDC, reset, prop_clk);
     
-    nor_1 #(1'b0) NOR41207(NOR41207_out,    NOR41205_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41207(NOR41207_out,   NOR41205_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     // Single monitor fan-in output, no cross-module fan-in
     assign MVFAIL_ = NOR41207_out;
     
     // Next three gates moved here from A3 sheet 1
-    nor_1 #(1'b0) NOR30057(CON1,            DBLTST,                                                         reset, prop_clk);
-    nor_2 #(1'b0) NOR30058(CON2,            CON1,           FS09,                                           reset, prop_clk);
-    nor_2 #(1'b0) NOR30059(SCAS10,          CON2,           FS10,                                           reset, prop_clk);
+    nor_3 #(1'b0)  NOR30057(CON1,           DBLTST,         n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR30058(CON2,           CON1,           FS09,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR30059(SCAS10,         CON2,           FS10,           n0VDCA,         p4SW, reset, prop_clk);
 
-    nor_2 #(1'b0) NOR41242(CON3,            CON2,           FS10,                                           reset, prop_clk);
-    nor_2 #(1'b0) NOR41243(SCADBL,          CON3,           n2FSFAL,                                        reset, prop_clk);
+    nor_3 #(1'b0)  NOR41242(CON3,           CON2,           FS10,           n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41243(SCADBL,         CON3,           n2FSFAL,        n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_1 #(1'b0) NOR41209(NOR41209_out,    F14B,                                                           reset, prop_clk);
-    nor_2 #(1'b0) NOR41210(NOR41210_out,    NOR41209_out,   SB2_,                                           reset, prop_clk);
+    nor_3 #(1'b0)  NOR41209(NOR41209_out,   F14B,           n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41210(NOR41210_out,   NOR41209_out,   SB2_,           n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_3 #(1'b1) NOR41208(NOR41208_out,    NOR41206_out,   DOFILT,         SCADBL,                         reset, prop_clk);
-    nor_2 #(1'b1) NOR41211(NOR41211_out,    ALTEST,         NOR41212_out,                                   reset, prop_clk);
+    nor_3 #(1'b1)  NOR41208(NOR41208_out,   NOR41206_out,   DOFILT,         SCADBL,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41211(NOR41211_out,   ALTEST,         NOR41212_out,   n0VDCA,         p4VDC, reset, prop_clk);
     assign WRNFLTFF = NOR41208_out & NOR41211_out;
-    nor_2 #(1'b0) NOR41212(NOR41212_out,    NOR41211_out,   NOR41210_out,                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41212(NOR41212_out,   NOR41211_out,   NOR41210_out,   n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_3 #(1'b0) NOR41213(NOR41213_out,    NOR41209_out,   WRNFLTFF,       SB0_,                           reset, prop_clk);
+    nor_3 #(1'b0)  NOR41213(NOR41213_out,   NOR41209_out,   WRNFLTFF,       SB0_,           p4VDC, reset, prop_clk);
     
-    nor_2 #(1'b1) NOR41214(NOR41214_out,    NOR41213_out,   NOR41215_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41215(NOR41215_out,    NOR41214_out,   F08B,                                           reset, prop_clk);
+    nor_3 #(1'b1)  NOR41214(NOR41214_out,   NOR41213_out,   NOR41215_out,   n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41215(NOR41215_out,   NOR41214_out,   F08B,           n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_1 #(1'b0) NOR41216(NOR41216_out,    NOR41214_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41216(NOR41216_out,   NOR41214_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     assign FILTIN = NOR41216_out;
     
     
-    nor_2 #(1'b0) NOR41217(NOR41217_out,    FS01,           P02,                                            reset, prop_clk);
-    nor_2 #(1'b0) NOR41218(NOR41218_out,    P03_,           CT_,                                            reset, prop_clk);
+    nor_3 #(1'b0)  NOR41217(NOR41217_out,   FS01,           P02,            n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41218(NOR41218_out,   P03_,           CT_,            n0VDCA,         p4VDC, reset, prop_clk);
     assign NOR41219_in = NOR41217_out & NOR41218_out;
     
-    nor_1 #(1'b0) NOR41219(SYNC4_,          NOR41219_in,                                                    reset, prop_clk);
-    nor_3 #(1'b0) NOR41220(NOR41220_out,    CT_,            P02_,           P03,                            reset, prop_clk);
-    nor_1 #(1'b0) NOR41221(SYNC14_,         NOR41220_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41219(SYNC4_,         NOR41219_in,    n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41220(NOR41220_out,   CT_,            P02_,           P03,            p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41221(SYNC14_,        NOR41220_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_1 #(1'b0) NOR41222(NOR41222_out,    SCAFAL,                                                         reset, prop_clk);
+    nor_3 #(1'b0)  NOR41222(NOR41222_out,   SCAFAL,         n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     assign MSCAFL_ = NOR41222_out;
-    nor_1 #(1'b0) NOR41223(NOR41223_out,    FLTOUT,                                                         reset, prop_clk);
+    nor_3 #(1'b0)  NOR41223(NOR41223_out,   FLTOUT,         n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     assign MWARNF_ = NOR41223_out;
     
-    nor_2 #(1'b0) NOR41224(NOR41224_out,    FLTOUT,         SCAFAL,                                         reset, prop_clk);
-    nor_3 #(1'b1) NOR41225(NOR41225_out,    FLTOUT,         SCAFAL,         AGCWAR,                         reset, prop_clk);
-    nor_2 #(1'b0) NOR41226(AGCWAR,          NOR41225_out,   CCH33,                                          reset, prop_clk);
+    nor_3 #(1'b0)  NOR41224(NOR41224_out,   FLTOUT,         SCAFAL,         n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41225(NOR41225_out,   FLTOUT,         SCAFAL,         AGCWAR,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41226(AGCWAR,         NOR41225_out,   CCH33,          n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_1 #(1'b0) NOR41227(WARN,            NOR41224_out,                                                   reset, prop_clk);
-    nor_1 #(1'b0) NOR41228(CGCWAR,          WARN,                                                           reset, prop_clk);
+    nor_3 #(1'b0)  NOR41227(WARN,           NOR41224_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41228(CGCWAR,         WARN,           n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     
     // Moved here from A18 sheet 1
-    nor_1 #(1'b0) NOR45262(TEMPIN_,         TEMPIN,                                                         reset, prop_clk);
+    nor_3 #(1'b0)  NOR45262(TEMPIN_,        TEMPIN,         n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_2 #(1'b0) NOR41229(NOR41229_out,    TEMPIN_,        TMPOUT,                                         reset, prop_clk);
-    nor_1 #(1'b0) NOR41230(TMPCAU,          NOR41229_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41229(NOR41229_out,   TEMPIN_,        TMPOUT,         n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41230(TMPCAU,         NOR41229_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_1 #(1'b0) NOR41231(NOR41231_out,    STRT2,                                                          reset, prop_clk);
+    nor_3 #(1'b0)  NOR41231(NOR41231_out,   STRT2,          n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     assign MOSCAL_ = NOR41231_out;
     
-    nor_2 #(1'b1) NOR41232(NOR41232_out,    STRT2,          OSCALM,                                         reset, prop_clk);
-    nor_2 #(1'b0) NOR41233(OSCALM,          NOR41232_out,   CCH33,                                          reset, prop_clk);
+    nor_3 #(1'b1)  NOR41232(NOR41232_out,   STRT2,          OSCALM,         n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41233(OSCALM,         NOR41232_out,   CCH33,          n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_2 #(1'b1) NOR41234(NOR41234_out,    SBY,            NOR41235_out,                                   reset, prop_clk);
-    nor_2 #(1'b0) NOR41235(NOR41235_out,    NOR41234_out,   T10,                                            reset, prop_clk);
+    nor_3 #(1'b1)  NOR41234(NOR41234_out,   SBY,            NOR41235_out,   n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41235(NOR41235_out,   NOR41234_out,   T10,            n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_1 #(1'b0) NOR41236(SBYEXT,          NOR41234_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41236(SBYEXT,         NOR41234_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     
-    nor_2 #(1'b0) NOR41237(NOR41237_out,    GOJAM,          NOR41238_out,                                   reset, prop_clk);
-    nor_3 #(1'b1) NOR41238(NOR41238_out,    NOR41237_out,   ERRST,          SBYEXT,                         reset, prop_clk);
-    nor_2 #(1'b0) NOR41239(NOR41239_out,    ALTEST,         NOR41238_out,                                   reset, prop_clk);
-    nor_1 #(1'b0) NOR41240(RESTRT,          NOR41239_out,                                                   reset, prop_clk);
+    nor_3 #(1'b0)  NOR41237(NOR41237_out,   GOJAM,          NOR41238_out,   n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41238(NOR41238_out,   NOR41237_out,   ERRST,          SBYEXT,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41239(NOR41239_out,   ALTEST,         NOR41238_out,   n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41240(RESTRT,         NOR41239_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     
     // NOR41241 moved to A18 sheet 1
     // NOR41244 removed (not connected)
     
-    nor_2 #(1'b0) NOR41245(NOR41245_out,    NOR41204_out,   F05A_,                                          reset, prop_clk);
-    nor_2 #(1'b0) NOR41246(STRT1,           NOR41247_out,   NOR41245_out,                                   reset, prop_clk);
-    nor_2 #(1'b1) NOR41247(NOR41247_out,    NOR41205_out,   STRT1,                                          reset, prop_clk);
+    nor_3 #(1'b0)  NOR41245(NOR41245_out,   NOR41204_out,   F05A_,          n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41246(STRT1,          NOR41247_out,   NOR41245_out,   n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41247(NOR41247_out,   NOR41205_out,   STRT1,          n0VDCA,         p4VDC, reset, prop_clk);
     
 endmodule

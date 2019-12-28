@@ -30,8 +30,6 @@ set_property board_part numato.com:styx:part0:1.0 [current_project]
 set_property ip_output_repo /home/rzinkstok/fpga_agc/agc.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
-  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_1.v
-  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_2.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_3.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a10_four_bit_3.v

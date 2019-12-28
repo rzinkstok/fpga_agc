@@ -66,7 +66,7 @@ module registers_tb();
 	reg MDT15 = 0;
 	reg MDT16 = 0;
 	reg MONEX = 0;
-	reg ONE = 1;
+	reg ONE = 0;
 	reg PONEX = 0;
 	reg R15 = 0;
 	reg R1C = 0;
@@ -122,6 +122,8 @@ module registers_tb();
 	reg WYHIG_ = 1;
 	reg WYLOG_ = 1;
 	reg WZG_ = 1;
+	reg n0VDCA = 0;
+	reg p4SW = 1;
 	reg prop_clk = 1;
 	reg reset = 0;
 
@@ -436,6 +438,8 @@ module registers_tb();
 		L02_,
 		L03_,
 		L04_,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -536,6 +540,8 @@ module registers_tb();
 		G08,
 		G08_,
 		GEM08,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -655,6 +661,8 @@ module registers_tb();
 		G12,
 		G12_,
 		GEM12,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
@@ -784,6 +792,8 @@ module registers_tb();
 		GEM16,
 		A15_,
 		A16_,
+		n0VDCA,
+		p4SW,
 		reset,
 		prop_clk
 	);
