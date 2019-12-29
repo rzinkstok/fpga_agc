@@ -67,6 +67,8 @@ module a11_four_bit_4(
     input wire RL14_,
     input wire RL15_,
     input wire RL16_,
+    input wire Z15_,
+    input wire Z16_,
     
     output wire A11_1_RL13_,
     output wire A11_2_RL13_,
@@ -86,6 +88,8 @@ module a11_four_bit_4(
     output wire A11_4_RL16_,
     
     output wire A11_1_L16_,
+    output wire A11_1_Z15_,
+    output wire A11_1_Z16_,
      
     output wire WL13, 
     output wire WL13_, 
@@ -315,8 +319,6 @@ module a11_four_bit_4(
     wire CO16;
     wire Z13_;
     wire Z14_;
-    wire Z15_;
-    wire Z16_;
     wire RL16;
     wire G16_;
     wire GEM15;
@@ -650,7 +652,7 @@ module a11_four_bit_4(
     // Z register flip-flop
     nor_3 #(1'b0)  NOR54434(NOR54434_out,   WZG_,           WL15_,          n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b1)  NOR54435(Z15_,           NOR54434_out,   NOR54436_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR54435(A11_1_Z15_,     NOR54434_out,   NOR54436_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR54436(NOR54436_out,   Z15_,           CZG,            n0VDCA,         p4SW, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR54437(NOR54437_out,   RZG_,           Z15_,           n0VDCA,         p4SW, reset, prop_clk);
@@ -776,7 +778,7 @@ module a11_four_bit_4(
     // Z register flip-flop
     nor_3 #(1'b0)  NOR54334(NOR54334_out,   WZG_,           WL16_,          n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b1)  NOR54335(Z16_,           NOR54334_out,   NOR54336_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR54335(A11_1_Z16_,     NOR54334_out,   NOR54336_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR54336(NOR54336_out,   Z16_,           CZG,            n0VDCA,         p4SW, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR54337(NOR54337_out,   RZG_,           Z16_,           n0VDCA,         p4SW, reset, prop_clk);

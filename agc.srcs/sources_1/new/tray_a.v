@@ -1,436 +1,492 @@
 `timescale 1ns / 1ps
 
 module tray_a(
-    input wire NHALGA,
-    
-    input wire prop_clk,
-    input wire CLOCK,
-    input wire reset
-    );
+	input wire BLKUPL_,
+	input wire BMGXM,
+	input wire BMGXP,
+	input wire BMGYM,
+	input wire BMGYP,
+	input wire BMGZM,
+	input wire BMGZP,
+	input wire CAURST,
+	input wire CDUFAL,
+	input wire CDUXM,
+	input wire CDUXP,
+	input wire CDUYM,
+	input wire CDUYP,
+	input wire CDUZM,
+	input wire CDUZP,
+	input wire CLOCK,
+	input wire CTLSAT,
+	input wire DBLTST,
+	input wire DKBSNC,
+	input wire DKEND,
+	input wire DKSTRT,
+	input wire DOSCAL,
+	input wire FLTOUT,
+	input wire FREFUN,
+	input wire GATEX_,
+	input wire GATEY_,
+	input wire GATEZ_,
+	input wire GCAPCL,
+	input wire GUIREL,
+	input wire HOLFUN,
+	input wire IMUCAG,
+	input wire IMUFAL,
+	input wire IMUOPR,
+	input wire IN3008,
+	input wire IN3212,
+	input wire IN3213,
+	input wire IN3214,
+	input wire IN3216,
+	input wire IN3301,
+	input wire ISSTOR,
+	input wire LEMATT,
+	input wire LFTOFF,
+	input wire LRIN0,
+	input wire LRIN1,
+	input wire LRRLSC,
+	input wire LVDAGD,
+	input wire MAINRS,
+	input wire MAMU,
+	input wire MANRmP,
+	input wire MANRmR,
+	input wire MANRmY,
+	input wire MANRpP,
+	input wire MANRpR,
+	input wire MANRpY,
+	input wire MARK,
+	input wire MDT01,
+	input wire MDT02,
+	input wire MDT03,
+	input wire MDT04,
+	input wire MDT05,
+	input wire MDT06,
+	input wire MDT07,
+	input wire MDT08,
+	input wire MDT09,
+	input wire MDT10,
+	input wire MDT11,
+	input wire MDT12,
+	input wire MDT13,
+	input wire MDT14,
+	input wire MDT15,
+	input wire MDT16,
+	input wire MKEY1,
+	input wire MKEY2,
+	input wire MKEY3,
+	input wire MKEY4,
+	input wire MKEY5,
+	input wire MLDCH,
+	input wire MLOAD,
+	input wire MNHNC,
+	input wire MNHRPT,
+	input wire MNHSBF,
+	input wire MNIMmP,
+	input wire MNIMmR,
+	input wire MNIMmY,
+	input wire MNIMpP,
+	input wire MNIMpR,
+	input wire MNIMpY,
+	input wire MONPAR,
+	input wire MONWBK,
+	input wire MRDCH,
+	input wire MREAD,
+	input wire MRKREJ,
+	input wire MRKRST,
+	input wire MSTP,
+	input wire MSTRT,
+	input wire MTCSAI,
+	input wire NAVRST,
+	input wire NHALGA,
+	input wire NHVFAL,
+	input wire NKEY1,
+	input wire NKEY2,
+	input wire NKEY3,
+	input wire NKEY4,
+	input wire NKEY5,
+	input wire OPCDFL,
+	input wire OPMSW2,
+	input wire OPMSW3,
+	input wire PCHGOF,
+	input wire PIPAXm,
+	input wire PIPAXp,
+	input wire PIPAYm,
+	input wire PIPAYp,
+	input wire PIPAZm,
+	input wire PIPAZp,
+	input wire ROLGOF,
+	input wire RRIN0,
+	input wire RRIN1,
+	input wire RRPONA,
+	input wire RRRLSC,
+	input wire S4BSAB,
+	input wire SA01,
+	input wire SA02,
+	input wire SA03,
+	input wire SA04,
+	input wire SA05,
+	input wire SA06,
+	input wire SA07,
+	input wire SA08,
+	input wire SA09,
+	input wire SA10,
+	input wire SA11,
+	input wire SA12,
+	input wire SA13,
+	input wire SA14,
+	input wire SA16,
+	input wire SAP,
+	input wire SBYBUT,
+	input wire SCAFAL,
+	input wire SHAFTM,
+	input wire SHAFTP,
+	input wire SIGNX,
+	input wire SIGNY,
+	input wire SIGNZ,
+	input wire SMSEPR,
+	input wire SPSRDY,
+	input wire STRPRS,
+	input wire STRT2,
+	input wire TEMPIN,
+	input wire TRANmX,
+	input wire TRANmY,
+	input wire TRANmZ,
+	input wire TRANpX,
+	input wire TRANpY,
+	input wire TRANpZ,
+	input wire TRNM,
+	input wire TRNP,
+	input wire TRST10,
+	input wire TRST9,
+	input wire ULLTHR,
+	input wire UPL0,
+	input wire UPL1,
+	input wire VFAIL,
+	input wire XLNK0,
+	input wire XLNK1,
+	input wire ZEROP,
+	input wire n2FSFAL,
 
-	reg BLKUPL_ = 1;
-	reg BMGXM = 0;
-	reg BMGXP = 0;
-	reg BMGYM = 0;
-	reg BMGYP = 0;
-	reg BMGZM = 0;
-	reg BMGZP = 0;
-	reg CAURST = 0;
-	reg CDUFAL = 0;
-	reg CDUXM = 0;
-	reg CDUXP = 0;
-	reg CDUYM = 0;
-	reg CDUYP = 0;
-	reg CDUZM = 0;
-	reg CDUZP = 0;
-	//reg CLOCK = 0;
-	reg CTLSAT = 0;
-	reg DBLTST = 0;
-	reg DKBSNC = 0;
-	reg DKEND = 0;
-	reg DKSTRT = 0;
-	reg DOSCAL = 0;
-	reg DRPRST = 0;
-	reg FLTOUT = 0;
-	reg FREFUN = 0;
-	reg GATEX_ = 1;
-	reg GATEY_ = 1;
-	reg GATEZ_ = 1;
-	reg GCAPCL = 0;
-	reg GUIREL = 0;
-	reg HOLFUN = 0;
-	reg IMUCAG = 0;
-	reg IMUFAL = 0;
-	reg IMUOPR = 0;
-	reg IN3008 = 0;
-	reg IN3212 = 0;
-	reg IN3213 = 0;
-	reg IN3214 = 0;
-	reg IN3216 = 0;
-	reg IN3301 = 0;
-	reg ISSTOR = 0;
-	reg LEMATT = 0;
-	reg LFTOFF = 0;
-	reg LRIN0 = 0;
-	reg LRIN1 = 0;
-	reg LRRLSC = 0;
-	reg LVDAGD = 0;
-	reg MAINRS = 0;
-	reg MAMU = 0;
-	reg MANRmP = 0;
-	reg MANRmR = 0;
-	reg MANRmY = 0;
-	reg MANRpP = 0;
-	reg MANRpR = 0;
-	reg MANRpY = 0;
-	reg MARK = 0;
-	reg MDT01 = 0;
-	reg MDT02 = 0;
-	reg MDT03 = 0;
-	reg MDT04 = 0;
-	reg MDT05 = 0;
-	reg MDT06 = 0;
-	reg MDT07 = 0;
-	reg MDT08 = 0;
-	reg MDT09 = 0;
-	reg MDT10 = 0;
-	reg MDT11 = 0;
-	reg MDT12 = 0;
-	reg MDT13 = 0;
-	reg MDT14 = 0;
-	reg MDT15 = 0;
-	reg MDT16 = 0;
-	reg MKEY1 = 0;
-	reg MKEY2 = 0;
-	reg MKEY3 = 0;
-	reg MKEY4 = 0;
-	reg MKEY5 = 0;
-	reg MLDCH = 0;
-	reg MLOAD = 0;
-	reg MNHNC = 0;
-	reg MNHRPT = 0;
-	reg MNHSBF = 0;
-	reg MNIMmP = 0;
-	reg MNIMmR = 0;
-	reg MNIMmY = 0;
-	reg MNIMpP = 0;
-	reg MNIMpR = 0;
-	reg MNIMpY = 0;
-	reg MONPAR = 0;
-	reg MONWBK = 0;
-	reg MRDCH = 0;
-	reg MREAD = 0;
-	reg MRKREJ = 0;
-	reg MRKRST = 0;
-	reg MSTP = 0;
-	reg MSTRT = 0;
-	reg MTCSAI = 0;
-	reg NAVRST = 0;
-	//reg NHALGA = 0;
-	reg NHVFAL = 0;
-	reg NKEY1 = 0;
-	reg NKEY2 = 0;
-	reg NKEY3 = 0;
-	reg NKEY4 = 0;
-	reg NKEY5 = 0;
-	reg OPCDFL = 0;
-	reg OPMSW2 = 0;
-	reg OPMSW3 = 0;
-	reg PCHGOF = 0;
-	reg PIPAXm = 0;
-	reg PIPAXp = 0;
-	reg PIPAYm = 0;
-	reg PIPAYp = 0;
-	reg PIPAZm = 0;
-	reg PIPAZp = 0;
-	reg ROLGOF = 0;
-	reg RRIN0 = 0;
-	reg RRIN1 = 0;
-	reg RRPONA = 0;
-	reg RRRLSC = 0;
-	reg S4BSAB = 0;
-	reg SA01 = 0;
-	reg SA02 = 0;
-	reg SA03 = 0;
-	reg SA04 = 0;
-	reg SA05 = 0;
-	reg SA06 = 0;
-	reg SA07 = 0;
-	reg SA08 = 0;
-	reg SA09 = 0;
-	reg SA10 = 0;
-	reg SA11 = 0;
-	reg SA12 = 0;
-	reg SA13 = 0;
-	reg SA14 = 0;
-	reg SA16 = 0;
-	reg SAP = 0;
-	reg SBYBUT = 0;
-	reg SCAFAL = 0;
-	reg SHAFTM = 0;
-	reg SHAFTP = 0;
-	reg SIGNX = 0;
-	reg SIGNY = 0;
-	reg SIGNZ = 0;
-	reg SMSEPR = 0;
-	reg SPSRDY = 0;
-	reg STRPRS = 0;
-	reg STRT2 = 0;
-	reg TEMPIN = 0;
-	reg TRANmX = 0;
-	reg TRANmY = 0;
-	reg TRANmZ = 0;
-	reg TRANpX = 0;
-	reg TRANpY = 0;
-	reg TRANpZ = 0;
-	reg TRNM = 0;
-	reg TRNP = 0;
-	reg TRST10 = 0;
-	reg TRST9 = 0;
-	reg ULLTHR = 0;
-	reg UPL0 = 0;
-	reg UPL1 = 0;
-	reg VFAIL = 0;
-	reg XLNK0 = 0;
-	reg XLNK1 = 0;
-	reg ZEROP = 0;
-	reg n0VDCA = 0;
-	reg n2FSFAL = 0;
-	reg p4SW = 1;
-	reg p4VDC = 1;
-	//reg prop_clk = 1;
-	//reg reset = 0;
+	output wire ALGA,
+	output wire ALRT0,
+	output wire ALRT1,
+	output wire ALT0,
+	output wire ALT1,
+	output wire ALTSNC,
+	output wire CDUCLK,
+	output wire CDUXDM,
+	output wire CDUXDP,
+	output wire CDUYDM,
+	output wire CDUYDP,
+	output wire CDUZDM,
+	output wire CDUZDP,
+	output wire CGCWAR,
+	output wire CLK,
+	output wire CLROPE,
+	output wire COARSE,
+	output wire COMACT,
+	output wire DISDAC,
+	output wire DKDATA,
+	output wire DKDATB,
+	output wire ELSNCM,
+	output wire ELSNCN,
+	output wire EMSm,
+	output wire EMSp,
+	output wire ENERIM,
+	output wire ENEROP,
+	output wire FILTIN,
+	output wire GEM01,
+	output wire GEM02,
+	output wire GEM03,
+	output wire GEM04,
+	output wire GEM05,
+	output wire GEM06,
+	output wire GEM07,
+	output wire GEM08,
+	output wire GEM09,
+	output wire GEM10,
+	output wire GEM11,
+	output wire GEM12,
+	output wire GEM13,
+	output wire GEM14,
+	output wire GEM16,
+	output wire GEMP,
+	output wire GYENAB,
+	output wire GYRRST,
+	output wire GYRSET,
+	output wire GYXM,
+	output wire GYXP,
+	output wire GYYM,
+	output wire GYYP,
+	output wire GYZM,
+	output wire GYZP,
+	output wire HIMOD,
+	output wire IHENV,
+	output wire IL01,
+	output wire IL01_,
+	output wire IL02,
+	output wire IL02_,
+	output wire IL03,
+	output wire IL03_,
+	output wire IL04,
+	output wire IL04_,
+	output wire IL05,
+	output wire IL05_,
+	output wire IL06,
+	output wire IL06_,
+	output wire IL07,
+	output wire IL07_,
+	output wire ILP,
+	output wire ILP_,
+	output wire ISSTDC,
+	output wire ISSWAR,
+	output wire KYRLS,
+	output wire LOMOD,
+	output wire LRRANG,
+	output wire LRRST,
+	output wire LRSYNC,
+	output wire LRXVEL,
+	output wire LRYVEL,
+	output wire LRZVEL,
+	output wire MBR1,
+	output wire MBR2,
+	output wire MCTRAL_,
+	output wire MGOJAM,
+	output wire MGP_,
+	output wire MIIP,
+	output wire MINHL,
+	output wire MINKL,
+	output wire MNISQ,
+	output wire MON800,
+	output wire MONWT,
+	output wire MOSCAL_,
+	output wire MPAL_,
+	output wire MPIPAL_,
+	output wire MRAG,
+	output wire MRCH,
+	output wire MREQIN,
+	output wire MRGG,
+	output wire MRLG,
+	output wire MROLGT,
+	output wire MRPTAL_,
+	output wire MRSC,
+	output wire MRULOG,
+	output wire MSCAFL_,
+	output wire MSP,
+	output wire MSQ10,
+	output wire MSQ11,
+	output wire MSQ12,
+	output wire MSQ13,
+	output wire MSQ14,
+	output wire MSQ16,
+	output wire MSQEXT,
+	output wire MST1,
+	output wire MST2,
+	output wire MSTPIT_,
+	output wire MT01,
+	output wire MT02,
+	output wire MT03,
+	output wire MT04,
+	output wire MT05,
+	output wire MT06,
+	output wire MT07,
+	output wire MT08,
+	output wire MT09,
+	output wire MT10,
+	output wire MT11,
+	output wire MT12,
+	output wire MTCAL_,
+	output wire MTCSA_,
+	output wire MVFAIL_,
+	output wire MWAG,
+	output wire MWARNF_,
+	output wire MWATCH_,
+	output wire MWBBEG,
+	output wire MWBG,
+	output wire MWCH,
+	output wire MWEBG,
+	output wire MWFBG,
+	output wire MWG,
+	output wire MWL01,
+	output wire MWL02,
+	output wire MWL03,
+	output wire MWL04,
+	output wire MWL05,
+	output wire MWL06,
+	output wire MWL07,
+	output wire MWL08,
+	output wire MWL09,
+	output wire MWL10,
+	output wire MWL11,
+	output wire MWL12,
+	output wire MWL13,
+	output wire MWL14,
+	output wire MWL15,
+	output wire MWL16,
+	output wire MWLG,
+	output wire MWQG,
+	output wire MWSG,
+	output wire MWYG,
+	output wire MWZG,
+	output wire OPEROR,
+	output wire OT1108,
+	output wire OT1110,
+	output wire OT1111,
+	output wire OT1112,
+	output wire OT1113,
+	output wire OT1114,
+	output wire OT1116,
+	output wire OT1207,
+	output wire OT1207_,
+	output wire OTLNK0,
+	output wire OTLNK1,
+	output wire OUTCOM,
+	output wire PIPASW,
+	output wire PIPDAT,
+	output wire PIPINT,
+	output wire Q2A,
+	output wire RCmXmP,
+	output wire RCmXmY,
+	output wire RCmXpP,
+	output wire RCmXpY,
+	output wire RCmYmR,
+	output wire RCmYpR,
+	output wire RCmZmR,
+	output wire RCmZpR,
+	output wire RCpXmP,
+	output wire RCpXmY,
+	output wire RCpXpP,
+	output wire RCpXpY,
+	output wire RCpYmR,
+	output wire RCpYpR,
+	output wire RCpZmR,
+	output wire RCpZpR,
+	output wire RESETA,
+	output wire RESETB,
+	output wire RESETC,
+	output wire RESETD,
+	output wire RESTRT,
+	output wire REX,
+	output wire REY,
+	output wire RHCGO,
+	output wire RLYB01,
+	output wire RLYB02,
+	output wire RLYB03,
+	output wire RLYB04,
+	output wire RLYB05,
+	output wire RLYB06,
+	output wire RLYB07,
+	output wire RLYB08,
+	output wire RLYB09,
+	output wire RLYB10,
+	output wire RLYB11,
+	output wire ROPER,
+	output wire ROPES,
+	output wire ROPET,
+	output wire RRRANG,
+	output wire RRRARA,
+	output wire RRRST,
+	output wire RRSYNC,
+	output wire RSTKX_,
+	output wire RSTKY_,
+	output wire RYWD12,
+	output wire RYWD13,
+	output wire RYWD14,
+	output wire RYWD16,
+	output wire S4BOFF,
+	output wire S4BSEQ,
+	output wire S4BTAK,
+	output wire SBE,
+	output wire SBF,
+	output wire SBYLIT,
+	output wire SBYREL_,
+	output wire SCAS10,
+	output wire SCAS17,
+	output wire SETAB,
+	output wire SETCD,
+	output wire SETEK,
+	output wire SHFTDM,
+	output wire SHFTDP,
+	output wire STARON,
+	output wire STNDBY,
+	output wire STR14,
+	output wire STR19,
+	output wire STR210,
+	output wire STR311,
+	output wire STR412,
+	output wire STR58,
+	output wire STR912,
+	output wire STRT1,
+	output wire SYNC14_,
+	output wire SYNC4_,
+	output wire THRSTm,
+	output wire THRSTp,
+	output wire TMPCAU,
+	output wire TRNDM,
+	output wire TRNDP,
+	output wire TVCNAB,
+	output wire UPLACT,
+	output wire VNFLSH,
+	output wire WEX,
+	output wire WEY,
+	output wire XB0E,
+	output wire XB1E,
+	output wire XB2E,
+	output wire XB3E,
+	output wire XB4E,
+	output wire XB5E,
+	output wire XB6E,
+	output wire XB7E,
+	output wire XT0E,
+	output wire XT1E,
+	output wire XT2E,
+	output wire XT3E,
+	output wire XT4E,
+	output wire XT5E,
+	output wire XT6E,
+	output wire XT7E,
+	output wire YB0E,
+	output wire YB1E,
+	output wire YB2E,
+	output wire YB3E,
+	output wire YT0E,
+	output wire YT1E,
+	output wire YT2E,
+	output wire YT3E,
+	output wire YT4E,
+	output wire YT5E,
+	output wire YT6E,
+	output wire YT7E,
+	output wire ZEROPT,
+	output wire ZID,
+	output wire ZIMCDU,
+	output wire ZOPCDU,
+	output wire n12KPPS,
+	output wire n25KPPS,
+	output wire n3200A,
+	output wire n3200B,
+	output wire n3200C,
+	output wire n3200D,
+	output wire n800RST,
+	output wire n800SET,
 
-	wire A03_1_RPTSET;
-	wire A03_2_RPTSET;
-	wire A03_3_RPTSET;
-	wire A04_1_CI_;
-	wire A04_1_L16_;
-	wire A04_1_RA_;
-	wire A04_1_RB1_;
-	wire A04_1_RB_;
-	wire A04_1_RC_;
-	wire A04_1_RSC_;
-	wire A04_1_TMZ_;
-	wire A04_1_TSGN_;
-	wire A04_1_WG_;
-	wire A04_1_WL_;
-	wire A04_1_WY_;
-	wire A04_1_n8PP4;
-	wire A04_2_RA_;
-	wire A04_2_RB_;
-	wire A04_2_RC_;
-	wire A04_2_TSGN_;
-	wire A04_2_WG_;
-	wire A04_2_WY_;
-	wire A04_3_WG_;
-	wire A05_1_A2X_;
-	wire A05_1_CI_;
-	wire A05_1_MONEX_;
-	wire A05_1_RA_;
-	wire A05_1_RB_;
-	wire A05_1_RC_;
-	wire A05_1_RG_;
-	wire A05_1_RL_;
-	wire A05_1_RU_;
-	wire A05_1_RZ_;
-	wire A05_1_ST2_;
-	wire A05_1_TMZ_;
-	wire A05_1_TOV_;
-	wire A05_1_TSGN_;
-	wire A05_1_WA_;
-	wire A05_1_WB_;
-	wire A05_1_WG_;
-	wire A05_1_WL_;
-	wire A05_1_WS_;
-	wire A05_1_WY12_;
-	wire A05_1_WYD_;
-	wire A05_1_WY_;
-	wire A05_1_WZ_;
-	wire A05_1_Z15_;
-	wire A05_1_Z16_;
-	wire A05_2_A2X_;
-	wire A05_2_CI_;
-	wire A05_2_RA_;
-	wire A05_2_RB_;
-	wire A05_2_RC_;
-	wire A05_2_RG_;
-	wire A05_2_RL_;
-	wire A05_2_RU_;
-	wire A05_2_RZ_;
-	wire A05_2_TMZ_;
-	wire A05_2_TSGN_;
-	wire A05_2_WA_;
-	wire A05_2_WB_;
-	wire A05_2_WL_;
-	wire A05_2_WY12_;
-	wire A05_2_WY_;
-	wire A05_2_WZ_;
-	wire A05_3_RA_;
-	wire A05_3_RB_;
-	wire A05_3_RC_;
-	wire A05_3_RG_;
-	wire A05_3_RU_;
-	wire A05_3_RZ_;
-	wire A05_3_WA_;
-	wire A05_3_WB_;
-	wire A05_3_WY_;
-	wire A05_4_RB_;
-	wire A05_4_RC_;
-	wire A05_4_RG_;
-	wire A05_4_WB_;
-	wire A06_1_A2X_;
-	wire A06_1_CI_;
-	wire A06_1_MONEX_;
-	wire A06_1_RB1_;
-	wire A06_1_RB_;
-	wire A06_1_RC_;
-	wire A06_1_RG_;
-	wire A06_1_RPTSET;
-	wire A06_1_RU_;
-	wire A06_1_RZ_;
-	wire A06_1_ST2_;
-	wire A06_1_TOV_;
-	wire A06_1_WA_;
-	wire A06_1_WB_;
-	wire A06_1_WG_;
-	wire A06_1_WL_;
-	wire A06_1_WSC_;
-	wire A06_1_WS_;
-	wire A06_1_WYD_;
-	wire A06_1_WY_;
-	wire A06_1_WZ_;
-	wire A06_1_n8PP4;
-	wire A06_2_RB_;
-	wire A06_2_RC_;
-	wire A06_2_RG_;
-	wire A06_2_RU_;
-	wire A06_2_ST2_;
-	wire A06_2_WA_;
-	wire A06_2_WB_;
-	wire A06_2_WG_;
-	wire A06_2_WSC_;
-	wire A06_2_n8PP4;
-	wire A06_3_RU_;
-	wire A06_3_n8PP4;
-	wire A06_4_RU_;
-	wire A10_1_RL09_;
-	wire A10_1_RL10_;
-	wire A10_1_RL11_;
-	wire A10_1_RL12_;
-	wire A10_2_RL09_;
-	wire A10_2_RL10_;
-	wire A10_2_RL11_;
-	wire A10_2_RL12_;
-	wire A10_3_RL09_;
-	wire A10_3_RL10_;
-	wire A10_3_RL11_;
-	wire A10_3_RL12_;
-	wire A10_4_RL09_;
-	wire A10_4_RL10_;
-	wire A10_4_RL11_;
-	wire A10_4_RL12_;
-	wire A11_1_L16_;
-	wire A11_1_RL13_;
-	wire A11_1_RL14_;
-	wire A11_1_RL15_;
-	wire A11_1_RL16_;
-	wire A11_2_RL13_;
-	wire A11_2_RL14_;
-	wire A11_2_RL15_;
-	wire A11_2_RL16_;
-	wire A11_3_RL13_;
-	wire A11_3_RL14_;
-	wire A11_3_RL15_;
-	wire A11_3_RL16_;
-	wire A11_4_RL13_;
-	wire A11_4_RL14_;
-	wire A11_4_RL15_;
-	wire A11_4_RL16_;
-	wire A12_1_RSC_;
-	wire A12_1_WG_;
+	input wire reset,
+	input wire prop_clk,
+	input wire n0VDCA,
+	input wire p4VDC,
+	input wire p4SW
+);
+
 	wire A15_;
-	wire A15_1_RL09_;
-	wire A15_1_RL10_;
-	wire A15_1_RL11_;
-	wire A15_1_RL12_;
-	wire A15_1_RL13_;
-	wire A15_1_RL14_;
-	wire A15_1_RL15_;
-	wire A15_1_RL16_;
 	wire A16_;
-	wire A16_1_CHOR01_;
-	wire A16_1_CHOR02_;
-	wire A16_1_CHOR03_;
-	wire A16_1_CHOR04_;
-	wire A16_1_CHOR05_;
-	wire A16_1_CHOR06_;
-	wire A16_1_CHOR07_;
-	wire A16_1_CHOR08_;
-	wire A16_2_CHOR01_;
-	wire A16_2_CHOR02_;
-	wire A16_2_CHOR03_;
-	wire A16_2_CHOR04_;
-	wire A16_2_CHOR05_;
-	wire A16_2_CHOR06_;
-	wire A16_2_CHOR07_;
-	wire A17_1_CHOR01_;
-	wire A17_1_CHOR02_;
-	wire A17_1_CHOR03_;
-	wire A17_1_CHOR04_;
-	wire A17_1_CHOR05_;
-	wire A17_1_CHOR06_;
-	wire A17_1_CHOR07_;
-	wire A17_1_CHOR08_;
-	wire A17_1_CHOR09_;
-	wire A17_1_CHOR10_;
-	wire A17_1_CHOR11_;
-	wire A17_1_CHOR12_;
-	wire A17_1_CHOR13_;
-	wire A17_1_CHOR14_;
-	wire A17_1_CHOR16_;
-	wire A17_2_CHOR01_;
-	wire A17_2_CHOR02_;
-	wire A17_2_CHOR03_;
-	wire A17_2_CHOR04_;
-	wire A17_2_CHOR05_;
-	wire A17_2_CHOR06_;
-	wire A17_2_CHOR07_;
-	wire A17_2_CHOR08_;
-	wire A17_2_CHOR09_;
-	wire A17_2_CHOR10_;
-	wire A17_2_CHOR11_;
-	wire A17_2_CHOR12_;
-	wire A17_2_CHOR13_;
-	wire A17_2_CHOR14_;
-	wire A17_2_CHOR16_;
-	wire A17_3_CHOR13_;
-	wire A18_1_CHOR11_;
-	wire A18_1_CHOR12_;
-	wire A18_1_CHOR13_;
-	wire A18_1_CHOR14_;
-	wire A18_1_CHOR16_;
-	wire A18_2_CHOR11_;
-	wire A18_2_CHOR12_;
-	wire A18_2_CHOR14_;
-	wire A22_10_DATA_;
-	wire A22_1_DATA_;
-	wire A22_2_DATA_;
-	wire A22_3_DATA_;
-	wire A22_4_DATA_;
-	wire A22_5_DATA_;
-	wire A22_6_DATA_;
-	wire A22_7_DATA_;
-	wire A22_8_DATA_;
-	wire A22_9_DATA_;
-	wire A23_1_CHOR01_;
-	wire A23_1_CHOR02_;
-	wire A23_1_CHOR03_;
-	wire A23_1_CHOR04_;
-	wire A23_1_CHOR05_;
-	wire A23_1_CHOR06_;
-	wire A23_1_CHOR07_;
-	wire A23_1_CHOR08_;
-	wire A23_1_CHOR09_;
-	wire A23_1_CHOR10_;
-	wire A23_1_DATA_;
-	wire A23_2_CHOR05_;
-	wire A23_2_CHOR08_;
-	wire A23_2_CHOR09_;
-	wire A23_2_CHOR10_;
 	wire A2XG_;
 	wire A2X_;
 	wire AD0;
 	wire ADS0;
 	wire AGCWAR;
-	wire ALGA;
-	wire ALRT0;
-	wire ALRT1;
-	wire ALT0;
-	wire ALT1;
 	wire ALTEST;
 	wire ALTM;
-	wire ALTSNC;
 	wire AUG0_;
 	wire B15X;
 	wire BBK1;
@@ -445,9 +501,7 @@ module tray_a(
 	wire BMAGZP;
 	wire BOTHZ;
 	wire BR1;
-	wire BR12B;
 	wire BR12B_;
-	wire BR1B2;
 	wire BR1B2B;
 	wire BR1B2B_;
 	wire BR1B2_;
@@ -516,23 +570,15 @@ module tray_a(
 	wire CCHG_;
 	wire CCS0;
 	wire CCS0_;
-	wire CDUCLK;
 	wire CDUSTB_;
 	wire CDUXD;
-	wire CDUXDM;
-	wire CDUXDP;
 	wire CDUYD;
-	wire CDUYDM;
-	wire CDUYDP;
 	wire CDUZD;
-	wire CDUZDM;
-	wire CDUZDP;
 	wire CEBG;
 	wire CFBG;
 	wire CG13;
 	wire CG23;
 	wire CG26;
-	wire CGCWAR;
 	wire CGG;
 	wire CGMC;
 	wire CH01;
@@ -557,7 +603,6 @@ module tray_a(
 	wire CH1114;
 	wire CH1116;
 	wire CH12;
-	wire CH1207;
 	wire CH1208;
 	wire CH1209;
 	wire CH1210;
@@ -692,17 +737,10 @@ module tray_a(
 	wire CI_;
 	wire CLG1G;
 	wire CLG2G;
-	wire CLK;
-	wire CLROPE;
 	wire CLXC;
-	wire CNTRSB_;
-	wire CO02;
 	wire CO06;
 	wire CO10;
 	wire CO14;
-	wire CO16;
-	wire COARSE;
-	wire COMACT;
 	wire CQG;
 	wire CSG;
 	wire CT;
@@ -729,86 +767,50 @@ module tray_a(
 	wire DIM0_;
 	wire DINC;
 	wire DINC_;
-	wire DISDAC;
 	wire DIVSTG;
 	wire DIV_;
 	wire DKCTR4;
 	wire DKCTR4_;
 	wire DKCTR5;
 	wire DKCTR5_;
-	wire DKDATA;
-	wire DKDATB;
 	wire DLKPLS;
 	wire DLKRPT;
-	wire DV0;
-	wire DV0_;
+	wire DRPRST;
 	wire DV1;
 	wire DV1376;
 	wire DV1376_;
 	wire DV1_;
-	wire DV376;
 	wire DV3764;
 	wire DV376_;
 	wire DV4;
 	wire DV4B1B;
 	wire DV4_;
 	wire DVST;
-	wire DVXP1;
 	wire DXCH0;
 	wire E5;
 	wire E6;
 	wire E7_;
 	wire EAC_;
-	wire EAD09;
-	wire EAD09_;
-	wire EAD10;
-	wire EAD10_;
-	wire EAD11;
-	wire EAD11_;
 	wire EB10;
-	wire EB10_;
-	wire EB11;
 	wire EB11_;
 	wire EB9;
-	wire EB9_;
 	wire EDOP_;
-	wire EDSET;
-	wire ELSNCM;
-	wire ELSNCN;
 	wire EMSD;
-	wire EMSm;
-	wire EMSp;
 	wire END;
-	wire ENERIM;
-	wire ENEROP;
-	wire ERAS;
-	wire ERAS_;
 	wire ERRST;
-	wire EVNSET;
-	wire EVNSET_;
 	wire EXST0_;
 	wire EXST1_;
 	wire EXT;
 	wire EXTPLS;
 	wire F01A;
 	wire F01B;
-	wire F01C;
-	wire F01D;
-	wire F02A;
 	wire F02B;
-	wire F03A;
-	wire F03B;
 	wire F03B_;
 	wire F04A;
 	wire F04B;
-	wire F04B_;
-	wire F05A;
 	wire F05A_;
-	wire F05B;
 	wire F05B_;
 	wire F05D;
-	wire F06A;
-	wire F06B;
 	wire F06B_;
 	wire F07A;
 	wire F07A_;
@@ -816,10 +818,7 @@ module tray_a(
 	wire F07B_;
 	wire F07C_;
 	wire F07D_;
-	wire F08A;
 	wire F08B;
-	wire F08B_;
-	wire F09A;
 	wire F09A_;
 	wire F09B;
 	wire F09B_;
@@ -828,85 +827,18 @@ module tray_a(
 	wire F10A_;
 	wire F10B;
 	wire F10B_;
-	wire F11;
-	wire F11A;
-	wire F11B;
-	wire F11_;
-	wire F12;
-	wire F12A;
 	wire F12B;
-	wire F12_;
-	wire F13;
-	wire F13A;
-	wire F13B;
-	wire F13_;
-	wire F14;
-	wire F14A;
 	wire F14B;
-	wire F14_;
-	wire F15;
-	wire F15A;
-	wire F15B;
-	wire F15_;
-	wire F16;
-	wire F16A;
-	wire F16B;
-	wire F16_;
 	wire F17A;
 	wire F17A_;
 	wire F17B;
 	wire F17B_;
-	wire F18A;
 	wire F18AX;
-	wire F18A_;
-	wire F18B;
 	wire F18B_;
-	wire F19A;
-	wire F19B;
-	wire F20A;
-	wire F20B;
-	wire F21A;
-	wire F21B;
-	wire F22A;
-	wire F22B;
-	wire F23A;
-	wire F23B;
-	wire F24A;
-	wire F24B;
-	wire F25A;
-	wire F25B;
-	wire F26A;
-	wire F26B;
-	wire F27A;
-	wire F27B;
-	wire F28A;
-	wire F28B;
-	wire F29A;
-	wire F29B;
-	wire F30A;
-	wire F30B;
-	wire F31A;
-	wire F31B;
-	wire F32A;
-	wire F32B;
-	wire F33A;
-	wire F33B;
 	wire F5ASB0_;
 	wire F5ASB2;
 	wire F5ASB2_;
-	wire F5BSB2;
 	wire F5BSB2_;
-	wire F7CSB1_;
-	wire FB11;
-	wire FB11_;
-	wire FB12;
-	wire FB12_;
-	wire FB13;
-	wire FB13_;
-	wire FB14;
-	wire FB14_;
-	wire FB16;
-	wire FB16_;
 	wire FETCH0;
 	wire FETCH0_;
 	wire FETCH1;
@@ -914,24 +846,17 @@ module tray_a(
 	wire FF1110_;
 	wire FF1111_;
 	wire FF1112_;
-	wire FILTIN;
 	wire FLASH;
 	wire FLASH_;
-	wire FNERAS_;
 	wire FS01;
 	wire FS01_;
 	wire FS02;
-	wire FS02A;
 	wire FS03;
-	wire FS03A;
 	wire FS04;
-	wire FS04A;
 	wire FS05;
-	wire FS05A;
 	wire FS05_;
 	wire FS06;
 	wire FS06_;
-	wire FS07;
 	wire FS07A;
 	wire FS07_;
 	wire FS08;
@@ -939,29 +864,10 @@ module tray_a(
 	wire FS09;
 	wire FS09_;
 	wire FS10;
-	wire FS11;
-	wire FS12;
 	wire FS13;
 	wire FS14;
-	wire FS15;
 	wire FS16;
 	wire FS17;
-	wire FS18;
-	wire FS19;
-	wire FS20;
-	wire FS21;
-	wire FS22;
-	wire FS23;
-	wire FS24;
-	wire FS25;
-	wire FS26;
-	wire FS27;
-	wire FS28;
-	wire FS29;
-	wire FS30;
-	wire FS31;
-	wire FS32;
-	wire FS33;
 	wire FUTEXT;
 	wire G01;
 	wire G01ED;
@@ -972,7 +878,6 @@ module tray_a(
 	wire G03ED;
 	wire G04;
 	wire G04ED;
-	wire G04_;
 	wire G05;
 	wire G05ED;
 	wire G05_;
@@ -983,7 +888,6 @@ module tray_a(
 	wire G07ED;
 	wire G07_;
 	wire G08;
-	wire G08_;
 	wire G09;
 	wire G09_;
 	wire G10;
@@ -991,7 +895,6 @@ module tray_a(
 	wire G11;
 	wire G11_;
 	wire G12;
-	wire G12_;
 	wire G13;
 	wire G13_;
 	wire G14;
@@ -1000,51 +903,21 @@ module tray_a(
 	wire G15_;
 	wire G16;
 	wire G16SW_;
-	wire G16_;
 	wire G2LSG_;
-	wire GEM01;
-	wire GEM02;
-	wire GEM03;
-	wire GEM04;
-	wire GEM05;
-	wire GEM06;
-	wire GEM07;
-	wire GEM08;
-	wire GEM09;
-	wire GEM10;
-	wire GEM11;
-	wire GEM12;
-	wire GEM13;
-	wire GEM14;
-	wire GEM15;
-	wire GEM16;
-	wire GEMP;
 	wire GEQZRO_;
 	wire GINH;
 	wire GOJ1;
 	wire GOJ1_;
 	wire GOJAM;
-	wire GOJAM_;
 	wire GTONE;
-	wire GTRST;
 	wire GTRST_;
 	wire GTSET;
 	wire GTSET_;
-	wire GYENAB;
 	wire GYROD;
-	wire GYRRST;
-	wire GYRSET;
-	wire GYXM;
-	wire GYXP;
-	wire GYYM;
-	wire GYYP;
-	wire GYZM;
-	wire GYZP;
 	wire HIGH0_;
 	wire HIGH1_;
 	wire HIGH2_;
 	wire HIGH3_;
-	wire HIMOD;
 	wire HNDRPT;
 	wire IC1;
 	wire IC10;
@@ -1070,27 +943,9 @@ module tray_a(
 	wire IC7;
 	wire IC8_;
 	wire IC9;
-	wire IHENV;
 	wire IIP;
 	wire IIP_;
-	wire IL01;
-	wire IL01_;
-	wire IL02;
-	wire IL02_;
-	wire IL03;
-	wire IL03_;
-	wire IL04;
-	wire IL04_;
-	wire IL05;
-	wire IL05_;
-	wire IL06;
-	wire IL06_;
-	wire IL07;
-	wire IL07_;
-	wire ILP;
-	wire ILP_;
 	wire INCR0;
-	wire INCSET_;
 	wire INHPLS;
 	wire INKL;
 	wire INKL_;
@@ -1099,64 +954,31 @@ module tray_a(
 	wire INOTLD;
 	wire INOUT;
 	wire INOUT_;
-	wire ISSTDC;
-	wire ISSWAR;
 	wire KRPT;
-	wire KYRLS;
 	wire KYRPT1;
 	wire KYRPT2;
 	wire L01_;
 	wire L02_;
-	wire L03_;
 	wire L04_;
-	wire L05_;
-	wire L06_;
-	wire L07_;
 	wire L08_;
-	wire L09_;
-	wire L10_;
-	wire L11_;
 	wire L12_;
-	wire L13_;
-	wire L14_;
 	wire L15_;
 	wire L16_;
 	wire L2GDG_;
 	wire L2GD_;
-	wire LOMOD;
 	wire LOW6_;
 	wire LOW7_;
-	wire LRRANG;
-	wire LRRST;
-	wire LRSYNC;
-	wire LRXVEL;
-	wire LRYVEL;
-	wire LRZVEL;
 	wire MASK0;
 	wire MASK0_;
-	wire MBR1;
-	wire MBR2;
 	wire MCDU;
-	wire MCDU_;
 	wire MCRO_;
-	wire MCTRAL_;
-	wire MGOJAM;
-	wire MGP_;
-	wire MIIP;
 	wire MINC;
-	wire MINC_;
-	wire MINHL;
-	wire MINKL;
 	wire MISSZ;
 	wire MKRPT;
-	wire MNISQ;
-	wire MON800;
 	wire MONEX;
 	wire MONEX_;
-	wire MONWT;
 	wire MON_;
 	wire MONpCH;
-	wire MOSCAL_;
 	wire MOUT;
 	wire MOUT_;
 	wire MP0;
@@ -1167,77 +989,9 @@ module tray_a(
 	wire MP3;
 	wire MP3A;
 	wire MP3_;
-	wire MPAL;
-	wire MPIPAL_;
-	wire MRAG;
-	wire MRCH;
-	wire MREQIN;
-	wire MRGG;
-	wire MRLG;
-	wire MROLGT;
-	wire MRPTAL_;
-	wire MRSC_;
-	wire MRULOG;
-	wire MSCAFL_;
-	wire MSP;
-	wire MSQ10;
-	wire MSQ11;
-	wire MSQ12;
-	wire MSQ13;
-	wire MSQ14;
-	wire MSQ16;
-	wire MSQEXT;
-	wire MST1;
-	wire MST2;
-	wire MSTPIT_;
 	wire MSTRTP;
 	wire MSU0;
 	wire MSU0_;
-	wire MT01;
-	wire MT02;
-	wire MT03;
-	wire MT04;
-	wire MT05;
-	wire MT06;
-	wire MT07;
-	wire MT08;
-	wire MT09;
-	wire MT10;
-	wire MT11;
-	wire MT12;
-	wire MTCAL_;
-	wire MTCSA_;
-	wire MVFAIL_;
-	wire MWAG;
-	wire MWARNF_;
-	wire MWATCH_;
-	wire MWBBEG;
-	wire MWBG;
-	wire MWCH;
-	wire MWEBG;
-	wire MWFBG;
-	wire MWG;
-	wire MWL01;
-	wire MWL02;
-	wire MWL03;
-	wire MWL04;
-	wire MWL05;
-	wire MWL06;
-	wire MWL07;
-	wire MWL08;
-	wire MWL09;
-	wire MWL10;
-	wire MWL11;
-	wire MWL12;
-	wire MWL13;
-	wire MWL14;
-	wire MWL15;
-	wire MWL16;
-	wire MWLG;
-	wire MWQG;
-	wire MWSG;
-	wire MWYG;
-	wire MWZG;
 	wire NDR100_;
 	wire NDX0_;
 	wire NDXX1_;
@@ -1252,52 +1006,25 @@ module tray_a(
 	wire OCTAD4;
 	wire OCTAD5;
 	wire OCTAD6;
-	wire ODDSET_;
 	wire ONE;
-	wire OPEROR;
 	wire OSCALM;
-	wire OT1108;
-	wire OT1110;
-	wire OT1111;
-	wire OT1112;
-	wire OT1113;
-	wire OT1114;
-	wire OT1116;
-	wire OT1207;
-	wire OT1207_;
-	wire OTLNK0;
-	wire OTLNK1;
 	wire OTLNKM;
-	wire OUTCOM;
-	wire OVF;
-	wire OVFSTB_;
 	wire OVF_;
-	wire P01;
-	wire P01_;
 	wire P02;
 	wire P02_;
 	wire P03;
 	wire P03_;
-	wire P04;
 	wire P04_;
-	wire P05;
-	wire P05_;
 	wire PALE;
 	wire PC15_;
 	wire PCDU;
-	wire PCDU_;
-	wire PHS2;
 	wire PHS2_;
 	wire PHS3_;
 	wire PHS4;
 	wire PHS4_;
 	wire PIFL_;
 	wire PINC;
-	wire PINC_;
 	wire PIPAFL;
-	wire PIPASW;
-	wire PIPDAT;
-	wire PIPINT;
 	wire PIPPLS_;
 	wire PIPSAM;
 	wire PIPSAM_;
@@ -1313,7 +1040,6 @@ module tray_a(
 	wire PRINC;
 	wire PSEUDO;
 	wire PTWOX;
-	wire Q2A;
 	wire QC0_;
 	wire QC1_;
 	wire QC2_;
@@ -1349,40 +1075,12 @@ module tray_a(
 	wire RCHG_;
 	wire RCH_;
 	wire RC_;
-	wire RCmXmP;
-	wire RCmXmY;
-	wire RCmXpP;
-	wire RCmXpY;
-	wire RCmYmR;
-	wire RCmYpR;
-	wire RCmZmR;
-	wire RCmZpR;
-	wire RCpXmP;
-	wire RCpXmY;
-	wire RCpXpP;
-	wire RCpXpY;
-	wire RCpYmR;
-	wire RCpYpR;
-	wire RCpZmR;
-	wire RCpZpR;
-	wire RDBANK;
 	wire READ0;
-	wire READ0_;
 	wire REBG_;
 	wire RELPLS;
-	wire RESETA;
-	wire RESETB;
-	wire RESETC;
-	wire RESETD;
-	wire RESTRT;
-	wire REX;
-	wire REY;
 	wire RFBG_;
 	wire RGG_;
 	wire RG_;
-	wire RHCGO;
-	wire RINGA_;
-	wire RINGB_;
 	wire RL09_;
 	wire RL10BB;
 	wire RL10_;
@@ -1393,24 +1091,9 @@ module tray_a(
 	wire RL15_;
 	wire RL16_;
 	wire RLG_;
-	wire RLYB01;
-	wire RLYB02;
-	wire RLYB03;
-	wire RLYB04;
-	wire RLYB05;
-	wire RLYB06;
-	wire RLYB07;
-	wire RLYB08;
-	wire RLYB09;
-	wire RLYB10;
-	wire RLYB11;
 	wire RL_;
 	wire RNRADM;
 	wire RNRADP;
-	wire ROPER;
-	wire ROPES;
-	wire ROPET;
-	wire ROP_;
 	wire ROR0;
 	wire RPTAD3;
 	wire RPTAD4;
@@ -1421,38 +1104,25 @@ module tray_a(
 	wire RQG_;
 	wire RQ_;
 	wire RRPA;
-	wire RRRANG;
-	wire RRRARA;
-	wire RRRST;
-	wire RRSYNC;
 	wire RSCT;
 	wire RSCT_;
 	wire RSC_;
 	wire RSM3;
 	wire RSM3_;
 	wire RSSB;
-	wire RSTKX_;
-	wire RSTKY_;
 	wire RSTRT;
 	wire RSTSTG;
-	wire RT;
 	wire RT_;
 	wire RUG_;
 	wire RULOG_;
 	wire RUPT0;
-	wire RUPT0_;
 	wire RUPT1;
-	wire RUPT1_;
 	wire RUPTOR_;
 	wire RUSG_;
 	wire RUS_;
 	wire RU_;
 	wire RXOR0;
 	wire RXOR0_;
-	wire RYWD12;
-	wire RYWD13;
-	wire RYWD14;
-	wire RYWD16;
 	wire RZG_;
 	wire RZ_;
 	wire S01;
@@ -1479,48 +1149,22 @@ module tray_a(
 	wire S11_;
 	wire S12;
 	wire S12_;
-	wire S4BOFF;
-	wire S4BSEQ;
-	wire S4BTAK;
-	wire SB0;
 	wire SB0_;
-	wire SB1;
 	wire SB1_;
 	wire SB2;
 	wire SB2_;
 	wire SB4;
-	wire SBE;
-	wire SBF;
 	wire SBY;
-	wire SBYLIT;
-	wire SBYREL_;
 	wire SCAD;
 	wire SCAD_;
-	wire SCAS10;
-	wire SCAS17;
-	wire SETAB;
-	wire SETAB_;
-	wire SETCD;
-	wire SETCD_;
-	wire SETEK;
-	wire SGUM;
 	wire SHAFTD;
-	wire SHANC;
 	wire SHANC_;
-	wire SHFTDM;
-	wire SHFTDP;
 	wire SHIFT;
 	wire SHIFT_;
-	wire SHINC;
 	wire SHINC_;
 	wire SQ0_;
 	wire SQ1_;
 	wire SQ2_;
-	wire SQ3_;
-	wire SQ4_;
-	wire SQ5_;
-	wire SQ6_;
-	wire SQ7_;
 	wire SQEXT;
 	wire SQEXT_;
 	wire SQR10;
@@ -1529,42 +1173,23 @@ module tray_a(
 	wire SR_;
 	wire ST0_;
 	wire ST1;
-	wire ST1376_;
 	wire ST1_;
 	wire ST2;
 	wire ST2_;
-	wire ST376;
-	wire ST376_;
 	wire ST3_;
-	wire ST4_;
-	wire STARON;
 	wire STBE;
 	wire STBF;
 	wire STD2;
 	wire STFET1_;
-	wire STG1;
-	wire STG2;
-	wire STNDBY;
 	wire STNDBY_;
 	wire STOP;
-	wire STOPA;
-	wire STOP_;
 	wire STORE1_;
-	wire STR14;
-	wire STR19;
-	wire STR210;
-	wire STR311;
-	wire STR412;
-	wire STR58;
-	wire STR912;
 	wire STRGAT;
-	wire STRT1;
 	wire STRTFC;
 	wire SU0;
 	wire SUMA01_;
 	wire SUMA02_;
 	wire SUMA03_;
-	wire SUMA04_;
 	wire SUMA11_;
 	wire SUMA12_;
 	wire SUMA13_;
@@ -1574,51 +1199,36 @@ module tray_a(
 	wire SUMB01_;
 	wire SUMB02_;
 	wire SUMB03_;
-	wire SUMB04_;
 	wire SUMB11_;
 	wire SUMB12_;
 	wire SUMB13_;
 	wire SUMB14_;
 	wire SUMB15_;
 	wire SUMB16_;
-	wire SYNC14_;
-	wire SYNC4_;
 	wire T01;
-	wire T01DC_;
 	wire T01_;
 	wire T02;
-	wire T02DC_;
 	wire T02_;
 	wire T03;
-	wire T03DC_;
 	wire T03_;
 	wire T04;
-	wire T04DC_;
 	wire T04_;
 	wire T05;
-	wire T05DC_;
 	wire T05_;
 	wire T06;
-	wire T06DC_;
 	wire T06_;
 	wire T07;
-	wire T07DC_;
 	wire T07_;
 	wire T08;
-	wire T08DC_;
 	wire T08_;
 	wire T09;
-	wire T09DC_;
 	wire T09_;
 	wire T10;
-	wire T10DC_;
 	wire T10_;
 	wire T11;
 	wire T11_;
 	wire T12;
 	wire T12A;
-	wire T12DC_;
-	wire T12SET;
 	wire T12USE_;
 	wire T12_;
 	wire T1P;
@@ -1636,22 +1246,14 @@ module tray_a(
 	wire TCSAJ3;
 	wire TCSAJ3_;
 	wire THRSTD;
-	wire THRSTm;
-	wire THRSTp;
 	wire TIMR;
 	wire TL15;
-	wire TMPCAU;
 	wire TMPOUT;
 	wire TMZ_;
 	wire TOV_;
 	wire TPARG_;
 	wire TPOR_;
 	wire TPZG_;
-	wire TRNDM;
-	wire TRNDP;
-	wire TRP31A;
-	wire TRP31B;
-	wire TRP32;
 	wire TRSM;
 	wire TRUND;
 	wire TS0;
@@ -1660,18 +1262,13 @@ module tray_a(
 	wire TSGU_;
 	wire TSUDO_;
 	wire TT_;
-	wire TVCNAB;
 	wire TWOX;
 	wire U2BBK;
 	wire U2BBKG_;
-	wire UNF;
 	wire UNF_;
-	wire UPLACT;
 	wire UPRUPT;
 	wire US2SG;
-	wire VNFLSH;
 	wire WAG_;
-	wire WALSG;
 	wire WALSG_;
 	wire WAND0;
 	wire WATCHP;
@@ -1689,19 +1286,15 @@ module tray_a(
 	wire WCH_;
 	wire WEBG_;
 	wire WEDOPG_;
-	wire WEX;
-	wire WEY;
 	wire WFBG_;
 	wire WG1G_;
 	wire WG2G_;
 	wire WG3G_;
 	wire WG4G_;
 	wire WG5G_;
-	wire WGNORM;
 	wire WG_;
 	wire WHOMP;
 	wire WHOMPA;
-	wire WHOMP_;
 	wire WL01;
 	wire WL01_;
 	wire WL02;
@@ -1737,17 +1330,13 @@ module tray_a(
 	wire WLG_;
 	wire WL_;
 	wire WOR0;
-	wire WOR0_;
 	wire WOVR;
 	wire WOVR_;
 	wire WQG_;
 	wire WQ_;
-	wire WRITE0;
-	wire WRITE0_;
 	wire WSC_;
 	wire WSG_;
 	wire WS_;
-	wire WT;
 	wire WT_;
 	wire WY12_;
 	wire WYDG_;
@@ -1759,124 +1348,51 @@ module tray_a(
 	wire WZG_;
 	wire WZ_;
 	wire XB0;
-	wire XB0E;
 	wire XB0_;
 	wire XB1;
-	wire XB1E;
 	wire XB1_;
 	wire XB2;
-	wire XB2E;
 	wire XB2_;
 	wire XB3;
-	wire XB3E;
 	wire XB3_;
 	wire XB4;
-	wire XB4E;
 	wire XB4_;
 	wire XB5;
-	wire XB5E;
 	wire XB5_;
 	wire XB6;
-	wire XB6E;
 	wire XB6_;
 	wire XB7;
-	wire XB7E;
 	wire XB7_;
-	wire XT0;
-	wire XT0E;
 	wire XT0_;
-	wire XT1;
-	wire XT1E;
 	wire XT1_;
-	wire XT2;
-	wire XT2E;
 	wire XT2_;
-	wire XT3;
-	wire XT3E;
 	wire XT3_;
-	wire XT4;
-	wire XT4E;
 	wire XT4_;
-	wire XT5;
-	wire XT5E;
 	wire XT5_;
-	wire XT6;
-	wire XT6E;
 	wire XT6_;
-	wire XT7;
-	wire XT7E;
-	wire XT7_;
 	wire XUY01_;
 	wire XUY02_;
 	wire XUY05_;
 	wire XUY06_;
 	wire XUY09_;
 	wire XUY10_;
-	wire XUY12_;
 	wire XUY13_;
 	wire XUY14_;
-	wire YB0;
-	wire YB0E;
 	wire YB0_;
-	wire YB1;
-	wire YB1E;
-	wire YB1_;
-	wire YB2;
-	wire YB2E;
-	wire YB2_;
-	wire YB3;
-	wire YB3E;
-	wire YB3_;
-	wire YT0;
-	wire YT0E;
 	wire YT0_;
-	wire YT1;
-	wire YT1E;
-	wire YT1_;
-	wire YT2;
-	wire YT2E;
-	wire YT2_;
-	wire YT3;
-	wire YT3E;
-	wire YT3_;
-	wire YT4;
-	wire YT4E;
-	wire YT4_;
-	wire YT5;
-	wire YT5E;
-	wire YT5_;
-	wire YT6;
-	wire YT6E;
-	wire YT6_;
-	wire YT7;
-	wire YT7E;
-	wire YT7_;
 	wire Z15_;
 	wire Z16_;
-	wire ZAP;
 	wire ZAP_;
-	wire ZEROPT;
-	wire ZID;
-	wire ZIMCDU;
-	wire ZIP;
-	wire ZIPCI;
-	wire ZOPCDU;
 	wire ZOUT;
 	wire ZOUT_;
 	wire n10XP1;
 	wire n10XP8;
 	wire n11XP2;
-	wire n12KPPS;
 	wire n1XP10;
-	wire n25KPPS;
 	wire n2XP3;
 	wire n2XP5;
 	wire n2XP7;
 	wire n2XP8;
-	wire n3200A;
-	wire n3200B;
-	wire n3200C;
-	wire n3200D;
 	wire n3XP2;
 	wire n3XP6;
 	wire n3XP7;
@@ -1888,7 +1404,6 @@ module tray_a(
 	wire n5XP21;
 	wire n5XP28;
 	wire n5XP4;
-	wire n6XP10;
 	wire n6XP5;
 	wire n6XP8;
 	wire n7XP11;
@@ -1896,54 +1411,269 @@ module tray_a(
 	wire n7XP19;
 	wire n7XP4;
 	wire n7XP9;
-	wire n800RST;
-	wire n800SET;
 	wire n8PP4;
-	wire n8XP10;
-	wire n8XP4;
 	wire n8XP5;
 	wire n8XP6;
 	wire n9XP1;
 	wire n9XP5;
 
-//	always
-//		#10 prop_clk = !prop_clk; // 20 ns gate delay
-
-//	always
-//		#244.140625 CLOCK = !CLOCK;  // 2.048 MHz clock
+	wire A05_1_A2X_;
+	wire A05_2_A2X_;
+	wire A06_1_A2X_;
+	wire A16_1_CHOR01_;
+	wire A16_2_CHOR01_;
+	wire A17_1_CHOR01_;
+	wire A17_2_CHOR01_;
+	wire A23_1_CHOR01_;
+	wire A16_1_CHOR02_;
+	wire A16_2_CHOR02_;
+	wire A17_1_CHOR02_;
+	wire A17_2_CHOR02_;
+	wire A23_1_CHOR02_;
+	wire A16_1_CHOR03_;
+	wire A16_2_CHOR03_;
+	wire A17_1_CHOR03_;
+	wire A17_2_CHOR03_;
+	wire A23_1_CHOR03_;
+	wire A16_1_CHOR04_;
+	wire A16_2_CHOR04_;
+	wire A17_1_CHOR04_;
+	wire A17_2_CHOR04_;
+	wire A23_1_CHOR04_;
+	wire A16_1_CHOR05_;
+	wire A16_2_CHOR05_;
+	wire A17_1_CHOR05_;
+	wire A17_2_CHOR05_;
+	wire A23_1_CHOR05_;
+	wire A23_2_CHOR05_;
+	wire A16_1_CHOR06_;
+	wire A16_2_CHOR06_;
+	wire A17_1_CHOR06_;
+	wire A17_2_CHOR06_;
+	wire A23_1_CHOR06_;
+	wire A16_1_CHOR07_;
+	wire A16_2_CHOR07_;
+	wire A17_1_CHOR07_;
+	wire A17_2_CHOR07_;
+	wire A23_1_CHOR07_;
+	wire A16_1_CHOR08_;
+	wire A17_1_CHOR08_;
+	wire A17_2_CHOR08_;
+	wire A23_1_CHOR08_;
+	wire A23_2_CHOR08_;
+	wire A17_1_CHOR09_;
+	wire A17_2_CHOR09_;
+	wire A23_1_CHOR09_;
+	wire A23_2_CHOR09_;
+	wire A17_1_CHOR10_;
+	wire A17_2_CHOR10_;
+	wire A23_1_CHOR10_;
+	wire A23_2_CHOR10_;
+	wire A17_1_CHOR11_;
+	wire A17_2_CHOR11_;
+	wire A18_1_CHOR11_;
+	wire A18_2_CHOR11_;
+	wire A17_1_CHOR12_;
+	wire A17_2_CHOR12_;
+	wire A18_1_CHOR12_;
+	wire A18_2_CHOR12_;
+	wire A17_1_CHOR13_;
+	wire A17_2_CHOR13_;
+	wire A17_3_CHOR13_;
+	wire A18_1_CHOR13_;
+	wire A17_1_CHOR14_;
+	wire A17_2_CHOR14_;
+	wire A18_1_CHOR14_;
+	wire A18_2_CHOR14_;
+	wire A17_1_CHOR16_;
+	wire A17_2_CHOR16_;
+	wire A18_1_CHOR16_;
+	wire A04_1_CI_;
+	wire A05_1_CI_;
+	wire A05_2_CI_;
+	wire A06_1_CI_;
+	wire A22_10_DATA_;
+	wire A22_1_DATA_;
+	wire A22_2_DATA_;
+	wire A22_3_DATA_;
+	wire A22_4_DATA_;
+	wire A22_5_DATA_;
+	wire A22_6_DATA_;
+	wire A22_7_DATA_;
+	wire A22_8_DATA_;
+	wire A22_9_DATA_;
+	wire A23_1_DATA_;
+	wire A04_1_L16_;
+	wire A11_1_L16_;
+	wire A05_1_MONEX_;
+	wire A06_1_MONEX_;
+	wire A04_1_RA_;
+	wire A04_2_RA_;
+	wire A05_1_RA_;
+	wire A05_2_RA_;
+	wire A05_3_RA_;
+	wire A04_1_RB1_;
+	wire A06_1_RB1_;
+	wire A04_1_RB_;
+	wire A04_2_RB_;
+	wire A05_1_RB_;
+	wire A05_2_RB_;
+	wire A05_3_RB_;
+	wire A05_4_RB_;
+	wire A06_1_RB_;
+	wire A06_2_RB_;
+	wire A04_1_RC_;
+	wire A04_2_RC_;
+	wire A05_1_RC_;
+	wire A05_2_RC_;
+	wire A05_3_RC_;
+	wire A05_4_RC_;
+	wire A06_1_RC_;
+	wire A06_2_RC_;
+	wire A05_1_RG_;
+	wire A05_2_RG_;
+	wire A05_3_RG_;
+	wire A05_4_RG_;
+	wire A06_1_RG_;
+	wire A06_2_RG_;
+	wire A10_1_RL09_;
+	wire A10_2_RL09_;
+	wire A10_3_RL09_;
+	wire A10_4_RL09_;
+	wire A15_1_RL09_;
+	wire A10_1_RL10_;
+	wire A10_2_RL10_;
+	wire A10_3_RL10_;
+	wire A10_4_RL10_;
+	wire A15_1_RL10_;
+	wire A10_1_RL11_;
+	wire A10_2_RL11_;
+	wire A10_3_RL11_;
+	wire A10_4_RL11_;
+	wire A15_1_RL11_;
+	wire A10_1_RL12_;
+	wire A10_2_RL12_;
+	wire A10_3_RL12_;
+	wire A10_4_RL12_;
+	wire A15_1_RL12_;
+	wire A11_1_RL13_;
+	wire A11_2_RL13_;
+	wire A11_3_RL13_;
+	wire A11_4_RL13_;
+	wire A15_1_RL13_;
+	wire A11_1_RL14_;
+	wire A11_2_RL14_;
+	wire A11_3_RL14_;
+	wire A11_4_RL14_;
+	wire A15_1_RL14_;
+	wire A11_1_RL15_;
+	wire A11_2_RL15_;
+	wire A11_3_RL15_;
+	wire A11_4_RL15_;
+	wire A15_1_RL15_;
+	wire A11_1_RL16_;
+	wire A11_2_RL16_;
+	wire A11_3_RL16_;
+	wire A11_4_RL16_;
+	wire A15_1_RL16_;
+	wire A05_1_RL_;
+	wire A05_2_RL_;
+	wire A03_1_RPTSET;
+	wire A03_2_RPTSET;
+	wire A03_3_RPTSET;
+	wire A06_1_RPTSET;
+	wire A04_1_RSC_;
+	wire A12_1_RSC_;
+	wire A05_1_RU_;
+	wire A05_2_RU_;
+	wire A05_3_RU_;
+	wire A06_1_RU_;
+	wire A06_2_RU_;
+	wire A06_3_RU_;
+	wire A06_4_RU_;
+	wire A05_1_RZ_;
+	wire A05_2_RZ_;
+	wire A05_3_RZ_;
+	wire A06_1_RZ_;
+	wire A05_1_ST2_;
+	wire A06_1_ST2_;
+	wire A06_2_ST2_;
+	wire A04_1_TMZ_;
+	wire A05_1_TMZ_;
+	wire A05_2_TMZ_;
+	wire A05_1_TOV_;
+	wire A06_1_TOV_;
+	wire A04_1_TSGN_;
+	wire A04_2_TSGN_;
+	wire A05_1_TSGN_;
+	wire A05_2_TSGN_;
+	wire A05_1_WA_;
+	wire A05_2_WA_;
+	wire A05_3_WA_;
+	wire A06_1_WA_;
+	wire A06_2_WA_;
+	wire A05_1_WB_;
+	wire A05_2_WB_;
+	wire A05_3_WB_;
+	wire A05_4_WB_;
+	wire A06_1_WB_;
+	wire A06_2_WB_;
+	wire A04_1_WG_;
+	wire A04_2_WG_;
+	wire A04_3_WG_;
+	wire A05_1_WG_;
+	wire A06_1_WG_;
+	wire A06_2_WG_;
+	wire A12_1_WG_;
+	wire A04_1_WL_;
+	wire A05_1_WL_;
+	wire A05_2_WL_;
+	wire A06_1_WL_;
+	wire A06_1_WSC_;
+	wire A06_2_WSC_;
+	wire A05_1_WS_;
+	wire A06_1_WS_;
+	wire A05_1_WY12_;
+	wire A05_2_WY12_;
+	wire A05_1_WYD_;
+	wire A06_1_WYD_;
+	wire A04_1_WY_;
+	wire A04_2_WY_;
+	wire A05_1_WY_;
+	wire A05_2_WY_;
+	wire A05_3_WY_;
+	wire A06_1_WY_;
+	wire A05_1_WZ_;
+	wire A05_2_WZ_;
+	wire A06_1_WZ_;
+	wire A05_1_Z15_;
+	wire A11_1_Z15_;
+	wire A05_1_Z16_;
+	wire A11_1_Z16_;
+	wire A04_1_n8PP4;
+	wire A06_1_n8PP4;
+	wire A06_2_n8PP4;
+	wire A06_3_n8PP4;
 
 	a01_scaler a01(
 		FS01_,
 		RCHAT_,
 		RCHBT_,
 		FS02,
-		FS02A,
-		F02A,
 		F02B,
 		FS03,
-		FS03A,
-		F03A,
-		F03B,
 		F03B_,
 		FS04,
-		FS04A,
 		F04A,
 		F04B,
-		F04B_,
 		FS05,
 		FS05_,
-		FS05A,
-		F05A,
 		F05A_,
-		F05B,
 		F05B_,
 		F05D,
 		FS06,
 		FS06_,
-		F06A,
-		F06B,
 		F06B_,
-		FS07,
 		FS07_,
 		FS07A,
 		F07A,
@@ -1954,12 +1684,9 @@ module tray_a(
 		F07D_,
 		FS08,
 		FS08_,
-		F08A,
 		F08B,
-		F08B_,
 		FS09,
 		FS09_,
-		F09A,
 		F09A_,
 		F09B,
 		F09B_,
@@ -1969,80 +1696,18 @@ module tray_a(
 		F10A_,
 		F10B,
 		F10B_,
-		FS11,
-		F11A,
-		F11B,
-		FS12,
-		F12A,
 		F12B,
 		FS13,
-		F13A,
-		F13B,
 		FS14,
-		F14A,
 		F14B,
-		FS15,
-		F15A,
-		F15B,
 		FS16,
-		F16A,
-		F16B,
 		FS17,
 		F17A,
 		F17A_,
 		F17B,
 		F17B_,
-		FS18,
-		F18A,
-		F18A_,
-		F18B,
 		F18B_,
 		F18AX,
-		FS19,
-		F19A,
-		F19B,
-		FS20,
-		F20A,
-		F20B,
-		FS21,
-		F21A,
-		F21B,
-		FS22,
-		F22A,
-		F22B,
-		FS23,
-		F23A,
-		F23B,
-		FS24,
-		F24A,
-		F24B,
-		FS25,
-		F25A,
-		F25B,
-		FS26,
-		F26A,
-		F26B,
-		FS27,
-		F27A,
-		F27B,
-		FS28,
-		F28A,
-		F28B,
-		FS29,
-		F29A,
-		F29B,
-		FS30,
-		F30A,
-		F30B,
-		FS31,
-		F31A,
-		F31B,
-		FS32,
-		F32A,
-		F32B,
-		FS33,
-		F33A,
-		F33B,
 		CHAT01,
 		CHAT02,
 		CHAT03,
@@ -2092,94 +1757,61 @@ module tray_a(
 		WL16,
 		WL16_,
 		CLK,
-		PHS2,
 		PHS2_,
 		PHS3_,
 		PHS4,
 		PHS4_,
 		CT,
 		CT_,
-		RT,
 		RT_,
-		WT,
 		WT_,
 		TT_,
-		OVFSTB_,
 		MONWT,
 		Q2A,
-		RINGA_,
-		RINGB_,
-		ODDSET_,
-		EVNSET,
-		EVNSET_,
-		P01,
-		P01_,
 		P02,
 		P02_,
 		P03,
 		P03_,
-		P04,
 		P04_,
-		P05,
-		P05_,
 		F01A,
 		F01B,
-		F01C,
-		F01D,
 		FS01,
 		FS01_,
-		SB0,
 		SB0_,
-		SB1,
 		SB1_,
 		SB2,
 		SB2_,
 		SB4,
-		EDSET,
-		STOPA,
 		GOJAM,
-		GOJAM_,
 		STOP,
-		STOP_,
 		TIMR,
 		MSTPIT_,
 		MGOJAM,
 		T01,
 		T01_,
-		T01DC_,
 		T02,
 		T02_,
-		T02DC_,
 		T03,
 		T03_,
-		T03DC_,
 		T04,
 		T04_,
-		T04DC_,
 		T05,
 		T05_,
-		T05DC_,
 		T06,
 		T06_,
-		T06DC_,
 		T07,
 		T07_,
-		T07DC_,
 		T08,
 		T08_,
-		T08DC_,
 		T09,
 		T09_,
-		T09DC_,
 		T10,
 		T10_,
-		T10DC_,
 		T11,
 		T11_,
 		T12,
 		T12_,
 		T12A,
-		T12DC_,
 		MT01,
 		MT02,
 		MT03,
@@ -2192,10 +1824,7 @@ module tray_a(
 		MT10,
 		MT11,
 		MT12,
-		T12SET,
-		UNF,
 		UNF_,
-		OVF,
 		OVF_,
 		n0VDCA,
 		p4VDC,
@@ -2249,11 +1878,6 @@ module tray_a(
 		SQ0_,
 		SQ1_,
 		SQ2_,
-		SQ3_,
-		SQ4_,
-		SQ5_,
-		SQ6_,
-		SQ7_,
 		SQEXT,
 		SQEXT_,
 		QC0_,
@@ -2436,18 +2060,11 @@ module tray_a(
 		TS0_,
 		n7XP11,
 		T12USE_,
-		STG1,
-		STG2,
 		DIV_,
-		ST376,
-		ST376_,
-		DV0,
-		DV0_,
 		DV1,
 		DV1_,
 		DV4,
 		DV4_,
-		DV376,
 		DV376_,
 		DV1376,
 		DV1376_,
@@ -2456,11 +2073,8 @@ module tray_a(
 		ST1_,
 		STD2,
 		ST3_,
-		ST4_,
-		ST1376_,
 		MST1,
 		MST2,
-		SGUM,
 		BR1,
 		BR1_,
 		MBR1,
@@ -2468,22 +2082,16 @@ module tray_a(
 		BR2_,
 		MBR2,
 		READ0,
-		READ0_,
-		WRITE0,
-		WRITE0_,
 		RAND0,
 		WAND0,
 		INOUT,
 		INOUT_,
 		ROR0,
 		WOR0,
-		WOR0_,
 		RXOR0,
 		RXOR0_,
 		RUPT0,
-		RUPT0_,
 		RUPT1,
-		RUPT1_,
 		PRINC,
 		RRPA,
 		n1XP10,
@@ -2527,15 +2135,13 @@ module tray_a(
 		R15,
 		RB2,
 		WCH_,
-		MRSC_,
+		MRSC,
 		MP0T10,
 		B15X,
-		BR1B2,
 		BR1B2_,
-		BR12B,
+		BR1B2B,
 		BR12B_,
 		BRDIF_,
-		BR1B2B,
 		BR1B2B_,
 		TL15,
 		KRPT,
@@ -2912,14 +2518,9 @@ module tray_a(
 		A06_2_n8PP4,
 		A06_3_n8PP4,
 		WHOMP,
-		WHOMP_,
 		WHOMPA,
 		RB1,
-		DVXP1,
 		L2GD_,
-		ZIP,
-		ZIPCI,
-		ZAP,
 		ZAP_,
 		MCRO_,
 		RB1F,
@@ -2936,7 +2537,6 @@ module tray_a(
 		MOUT,
 		ZOUT,
 		WOVR,
-		RDBANK,
 		EXT,
 		ST1,
 		ST2,
@@ -2944,11 +2544,8 @@ module tray_a(
 		NEAC,
 		PONEX,
 		PSEUDO,
-		n6XP10,
 		n7XP11,
 		n7XP14,
-		n8XP4,
-		n8XP10,
 		n0VDCA,
 		p4SW,
 		reset,
@@ -3015,7 +2612,6 @@ module tray_a(
 		RB_,
 		RL10BB,
 		SCAD_,
-		WALSG,
 		WALSG_,
 		WYLOG_,
 		WYHIG_,
@@ -3024,7 +2620,6 @@ module tray_a(
 		WYDLOG_,
 		WBG_,
 		CBG,
-		WGNORM,
 		WG1G_,
 		WG2G_,
 		WG3G_,
@@ -3188,8 +2783,6 @@ module tray_a(
 		SUMB02_,
 		SUMA03_,
 		SUMB03_,
-		SUMA04_,
-		SUMB04_,
 		G01,
 		G01_,
 		GEM01,
@@ -3198,11 +2791,9 @@ module tray_a(
 		G03,
 		GEM03,
 		G04,
-		G04_,
 		GEM04,
 		L01_,
 		L02_,
-		L03_,
 		L04_,
 		n0VDCA,
 		p4SW,
@@ -3290,9 +2881,6 @@ module tray_a(
 		CO10,
 		XUY05_,
 		XUY06_,
-		L05_,
-		L06_,
-		L07_,
 		L08_,
 		G05,
 		G05_,
@@ -3304,7 +2892,6 @@ module tray_a(
 		G07_,
 		GEM07,
 		G08,
-		G08_,
 		GEM08,
 		n0VDCA,
 		p4SW,
@@ -3406,14 +2993,10 @@ module tray_a(
 		CO14,
 		XUY09_,
 		XUY10_,
-		XUY12_,
 		SUMA11_,
 		SUMA12_,
 		SUMB11_,
 		SUMB12_,
-		L09_,
-		L10_,
-		L11_,
 		L12_,
 		G09,
 		G09_,
@@ -3425,7 +3008,6 @@ module tray_a(
 		G11_,
 		GEM11,
 		G12,
-		G12_,
 		GEM12,
 		n0VDCA,
 		p4SW,
@@ -3499,6 +3081,8 @@ module tray_a(
 		RL14_,
 		RL15_,
 		RL16_,
+		Z15_,
+		Z16_,
 		A11_1_RL13_,
 		A11_2_RL13_,
 		A11_3_RL13_,
@@ -3516,6 +3100,8 @@ module tray_a(
 		A11_3_RL16_,
 		A11_4_RL16_,
 		A11_1_L16_,
+		A11_1_Z15_,
+		A11_1_Z16_,
 		WL13,
 		WL13_,
 		MWL13,
@@ -3529,8 +3115,6 @@ module tray_a(
 		WL16_,
 		MWL16,
 		EAC_,
-		CO02,
-		CO16,
 		XUY13_,
 		XUY14_,
 		SUMA13_,
@@ -3541,8 +3125,6 @@ module tray_a(
 		SUMB14_,
 		SUMB15_,
 		SUMB16_,
-		L13_,
-		L14_,
 		L15_,
 		G13,
 		G13_,
@@ -3552,9 +3134,7 @@ module tray_a(
 		GEM14,
 		G15,
 		G15_,
-		GEM15,
 		G16,
-		G16_,
 		GEM16,
 		A15_,
 		A16_,
@@ -3603,7 +3183,7 @@ module tray_a(
 		GEMP,
 		MSP,
 		PALE,
-		MPAL,
+		MPAL_,
 		WL01_,
 		WL02_,
 		WL03_,
@@ -3859,12 +3439,9 @@ module tray_a(
 		MAMU,
 		STRT2,
 		SCAD,
-		ROP_,
 		IHENV,
 		SETAB,
-		SETAB_,
 		SETCD,
-		SETCD_,
 		STBF,
 		SBF,
 		RESETA,
@@ -3873,9 +3450,6 @@ module tray_a(
 		RESETD,
 		STRGAT,
 		CLROPE,
-		ERAS,
-		ERAS_,
-		FNERAS_,
 		WEX,
 		WEY,
 		RSTKX_,
@@ -3911,72 +3485,35 @@ module tray_a(
 		XB7,
 		XB7_,
 		XB7E,
-		YB0,
 		YB0_,
 		YB0E,
-		YB1,
-		YB1_,
 		YB1E,
-		YB2,
-		YB2_,
 		YB2E,
-		YB3,
-		YB3_,
 		YB3E,
-		XT0,
 		XT0_,
 		XT0E,
-		XT1,
 		XT1_,
 		XT1E,
-		XT2,
 		XT2_,
 		XT2E,
-		XT3,
 		XT3_,
 		XT3E,
-		XT4,
 		XT4_,
 		XT4E,
-		XT5,
 		XT5_,
 		XT5E,
-		XT6,
 		XT6_,
 		XT6E,
-		XT7,
-		XT7_,
 		XT7E,
-		YT0,
 		YT0_,
 		YT0E,
-		YT1,
-		YT1_,
 		YT1E,
-		YT2,
-		YT2_,
 		YT2E,
-		YT3,
-		YT3_,
 		YT3E,
-		YT4,
-		YT4_,
 		YT4E,
-		YT5,
-		YT5_,
 		YT5E,
-		YT6,
-		YT6_,
 		YT6E,
-		YT7,
-		YT7_,
 		YT7E,
-		EAD09,
-		EAD09_,
-		EAD10,
-		EAD10_,
-		EAD11,
-		EAD11_,
 		IL01,
 		IL01_,
 		IL02,
@@ -4080,37 +3617,12 @@ module tray_a(
 		A15_1_RL14_,
 		A15_1_RL15_,
 		A15_1_RL16_,
-		FB11,
-		FB11_,
-		FB12,
-		FB12_,
-		FB13,
-		FB13_,
-		FB14,
-		FB14_,
-		FB16,
-		FB16_,
 		EB9,
-		EB9_,
 		EB10,
-		EB10_,
-		EB11,
 		EB11_,
 		BBK1,
 		BBK2,
 		BBK3,
-		F11,
-		F11_,
-		F12,
-		F12_,
-		F13,
-		F13_,
-		F14,
-		F14_,
-		F15,
-		F15_,
-		F16,
-		F16_,
 		RPTAD3,
 		RPTAD4,
 		RPTAD5,
@@ -4130,6 +3642,7 @@ module tray_a(
 		ROPER,
 		ROPES,
 		ROPET,
+		DRPRST,
 		n0VDCA,
 		p4SW,
 		reset,
@@ -4177,6 +3690,7 @@ module tray_a(
 		WCH11_,
 		CCH11,
 		RCH11_,
+		FLASH,
 		FLASH_,
 		RCpXpP,
 		RCmXmP,
@@ -4228,7 +3742,6 @@ module tray_a(
 		WCH12_,
 		CCH12,
 		RCH12_,
-		CH1207,
 		CH1208,
 		CH1209,
 		CH1210,
@@ -4412,9 +3925,6 @@ module tray_a(
 		CH3313,
 		CH3314,
 		CH3316,
-		TRP31A,
-		TRP31B,
-		TRP32,
 		HNDRPT,
 		RLYB01,
 		RLYB02,
@@ -4672,7 +4182,6 @@ module tray_a(
 		F5ASB0_,
 		F5ASB2,
 		F5ASB2_,
-		F5BSB2,
 		F5BSB2_,
 		OTLNKM,
 		OTLNK0,
@@ -4933,23 +4442,16 @@ module tray_a(
 		CAD4,
 		CAD5,
 		CAD6,
-		INCSET_,
-		SHINC,
 		SHINC_,
-		SHANC,
 		SHANC_,
 		DINC,
 		DINC_,
 		SHIFT,
 		SHIFT_,
 		PINC,
-		PINC_,
 		MINC,
-		MINC_,
 		PCDU,
-		PCDU_,
 		MCDU,
-		MCDU_,
 		FETCH0,
 		FETCH0_,
 		FETCH1,
@@ -5377,7 +4879,6 @@ module tray_a(
 		BOTHZ,
 		PIPZP,
 		PIPZM,
-		CNTRSB_,
 		RSCT_,
 		MWCH,
 		MRCH,
@@ -5386,11 +4887,9 @@ module tray_a(
 		OUTCOM,
 		GTSET,
 		GTSET_,
-		GTRST,
 		GTRST_,
 		GTONE,
 		CI,
-		F7CSB1_,
 		FLASH,
 		FLASH_,
 		ONE,
@@ -5454,8 +4953,8 @@ module tray_a(
 	assign WYD_ = A05_1_WYD_ & A06_1_WYD_;
 	assign WY_ = A04_1_WY_ & A04_2_WY_ & A05_1_WY_ & A05_2_WY_ & A05_3_WY_ & A06_1_WY_;
 	assign WZ_ = A05_1_WZ_ & A05_2_WZ_ & A06_1_WZ_;
-	assign Z15_ = A05_1_Z15_;
-	assign Z16_ = A05_1_Z16_;
+	assign Z15_ = A05_1_Z15_ & A11_1_Z15_;
+	assign Z16_ = A05_1_Z16_ & A11_1_Z16_;
 	assign n8PP4 = A04_1_n8PP4 & A06_1_n8PP4 & A06_2_n8PP4 & A06_3_n8PP4;
 
 endmodule

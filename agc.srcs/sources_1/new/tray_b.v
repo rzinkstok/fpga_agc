@@ -7,7 +7,7 @@ module tray_b(
         
         output wire prop_clk,
         output wire prop_clk_locked,
-        output wire agc_clk
+        output wire CLOCK
     );
     
     prop_clock_divider prop_clk_div(
@@ -21,7 +21,7 @@ module tray_b(
         .prop_clk(prop_clk),
         .prop_clk_locked(prop_clk_locked),
         .reset(reset),
-        .agc_clk(agc_clk)
+        .agc_clk(CLOCK)
     );
     
     

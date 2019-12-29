@@ -42,16 +42,21 @@ MODULE_ARGS_END_RE = re.compile(r"^\);")
 INPUT_WIRE_RE = re.compile(r"^input wire ")
 OUTPUT_WIRE_RE = re.compile(r"^output wire ")
 CROSS_MODULE_SIGNAL_RE = re.compile(r"^A[0-9][0-9]\_[0-9]+\_(.+)")
+TRAY_A = [f"A{i}" for i in range(1, 25)]
+TRAY_A.append("A63")
+TRAY_A.append("B63")
+EXTERNAL_INTERFACE_MODULES = ["A25", "A26", "A27", "A28", "A29", "A51", "A52"]
 
 
-def read_module(module_file_name):
+def read_module(module_file_path):
+    module_file_name = os.path.split(module_file_path)[-1]
     module_name = os.path.splitext(module_file_name)[0]
-    module = module_name.split("_")[0]
-    with open(os.path.join(MODULES_SOURCE_FOLDER, module_file_name), "r") as fp:
+    #module = module_name.split("_")[0]
+    with open(module_file_path, "r") as fp:
         lines = fp.readlines()
 
     print()
-    print(f"Module {module}")
+    print(f"Module {module_name}")
 
     in_module_params = False
     module_params = []
@@ -99,58 +104,85 @@ def read_module(module_file_name):
 
     print("Inputs:", input_wires)
     print("Outputs:", output_wires)
-    return module_name, module_params, input_wires, output_wires
+    return module_params, input_wires, output_wires
 
 
-def write_tray_a(module_params, input_wires, output_wires, sim_name=None, sim_code=None):
-    wrapper_name = "tray_a"
-    filepath = os.path.join(SOURCE_FOLDER, f"{wrapper_name}.v")
+def write_tray_a():
+    # Collect info
+    module_params = {}
+    input_wires = set()
+    output_wires = set()
+    for module_file_name in sorted(os.listdir(MODULES_SOURCE_FOLDER)):
+        if module_file_name.startswith("a77"):
+            continue
+        module_name = os.path.splitext(module_file_name)[0] #("_")[0]
+        params, inputs, outputs = read_module(os.path.join(MODULES_SOURCE_FOLDER, module_file_name))
+        module_params[module_name] = params
+        input_wires.update(inputs)
+        output_wires.update(outputs)
 
-    cross_module_signals = {}
-    extra_output_wires = []
-    for ow in sorted(output_wires):
-        res = CROSS_MODULE_SIGNAL_RE.search(ow)
+    internal_wires = []
+    external_inputs = []
+    external_outputs = []
+    cross_module_fan_ins = {}
+
+    for i in sorted(output_wires):
+        res = CROSS_MODULE_SIGNAL_RE.match(i)
         if res:
             signal = res.groups()[0]
-            if signal not in cross_module_signals:
-                cross_module_signals[signal] = []
-                if signal in input_wires:
-                    input_wires.remove(signal)
-                if (signal not in output_wires) and (signal not in input_wires):
-                    extra_output_wires.append(signal)
-            cross_module_signals[signal].append(ow)
-    output_wires.update(extra_output_wires)
+            if signal not in cross_module_fan_ins:
+                cross_module_fan_ins[signal] = []
+            cross_module_fan_ins[signal].append(i)
+            continue
+
+        if check_tray_a_signal(i) == "external":
+            external_outputs.append(i)
+        else:
+            internal_wires.append(i)
+
+    for i in sorted(input_wires):
+        if check_tray_a_signal(i) == "external":
+            if i not in external_outputs:
+                external_inputs.append(i)
+        else:
+            if i not in internal_wires:
+                if i in cross_module_fan_ins:
+                    internal_wires.append(i)
+                else:
+                    print(f"{i} internal input not used as output")
+
+    # Write output file
+    tray_module_name = "tray_a"
+    filepath = os.path.join(SOURCE_FOLDER, f"{tray_module_name}.v")
 
     with open(filepath, "w") as fp:
         fp.write("`timescale 1ns / 1ps\n")
         fp.write("\n")
-        fp.write(f"module {wrapper_name}(")
-
+        fp.write(f"module {tray_module_name}(\n")
+        for iw in sorted(external_inputs):
+            if iw not in ["reset", "prop_clk", "n0VDCA", "p4VDC", "p4SW"]:
+                fp.write(f"\tinput wire {iw},\n")
+        fp.write("\n")
+        for ow in sorted(external_outputs):
+            fp.write(f"\toutput wire {ow},\n")
+        fp.write("\n")
+        s = ""
+        for iw in ["reset", "prop_clk", "n0VDCA", "p4VDC", "p4SW"]:
+            if iw in external_inputs:
+                s += (f"\tinput wire {iw},\n")
+        s = s[:-2]
+        fp.write(s + "\n")
         fp.write(");\n")
         fp.write("\n")
 
-        for iw in sorted(input_wires):
-            if iw not in output_wires:
-                if iw.endswith("_") or iw in ["prop_clk", "p4VDC", "p4SW"]:
-                    val = 1
-                else:
-                    val = 0
-                fp.write(f"\treg {iw} = {val};\n")
+        for iw in sorted(internal_wires):
+            fp.write(f"\twire {iw};\n")
         fp.write("\n")
 
-        for ow in sorted(output_wires):
-            fp.write(f"\twire {ow};\n")
+        for s in sorted(cross_module_fan_ins.keys()):
+            for ss in sorted(cross_module_fan_ins[s]):
+                fp.write(f"\twire {ss};\n")
         fp.write("\n")
-
-        if "prop_clk" in input_wires:
-            print("Adding prop clock")
-            fp.write("\talways\n")
-            fp.write("\t\t#10 prop_clk = !prop_clk; // 20 ns gate delay\n\n")
-
-        if "a02_timer" in module_params.keys():
-            print("Adding clock")
-            fp.write("\talways\n")
-            fp.write("\t\t#244.140625 CLOCK = !CLOCK;  // 2.048 MHz clock\n\n")
 
         for module_name in sorted(module_params.keys()):
             m = module_name.split("_")[0]
@@ -162,29 +194,34 @@ def write_tray_a(module_params, input_wires, output_wires, sim_name=None, sim_co
                 fp.write("\n")
             fp.write("\t);\n\n")
 
-        for signal in sorted(cross_module_signals.keys()):
+        for signal in sorted(cross_module_fan_ins.keys()):
             fp.write(f"\tassign {signal} = ")
-            fp.write(" & ".join(sorted(cross_module_signals[signal])))
+            fp.write(" & ".join(sorted(cross_module_fan_ins[signal])))
             fp.write(";\n")
         fp.write("\n")
-
-        if sim_name:
-            fp.write("\tinitial\n")
-            fp.write("\tbegin\n")
-            if sim_code:
-                sim_code(fp)
-            fp.write("\t\t#100000 $stop;\n")
-            fp.write("\tend\n\n")
 
         fp.write("endmodule\n")
     print()
     print(f"Written {filepath}")
 
 
-def check_signal(signal):
-    if CROSS_MODULE_SIGNAL_RE.match(signal):
-        return "internal"
+def write_tray_b():
+    tray_module_name = "tray_b"
+    filepath = os.path.join(SOURCE_FOLDER, f"{tray_module_name}.v")
 
+    if False:
+        with open(filepath, "w") as fp:
+            fp.write("`timescale 1ns / 1ps\n")
+            fp.write("\n")
+            fp.write(f"module {tray_module_name}(\n")
+            fp.write("\n")
+            fp.write("endmodule\n")
+        print()
+        print(f"Written {filepath}")
+    print(f"{filepath} not overwritten")
+
+
+def decode_signal(signal):
     if "p" in signal:
         signal = signal.replace("p", "+")
     if "m" in signal:
@@ -194,56 +231,129 @@ def check_signal(signal):
     if signal[-1] == "_":
         signal = signal[:-1] + "/"
 
+    return signal
+
+
+def get_signal_modules(signal):
+    signal = decode_signal(signal)
     db = sqlite3.connect(DBPATH)
-    tray_a = [f"A{i}" for i in range(1, 25)]
     c = db.cursor()
     c.execute('SELECT * FROM PINS_2003100_071 WHERE NET=?', (signal,))
+    return set([r[0] for r in c.fetchall()])
 
-    for r in c.fetchall():
-        if r[0] not in tray_a:
+
+def check_tray_a_signal(signal):
+    if signal == "MAMU":
+        return "external"
+
+    if CROSS_MODULE_SIGNAL_RE.match(signal):
+        return "internal"
+
+    if signal in ["reset", "prop_clk", "n0VDCA", "p4VDC", "p4SW"]:
+        return "external"
+
+    modules = get_signal_modules(signal)
+
+    for m in TRAY_A:
+        try:
+            modules.remove(m)
+        except KeyError:
+            pass
+
+    if not modules:
+        return "internal"
+
+    return "external"
+
+
+def check_fpga_agc_signal(signal):
+    if signal in ["reset", "clk", "clk_reset", "MAMU"]:
+        return "external"
+
+    modules = get_signal_modules(signal)
+    for m in modules:
+        if m in EXTERNAL_INTERFACE_MODULES:
             return "external"
     return "internal"
 
 
-if __name__ == "__main__":
-    # Tray A
+
+def write_fpga_agc():
     module_params = {}
     input_wires = set()
     output_wires = set()
-    for module_file_name in sorted(os.listdir(MODULES_SOURCE_FOLDER)):
-        if module_file_name.startswith("a77"):
-            continue
-        module_name, params, inputs, outputs = read_module(module_file_name)
-        module_params[module_name] = params
+    for module in ["tray_a", "tray_b"]:
+        params, inputs, outputs = read_module(os.path.join(SOURCE_FOLDER, f"{module}.v"))
+        module_params[module] = params
         input_wires.update(inputs)
         output_wires.update(outputs)
 
-    internal_wires = []
     external_inputs = []
     external_outputs = []
+    internal_wires = []
 
-    for i in sorted(input_wires):
-        if check_signal(i) == "external":
-            external_inputs.append(i)
+
+    for i in sorted(output_wires):
+        if check_fpga_agc_signal(i) == "external":
+            external_outputs.append(i)
         else:
             internal_wires.append(i)
 
-    for i in sorted(output_wires):
-        if check_signal(i) == "external":
-            external_outputs.append(i)
+    for i in sorted(input_wires):
+        if check_fpga_agc_signal(i) == "external":
+            if i not in external_outputs:
+                external_inputs.append(i)
         else:
             if i not in internal_wires:
-                if not CROSS_MODULE_SIGNAL_RE.match(i):
-                    print(f"{i} internal output not used as input")
+                print(f"{i} internal input has no output")
+                internal_wires.append(i)
 
-    if False:
-        for i in sorted(external_inputs):
-            print(i)
+    print(external_inputs)
+    print(external_outputs)
+    print(internal_wires)
+
+    # Write output file
+    module_name = "fpga_agc"
+    filepath = os.path.join(SOURCE_FOLDER, f"{module_name}.v")
+
+    with open(filepath, "w") as fp:
+        fp.write("`timescale 1ns / 1ps\n")
+        fp.write("\n")
+        fp.write(f"module {module_name}(\n")
+        for iw in sorted(external_inputs):
+            if iw not in ["reset", "prop_clk", "n0VDCA", "p4VDC", "p4SW"]:
+                fp.write(f"\tinput wire {iw},\n")
+        fp.write("\n")
+        for ow in sorted(external_outputs):
+            fp.write(f"\toutput wire {ow},\n")
+        fp.write("\n")
+        s = ""
+        for iw in ["reset", "prop_clk", "n0VDCA", "p4VDC", "p4SW"]:
+            if iw in external_inputs:
+                s += (f"\tinput wire {iw},\n")
+        s = s[:-2]
+        fp.write(s + "\n")
+        fp.write(");\n")
+        fp.write("\n")
+
+        for iw in sorted(internal_wires):
+            fp.write(f"\twire {iw};\n")
+        fp.write("\n")
+
+        for module_name in sorted(module_params.keys()):
+            m = module_name.replace("_", "")
+            fp.write(f"\t{module_name} {m}(\n")
+            for i, param in enumerate(module_params[module_name]):
+                fp.write(f"\t\t{param}")
+                if i != (len(module_params[module_name]) - 1):
+                    fp.write(",")
+                fp.write("\n")
+            fp.write("\t);\n\n")
+        fp.write("endmodule\n")
         print()
+        print(f"Written {filepath}")
 
-        for i in sorted(external_outputs):
-            print(i)
-
-
-        #write_wrapper(module_params, input_wires, output_wires)
-
+if __name__ == "__main__":
+    write_tray_a()
+    write_tray_b()
+    write_fpga_agc()
