@@ -5455,7 +5455,6 @@ module agc_tb();
 	initial
 	begin
 		#1 NHALGA = 1;
-		#50000 p4SW = 0;
 		#100000 $stop;
 	end
 

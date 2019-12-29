@@ -6,14 +6,14 @@ GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
 MODULES_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new", "modules")
 
 MODULE_RE = re.compile(r"^([a,b]\d\d)\_")
-GATE_RE = re.compile(r"NOR(\d\d\d\d\d)\(")
-GATE_NAME_RE = re.compile(r"NOR(\d\d\d\d\d)\(NOR(\d\d\d\d\d)_out")
-GATE_ARG_RE = re.compile(r"nor_(\d)\s+#\(1'b[0,1]\)\s+NOR\d\d\d\d\d\(([a-zA-Z0-9\s\,\_]+)\);")
+GATE_RE = re.compile(r"NOR(\d\d\d\d[\dAB])\(")
+GATE_NAME_RE = re.compile(r"NOR(\d\d\d\d[\dAB])\(NOR(\d\d\d\d[\dAB])_out")
+GATE_ARG_RE = re.compile(r"nor_(\d)\s+#\(1'b[0,1]\)\s+NOR\d\d\d\d[\dAB]\(([a-zA-Z0-9\s\,\_]+)\);")
 
 MODULE_HEADER_RE = re.compile(r"^Module ([a,b,A,B]\d\d)")
-GATE_ADDED_RE = re.compile(r"^(\d\d\d\d\d) added")
-GATE_REMOVED_RE = re.compile(r"^(\d\d\d\d\d) removed")
-GATE_RANGE_RE = re.compile(r"^Gates (\d\d\d\d\d)-(\d\d\d\d\d)")
+GATE_ADDED_RE = re.compile(r"^(\d\d\d\d[\dAB]) added")
+GATE_REMOVED_RE = re.compile(r"^(\d\d\d\d[\dAB]) removed")
+GATE_RANGE_RE = re.compile(r"^Gates (\d\d\d\d[\dAB])-(\d\d\d\d[\dAB])")
 
 
 def diff(first, second):
@@ -77,10 +77,27 @@ def read_gates_from_schematics():
                 continue
             res = GATE_RANGE_RE.search(l)
             if res:
-                r1 = int(res.groups()[0])
-                r2 = int(res.groups()[1]) + 1
+                r1 = res.groups()[0]
+                r2 = res.groups()[1]
+                try:
+                    r1 = int(r1)
+                    r2 = int(r2) + 1
+                    l1 = None
+                    l2 = None
+                except ValueError:
+                    l1 = r1[-1]
+                    l2 = r2[-1]
+                    r1 = int(r1[:-1])
+                    r2 = int(r2[:-1]) + 1
+
                 for i in range(r1, r2):
-                    gates[current_module].append(str(i))
+                    if l1 is not None:
+                        if i != r1 or l1 == "A":
+                            gates[current_module].append("{:04}".format(i) + "A")
+                        if i != r2 - 1 or l2 == "B":
+                            gates[current_module].append("{:04}".format(i) + "B")
+                    else:
+                        gates[current_module].append(str(i))
                 #print(f"Gates {r1}-{r2-1}")
                 continue
             res = GATE_ADDED_RE.search(l)
@@ -156,7 +173,7 @@ def check_arguments():
 
 if __name__ == "__main__":
     import sys
-    if (not check_names()) or (not check_arguments()):
+    if (not check_names()):  # or (not check_arguments()):
         sys.exit()
 
     gates_schematics = read_gates_from_schematics()
@@ -171,9 +188,9 @@ if __name__ == "__main__":
         print(f"{m}")
         print("---")
         #if m not in [f"A{i:02}" for i in range(1, 13)]:
-        if m not in [f"A{i:02}" for i in range(1, 25)]:
-            print(f"Skipping")
-            continue
+        # if m not in [f"A{i:02}" for i in range(1, 25)]:
+        #     print(f"Skipping")
+        #     continue
         gsch = gates_schematics[m]
         try:
             gsrc = gates_source[m]

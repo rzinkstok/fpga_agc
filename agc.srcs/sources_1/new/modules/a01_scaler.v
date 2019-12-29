@@ -5,34 +5,21 @@ module a01_scaler(
     input wire RCHAT_, 
     input wire RCHBT_,
 
-    output wire FS02, 
-    output wire FS02A, 
-    output wire F02A, 
+    output wire FS02,
     output wire F02B,
-    output wire FS03, 
-    output wire FS03A, 
-    output wire F03A, 
-    output wire F03B, 
+    output wire FS03,
     output wire F03B_,
-    output wire FS04, 
-    output wire FS04A, 
+    output wire FS04,
     output wire F04A, 
-    output wire F04B, 
-    output wire F04B_,
+    output wire F04B,
     output wire FS05, 
-    output wire FS05_, 
-    output wire FS05A, 
-    output wire F05A, 
-    output wire F05A_, 
-    output wire F05B, 
+    output wire FS05_,
+    output wire F05A_,
     output wire F05B_, 
     output wire F05D,
     output wire FS06, 
-    output wire FS06_, 
-    output wire F06A, 
-    output wire F06B, 
+    output wire FS06_,
     output wire F06B_,
-    output wire FS07, 
     output wire FS07_, 
     output wire FS07A, 
     output wire F07A, 
@@ -42,13 +29,10 @@ module a01_scaler(
     output wire F07C_, 
     output wire F07D_,
     output wire FS08, 
-    output wire FS08_, 
-    output wire F08A, 
-    output wire F08B, 
-    output wire F08B_,
+    output wire FS08_,
+    output wire F08B,
     output wire FS09, 
-    output wire FS09_, 
-    output wire F09A, 
+    output wire FS09_,
     output wire F09A_, 
     output wire F09B, 
     output wire F09B_, 
@@ -58,81 +42,19 @@ module a01_scaler(
     output wire F10A_, 
     output wire F10B, 
     output wire F10B_,
-    output wire FS11, 
-    output wire F11A, 
-    output wire F11B,
-    output wire FS12, 
-    output wire F12A, 
     output wire F12B,
-    output wire FS13, 
-    output wire F13A, 
-    output wire F13B,
-    output wire FS14, 
-    output wire F14A, 
+    output wire FS13,
+    output wire FS14,
     output wire F14B,
-    output wire FS15, 
-    output wire F15A, 
-    output wire F15B,
-    output wire FS16, 
-    output wire F16A, 
-    output wire F16B,
+    output wire FS16,
     output wire FS17, 
     output wire F17A, 
     output wire F17A_, 
     output wire F17B, 
     output wire F17B_,
-    output wire FS18, 
-    output wire F18A, 
-    output wire F18A_, 
-    output wire F18B, 
     output wire F18B_, 
     output wire F18AX,
-    output wire FS19, 
-    output wire F19A, 
-    output wire F19B,
-    output wire FS20, 
-    output wire F20A, 
-    output wire F20B,
-    output wire FS21, 
-    output wire F21A, 
-    output wire F21B,
-    output wire FS22, 
-    output wire F22A, 
-    output wire F22B,
-    output wire FS23, 
-    output wire F23A, 
-    output wire F23B,
-    output wire FS24, 
-    output wire F24A, 
-    output wire F24B,
-    output wire FS25, 
-    output wire F25A, 
-    output wire F25B,
-    output wire FS26, 
-    output wire F26A, 
-    output wire F26B,
-    output wire FS27, 
-    output wire F27A, 
-    output wire F27B,
-    output wire FS28, 
-    output wire F28A, 
-    output wire F28B,
-    output wire FS29, 
-    output wire F29A, 
-    output wire F29B,
-    output wire FS30, 
-    output wire F30A, 
-    output wire F30B,
-    output wire FS31, 
-    output wire F31A, 
-    output wire F31B,
-    output wire FS32, 
-    output wire F32A, 
-    output wire F32B,
-    output wire FS33, 
-    output wire F33A, 
-    output wire F33B, 
-    output wire CHAT01, 
+    output wire CHAT01,
     output wire CHAT02, 
     output wire CHAT03, 
     output wire CHAT04, 
@@ -229,7 +151,84 @@ module a01_scaler(
     wire NOR49355_out;
     wire NOR49356_out;
     
-    
+    wire F02A;
+    wire FS02A;
+    wire F03A;
+    wire F03B;
+    wire FS03A;
+    wire F04B_;
+    wire F05A;
+    wire F05B;
+    wire FS05A;
+    wire F06A;
+    wire F06B;
+    wire FS07;
+    wire F08A;
+    wire F08B_;
+    wire F09A;
+    wire F11A;
+    wire F11B;
+    wire FS11;
+    wire F12A;
+    wire FS12;
+    wire F13A;
+    wire F13B;
+    wire F14A;
+    wire F15A;
+    wire F15B;
+    wire FS15;
+    wire F16A;
+    wire F16B;
+    wire F18A_;
+    wire F18B;
+    wire FS18;
+    wire F19A;
+    wire F19B;
+    wire FS19;
+    wire F20A;
+    wire F20B;
+    wire FS20;
+    wire F21A;
+    wire F21B;
+    wire FS21;
+    wire F22A;
+    wire F22B;
+    wire FS22;
+    wire F23A;
+    wire F23B;
+    wire FS23;
+    wire F24A;
+    wire F24B;
+    wire FS24;
+    wire F25A;
+    wire F25B;
+    wire FS25;
+    wire F26A;
+    wire F26B;
+    wire FS26;
+    wire F27A;
+    wire F27B;
+    wire FS27;
+    wire F28A;
+    wire F28B;
+    wire FS28;
+    wire F29A;
+    wire F29B;
+    wire FS29;
+    wire F30A;
+    wire F30B;
+    wire FS30;
+    wire F31A;
+    wire F31B;
+    wire FS31;
+    wire F32A;
+    wire F32B;
+    wire FS32;
+    wire F33A;
+    wire F33B;
+    wire FS33;
+
+
     // Stage 2
     nor_3 #(1'b0)  NOR38201(FS02A,          NOR38204_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b1)  NOR38202(F02A,           NOR38204_out,   NOR38203_out,   n0VDCA,         p4VDC, reset, prop_clk);

@@ -43,7 +43,7 @@ module a12_parity_s_register(
     output wire GEMP,
     output wire MSP,
     output wire PALE,
-    output wire MPAL,
+    output wire MPAL_,
     
     input wire WL01_,
     input wire WL02_,
@@ -418,10 +418,10 @@ module a12_parity_s_register(
     nor_3 #(1'b0)  NOR34251(NOR34251_out,   TPARG_,         n8XP5,          NOR34247_out,   p4SW, reset, prop_clk);
     assign PALE = NOR34250_out & NOR34251_out;
     
-    // MPAL
+    // MPAL_
     nor_3 #(1'b0)  NOR34252(NOR34252_out,   PALE,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     // Single monitor fan-in output, no cross-module fan-in
-    assign MPAL = NOR34252_out;
+    assign MPAL_ = NOR34252_out;
     
     // NOR34253 moved to A4 sheet 2
     // NOR34254 moved to A13 sheet 1

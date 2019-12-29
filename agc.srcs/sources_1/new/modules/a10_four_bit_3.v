@@ -97,14 +97,10 @@ module a10_four_bit_3(
     output wire CO14,
     output wire XUY09_,    
     output wire XUY10_,
-    output wire XUY12_,
     output wire SUMA11_,
     output wire SUMA12_,
     output wire SUMB11_,
 	output wire SUMB12_,
-    output wire L09_,
-    output wire L10_,
-    output wire L11_,
     output wire L12_,
     output wire G09, 
     output wire G09_, 
@@ -116,7 +112,6 @@ module a10_four_bit_3(
     output wire G11_, 
     output wire GEM11, 
     output wire G12, 
-    output wire G12_,
     output wire GEM12,
     
     input wire n0VDCA,
@@ -312,6 +307,7 @@ module a10_four_bit_3(
     wire A11_;
     wire A12_;
     wire XUY11_;
+    wire XUY12_;
     wire XUY08_;
     wire CI10_;
     wire CI11_;
@@ -321,6 +317,11 @@ module a10_four_bit_3(
     wire Z10_;
     wire Z11_;
     wire Z12_;
+    wire G12_;
+    wire L09_;
+    wire L10_;
+    wire L11_;
+
 
     // Bit column 9
      

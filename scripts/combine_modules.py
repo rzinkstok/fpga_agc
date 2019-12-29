@@ -909,6 +909,8 @@ if __name__ == "__main__":
     input_wires = set()
     output_wires = set()
     for module_file_name in sorted(os.listdir(MODULES_SOURCE_FOLDER)):
+        if module_file_name.startswith("a77"):
+            continue
         module_name, params, inputs, outputs = read_module(module_file_name)
         module_params[module_name] = params
         input_wires.update(inputs)

@@ -105,25 +105,18 @@ module a21_counter_cell_ii(
     output wire CAD4,
     output wire CAD5,
     output wire CAD6,
-    
-    output wire INCSET_,
-    output wire SHINC,
+
     output wire SHINC_,
-    output wire SHANC,
     output wire SHANC_,
     output wire DINC,
     output wire DINC_,
     output wire SHIFT,
     output wire SHIFT_,
     output wire PINC,
-    output wire PINC_,
     output wire MINC,
-    output wire MINC_,
     output wire PCDU,
-    output wire PCDU_,
     output wire MCDU,
-    output wire MCDU_,
-    
+
     output wire FETCH0,
     output wire FETCH0_,
     output wire FETCH1,
@@ -260,7 +253,8 @@ module a21_counter_cell_ii(
     wire C56A;
     wire C57A;
     wire C60A;
-    
+
+    wire INCSET_;
     wire nSHINCSET_;
     wire nSHANCSET_;
     wire nDINCSET_;
@@ -269,6 +263,12 @@ module a21_counter_cell_ii(
     wire nMINCSET_;
     wire nPCDUSET_;
     wire nMCDUSET_;
+    wire PCDU_;
+    wire MCDU_;
+    wire PINC_;
+    wire MINC_;
+    wire SHINC;
+    wire SHANC;
     
     // CAD1
     nor_3 #(1'b0)  NOR32001(NOR32001_out,   C25A,           C27A,           C31A,           p4SW, reset, prop_clk);

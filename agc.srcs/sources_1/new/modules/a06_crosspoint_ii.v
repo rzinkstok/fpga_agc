@@ -164,16 +164,10 @@ module a06_crosspoint_ii(
     output wire A06_2_n8PP4, 
     output wire A06_3_n8PP4,
     output wire WHOMP,
-    output wire WHOMP_,
     output wire WHOMPA,
     output wire RB1,
-    
-    output wire DVXP1, 
     output wire L2GD_, 
-    output wire ZIP, 
-    output wire ZIPCI, 
-    output wire ZAP, 
-    output wire ZAP_, 
+    output wire ZAP_,
     output wire MCRO_, 
     output wire RB1F, 
     output wire RCH_, 
@@ -189,19 +183,15 @@ module a06_crosspoint_ii(
     output wire MOUT, 
     output wire ZOUT, 
     output wire WOVR, 
-    output wire RDBANK, 
-    output wire EXT, 
+    output wire EXT,
     output wire ST1, 
     output wire ST2, 
     output wire RUS_, 
     output wire NEAC, 
     output wire PONEX, 
     output wire PSEUDO,
-    output wire n6XP10, 
     output wire n7XP11,
     output wire n7XP14,
-    output wire n8XP4, 
-    output wire n8XP10,
     
     input wire n0VDCA,
     input wire p4SW,
@@ -282,8 +272,13 @@ module a06_crosspoint_ii(
     
     wire L02A_;
     wire L15A_;
-    
-    
+    wire DVXP1;
+    wire WHOMP_;
+    wire ZAP;
+    wire ZIP;
+    wire ZIPCI;
+
+
     // DVXP1
     nor_3 #(1'b0)  NOR40101(NOR40101_out,   T04,            T07,            T10,            p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR40102(NOR40102_out,   NOR40101_out,   DV376_,         n0VDCA,         p4SW, reset, prop_clk);
@@ -567,13 +562,15 @@ module a06_crosspoint_ii(
     wire NOR40423_in;
     wire NOR40434_in;
     
-    
+    wire n6XP10;
     wire n6XP12;
     wire n7XP7;
     wire n7XP10;
     wire n7XP15;
+    wire n8XP4;
+    wire n8XP10;
     wire n10XP9;
-    
+    wire RDBANK;
     
     // NOR40301 removed (not used)
     

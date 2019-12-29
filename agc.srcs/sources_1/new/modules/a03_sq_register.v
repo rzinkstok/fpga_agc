@@ -46,12 +46,7 @@ module a03_sq_register(
     output wire SQ0_,  
     output wire SQ1_, 
     output wire SQ2_, 
-    output wire SQ3_, 
-    output wire SQ4_, 
-    output wire SQ5_, 
-    output wire SQ6_, 
-    output wire SQ7_, 
-    output wire SQEXT, 
+    output wire SQEXT,
     output wire SQEXT_,
     output wire QC0_, 
     output wire QC1_, 
@@ -242,7 +237,13 @@ module a03_sq_register(
     
     wire CSQG;
     wire WSQG_;
-    
+
+    wire SQ3_;
+    wire SQ4_;
+    wire SQ5_;
+    wire SQ6_;
+    wire SQ7_;
+
     wire SQR11;
     wire SQR12;
     wire SQR13;

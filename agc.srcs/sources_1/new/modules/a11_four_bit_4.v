@@ -100,8 +100,6 @@ module a11_four_bit_4(
     output wire WL16_, 
     output wire MWL16,
     output wire EAC_,
-    output wire CO02, 
-    output wire CO16,
     output wire XUY13_,    
     output wire XUY14_,
     output wire SUMA13_,
@@ -112,8 +110,6 @@ module a11_four_bit_4(
     output wire SUMB14_,
     output wire SUMB15_,
     output wire SUMB16_,
-    output wire L13_,
-    output wire L14_,
     output wire L15_,
     output wire G13, 
     output wire G13_, 
@@ -123,9 +119,7 @@ module a11_four_bit_4(
     output wire GEM14, 
     output wire G15, 
     output wire G15_, 
-    output wire GEM15, 
-    output wire G16, 
-    output wire G16_,
+    output wire G16,
     output wire GEM16,
     output wire A15_,
     output wire A16_,
@@ -316,13 +310,20 @@ module a11_four_bit_4(
     wire CI14_;
     wire CI15_;
     wire CI16_;
+    wire CO02;
     wire CO12;
+    wire CO16;
     wire Z13_;
     wire Z14_;
     wire Z15_;
     wire Z16_;
     wire RL16;
-    
+    wire G16_;
+    wire GEM15;
+    wire L13_;
+    wire L14_;
+
+
     // Bit column 13
      
     // CO16 part 1

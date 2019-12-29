@@ -81,9 +81,6 @@ module a09_four_bit_2(
     output wire CO10,
     output wire XUY05_, 
     output wire XUY06_,
-    output wire L05_,
-    output wire L06_,
-    output wire L07_,
     output wire L08_,
     output wire G05, 
     output wire G05_, 
@@ -95,7 +92,6 @@ module a09_four_bit_2(
     output wire G07_, 
     output wire GEM07, 
     output wire G08, 
-    output wire G08_,
     output wire GEM08,
     
     input wire n0VDCA,
@@ -326,7 +322,11 @@ module a09_four_bit_2(
     wire Z06_;
     wire Z07_;
     wire Z08_;
-    
+    wire G08_;
+    wire L05_;
+    wire L06_;
+    wire L07_;
+
     
     // Bit column 5
      

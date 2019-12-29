@@ -67,12 +67,9 @@ module a14_memory_timing_addressing(
     input wire STRT2,
     input wire SCAD,
     
-    output wire ROP_,
     output wire IHENV,
     output wire SETAB,
-    output wire SETAB_,
     output wire SETCD,
-    output wire SETCD_,
     output wire STBF,
     output wire SBF,
     output wire RESETA,
@@ -82,9 +79,6 @@ module a14_memory_timing_addressing(
     output wire STRGAT,
     output wire CLROPE,
     
-    output wire ERAS,
-    output wire ERAS_,
-    output wire FNERAS_,
     output wire WEX,
     output wire WEY,
     output wire RSTKX_,
@@ -122,76 +116,38 @@ module a14_memory_timing_addressing(
     output wire XB7_,
     output wire XB7E,
     
-    output wire YB0,
     output wire YB0_,
     output wire YB0E,
-    output wire YB1,
-    output wire YB1_,
     output wire YB1E,
-    output wire YB2,
-    output wire YB2_,
     output wire YB2E,
-    output wire YB3,
-    output wire YB3_,
     output wire YB3E,
-    
-    output wire XT0,
+
     output wire XT0_,
     output wire XT0E,
-    output wire XT1,
     output wire XT1_,
     output wire XT1E,
-    output wire XT2,
     output wire XT2_,
     output wire XT2E,
-    output wire XT3,
     output wire XT3_,
     output wire XT3E,
-    output wire XT4,
     output wire XT4_,
     output wire XT4E,
-    output wire XT5,
     output wire XT5_,
     output wire XT5E,
-    output wire XT6,
     output wire XT6_,
     output wire XT6E,
-    output wire XT7,
-    output wire XT7_,
     output wire XT7E,
     
-    output wire YT0, 
-    output wire YT0_, 
+    output wire YT0_,
     output wire YT0E, 
-    output wire YT1, 
-    output wire YT1_, 
-    output wire YT1E, 
-    output wire YT2, 
-    output wire YT2_, 
-    output wire YT2E, 
-    output wire YT3, 
-    output wire YT3_, 
-    output wire YT3E, 
-    output wire YT4, 
-    output wire YT4_, 
-    output wire YT4E, 
-    output wire YT5, 
-    output wire YT5_, 
-    output wire YT5E, 
-    output wire YT6, 
-    output wire YT6_, 
-    output wire YT6E, 
-    output wire YT7, 
-    output wire YT7_, 
+    output wire YT1E,
+    output wire YT2E,
+    output wire YT3E,
+    output wire YT4E,
+    output wire YT5E,
+    output wire YT6E,
     output wire YT7E,
-    
-    output wire EAD09,
-    output wire EAD09_,
-    output wire EAD10,
-    output wire EAD10_,
-    output wire EAD11,
-    output wire EAD11_,
-    
+
     output wire IL01,
     output wire IL01_,
     output wire IL02,
@@ -306,7 +262,8 @@ module a14_memory_timing_addressing(
     
     wire NOR40222_out;
     wire NOR52162_out;
-    
+
+    wire ROP_;
     wire SBFSET;
     wire CLEARA;
     wire CLEARB;
@@ -319,6 +276,11 @@ module a14_memory_timing_addressing(
     wire REDRST;
     wire SBESET;
     wire TPGE;
+    wire ERAS;
+    wire ERAS_;
+    wire FNERAS_;
+    wire SETAB_;
+    wire SETCD_;
     
     // Fixed memory timing signals
     
@@ -540,10 +502,51 @@ module a14_memory_timing_addressing(
     wire NOR42435_in;
     wire NOR42442_in;
     wire NOR42445_in;
-    
+
+    wire YB0;
+    wire YB1;
+    wire YB1_;
+    wire YB2;
+    wire YB2_;
+    wire YB3;
+    wire YB3_;
+
+    wire XT0;
+    wire XT1;
+    wire XT2;
+    wire XT3;
+    wire XT4;
+    wire XT5;
+    wire XT6;
+    wire XT7;
+    wire XT7_;
+
+    wire YT0;
+    wire YT1;
+    wire YT1_;
+    wire YT2;
+    wire YT2_;
+    wire YT3;
+    wire YT3_;
+    wire YT4;
+    wire YT4_;
+    wire YT5;
+    wire YT5_;
+    wire YT6;
+    wire YT6_;
+    wire YT7;
+    wire YT7_;
+
     wire RILP1;
     wire RILP1_;
-    
+
+    wire EAD09;
+    wire EAD09_;
+    wire EAD10;
+    wire EAD10_;
+    wire EAD11;
+    wire EAD11_;
+
     // X bottom signals
     
     nor_3 #(1'b0)  NOR42301(XB0,            S01,            S02,            S03,            p4SW, reset, prop_clk);

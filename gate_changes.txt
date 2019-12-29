@@ -1172,7 +1172,7 @@ Gates 48401-48458
 Module A24
 Sheet 1
 Gates 49101-49160
-Gates 49201-49254
+Gates 49201-49255
 49101 removed (moved to A3 sheet 1)
 49102 removed (moved to A3 sheet 1)
 49103 removed (moved to A3 sheet 1)
@@ -1277,3 +1277,9 @@ Gates 49401-49443
 54361 added from A11 sheet 2
 54362 added from A11 sheet 2
 
+Module A77
+Sheet 1
+Gates 0001A-0029B
+0007B removed (fan-out expansion)
+0009B removed (fan-out expansion)
+0012B removed (not used)

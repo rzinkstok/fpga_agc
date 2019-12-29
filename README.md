@@ -15,21 +15,29 @@ used the CAD transcriptions of these schematics from
 https://github.com/virtualagc/virtualagc/tree/schematics/Schematics. For the backplane wiring, I used the excellent
 tool created by Mike Stewart (http://apolloguidance.computer/2003100_071/pins).
 
-Deviations from the original schematics are similar to what Mike Stewart has done:
-- A similar trick is used in the AGC to increase the fan-out capability, as a single nor gate could drive only
-  five other gates. Modern electronics have near infinite fan-out, so these extra gates are eliminated.
+The major difference between the schematics and the current implementation is the elimination of all fan-out expansion
+gates. These were needed as a single NOR gate could only provide enough current for 5 connected NOR gates. As modern
+electronic gates have a near infinite fan-out, these have been eliminated.
 
 ###Power supply
-Standby powered gates are always on, swithed gates not. Perhaps best to add a Vcc input to all NOR gates, that allows
-normal operation when high but ensures the output of the gate is zero when it is low? Or is it better to output the
-initial value of the gate?
+A dummy power input has been included in each NOR gate. These are not used for really powering the gate, but are used
+to be able to disable the gate. The AGC had a standby mode in which most of the gates were unpowered, leaving only some
+essential timekeeping circuitry alive. To this end, two power signals (+4SW and +4VDC) were available. The former is
+switched off when standby is initiated. In this implementation, the loss of power to a gate forces the gate to its
+initial value until power is restored.
+
+###Restart Monitor
+The restart monitor is an add-on plugged into the test connector of the AGC during flight, which allowed to interrogate
+the AGC for the reason of a computer restart. The restart monitor is included as module A77, but not incorporated into
+the full FPGA AGC. Probably something to incorporate into the AGC Monitor.
 
 ###Structure
-fpga_agc.v
-    prop_clock_divider
-    agc_clock_divider
-    agc.v
-        modules
-        memory.v
+top
+    fpga_agc.v
+        prop_clock_divider
+        agc_clock_divider
+        agc.v
+            modules
+            memory.v
     monitor.v
-
+    

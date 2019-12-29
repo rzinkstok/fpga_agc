@@ -1,0 +1,46 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../agc.srcs/sources_1/ip/prop_clock_divider" \
+"../../../../agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider_sim_netlist.v" \
+"../../../../agc.srcs/sources_1/new/components/nor_3.v" \
+"../../../../agc.srcs/sources_1/new/modules/a10_four_bit_3.v" \
+"../../../../agc.srcs/sources_1/new/modules/a07_service_gates.v" \
+"../../../../agc.srcs/sources_1/new/modules/a08_four_bit_1.v" \
+"../../../../agc.srcs/sources_1/new/modules/a05_crosspoint_nqi.v" \
+"../../../../agc.srcs/sources_1/new/modules/a01_scaler.v" \
+"../../../../agc.srcs/sources_1/new/modules/a02_timer.v" \
+"../../../../agc.srcs/sources_1/new/modules/a04_stage_branch.v" \
+"../../../../agc.srcs/sources_1/new/modules/a06_crosspoint_ii.v" \
+"../../../../agc.srcs/sources_1/new/modules/a03_sq_register.v" \
+"../../../../agc.srcs/sources_1/new/modules/a09_four_bit_2.v" \
+"../../../../agc.srcs/sources_1/new/modules/a11_four_bit_4.v" \
+"../../../../agc.srcs/sources_1/new/modules/a12_parity_s_register.v" \
+"../../../../agc.srcs/sources_1/new/modules/a13_alarms.v" \
+"../../../../agc.srcs/sources_1/new/modules/a14_memory_timing_addressing.v" \
+"../../../../agc.srcs/sources_1/new/modules/a15_rupt_service.v" \
+"../../../../agc.srcs/sources_1/new/modules/a16_inout_i.v" \
+"../../../../agc.srcs/sources_1/new/modules/a17_inout_ii.v" \
+"../../../../agc.srcs/sources_1/new/modules/a18_inout_iii.v" \
+"../../../../agc.srcs/sources_1/new/modules/a19_inout_iv.v" \
+"../../../../agc.srcs/sources_1/new/modules/a20_counter_cell_i.v" \
+"../../../../agc.srcs/sources_1/new/modules/a21_counter_cell_ii.v" \
+"../../../../agc.srcs/sources_1/new/modules/a22_inout_v.v" \
+"../../../../agc.srcs/sources_1/new/modules/a23_inout_vi.v" \
+"../../../../agc.srcs/sources_1/new/modules/a24_inout_vii.v" \
+"../../../../agc.srcs/sources_1/new/modules/a77_restart_monitor.v" \
+"../../../../agc.srcs/sources_1/new/fpga_agc.v" \
+"../../../../agc.srcs/sources_1/new/agc_clock_divider.v" \
+"../../../../agc.srcs/sources_1/new/toplevel.v" \
+"../../../../agc.srcs/sources_1/new/tray_a.v" \
+"../../../../agc.srcs/sources_1/new/tray_b.v" \
+"../../../../agc.srcs/sim_1/new/a1_scaler_tb.v" \
+"../../../../agc.srcs/sim_1/new/a2_timer_tb.v" \
+"../../../../agc.srcs/sim_1/new/a3_sq_register_tb.v" \
+"../../../../agc.srcs/sim_1/new/a3_sq_register_tb2.v" \
+"../../../../agc.srcs/sim_1/new/agc_tb.v" \
+"../../../../agc.srcs/sim_1/new/fpga_agc_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

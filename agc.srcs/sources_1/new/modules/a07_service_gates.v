@@ -61,8 +61,7 @@ module a07_service_gates(
     input wire RL10BB,
     input wire SCAD_,
     
-    output wire WALSG, 
-    output wire WALSG_, 
+    output wire WALSG_,
     output wire WYLOG_, 
     output wire WYHIG_, 
     output wire CUG, 
@@ -70,8 +69,7 @@ module a07_service_gates(
     output wire WYDLOG_, 
     output wire WBG_, 
     output wire CBG, 
-    output wire WGNORM, 
-    output wire WG1G_, 
+    output wire WG1G_,
     output wire WG2G_, 
     output wire WG3G_, 
     output wire WG4G_, 
@@ -239,7 +237,8 @@ module a07_service_gates(
     wire NOR33115_in;
     wire NOR33221_in;
     wire NOR33224_in;
-    
+
+    wire WALSG;
     wire WGA_;
     wire G2LSG;
     wire P04A;
@@ -252,6 +251,7 @@ module a07_service_gates(
     wire RLG3;
     wire RSCG_;
     wire WSCG_;
+    wire WGNORM;
     
     // WALSG, WALSG_
     nor_3 #(1'b0)  NOR33102(WALSG,          ZAP_,           WT_,            n0VDCA,         p4SW, reset, prop_clk);

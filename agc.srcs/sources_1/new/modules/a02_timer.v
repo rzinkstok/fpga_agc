@@ -15,97 +15,64 @@ module a02_timer(
     input wire WL16_,
 
     output wire CLK, 
-    output wire PHS2, 
-    output wire PHS2_, 
+    output wire PHS2_,
     output wire PHS3_, 
     output wire PHS4, 
     output wire PHS4_, 
     output wire CT, 
     output wire CT_, 
-    output wire RT, 
-    output wire RT_, 
-    output wire WT, 
-    output wire WT_, 
+    output wire RT_,
+    output wire WT_,
     output wire TT_, 
-    output wire OVFSTB_, 
-    output wire MONWT, 
+    output wire MONWT,
     output wire Q2A, 
-    output wire RINGA_, 
-    output wire RINGB_, 
-    output wire ODDSET_, 
-    output wire EVNSET, 
-    output wire EVNSET_,
-    output wire P01, 
-    output wire P01_, 
-    output wire P02, 
+    output wire P02,
     output wire P02_, 
     output wire P03, 
-    output wire P03_, 
-    output wire P04, 
-    output wire P04_, 
-    output wire P05, 
-    output wire P05_,
+    output wire P03_,
+    output wire P04_,
     output wire F01A, 
     output wire F01B, 
-    output wire F01C, 
-    output wire F01D, 
-    output wire FS01, 
+    output wire FS01,
     output wire FS01_,
-    output wire SB0, 
-    output wire SB0_, 
-    output wire SB1, 
-    output wire SB1_, 
+    output wire SB0_,
+    output wire SB1_,
     output wire SB2, 
     output wire SB2_, 
     output wire SB4, 
-    output wire EDSET,
 
-    output wire STOPA, 
-    output wire GOJAM, 
-    output wire GOJAM_, 
-    output wire STOP, 
-    output wire STOP_, 
+    output wire GOJAM,
+    output wire STOP,
     output wire TIMR,
     output wire MSTPIT_, 
     output wire MGOJAM,
 
     output wire T01, 
     output wire T01_, 
-    output wire T01DC_, 
-    output wire T02, 
+    output wire T02,
     output wire T02_, 
-    output wire T02DC_, 
-    output wire T03, 
+    output wire T03,
     output wire T03_, 
-    output wire T03DC_, 
-    output wire T04, 
+    output wire T04,
     output wire T04_, 
-    output wire T04DC_,
-    output wire T05, 
+    output wire T05,
     output wire T05_, 
-    output wire T05DC_, 
-    output wire T06, 
+    output wire T06,
     output wire T06_, 
-    output wire T06DC_, 
-    output wire T07, 
+    output wire T07,
     output wire T07_, 
-    output wire T07DC_, 
-    output wire T08, 
+    output wire T08,
     output wire T08_, 
-    output wire T08DC_,
-    output wire T09, 
+    output wire T09,
     output wire T09_, 
-    output wire T09DC_, 
-    output wire T10, 
+    output wire T10,
     output wire T10_, 
-    output wire T10DC_, 
-    output wire T11, 
+    output wire T11,
     output wire T11_,
     output wire T12, 
     output wire T12_,
     output wire T12A,
-    output wire T12DC_,
-    output wire MT01, 
+    output wire MT01,
     output wire MT02, 
     output wire MT03,
     output wire MT04, 
@@ -117,10 +84,7 @@ module a02_timer(
     output wire MT10, 
     output wire MT11, 
     output wire MT12, 
-    output wire T12SET,
-    output wire UNF, 
-    output wire UNF_, 
-    output wire OVF, 
+    output wire UNF_,
     output wire OVF_,
 
     input wire n0VDCA,
@@ -159,7 +123,18 @@ module a02_timer(
     wire NOR37152_out;
     wire NOR37153_out;
     wire NOR37154_out;
-    
+
+    wire PHS2;
+    wire RINGA_;
+    wire RINGB_;
+    wire EVNSET;
+    wire EVNSET_;
+    wire ODDSET_;
+    wire OVFSTB_;
+    wire RT;
+    wire WT;
+
+
     // Clock divider 1
     nor_3 #(1'b0)  NOR37101(NOR37101_out,   NOR37105_out,   NOR37102_out,   n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR37102(NOR37102_out,   NOR37101_out,   CLOCK,          NOR37103_out,   p4VDC, reset, prop_clk);
@@ -310,9 +285,23 @@ module a02_timer(
     wire NOR40250_in;
     
     wire NOR39261_out;
-    
+
+    wire GOJAM_;
     wire GOSET_;
-    
+    wire EDSET;
+    wire F01C;
+    wire F01D;
+    wire P01;
+    wire P01_;
+    wire P04;
+    wire P05;
+    wire P05_;
+    wire SB0;
+    wire SB1;
+    wire STOPA;
+    wire STOP_;
+
+
     // Ring counter
     
     nor_3 #(1'b0)  NOR37201(NOR37201_out,   RINGB_,         P05_,           P04_,           p4VDC, reset, prop_clk);
@@ -420,62 +409,77 @@ module a02_timer(
     *
     ***************************/
      
-     wire NOR37303_out;
-     wire NOR37304_out;
-     wire NOR37306_out;
-     wire NOR37308_out;
-     wire NOR37310_out;
-     wire NOR37312_out;
-     wire NOR37314_out;
-     wire NOR37316_out;
-     wire NOR37318_out;
-     wire NOR37320_out;
-     wire NOR37322_out;
-     wire NOR37325_out;
-     wire NOR37327_out;
-     wire NOR37329_out;
-     wire NOR37331_out;
-     wire NOR37333_out;
-     wire NOR37335_out;
-     wire NOR37337_out;
-     wire NOR37339_out;
-     wire NOR37341_out;
-     wire NOR37343_out;
-     wire NOR37345_out;
-     wire NOR37346_out;
-     wire NOR37347_out;
-     wire NOR37348_out;
-     wire NOR37355_out;
-     wire NOR37356_out;
-     wire NOR37357_out;
-     wire NOR37358_out;
-     
-     wire NOR37401_out;
-     wire NOR37404_out;
-     wire NOR37405_out;
-     wire NOR37407_out;
-     wire NOR37408_out;
-     wire NOR37411_out;
-     wire NOR37412_out;
-     wire NOR37415_out;
-     wire NOR37416_out;
-     wire NOR37422_out;
-     wire NOR37423_out;
-     wire NOR37427_out;
-     wire NOR37428_out;
-     wire NOR37432_out;
-     wire NOR37433_out;
-     wire NOR37437_out;
-     wire NOR37438_out;
-     wire NOR37442_out;
-     wire NOR37443_out;
-     wire NOR37447_out;
-     wire NOR37448_out;
-     wire NOR37450_out;
-     wire NOR37451_out;
-     wire NOR37454_out;
-     
-     
+    wire NOR37303_out;
+    wire NOR37304_out;
+    wire NOR37306_out;
+    wire NOR37308_out;
+    wire NOR37310_out;
+    wire NOR37312_out;
+    wire NOR37314_out;
+    wire NOR37316_out;
+    wire NOR37318_out;
+    wire NOR37320_out;
+    wire NOR37322_out;
+    wire NOR37325_out;
+    wire NOR37327_out;
+    wire NOR37329_out;
+    wire NOR37331_out;
+    wire NOR37333_out;
+    wire NOR37335_out;
+    wire NOR37337_out;
+    wire NOR37339_out;
+    wire NOR37341_out;
+    wire NOR37343_out;
+    wire NOR37345_out;
+    wire NOR37346_out;
+    wire NOR37347_out;
+    wire NOR37348_out;
+    wire NOR37355_out;
+    wire NOR37356_out;
+    wire NOR37357_out;
+    wire NOR37358_out;
+
+    wire NOR37401_out;
+    wire NOR37404_out;
+    wire NOR37405_out;
+    wire NOR37407_out;
+    wire NOR37408_out;
+    wire NOR37411_out;
+    wire NOR37412_out;
+    wire NOR37415_out;
+    wire NOR37416_out;
+    wire NOR37422_out;
+    wire NOR37423_out;
+    wire NOR37427_out;
+    wire NOR37428_out;
+    wire NOR37432_out;
+    wire NOR37433_out;
+    wire NOR37437_out;
+    wire NOR37438_out;
+    wire NOR37442_out;
+    wire NOR37443_out;
+    wire NOR37447_out;
+    wire NOR37448_out;
+    wire NOR37450_out;
+    wire NOR37451_out;
+    wire NOR37454_out;
+
+    wire T01DC_;
+    wire T02DC_;
+    wire T03DC_;
+    wire T04DC_;
+    wire T05DC_;
+    wire T06DC_;
+    wire T07DC_;
+    wire T08DC_;
+    wire T09DC_;
+    wire T10DC_;
+    wire T12DC_;
+    wire T12SET;
+    wire OVF;
+    wire UNF;
+
+
      // Time pulse generator    
      
     nor_3 #(1'b0)  NOR37301(T12,            T12DC_,         EVNSET_,        n0VDCA,         p4SW, reset, prop_clk);

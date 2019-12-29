@@ -101,9 +101,7 @@ module a08_four_bit_1(
     output wire SUMB02_, 
     output wire SUMA03_, 
     output wire SUMB03_, 
-    output wire SUMA04_, 
-    output wire SUMB04_,
-    output wire G01, 
+    output wire G01,
     output wire G01_, 
     output wire GEM01, 
     output wire G02, 
@@ -111,11 +109,9 @@ module a08_four_bit_1(
     output wire G03, 
     output wire GEM03, 
     output wire G04,
-    output wire G04_, 
     output wire GEM04,
     output wire L01_, 
     output wire L02_, 
-    output wire L03_, 
     output wire L04_,
     
     input wire n0VDCA,
@@ -340,14 +336,18 @@ module a08_four_bit_1(
     wire CI03_;
     wire CI04_;
     wire CO04;
+    wire SUMA04_;
+    wire SUMB04_;
     wire Z01_;
     wire Z02_;
     wire Z03_;
     wire Z04_;
     wire G02_;
     wire G03_;
+    wire G04_;
     wire S08A;
     wire S08A_;
+    wire L03_;
     
     // Bit column 1
      

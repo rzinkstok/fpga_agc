@@ -2,11 +2,11 @@
 # Webtalk v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Fri Dec 27 13:13:12 2019
-# Process ID: 15920
+# Start of session at: Sun Dec 29 13:31:59 2019
+# Process ID: 24115
 # Current directory: /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim
-# Command line: wbtcv -mode batch -source /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/agc_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Command line: wbtcv -mode batch -source /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/fpga_agc_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/webtalk.jou
 #-----------------------------------------------------------
-source /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/agc_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+source /home/rzinkstok/fpga_agc/agc.sim/sim_1/behav/xsim/xsim.dir/fpga_agc_tb_behav/webtalk/xsim_webtalk.tcl -notrace

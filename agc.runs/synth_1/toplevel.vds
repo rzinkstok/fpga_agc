@@ -1,0 +1,127 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Sun Dec 29 18:39:01 2019
+# Process ID: 70427
+# Current directory: /home/rzinkstok/fpga_agc/agc.runs/synth_1
+# Command line: vivado -log toplevel.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source toplevel.tcl
+# Log file: /home/rzinkstok/fpga_agc/agc.runs/synth_1/toplevel.vds
+# Journal file: /home/rzinkstok/fpga_agc/agc.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source toplevel.tcl -notrace
+Command: synth_design -top toplevel -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 70470 
+WARNING: [Synth 8-992] T12DC_ is already implicitly declared earlier [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a02_timer.v:477]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1709.453 ; gain = 158.621 ; free physical = 2640 ; free virtual = 7474
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'toplevel' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/toplevel.v:3]
+INFO: [Synth 8-6157] synthesizing module 'fpga_agc' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/fpga_agc.v:4]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/fpga_agc.v:13]
+INFO: [Synth 8-6157] synthesizing module 'tray_a' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:3]
+INFO: [Synth 8-6157] synthesizing module 'a01_scaler' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a01_scaler.v:3]
+INFO: [Synth 8-6157] synthesizing module 'nor_3' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_3.v:3]
+	Parameter iv bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'nor_3' (1#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_3.v:3]
+INFO: [Synth 8-6157] synthesizing module 'nor_3__parameterized0' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_3.v:3]
+	Parameter iv bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'nor_3__parameterized0' (1#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/components/nor_3.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a01_scaler' (2#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a01_scaler.v:3]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2001]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2002]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2003]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2004]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2005]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2006]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2007]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2008]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2009]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2010]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2011]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2012]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2013]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2014]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2015]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2016]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2017]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2018]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2019]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2020]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2021]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2022]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2023]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2024]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2025]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2026]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2027]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2028]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2029]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2030]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2031]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2032]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2033]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2034]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2035]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2036]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2037]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2038]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2039]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2040]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2041]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2042]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2043]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2044]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2045]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2046]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2047]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2048]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2049]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2050]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2051]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2052]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2053]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2054]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2055]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2056]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2057]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2058]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2059]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2060]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2061]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2062]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2063]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2064]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2065]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2066]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2067]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2068]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2069]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2070]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2071]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2072]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2073]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2074]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2075]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2076]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2077]
+ERROR: [Synth 8-349] instance 'a01' of module 'a01_scaler' passed 163 connections, but takes just 85 [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:2078]
+INFO: [Synth 8-6157] synthesizing module 'a02_timer' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a02_timer.v:3]
+ERROR: [Synth 8-6156] failed synthesizing module 'a02_timer' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/modules/a02_timer.v:3]
+ERROR: [Synth 8-6156] failed synthesizing module 'tray_a' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_a.v:3]
+ERROR: [Synth 8-6156] failed synthesizing module 'fpga_agc' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/fpga_agc.v:4]
+ERROR: [Synth 8-6156] failed synthesizing module 'toplevel' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/toplevel.v:3]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1759.328 ; gain = 208.496 ; free physical = 2665 ; free virtual = 7499
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+13 Infos, 2 Warnings, 0 Critical Warnings and 83 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Sun Dec 29 18:39:24 2019...

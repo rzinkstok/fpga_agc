@@ -89,19 +89,12 @@ module a04_stage_branch(
     input wire n7XP11,
     
     output wire T12USE_,
-    output wire STG1, 
-    output wire STG2, 
     output wire DIV_,
-    output wire ST376, 
-    output wire ST376_,
-    output wire DV0, 
-    output wire DV0_, 
-    output wire DV1, 
+    output wire DV1,
     output wire DV1_, 
     output wire DV4, 
     output wire DV4_, 
-    output wire DV376, 
-    output wire DV376_, 
+    output wire DV376_,
     output wire DV1376, 
     output wire DV1376_, 
     output wire DV3764,
@@ -109,11 +102,8 @@ module a04_stage_branch(
     output wire ST1_, 
     output wire STD2, 
     output wire ST3_, 
-    output wire ST4_, 
-    output wire ST1376_,
-    output wire MST1, 
+    output wire MST1,
     output wire MST2,
-    output wire SGUM,
     output wire BR1, 
     output wire BR1_, 
     output wire MBR1, 
@@ -122,23 +112,17 @@ module a04_stage_branch(
     output wire MBR2,
 
     output wire READ0, 
-    output wire READ0_, 
-    output wire WRITE0, 
-    output wire WRITE0_, 
-    output wire RAND0, 
+    output wire RAND0,
     output wire WAND0, 
     output wire INOUT, 
     output wire INOUT_,
     output wire ROR0, 
     output wire WOR0, 
-    output wire WOR0_, 
-    output wire RXOR0, 
+    output wire RXOR0,
     output wire RXOR0_,
     output wire RUPT0, 
-    output wire RUPT0_, 
-    output wire RUPT1, 
-    output wire RUPT1_,
-    output wire PRINC, 
+    output wire RUPT1,
+    output wire PRINC,
     output wire RRPA,
     output wire n1XP10, 
     output wire n2XP3, 
@@ -181,15 +165,13 @@ module a04_stage_branch(
     output wire R15, 
     output wire RB2, 
     output wire WCH_,
-    output wire MRSC_, 
+    output wire MRSC,
     output wire MP0T10,    
-    output wire B15X, 
-    output wire BR1B2, 
-    output wire BR1B2_, 
-    output wire BR12B, 
-    output wire BR12B_, 
-    output wire BRDIF_, 
-    output wire BR1B2B, 
+    output wire B15X,
+    output wire BR1B2_,
+    output wire BR1B2B,
+    output wire BR12B_,
+    output wire BRDIF_,
     output wire BR1B2B_,
     output wire TL15,
     output wire KRPT,
@@ -286,8 +268,13 @@ module a04_stage_branch(
     wire NOR36129_in;
     wire NOR36150_in;
     wire NOR36228_in;
-    
+
+    wire DV0;
+    wire DV0_;
     wire DVST_;
+    wire DV376;
+    wire STG1;
+    wire STG2;
     wire STG3;
     wire TRSM_;
     wire STFFA_;
@@ -299,7 +286,13 @@ module a04_stage_branch(
     wire BR2FF;
     wire BR2FF_;
     wire TMZINP;
-    
+    wire SGUM;
+    wire ST1376_;
+    wire ST376;
+    wire ST376_;
+    wire ST4_;
+
+
     // Transfer to second stage time flip-flop (T03 or T12)
     nor_3 #(1'b0)  NOR36101(DIVSTG,         T12USE_,        T03_,           n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR36102(T12USE_,        DVST,           NOR36109_out,   n0VDCA,         p4SW, reset, prop_clk);
@@ -598,7 +591,15 @@ module a04_stage_branch(
     wire n2PP1;
     wire BRXP3;
     wire R1C_;
-    
+    wire BR12B;
+    wire BR1B2;
+    wire READ0_;
+    wire WRITE0;
+    wire WRITE0_;
+    wire RUPT0_;
+    wire RUPT1_;
+    wire WOR0_;
+
     
     // NOR36302 removed (fan-out expansion)
     
@@ -736,7 +737,7 @@ module a04_stage_branch(
     
     // Monitor uses full signal
     nor_3 #(1'b0)  NOR36459(NOR36459_out,   RSC_,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
-    assign MRSC_ = NOR36459_out;
+    assign MRSC = NOR36459_out;
 
     // WG_ part 2
     nor_3 #(1'b0)  NOR36360(NOR36360_out,   STORE1_,        T09_,           n0VDCA,         p4SW, reset, prop_clk);

@@ -48,7 +48,8 @@ module a16_inout_i(
     input wire WCH11_,
     input wire CCH11,
     input wire RCH11_,
-    
+
+    input wire FLASH,
     input wire FLASH_,
     
     output wire RCpXpP,
@@ -106,7 +107,6 @@ module a16_inout_i(
     output wire CCH12,
     output wire RCH12_,
     
-    output wire CH1207,
     output wire CH1208,
     output wire CH1209,
     output wire CH1210,
@@ -220,7 +220,10 @@ module a16_inout_i(
     wire WCH06_;
     wire CCH06;
     wire RCH06_;
-    
+
+    wire CH1207;
+
+
     // Channel 5
     
     nor_3 #(1'b0)  NOR43101(NOR43101_out,   CHWL01_,        WCH05_,         n0VDCA,         p4SW, reset, prop_clk);
@@ -576,7 +579,7 @@ module a16_inout_i(
     nor_3 #(1'b0)  NOR43429(NOR43429_out,   NOR43430_out,   CCH11,          n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR43428(NOR43428_out,   RCH11_,         NOR43430_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR43427(NOR43427_out,   NOR43430_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR43426(NOR43426_out,   FLASH_,         n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR43426(NOR43426_out,   FLASH,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     assign KYRLS = NOR43427_out & NOR43426_out;
     nor_3 #(1'b0)  NOR43425(A16_2_CHOR05_,  NOR43321_out,   NOR43428_out,   CH0705,         p4SW, reset, prop_clk);
     
@@ -594,7 +597,7 @@ module a16_inout_i(
     nor_3 #(1'b0)  NOR43443(NOR43443_out,   NOR43444_out,   CCH11,          n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR43442(NOR43442_out,   RCH11_,         NOR43444_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR43441(NOR43441_out,   NOR43444_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR43440(NOR43440_out,   FLASH_,         n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR43440(NOR43440_out,   FLASH,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     assign OPEROR = NOR43441_out & NOR43440_out;
     nor_3 #(1'b0)  NOR43439(A16_2_CHOR07_,  CH1207,         NOR43442_out,   CH0707,         p4SW, reset, prop_clk);
     

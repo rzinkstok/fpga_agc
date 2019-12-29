@@ -114,7 +114,6 @@ module a19_inout_iv(
     output wire F5ASB0_,
     output wire F5ASB2,
     output wire F5ASB2_,
-    output wire F5BSB2,
     output wire F5BSB2_,
     
     output wire OTLNKM,
@@ -301,6 +300,8 @@ module a19_inout_iv(
     wire XLNK0_;
     wire XLNK1_;
     wire BLKUPL;
+    wire F5BSB2;
+
     
     // Altitude meter
     nor_3 #(1'b0)  NOR46101(NOR46101_out,   SHINC_,         T06_,           n0VDCA,         p4SW, reset, prop_clk);

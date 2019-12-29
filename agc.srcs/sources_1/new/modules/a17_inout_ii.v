@@ -193,9 +193,6 @@ module a17_inout_ii(
     output wire CH3316,
     
     // HNDRPT
-    output wire TRP31A,
-    output wire TRP31B,
-    output wire TRP32,
     output wire HNDRPT,
     
     // Channel 10
@@ -317,7 +314,10 @@ module a17_inout_ii(
     wire noTRAN;
     wire noMANR;
     wire noMNIM;
-    
+    wire TRP31A;
+    wire TRP31B;
+    wire TRP32;
+
     
     // Channel 30
     

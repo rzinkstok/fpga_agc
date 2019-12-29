@@ -164,8 +164,7 @@ module a24_inout_vii(
     output wire BOTHZ,
     output wire PIPZP,
     output wire PIPZM,
-    
-    output wire CNTRSB_,
+
     output wire RSCT_,
     output wire MWCH,
     output wire MRCH,
@@ -175,13 +174,11 @@ module a24_inout_vii(
     
     output wire GTSET,
     output wire GTSET_,
-    output wire GTRST,
     output wire GTRST_,
     output wire GTONE,
     
     output wire CI,
-    output wire F7CSB1_,
-    
+
     output wire FLASH,
     output wire FLASH_,
     
@@ -417,7 +414,10 @@ module a24_inout_vii(
     wire PIPAZm_;
     wire PIPGZp;
     wire PIPGZm;
-    
+
+    wire GTRST;
+
+
     // PIPA precount logic Z
     
     // NOR54361 and NOR54362 moved here from A11 sheet 2
@@ -468,9 +468,8 @@ module a24_inout_vii(
     
     nor_3 #(1'b0)  NOR49329(PIPZP,          NOR49317_out,   NOR49327_out,   NOR49301_out,   p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR49330(PIPZM,          NOR49316_out,   NOR49327_out,   NOR49302_out,   p4SW, reset, prop_clk);
-    
-    
-    nor_3 #(1'b0)  NOR49331(CNTRSB_,        SB2,            n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+
+    // NOR49331 removed (moved to A19 sheet 2)
     nor_3 #(1'b0)  NOR49332(RSCT_,          RSCT,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     // NOR49333 removed (fan-out expansion)
     nor_3 #(1'b0)  NOR49334(MWCH,           WCH_,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
@@ -508,11 +507,9 @@ module a24_inout_vii(
     // NOR49356 removed (moved to A1 sheet 1)
     // NOR49357 removed (moved to A1 sheet 1)
     // NOR49358 removed (moved to A1 sheet 1)
-    
-    nor_3 #(1'b0)  NOR49359(NOR49359_out,   F07C_,          SB1_,           n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR49360(F7CSB1_,        NOR49359_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
-    
-    
+    // NOR49359 removed (moved to A19 sheet 2)
+    // NOR49360 removed (moved to A19 sheet 2)
+
     // NOR49401 removed (fan-out expansion)
     // NOR49402 removed (fan-out expansion)
     // NOR49403 removed (fan-out expansion)

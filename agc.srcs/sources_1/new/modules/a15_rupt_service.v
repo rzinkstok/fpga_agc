@@ -90,23 +90,9 @@ module a15_rupt_service(
     output wire A15_1_RL14_,
     output wire A15_1_RL15_,
     output wire A15_1_RL16_,
-    
-    output wire FB11,
-    output wire FB11_,
-    output wire FB12,
-    output wire FB12_,
-    output wire FB13,
-    output wire FB13_,
-    output wire FB14,
-    output wire FB14_,
-    output wire FB16,
-    output wire FB16_,
-    
+
     output wire EB9,
-    output wire EB9_,
     output wire EB10,
-    output wire EB10_,
-    output wire EB11,
     output wire EB11_,
     
     output wire BBK1,
@@ -226,7 +212,22 @@ module a15_rupt_service(
     wire PRPOR4;
     wire RRPA1_;
     wire RPTA12;
-    
+
+    wire EB9_;
+    wire EB10_;
+    wire EB11;
+
+    wire FB11;
+    wire FB11_;
+    wire FB12;
+    wire FB12_;
+    wire FB13;
+    wire FB13_;
+    wire FB14;
+    wire FB14_;
+    wire FB16;
+    wire FB16_;
+
     
     // Fixed bank register
     
