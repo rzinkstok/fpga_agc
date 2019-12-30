@@ -450,7 +450,7 @@ module a09_four_bit_2(
     nor_3 #(1'b0)  NOR52152(WL05,           RL05_,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     
     // MWL01
-    nor_3 #(1'b0)  NOR52153(NOR52153_out,   WL05,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR52153(NOR52153_out,   RL05_,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     assign MWL05 = NOR52153_out;
     
     // WL01_

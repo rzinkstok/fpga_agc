@@ -300,6 +300,8 @@ module a02_timer(
     wire SB1;
     wire STOPA;
     wire STOP_;
+    wire T12DC_;
+    
 
 
     // Ring counter
@@ -474,7 +476,6 @@ module a02_timer(
     wire T08DC_;
     wire T09DC_;
     wire T10DC_;
-    wire T12DC_;
     wire T12SET;
     wire OVF;
     wire UNF;

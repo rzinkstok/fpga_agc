@@ -6,7 +6,7 @@ module a11_four_bit_4(
     input wire BXVX,
     input wire CLXC, 
     input wire CUG, 
-    input wire WYHIG_, 
+    input wire WYHIG_,
     input wire WYDG_, 
     input wire CI13_,
     input wire CO14, 
@@ -438,7 +438,7 @@ module a11_four_bit_4(
     nor_3 #(1'b0)  NOR54152(WL13,           RL13_,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     
     // MWL13
-    nor_3 #(1'b0)  NOR54153(NOR54153_out,   WL13,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR54153(NOR54153_out,   RL13_,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     assign MWL13 = NOR54153_out;
     
     // WL13_

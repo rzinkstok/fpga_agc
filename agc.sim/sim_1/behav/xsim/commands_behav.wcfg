@@ -11,36 +11,39 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="206504531001fs"></ZoomEndTime>
-      <Cursor1Time time="206504531000fs"></Cursor1Time>
+      <ZoomStartTime time="11786822667fs"></ZoomStartTime>
+      <ZoomEndTime time="38686822668fs"></ZoomEndTime>
+      <Cursor1Time time="26074843000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="184"></NameColumnWidth>
-      <ValueColumnWidth column_width="106"></ValueColumnWidth>
+      <ValueColumnWidth column_width="102"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="34" />
-   <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/reset">
+   <WVObjectSize size="39" />
+   <wvobject type="logic" fp_name="/fpga_agc_tb/clk_reset">
+      <obj_property name="ElementShortName">clk_reset</obj_property>
+      <obj_property name="ObjectShortName">clk_reset</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/fpga_agc_tb/reset">
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/GOJAM">
-      <obj_property name="ElementShortName">GOJAM</obj_property>
-      <obj_property name="ObjectShortName">GOJAM</obj_property>
+   <wvobject type="logic" fp_name="/fpga_agc_tb/MGOJAM">
+      <obj_property name="ElementShortName">MGOJAM</obj_property>
+      <obj_property name="ObjectShortName">MGOJAM</obj_property>
    </wvobject>
    <wvobject type="group" fp_name="group998">
       <obj_property name="label">Power</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/n0VDCA">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/n0VDCA">
          <obj_property name="ElementShortName">n0VDCA</obj_property>
          <obj_property name="ObjectShortName">n0VDCA</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/p4VDC">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/p4VDC">
          <obj_property name="ElementShortName">p4VDC</obj_property>
          <obj_property name="ObjectShortName">p4VDC</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/p4SW">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/p4SW">
          <obj_property name="ElementShortName">p4SW</obj_property>
          <obj_property name="ObjectShortName">p4SW</obj_property>
       </wvobject>
@@ -48,97 +51,91 @@
    <wvobject type="group" fp_name="group1002">
       <obj_property name="label">Timer</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/clk">
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/prop_clk">
-         <obj_property name="ElementShortName">prop_clk</obj_property>
-         <obj_property name="ObjectShortName">prop_clk</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/fpga_agc_tb/prop_clk_locked">
          <obj_property name="ElementShortName">prop_clk_locked</obj_property>
          <obj_property name="ObjectShortName">prop_clk_locked</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/CLOCK">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/CLOCK">
          <obj_property name="ElementShortName">CLOCK</obj_property>
          <obj_property name="ObjectShortName">CLOCK</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/PHS2_">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/PHS2_">
          <obj_property name="ElementShortName">PHS2_</obj_property>
          <obj_property name="ObjectShortName">PHS2_</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/PHS3_">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/PHS3_">
          <obj_property name="ElementShortName">PHS3_</obj_property>
          <obj_property name="ObjectShortName">PHS3_</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/PHS4_">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/PHS4_">
          <obj_property name="ElementShortName">PHS4_</obj_property>
          <obj_property name="ObjectShortName">PHS4_</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/RT">
-         <obj_property name="ElementShortName">RT</obj_property>
-         <obj_property name="ObjectShortName">RT</obj_property>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WT_">
+         <obj_property name="ElementShortName">WT_</obj_property>
+         <obj_property name="ObjectShortName">WT_</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/CT">
-         <obj_property name="ElementShortName">CT</obj_property>
-         <obj_property name="ObjectShortName">CT</obj_property>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CT_">
+         <obj_property name="ElementShortName">CT_</obj_property>
+         <obj_property name="ObjectShortName">CT_</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/WT">
-         <obj_property name="ElementShortName">WT</obj_property>
-         <obj_property name="ObjectShortName">WT</obj_property>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/RT_">
+         <obj_property name="ElementShortName">RT_</obj_property>
+         <obj_property name="ObjectShortName">RT_</obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group480">
       <obj_property name="label">Time pulses</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT01">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT01">
          <obj_property name="ElementShortName">MT01</obj_property>
          <obj_property name="ObjectShortName">MT01</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT02">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT02">
          <obj_property name="ElementShortName">MT02</obj_property>
          <obj_property name="ObjectShortName">MT02</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT03">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT03">
          <obj_property name="ElementShortName">MT03</obj_property>
          <obj_property name="ObjectShortName">MT03</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT04">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT04">
          <obj_property name="ElementShortName">MT04</obj_property>
          <obj_property name="ObjectShortName">MT04</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT05">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT05">
          <obj_property name="ElementShortName">MT05</obj_property>
          <obj_property name="ObjectShortName">MT05</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT06">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT06">
          <obj_property name="ElementShortName">MT06</obj_property>
          <obj_property name="ObjectShortName">MT06</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT07">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT07">
          <obj_property name="ElementShortName">MT07</obj_property>
          <obj_property name="ObjectShortName">MT07</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT08">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT08">
          <obj_property name="ElementShortName">MT08</obj_property>
          <obj_property name="ObjectShortName">MT08</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT09">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT09">
          <obj_property name="ElementShortName">MT09</obj_property>
          <obj_property name="ObjectShortName">MT09</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT10">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT10">
          <obj_property name="ElementShortName">MT10</obj_property>
          <obj_property name="ObjectShortName">MT10</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT11">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT11">
          <obj_property name="ElementShortName">MT11</obj_property>
          <obj_property name="ObjectShortName">MT11</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/MT12">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/MT12">
          <obj_property name="ElementShortName">MT12</obj_property>
          <obj_property name="ObjectShortName">MT12</obj_property>
       </wvobject>
@@ -146,136 +143,135 @@
    <wvobject type="group" fp_name="group482">
       <obj_property name="label">Scaler</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS01">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/FS01">
          <obj_property name="ElementShortName">FS01</obj_property>
          <obj_property name="ObjectShortName">FS01</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS02">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS02">
          <obj_property name="ElementShortName">FS02</obj_property>
          <obj_property name="ObjectShortName">FS02</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS03">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS03">
          <obj_property name="ElementShortName">FS03</obj_property>
          <obj_property name="ObjectShortName">FS03</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS04">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS04">
          <obj_property name="ElementShortName">FS04</obj_property>
          <obj_property name="ObjectShortName">FS04</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS05">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS05">
          <obj_property name="ElementShortName">FS05</obj_property>
          <obj_property name="ObjectShortName">FS05</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS06">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS06">
          <obj_property name="ElementShortName">FS06</obj_property>
          <obj_property name="ObjectShortName">FS06</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS07">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS07">
          <obj_property name="ElementShortName">FS07</obj_property>
          <obj_property name="ObjectShortName">FS07</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS08">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS08">
          <obj_property name="ElementShortName">FS08</obj_property>
          <obj_property name="ObjectShortName">FS08</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS09">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS09">
          <obj_property name="ElementShortName">FS09</obj_property>
          <obj_property name="ObjectShortName">FS09</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS10">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS10">
          <obj_property name="ElementShortName">FS10</obj_property>
          <obj_property name="ObjectShortName">FS10</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS11">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS11">
          <obj_property name="ElementShortName">FS11</obj_property>
          <obj_property name="ObjectShortName">FS11</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS12">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS12">
          <obj_property name="ElementShortName">FS12</obj_property>
          <obj_property name="ObjectShortName">FS12</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS13">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS13">
          <obj_property name="ElementShortName">FS13</obj_property>
          <obj_property name="ObjectShortName">FS13</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS14">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS14">
          <obj_property name="ElementShortName">FS14</obj_property>
          <obj_property name="ObjectShortName">FS14</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS15">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS15">
          <obj_property name="ElementShortName">FS15</obj_property>
          <obj_property name="ObjectShortName">FS15</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS16">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS16">
          <obj_property name="ElementShortName">FS16</obj_property>
          <obj_property name="ObjectShortName">FS16</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS17">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS17">
          <obj_property name="ElementShortName">FS17</obj_property>
          <obj_property name="ObjectShortName">FS17</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS18">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS18">
          <obj_property name="ElementShortName">FS18</obj_property>
          <obj_property name="ObjectShortName">FS18</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS19">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS19">
          <obj_property name="ElementShortName">FS19</obj_property>
          <obj_property name="ObjectShortName">FS19</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS20">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS20">
          <obj_property name="ElementShortName">FS20</obj_property>
          <obj_property name="ObjectShortName">FS20</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS21">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS21">
          <obj_property name="ElementShortName">FS21</obj_property>
          <obj_property name="ObjectShortName">FS21</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS22">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS22">
          <obj_property name="ElementShortName">FS22</obj_property>
          <obj_property name="ObjectShortName">FS22</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS23">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS23">
          <obj_property name="ElementShortName">FS23</obj_property>
          <obj_property name="ObjectShortName">FS23</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS24">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS24">
          <obj_property name="ElementShortName">FS24</obj_property>
          <obj_property name="ObjectShortName">FS24</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS25">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS25">
          <obj_property name="ElementShortName">FS25</obj_property>
          <obj_property name="ObjectShortName">FS25</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS26">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS26">
          <obj_property name="ElementShortName">FS26</obj_property>
          <obj_property name="ObjectShortName">FS26</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS27">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS27">
          <obj_property name="ElementShortName">FS27</obj_property>
          <obj_property name="ObjectShortName">FS27</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS28">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS28">
          <obj_property name="ElementShortName">FS28</obj_property>
          <obj_property name="ObjectShortName">FS28</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS29">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS29">
          <obj_property name="ElementShortName">FS29</obj_property>
          <obj_property name="ObjectShortName">FS29</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS30">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS30">
          <obj_property name="ElementShortName">FS30</obj_property>
          <obj_property name="ObjectShortName">FS30</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS31">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS31">
          <obj_property name="ElementShortName">FS31</obj_property>
          <obj_property name="ObjectShortName">FS31</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS32">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS32">
          <obj_property name="ElementShortName">FS32</obj_property>
          <obj_property name="ObjectShortName">FS32</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/fpga_agc_tb/trayA/FS33">
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a01/FS33">
          <obj_property name="ElementShortName">FS33</obj_property>
          <obj_property name="ObjectShortName">FS33</obj_property>
       </wvobject>
@@ -284,11 +280,544 @@
       <obj_property name="label">Write lines</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject type="vbus" fp_name="VirtualBus">
+         <obj_property name="label">MWL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Reversed">true</obj_property>
+         <obj_property name="ElementShortName">VirtualBus[]</obj_property>
+         <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL01">
+            <obj_property name="ElementShortName">MWL01</obj_property>
+            <obj_property name="ObjectShortName">MWL01</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL02">
+            <obj_property name="ElementShortName">MWL02</obj_property>
+            <obj_property name="ObjectShortName">MWL02</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL03">
+            <obj_property name="ElementShortName">MWL03</obj_property>
+            <obj_property name="ObjectShortName">MWL03</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL04">
+            <obj_property name="ElementShortName">MWL04</obj_property>
+            <obj_property name="ObjectShortName">MWL04</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL05">
+            <obj_property name="ElementShortName">MWL05</obj_property>
+            <obj_property name="ObjectShortName">MWL05</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL06">
+            <obj_property name="ElementShortName">MWL06</obj_property>
+            <obj_property name="ObjectShortName">MWL06</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL07">
+            <obj_property name="ElementShortName">MWL07</obj_property>
+            <obj_property name="ObjectShortName">MWL07</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL08">
+            <obj_property name="ElementShortName">MWL08</obj_property>
+            <obj_property name="ObjectShortName">MWL08</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL09">
+            <obj_property name="ElementShortName">MWL09</obj_property>
+            <obj_property name="ObjectShortName">MWL09</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL10">
+            <obj_property name="ElementShortName">MWL10</obj_property>
+            <obj_property name="ObjectShortName">MWL10</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL11">
+            <obj_property name="ElementShortName">MWL11</obj_property>
+            <obj_property name="ObjectShortName">MWL11</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL12">
+            <obj_property name="ElementShortName">MWL12</obj_property>
+            <obj_property name="ObjectShortName">MWL12</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL13">
+            <obj_property name="ElementShortName">MWL13</obj_property>
+            <obj_property name="ObjectShortName">MWL13</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL14">
+            <obj_property name="ElementShortName">MWL14</obj_property>
+            <obj_property name="ObjectShortName">MWL14</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL15">
+            <obj_property name="ElementShortName">MWL15</obj_property>
+            <obj_property name="ObjectShortName">MWL15</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MWL16">
+            <obj_property name="ElementShortName">MWL16</obj_property>
+            <obj_property name="ObjectShortName">MWL16</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group193">
+      <obj_property name="label">A register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WAG_">
+         <obj_property name="ElementShortName">WAG_</obj_property>
+         <obj_property name="ObjectShortName">WAG_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CAG">
+         <obj_property name="ElementShortName">CAG</obj_property>
+         <obj_property name="ObjectShortName">CAG</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/RAG_">
+         <obj_property name="ElementShortName">RAG_</obj_property>
+         <obj_property name="ObjectShortName">RAG_</obj_property>
+      </wvobject>
+      <wvobject type="vbus" fp_name="vbus222">
+         <obj_property name="label">A</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">OCTALRADIX</obj_property>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/A01_">
+            <obj_property name="ElementShortName">A01_</obj_property>
+            <obj_property name="ObjectShortName">A01_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/A02_">
+            <obj_property name="ElementShortName">A02_</obj_property>
+            <obj_property name="ObjectShortName">A02_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/A03_">
+            <obj_property name="ElementShortName">A03_</obj_property>
+            <obj_property name="ObjectShortName">A03_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/A04_">
+            <obj_property name="ElementShortName">A04_</obj_property>
+            <obj_property name="ObjectShortName">A04_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/A05_">
+            <obj_property name="ElementShortName">A05_</obj_property>
+            <obj_property name="ObjectShortName">A05_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/A06_">
+            <obj_property name="ElementShortName">A06_</obj_property>
+            <obj_property name="ObjectShortName">A06_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/A07_">
+            <obj_property name="ElementShortName">A07_</obj_property>
+            <obj_property name="ObjectShortName">A07_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/A08_">
+            <obj_property name="ElementShortName">A08_</obj_property>
+            <obj_property name="ObjectShortName">A08_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/A09_">
+            <obj_property name="ElementShortName">A09_</obj_property>
+            <obj_property name="ObjectShortName">A09_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/A10_">
+            <obj_property name="ElementShortName">A10_</obj_property>
+            <obj_property name="ObjectShortName">A10_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/A11_">
+            <obj_property name="ElementShortName">A11_</obj_property>
+            <obj_property name="ObjectShortName">A11_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/A12_">
+            <obj_property name="ElementShortName">A12_</obj_property>
+            <obj_property name="ObjectShortName">A12_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/A13_">
+            <obj_property name="ElementShortName">A13_</obj_property>
+            <obj_property name="ObjectShortName">A13_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/A14_">
+            <obj_property name="ElementShortName">A14_</obj_property>
+            <obj_property name="ObjectShortName">A14_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/A15_">
+            <obj_property name="ElementShortName">A15_</obj_property>
+            <obj_property name="ObjectShortName">A15_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/A16_">
+            <obj_property name="ElementShortName">A16_</obj_property>
+            <obj_property name="ObjectShortName">A16_</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group245">
+      <obj_property name="label">X register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MONEX">
+         <obj_property name="ElementShortName">MONEX</obj_property>
+         <obj_property name="ObjectShortName">MONEX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/PONEX">
+         <obj_property name="ElementShortName">PONEX</obj_property>
+         <obj_property name="ObjectShortName">PONEX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/TWOX">
+         <obj_property name="ElementShortName">TWOX</obj_property>
+         <obj_property name="ObjectShortName">TWOX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/BXVX">
+         <obj_property name="ElementShortName">BXVX</obj_property>
+         <obj_property name="ObjectShortName">BXVX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/A2XG_">
+         <obj_property name="ElementShortName">A2XG_</obj_property>
+         <obj_property name="ObjectShortName">A2XG_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CLXC">
+         <obj_property name="ElementShortName">CLXC</obj_property>
+         <obj_property name="ObjectShortName">CLXC</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CUG">
+         <obj_property name="ElementShortName">CUG</obj_property>
+         <obj_property name="ObjectShortName">CUG</obj_property>
+      </wvobject>
+      <wvobject type="vbus" fp_name="vbus249">
+         <obj_property name="label">X</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">OCTALRADIX</obj_property>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51104_out">
+            <obj_property name="ElementShortName">NOR51104_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51104_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51204_out">
+            <obj_property name="ElementShortName">NOR51204_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51204_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51404_out">
+            <obj_property name="ElementShortName">NOR51404_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51404_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51304_out">
+            <obj_property name="ElementShortName">NOR51304_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51304_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52104_out">
+            <obj_property name="ElementShortName">NOR52104_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52104_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52204_out">
+            <obj_property name="ElementShortName">NOR52204_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52204_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52404_out">
+            <obj_property name="ElementShortName">NOR52404_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52404_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52304_out">
+            <obj_property name="ElementShortName">NOR52304_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52304_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53104_out">
+            <obj_property name="ElementShortName">NOR53104_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53104_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53204_out">
+            <obj_property name="ElementShortName">NOR53204_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53204_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53404_out">
+            <obj_property name="ElementShortName">NOR53404_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53404_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53304_out">
+            <obj_property name="ElementShortName">NOR53304_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53304_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54104_out">
+            <obj_property name="ElementShortName">NOR54104_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54104_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54204_out">
+            <obj_property name="ElementShortName">NOR54204_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54204_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54404_out">
+            <obj_property name="ElementShortName">NOR54404_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54404_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54304_out">
+            <obj_property name="ElementShortName">NOR54304_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54304_out</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group245">
+      <obj_property name="label">Y register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WYLOG_">
+         <obj_property name="ElementShortName">WYLOG_</obj_property>
+         <obj_property name="ObjectShortName">WYLOG_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WYHIG_">
+         <obj_property name="ElementShortName">WYHIG_</obj_property>
+         <obj_property name="ObjectShortName">WYHIG_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WYDLOG_">
+         <obj_property name="ElementShortName">WYDLOG_</obj_property>
+         <obj_property name="ObjectShortName">WYDLOG_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WYDG_">
+         <obj_property name="ElementShortName">WYDG_</obj_property>
+         <obj_property name="ObjectShortName">WYDG_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CUG">
+         <obj_property name="ElementShortName">CUG</obj_property>
+         <obj_property name="ObjectShortName">CUG</obj_property>
+      </wvobject>
+      <wvobject type="vbus" fp_name="vbus273">
+         <obj_property name="label">Y</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">OCTALRADIX</obj_property>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51108_out">
+            <obj_property name="ElementShortName">NOR51108_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51108_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51208_out">
+            <obj_property name="ElementShortName">NOR51208_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51208_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51408_out">
+            <obj_property name="ElementShortName">NOR51408_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51408_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51308_out">
+            <obj_property name="ElementShortName">NOR51308_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51308_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52108_out">
+            <obj_property name="ElementShortName">NOR52108_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52108_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52208_out">
+            <obj_property name="ElementShortName">NOR52208_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52208_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52408_out">
+            <obj_property name="ElementShortName">NOR52408_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52408_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52308_out">
+            <obj_property name="ElementShortName">NOR52308_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52308_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53108_out">
+            <obj_property name="ElementShortName">NOR53108_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53108_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53208_out">
+            <obj_property name="ElementShortName">NOR53208_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53208_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53408_out">
+            <obj_property name="ElementShortName">NOR53408_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53408_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53308_out">
+            <obj_property name="ElementShortName">NOR53308_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53308_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54108_out">
+            <obj_property name="ElementShortName">NOR54108_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54108_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54208_out">
+            <obj_property name="ElementShortName">NOR54208_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54208_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54408_out">
+            <obj_property name="ElementShortName">NOR54408_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54408_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54308_out">
+            <obj_property name="ElementShortName">NOR54308_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54308_out</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group221">
+      <obj_property name="label">U register (SUM)</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CUG">
+         <obj_property name="ElementShortName">CUG</obj_property>
+         <obj_property name="ObjectShortName">CUG</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/RUG_">
+         <obj_property name="ElementShortName">RUG_</obj_property>
+         <obj_property name="ObjectShortName">RUG_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/RULOG_">
+         <obj_property name="ElementShortName">RULOG_</obj_property>
+         <obj_property name="ObjectShortName">RULOG_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CI_">
+         <obj_property name="ElementShortName">CI_</obj_property>
+         <obj_property name="ObjectShortName">CI_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/NEAC">
+         <obj_property name="ElementShortName">NEAC</obj_property>
+         <obj_property name="ObjectShortName">NEAC</obj_property>
+      </wvobject>
+      <wvobject type="vbus" fp_name="vbus229">
+         <obj_property name="label">U</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">OCTALRADIX</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51117_out">
+            <obj_property name="ElementShortName">NOR51117_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51117_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51217_out">
+            <obj_property name="ElementShortName">NOR51217_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51217_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51417_out">
+            <obj_property name="ElementShortName">NOR51417_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51417_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51317_out">
+            <obj_property name="ElementShortName">NOR51317_out</obj_property>
+            <obj_property name="ObjectShortName">NOR51317_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52117_out">
+            <obj_property name="ElementShortName">NOR52117_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52117_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52217_out">
+            <obj_property name="ElementShortName">NOR52217_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52217_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52417_out">
+            <obj_property name="ElementShortName">NOR52417_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52417_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/NOR52317_out">
+            <obj_property name="ElementShortName">NOR52317_out</obj_property>
+            <obj_property name="ObjectShortName">NOR52317_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53117_out">
+            <obj_property name="ElementShortName">NOR53117_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53117_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53217_out">
+            <obj_property name="ElementShortName">NOR53217_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53217_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53417_out">
+            <obj_property name="ElementShortName">NOR53417_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53417_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/NOR53317_out">
+            <obj_property name="ElementShortName">NOR53317_out</obj_property>
+            <obj_property name="ObjectShortName">NOR53317_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54117_out">
+            <obj_property name="ElementShortName">NOR54117_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54117_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54217_out">
+            <obj_property name="ElementShortName">NOR54217_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54217_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54417_out">
+            <obj_property name="ElementShortName">NOR54417_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54417_out</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/NOR54317_out">
+            <obj_property name="ElementShortName">NOR54317_out</obj_property>
+            <obj_property name="ObjectShortName">NOR54317_out</obj_property>
+         </wvobject>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group419">
       <obj_property name="label">Z register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WZG_">
+         <obj_property name="ElementShortName">WZG_</obj_property>
+         <obj_property name="ObjectShortName">WZG_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CZG">
+         <obj_property name="ElementShortName">CZG</obj_property>
+         <obj_property name="ObjectShortName">CZG</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fpga_agc_tb/traya/RZG_">
+         <obj_property name="ElementShortName">RZG_</obj_property>
+         <obj_property name="ObjectShortName">RZG_</obj_property>
+      </wvobject>
+      <wvobject type="vbus" fp_name="VirtualBus">
+         <obj_property name="label">Z</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">OCTALRADIX</obj_property>
+         <obj_property name="Reversed">true</obj_property>
+         <obj_property name="ElementShortName">VirtualBus[]</obj_property>
+         <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/Z01_">
+            <obj_property name="ElementShortName">Z01_</obj_property>
+            <obj_property name="ObjectShortName">Z01_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/Z02_">
+            <obj_property name="ElementShortName">Z02_</obj_property>
+            <obj_property name="ObjectShortName">Z02_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/Z03_">
+            <obj_property name="ElementShortName">Z03_</obj_property>
+            <obj_property name="ObjectShortName">Z03_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/Z04_">
+            <obj_property name="ElementShortName">Z04_</obj_property>
+            <obj_property name="ObjectShortName">Z04_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/Z05_">
+            <obj_property name="ElementShortName">Z05_</obj_property>
+            <obj_property name="ObjectShortName">Z05_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/Z06_">
+            <obj_property name="ElementShortName">Z06_</obj_property>
+            <obj_property name="ObjectShortName">Z06_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/Z07_">
+            <obj_property name="ElementShortName">Z07_</obj_property>
+            <obj_property name="ObjectShortName">Z07_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a09/Z08_">
+            <obj_property name="ElementShortName">Z08_</obj_property>
+            <obj_property name="ObjectShortName">Z08_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/Z09_">
+            <obj_property name="ElementShortName">Z09_</obj_property>
+            <obj_property name="ObjectShortName">Z09_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/Z10_">
+            <obj_property name="ElementShortName">Z10_</obj_property>
+            <obj_property name="ObjectShortName">Z10_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/Z11_">
+            <obj_property name="ElementShortName">Z11_</obj_property>
+            <obj_property name="ObjectShortName">Z11_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a10/Z12_">
+            <obj_property name="ElementShortName">Z12_</obj_property>
+            <obj_property name="ObjectShortName">Z12_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/Z13_">
+            <obj_property name="ElementShortName">Z13_</obj_property>
+            <obj_property name="ObjectShortName">Z13_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/Z14_">
+            <obj_property name="ElementShortName">Z14_</obj_property>
+            <obj_property name="ObjectShortName">Z14_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/Z15_">
+            <obj_property name="ElementShortName">Z15_</obj_property>
+            <obj_property name="ObjectShortName">Z15_</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a11/Z16_">
+            <obj_property name="ElementShortName">Z16_</obj_property>
+            <obj_property name="ObjectShortName">Z16_</obj_property>
+         </wvobject>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group516">
       <obj_property name="label">SQ register</obj_property>

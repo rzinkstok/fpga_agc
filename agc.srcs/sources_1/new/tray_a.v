@@ -478,10 +478,66 @@ module tray_a(
 	input wire p4SW
 );
 
+
+	wire A2X_;
+	wire CHOR01_;
+	wire CHOR02_;
+	wire CHOR03_;
+	wire CHOR04_;
+	wire CHOR05_;
+	wire CHOR06_;
+	wire CHOR07_;
+	wire CHOR08_;
+	wire CHOR09_;
+	wire CHOR10_;
+	wire CHOR11_;
+	wire CHOR12_;
+	wire CHOR13_;
+	wire CHOR14_;
+	wire CHOR16_;
+	wire CI_;
+	wire DATA_;
+	wire L16_;
+	wire MONEX_;
+	wire RA_;
+	wire RB1_;
+	wire RB_;
+	wire RC_;
+	wire RG_;
+	wire RL09_;
+	wire RL10_;
+	wire RL11_;
+	wire RL12_;
+	wire RL13_;
+	wire RL14_;
+	wire RL15_;
+	wire RL16_;
+	wire RL_;
+	wire RPTSET;
+	wire RSC_;
+	wire RU_;
+	wire RZ_;
+	wire ST2_;
+	wire TMZ_;
+	wire TOV_;
+	wire TSGN_;
+	wire WA_;
+	wire WB_;
+	wire WG_;
+	wire WL_;
+	wire WSC_;
+	wire WS_;
+	wire WY12_;
+	wire WYD_;
+	wire WY_;
+	wire WZ_;
+	wire Z15_;
+	wire Z16_;
+	wire n8PP4;
+
 	wire A15_;
 	wire A16_;
 	wire A2XG_;
-	wire A2X_;
 	wire AD0;
 	wire ADS0;
 	wire AGCWAR;
@@ -699,21 +755,6 @@ module tray_a(
 	wire CHBT14;
 	wire CHINC;
 	wire CHINC_;
-	wire CHOR01_;
-	wire CHOR02_;
-	wire CHOR03_;
-	wire CHOR04_;
-	wire CHOR05_;
-	wire CHOR06_;
-	wire CHOR07_;
-	wire CHOR08_;
-	wire CHOR09_;
-	wire CHOR10_;
-	wire CHOR11_;
-	wire CHOR12_;
-	wire CHOR13_;
-	wire CHOR14_;
-	wire CHOR16_;
 	wire CHWL01_;
 	wire CHWL02_;
 	wire CHWL03_;
@@ -734,7 +775,6 @@ module tray_a(
 	wire CI05_;
 	wire CI09_;
 	wire CI13_;
-	wire CI_;
 	wire CLG1G;
 	wire CLG2G;
 	wire CLXC;
@@ -761,7 +801,6 @@ module tray_a(
 	wire DAS0_;
 	wire DAS1;
 	wire DAS1_;
-	wire DATA_;
 	wire DCA0;
 	wire DCS0;
 	wire DIM0_;
@@ -963,7 +1002,6 @@ module tray_a(
 	wire L08_;
 	wire L12_;
 	wire L15_;
-	wire L16_;
 	wire L2GDG_;
 	wire L2GD_;
 	wire LOW6_;
@@ -976,7 +1014,6 @@ module tray_a(
 	wire MISSZ;
 	wire MKRPT;
 	wire MONEX;
-	wire MONEX_;
 	wire MON_;
 	wire MONpCH;
 	wire MOUT;
@@ -1054,16 +1091,13 @@ module tray_a(
 	wire RADRZ;
 	wire RAG_;
 	wire RAND0;
-	wire RA_;
 	wire RB1;
 	wire RB1F;
-	wire RB1_;
 	wire RB2;
 	wire RBBEG_;
 	wire RBHG_;
 	wire RBLG_;
 	wire RBSQ;
-	wire RB_;
 	wire RCG_;
 	wire RCH11_;
 	wire RCH12_;
@@ -1074,24 +1108,13 @@ module tray_a(
 	wire RCHBT_;
 	wire RCHG_;
 	wire RCH_;
-	wire RC_;
 	wire READ0;
 	wire REBG_;
 	wire RELPLS;
 	wire RFBG_;
 	wire RGG_;
-	wire RG_;
-	wire RL09_;
 	wire RL10BB;
-	wire RL10_;
-	wire RL11_;
-	wire RL12_;
-	wire RL13_;
-	wire RL14_;
-	wire RL15_;
-	wire RL16_;
 	wire RLG_;
-	wire RL_;
 	wire RNRADM;
 	wire RNRADP;
 	wire ROR0;
@@ -1099,14 +1122,12 @@ module tray_a(
 	wire RPTAD4;
 	wire RPTAD5;
 	wire RPTAD6;
-	wire RPTSET;
 	wire RQ;
 	wire RQG_;
 	wire RQ_;
 	wire RRPA;
 	wire RSCT;
 	wire RSCT_;
-	wire RSC_;
 	wire RSM3;
 	wire RSM3_;
 	wire RSSB;
@@ -1120,11 +1141,9 @@ module tray_a(
 	wire RUPTOR_;
 	wire RUSG_;
 	wire RUS_;
-	wire RU_;
 	wire RXOR0;
 	wire RXOR0_;
 	wire RZG_;
-	wire RZ_;
 	wire S01;
 	wire S01_;
 	wire S02;
@@ -1175,7 +1194,6 @@ module tray_a(
 	wire ST1;
 	wire ST1_;
 	wire ST2;
-	wire ST2_;
 	wire ST3_;
 	wire STBE;
 	wire STBF;
@@ -1249,8 +1267,6 @@ module tray_a(
 	wire TIMR;
 	wire TL15;
 	wire TMPOUT;
-	wire TMZ_;
-	wire TOV_;
 	wire TPARG_;
 	wire TPOR_;
 	wire TPZG_;
@@ -1258,7 +1274,6 @@ module tray_a(
 	wire TRUND;
 	wire TS0;
 	wire TS0_;
-	wire TSGN_;
 	wire TSGU_;
 	wire TSUDO_;
 	wire TT_;
@@ -1272,10 +1287,8 @@ module tray_a(
 	wire WALSG_;
 	wire WAND0;
 	wire WATCHP;
-	wire WA_;
 	wire WBBEG_;
 	wire WBG_;
-	wire WB_;
 	wire WCH11_;
 	wire WCH12_;
 	wire WCH13_;
@@ -1292,7 +1305,6 @@ module tray_a(
 	wire WG3G_;
 	wire WG4G_;
 	wire WG5G_;
-	wire WG_;
 	wire WHOMP;
 	wire WHOMPA;
 	wire WL01;
@@ -1328,25 +1340,18 @@ module tray_a(
 	wire WL16;
 	wire WL16_;
 	wire WLG_;
-	wire WL_;
 	wire WOR0;
 	wire WOVR;
 	wire WOVR_;
 	wire WQG_;
 	wire WQ_;
-	wire WSC_;
 	wire WSG_;
-	wire WS_;
 	wire WT_;
-	wire WY12_;
 	wire WYDG_;
 	wire WYDLOG_;
-	wire WYD_;
 	wire WYHIG_;
 	wire WYLOG_;
-	wire WY_;
 	wire WZG_;
-	wire WZ_;
 	wire XB0;
 	wire XB0_;
 	wire XB1;
@@ -1380,8 +1385,6 @@ module tray_a(
 	wire XUY14_;
 	wire YB0_;
 	wire YT0_;
-	wire Z15_;
-	wire Z16_;
 	wire ZAP_;
 	wire ZOUT;
 	wire ZOUT_;
@@ -1411,7 +1414,6 @@ module tray_a(
 	wire n7XP19;
 	wire n7XP4;
 	wire n7XP9;
-	wire n8PP4;
 	wire n8XP5;
 	wire n8XP6;
 	wire n9XP1;
@@ -4744,7 +4746,6 @@ module tray_a(
 	);
 
 	a24_inout_vii a24(
-		SB2,
 		SB0_,
 		SB1_,
 		SB2_,
@@ -4773,7 +4774,6 @@ module tray_a(
 		FS07A,
 		F07A_,
 		F07B_,
-		F07C_,
 		FS08,
 		FS08_,
 		FS09,

@@ -470,7 +470,7 @@ module a08_four_bit_1(
     nor_3 #(1'b0)  NOR51152(WL01,           RL01_,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     
     // MWL01
-    nor_3 #(1'b0)  NOR51153(NOR51153_out,   WL01,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR51153(NOR51153_out,   RL01_,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     assign MWL01 = NOR51153_out;
     
     // WL01_

@@ -1,7 +1,6 @@
 `timescale 1ns / 1ps
 
 module a24_inout_vii(
-    input wire SB2,
     input wire SB0_,
     input wire SB1_,
     input wire SB2_,
@@ -33,7 +32,6 @@ module a24_inout_vii(
     input wire FS07A,
     input wire F07A_,
     input wire F07B_,
-    input wire F07C_,
     input wire FS08,
     input wire FS08_,
     input wire FS09,

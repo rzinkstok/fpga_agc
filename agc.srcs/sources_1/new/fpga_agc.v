@@ -361,10 +361,31 @@ module fpga_agc(
 	input wire p4SW
 );
 
+	reg FLTOUT = 0;
+	reg SA01 = 0;
+	reg SA02 = 0;
+	reg SA03 = 0;
+	reg SA04 = 0;
+	reg SA05 = 0;
+	reg SA06 = 0;
+	reg SA07 = 0;
+	reg SA08 = 0;
+	reg SA09 = 0;
+	reg SA10 = 0;
+	reg SA11 = 0;
+	reg SA12 = 0;
+	reg SA13 = 0;
+	reg SA14 = 0;
+	reg SA16 = 0;
+	reg SAP = 0;
+	reg SCAFAL = 0;
+	reg VFAIL = 0;
+	reg n2FSFAL = 0;
+
+
 	wire CLOCK;
 	wire CLROPE;
 	wire FILTIN;
-	wire FLTOUT;
 	wire GEM01;
 	wire GEM02;
 	wire GEM03;
@@ -412,26 +433,9 @@ module fpga_agc(
 	wire ROPET;
 	wire RSTKX_;
 	wire RSTKY_;
-	wire SA01;
-	wire SA02;
-	wire SA03;
-	wire SA04;
-	wire SA05;
-	wire SA06;
-	wire SA07;
-	wire SA08;
-	wire SA09;
-	wire SA10;
-	wire SA11;
-	wire SA12;
-	wire SA13;
-	wire SA14;
-	wire SA16;
-	wire SAP;
 	wire SBE;
 	wire SBF;
 	wire SBYREL_;
-	wire SCAFAL;
 	wire SCAS10;
 	wire SCAS17;
 	wire SETAB;
@@ -446,7 +450,6 @@ module fpga_agc(
 	wire STR912;
 	wire SYNC14_;
 	wire SYNC4_;
-	wire VFAIL;
 	wire WEX;
 	wire WEY;
 	wire XB0E;
@@ -478,9 +481,9 @@ module fpga_agc(
 	wire YT6E;
 	wire YT7E;
 	wire ZID;
-	wire n2FSFAL;
 	wire prop_clk;
 	wire prop_clk_locked;
+
 
 	tray_a traya(
 		BLKUPL_,
@@ -966,5 +969,6 @@ module fpga_agc(
 		prop_clk_locked,
 		CLOCK
 	);
+
 
 endmodule
