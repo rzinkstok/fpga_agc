@@ -338,7 +338,7 @@ module a18_inout_iii(
     
     // Standby
     nor_3 #(1'b0)  NOR45141(NOR45141_out,   SBYBUT,         n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
-    nor_3 #(1'b0)  NOR45143(NOR45143_out,   F17A_,          NOR45143_out,   n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR45143(NOR45143_out,   F17A_,          NOR45141_out,   n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b1)  NOR45145(NOR45145_out,   NOR45143_out,   NOR45144_out,   n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR45144(NOR45144_out,   NOR45145_out,   NOR45141_out,   n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR45147(NOR45147_out,   F17B_,          NOR45145_out,   n0VDCA,         p4VDC, reset, prop_clk);
@@ -355,7 +355,7 @@ module a18_inout_iii(
     nor_3 #(1'b0)  NOR45156(NOR45156_out,   STNDBY,         ALTEST,         n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR45157(SBYLIT,         NOR45156_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     // Moved here from A14 sheet 2
-    nor_3 #(1'b0)  NOR42457(SBYREL_,        SBY,            n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR42457(SBYREL_,        SBY,            n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     // NOR45158 removed (not connected)
     
     // Channel 16

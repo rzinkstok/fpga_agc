@@ -319,7 +319,7 @@ module a02_timer(
     nor_3 #(1'b0)  NOR37209(NOR37209_out,   RINGB_,         P02,            n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR37210(NOR37210_out,   RINGA_,         P02_,           n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR37211(NOR37211_out,   NOR37209_out,   P03_,           n0VDCA,         p4VDC, reset, prop_clk);
-    nor_3 #(1'b0)  NOR39261(NOR39261_out,   EDSET,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR39261(NOR39261_out,   EDSET,          n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     assign P03 = NOR37211_out & NOR39261_out;
     nor_3 #(1'b1)  NOR37212(P03_,           P03,            NOR37210_out,   n0VDCA,         p4VDC, reset, prop_clk);
     

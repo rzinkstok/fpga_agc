@@ -18,7 +18,7 @@ DBPATH = "/home/rzinkstok/pin_inspector/delphi.db"
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
 SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new")
-MODULES_SOURCE_FOLDER = os.path.join(SOURCE_FOLDER, "modules")
+TRAY_A_SOURCE_FOLDER = os.path.join(SOURCE_FOLDER, "tray_a")
 SIM_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs")
 
 MODULE_ARGS_START_RE = re.compile(r"^module [A-Za-z0-9\_]+\(")
@@ -313,8 +313,8 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
 
 
 if __name__ == "__main__":
-    modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(MODULES_SOURCE_FOLDER)) if not x.startswith("a77")]
-    write_module("tray_a", MODULES_SOURCE_FOLDER, modules, check_tray_a_signal)
+    modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_A_SOURCE_FOLDER)) if not x.startswith("a77")]
+    write_module("tray_a", TRAY_A_SOURCE_FOLDER, modules, check_tray_a_signal)
     write_module("fpga_agc", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_signal)
     write_module("toplevel", SOURCE_FOLDER, ["fpga_agc"], check_toplevel_signal)
     write_module("fpga_agc_tb", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_tb_signal, fpga_agc_tb_initial)
