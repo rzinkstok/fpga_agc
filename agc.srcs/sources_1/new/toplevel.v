@@ -1,6 +1,8 @@
 `timescale 1ns / 1ps
 
 module toplevel(
+	input wire CNTRL1,
+	input wire CNTRL2,
 	input wire DBLTST,
 	input wire DOSCAL,
 	input wire MAMU,
@@ -39,6 +41,7 @@ module toplevel(
 	input wire clk_reset,
 
 	output wire ALGA,
+	output wire BPLSSW,
 	output wire MBR1,
 	output wire MBR2,
 	output wire MCTRAL_,
@@ -120,10 +123,10 @@ module toplevel(
 	output wire MWZG,
 	output wire OUTCOM,
 	output wire STRT1,
+	output wire p4SW,
 
 	input wire reset,
-	input wire n0VDCA,
-	input wire p4SW
+	input wire n0VDCA
 );
 
 	reg BLKUPL_ = 1;
@@ -234,10 +237,12 @@ module toplevel(
 	reg ULLTHR = 0;
 	reg UPL0 = 0;
 	reg UPL1 = 0;
+	reg WD167 = 0;
+	reg WD168 = 0;
+	reg WD169 = 0;
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
-	reg p4VDC = 0;
 
 
 	wire ALRT0;
@@ -245,6 +250,7 @@ module toplevel(
 	wire ALT0;
 	wire ALT1;
 	wire ALTSNC;
+	wire BPLUS;
 	wire CDUCLK;
 	wire CDUXDM;
 	wire CDUXDP;
@@ -363,6 +369,7 @@ module toplevel(
 	wire n3200D;
 	wire n800RST;
 	wire n800SET;
+	wire p4VDC;
 
 
 	fpga_agc fpgaagc(
@@ -381,6 +388,8 @@ module toplevel(
 		CDUYP,
 		CDUZM,
 		CDUZP,
+		CNTRL1,
+		CNTRL2,
 		CTLSAT,
 		DBLTST,
 		DKBSNC,
@@ -508,6 +517,9 @@ module toplevel(
 		ULLTHR,
 		UPL0,
 		UPL1,
+		WD167,
+		WD168,
+		WD169,
 		XLNK0,
 		XLNK1,
 		ZEROP,
@@ -519,6 +531,8 @@ module toplevel(
 		ALT0,
 		ALT1,
 		ALTSNC,
+		BPLSSW,
+		BPLUS,
 		CDUCLK,
 		CDUXDM,
 		CDUXDP,
@@ -718,10 +732,10 @@ module toplevel(
 		n3200D,
 		n800RST,
 		n800SET,
-		reset,
-		n0VDCA,
+		p4SW,
 		p4VDC,
-		p4SW
+		reset,
+		n0VDCA
 	);
 
 

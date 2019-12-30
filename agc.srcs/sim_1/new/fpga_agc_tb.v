@@ -1,6 +1,11 @@
 `timescale 1ns / 1ps
 
-module fpga_agc_tb();
+module fpga_agc_tb(
+
+
+
+);
+
 	reg BLKUPL_ = 1;
 	reg BMGXM = 0;
 	reg BMGXP = 0;
@@ -16,6 +21,8 @@ module fpga_agc_tb();
 	reg CDUYP = 0;
 	reg CDUZM = 0;
 	reg CDUZP = 0;
+	reg CNTRL1 = 0;
+	reg CNTRL2 = 0;
 	reg CTLSAT = 0;
 	reg DBLTST = 0;
 	reg DKBSNC = 0;
@@ -162,6 +169,9 @@ module fpga_agc_tb();
 	reg UPL0 = 0;
 	reg UPL1 = 0;
 	reg VFAIL = 0;
+	reg WD167 = 0;
+	reg WD168 = 0;
+	reg WD169 = 0;
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
@@ -169,9 +179,8 @@ module fpga_agc_tb();
 	reg clk_reset = 0;
 	reg n0VDCA = 0;
 	reg n2FSFAL = 0;
-	wire p4SW = 1;
-	wire p4VDC = 1;
-	wire reset; // = 0;
+	wire reset;
+
 
 	wire ALGA;
 	wire ALRT0;
@@ -179,6 +188,8 @@ module fpga_agc_tb();
 	wire ALT0;
 	wire ALT1;
 	wire ALTSNC;
+	wire BPLSSW;
+	wire BPLUS;
 	wire CDUCLK;
 	wire CDUXDM;
 	wire CDUXDP;
@@ -406,7 +417,6 @@ module fpga_agc_tb();
 	wire SBE;
 	wire SBF;
 	wire SBYLIT;
-	wire SBYREL_;
 	wire SCAS10;
 	wire SCAS17;
 	wire SETAB;
@@ -424,8 +434,6 @@ module fpga_agc_tb();
 	wire STR58;
 	wire STR912;
 	wire STRT1;
-	wire SYNC14_;
-	wire SYNC4_;
 	wire THRSTm;
 	wire THRSTp;
 	wire TMPCAU;
@@ -476,11 +484,14 @@ module fpga_agc_tb();
 	wire n3200D;
 	wire n800RST;
 	wire n800SET;
+	wire p4SW;
+	wire p4VDC;
 	wire prop_clk;
 	wire prop_clk_locked;
-    
-    assign reset = ~prop_clk_locked;
-    
+
+
+	assign reset = ~prop_clk_locked;
+
 	always
 		# 5 clk = !clk;
 
@@ -501,6 +512,8 @@ module fpga_agc_tb();
 		CDUZM,
 		CDUZP,
 		CLOCK,
+		CNTRL1,
+		CNTRL2,
 		CTLSAT,
 		DBLTST,
 		DKBSNC,
@@ -647,6 +660,9 @@ module fpga_agc_tb();
 		UPL0,
 		UPL1,
 		VFAIL,
+		WD167,
+		WD168,
+		WD169,
 		XLNK0,
 		XLNK1,
 		ZEROP,
@@ -657,6 +673,8 @@ module fpga_agc_tb();
 		ALT0,
 		ALT1,
 		ALTSNC,
+		BPLSSW,
+		BPLUS,
 		CDUCLK,
 		CDUXDM,
 		CDUXDP,
@@ -883,7 +901,6 @@ module fpga_agc_tb();
 		SBE,
 		SBF,
 		SBYLIT,
-		SBYREL_,
 		SCAS10,
 		SCAS17,
 		SETAB,
@@ -901,8 +918,6 @@ module fpga_agc_tb();
 		STR58,
 		STR912,
 		STRT1,
-		SYNC14_,
-		SYNC4_,
 		THRSTm,
 		THRSTp,
 		TMPCAU,
@@ -953,11 +968,11 @@ module fpga_agc_tb();
 		n3200D,
 		n800RST,
 		n800SET,
+		p4SW,
+		p4VDC,
 		reset,
 		prop_clk,
-		n0VDCA,
-		p4VDC,
-		p4SW
+		n0VDCA
 	);
 
 	tray_b trayb(

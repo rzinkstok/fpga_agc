@@ -32,6 +32,8 @@ verilog xil_defaultlib  --include "../../../../agc.srcs/sources_1/ip/prop_clock_
 "../../../../agc.srcs/sources_1/new/toplevel.v" \
 "../../../../agc.srcs/sources_1/new/tray_a.v" \
 "../../../../agc.srcs/sources_1/new/tray_b.v" \
+"../../../../agc.srcs/sources_1/new/modules/a30_power_supply.v" \
+"../../../../agc.srcs/sources_1/new/modules/a31_power_supply.v" \
 "../../../../agc.srcs/sim_1/new/a1_scaler_tb.v" \
 "../../../../agc.srcs/sim_1/new/a2_timer_tb.v" \
 "../../../../agc.srcs/sim_1/new/a3_sq_register_tb.v" \

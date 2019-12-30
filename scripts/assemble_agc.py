@@ -27,7 +27,7 @@ INPUT_WIRE_RE = re.compile(r"^input wire ")
 OUTPUT_WIRE_RE = re.compile(r"^output wire ")
 CROSS_MODULE_SIGNAL_RE = re.compile(r"^A[0-9][0-9]\_[0-9]+\_(.+)")
 
-TRAY_A = [f"A{i}" for i in range(1, 25)]
+TRAY_A = [f"A{i}" for i in range(1, 25)] + ["A30", "A31"]
 TRAY_B = []
 TRAY_MODULES = TRAY_A + TRAY_B
 CONNECTOR_MODULES = ["A63", "B63"]
@@ -155,10 +155,11 @@ def check_fpga_agc_tb_signal(signal):
 def fpga_agc_tb_initial(fp):
     fp.write("\tinitial\n")
     fp.write("\tbegin\n")
-    fp.write("\t\t# 5 NHALGA = 1;\n")
+    fp.write("\t\t# 1 NHALGA = 1;\n")
     fp.write("\t\t# 100000 $stop;\n")
     fp.write("\tend\n")
     fp.write("\n")
+
 
 def check_toplevel_signal(signal):
     if signal in ["reset", "clk", "clk_reset", "MAMU"]:
@@ -279,6 +280,8 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
         fp.write("\n")
 
         if module_name.endswith("_tb"):
+            fp.write("\tassign reset = ~prop_clk_locked;\n")
+            fp.write("\n")
             fp.write("\talways\n")
             fp.write("\t\t# 5 clk = !clk;\n")
             fp.write("\n")

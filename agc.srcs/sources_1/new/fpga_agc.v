@@ -16,6 +16,8 @@ module fpga_agc(
 	input wire CDUYP,
 	input wire CDUZM,
 	input wire CDUZP,
+	input wire CNTRL1,
+	input wire CNTRL2,
 	input wire CTLSAT,
 	input wire DBLTST,
 	input wire DKBSNC,
@@ -143,6 +145,9 @@ module fpga_agc(
 	input wire ULLTHR,
 	input wire UPL0,
 	input wire UPL1,
+	input wire WD167,
+	input wire WD168,
+	input wire WD169,
 	input wire XLNK0,
 	input wire XLNK1,
 	input wire ZEROP,
@@ -155,6 +160,8 @@ module fpga_agc(
 	output wire ALT0,
 	output wire ALT1,
 	output wire ALTSNC,
+	output wire BPLSSW,
+	output wire BPLUS,
 	output wire CDUCLK,
 	output wire CDUXDM,
 	output wire CDUXDP,
@@ -354,11 +361,11 @@ module fpga_agc(
 	output wire n3200D,
 	output wire n800RST,
 	output wire n800SET,
+	output wire p4SW,
+	output wire p4VDC,
 
 	input wire reset,
-	input wire n0VDCA,
-	input wire p4VDC,
-	input wire p4SW
+	input wire n0VDCA
 );
 
 	reg FLTOUT = 0;
@@ -435,7 +442,6 @@ module fpga_agc(
 	wire RSTKY_;
 	wire SBE;
 	wire SBF;
-	wire SBYREL_;
 	wire SCAS10;
 	wire SCAS17;
 	wire SETAB;
@@ -448,8 +454,6 @@ module fpga_agc(
 	wire STR412;
 	wire STR58;
 	wire STR912;
-	wire SYNC14_;
-	wire SYNC4_;
 	wire WEX;
 	wire WEY;
 	wire XB0E;
@@ -502,6 +506,8 @@ module fpga_agc(
 		CDUZM,
 		CDUZP,
 		CLOCK,
+		CNTRL1,
+		CNTRL2,
 		CTLSAT,
 		DBLTST,
 		DKBSNC,
@@ -648,6 +654,9 @@ module fpga_agc(
 		UPL0,
 		UPL1,
 		VFAIL,
+		WD167,
+		WD168,
+		WD169,
 		XLNK0,
 		XLNK1,
 		ZEROP,
@@ -658,6 +667,8 @@ module fpga_agc(
 		ALT0,
 		ALT1,
 		ALTSNC,
+		BPLSSW,
+		BPLUS,
 		CDUCLK,
 		CDUXDM,
 		CDUXDP,
@@ -884,7 +895,6 @@ module fpga_agc(
 		SBE,
 		SBF,
 		SBYLIT,
-		SBYREL_,
 		SCAS10,
 		SCAS17,
 		SETAB,
@@ -902,8 +912,6 @@ module fpga_agc(
 		STR58,
 		STR912,
 		STRT1,
-		SYNC14_,
-		SYNC4_,
 		THRSTm,
 		THRSTp,
 		TMPCAU,
@@ -954,11 +962,11 @@ module fpga_agc(
 		n3200D,
 		n800RST,
 		n800SET,
+		p4SW,
+		p4VDC,
 		reset,
 		prop_clk,
-		n0VDCA,
-		p4VDC,
-		p4SW
+		n0VDCA
 	);
 
 	tray_b trayb(

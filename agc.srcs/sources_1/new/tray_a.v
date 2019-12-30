@@ -17,6 +17,8 @@ module tray_a(
 	input wire CDUZM,
 	input wire CDUZP,
 	input wire CLOCK,
+	input wire CNTRL1,
+	input wire CNTRL2,
 	input wire CTLSAT,
 	input wire DBLTST,
 	input wire DKBSNC,
@@ -163,6 +165,9 @@ module tray_a(
 	input wire UPL0,
 	input wire UPL1,
 	input wire VFAIL,
+	input wire WD167,
+	input wire WD168,
+	input wire WD169,
 	input wire XLNK0,
 	input wire XLNK1,
 	input wire ZEROP,
@@ -174,6 +179,8 @@ module tray_a(
 	output wire ALT0,
 	output wire ALT1,
 	output wire ALTSNC,
+	output wire BPLSSW,
+	output wire BPLUS,
 	output wire CDUCLK,
 	output wire CDUXDM,
 	output wire CDUXDP,
@@ -400,7 +407,6 @@ module tray_a(
 	output wire SBE,
 	output wire SBF,
 	output wire SBYLIT,
-	output wire SBYREL_,
 	output wire SCAS10,
 	output wire SCAS17,
 	output wire SETAB,
@@ -418,8 +424,6 @@ module tray_a(
 	output wire STR58,
 	output wire STR912,
 	output wire STRT1,
-	output wire SYNC14_,
-	output wire SYNC4_,
 	output wire THRSTm,
 	output wire THRSTp,
 	output wire TMPCAU,
@@ -470,14 +474,15 @@ module tray_a(
 	output wire n3200D,
 	output wire n800RST,
 	output wire n800SET,
+	output wire p4SW,
+	output wire p4VDC,
 
 	input wire reset,
 	input wire prop_clk,
-	input wire n0VDCA,
-	input wire p4VDC,
-	input wire p4SW
+	input wire n0VDCA
 );
 
+	reg n28DCR = 0;
 
 	wire A2X_;
 	wire CHOR01_;
@@ -1174,6 +1179,7 @@ module tray_a(
 	wire SB2_;
 	wire SB4;
 	wire SBY;
+	wire SBYREL_;
 	wire SCAD;
 	wire SCAD_;
 	wire SHAFTD;
@@ -1223,6 +1229,8 @@ module tray_a(
 	wire SUMB14_;
 	wire SUMB15_;
 	wire SUMB16_;
+	wire SYNC14_;
+	wire SYNC4_;
 	wire T01;
 	wire T01_;
 	wire T02;
@@ -4899,6 +4907,29 @@ module tray_a(
 		p4SW,
 		reset,
 		prop_clk
+	);
+
+	a30_power_supply a30(
+		WD168,
+		WD169,
+		n28DCR,
+		BPLUS,
+		CNTRL1,
+		SYNC4_,
+		SBYREL_,
+		p4VDC,
+		p4SW
+	);
+
+	a31_power_supply a31(
+		WD167,
+		WD169,
+		n28DCR,
+		CNTRL2,
+		SYNC14_,
+		SBYREL_,
+		BPLUS,
+		BPLSSW
 	);
 
 	assign A2X_ = A05_1_A2X_ & A05_2_A2X_ & A06_1_A2X_;
