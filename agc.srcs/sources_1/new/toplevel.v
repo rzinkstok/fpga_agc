@@ -124,8 +124,8 @@ module toplevel(
 	output wire OUTCOM,
 	output wire STRT1,
 	output wire p4SW,
+	output wire reset,
 
-	input wire reset,
 	input wire n0VDCA
 );
 

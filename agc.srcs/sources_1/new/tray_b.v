@@ -3,12 +3,14 @@
 module tray_b(
         input wire clk,
         input wire clk_reset,
-        input wire reset,
         
+        output wire reset,
         output wire prop_clk,
         output wire prop_clk_locked,
         output wire CLOCK
     );
+    
+    assign reset = ~prop_clk_locked;
     
     prop_clock_divider prop_clk_div(
         .clk_in1(clk),

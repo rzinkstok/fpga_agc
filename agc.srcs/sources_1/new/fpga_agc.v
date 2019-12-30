@@ -363,8 +363,8 @@ module fpga_agc(
 	output wire n800SET,
 	output wire p4SW,
 	output wire p4VDC,
+	output wire reset,
 
-	input wire reset,
 	input wire n0VDCA
 );
 

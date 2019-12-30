@@ -179,7 +179,6 @@ module fpga_agc_tb(
 	reg clk_reset = 0;
 	reg n0VDCA = 0;
 	reg n2FSFAL = 0;
-	wire reset;
 
 
 	wire ALGA;
@@ -488,9 +487,8 @@ module fpga_agc_tb(
 	wire p4VDC;
 	wire prop_clk;
 	wire prop_clk_locked;
+	wire reset;
 
-
-	assign reset = ~prop_clk_locked;
 
 	always
 		# 5 clk = !clk;
@@ -987,7 +985,7 @@ module fpga_agc_tb(
 
 	initial
 	begin
-		# 5 NHALGA = 1;
+		# 1 NHALGA = 1;
 		# 100000 $stop;
 	end
 

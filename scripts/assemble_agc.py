@@ -280,8 +280,6 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
         fp.write("\n")
 
         if module_name.endswith("_tb"):
-            fp.write("\tassign reset = ~prop_clk_locked;\n")
-            fp.write("\n")
             fp.write("\talways\n")
             fp.write("\t\t# 5 clk = !clk;\n")
             fp.write("\n")

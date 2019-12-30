@@ -19,7 +19,7 @@ module a30_power_supply(
     );
     
     assign p4VDC = 1'b1;
-    assign p4SW = 1'b1; //SBYREL_ ? 1'b1 : 1'b0;
+    assign p4SW = SBYREL_ ? 1'b1 : 1'b0;
     //assign p28COM = WD168;
     
 endmodule
