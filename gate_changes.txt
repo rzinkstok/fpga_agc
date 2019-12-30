@@ -1225,6 +1225,7 @@ Gates 49201-49255
 Sheet 2
 Gates 49301-49360
 Gates 49401-49443
+49331 removed (moved to A19 sheet 2)
 49333 removed (fan-out expansion)
 49338 removed (fan-out expansion)
 49340 removed (fan-out expansion)
@@ -1238,6 +1239,8 @@ Gates 49401-49443
 49356 removed (moved to A1 sheet 1)
 49357 removed (moved to A1 sheet 1)
 49358 removed (moved to A1 sheet 1)
+49359 removed (moved to A19 sheet 2)
+49360 removed (moved to A19 sheet 2)
 49401 removed (fan-out expansion)
 49402 removed (fan-out expansion)
 49403 removed (fan-out expansion)
