@@ -10,13 +10,11 @@ module a31_power_supply(
     input wire SYNC14_, // Sync signal for voltage reference
     input wire SBYREL_, // Standy signal
     
-    //output wire p28COM,
     output wire BPLUS,
     output wire BPLSSW
     );
     
     assign BPLUS = 1'b1;
-    assign BPLSSW = SBYREL_ ? 1'b1 : 1'b0;
-    //assign p28COM = WD167;
+    assign BPLSSW = (BPLUS && SBYREL_);
     
 endmodule

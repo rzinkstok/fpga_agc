@@ -15,11 +15,15 @@ module nor_3(y, a, b, c, power, reset, prop_clk);
 	reg prev_val = iv;
 	wire result;
 	
+	// Treat loss of power as reset hold
+	wire vrst;
+	assign vrst = (reset || !power);
+	
 	assign result = ~(a|b|c);
 	
-	always @(posedge prop_clk or posedge reset)
+	always @(posedge prop_clk or posedge vrst)
 	begin
-	    if(reset || !power) begin
+	    if(vrst) begin
 	        prev_val = iv;
 	        y = iv;
 	    end else begin
@@ -28,9 +32,9 @@ module nor_3(y, a, b, c, power, reset, prop_clk);
 		end
 	end
 	
-	always @(negedge prop_clk or posedge reset)
+	always @(negedge prop_clk or posedge vrst)
 	begin
-	    if(reset || !power) begin
+	    if(vrst) begin
 	        next_val = iv;
 	    end else begin
 		    next_val = ((result == prev_val) && (y == iv)) ? iv : result;

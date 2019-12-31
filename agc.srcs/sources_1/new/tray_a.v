@@ -172,6 +172,7 @@ module tray_a(
 	input wire XLNK1,
 	input wire ZEROP,
 	input wire n2FSFAL,
+	input wire prop_clk_locked,
 
 	output wire ALGA,
 	output wire ALRT0,
@@ -474,6 +475,7 @@ module tray_a(
 	output wire n3200D,
 	output wire n800RST,
 	output wire n800SET,
+	output wire p28COM,
 	output wire p4SW,
 	output wire p4VDC,
 
@@ -4917,6 +4919,8 @@ module tray_a(
 		CNTRL1,
 		SYNC4_,
 		SBYREL_,
+		prop_clk_locked,
+		p28COM,
 		p4VDC,
 		p4SW
 	);

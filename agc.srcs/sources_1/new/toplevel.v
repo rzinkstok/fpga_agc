@@ -36,9 +36,7 @@ module toplevel(
 	input wire MTCSAI,
 	input wire NHALGA,
 	input wire SIGNY,
-	input wire STRT2,
 	input wire clk,
-	input wire clk_reset,
 
 	output wire ALGA,
 	output wire BPLSSW,
@@ -123,9 +121,10 @@ module toplevel(
 	output wire MWZG,
 	output wire OUTCOM,
 	output wire STRT1,
+	output wire STRT2,
 	output wire p4SW,
-	output wire reset,
 
+	input wire reset,
 	input wire n0VDCA
 );
 
@@ -237,8 +236,8 @@ module toplevel(
 	reg ULLTHR = 0;
 	reg UPL0 = 0;
 	reg UPL1 = 0;
-	reg WD167 = 0;
-	reg WD168 = 0;
+	reg WD167 = 1;
+	reg WD168 = 1;
 	reg WD169 = 0;
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
@@ -369,6 +368,7 @@ module toplevel(
 	wire n3200D;
 	wire n800RST;
 	wire n800SET;
+	wire p28COM;
 	wire p4VDC;
 
 
@@ -502,7 +502,6 @@ module toplevel(
 		SMSEPR,
 		SPSRDY,
 		STRPRS,
-		STRT2,
 		TEMPIN,
 		TRANmX,
 		TRANmY,
@@ -524,7 +523,6 @@ module toplevel(
 		XLNK1,
 		ZEROP,
 		clk,
-		clk_reset,
 		ALGA,
 		ALRT0,
 		ALRT1,
@@ -713,6 +711,7 @@ module toplevel(
 		STARON,
 		STNDBY,
 		STRT1,
+		STRT2,
 		THRSTm,
 		THRSTp,
 		TMPCAU,
@@ -732,6 +731,7 @@ module toplevel(
 		n3200D,
 		n800RST,
 		n800SET,
+		p28COM,
 		p4SW,
 		p4VDC,
 		reset,

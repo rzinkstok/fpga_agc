@@ -130,7 +130,6 @@ module fpga_agc(
 	input wire SMSEPR,
 	input wire SPSRDY,
 	input wire STRPRS,
-	input wire STRT2,
 	input wire TEMPIN,
 	input wire TRANmX,
 	input wire TRANmY,
@@ -152,7 +151,6 @@ module fpga_agc(
 	input wire XLNK1,
 	input wire ZEROP,
 	input wire clk,
-	input wire clk_reset,
 
 	output wire ALGA,
 	output wire ALRT0,
@@ -342,6 +340,7 @@ module fpga_agc(
 	output wire STARON,
 	output wire STNDBY,
 	output wire STRT1,
+	output wire STRT2,
 	output wire THRSTm,
 	output wire THRSTp,
 	output wire TMPCAU,
@@ -361,10 +360,11 @@ module fpga_agc(
 	output wire n3200D,
 	output wire n800RST,
 	output wire n800SET,
+	output wire p28COM,
 	output wire p4SW,
 	output wire p4VDC,
-	output wire reset,
 
+	input wire reset,
 	input wire n0VDCA
 );
 
@@ -386,7 +386,6 @@ module fpga_agc(
 	reg SA16 = 0;
 	reg SAP = 0;
 	reg SCAFAL = 0;
-	reg VFAIL = 0;
 	reg n2FSFAL = 0;
 
 
@@ -454,6 +453,7 @@ module fpga_agc(
 	wire STR412;
 	wire STR58;
 	wire STR912;
+	wire VFAIL;
 	wire WEX;
 	wire WEY;
 	wire XB0E;
@@ -661,6 +661,7 @@ module fpga_agc(
 		XLNK1,
 		ZEROP,
 		n2FSFAL,
+		prop_clk_locked,
 		ALGA,
 		ALRT0,
 		ALRT1,
@@ -962,6 +963,7 @@ module fpga_agc(
 		n3200D,
 		n800RST,
 		n800SET,
+		p28COM,
 		p4SW,
 		p4VDC,
 		reset,
@@ -970,12 +972,20 @@ module fpga_agc(
 	);
 
 	tray_b trayb(
+		BPLSSW,
+		BPLUS,
+		Q2A,
 		clk,
-		clk_reset,
-		reset,
+		p28COM,
+		CLOCK,
+		STRT2,
+		VFAIL,
 		prop_clk,
 		prop_clk_locked,
-		CLOCK
+		reset,
+		n0VDCA,
+		p4VDC,
+		p4SW
 	);
 
 

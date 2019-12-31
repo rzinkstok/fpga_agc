@@ -7,7 +7,7 @@ module agc_clock_divider(
     output wire agc_clk
     );
     
-    reg [5:0] counter;
+    reg [6:0] counter;
 
     assign agc_clk = counter >= 6'd12;
 

@@ -12,15 +12,17 @@ module a30_power_supply(
     input wire CNTRL1,  // Test equipment input for simulating power failure
     input wire SYNC4_,  // Sync signal for voltage reference
     input wire SBYREL_, // Standy signal
+    input wire prop_clk_locked,
     
-    //output wire p28COM,
+    output wire p28COM,
     output wire p4VDC,
     output wire p4SW
     );
     
-    assign p4VDC = 1'b1;
-    assign p4SW = 1'b1; //SBYREL_ ? 1'b1 : 1'b0;
-    //assign p28COM = WD168;
+    // Only start 4V power supply when the prop_clk is running fine, otherwise shit happens
+    assign p4VDC = prop_clk_locked;
+    assign p4SW = (p4VDC && SBYREL_);
+    assign p28COM = WD168;
     
 endmodule
 

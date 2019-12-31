@@ -153,7 +153,6 @@ module fpga_agc_tb(
 	reg SMSEPR = 0;
 	reg SPSRDY = 0;
 	reg STRPRS = 0;
-	reg STRT2 = 0;
 	reg TEMPIN = 0;
 	reg TRANmX = 0;
 	reg TRANmY = 0;
@@ -168,17 +167,16 @@ module fpga_agc_tb(
 	reg ULLTHR = 0;
 	reg UPL0 = 0;
 	reg UPL1 = 0;
-	reg VFAIL = 0;
-	reg WD167 = 0;
-	reg WD168 = 0;
+	reg WD167 = 1;
+	reg WD168 = 1;
 	reg WD169 = 0;
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
 	reg clk = 0;
-	reg clk_reset = 0;
 	reg n0VDCA = 0;
 	reg n2FSFAL = 0;
+	reg reset = 0;
 
 
 	wire ALGA;
@@ -433,6 +431,7 @@ module fpga_agc_tb(
 	wire STR58;
 	wire STR912;
 	wire STRT1;
+	wire STRT2;
 	wire THRSTm;
 	wire THRSTp;
 	wire TMPCAU;
@@ -440,6 +439,7 @@ module fpga_agc_tb(
 	wire TRNDP;
 	wire TVCNAB;
 	wire UPLACT;
+	wire VFAIL;
 	wire VNFLSH;
 	wire WEX;
 	wire WEY;
@@ -483,11 +483,11 @@ module fpga_agc_tb(
 	wire n3200D;
 	wire n800RST;
 	wire n800SET;
+	wire p28COM;
 	wire p4SW;
 	wire p4VDC;
 	wire prop_clk;
 	wire prop_clk_locked;
-	wire reset;
 
 
 	always
@@ -665,6 +665,7 @@ module fpga_agc_tb(
 		XLNK1,
 		ZEROP,
 		n2FSFAL,
+		prop_clk_locked,
 		ALGA,
 		ALRT0,
 		ALRT1,
@@ -966,6 +967,7 @@ module fpga_agc_tb(
 		n3200D,
 		n800RST,
 		n800SET,
+		p28COM,
 		p4SW,
 		p4VDC,
 		reset,
@@ -974,12 +976,20 @@ module fpga_agc_tb(
 	);
 
 	tray_b trayb(
+		BPLSSW,
+		BPLUS,
+		Q2A,
 		clk,
-		clk_reset,
-		reset,
+		p28COM,
+		CLOCK,
+		STRT2,
+		VFAIL,
 		prop_clk,
 		prop_clk_locked,
-		CLOCK
+		reset,
+		n0VDCA,
+		p4VDC,
+		p4SW
 	);
 
 

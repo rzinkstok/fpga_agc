@@ -19,6 +19,7 @@ BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
 SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new")
 TRAY_A_SOURCE_FOLDER = os.path.join(SOURCE_FOLDER, "tray_a")
+TRAY_B_SOURCE_FOLDER = os.path.join(SOURCE_FOLDER, "tray_b")
 SIM_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs")
 
 MODULE_ARGS_START_RE = re.compile(r"^module [A-Za-z0-9\_]+\(")
@@ -120,12 +121,29 @@ def check_tray_a_signal(signal):
     if CROSS_MODULE_SIGNAL_RE.match(signal):
         return "internal"
 
-    if signal in ["reset", "prop_clk", "n0VDCA", "p4VDC", "p4SW"]:
+    if signal in ["reset", "prop_clk", "prop_clk_locked", "n0VDCA", "p4VDC", "p4SW"]:
         return "external"
 
     modules = get_signal_modules(signal)
 
     for m in TRAY_A + CONNECTOR_MODULES:
+        try:
+            modules.remove(m)
+        except KeyError:
+            pass
+
+    if not modules:
+        return "internal"
+
+    return "external"
+
+
+def check_tray_b_signal(signal):
+    if signal in ["reset", "clk", "prop_clk", "prop_clk_locked", "n0VDCA", "p4VDC", "p4SW"]:
+        return "external"
+
+    modules = get_signal_modules(signal)
+    for m in TRAY_B + CONNECTOR_MODULES:
         try:
             modules.remove(m)
         except KeyError:
@@ -258,7 +276,7 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
 
         for iw in sorted(internal_inputs):
             if iw not in internal_outputs and iw not in cross_module_fan_ins.keys():
-                if iw.endswith("_"):
+                if iw.endswith("_") or iw in["WD167", "WD168"]:  # WD167 is main bus A, WD168 is main bus B
                     val = 1
                 else:
                     val = 0
@@ -315,6 +333,8 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
 if __name__ == "__main__":
     modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_A_SOURCE_FOLDER)) if not x.startswith("a77")]
     write_module("tray_a", TRAY_A_SOURCE_FOLDER, modules, check_tray_a_signal)
+    modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_B_SOURCE_FOLDER))]
+    write_module("tray_b", TRAY_B_SOURCE_FOLDER, modules, check_tray_b_signal)
     write_module("fpga_agc", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_signal)
     write_module("toplevel", SOURCE_FOLDER, ["fpga_agc"], check_toplevel_signal)
     write_module("fpga_agc_tb", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_tb_signal, fpga_agc_tb_initial)

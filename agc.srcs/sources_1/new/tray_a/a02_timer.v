@@ -360,7 +360,7 @@ module a02_timer(
     nor_3 #(1'b1)  NOR37239(NOR37239_out,   NOR37238_out,   NOR37237_out,   n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR37240(NOR37240_out,   STRT2,          n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR37241(NOR37241_out,   STOPA,          n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
-    assign GOJAM_ = NOR37240_out & NOR37240_out;
+    assign GOJAM_ = NOR37240_out & NOR37241_out;
     
     nor_3 #(1'b0)  NOR37242(STOP_,          STOPA,          NOR37239_out,   n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b1)  NOR37243(STOP,           STOP_,          n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
