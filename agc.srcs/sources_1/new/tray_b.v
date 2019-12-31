@@ -4,12 +4,16 @@ module tray_b(
 	input wire BPLSSW,
 	input wire BPLUS,
 	input wire Q2A,
+	input wire SCAS10,
+	input wire SCAS17,
 	input wire clk,
 	input wire p28COM,
 
 	output wire CLOCK,
+	output wire MYCLMP,
 	output wire STRT2,
 	output wire VFAIL,
+	output wire n2FSFAL,
 	output wire prop_clk,
 	output wire prop_clk_locked,
 
@@ -42,8 +46,12 @@ module tray_b(
 		Q2A,
 		BPLSSW,
 		p4SW,
+		SCAS10,
+		SCAS17,
 		VFAIL,
-		STRT2
+		STRT2,
+		n2FSFAL,
+		MYCLMP
 	);
 
 

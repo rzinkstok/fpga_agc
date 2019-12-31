@@ -175,7 +175,6 @@ module fpga_agc_tb(
 	reg ZEROP = 0;
 	reg clk = 0;
 	reg n0VDCA = 0;
-	reg n2FSFAL = 0;
 	reg reset = 0;
 
 
@@ -343,6 +342,7 @@ module fpga_agc_tb(
 	wire MWSG;
 	wire MWYG;
 	wire MWZG;
+	wire MYCLMP;
 	wire OPEROR;
 	wire OT1108;
 	wire OT1110;
@@ -477,6 +477,7 @@ module fpga_agc_tb(
 	wire ZOPCDU;
 	wire n12KPPS;
 	wire n25KPPS;
+	wire n2FSFAL;
 	wire n3200A;
 	wire n3200B;
 	wire n3200C;
@@ -592,6 +593,7 @@ module fpga_agc_tb(
 		MSTP,
 		MSTRT,
 		MTCSAI,
+		MYCLMP,
 		NAVRST,
 		NHALGA,
 		NHVFAL,
@@ -979,11 +981,15 @@ module fpga_agc_tb(
 		BPLSSW,
 		BPLUS,
 		Q2A,
+		SCAS10,
+		SCAS17,
 		clk,
 		p28COM,
 		CLOCK,
+		MYCLMP,
 		STRT2,
 		VFAIL,
+		n2FSFAL,
 		prop_clk,
 		prop_clk_locked,
 		reset,

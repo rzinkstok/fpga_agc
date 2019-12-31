@@ -386,7 +386,6 @@ module fpga_agc(
 	reg SA16 = 0;
 	reg SAP = 0;
 	reg SCAFAL = 0;
-	reg n2FSFAL = 0;
 
 
 	wire CLOCK;
@@ -427,6 +426,7 @@ module fpga_agc(
 	wire ILP;
 	wire ILP_;
 	wire LOMOD;
+	wire MYCLMP;
 	wire Q2A;
 	wire RESETA;
 	wire RESETB;
@@ -485,6 +485,7 @@ module fpga_agc(
 	wire YT6E;
 	wire YT7E;
 	wire ZID;
+	wire n2FSFAL;
 	wire prop_clk;
 	wire prop_clk_locked;
 
@@ -588,6 +589,7 @@ module fpga_agc(
 		MSTP,
 		MSTRT,
 		MTCSAI,
+		MYCLMP,
 		NAVRST,
 		NHALGA,
 		NHVFAL,
@@ -975,11 +977,15 @@ module fpga_agc(
 		BPLSSW,
 		BPLUS,
 		Q2A,
+		SCAS10,
+		SCAS17,
 		clk,
 		p28COM,
 		CLOCK,
+		MYCLMP,
 		STRT2,
 		VFAIL,
+		n2FSFAL,
 		prop_clk,
 		prop_clk_locked,
 		reset,
