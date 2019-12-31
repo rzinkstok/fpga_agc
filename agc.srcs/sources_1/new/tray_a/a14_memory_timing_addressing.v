@@ -64,7 +64,7 @@ module a14_memory_timing_addressing(
     input wire INOUT,
     input wire CHINC,
     input wire MAMU,
-    input wire STRT2,
+    input wire MYCLMP,
     input wire SCAD,
     
     output wire IHENV,
@@ -242,6 +242,8 @@ module a14_memory_timing_addressing(
     wire NOR42227_out;
     wire NOR42228_out;
     wire NOR42229_out;
+    wire NOR42230_out;
+    wire NOR42231_out;
     wire NOR42232_out;
     wire NOR42233_out;
     wire NOR42234_out;
@@ -378,7 +380,7 @@ module a14_memory_timing_addressing(
     nor_3 #(1'b0)  NOR42152(NOR42152_out,   NOR42150_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     // NOR42153 removed (fan-out expansion)
     // NOR52162 added from A09 sheet 1
-    nor_3 #(1'b0)  NOR52162(NOR52162_out,   STRT2,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR52162(NOR52162_out,   MYCLMP,         n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     assign CLROPE = NOR42152_out & NOR52162_out;
     
     // NOR42157 moved to A06 sheet 1
@@ -430,15 +432,16 @@ module a14_memory_timing_addressing(
     nor_3 #(1'b0)  NOR42217(NOR42217_out,   FNERAS_,        T10_,           n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR42220(NOR42220_out,   TIMR,           T01,            NOR42221_out,   p4SW, reset, prop_clk);
     nor_3 #(1'b1)  NOR42221(NOR42221_out,   NOR42220_out,   NOR42217_out,   n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR42222(ZID,            STRT2,          NOR42221_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR42222(ZID,            MYCLMP,         NOR42221_out,   n0VDCA,         p4SW, reset, prop_clk);
     
     // SETEK
     nor_3 #(1'b0)  NOR42227(NOR42227_out,   ERAS,           T03_,           n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR42232(NOR42232_out,   T06_,           PHS4_,          n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b1)  NOR42228(NOR42228_out,   NOR42227_out,   NOR42229_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR42229(NOR42229_out,   NOR42228_out,   NOR42232_out,   GOJAM,          p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR42230(SETEK,          NOR42228_out,   STRT2,          n0VDCA,         p4SW, reset, prop_clk);
-    // NOR42231 removed (fan-out expansion)
+    nor_3 #(1'b0)  NOR42230(NOR42230_out,   NOR42228_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR42231(NOR42231_out,   MYCLMP,         n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    assign SETEK = NOR42230_out & NOR42231_out;
     
     // REDRST
     nor_3 #(1'b0)  NOR42244(NOR42244_out,   T05_,           PHS3_,          n0VDCA,         p4SW, reset, prop_clk);
