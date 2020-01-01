@@ -3,6 +3,7 @@
 module tray_b(
 	input wire BPLSSW,
 	input wire BPLUS,
+	input wire FILTIN,
 	input wire Q2A,
 	input wire SCAS10,
 	input wire SCAS17,
@@ -10,7 +11,9 @@ module tray_b(
 	input wire p28COM,
 
 	output wire CLOCK,
+	output wire FLTOUT,
 	output wire MYCLMP,
+	output wire SCAFAL,
 	output wire STRT2,
 	output wire VFAIL,
 	output wire n2FSFAL,
@@ -48,10 +51,13 @@ module tray_b(
 		p4SW,
 		SCAS10,
 		SCAS17,
+		FILTIN,
 		VFAIL,
 		STRT2,
+		SCAFAL,
 		n2FSFAL,
-		MYCLMP
+		MYCLMP,
+		FLTOUT
 	);
 
 

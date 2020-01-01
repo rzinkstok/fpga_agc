@@ -368,7 +368,6 @@ module fpga_agc(
 	input wire n0VDCA
 );
 
-	reg FLTOUT = 0;
 	reg SA01 = 0;
 	reg SA02 = 0;
 	reg SA03 = 0;
@@ -385,12 +384,12 @@ module fpga_agc(
 	reg SA14 = 0;
 	reg SA16 = 0;
 	reg SAP = 0;
-	reg SCAFAL = 0;
 
 
 	wire CLOCK;
 	wire CLROPE;
 	wire FILTIN;
+	wire FLTOUT;
 	wire GEM01;
 	wire GEM02;
 	wire GEM03;
@@ -441,6 +440,7 @@ module fpga_agc(
 	wire RSTKY_;
 	wire SBE;
 	wire SBF;
+	wire SCAFAL;
 	wire SCAS10;
 	wire SCAS17;
 	wire SETAB;
@@ -976,13 +976,16 @@ module fpga_agc(
 	tray_b trayb(
 		BPLSSW,
 		BPLUS,
+		FILTIN,
 		Q2A,
 		SCAS10,
 		SCAS17,
 		clk,
 		p28COM,
 		CLOCK,
+		FLTOUT,
 		MYCLMP,
+		SCAFAL,
 		STRT2,
 		VFAIL,
 		n2FSFAL,

@@ -29,7 +29,6 @@ module fpga_agc_tb(
 	reg DKEND = 0;
 	reg DKSTRT = 0;
 	reg DOSCAL = 0;
-	reg FLTOUT = 0;
 	reg FREFUN = 0;
 	reg GATEX_ = 1;
 	reg GATEY_ = 1;
@@ -144,7 +143,6 @@ module fpga_agc_tb(
 	reg SA16 = 0;
 	reg SAP = 0;
 	reg SBYBUT = 0;
-	reg SCAFAL = 0;
 	reg SHAFTM = 0;
 	reg SHAFTP = 0;
 	reg SIGNX = 0;
@@ -209,6 +207,7 @@ module fpga_agc_tb(
 	wire ENERIM;
 	wire ENEROP;
 	wire FILTIN;
+	wire FLTOUT;
 	wire GEM01;
 	wire GEM02;
 	wire GEM03;
@@ -414,6 +413,7 @@ module fpga_agc_tb(
 	wire SBE;
 	wire SBF;
 	wire SBYLIT;
+	wire SCAFAL;
 	wire SCAS10;
 	wire SCAS17;
 	wire SETAB;
@@ -980,13 +980,16 @@ module fpga_agc_tb(
 	tray_b trayb(
 		BPLSSW,
 		BPLUS,
+		FILTIN,
 		Q2A,
 		SCAS10,
 		SCAS17,
 		clk,
 		p28COM,
 		CLOCK,
+		FLTOUT,
 		MYCLMP,
+		SCAFAL,
 		STRT2,
 		VFAIL,
 		n2FSFAL,
