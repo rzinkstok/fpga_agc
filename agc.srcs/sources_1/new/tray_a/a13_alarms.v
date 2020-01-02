@@ -273,8 +273,8 @@ module a13_alarms(
     nor_3 #(1'b0)  NOR47162(F14H,           F12B_,          FS14,           FS13_,          p4SW, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR41111(NOR41111_out,   F14H,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR41112(NOR41112_out,   NOR41108_out,   F14H,           n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR41113(NOR41113_out,   F14H,           NOR41110_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41112(NOR41112_out,   NOR41108_out,   NOR41111_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR41113(NOR41113_out,   NOR41111_out,   NOR41110_out,   n0VDCA,         p4SW, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR41114(NOR41114_out,   NOR41112_out,   NOR41113_out,   n0VDCA,         p4SW, reset, prop_clk);
     // NOR41115 removed (fan-out expansion)
@@ -289,7 +289,7 @@ module a13_alarms(
     nor_3 #(1'b1)  NOR41121(NOR41121_out,   TC0,            TCF0,           NOR41122_out,   p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR41122(NOR41122_out,   NOR41121_out,   F10B,           n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b0)  NOR41123(NOR41123_out,   NOR41123_in,    NOR41124_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR41123(NOR41123_out,   NOR41123_in,    NOR41124_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR41124(NOR41124_out,   NOR41123_out,   F10B,           n0VDCA,         p4SW, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR41125(NOR41125_out,   F10A,           NOR41122_out,   n0VDCA,         p4SW, reset, prop_clk);
