@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+
 module a05_crosspoint_nqi(
     input wire T01_, 
     input wire T02_, 

@@ -801,8 +801,8 @@ module a08_four_bit_1(
     nor_3 #(1'b0)  NOR51318(NOR51318_out,   WAG_,           WL04_,          n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR51319(NOR51319_out,   WL06_,          WALSG_,         n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b1)  NOR51320(A04_,           NOR51318_out,   NOR51319_out,   NOR51321_out,   p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR51321(NOR51321_out,   A04_,           CAG,            n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR51320(A04_,           NOR51318_out,   NOR51319_out,   NOR51321_out,   p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR51321(NOR51321_out,   A04_,           CAG,            n0VDCA,         p4SW, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR51322(NOR51322_out,   RAG_,           A04_,           n0VDCA,         p4SW, reset, prop_clk);
     

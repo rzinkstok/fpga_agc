@@ -368,22 +368,6 @@ module fpga_agc(
 	input wire n0VDCA
 );
 
-	reg SA01 = 0;
-	reg SA02 = 0;
-	reg SA03 = 0;
-	reg SA04 = 0;
-	reg SA05 = 0;
-	reg SA06 = 0;
-	reg SA07 = 0;
-	reg SA08 = 0;
-	reg SA09 = 0;
-	reg SA10 = 0;
-	reg SA11 = 0;
-	reg SA12 = 0;
-	reg SA13 = 0;
-	reg SA14 = 0;
-	reg SA16 = 0;
-	reg SAP = 0;
 
 
 	wire CLOCK;
@@ -438,6 +422,22 @@ module fpga_agc(
 	wire ROPET;
 	wire RSTKX_;
 	wire RSTKY_;
+	wire SA01;
+	wire SA02;
+	wire SA03;
+	wire SA04;
+	wire SA05;
+	wire SA06;
+	wire SA07;
+	wire SA08;
+	wire SA09;
+	wire SA10;
+	wire SA11;
+	wire SA12;
+	wire SA13;
+	wire SA14;
+	wire SA16;
+	wire SAP;
 	wire SBE;
 	wire SBF;
 	wire SCAFAL;
@@ -977,14 +977,83 @@ module fpga_agc(
 		BPLSSW,
 		BPLUS,
 		FILTIN,
+		GEM01,
+		GEM02,
+		GEM03,
+		GEM04,
+		GEM05,
+		GEM06,
+		GEM07,
+		GEM08,
+		GEM09,
+		GEM10,
+		GEM11,
+		GEM12,
+		GEM13,
+		GEM14,
+		GEM16,
+		GEMP,
 		Q2A,
+		REX,
+		REY,
+		RSTKX_,
+		RSTKY_,
+		SBE,
 		SCAS10,
 		SCAS17,
+		SETEK,
+		WEX,
+		WEY,
+		XB0E,
+		XB1E,
+		XB2E,
+		XB3E,
+		XB4E,
+		XB5E,
+		XB6E,
+		XB7E,
+		XT0E,
+		XT1E,
+		XT2E,
+		XT3E,
+		XT4E,
+		XT5E,
+		XT6E,
+		XT7E,
+		YB0E,
+		YB1E,
+		YB2E,
+		YB3E,
+		YT0E,
+		YT1E,
+		YT2E,
+		YT3E,
+		YT4E,
+		YT5E,
+		YT6E,
+		YT7E,
+		ZID,
 		clk,
 		p28COM,
 		CLOCK,
 		FLTOUT,
 		MYCLMP,
+		SA01,
+		SA02,
+		SA03,
+		SA04,
+		SA05,
+		SA06,
+		SA07,
+		SA08,
+		SA09,
+		SA10,
+		SA11,
+		SA12,
+		SA13,
+		SA14,
+		SA16,
+		SAP,
 		SCAFAL,
 		STRT2,
 		VFAIL,

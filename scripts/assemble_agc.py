@@ -26,7 +26,7 @@ MODULE_ARGS_START_RE = re.compile(r"^module [A-Za-z0-9\_]+\(")
 MODULE_ARGS_END_RE = re.compile(r"^\);")
 INPUT_WIRE_RE = re.compile(r"^input wire ")
 OUTPUT_WIRE_RE = re.compile(r"^output wire ")
-CROSS_MODULE_SIGNAL_RE = re.compile(r"^A[0-9][0-9]\_[0-9]+\_(.+)")
+CROSS_MODULE_SIGNAL_RE = re.compile(r"^[AB][0-9][0-9]\_[0-9]+\_(.+)")
 
 TRAY_A = [f"A{i}" for i in range(1, 25)] + ["A30", "A31"]
 TRAY_B = []
@@ -141,6 +141,8 @@ def check_tray_a_signal(signal):
 def check_tray_b_signal(signal):
     if signal in ["reset", "clk", "prop_clk", "prop_clk_locked", "n0VDCA", "p4VDC", "p4SW"]:
         return "external"
+    if signal.startswith("SA") and signal[2:] in [f"{i:02}" for i in range(1, 15)] + ["P", "16"]:
+        return "external"
 
     modules = get_signal_modules(signal)
     for m in TRAY_B + CONNECTOR_MODULES:
@@ -224,6 +226,7 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
             if signal not in cross_module_fan_ins.keys():
                 cross_module_fan_ins[signal] = []
             cross_module_fan_ins[signal].append(i)
+
             continue
 
         if signal_check(i) == "external":
@@ -246,7 +249,15 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
     for i in internal_outputs:
         if i not in internal_inputs:
             print(f"Internal output {i} is not used")
-    internal_wires = list(set(internal_inputs + internal_outputs))
+    #internal_wires = list(set(internal_inputs + internal_outputs))
+
+    # Check cross module fan-in combined signals
+    for signal in cross_module_fan_ins.keys():
+        if signal not in internal_inputs + external_outputs:
+            if signal_check(signal) == "internal":
+                internal_inputs.append(signal)
+            else:
+                external_outputs.append(signal)
 
     # Write output file
     if module_name.endswith("_tb"):

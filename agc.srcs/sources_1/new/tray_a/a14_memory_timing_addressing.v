@@ -413,6 +413,7 @@ module a14_memory_timing_addressing(
     nor_3 #(1'b1)  NOR42212(NOR42212_out,   NOR42213_out,   NOR42216_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR42213(NOR42213_out,   TIMR,           T11,            NOR42212_out,   p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR42211(NOR42211_out,   NOR42212_out,   T10,            n0VDCA,         p4SW, reset, prop_clk);
+    
     nor_3 #(1'b0)  NOR42214(NOR42214_out,   T10_,           FNERAS_,        PHS4_,          p4SW, reset, prop_clk);
     nor_3 #(1'b1)  NOR42209(NOR42209_out,   NOR42210_out,   NOR42214_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR42210(NOR42210_out,   TIMR,           NOR42204_out,   NOR42209_out,   p4SW, reset, prop_clk);
@@ -435,7 +436,7 @@ module a14_memory_timing_addressing(
     nor_3 #(1'b0)  NOR42222(ZID,            MYCLMP,         NOR42221_out,   n0VDCA,         p4SW, reset, prop_clk);
     
     // SETEK
-    nor_3 #(1'b0)  NOR42227(NOR42227_out,   ERAS,           T03_,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR42227(NOR42227_out,   ERAS_,          T03_,           n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR42232(NOR42232_out,   T06_,           PHS4_,          n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b1)  NOR42228(NOR42228_out,   NOR42227_out,   NOR42229_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR42229(NOR42229_out,   NOR42228_out,   NOR42232_out,   GOJAM,          p4SW, reset, prop_clk);
