@@ -17,8 +17,6 @@ module tray_a(
 	input wire CDUZM,
 	input wire CDUZP,
 	input wire CLOCK,
-	input wire CNTRL1,
-	input wire CNTRL2,
 	input wire CTLSAT,
 	input wire DBLTST,
 	input wire DKBSNC,
@@ -166,9 +164,7 @@ module tray_a(
 	input wire UPL0,
 	input wire UPL1,
 	input wire VFAIL,
-	input wire WD167,
 	input wire WD168,
-	input wire WD169,
 	input wire XLNK0,
 	input wire XLNK1,
 	input wire ZEROP,
@@ -485,7 +481,6 @@ module tray_a(
 	input wire n0VDCA
 );
 
-	reg n28DCR = 0;
 
 	wire A2X_;
 	wire CHOR01_;
@@ -4914,11 +4909,6 @@ module tray_a(
 
 	a30_power_supply a30(
 		WD168,
-		WD169,
-		n28DCR,
-		BPLUS,
-		CNTRL1,
-		SYNC4_,
 		SBYREL_,
 		prop_clk_locked,
 		p28COM,
@@ -4927,11 +4917,6 @@ module tray_a(
 	);
 
 	a31_power_supply a31(
-		WD167,
-		WD169,
-		n28DCR,
-		CNTRL2,
-		SYNC14_,
 		SBYREL_,
 		BPLUS,
 		BPLSSW

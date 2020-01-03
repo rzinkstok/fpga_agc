@@ -81,7 +81,8 @@ module b12_erasable_memory(
     input wire n0VDCA,
     input wire p4VDC,
     input wire reset,
-    input wire prop_clk
+    input wire prop_clk,
+    input wire clk
     );
     
     wire NOR00001_out;
@@ -124,6 +125,16 @@ module b12_erasable_memory(
     wire NOR00051_out;
     wire NOR00053_out;
     wire NOR00054_out;
+    wire NOR00064_out;
+    wire NOR00065_out;
+    wire NOR00066_out;
+    wire NOR00067_out;
+    wire NOR00068_out;
+    wire NOR00069_out;
+    wire NOR00070_out;
+    wire NOR00071_out;
+    wire NOR00072_out;
+    wire NOR00073_out;
     
     wire ES01_;
     wire ES02_;
@@ -156,6 +167,9 @@ module b12_erasable_memory(
     wire WEY_;
     wire WE;
     wire WE_;
+    wire RE;
+    wire RE_;
+    wire EDESTROY;
     wire write_enable;
     wire output_enable;
   
@@ -265,12 +279,27 @@ module b12_erasable_memory(
     assign address = {EADDR11, EADDR10, EADDR09, EADDR08, EADDR07, EADDR06, EADDR05, EADDR04, EADDR03, EADDR02, EADDR01};
     
     
+    // Delay line for erasing memory after read
+    nor_3 #(1'b1) NOR00061(RE_,             REX,            REY,            n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b0) NOR00062(RE,              RE_,            n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b0) NOR00063(EDESTROY,        RE,             NOR00073_out,   n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b1) NOR00064(NOR00064_out,    EDESTROY,       NOR00065_out,   n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b0) NOR00065(NOR00065_out,    NOR00064_out,   RE,             n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b1) NOR00066(NOR00066_out,    NOR00065_out,   n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b0) NOR00067(NOR00067_out,    NOR00066_out,   n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b1) NOR00068(NOR00068_out,    NOR00067_out,   n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b0) NOR00069(NOR00069_out,    NOR00068_out,   n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b1) NOR00070(NOR00070_out,    NOR00069_out,   n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b0) NOR00071(NOR00071_out,    NOR00070_out,   n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b1) NOR00072(NOR00072_out,    NOR00071_out,   n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b0) NOR00073(NOR00073_out,    NOR00072_out,   n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    
+    
     // Write enable
-    // Maybe add a REX/REY connection to erase the word at read time
-    nor_3 #(1'b0) NOR00056(WEX_,            WEX,            n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
-    nor_3 #(1'b0) NOR00057(WEY_,            WEY,            n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b1) NOR00056(WEX_,            WEX,            n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b1) NOR00057(WEY_,            WEY,            n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
     nor_3 #(1'b0) NOR00058(WE,              WEX_,           WEY_,           n0VDCA, p4VDC,  reset, prop_clk);
-    nor_3 #(1'b0) NOR00059(WE_,             WE,             n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
+    nor_3 #(1'b1) NOR00059(WE_,             WE,             EDESTROY,       n0VDCA, p4VDC,  reset, prop_clk);
     nor_3 #(1'b0) NOR00060(write_enable,    WE_,            n0VDCA,         n0VDCA, p4VDC,  reset, prop_clk);
     
     
@@ -298,13 +327,13 @@ module b12_erasable_memory(
     assign B12_1_SA16 = sensed_word[15];
     
     
-    // Perhaps toggle it with ZID
-    assign write_word = {GEM16, GEMP, GEM14, GEM13, GEM12, GEM11, GEM10, GEM09, GEM08, GEM07, GEM06, GEM05, GEM04, GEM03, GEM02, GEM01};
+    // The write word is only passed along when ZID is high
+    assign write_word = ZID ? {GEM16, GEMP, GEM14, GEM13, GEM12, GEM11, GEM10, GEM09, GEM08, GEM07, GEM06, GEM05, GEM04, GEM03, GEM02, GEM01} : 16'b0;
     
     
     // The memory itself
     core_memory ram(
-        .clka(prop_clk),
+        .clka(clk),
         .wea(write_enable),
         .addra(address),
         .dina(write_word),

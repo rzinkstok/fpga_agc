@@ -1,0 +1,84 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
+| Date         : Fri Jan  3 18:13:59 2020
+| Host         : fpgadev running 64-bit Ubuntu 18.04.3 LTS
+| Command      : report_control_sets -verbose -file toplevel_control_sets_placed.rpt
+| Design       : toplevel
+| Device       : xc7z020
+-------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |     6 |
+|    Minimum number of control sets                        |     6 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    13 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |     6 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     4 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               0 |            0 |
+| No           | No                    | Yes                    |           12419 |         2521 |
+| No           | Yes                   | No                     |               8 |            2 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------------------------------------------+---------------+-------------------------------------------+------------------+----------------+
+|                       Clock Signal                      | Enable Signal |              Set/Reset Signal             | Slice Load Count | Bel Load Count |
++---------------------------------------------------------+---------------+-------------------------------------------+------------------+----------------+
+|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | reset_IBUF                                |                1 |              5 |
+|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/trayb/b07oscillator/bbstub_locked |                2 |              8 |
+| ~fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/a18/NOR42457/vrst                 |              126 |            363 |
+|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/a18/NOR42457/vrst                 |              144 |            726 |
+| ~fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/a13/NOR41118/vrst                 |             1106 |           3775 |
+|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/a13/NOR41118/vrst                 |             1144 |           7550 |
++---------------------------------------------------------+---------------+-------------------------------------------+------------------+----------------+
+
+

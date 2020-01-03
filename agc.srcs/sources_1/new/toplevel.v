@@ -1,8 +1,6 @@
 `timescale 1ns / 1ps
 
 module toplevel(
-	input wire CNTRL1,
-	input wire CNTRL2,
 	input wire DBLTST,
 	input wire DOSCAL,
 	input wire MAMU,
@@ -39,7 +37,6 @@ module toplevel(
 	input wire clk,
 
 	output wire ALGA,
-	output wire BPLSSW,
 	output wire MBR1,
 	output wire MBR2,
 	output wire MCTRAL_,
@@ -122,10 +119,8 @@ module toplevel(
 	output wire OUTCOM,
 	output wire STRT1,
 	output wire STRT2,
-	output wire p4SW,
 
-	input wire reset,
-	input wire n0VDCA
+	input wire reset
 );
 
 	reg BLKUPL_ = 1;
@@ -236,12 +231,11 @@ module toplevel(
 	reg ULLTHR = 0;
 	reg UPL0 = 0;
 	reg UPL1 = 0;
-	reg WD167 = 1;
 	reg WD168 = 1;
-	reg WD169 = 0;
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
+	reg n0VDCA = 0;
 
 
 	wire ALRT0;
@@ -249,6 +243,7 @@ module toplevel(
 	wire ALT0;
 	wire ALT1;
 	wire ALTSNC;
+	wire BPLSSW;
 	wire BPLUS;
 	wire CDUCLK;
 	wire CDUXDM;
@@ -369,6 +364,7 @@ module toplevel(
 	wire n800RST;
 	wire n800SET;
 	wire p28COM;
+	wire p4SW;
 	wire p4VDC;
 
 
@@ -388,8 +384,6 @@ module toplevel(
 		CDUYP,
 		CDUZM,
 		CDUZP,
-		CNTRL1,
-		CNTRL2,
 		CTLSAT,
 		DBLTST,
 		DKBSNC,
@@ -516,9 +510,7 @@ module toplevel(
 		ULLTHR,
 		UPL0,
 		UPL1,
-		WD167,
 		WD168,
-		WD169,
 		XLNK0,
 		XLNK1,
 		ZEROP,

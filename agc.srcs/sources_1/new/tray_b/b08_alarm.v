@@ -4,14 +4,10 @@ module b08_alarm(
     input wire p28COM,
     input wire BPLUS,
     input wire p4VDC,
-    input wire n0VDCA,
     
     input wire prop_clk,
     input wire prop_clk_locked,
-    input wire reset,
     
-    input wire Q2A,
-    input wire BPLSSW,
     input wire p4SW,
     input wire SCAS10,
     input wire SCAS17,
@@ -25,20 +21,21 @@ module b08_alarm(
     output wire FLTOUT
     );
     
-    // Define a 1.024 MHz reference signal
-    wire refclk;
-    reg [6:0] refclk_counter;
-    assign refclk = refclk_counter < 6'd25;
-    always @(posedge prop_clk or posedge reset) begin
-        if (~prop_clk_locked) begin
-            refclk_counter <= 6'b0;
-        end else begin
-            refclk_counter <= refclk_counter + 1;
-            if(refclk_counter >= 6'd50) begin
-                refclk_counter <= 6'b0;
-            end
-        end
-    end
+//    // Define a 1.024 MHz reference signal
+//    wire refclk;
+//    reg [6:0] refclk_counter;
+//    assign refclk = refclk_counter < 6'd25;
+    
+//    always @(posedge prop_clk) begin
+//        if (~prop_clk_locked) begin
+//            refclk_counter <= 6'b0;
+//        end else begin
+//            refclk_counter <= refclk_counter + 1;
+//            if(refclk_counter >= 6'd50) begin
+//                refclk_counter <= 6'b0;
+//            end
+//        end
+//    end
     
     
     // Voltage alarm
@@ -51,7 +48,7 @@ module b08_alarm(
     reg [8:0] delay_counter;
     assign STRT2 = delay_counter < 8'd255;
 
-    always @(posedge prop_clk or posedge reset) begin
+    always @(posedge prop_clk) begin
         if (~prop_clk_locked) begin
             delay_counter <= 8'b0;
         end else begin
@@ -69,18 +66,16 @@ module b08_alarm(
     // FS01 is CLK divided by 20
     // FS17 is FS01 halved 16 times, so FS01 divided by 65536
     // Therefore FS17 is CLK divided by 1310720
-    reg [20:0] scafal_counter;
-    assign SCAFAL = scafal_counter > 21'd1310720;
-    always @(posedge refclk or posedge reset) begin
-        if (~prop_clk_locked) begin
-            scafal_counter <= 21'b0;
-        end else begin
-            scafal_counter <= scafal_counter + 1;
-        end
-    end
-    always @(posedge SCAS17) begin
-        scafal_counter <= 21'b0;
-    end
+//    reg [20:0] scafal_counter;
+//    assign SCAFAL = scafal_counter > 21'd1310720;
+//    always @(posedge refclk) begin
+//        if (~prop_clk_locked || SCAS17) begin
+//            scafal_counter <= 21'b0;
+//        end else begin
+//            scafal_counter <= scafal_counter + 1;
+//        end
+//    end
+    assign SCAFAL = 1'b0;
     
     
     // Double frequency scalar alarm
@@ -103,32 +98,73 @@ module b08_alarm(
     // (SCADBL) or alarm test (ALTEST).
     // FILTIN pulses are 1.25 ms long (determined by F08B) and occur each 160 ms (determined by F14B).
     
-    reg [2:0] npulses = 1'b0;
-    reg [22:0] ref_counter = 23'b0;
-    assign FLTOUT = (npulses >= 3'd5);
+//    reg [2:0] npulses; // = 1'b0;
+//    reg [22:0] ref_counter = 23'b0;
+//    assign FLTOUT = (npulses >= 3'd5);
     
-    always @(posedge FILTIN) begin
-        ref_counter <= 1'b0;
-        if (npulses < 3'd5) begin
-            npulses <= npulses + 1;
-        end
-    end
+//    always @(posedge FILTIN) begin
+//        ref_counter <= 1'b0;
+//        if (npulses < 3'd5) begin
+//            npulses <= npulses + 1;
+//        end
+//    end
     
-    always @(posedge refclk) begin
-        if (npulses == 5) begin
-            // 5 seconds after the last pulse occurred, reset the number of pulses to 0
-            if (ref_counter > 23'd5120000) begin
-                npulses <= 3'b0;
-            end
-        end else if (npulses > 1) begin
-            ref_counter <= ref_counter + 1;
-            // If no new pulse occurs within a single period of F14 (160 ms), reset the number of pulses
-            if (ref_counter > 23'd8192) begin
-                ref_counter <= 23'b0;
-                npulses <= 3'b0;
-            end
-        end
-    end
+//    always @(posedge refclk) begin
+//        if (npulses == 5) begin
+//            // 5 seconds after the last pulse occurred, reset the number of pulses to 0
+//            if (ref_counter > 23'd5120000) begin
+//                npulses <= 3'b0;
+//            end
+//        end else if (npulses > 1) begin
+//            ref_counter <= ref_counter + 1;
+//            // If no new pulse occurs within a single period of F14 (160 ms), reset the number of pulses
+//            if (ref_counter > 23'd8192) begin
+//                ref_counter <= 23'b0;
+//                npulses <= 3'b0;
+//            end
+//        end
+//    end
+
+// Perhaps 5 bit shift register that is shifted each tick of F14B
+// Data in is determined by a flip-flop that is set by FILTIN and cleared after shifting
     
+    // Generate f14 clock
+    // FS01 is CLK divided by 20
+    // FS14 is FS01 halved 13 times, so FS01 divided by 8192
+    // Therefore FS17 is CLK divided by 163840
+//    wire ref_f14;
+//    reg [17:0] ref_f14_counter;
+//    assign ref_f14 = ref_f14_counter < 18'd81920;
     
+//    always @(posedge refclk) begin
+//        if (~prop_clk_locked) begin
+//            ref_f14_counter <= 18'b0;
+//        end else begin
+//            ref_f14_counter <= ref_f14_counter + 1;
+//            if(ref_f14_counter >= 18'd163840) begin
+//                ref_f14_counter <= 18'b0;
+//            end
+//        end
+//    end
+    
+//    wire filtin_reset;
+//    wire filtin_latch;
+//    wire filtin_latch_;
+    
+//    nor(filtin_latch_, FILTIN, filtin_latch);
+//    nor(filtin_latch, filtin_latch_, filtin_reset);
+    
+//    reg[4:0] filt_shift;
+//    always @(posedge ref_f14) begin
+//        if(~prop_clk_locked) begin
+//            filt_shift <= 5'b0;
+//        end else begin
+//            filt_shift <= {filt_shift[3:0], filtin_latch};
+//        end
+//    end
+    
+//    assign FLTOUT = filt_shift >= 5'b11111;
+
+    
+    assign FLTOUT = 1'b0;
 endmodule

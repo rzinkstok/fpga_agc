@@ -21,6 +21,7 @@ SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new")
 TRAY_A_SOURCE_FOLDER = os.path.join(SOURCE_FOLDER, "tray_a")
 TRAY_B_SOURCE_FOLDER = os.path.join(SOURCE_FOLDER, "tray_b")
 SIM_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs")
+CONSTRAINTS_FOLDER = os.path.join(BASEDIR, "agc.srcs", "constrs_1", "new")
 
 MODULE_ARGS_START_RE = re.compile(r"^module [A-Za-z0-9\_]+\(")
 MODULE_ARGS_END_RE = re.compile(r"^\);")
@@ -33,6 +34,8 @@ TRAY_B = []
 TRAY_MODULES = TRAY_A + TRAY_B
 CONNECTOR_MODULES = ["A63", "B63"]
 EXTERNAL_INTERFACE_MODULES = ["A25", "A26", "A27", "A28", "A29", "A51", "A52"]
+
+PINS = ["J22", "J21", "L22", "L21", "G22", "H22", "G21", "G20", "H20", "H19", "E20", "E19", "F22", "F21", "A22", "A21", "C22", "D22", "C20", "D20", "B22", "B21", "C19", "D18", "B20", "B19", "C18", "C17", "A19", "A18", "B17", "B16", "A17", "A16", "E16", "F16", "B15", "C15", "E18", "F18", "D17", "D16", "F19", "G19", "D21", "E21", "G16", "G15", "F17", "G17", "J17", "J16", "P18", "P17", "K15", "J15", "K18", "J18", "M16", "M15", "M17", "L17", "K20", "K19", "U16", "U15", "T19", "R19", "V15", "V14", "U4", "T4", "U9", "U10", "W8", "V8", "U5", "U6", "T6", "R6", "M19", "M20", "M21", "M22", "N19", "N20", "N22", "P22", "N17", "N18", "P20", "P21", "P16", "R16", "R20", "R21", "N15", "P15", "J20", "K21", "V18", "V19", "W15", "Y15", "W17", "W18", "W16", "Y16", "AA21", "AB21", "U17", "V17", "AB19", "AB20", "V13", "W13", "Y19", "AA19", "V12", "W12", "Y18", "AA18", "U12", "U11", "AA17", "AB17", "AB10", "AB9", "AA16", "AB16", "Y14", "AA14", "AB14", "AB15", "W11", "W10", "Y13", "AA13", "Y11", "Y10", "AA12", "AB12", "AA9", "AA8", "AA11", "AB11", "Y9", "Y8", "V10", "V9"]
 
 
 def read_module(module_file_path):
@@ -182,6 +185,8 @@ def fpga_agc_tb_initial(fp):
 
 
 def check_toplevel_signal(signal):
+    if signal in ["n0VDCA", "p4SW", "BPLSSW"]:
+        return "internal"
     if signal in ["reset", "clk", "clk_reset", "MAMU"]:
         return "external"
 
@@ -341,11 +346,34 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
         print(f"Written {filepath}")
 
 
+def write_constraints():
+    params, inputs, outputs = read_module(os.path.join(SOURCE_FOLDER, "toplevel.v"))
+    with open(os.path.join(CONSTRAINTS_FOLDER, "agc.xdc"), "w") as fp:
+        for param in sorted(params):
+            fp.write(f"set_property IOSTANDARD LVCMOS33 [get_ports {param}]\n")
+        for o in sorted(outputs):
+            fp.write(f"set_property DRIVE 4 [get_ports {o}]\n")
+        for i in sorted(inputs):
+            if i == "clk":
+                continue
+            if i.endswith("_"):
+                fp.write(f"set_property PULLUP true [get_ports {i}]\n")
+            else:
+                fp.write(f"set_property PULLDOWN true [get_ports {i}]\n")
+        fp.write("set_property PACKAGE_PIN Y6 [get_ports clk]\n")
+        for param, pin in zip(sorted(params), [p for p in PINS if p != "Y6"]):
+            if param == "clk":
+                continue
+            fp.write(f"set_property PACKAGE_PIN {pin} [get_ports {param}]\n")
+
+
 if __name__ == "__main__":
-    modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_A_SOURCE_FOLDER)) if not x.startswith("a77")]
-    write_module("tray_a", TRAY_A_SOURCE_FOLDER, modules, check_tray_a_signal)
-    modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_B_SOURCE_FOLDER))]
-    write_module("tray_b", TRAY_B_SOURCE_FOLDER, modules, check_tray_b_signal)
-    write_module("fpga_agc", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_signal)
-    write_module("toplevel", SOURCE_FOLDER, ["fpga_agc"], check_toplevel_signal)
-    write_module("fpga_agc_tb", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_tb_signal, fpga_agc_tb_initial)
+    if True:
+        modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_A_SOURCE_FOLDER)) if not x.startswith("a77")]
+        write_module("tray_a", TRAY_A_SOURCE_FOLDER, modules, check_tray_a_signal)
+        modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_B_SOURCE_FOLDER)) if not x.startswith("b12")]
+        write_module("tray_b", TRAY_B_SOURCE_FOLDER, modules, check_tray_b_signal)
+        write_module("fpga_agc", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_signal)
+        write_module("toplevel", SOURCE_FOLDER, ["fpga_agc"], check_toplevel_signal)
+        write_module("fpga_agc_tb", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_tb_signal, fpga_agc_tb_initial)
+    write_constraints()

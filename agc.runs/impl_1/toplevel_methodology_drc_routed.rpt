@@ -1,0 +1,45 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
+| Date         : Fri Jan  3 18:14:50 2020
+| Host         : fpgadev running 64-bit Ubuntu 18.04.3 LTS
+| Command      : report_methodology -file toplevel_methodology_drc_routed.rpt -pb toplevel_methodology_drc_routed.pb -rpx toplevel_methodology_drc_routed.rpx
+| Design       : toplevel
+| Device       : xc7z020clg484-1
+| Speed File   : -1
+| Design State : Fully Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 2
++---------+----------+------------------------------+------------+
+| Rule    | Severity | Description                  | Violations |
++---------+----------+------------------------------+------------+
+| LUTAR-1 | Warning  | LUT drives async reset alert | 2          |
++---------+----------+------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell fpgaagc/next_val_i_2__0__0, with 2 or more inputs, drives asynchronous preset/clear pin(s) fpgaagc/traya/a01/NOR46309/next_val_reg/CLR, fpgaagc/traya/a01/NOR46309/prev_val_reg/CLR, fpgaagc/traya/a01/NOR46309/y_reg/CLR, fpgaagc/traya/a01/NOR46312/next_val_reg/CLR, fpgaagc/traya/a01/NOR46312/prev_val_reg/CLR, fpgaagc/traya/a01/NOR46312/y_reg/CLR, fpgaagc/traya/a01/NOR46314/next_val_reg/CLR, fpgaagc/traya/a01/NOR46314/prev_val_reg/CLR, fpgaagc/traya/a01/NOR46314/y_reg/CLR, fpgaagc/traya/a01/NOR46316/next_val_reg/CLR, fpgaagc/traya/a01/NOR46316/prev_val_reg/CLR, fpgaagc/traya/a01/NOR46316/y_reg/CLR, fpgaagc/traya/a01/NOR48157/next_val_reg/CLR, fpgaagc/traya/a01/NOR48157/prev_val_reg/CLR, fpgaagc/traya/a01/NOR48157/y_reg/CLR (the first 15 of 11325 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#2 Warning
+LUT drives async reset alert  
+LUT cell fpgaagc/next_val_i_2__1__0, with 2 or more inputs, drives asynchronous preset/clear pin(s) fpgaagc/traya/a01/NOR38101/next_val_reg/CLR, fpgaagc/traya/a01/NOR38101/prev_val_reg/CLR, fpgaagc/traya/a01/NOR38101/y_reg/CLR, fpgaagc/traya/a01/NOR38102/next_val_reg/PRE, fpgaagc/traya/a01/NOR38102/prev_val_reg/PRE, fpgaagc/traya/a01/NOR38102/y_reg/PRE, fpgaagc/traya/a01/NOR38103/next_val_reg/CLR, fpgaagc/traya/a01/NOR38103/prev_val_reg/CLR, fpgaagc/traya/a01/NOR38103/y_reg/CLR, fpgaagc/traya/a01/NOR38104/next_val_reg/CLR, fpgaagc/traya/a01/NOR38104/prev_val_reg/CLR, fpgaagc/traya/a01/NOR38104/y_reg/CLR, fpgaagc/traya/a01/NOR38105/next_val_reg/CLR, fpgaagc/traya/a01/NOR38105/prev_val_reg/CLR, fpgaagc/traya/a01/NOR38105/y_reg/CLR (the first 15 of 1089 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+
