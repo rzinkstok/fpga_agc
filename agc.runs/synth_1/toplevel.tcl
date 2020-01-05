@@ -17,7 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -69,7 +68,14 @@ read_verilog -library xil_defaultlib {
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_b/b12_erasable_memory.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_b/b08_alarm.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_b/b07_oscillator.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/styx_ps_bootloader.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_b/b01_fixed_memory.v
 }
+add_files /home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/styx_ps.bd
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xdc]
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/styx_ps_ooc.xdc]
+
 read_ip -quiet /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider_board.xdc]
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider.xdc]
@@ -77,6 +83,9 @@ set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_a
 
 read_ip -quiet /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/core_memory/core_memory.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/core_memory/core_memory_ooc.xdc]
+
+read_ip -quiet /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/rope_memory.xci
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/rope_memory_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -89,6 +98,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc /home/rzinkstok/fpga_agc/agc.srcs/constrs_1/new/agc.xdc
 set_property used_in_implementation false [get_files /home/rzinkstok/fpga_agc/agc.srcs/constrs_1/new/agc.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

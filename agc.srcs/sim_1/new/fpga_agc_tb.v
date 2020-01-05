@@ -4,6 +4,7 @@ module fpga_agc_tb(
 
 
 
+
 );
 
 	reg BLKUPL_ = 1;
@@ -124,22 +125,6 @@ module fpga_agc_tb(
 	reg RRPONA = 0;
 	reg RRRLSC = 0;
 	reg S4BSAB = 0;
-	reg SA01 = 0;
-	reg SA02 = 0;
-	reg SA03 = 0;
-	reg SA04 = 0;
-	reg SA05 = 0;
-	reg SA06 = 0;
-	reg SA07 = 0;
-	reg SA08 = 0;
-	reg SA09 = 0;
-	reg SA10 = 0;
-	reg SA11 = 0;
-	reg SA12 = 0;
-	reg SA13 = 0;
-	reg SA14 = 0;
-	reg SA16 = 0;
-	reg SAP = 0;
 	reg SBYBUT = 0;
 	reg SHAFTM = 0;
 	reg SHAFTP = 0;
@@ -163,6 +148,7 @@ module fpga_agc_tb(
 	reg ULLTHR = 0;
 	reg UPL0 = 0;
 	reg UPL1 = 0;
+	reg WD167 = 1;
 	reg WD168 = 1;
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
@@ -406,6 +392,22 @@ module fpga_agc_tb(
 	wire S4BOFF;
 	wire S4BSEQ;
 	wire S4BTAK;
+	wire SA01;
+	wire SA02;
+	wire SA03;
+	wire SA04;
+	wire SA05;
+	wire SA06;
+	wire SA07;
+	wire SA08;
+	wire SA09;
+	wire SA10;
+	wire SA11;
+	wire SA12;
+	wire SA13;
+	wire SA14;
+	wire SA16;
+	wire SAP;
 	wire SBE;
 	wire SBF;
 	wire SBYLIT;
@@ -654,6 +656,7 @@ module fpga_agc_tb(
 		UPL0,
 		UPL1,
 		VFAIL,
+		WD167,
 		WD168,
 		XLNK0,
 		XLNK1,
@@ -971,14 +974,110 @@ module fpga_agc_tb(
 
 	tray_b trayb(
 		BPLUS,
+		CLROPE,
 		FILTIN,
+		GEM01,
+		GEM02,
+		GEM03,
+		GEM04,
+		GEM05,
+		GEM06,
+		GEM07,
+		GEM08,
+		GEM09,
+		GEM10,
+		GEM11,
+		GEM12,
+		GEM13,
+		GEM14,
+		GEM16,
+		GEMP,
+		HIMOD,
+		IL01,
+		IL02,
+		IL03,
+		IL04,
+		IL05,
+		IL06,
+		IL07,
+		LOMOD,
+		RESETA,
+		RESETB,
+		RESETC,
+		RESETD,
+		REX,
+		REY,
+		ROPER,
+		ROPES,
+		ROPET,
+		RSTKX_,
+		RSTKY_,
+		SBE,
+		SBF,
 		SCAS10,
 		SCAS17,
+		SETAB,
+		SETCD,
+		SETEK,
+		STR14,
+		STR19,
+		STR210,
+		STR311,
+		STR412,
+		STR58,
+		STR912,
+		WEX,
+		WEY,
+		XB0E,
+		XB1E,
+		XB2E,
+		XB3E,
+		XB4E,
+		XB5E,
+		XB6E,
+		XB7E,
+		XT0E,
+		XT1E,
+		XT2E,
+		XT3E,
+		XT4E,
+		XT5E,
+		XT6E,
+		XT7E,
+		YB0E,
+		YB1E,
+		YB2E,
+		YB3E,
+		YT0E,
+		YT1E,
+		YT2E,
+		YT3E,
+		YT4E,
+		YT5E,
+		YT6E,
+		YT7E,
+		ZID,
 		clk,
 		p28COM,
 		CLOCK,
 		FLTOUT,
 		MYCLMP,
+		SA01,
+		SA02,
+		SA03,
+		SA04,
+		SA05,
+		SA06,
+		SA07,
+		SA08,
+		SA09,
+		SA10,
+		SA11,
+		SA12,
+		SA13,
+		SA14,
+		SA16,
+		SAP,
 		SCAFAL,
 		STRT2,
 		VFAIL,
@@ -986,6 +1085,7 @@ module fpga_agc_tb(
 		prop_clk,
 		prop_clk_locked,
 		reset,
+		n0VDCA,
 		p4VDC,
 		p4SW
 	);

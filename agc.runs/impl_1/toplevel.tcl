@@ -65,7 +65,6 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7z020clg484-1
   set_property board_part numato.com:styx:part0:1.0 [current_project]
   set_property design_mode GateLvl [current_fileset]
@@ -76,10 +75,18 @@ set rc [catch {
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   add_files -quiet /home/rzinkstok/fpga_agc/agc.runs/synth_1/toplevel.dcp
+  set_msg_config -source 4 -id {BD 41-1661} -limit 0
+  set_param project.isImplRun true
+  add_files /home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/styx_ps.bd
   read_ip -quiet /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider.xci
   read_ip -quiet /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/core_memory/core_memory.xci
+  read_ip -quiet /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/rope_memory.xci
+  set_param project.isImplRun false
   read_xdc /home/rzinkstok/fpga_agc/agc.srcs/constrs_1/new/agc.xdc
+  set_param project.isImplRun true
   link_design -top toplevel -part xc7z020clg484-1
+  set_param project.isImplRun false
+  write_hwdef -force -file toplevel.hwdef
   close_msg_db -file init_design.pb
 } RESULT]
 if {$rc} {
@@ -161,6 +168,7 @@ set rc [catch {
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   catch { write_mem_info -force toplevel.mmi }
   write_bitstream -force toplevel.bit 
+  catch { write_sysdef -hwdef toplevel.hwdef -bitfile toplevel.bit -meminfo toplevel.mmi -file toplevel.sysdef }
   catch {write_debug_probes -quiet -force toplevel}
   catch {file copy -force toplevel.ltx debug_nets.ltx}
   close_msg_db -file write_bitstream.pb

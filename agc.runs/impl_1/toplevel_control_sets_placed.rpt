@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date         : Fri Jan  3 18:13:59 2020
+| Date         : Sun Jan  5 13:53:46 2020
 | Host         : fpgadev running 64-bit Ubuntu 18.04.3 LTS
 | Command      : report_control_sets -verbose -file toplevel_control_sets_placed.rpt
 | Design       : toplevel
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     6 |
-|    Minimum number of control sets                        |     6 |
+| Total control sets                                       |     9 |
+|    Minimum number of control sets                        |     9 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    13 |
+| Unused register locations in slices containing registers |    15 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     6 |
+| Total control sets |     9 |
 | >= 0 to < 4        |     0 |
-| >= 4 to < 6        |     1 |
+| >= 4 to < 6        |     2 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     1 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     4 |
+| >= 16              |     6 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,8 +58,8 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               0 |            0 |
-| No           | No                    | Yes                    |           12419 |         2521 |
+| No           | No                    | No                     |               4 |            2 |
+| No           | No                    | Yes                    |           13565 |         2791 |
 | No           | Yes                   | No                     |               8 |            2 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
@@ -70,15 +70,18 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+---------------------------------------------------------+---------------+-------------------------------------------+------------------+----------------+
-|                       Clock Signal                      | Enable Signal |              Set/Reset Signal             | Slice Load Count | Bel Load Count |
-+---------------------------------------------------------+---------------+-------------------------------------------+------------------+----------------+
-|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | reset_IBUF                                |                1 |              5 |
-|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/trayb/b07oscillator/bbstub_locked |                2 |              8 |
-| ~fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/a18/NOR42457/vrst                 |              126 |            363 |
-|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/a18/NOR42457/vrst                 |              144 |            726 |
-| ~fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/a13/NOR41118/vrst                 |             1106 |           3775 |
-|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/a13/NOR41118/vrst                 |             1144 |           7550 |
-+---------------------------------------------------------+---------------+-------------------------------------------+------------------+----------------+
++---------------------------------------------------------+---------------+------------------------------------+------------------+----------------+
+|                       Clock Signal                      | Enable Signal |          Set/Reset Signal          | Slice Load Count | Bel Load Count |
++---------------------------------------------------------+---------------+------------------------------------+------------------+----------------+
+|  clk_IBUF_BUFG                                          |               |                                    |                2 |              4 |
+|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | reset_IBUF                         |                1 |              5 |
+|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/trayb/b07oscillator/VFAIL  |                2 |              8 |
+| ~fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/trayb/b07oscillator/reset  |              183 |            512 |
+|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/trayb/b07oscillator/reset  |              198 |           1024 |
+| ~fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/trayb/b07oscillator/vrst_0 |              554 |           1820 |
+| ~fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/traya/a18/NOR42457/vrst_0  |              632 |           2188 |
+|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/trayb/b07oscillator/vrst_0 |              559 |           3640 |
+|  fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1 |               | fpgaagc/traya/a18/NOR42457/vrst_0  |              664 |           4376 |
++---------------------------------------------------------+---------------+------------------------------------+------------------+----------------+
 
 

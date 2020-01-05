@@ -20,7 +20,7 @@ module a30_power_supply(
     );
     
     // Only start 4V power supply when the prop_clk is running fine, otherwise shit happens
-    assign p4VDC = prop_clk_locked;
+    assign p4VDC = prop_clk_locked & WD168;
     assign p4SW = (p4VDC && SBYREL_);
     assign p28COM = WD168;
     

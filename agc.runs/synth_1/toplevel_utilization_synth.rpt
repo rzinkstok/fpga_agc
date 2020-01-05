@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date         : Fri Jan  3 18:12:44 2020
+| Date         : Sun Jan  5 13:52:13 2020
 | Host         : fpgadev running 64-bit Ubuntu 18.04.3 LTS
 | Command      : report_utilization -file toplevel_utilization_synth.rpt -pb toplevel_utilization_synth.pb
 | Design       : toplevel
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+-------+-------+-----------+-------+
 |        Site Type        |  Used | Fixed | Available | Util% |
 +-------------------------+-------+-------+-----------+-------+
-| Slice LUTs*             |  4215 |     0 |     53200 |  7.92 |
-|   LUT as Logic          |  4215 |     0 |     53200 |  7.92 |
+| Slice LUTs*             |  4615 |     0 |     53200 |  8.67 |
+|   LUT as Logic          |  4615 |     0 |     53200 |  8.67 |
 |   LUT as Memory         |     0 |     0 |     17400 |  0.00 |
-| Slice Registers         | 12427 |     0 |    106400 | 11.68 |
-|   Register as Flip Flop | 12427 |     0 |    106400 | 11.68 |
+| Slice Registers         | 13573 |     0 |    106400 | 12.76 |
+|   Register as Flip Flop | 13573 |     0 |    106400 | 12.76 |
 |   Register as Latch     |     0 |     0 |    106400 |  0.00 |
 | F7 Muxes                |     0 |     0 |     26600 |  0.00 |
 | F8 Muxes                |     0 |     0 |     13300 |  0.00 |
@@ -54,8 +54,8 @@ Table of Contents
 | 0     |            _ |         Set |            - |
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
-| 2100  |          Yes |           - |          Set |
-| 10319 |          Yes |           - |        Reset |
+| 2277  |          Yes |           - |          Set |
+| 11288 |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
 | 8     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -90,7 +90,7 @@ Table of Contents
 +-----------------------------+------+-------+-----------+-------+
 |          Site Type          | Used | Fixed | Available | Util% |
 +-----------------------------+------+-------+-----------+-------+
-| Bonded IOB                  |  115 |     0 |       200 | 57.50 |
+| Bonded IOB                  |  114 |     0 |       200 | 57.00 |
 | Bonded IPADs                |    0 |     0 |         2 |  0.00 |
 | Bonded IOPADs               |    0 |     0 |       130 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |         4 |  0.00 |
@@ -146,14 +146,14 @@ Table of Contents
 +----------+-------+---------------------+
 | Ref Name |  Used | Functional Category |
 +----------+-------+---------------------+
-| FDCE     | 10319 |        Flop & Latch |
-| LUT4     |  2266 |                 LUT |
-| FDPE     |  2100 |        Flop & Latch |
-| LUT5     |  1071 |                 LUT |
-| LUT3     |   712 |                 LUT |
-| LUT6     |   134 |                 LUT |
-| OBUF     |    84 |                  IO |
-| LUT2     |    41 |                 LUT |
+| FDCE     | 11288 |        Flop & Latch |
+| LUT4     |  2419 |                 LUT |
+| FDPE     |  2277 |        Flop & Latch |
+| LUT5     |  1192 |                 LUT |
+| LUT3     |   840 |                 LUT |
+| LUT6     |   133 |                 LUT |
+| OBUF     |    83 |                  IO |
+| LUT2     |    58 |                 LUT |
 | IBUF     |    31 |                  IO |
 | FDRE     |     8 |        Flop & Latch |
 | LUT1     |     1 |                 LUT |
@@ -163,11 +163,14 @@ Table of Contents
 8. Black Boxes
 --------------
 
-+--------------------+------+
-|      Ref Name      | Used |
-+--------------------+------+
-| prop_clock_divider |    1 |
-+--------------------+------+
++--------------------------------+------+
+|            Ref Name            | Used |
++--------------------------------+------+
+| styx_ps_processing_system7_0_0 |    1 |
+| rope_memory                    |    1 |
+| prop_clock_divider             |    1 |
+| core_memory                    |    1 |
++--------------------------------+------+
 
 
 9. Instantiated Netlists

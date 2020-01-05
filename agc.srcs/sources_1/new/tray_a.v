@@ -164,6 +164,7 @@ module tray_a(
 	input wire UPL0,
 	input wire UPL1,
 	input wire VFAIL,
+	input wire WD167,
 	input wire WD168,
 	input wire XLNK0,
 	input wire XLNK1,
@@ -475,6 +476,7 @@ module tray_a(
 	output wire p28COM,
 	output wire p4SW,
 	output wire p4VDC,
+
 
 	input wire reset,
 	input wire prop_clk,
@@ -4917,6 +4919,7 @@ module tray_a(
 	);
 
 	a31_power_supply a31(
+		WD167,
 		SBYREL_,
 		BPLUS,
 		BPLSSW

@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module a31_power_supply(
-    //input wire WD167,   // Main bus A 28 volts
+    input wire WD167,   // Main bus A 28 volts
     
     //input wire WD169,   // Other 28 volt input, not used
     //input wire n28DCR,  // Other 28 volt input, not used
@@ -14,7 +14,7 @@ module a31_power_supply(
     output wire BPLSSW
     );
     
-    assign BPLUS = 1'b1;
+    assign BPLUS = WD167;
     assign BPLSSW = (BPLUS && SBYREL_);
     
 endmodule
