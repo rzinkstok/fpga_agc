@@ -5,6 +5,7 @@ toplevel.v
     fpga_agc.v
         tray_a.v
         tray_b.v
+    agc_monitor.v
 
 fpga_agc_tb.v
 """
@@ -204,6 +205,8 @@ def check_toplevel_signal(signal):
         return "internal"
     if signal in ["reset", "clk", "clk_reset", "MAMU"]:
         return "external"
+    if signal in ZYNQ_PS_WIRES:
+        return "external"
 
     modules = get_signal_modules(signal)
     if "A52" in modules:
@@ -268,8 +271,10 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
                 internal_inputs.append(i)
 
     for io in sorted(inout_wires):
-        if signal_check(i) == "external":
+        if signal_check(io) == "external":
             external_inouts.append(io)
+        else:
+            internal_inouts.append(io)
 
     # Cross-check internal inputs and outputs
     for i in internal_inputs:
@@ -278,7 +283,6 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
     for i in internal_outputs:
         if i not in internal_inputs:
             print(f"Internal output {i} is not used")
-    #internal_wires = list(set(internal_inputs + internal_outputs))
 
     # Check cross module fan-in combined signals
     for signal in cross_module_fan_ins.keys():
@@ -335,6 +339,10 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
             fp.write(f"\twire {iw};\n")
         fp.write("\n")
 
+        for iw in sorted(internal_inouts):
+            fp.write(f"\twire {iw};\n")
+        fp.write("\n")
+
         for s in sorted(cross_module_fan_ins.keys()):
             for ss in sorted(cross_module_fan_ins[s]):
                 fp.write(f"\twire {ss};\n")
@@ -381,8 +389,12 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
 def write_constraints():
     params, inputs, outputs, inouts = read_module(os.path.join(SOURCE_FOLDER, "toplevel.v"))
     with open(os.path.join(CONSTRAINTS_FOLDER, "agc.xdc"), "w") as fp:
+        fp.write("create_clock -name clk -period 10 [get_ports clk]\n")
+        fp.write("set_property PACKAGE_PIN Y6 [get_ports clk]\n")
+        fp.write(f"set_property IOSTANDARD LVCMOS33 [get_ports clk]\n")
+        fp.write("\n")
         for param in sorted(params):
-            if param in ZYNQ_PS_WIRES:
+            if param == "clk" or param in ZYNQ_PS_WIRES:
                 continue
             fp.write(f"set_property IOSTANDARD LVCMOS33 [get_ports {param}]\n")
         for o in sorted(outputs + inouts):
@@ -396,7 +408,6 @@ def write_constraints():
                 fp.write(f"set_property PULLUP true [get_ports {i}]\n")
             else:
                 fp.write(f"set_property PULLDOWN true [get_ports {i}]\n")
-        fp.write("set_property PACKAGE_PIN Y6 [get_ports clk]\n")
         for param, pin in zip(sorted(params), [p for p in PINS if p != "Y6"]):
             if param == "clk" or param in ZYNQ_PS_WIRES:
                 continue
@@ -405,11 +416,11 @@ def write_constraints():
 
 if __name__ == "__main__":
     if True:
-        modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_A_SOURCE_FOLDER)) if not x.startswith("a77")]
-        write_module("tray_a", TRAY_A_SOURCE_FOLDER, modules, check_tray_a_signal)
-        modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_B_SOURCE_FOLDER))]# if not x.startswith("b12")]
-        write_module("tray_b", TRAY_B_SOURCE_FOLDER, modules, check_tray_b_signal)
-        write_module("fpga_agc", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_signal)
-        write_module("toplevel", SOURCE_FOLDER, ["fpga_agc", "styx_ps_bootloader"], check_toplevel_signal)
-        write_module("fpga_agc_tb", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_tb_signal, fpga_agc_tb_initial)
+        #modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_A_SOURCE_FOLDER)) if not x.startswith("a77")]
+        #write_module("tray_a", TRAY_A_SOURCE_FOLDER, modules, check_tray_a_signal)
+        #modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_B_SOURCE_FOLDER))]# if not x.startswith("b12")]
+        #write_module("tray_b", TRAY_B_SOURCE_FOLDER, modules, check_tray_b_signal)
+        #write_module("fpga_agc", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_signal)
+        write_module("toplevel", SOURCE_FOLDER, ["fpga_agc", "agc_monitor", "styx_ps_bootloader"], check_toplevel_signal)
+        #write_module("fpga_agc_tb", SOURCE_FOLDER, ["tray_a", "tray_b"], check_fpga_agc_tb_signal, fpga_agc_tb_initial)
     write_constraints()

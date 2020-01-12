@@ -71,6 +71,12 @@ read_verilog -library xil_defaultlib {
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/styx_ps_bootloader.v
   /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/tray_b/b01_fixed_memory.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/agc_monitor.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/monitor/usb_interface.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/monitor/usb_interface_defines.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/monitor/control_regs.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/monitor/cmd_controller.v
+  /home/rzinkstok/fpga_agc/agc.srcs/sources_1/new/monitor/cmd_receiver.v
 }
 add_files /home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/styx_ps.bd
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xdc]
@@ -86,6 +92,11 @@ set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_a
 
 read_ip -quiet /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/rope_memory.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/rope_memory_ooc.xdc]
+
+read_ip -quiet /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo.xci
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo.xdc]
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

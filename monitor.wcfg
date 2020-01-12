@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="agc_monitor_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="agc_monitor_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2657019000fs"></ZoomStartTime>
+      <ZoomEndTime time="3161019001fs"></ZoomEndTime>
+      <Cursor1Time time="2690100000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="150"></NameColumnWidth>
+      <ValueColumnWidth column_width="107"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="15" />
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/usb_if/txe_n">
+      <obj_property name="ElementShortName">txe_n</obj_property>
+      <obj_property name="ObjectShortName">txe_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/usb_if/wr_n">
+      <obj_property name="ElementShortName">wr_n</obj_property>
+      <obj_property name="ObjectShortName">wr_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/usb_if/rxf_n">
+      <obj_property name="ElementShortName">rxf_n</obj_property>
+      <obj_property name="ObjectShortName">rxf_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/usb_if/oe_n">
+      <obj_property name="ElementShortName">oe_n</obj_property>
+      <obj_property name="ObjectShortName">oe_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/usb_if/rd_n">
+      <obj_property name="ElementShortName">rd_n</obj_property>
+      <obj_property name="ObjectShortName">rd_n</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/agc_monitor_tb/agc_mon/usb_if/cmd_rx/msg_length">
+      <obj_property name="ElementShortName">msg_length[2:0]</obj_property>
+      <obj_property name="ObjectShortName">msg_length[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/agc_monitor_tb/agc_mon/usb_if/cmd_rx/write_index">
+      <obj_property name="ElementShortName">write_index[2:0]</obj_property>
+      <obj_property name="ObjectShortName">write_index[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/agc_monitor_tb/agc_mon/usb_if/cmd_rx/data">
+      <obj_property name="ElementShortName">data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/usb_if/cmd_rx/data_valid">
+      <obj_property name="ElementShortName">data_valid</obj_property>
+      <obj_property name="ObjectShortName">data_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/agc_monitor_tb/agc_mon/usb_if/cmd_rx/cmd_msg">
+      <obj_property name="ElementShortName">cmd_msg[39:0]</obj_property>
+      <obj_property name="ObjectShortName">cmd_msg[39:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/usb_if/cmd_valid">
+      <obj_property name="ElementShortName">cmd_valid</obj_property>
+      <obj_property name="ObjectShortName">cmd_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/usb_if/cmd_ready">
+      <obj_property name="ElementShortName">cmd_ready</obj_property>
+      <obj_property name="ObjectShortName">cmd_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/usb_if/cmd_read_en">
+      <obj_property name="ElementShortName">cmd_read_en</obj_property>
+      <obj_property name="ObjectShortName">cmd_read_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/agc_monitor_tb/agc_mon/cmd_ctrl/cmd">
+      <obj_property name="ElementShortName">cmd[39:0]</obj_property>
+      <obj_property name="ObjectShortName">cmd[39:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/agc_monitor_tb/agc_mon/ctrl_regs/nhalga">
+      <obj_property name="ElementShortName">nhalga</obj_property>
+      <obj_property name="ObjectShortName">nhalga</obj_property>
+   </wvobject>
+</wave_config>

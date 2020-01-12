@@ -258,7 +258,11 @@ module toplevel(
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
+	reg clkout = 0;
 	reg n0VDCA = 0;
+	reg rst_n = 0;
+	reg rxf_n = 0;
+	reg txe_n = 0;
 
 
 	wire ALRT0;
@@ -378,6 +382,8 @@ module toplevel(
 	wire ZEROPT;
 	wire ZIMCDU;
 	wire ZOPCDU;
+	wire led;
+	wire led2;
 	wire n12KPPS;
 	wire n25KPPS;
 	wire n3200A;
@@ -386,10 +392,31 @@ module toplevel(
 	wire n3200D;
 	wire n800RST;
 	wire n800SET;
+	wire oe_n;
 	wire p28COM;
 	wire p4SW;
 	wire p4VDC;
+	wire rd_n;
+	wire siwu;
+	wire wr_n;
 
+	wire [7:0]data;
+
+
+	agc_monitor agcmonitor(
+		clk,
+		rst_n,
+		led,
+		led2,
+		clkout,
+		data,
+		rxf_n,
+		txe_n,
+		rd_n,
+		wr_n,
+		oe_n,
+		siwu
+	);
 
 	fpga_agc fpgaagc(
 		BLKUPL_,
