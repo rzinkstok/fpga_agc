@@ -39,6 +39,7 @@ EXTERNAL_INTERFACE_MODULES = ["A25", "A26", "A27", "A28", "A29", "A51", "A52"]
 
 PINS = ["J22", "J21", "L22", "L21", "G22", "H22", "G21", "G20", "H20", "H19", "E20", "E19", "F22", "F21", "A22", "A21", "C22", "D22", "C20", "D20", "B22", "B21", "C19", "D18", "B20", "B19", "C18", "C17", "A19", "A18", "B17", "B16", "A17", "A16", "E16", "F16", "B15", "C15", "E18", "F18", "D17", "D16", "F19", "G19", "D21", "E21", "G16", "G15", "F17", "G17", "J17", "J16", "P18", "P17", "K15", "J15", "K18", "J18", "M16", "M15", "M17", "L17", "K20", "K19", "U16", "U15", "T19", "R19", "V15", "V14", "U4", "T4", "U9", "U10", "W8", "V8", "U5", "U6", "T6", "R6", "M19", "M20", "M21", "M22", "N19", "N20", "N22", "P22", "N17", "N18", "P20", "P21", "P16", "R16", "R20", "R21", "N15", "P15", "J20", "K21", "V18", "V19", "W15", "Y15", "W17", "W18", "W16", "Y16", "AA21", "AB21", "U17", "V17", "AB19", "AB20", "V13", "W13", "Y19", "AA19", "V12", "W12", "Y18", "AA18", "U12", "U11", "AA17", "AB17", "AB10", "AB9", "AA16", "AB16", "Y14", "AA14", "AB14", "AB15", "W11", "W10", "Y13", "AA13", "Y11", "Y10", "AA12", "AB12", "AA9", "AA8", "AA11", "AB11", "Y9", "Y8", "V10", "V9"]
 ZYNQ_PS_WIRES = ['[14:0]DDR_addr', '[2:0]DDR_ba', 'DDR_cas_n', 'DDR_ck_n', 'DDR_ck_p', 'DDR_cke', 'DDR_cs_n', '[3:0]DDR_dm', '[31:0]DDR_dq', '[3:0]DDR_dqs_n', '[3:0]DDR_dqs_p', 'DDR_odt', 'DDR_ras_n', 'DDR_reset_n', 'DDR_we_n', 'FIXED_IO_ddr_vrn', 'FIXED_IO_ddr_vrp', '[53:0]FIXED_IO_mio', 'FIXED_IO_ps_clk', 'FIXED_IO_ps_porb', 'FIXED_IO_ps_srstb']
+FT2232H_WIRES = {'clkout': 'L18', 'data[0]': 'T22', 'data[1]': 'T21', 'data[2]': 'U22', 'data[3]': 'U21', 'data[4]': 'V22', 'data[5]': 'W22', 'data[6]': 'AA22', 'data[7]': 'AB22', 'rxf_n': 'W20', 'txe_n': 'Y21', 'rd_n': 'Y20', 'wr_n': 'W21', 'oe_n': 'U20', 'siwu': 'V20'}
 
 
 def read_module(module_file_path):
@@ -206,6 +207,8 @@ def check_toplevel_signal(signal):
     if signal in ["reset", "clk", "clk_reset", "MAMU"]:
         return "external"
     if signal in ZYNQ_PS_WIRES:
+        return "external"
+    if signal in FT2232H_WIRES or signal == '[7:0]data':
         return "external"
 
     modules = get_signal_modules(signal)
@@ -386,6 +389,12 @@ def write_module(module_name, folder, modules, signal_check, initial=None):
         print(f"Written {filepath}")
 
 
+def parse_multibit_signal(s):
+    highbit, lowbit = [int(x) for x in s.split("]")[0][1:].split(":")]
+    s = s.split("]")[1]
+    return s, lowbit, highbit
+
+
 def write_constraints():
     params, inputs, outputs, inouts = read_module(os.path.join(SOURCE_FOLDER, "toplevel.v"))
     with open(os.path.join(CONSTRAINTS_FOLDER, "agc.xdc"), "w") as fp:
@@ -396,22 +405,52 @@ def write_constraints():
         for param in sorted(params):
             if param == "clk" or param in ZYNQ_PS_WIRES:
                 continue
-            fp.write(f"set_property IOSTANDARD LVCMOS33 [get_ports {param}]\n")
+            if param.startswith('['):
+                print(param)
+                param, lowbit, highbit = parse_multibit_signal(param)
+                print(param, lowbit, highbit)
+                input()
+                for i in range(lowbit, highbit+1):
+                    fp.write(f"set_property IOSTANDARD LVCMOS33 [get_ports {{{param}[{i}]}}]\n")
+            else:
+                fp.write(f"set_property IOSTANDARD LVCMOS33 [get_ports {param}]\n")
         for o in sorted(outputs + inouts):
             if o in ZYNQ_PS_WIRES:
                 continue
-            fp.write(f"set_property DRIVE 4 [get_ports {o}]\n")
+            if o.startswith('['):
+                o, lowbit, highbit = parse_multibit_signal(o)
+                for i in range(lowbit, highbit+1):
+                    fp.write(f"set_property DRIVE 4 [get_ports {{{o}[{i}]}}]\n")
+            else:
+                fp.write(f"set_property DRIVE 4 [get_ports {o}]\n")
         for i in sorted(inputs + inouts):
-            if i == "clk" or i in ZYNQ_PS_WIRES:
+            if i == "clk" or i in ZYNQ_PS_WIRES + list(FT2232H_WIRES.values()):
                 continue
             if i.endswith("_"):
                 fp.write(f"set_property PULLUP true [get_ports {i}]\n")
             else:
                 fp.write(f"set_property PULLDOWN true [get_ports {i}]\n")
-        for param, pin in zip(sorted(params), [p for p in PINS if p != "Y6"]):
+        pin_number = 0
+        for param in sorted(params):
             if param == "clk" or param in ZYNQ_PS_WIRES:
                 continue
-            fp.write(f"set_property PACKAGE_PIN {pin} [get_ports {param}]\n")
+            if param.startswith('['):
+                param, lowbit, highbit = parse_multibit_signal(param)
+                for i in range(lowbit, highbit+1):
+                    p = f"{param}[{i}]"
+                    pin = FT2232H_WIRES[p]
+                    fp.write(f"set_property PACKAGE_PIN {pin} [get_ports {{{p}}}]\n")
+            else:
+                if param in FT2232H_WIRES:
+                    pin = FT2232H_WIRES[param]
+                else:
+                    pin = PINS[pin_number]
+                    pin_number += 1
+                    while pin in ["Y6"] + list(FT2232H_WIRES.values()):
+                        pin = PINS[pin_number]
+                        pin_number += 1
+
+                fp.write(f"set_property PACKAGE_PIN {pin} [get_ports {param}]\n")
 
 
 if __name__ == "__main__":

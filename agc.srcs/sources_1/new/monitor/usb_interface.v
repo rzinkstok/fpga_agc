@@ -4,6 +4,7 @@ module usb_interface(
     input wire clk,
     input wire rst_n,
     
+    // FT2232H signals
     input wire clkout,
     inout wire [7:0] data,
     input wire rxf_n,
@@ -13,9 +14,14 @@ module usb_interface(
     output wire oe_n,
     output wire siwu,
     
+    // Incoming command outputs
     output wire [39:0] cmd,
     output wire cmd_ready,
-    input wire cmd_read_en
+    input wire cmd_read_en,
+    
+    // Outgoing message inputs
+    input wire [39:0] read_msg,
+    input wire read_msg_ready
 );
 
 
@@ -89,15 +95,80 @@ cmd_fifo cmd_queue(
 );
 
 
+/*******************************************************************************.
+* Read Message Sender                                                           *
+'*******************************************************************************/
+// Read message sending takes place in three stages:
+//  1. Read message FIFO -- queue of complete messages that are ready to be
+//     sent out, as constructed by the user of this interface.
+//  2. Message sender -- a state machine that pops messages off of the read
+//     message FIFO as available and SLIPs them into a stream of bytes
+//  3. Read byte FIFO -- a byte-by-byte queue of SLIP-encoded messages that is
+//     read by the USB interface state machine to transmit bytes
+
+// Signal to read message FIFO that the message sender is ready for data
+wire sender_ready;
+// Data from read message FIFO to the message sender
+wire [39:0] send_msg;
+
+// Read message FIFO status flags
+wire read_fifo_empty;
+wire read_fifo_ready;
+assign read_fifo_ready = ~read_fifo_empty;
+
+// SLIP-encoded byte output from message sender and its validity flag
+wire send_byte_ready;
+wire [7:0] send_byte;
+
 // Read byte FIFO status flags
 wire read_byte_fifo_full;
 wire read_byte_fifo_empty;
 wire read_byte_fifo_almost_empty;
 
-assign read_byte_fifo_full = 1'b0;
-assign read_byte_fifo_empty = 1'b1;
-assign read_byte_fifo_almost_empty = 1'b0;
-assign read_fifo_full = 1'b0;
+// Output byte from the read byte FIFO to the USB interface
+wire [7:0] tx_byte;
+wire tx_byte_read_en;
+assign tx_byte_read_en = ((~wr_n) & (~txe_n));
+assign data = (tx_byte_read_en) ? tx_byte : 8'bZ;
+
+// Read message FIFO
+read_fifo read_msg_queue(
+  .clk(clk),
+  .srst(~rst_n),
+  .din(read_msg),
+  .wr_en(read_msg_ready),
+  .rd_en(sender_ready),
+  .dout(send_msg),
+  .full(read_fifo_full),
+  .empty(read_fifo_empty)
+);
+
+// Message sender
+msg_sender msg_sndr(
+    .clk(clk),
+    .rst_n(rst_n),
+    .msg(send_msg),
+    .msg_ready(read_fifo_ready),
+    .sender_ready(sender_ready),
+    .out_byte(send_byte),
+    .out_byte_ready(send_byte_ready),
+    .byte_fifo_full(read_byte_fifo_full)
+);
+
+// Read byte FIFO
+read_byte_fifo read_byte_queue(
+    .rst(~rst_n),
+    .wr_clk(clk),
+    .rd_clk(clkout),
+    .din(send_byte),
+    .wr_en(send_byte_ready),
+    .rd_en(tx_byte_read_en),
+    .dout(tx_byte),
+    .full(read_byte_fifo_full),
+    .empty(read_byte_fifo_empty),
+    .almost_empty(read_byte_fifo_almost_empty)
+);
+
 
 /*******************************************************************************.
 * USB Interface State Machine                                                   *

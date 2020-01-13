@@ -7,9 +7,12 @@ module control_regs(
     input wire rst_n,
     input wire [15:0] addr,
     input wire [15:0] data_in,
+    
     input wire read_en,
     input wire write_en,
+    output reg write_done,
     output wire [15:0] data_out,
+    
     output reg nhalga
 );
 

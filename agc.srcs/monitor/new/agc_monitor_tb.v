@@ -3,7 +3,8 @@
 module agc_monitor_tb();
     reg clk;
     reg rst_n;
-    wire led;
+    wire [6:1]leds;
+    wire [6:1]dbg;
     
     reg clkout;
     wire [7:0] data;
@@ -16,6 +17,7 @@ module agc_monitor_tb();
     reg [7:0] data_in;
     wire [39:0] cmd_out;
     wire cmd_ready;
+    wire NHALGA;
     
     always #16.667 clkout = ~clkout;
     always #10 clk = ~clk;
@@ -25,7 +27,6 @@ module agc_monitor_tb();
     agc_monitor agc_mon(
         .clk(clk),
         .rst_n(rst_n),
-        .led(led),
     
         .clkout(clkout),
         .data(data),
@@ -34,7 +35,11 @@ module agc_monitor_tb();
         .rd_n(rd_n),
         .wr_n(wr_n),
         .oe_n(oe_n),
-        .siwu(siwu)
+        .siwu(siwu),
+        
+        .NHALGA(NHALGA),
+        .leds(leds),
+        .dbg(dbg)
     );
     
     initial begin

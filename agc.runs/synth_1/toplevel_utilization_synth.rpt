@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date         : Thu Jan  9 12:36:42 2020
+| Date         : Tue Jan 14 00:02:44 2020
 | Host         : fpgadev running 64-bit Ubuntu 18.04.3 LTS
 | Command      : report_utilization -file toplevel_utilization_synth.rpt -pb toplevel_utilization_synth.pb
 | Design       : toplevel
@@ -30,8 +30,8 @@ Table of Contents
 +-------------------------+-------+-------+-----------+-------+
 |        Site Type        |  Used | Fixed | Available | Util% |
 +-------------------------+-------+-------+-----------+-------+
-| Slice LUTs*             |  4616 |     0 |     53200 |  8.68 |
-|   LUT as Logic          |  4616 |     0 |     53200 |  8.68 |
+| Slice LUTs*             |  4617 |     0 |     53200 |  8.68 |
+|   LUT as Logic          |  4617 |     0 |     53200 |  8.68 |
 |   LUT as Memory         |     0 |     0 |     17400 |  0.00 |
 | Slice Registers         | 13573 |     0 |    106400 | 12.76 |
 |   Register as Flip Flop | 13573 |     0 |    106400 | 12.76 |
@@ -90,7 +90,7 @@ Table of Contents
 +-----------------------------+------+-------+-----------+-------+
 |          Site Type          | Used | Fixed | Available | Util% |
 +-----------------------------+------+-------+-----------+-------+
-| Bonded IOB                  |  114 |     0 |       200 | 57.00 |
+| Bonded IOB                  |  119 |     0 |       200 | 59.50 |
 | Bonded IPADs                |    0 |     0 |         2 |  0.00 |
 | Bonded IOPADs               |    0 |     0 |       130 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |         4 |  0.00 |
@@ -147,13 +147,13 @@ Table of Contents
 | Ref Name |  Used | Functional Category |
 +----------+-------+---------------------+
 | FDCE     | 11288 |        Flop & Latch |
-| LUT4     |  2419 |                 LUT |
+| LUT4     |  2420 |                 LUT |
 | FDPE     |  2277 |        Flop & Latch |
-| LUT5     |  1192 |                 LUT |
+| LUT5     |  1191 |                 LUT |
 | LUT3     |   840 |                 LUT |
 | LUT6     |   133 |                 LUT |
-| OBUF     |    83 |                  IO |
-| LUT2     |    58 |                 LUT |
+| OBUF     |    88 |                  IO |
+| LUT2     |    60 |                 LUT |
 | IBUF     |    31 |                  IO |
 | FDRE     |     8 |        Flop & Latch |
 | LUT1     |     2 |                 LUT |
@@ -168,6 +168,8 @@ Table of Contents
 +--------------------------------+------+
 | styx_ps_processing_system7_0_0 |    1 |
 | rope_memory                    |    1 |
+| read_fifo                      |    1 |
+| read_byte_fifo                 |    1 |
 | prop_clock_divider             |    1 |
 | core_memory                    |    1 |
 | cmd_fifo                       |    1 |

@@ -32,9 +32,11 @@ module toplevel(
 	input wire MSTP,
 	input wire MSTRT,
 	input wire MTCSAI,
-	input wire NHALGA,
 	input wire SIGNY,
 	input wire clk,
+	input wire clkout,
+	input wire rxf_n,
+	input wire txe_n,
 
 	output wire ALGA,
 	output wire MBR1,
@@ -116,9 +118,14 @@ module toplevel(
 	output wire MWSG,
 	output wire MWYG,
 	output wire MWZG,
+	output wire NHALGA,
 	output wire OUTCOM,
 	output wire STRT1,
 	output wire STRT2,
+	output wire oe_n,
+	output wire rd_n,
+	output wire siwu,
+	output wire wr_n,
 
 	inout wire DDR_cas_n,
 	inout wire DDR_ck_n,
@@ -141,6 +148,7 @@ module toplevel(
 	inout wire [3:0]DDR_dqs_n,
 	inout wire [3:0]DDR_dqs_p,
 	inout wire [53:0]FIXED_IO_mio,
+	inout wire [7:0]data,
 
 	input wire reset
 );
@@ -258,11 +266,8 @@ module toplevel(
 	reg XLNK0 = 0;
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
-	reg clkout = 0;
 	reg n0VDCA = 0;
 	reg rst_n = 0;
-	reg rxf_n = 0;
-	reg txe_n = 0;
 
 
 	wire ALRT0;
@@ -382,8 +387,8 @@ module toplevel(
 	wire ZEROPT;
 	wire ZIMCDU;
 	wire ZOPCDU;
-	wire led;
-	wire led2;
+	wire [6:1]dbg;
+	wire [6:1]leds;
 	wire n12KPPS;
 	wire n25KPPS;
 	wire n3200A;
@@ -392,22 +397,15 @@ module toplevel(
 	wire n3200D;
 	wire n800RST;
 	wire n800SET;
-	wire oe_n;
 	wire p28COM;
 	wire p4SW;
 	wire p4VDC;
-	wire rd_n;
-	wire siwu;
-	wire wr_n;
 
-	wire [7:0]data;
 
 
 	agc_monitor agcmonitor(
 		clk,
 		rst_n,
-		led,
-		led2,
 		clkout,
 		data,
 		rxf_n,
@@ -415,7 +413,10 @@ module toplevel(
 		rd_n,
 		wr_n,
 		oe_n,
-		siwu
+		siwu,
+		NHALGA,
+		leds,
+		dbg
 	);
 
 	fpga_agc fpgaagc(

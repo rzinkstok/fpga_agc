@@ -18,3 +18,8 @@
 `define ADDR_GROUP_SIM_FIXED    7'h11
 `define ADDR_GROUP_CONTROL      7'h20
 `define ADDR_GROUP_MON_REGS     7'h21
+`define ADDR_GROUP_MON_CHANNELS 7'h22
+`define ADDR_GROUP_MON_DSKY     7'h23
+`define ADDR_GROUP_STATUS       7'h24
+`define ADDR_GROUP_TRACE        7'h25
+`define ADDR_GROUP_NASSP        7'h26
