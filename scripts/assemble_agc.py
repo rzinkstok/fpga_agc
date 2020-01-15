@@ -4,8 +4,8 @@ import sqlite3
 
 # File paths
 # HOME = "/Users/rzinkstok/Development/virtualagc"
-# HOME = "/home/rzinkstok"
-HOME = "c:/Users/rzine07792/source/rzinkstok"
+HOME = "/home/rzinkstok"
+# HOME = "c:/Users/rzine07792/source/rzinkstok"
 DBPATH = os.path.join(HOME, "pin_inspector/delphi.db")
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new")
@@ -296,6 +296,7 @@ class GeneratedVerilogModule(object):
     name = None
     modules = []
     module_files = []
+    folder = SOURCE_FOLDER
 
     def __init__(self, toplevel=False):
         self.module_parameters = {}
@@ -306,6 +307,9 @@ class GeneratedVerilogModule(object):
         self.write()
 
     def signal_external(self, signal):
+        pass
+
+    def preamble(self, fp):
         pass
 
     def initial(self, fp):
@@ -369,10 +373,7 @@ class GeneratedVerilogModule(object):
 
     def write(self):
         # Write output file
-        if self.name.endswith("_tb"):
-            filepath = os.path.join(SIM_SOURCE_FOLDER, "sim_1", "new", f"{self.name}.v")
-        else:
-            filepath = os.path.join(SOURCE_FOLDER, f"{self.name}.v")
+        filepath = os.path.join(self.folder, f"{self.name}.v")
 
         with open(filepath, "w") as fp:
             fp.write("`timescale 1ns / 1ps\n")
@@ -401,7 +402,7 @@ class GeneratedVerilogModule(object):
                 fp.write("\n")
 
             # Add FT2232H signals
-            ft2232h_signals = [self.signals[x] for x in FT2232H_WIRES if x in self.signals]
+            ft2232h_signals = [self.signals[x] for x in FT2232H_WIRES if x in self.signals and self.signals[x].external]
             if ft2232h_signals:
                 self.write_declaration_group(fp, ft2232h_signals, "FT2232H signals")
 
@@ -429,21 +430,21 @@ class GeneratedVerilogModule(object):
                         val = 1
                     else:
                         val = 0
-                    fp.write(f"\treg {internal_input.name} = {val};\n")
+                    fp.write(f"\treg {internal_input.declaration} = {val};\n")
                 fp.write("\n")
 
             # Set up wires for internal outputs
             internal_outputs = [x for x in self.signals.values() if x.internal_output and not x.partial_fan_in]
             if internal_outputs:
                 for internal_output in sorted(internal_outputs):
-                    fp.write(f"\twire {internal_output.name};\n")
+                    fp.write(f"\twire {internal_output.declaration};\n")
                 fp.write("\n")
 
             # Set up wires for internal inouts
             internal_inouts = [x for x in self.signals.values() if x.internal_inout]
             if internal_inouts:
                 for internal_inout in sorted(internal_inouts):
-                    fp.write(f"\twire {internal_inout.name};\n")
+                    fp.write(f"\twire {internal_inout.declaration};\n")
                 fp.write("\n")
 
             # Set up wires for partial fan-ins
@@ -451,14 +452,10 @@ class GeneratedVerilogModule(object):
                 for fan_in in sorted(self.fan_ins.keys()):
                     for partial_fan_in in sorted(self.fan_ins[fan_in]):
                         s = self.signals[partial_fan_in]
-                        fp.write(f"\twire {s.name};\n")
+                        fp.write(f"\twire {s.declaration};\n")
                 fp.write("\n")
 
-            # Set up the 100 MHz board clock for simulation
-            if self.name.endswith("_tb"):
-                fp.write("\talways\n")
-                fp.write("\t\t# 5 clk = !clk;\n")
-                fp.write("\n")
+            self.preamble(fp)
 
             # Add all modules
             for module in sorted(self.module_parameters.keys()):
@@ -617,9 +614,14 @@ class FpgaAgcTestBench(GeneratedVerilogModule):
     name = "fpga_agc_tb"
     modules = ["tray_a", "tray_b"]
     module_files = [os.path.join(SOURCE_FOLDER, f"{x}.v") for x in modules]
+    folder = os.path.join(SIM_SOURCE_FOLDER, "sim_1", "new")
 
     def signal_external(self, signal):
         return False
+
+    def preamble(self, fp):
+        fp.write("\talways\n")
+        fp.write("\t\t# 5 clk = !clk;\n")
 
     def initial(self, fp):
         fp.write("\tinitial\n")
@@ -630,8 +632,68 @@ class FpgaAgcTestBench(GeneratedVerilogModule):
         fp.write("\n")
 
 
+class AgcMonitorTestBench(GeneratedVerilogModule):
+    name = "agc_monitor_tb"
+    modules = ["agc_monitor",]
+    module_files = [os.path.join(SOURCE_FOLDER, f"{x}.v") for x in modules]
+    folder = folder = os.path.join(SIM_SOURCE_FOLDER, "monitor", "new")
+
+    def signal_external(self, signal):
+        return False
+
+    def preamble(self, fp):
+        fp.write("\treg [7:0]data_in;\n")
+        fp.write("\n")
+        fp.write("\talways\n")
+        fp.write("\t\t# 5 clk = !clk;\n")
+        fp.write("\talways\n")
+        fp.write("\t\t#16.667 clkout = ~clkout;\n")
+        fp.write("\n")
+        fp.write("\tassign data = (~rd_n) ? data_in : 8'bZ;\n")
+        fp.write("\n")
+
+    def initial(self, fp):
+        messages = [
+            ["C0", "80", "12", "34", "56", "78", "C0"],
+            ["C0", "02", "DB", "DC", "DB", "DD", "C0"],
+            ["C0", "05", "DB", "A0", "DB", "DD", "C0"],
+            ["C0", "06", "2A", "3B", "4C", "5D", "6E", "7F", "C0"],
+            ["C0", "A0", "00", "00", "00", "01", "C0"],
+            ["C0", "A0", "00", "00", "00", "00", "C0"],
+        ]
+
+        fp.write("\tinitial\n")
+        fp.write("\tbegin\n")
+        fp.write("\t\tclk = 1'b0;\n")
+        fp.write("\t\treset = 1'b1;\n")
+        fp.write("\t\tclkout = 1'b0;\n")
+        fp.write("\t\trxf_n = 1'b1;\n")
+        fp.write("\t\ttxe_n = 1'b1;\n")
+        fp.write("\t\tdata_in = 8'h00;\n")
+        fp.write("\t\t#100 reset = 1'b0;\n")
+        fp.write("\n")
+
+        for m in messages:
+            self.ft2232h_message(fp, m)
+
+        fp.write("\t\t# 100000 $stop;\n")
+        fp.write("\tend\n")
+        fp.write("\n")
+
+    def ft2232h_message(self, fp, message):
+        fp.write("\t\t#100 rxf_n = 1'b0;\n")
+        fp.write(f"\t\t@(negedge oe_n) data_in = 8'h{message[0]};\n")
+        fp.write("\t\t@(negedge rd_n);\n")
+        for byte in message[1:]:
+            fp.write(f"\t\t@(posedge clkout) data_in = 8'h{byte};\n")
+        fp.write("\t\trxf_n = 1'b1;\n")
+        fp.write("\n")
+
+
 if __name__ == "__main__":
-    TrayA()
-    TrayB()
-    FpgaAgc()
-    Toplevel()
+    #TrayA()
+    #TrayB()
+    #FpgaAgc()
+    #Toplevel()
+    FpgaAgcTestBench()
+    AgcMonitorTestBench()

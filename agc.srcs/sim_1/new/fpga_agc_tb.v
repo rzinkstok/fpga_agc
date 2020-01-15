@@ -485,7 +485,6 @@ module fpga_agc_tb(
 
 	always
 		# 5 clk = !clk;
-
 	tray_a traya(
 		BLKUPL_,
 		BMGXM,

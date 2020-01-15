@@ -1,129 +1,129 @@
 `timescale 1ns / 1ps
 
-module agc_monitor_tb();
-    reg clk;
-    reg rst_n;
-    wire [6:1]leds;
-    wire [6:1]dbg;
-    
-    reg clkout;
-    wire [7:0] data;
-    reg rxf_n;
-    reg txe_n;
-    wire rd_n;
-    wire wr_n;
-    wire oe_n;
-    wire siwu;
-    reg [7:0] data_in;
-    wire [39:0] cmd_out;
-    wire cmd_ready;
-    wire NHALGA;
-    
-    always #16.667 clkout = ~clkout;
-    always #10 clk = ~clk;
-    
-    assign data = (~rd_n) ? data_in : 8'bZ;
-    
-    agc_monitor agc_mon(
-        .clk(clk),
-        .rst_n(rst_n),
-    
-        .clkout(clkout),
-        .data(data),
-        .rxf_n(rxf_n),
-        .txe_n(txe_n),
-        .rd_n(rd_n),
-        .wr_n(wr_n),
-        .oe_n(oe_n),
-        .siwu(siwu),
-        
-        .NHALGA(NHALGA),
-        .leds(leds),
-        .dbg(dbg)
-    );
-    
-    initial begin
-        $display($time, "<< Starting simulation >>");
-        clk = 1'b0;
-        rst_n = 1'b0;
-        clkout = 1'b0;
-        rxf_n = 1'b1;
-        txe_n = 1'b1;
-        data_in = 8'h00;
-        
-        #100 rst_n = 1'b1;
-        #200 rxf_n = 1'b0;
-        @(negedge oe_n) data_in = 8'hC0;
-        @(negedge rd_n);
-        @(posedge clkout) data_in = 8'h80;
-        @(posedge clkout) data_in = 8'h12;
-        @(posedge clkout) data_in = 8'h34;
-        @(posedge clkout) data_in = 8'h56;
-        @(posedge clkout) data_in = 8'h78;
-        @(posedge clkout) data_in = 8'hC0;
-        rxf_n = 1'b1;
-    
-        #100 rxf_n = 1'b0;
-        @(negedge oe_n) data_in = 8'hC0;
-        @(negedge rd_n);
-        @(posedge clkout) data_in = 8'h02;
-        @(posedge clkout) data_in = 8'hDB;
-        @(posedge clkout) data_in = 8'hDC;
-        @(posedge clkout) data_in = 8'hDB;
-        @(posedge clkout) data_in = 8'hDD;
-        @(posedge clkout) data_in = 8'hC0;
-        rxf_n = 1'b1;
-    
-        #100 rxf_n = 1'b0;
-        @(negedge oe_n) data_in = 8'hC0;
-        @(negedge rd_n);
-        @(posedge clkout) data_in = 8'h05;
-        @(posedge clkout) data_in = 8'hDB;
-        @(posedge clkout) data_in = 8'hA0;
-        @(posedge clkout) data_in = 8'hDB;
-        @(posedge clkout) data_in = 8'hDD;
-        @(posedge clkout) data_in = 8'hC0;
-        rxf_n = 1'b1;
-    
-        #100 rxf_n = 1'b0;
-        @(negedge oe_n) data_in = 8'hC0;
-        @(negedge rd_n);
-        @(posedge clkout) data_in = 8'h06;
-        @(posedge clkout) data_in = 8'h2A;
-        @(posedge clkout) data_in = 8'h3B;
-        @(posedge clkout) data_in = 8'h4C;
-        @(posedge clkout) data_in = 8'h5D;
-        @(posedge clkout) data_in = 8'h6E;
-        @(posedge clkout) data_in = 8'h7F;
-        @(posedge clkout) data_in = 8'hC0;
-        rxf_n = 1'b1;
-    
-        // Write 1 to NHALGA
-        #100 rxf_n = 1'b0;
-        @(negedge oe_n) data_in = 8'hC0;
-        @(negedge rd_n);
-        @(posedge clkout) data_in = 8'hA0;
-        @(posedge clkout) data_in = 8'h00;
-        @(posedge clkout) data_in = 8'h00;
-        @(posedge clkout) data_in = 8'h00;
-        @(posedge clkout) data_in = 8'h01;
-        @(posedge clkout) data_in = 8'hC0;
-        rxf_n = 1'b1;
-    
-        // Write 0 to NHALGA
-        #100 rxf_n = 1'b0;
-        @(negedge oe_n) data_in = 8'hC0;
-        @(negedge rd_n);
-        @(posedge clkout) data_in = 8'hA0;
-        @(posedge clkout) data_in = 8'h00;
-        @(posedge clkout) data_in = 8'h00;
-        @(posedge clkout) data_in = 8'h00;
-        @(posedge clkout) data_in = 8'h00;
-        @(posedge clkout) data_in = 8'hC0;
-        rxf_n = 1'b1;
-        
-    
-        #1000 $finish;
-    end
-    
+module agc_monitor_tb(
+);
+
+	reg clk = 0;
+	reg clkout = 0;
+	reg reset = 0;
+	reg rxf_n = 0;
+	reg txe_n = 0;
+
+	wire NHALGA;
+	wire [6:1]dbg;
+	wire [6:1]leds;
+	wire oe_n;
+	wire rd_n;
+	wire siwu;
+	wire wr_n;
+
+	wire [7:0]data;
+
+	reg [7:0]data_in;
+
+	always
+		# 5 clk = !clk;
+	always
+		#16.667 clkout = ~clkout;
+
+	assign data = (~rd_n) ? data_in : 8'bZ;
+
+	agc_monitor agcmonitor(
+		clk,
+		reset,
+		clkout,
+		data,
+		rxf_n,
+		txe_n,
+		rd_n,
+		wr_n,
+		oe_n,
+		siwu,
+		NHALGA,
+		leds,
+		dbg
+	);
+
+	initial
+	begin
+		clk = 1'b0;
+		reset = 1'b1;
+		clkout = 1'b0;
+		rxf_n = 1'b1;
+		txe_n = 1'b1;
+		data_in = 8'h00;
+		#200 reset = 1'b0;
+		#100;
+
+		#100 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'h80;
+		@(posedge clkout) data_in = 8'h12;
+		@(posedge clkout) data_in = 8'h34;
+		@(posedge clkout) data_in = 8'h56;
+		@(posedge clkout) data_in = 8'h78;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+
+		#100 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'h02;
+		@(posedge clkout) data_in = 8'hDB;
+		@(posedge clkout) data_in = 8'hDC;
+		@(posedge clkout) data_in = 8'hDB;
+		@(posedge clkout) data_in = 8'hDD;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+
+		#100 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'h05;
+		@(posedge clkout) data_in = 8'hDB;
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'hDB;
+		@(posedge clkout) data_in = 8'hDD;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+
+		#100 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'h06;
+		@(posedge clkout) data_in = 8'h2A;
+		@(posedge clkout) data_in = 8'h3B;
+		@(posedge clkout) data_in = 8'h4C;
+		@(posedge clkout) data_in = 8'h5D;
+		@(posedge clkout) data_in = 8'h6E;
+		@(posedge clkout) data_in = 8'h7F;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+
+		#100 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h01;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+
+		#100 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+
+		# 100000 $stop;
+	end
+
 endmodule
