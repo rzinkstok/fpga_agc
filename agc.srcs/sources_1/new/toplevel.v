@@ -33,10 +33,6 @@ module toplevel(
 	input wire MSTRT,
 	input wire MTCSAI,
 	input wire SIGNY,
-	input wire clk,
-	input wire clkout,
-	input wire rxf_n,
-	input wire txe_n,
 
 	output wire ALGA,
 	output wire MBR1,
@@ -122,34 +118,41 @@ module toplevel(
 	output wire OUTCOM,
 	output wire STRT1,
 	output wire STRT2,
-	output wire oe_n,
-	output wire rd_n,
-	output wire siwu,
-	output wire wr_n,
 
+	// FT2232H signals
+	input wire clkout,
+	inout wire [7:0]data,
+	input wire rxf_n,
+	input wire txe_n,
+	output wire rd_n,
+	output wire wr_n,
+	output wire oe_n,
+	output wire siwu,
+
+	// Zynq Processing System signals
+	inout wire [14:0]DDR_addr,
+	inout wire [2:0]DDR_ba,
 	inout wire DDR_cas_n,
 	inout wire DDR_ck_n,
 	inout wire DDR_ck_p,
 	inout wire DDR_cke,
 	inout wire DDR_cs_n,
+	inout wire [3:0]DDR_dm,
+	inout wire [31:0]DDR_dq,
+	inout wire [3:0]DDR_dqs_n,
+	inout wire [3:0]DDR_dqs_p,
 	inout wire DDR_odt,
 	inout wire DDR_ras_n,
 	inout wire DDR_reset_n,
 	inout wire DDR_we_n,
 	inout wire FIXED_IO_ddr_vrn,
 	inout wire FIXED_IO_ddr_vrp,
+	inout wire [53:0]FIXED_IO_mio,
 	inout wire FIXED_IO_ps_clk,
 	inout wire FIXED_IO_ps_porb,
 	inout wire FIXED_IO_ps_srstb,
-	inout wire [14:0]DDR_addr,
-	inout wire [2:0]DDR_ba,
-	inout wire [31:0]DDR_dq,
-	inout wire [3:0]DDR_dm,
-	inout wire [3:0]DDR_dqs_n,
-	inout wire [3:0]DDR_dqs_p,
-	inout wire [53:0]FIXED_IO_mio,
-	inout wire [7:0]data,
 
+	input wire clk,
 	input wire reset
 );
 
@@ -267,8 +270,6 @@ module toplevel(
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
 	reg n0VDCA = 0;
-	reg rst_n = 0;
-
 
 	wire ALRT0;
 	wire ALRT1;
@@ -387,8 +388,8 @@ module toplevel(
 	wire ZEROPT;
 	wire ZIMCDU;
 	wire ZOPCDU;
-	wire [6:1]dbg;
-	wire [6:1]leds;
+	wire dbg;
+	wire leds;
 	wire n12KPPS;
 	wire n25KPPS;
 	wire n3200A;
@@ -401,11 +402,9 @@ module toplevel(
 	wire p4SW;
 	wire p4VDC;
 
-
-
 	agc_monitor agcmonitor(
 		clk,
-		rst_n,
+		reset,
 		clkout,
 		data,
 		rxf_n,
@@ -566,7 +565,6 @@ module toplevel(
 		XLNK0,
 		XLNK1,
 		ZEROP,
-		clk,
 		ALGA,
 		ALRT0,
 		ALRT1,
@@ -778,6 +776,7 @@ module toplevel(
 		p28COM,
 		p4SW,
 		p4VDC,
+		clk,
 		reset,
 		n0VDCA
 	);
@@ -805,6 +804,5 @@ module toplevel(
 		FIXED_IO_ps_porb,
 		FIXED_IO_ps_srstb
 	);
-
 
 endmodule

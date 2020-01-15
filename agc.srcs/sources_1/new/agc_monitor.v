@@ -2,7 +2,7 @@
 
 module agc_monitor(
     input wire clk,
-    input wire rst_n,
+    input wire reset,
     
     // FT232 FIFO interface
     input wire clkout,
@@ -20,6 +20,7 @@ module agc_monitor(
     output wire [6:1]dbg
 );
 
+wire rst_n = ~reset;
 
 /*******************************************************************************.
 * USB Interface                                                                 *

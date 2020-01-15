@@ -147,7 +147,6 @@ module fpga_agc(
 	input wire XLNK0,
 	input wire XLNK1,
 	input wire ZEROP,
-	input wire clk,
 
 	output wire ALGA,
 	output wire ALRT0,
@@ -361,11 +360,10 @@ module fpga_agc(
 	output wire p4SW,
 	output wire p4VDC,
 
-
+	input wire clk,
 	input wire reset,
 	input wire n0VDCA
 );
-
 
 	wire CLOCK;
 	wire CLROPE;
@@ -485,8 +483,6 @@ module fpga_agc(
 	wire n2FSFAL;
 	wire prop_clk;
 	wire prop_clk_locked;
-
-
 
 	tray_a traya(
 		BLKUPL_,
@@ -1053,7 +1049,6 @@ module fpga_agc(
 		YT6E,
 		YT7E,
 		ZID,
-		clk,
 		p28COM,
 		CLOCK,
 		FLTOUT,
@@ -1080,11 +1075,11 @@ module fpga_agc(
 		n2FSFAL,
 		prop_clk,
 		prop_clk_locked,
+		clk,
 		reset,
 		n0VDCA,
 		p4VDC,
 		p4SW
 	);
-
 
 endmodule

@@ -85,7 +85,6 @@ module tray_b(
 	input wire YT6E,
 	input wire YT7E,
 	input wire ZID,
-	input wire clk,
 	input wire p28COM,
 
 	output wire CLOCK,
@@ -114,15 +113,12 @@ module tray_b(
 	output wire prop_clk,
 	output wire prop_clk_locked,
 
-
+	input wire clk,
 	input wire reset,
 	input wire n0VDCA,
 	input wire p4VDC,
 	input wire p4SW
 );
-
-
-
 
 	wire B01_1_SA01;
 	wire B12_1_SA01;

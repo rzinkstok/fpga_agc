@@ -477,12 +477,10 @@ module tray_a(
 	output wire p4SW,
 	output wire p4VDC,
 
-
 	input wire reset,
 	input wire prop_clk,
 	input wire n0VDCA
 );
-
 
 	wire A15_;
 	wire A16_;
@@ -1425,7 +1423,6 @@ module tray_a(
 	wire n8XP6;
 	wire n9XP1;
 	wire n9XP5;
-
 
 	wire A05_1_A2X_;
 	wire A05_2_A2X_;

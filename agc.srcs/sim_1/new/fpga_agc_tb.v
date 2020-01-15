@@ -1,10 +1,6 @@
 `timescale 1ns / 1ps
 
 module fpga_agc_tb(
-
-
-
-
 );
 
 	reg BLKUPL_ = 1;
@@ -156,7 +152,6 @@ module fpga_agc_tb(
 	reg clk = 0;
 	reg n0VDCA = 0;
 	reg reset = 0;
-
 
 	wire ALGA;
 	wire ALRT0;
@@ -487,7 +482,6 @@ module fpga_agc_tb(
 	wire p4VDC;
 	wire prop_clk;
 	wire prop_clk_locked;
-
 
 	always
 		# 5 clk = !clk;
@@ -1057,7 +1051,6 @@ module fpga_agc_tb(
 		YT6E,
 		YT7E,
 		ZID,
-		clk,
 		p28COM,
 		CLOCK,
 		FLTOUT,
@@ -1084,12 +1077,12 @@ module fpga_agc_tb(
 		n2FSFAL,
 		prop_clk,
 		prop_clk_locked,
+		clk,
 		reset,
 		n0VDCA,
 		p4VDC,
 		p4SW
 	);
-
 
 	initial
 	begin
