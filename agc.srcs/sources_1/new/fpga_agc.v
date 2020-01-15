@@ -367,7 +367,6 @@ module fpga_agc(
 );
 
 
-
 	wire CLOCK;
 	wire CLROPE;
 	wire FILTIN;
@@ -486,6 +485,7 @@ module fpga_agc(
 	wire n2FSFAL;
 	wire prop_clk;
 	wire prop_clk_locked;
+
 
 
 	tray_a traya(

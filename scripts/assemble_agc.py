@@ -17,10 +17,9 @@ import sqlite3
 
 # File paths
 
-if False:
-    HOME = "/home/rzinkstok"
-else:
-    HOME = "c:/Users/rzine07792/source/rzinkstok"
+HOME = "/Users/rzinkstok/Development/virtualagc"
+#HOME = "/home/rzinkstok"
+#HOME = "c:/Users/rzine07792/source/rzinkstok"
 
 DBPATH = os.path.join(HOME, "pin_inspector/delphi.db")
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,9 +50,13 @@ EXTERNAL_INTERFACE_MODULES = ["A25", "A26", "A27", "A28", "A29", "A51", "A52"]
 
 # FPGA pins and dedicated wires
 STYX_PINS = ["J22", "J21", "L22", "L21", "G22", "H22", "G21", "G20", "H20", "H19", "E20", "E19", "F22", "F21", "A22", "A21", "C22", "D22", "C20", "D20", "B22", "B21", "C19", "D18", "B20", "B19", "C18", "C17", "A19", "A18", "B17", "B16", "A17", "A16", "E16", "F16", "B15", "C15", "E18", "F18", "D17", "D16", "F19", "G19", "D21", "E21", "G16", "G15", "F17", "G17", "J17", "J16", "P18", "P17", "K15", "J15", "K18", "J18", "M16", "M15", "M17", "L17", "K20", "K19", "U16", "U15", "T19", "R19", "V15", "V14", "U4", "T4", "U9", "U10", "W8", "V8", "U5", "U6", "T6", "R6", "M19", "M20", "M21", "M22", "N19", "N20", "N22", "P22", "N17", "N18", "P20", "P21", "P16", "R16", "R20", "R21", "N15", "P15", "J20", "K21", "V18", "V19", "W15", "Y15", "W17", "W18", "W16", "Y16", "AA21", "AB21", "U17", "V17", "AB19", "AB20", "V13", "W13", "Y19", "AA19", "V12", "W12", "Y18", "AA18", "U12", "U11", "AA17", "AB17", "AB10", "AB9", "AA16", "AB16", "Y14", "AA14", "AB14", "AB15", "W11", "W10", "Y13", "AA13", "Y11", "Y10", "AA12", "AB12", "AA9", "AA8", "AA11", "AB11", "Y9", "Y8", "V10", "V9"]
+
+STYX_CLOCK_PIN = "Y6"
 ZYNQ_PS_WIRES = ['[14:0]DDR_addr', '[2:0]DDR_ba', 'DDR_cas_n', 'DDR_ck_n', 'DDR_ck_p', 'DDR_cke', 'DDR_cs_n', '[3:0]DDR_dm', '[31:0]DDR_dq', '[3:0]DDR_dqs_n', '[3:0]DDR_dqs_p', 'DDR_odt', 'DDR_ras_n', 'DDR_reset_n', 'DDR_we_n', 'FIXED_IO_ddr_vrn', 'FIXED_IO_ddr_vrp', '[53:0]FIXED_IO_mio', 'FIXED_IO_ps_clk', 'FIXED_IO_ps_porb', 'FIXED_IO_ps_srstb']
-FT2232H_WIRES = {'clkout': 'L18', 'data[0]': 'T22', 'data[1]': 'T21', 'data[2]': 'U22', 'data[3]': 'U21', 'data[4]': 'V22', 'data[5]': 'W22', 'data[6]': 'AA22', 'data[7]': 'AB22', 'rxf_n': 'W20', 'txe_n': 'Y21', 'rd_n': 'Y20', 'wr_n': 'W21', 'oe_n': 'U20', 'siwu': 'V20'}
-DEDICATED_PINS = {'clk': 'Y6', 'clkout': 'L18', 'data[0]': 'T22', 'data[1]': 'T21', 'data[2]': 'U22', 'data[3]': 'U21', 'data[4]': 'V22', 'data[5]': 'W22', 'data[6]': 'AA22', 'data[7]': 'AB22', 'rxf_n': 'W20', 'txe_n': 'Y21', 'rd_n': 'Y20', 'wr_n': 'W21', 'oe_n': 'U20', 'siwu': 'V20'}
+FT2232H_WIRES = ['clkout', 'data', 'rxf_n', 'txe_n', 'rd_n', 'wr_n', 'oe_n', 'siwu']
+FT2232H_PINS = ['L18', ['T22', 'T21', 'U22', 'U21', 'V22', 'W22', 'AA22', 'AB22'], 'W20', 'Y21', 'Y20', 'W21', 'U20', 'V20']
+[list(x) for x in FT2232H_PINS]
+#DEDICATED_PINS = {'clk': 'Y6', 'clkout': 'L18', 'data[0]': 'T22', 'data[1]': 'T21', 'data[2]': 'U22', 'data[3]': 'U21', 'data[4]': 'V22', 'data[5]': 'W22', 'data[6]': 'AA22', 'data[7]': 'AB22', 'rxf_n': 'W20', 'txe_n': 'Y21', 'rd_n': 'Y20', 'wr_n': 'W21', 'oe_n': 'U20', 'siwu': 'V20'}
 
 
 class VerilogSignal(object):
@@ -79,8 +82,8 @@ class VerilogSignal(object):
         self.inout = type == "inout"
 
         res = CROSS_MODULE_SIGNAL_RE.match(self.name)
-        self.fan_in = bool(res)
-        self.fan_in_name = res.groups()[0] if self.fan_in else None
+        self.partial_fan_in = bool(res)
+        self.fan_in_name = res.groups()[0] if self.partial_fan_in else None
 
     def decode_name(self):
         name = self.name
@@ -146,6 +149,10 @@ class VerilogSignal(object):
 
     def __repr__(self):
         return self.__str__()
+
+
+ZYNQ_PS_SIGNALS = [VerilogSignal(x) for x in ZYNQ_PS_WIRES]
+FT2232H_SIGNALS = [VerilogSignal(x, pins=list(y)) for x, y in zip(FT2232H_WIRES, FT2232H_PINS)]
 
 
 class VerilogModule(object):
@@ -450,6 +457,8 @@ class GeneratedVerilogModule(object):
         self.module_parameters = {}
         self.signals = {}
         self.fan_ins = {}
+        self.collect_info()
+        self.write()
 
     def signal_external(self, signal):
         pass
@@ -473,10 +482,18 @@ class GeneratedVerilogModule(object):
                 else:
                     self.signals[p.name] = p
 
-                if p.fan_in:
+                if p.partial_fan_in:
                     if p.fan_in_name not in self.fan_ins:
                         self.fan_ins[p.fan_in_name] = []
                     self.fan_ins[p.fan_in_name].append(p.name)
+
+        for fan_in in self.fan_ins.keys():
+            if fan_in not in self.signals.values():
+                # Fan-in signal is not used as input anywhere, so create output signal
+                self.signals[fan_in] = VerilogSignal(fan_in, "output")
+            else:
+                # Make sure the fan-in is marked as output
+                self.signals[fan_in].output = True
 
         for s in self.signals.values():
             s.external = self.signal_external(s)
@@ -485,10 +502,8 @@ class GeneratedVerilogModule(object):
             if not v.external:
                 if v.input and not v.output and v.name not in self.fan_ins:
                     print(f"Signal {k} has no source")
-                if v.output and not v.input and not v.fan_in:
+                if v.output and not v.input and not v.partial_fan_in:
                     print(f"Signal {k} is not used as input")
-
-        return
 
     def write(self):
         # Write output file
@@ -500,6 +515,8 @@ class GeneratedVerilogModule(object):
         with open(filepath, "w") as fp:
             fp.write("`timescale 1ns / 1ps\n")
             fp.write("\n")
+
+            # Module declaration
             fp.write(f"module {self.name}(\n")
 
             for external_input in sorted([x for x in self.signals.values() if x.input and not x.output and x.external]):
@@ -525,7 +542,7 @@ class GeneratedVerilogModule(object):
             fp.write("\n")
 
             # Set up registers for internal inputs with no source
-            for internal_input in sorted([x for x in self.signals.values() if x.input and not x.output and not x.external and not x.fan_in and x.name not in self.fan_ins]):
+            for internal_input in sorted([x for x in self.signals.values() if x.input and not x.output and not x.external and not x.partial_fan_in and x.name not in self.fan_ins]):
                 if internal_input.name.endswith("_") or internal_input.name in ["WD167", "WD168"]:  # WD167 is main bus A, WD168 is main bus B
                     val = 1
                 else:
@@ -533,30 +550,30 @@ class GeneratedVerilogModule(object):
                 fp.write(f"\treg {internal_input.name} = {val};\n")
             fp.write("\n")
 
-            # Set up
-            for internal_input in sorted([x for x in self.signals.values() if x.input and not x.output and not x.external and x.name in self.fan_ins]):
-                fp.write(f"\twire {internal_input.name};\n")
-            fp.write("\n")
-
-            for internal_output in sorted([x for x in self.signals.values() if x.output and not x.external and not x.fan_in]):
+            # Set up wires for internal outputs
+            for internal_output in sorted([x for x in self.signals.values() if x.output and not x.external and not x.partial_fan_in]):
                 fp.write(f"\twire {internal_output.name};\n")
             fp.write("\n")
 
+            # Set up wires for internal inouts
             for internal_inout in sorted([x for x in self.signals.values() if x.inout and not x.external]):
                 fp.write(f"\twire {internal_inout.name};\n")
             fp.write("\n")
 
+            # Set up wires for partial fan-ins
             for fan_in in sorted(self.fan_ins.keys()):
                 for partial_fan_in in sorted(self.fan_ins[fan_in]):
                     s = self.signals[partial_fan_in]
                     fp.write(f"\twire {s.name};\n")
             fp.write("\n")
 
+            # Set up the 100 MHz board clock for simulation
             if self.name.endswith("_tb"):
                 fp.write("\talways\n")
                 fp.write("\t\t# 5 clk = !clk;\n")
                 fp.write("\n")
 
+            # Add all modules
             for module in sorted(self.module_parameters.keys()):
                 if is_tray_module(module):
                     m = module.split("_")[0]
@@ -571,17 +588,19 @@ class GeneratedVerilogModule(object):
                     fp.write("\n")
                 fp.write("\t);\n\n")
 
+            # Combine partial fan-ins into fan-in signals
             for fan_in, partial_fan_ins in sorted(self.fan_ins.items()):
-                signal = self.signals[fan_in]
+                signal_name = self.signals[fan_in].name
                 partial_signals = [self.signals[s] for s in partial_fan_ins]
-                fp.write(f"\tassign {signal.name} = ")
-                if signal.name.startswith("SA"):
+                fp.write(f"\tassign {signal_name} = ")
+                if signal_name.startswith("SA"):
                     fp.write(" | ".join([ps.name for ps in sorted(partial_signals)]))
                 else:
                     fp.write(" & ".join([ps.name for ps in sorted(partial_signals)]))
                 fp.write(";\n")
             fp.write("\n")
 
+            # Write initial code for simulations
             self.initial(fp)
 
             fp.write("endmodule\n")
@@ -608,7 +627,7 @@ class TrayA(GeneratedVerilogModule):
         return False
 
 
-class TrayB(object):
+class TrayB(GeneratedVerilogModule):
     name = "tray_b"
     modules = TRAY_A + CONNECTOR_MODULES
     module_files = [os.path.join(TRAY_B_SOURCE_FOLDER, x) for x in sorted(os.listdir(TRAY_B_SOURCE_FOLDER))]  # if not x.startswith("b12")]
@@ -621,14 +640,12 @@ class TrayB(object):
         for m in self.modules:
             if m in modules:
                 modules.remove(m)
-
         if modules:
             return True
-
         return False
 
 
-class FpgaAgc(object):
+class FpgaAgc(GeneratedVerilogModule):
     name = "fpga_agc"
     modules = ["tray_a", "tray_b"]
     module_files = [os.path.join(SOURCE_FOLDER, f"{x}.v") for x in modules]
@@ -645,23 +662,22 @@ class FpgaAgc(object):
         return False
 
 
-class Toplevel(object):
+class Toplevel(GeneratedVerilogModule):
     name = "toplevel"
     modules = ["fpga_agc", "agc_monitor", "styx_ps_bootloader"]
     module_files = [os.path.join(SOURCE_FOLDER, f"{x}.v") for x in modules]
 
     def signal_external(self, signal):
-        if signal.name in ["reset", "clk", "clk_reset", "MAMU"] + ZYNQ_PS_WIRES:
+        if signal.name in ["reset", "clk", "clk_reset", "MAMU"] + ZYNQ_PS_WIRES + FT2232H_WIRES:
             return True
+
         if signal.name in ["n0VDCA", "p4SW", "BPLSSW"]:
             return False
-        if signal.name in FT2232H_WIRES or signal.name == '[7:0]data':
-            return "external"
 
         modules = signal.agc_modules
         if "A52" in modules:
-            return "external"
-        return "internal"
+            return True
+        return False
 
 
 class FpgaAgcTestBench(object):
@@ -683,10 +699,9 @@ class FpgaAgcTestBench(object):
 if __name__ == "__main__":
     if True:
         x = TrayA()
-        print(x.name)
-        print(x.modules)
-        x.collect_info()
-        x.write()
+        x = TrayB()
+        x = FpgaAgc()
+
         #modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_A_SOURCE_FOLDER)) if not x.startswith("a77")]
         #write_module("tray_a", TRAY_A_SOURCE_FOLDER, modules, check_tray_a_signal)
         #modules = [os.path.splitext(x)[0] for x in sorted(os.listdir(TRAY_B_SOURCE_FOLDER))]# if not x.startswith("b12")]
