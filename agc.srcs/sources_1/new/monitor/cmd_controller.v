@@ -74,7 +74,7 @@ assign read_msg_ready = (state == SEND_READ_MSG);
 * Command Controller State Machine                                              *
 '*******************************************************************************/
 always @(posedge clk or negedge rst_n) begin
-    if (~rst_n) begin
+    if (!rst_n) begin
         state <= IDLE;
         active_cmd <= 40'b0;
     end else begin
@@ -135,7 +135,7 @@ always @(*) begin
     end
 
     ERASABLE: begin
-        //if (~cmd_write_flag) begin
+        //if (!cmd_write_flag) begin
         //    if (agc_erasable_read_done) begin
         //        next_state = SEND_READ_MSG;
         //    end else begin
@@ -151,7 +151,7 @@ always @(*) begin
     end
 
     FIXED: begin
-        //if (~cmd_write_flag) begin
+        //if (!cmd_write_flag) begin
         //    if (agc_fixed_read_done) begin
         //        next_state = SEND_READ_MSG;
         //    end else begin
@@ -163,7 +163,7 @@ always @(*) begin
     end
 
     CHANNELS: begin
-//        if (~cmd_write_flag) begin
+//        if (!cmd_write_flag) begin
 //            if (agc_channels_read_done) begin
 //                next_state = SEND_READ_MSG;
 //            end else begin
@@ -179,7 +179,7 @@ always @(*) begin
     end
 
     SIM_ERASABLE: begin
-//        if (~cmd_write_flag) begin
+//        if (!cmd_write_flag) begin
 //            ems_read_en = 1'b1;
 //            next_state = SEND_READ_MSG;
 //        end else begin
@@ -189,7 +189,7 @@ always @(*) begin
     end
 
     SIM_FIXED: begin
-//        if (~cmd_write_flag) begin
+//        if (!cmd_write_flag) begin
 //            crs_read_en = 1'b1;
 //            next_state = SEND_READ_MSG;
 //        end else begin
@@ -214,7 +214,7 @@ always @(*) begin
     end
 
     STATUS: begin
-//        if (~cmd_write_flag) begin
+//        if (!cmd_write_flag) begin
 //            status_read_en = 1'b1;
 //            next_state = SEND_READ_MSG;
 //        end else begin
@@ -224,7 +224,7 @@ always @(*) begin
     end
 
     MON_REGS: begin
-//        if (~cmd_write_flag) begin
+//        if (!cmd_write_flag) begin
 //            mon_reg_read_en = 1'b1;
 //            next_state = SEND_READ_MSG;
 //        end else begin
@@ -233,7 +233,7 @@ always @(*) begin
     end
 
     MON_CHANNELS: begin
-//        if (~cmd_write_flag) begin
+//        if (!cmd_write_flag) begin
 //            mon_chan_read_en = 1'b1;
 //            next_state = SEND_READ_MSG;
 //        end else begin
@@ -242,7 +242,7 @@ always @(*) begin
     end
 
     MON_DSKY: begin
-//        if (~cmd_write_flag) begin
+//        if (!cmd_write_flag) begin
 //            mon_dsky_read_en = 1'b1;
 //            next_state = SEND_READ_MSG;
 //        end else begin
@@ -252,7 +252,7 @@ always @(*) begin
     end
 
     TRACE: begin
-//        if (~cmd_write_flag) begin
+//        if (!cmd_write_flag) begin
 //            trace_read_en = 1'b1;
 //            next_state = SEND_READ_MSG;
 //        end else begin

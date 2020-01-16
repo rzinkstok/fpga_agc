@@ -47,7 +47,7 @@ assign msg_length = (cmd_msg[39]) ? `MSG_WRITE_LENGTH : `MSG_READ_LENGTH;
 * Command Receiver State Machine                                                *
 '*******************************************************************************/
 always @(posedge clk or negedge rst_n) begin
-    if (~rst_n) begin
+    if (!rst_n) begin
         state <= IDLE;
         write_index <= 3'd0;
         cmd_msg <= 40'b0;

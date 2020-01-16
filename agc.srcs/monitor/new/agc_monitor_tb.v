@@ -9,6 +9,7 @@ module agc_monitor_tb(
 	reg rxf_n = 0;
 	reg txe_n = 0;
 
+	wire MNHRPT;
 	wire NHALGA;
 	wire [6:1]dbg;
 	wire [6:1]leds;
@@ -24,9 +25,9 @@ module agc_monitor_tb(
 	always
 		# 5 clk = !clk;
 	always
-		#16.667 clkout = ~clkout;
+		#16.667 clkout = !clkout;
 
-	assign data = (~rd_n) ? data_in : 8'bZ;
+	assign data = (!rd_n) ? data_in : 8'bZ;
 
 	agc_monitor agcmonitor(
 		clk,
@@ -39,6 +40,7 @@ module agc_monitor_tb(
 		wr_n,
 		oe_n,
 		siwu,
+		MNHRPT,
 		NHALGA,
 		leds,
 		dbg
@@ -123,7 +125,7 @@ module agc_monitor_tb(
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 
-		# 100000 $stop;
+		# 1000 $finish;
 	end
 
 endmodule

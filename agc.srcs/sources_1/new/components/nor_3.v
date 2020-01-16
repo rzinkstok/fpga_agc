@@ -19,7 +19,7 @@ module nor_3(y, a, b, c, power, reset, prop_clk);
 	wire vrst;
 	assign vrst = (reset || !power);
 	
-	assign result = ~(a|b|c);
+	assign result = !(a|b|c);
 	
 	always @(posedge prop_clk or posedge vrst)
 	begin

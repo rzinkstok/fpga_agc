@@ -42,7 +42,7 @@ reg [1:0] next_state;
 // SIWU is unused, so just hold it high
 assign siwu = 1'b1;
 assign wr_n = (state != WRITE);
-assign oe_n = ~((state == READ1) | (state == READ2));
+assign oe_n = !((state == READ1) || (state == READ2));
 assign rd_n = (state != READ2);
 
 
@@ -68,7 +68,7 @@ wire cmd_fifo_empty;
 // a command could potentially trigger generation of a new read response
 // message before that queue can be emptied.
 wire read_fifo_full = 1'b0;
-assign cmd_ready = (~cmd_fifo_empty) & (~read_fifo_full);
+assign cmd_ready = (!cmd_fifo_empty) && (!read_fifo_full);
 
 
 // Command receiver
@@ -83,7 +83,7 @@ cmd_receiver cmd_rx(
 
 // Queue of completed incoming commands
 cmd_fifo cmd_queue(
-    .rst(~rst_n),
+    .rst(!rst_n),
     .wr_clk(clkout),
     .rd_clk(clk),
     .din(cmd_in),
@@ -114,7 +114,7 @@ wire [39:0] send_msg;
 // Read message FIFO status flags
 wire read_fifo_empty;
 wire read_fifo_ready;
-assign read_fifo_ready = ~read_fifo_empty;
+assign read_fifo_ready = !read_fifo_empty;
 
 // SLIP-encoded byte output from message sender and its validity flag
 wire send_byte_ready;
@@ -128,13 +128,13 @@ wire read_byte_fifo_almost_empty;
 // Output byte from the read byte FIFO to the USB interface
 wire [7:0] tx_byte;
 wire tx_byte_read_en;
-assign tx_byte_read_en = ((~wr_n) & (~txe_n));
+assign tx_byte_read_en = ((!wr_n) && (!txe_n));
 assign data = (tx_byte_read_en) ? tx_byte : 8'bZ;
 
 // Read message FIFO
 read_fifo read_msg_queue(
   .clk(clk),
-  .srst(~rst_n),
+  .srst(!rst_n),
   .din(read_msg),
   .wr_en(read_msg_ready),
   .rd_en(sender_ready),
@@ -157,7 +157,7 @@ msg_sender msg_sndr(
 
 // Read byte FIFO
 read_byte_fifo read_byte_queue(
-    .rst(~rst_n),
+    .rst(!rst_n),
     .wr_clk(clk),
     .rd_clk(clkout),
     .din(send_byte),
@@ -174,7 +174,7 @@ read_byte_fifo read_byte_queue(
 * USB Interface State Machine                                                   *
 '*******************************************************************************/
 always @(posedge clkout or negedge rst_n) begin
-    if (~rst_n) begin
+    if (!rst_n) begin
         state <= IDLE;
     end else begin
         state <= next_state;
@@ -186,12 +186,12 @@ always @(*) begin
 
     case (state)
     IDLE: begin
-        if ((~cmd_fifo_full) & (~rxf_n)) begin
+        if ((!cmd_fifo_full) && (!rxf_n)) begin
             // If we have room for command bytes and there is some available,
             // kick off a read. READ1 will assert OE#, and READ2 will assert
             // RD# and actually clock out the data.
             next_state = READ1;
-        end else if ((~read_byte_fifo_empty) & (~txe_n)) begin
+        end else if ((!read_byte_fifo_empty) && (!txe_n)) begin
             // If we have data to send and the chip has room to accept it,
             // kick off a write
             next_state = WRITE;
@@ -217,7 +217,7 @@ always @(*) begin
     end
 
     WRITE: begin
-        if (txe_n | (~rxf_n) | (read_byte_fifo_almost_empty)) begin
+        if (txe_n || (!rxf_n) || (read_byte_fifo_almost_empty)) begin
             // Continue writing until 
             next_state = IDLE;
         end

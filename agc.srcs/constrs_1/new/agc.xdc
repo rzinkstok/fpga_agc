@@ -132,7 +132,7 @@ set_property PULLDOWN true [get_ports MNHNC]
 
 set_property PACKAGE_PIN A17 [get_ports MNHRPT]
 set_property IOSTANDARD LVCMOS33 [get_ports MNHRPT]
-set_property PULLDOWN true [get_ports MNHRPT]
+set_property DRIVE 4 [get_ports MNHRPT]
 
 set_property PACKAGE_PIN A16 [get_ports MNHSBF]
 set_property IOSTANDARD LVCMOS33 [get_ports MNHSBF]

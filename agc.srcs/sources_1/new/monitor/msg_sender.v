@@ -35,7 +35,7 @@ reg [1:0] next_state;
 // Sender is idle and ready to begin SLIPping the next message
 assign sender_ready = (state == IDLE);
 // A newly SLIPped byte is ready to be put into the read byte FIFO
-assign out_byte_ready = ((msg_ready) || (state != IDLE)) && (~byte_fifo_full);
+assign out_byte_ready = ((msg_ready) || (state != IDLE)) && (!byte_fifo_full);
 
 /*******************************************************************************.
 * Active Message                                                                *
@@ -64,7 +64,7 @@ end
 * Message Sender State Machine                                                  *
 '*******************************************************************************/
 always @(posedge clk or negedge rst_n) begin
-    if (~rst_n) begin
+    if (!rst_n) begin
         state <= IDLE;
         byte_index <= 3'b0;
         active_msg <= 40'b0;
@@ -81,7 +81,7 @@ always @(*) begin
     out_byte = cur_byte;
     active_msg_q = active_msg;
 
-    if (~byte_fifo_full) begin
+    if (!byte_fifo_full) begin
         case (state)
         IDLE: begin
             if (msg_ready) begin

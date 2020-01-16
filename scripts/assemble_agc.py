@@ -1,11 +1,16 @@
 import os
 import re
 import sqlite3
+from sys import platform
+
 
 # File paths
-# HOME = "/Users/rzinkstok/Development/virtualagc"
-HOME = "/home/rzinkstok"
-# HOME = "c:/Users/rzine07792/source/rzinkstok"
+if platform == "linux" or platform == "linux2":
+    HOME = "/home/rzinkstok"
+elif platform == "darwin":
+    HOME = "/Users/rzinkstok/Development/virtualagc"
+elif platform == "win32":
+    HOME = "c:/Users/rzine07792/source/rzinkstok"
 DBPATH = os.path.join(HOME, "pin_inspector/delphi.db")
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new")
@@ -647,9 +652,9 @@ class AgcMonitorTestBench(GeneratedVerilogModule):
         fp.write("\talways\n")
         fp.write("\t\t# 5 clk = !clk;\n")
         fp.write("\talways\n")
-        fp.write("\t\t#16.667 clkout = ~clkout;\n")
+        fp.write("\t\t#16.667 clkout = !clkout;\n")
         fp.write("\n")
-        fp.write("\tassign data = (~rd_n) ? data_in : 8'bZ;\n")
+        fp.write("\tassign data = (!rd_n) ? data_in : 8'bZ;\n")
         fp.write("\n")
 
     def initial(self, fp):
@@ -670,13 +675,14 @@ class AgcMonitorTestBench(GeneratedVerilogModule):
         fp.write("\t\trxf_n = 1'b1;\n")
         fp.write("\t\ttxe_n = 1'b1;\n")
         fp.write("\t\tdata_in = 8'h00;\n")
-        fp.write("\t\t#100 reset = 1'b0;\n")
+        fp.write("\t\t#200 reset = 1'b0;\n")
+        fp.write("\t\t#100;\n")
         fp.write("\n")
 
         for m in messages:
             self.ft2232h_message(fp, m)
 
-        fp.write("\t\t# 100000 $stop;\n")
+        fp.write("\t\t# 1000 $finish;\n")
         fp.write("\tend\n")
         fp.write("\n")
 
@@ -691,9 +697,9 @@ class AgcMonitorTestBench(GeneratedVerilogModule):
 
 
 if __name__ == "__main__":
-    #TrayA()
-    #TrayB()
-    #FpgaAgc()
-    #Toplevel()
+    TrayA()
+    TrayB()
+    FpgaAgc()
+    Toplevel()
     FpgaAgcTestBench()
     AgcMonitorTestBench()

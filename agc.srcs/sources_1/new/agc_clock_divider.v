@@ -15,7 +15,7 @@ module agc_clock_divider(
         if (reset) begin
             counter <= 6'b0;
         end else begin
-            if (~prop_clk_locked | (counter >= 6'd24)) begin
+            if (!prop_clk_locked | (counter >= 6'd24)) begin
                 counter <= 6'b0;
             end else begin
                 counter <= counter + 1;

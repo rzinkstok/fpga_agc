@@ -13,14 +13,15 @@ module agc_monitor(
     output wire wr_n,
     output wire oe_n,
     output wire siwu,
-    
+
+    output wire MNHRPT,
     output wire NHALGA,
     
     output wire [6:1]leds,
     output wire [6:1]dbg
 );
 
-wire rst_n = ~reset;
+wire rst_n = !reset;
 
 /*******************************************************************************.
 * USB Interface                                                                 *
@@ -102,15 +103,16 @@ cmd_controller cmd_ctrl(
 control_regs ctrl_regs(
     .clk(clk),
     .rst_n(rst_n),
-    
     .addr(cmd_addr),
     .data_in(cmd_data),
+
     .read_en(ctrl_read_en),
     .write_en(ctrl_write_en),
     .write_done(ctrl_write_done),
     .data_out(ctrl_data),
-    
-    .nhalga(NHALGA)
+
+    .MNHRPT(MNHRPT),
+    .NHALGA(NHALGA)
 );
 
 

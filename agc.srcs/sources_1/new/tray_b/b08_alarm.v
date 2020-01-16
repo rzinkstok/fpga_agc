@@ -27,7 +27,7 @@ module b08_alarm(
 //    assign refclk = refclk_counter < 6'd25;
     
 //    always @(posedge prop_clk) begin
-//        if (~prop_clk_locked) begin
+//        if (!prop_clk_locked) begin
 //            refclk_counter <= 6'b0;
 //        end else begin
 //            refclk_counter <= refclk_counter + 1;
@@ -39,7 +39,7 @@ module b08_alarm(
     
     
     // Voltage alarm
-    assign VFAIL = ~(p28COM && BPLUS && p4VDC);
+    assign VFAIL = !(p28COM && BPLUS && p4VDC);
     
     
     // Oscillator alarm
@@ -49,7 +49,7 @@ module b08_alarm(
     assign STRT2 = delay_counter < 8'd255;
 
     always @(posedge prop_clk) begin
-        if (~prop_clk_locked) begin
+        if (!prop_clk_locked) begin
             delay_counter <= 8'b0;
         end else begin
             if (delay_counter >= 8'd255) begin
@@ -69,7 +69,7 @@ module b08_alarm(
 //    reg [20:0] scafal_counter;
 //    assign SCAFAL = scafal_counter > 21'd1310720;
 //    always @(posedge refclk) begin
-//        if (~prop_clk_locked || SCAS17) begin
+//        if (!prop_clk_locked || SCAS17) begin
 //            scafal_counter <= 21'b0;
 //        end else begin
 //            scafal_counter <= scafal_counter + 1;
@@ -88,7 +88,7 @@ module b08_alarm(
     
     // MYCLMP
     // Protects memory access in case of power failure or standby
-    assign MYCLMP = ~p4SW;
+    assign MYCLMP = !p4SW;
     
     
     // Warning integrator
@@ -137,7 +137,7 @@ module b08_alarm(
 //    assign ref_f14 = ref_f14_counter < 18'd81920;
     
 //    always @(posedge refclk) begin
-//        if (~prop_clk_locked) begin
+//        if (!prop_clk_locked) begin
 //            ref_f14_counter <= 18'b0;
 //        end else begin
 //            ref_f14_counter <= ref_f14_counter + 1;
@@ -156,7 +156,7 @@ module b08_alarm(
     
 //    reg[4:0] filt_shift;
 //    always @(posedge ref_f14) begin
-//        if(~prop_clk_locked) begin
+//        if(!prop_clk_locked) begin
 //            filt_shift <= 5'b0;
 //        end else begin
 //            filt_shift <= {filt_shift[3:0], filtin_latch};

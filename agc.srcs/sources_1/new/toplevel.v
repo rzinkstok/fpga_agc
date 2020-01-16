@@ -23,7 +23,6 @@ module toplevel(
 	input wire MLDCH,
 	input wire MLOAD,
 	input wire MNHNC,
-	input wire MNHRPT,
 	input wire MNHSBF,
 	input wire MONPAR,
 	input wire MONWBK,
@@ -43,6 +42,7 @@ module toplevel(
 	output wire MIIP,
 	output wire MINHL,
 	output wire MINKL,
+	output wire MNHRPT,
 	output wire MNISQ,
 	output wire MON800,
 	output wire MONWT,
@@ -388,8 +388,8 @@ module toplevel(
 	wire ZEROPT;
 	wire ZIMCDU;
 	wire ZOPCDU;
-	wire dbg;
-	wire leds;
+	wire [6:1]dbg;
+	wire [6:1]leds;
 	wire n12KPPS;
 	wire n25KPPS;
 	wire n3200A;
@@ -413,6 +413,7 @@ module toplevel(
 		wr_n,
 		oe_n,
 		siwu,
+		MNHRPT,
 		NHALGA,
 		leds,
 		dbg
