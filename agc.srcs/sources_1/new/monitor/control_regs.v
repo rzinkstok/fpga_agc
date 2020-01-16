@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-`define CTRL_REG_NHALGA 16'h0
+`include "monitor_defs.v"
 
 module control_regs(
     input wire clk,
@@ -54,10 +54,10 @@ always @(posedge clk or negedge rst_n) begin
         read_done <= 1'b1;
         case (addr)
             `CTRL_REG_MNHRPT: begin
-                read_data <= {15'b0, mnhrpt};
+                read_data <= {15'b0, MNHRPT};
             end
             `CTRL_REG_NHALGA: begin
-                read_data <= {15'b0, nhalga};
+                read_data <= {15'b0, NHALGA};
             end
         endcase
     end else begin
