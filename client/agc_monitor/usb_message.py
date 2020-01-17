@@ -1,6 +1,6 @@
 from collections import namedtuple
 import struct
-
+import slip
 
 DATA_FMT = '>BHH'
 READ_FMT = '>BH'
@@ -8,14 +8,43 @@ DATA_FLAG = 0x80
 
 
 def pack(msg):
-    print("pack", msg)
     res = globals()['_pack_' + type(msg).__name__](msg)
-    print(res)
+    print(" ".join([f"{c:02x}" for c in res]))
     return res
 
 
-WriteControlMNHRPT = namedtuple('WriteControlMNHRPT', ['mnhrpt'])
-WriteControlMNHRPT.__eq__ = lambda a, b: (type(a) is type(b)) and (tuple(a) == tuple(b))
+class WriteControlMNHRPT(object):
+    def __init__(self, mnhrpt):
+        self.mnhrpt = mnhrpt
+
+    def __eq__(self, other):
+        return (type(self) == type(other)) and (self.mnhrpt == other.mnhrpt)
+
+    def __repr__(self):
+        return f"{type(self).__name__}(mnhrpt={self.mnhrpt})"
+
+    def pack(self):
+        data = 0x0000
+        data |= (self.mnhrpt & 0x0001) << 0
+        return struct.pack(DATA_FMT, DATA_FLAG | AddressGroup.Control, Control.MNHRPT, data)
+
+    def slip(self):
+        return slip.slip(self.pack())
+
+
+
+_WriteControlMNHRPT = namedtuple('WriteControlMNHRPT', ['mnhrpt'])
+_WriteControlMNHRPT.__eq__ = lambda a, b: (type(a) is type(b)) and (tuple(a) == tuple(b))
+
+
+WriteControlMNHNC = namedtuple('WriteControlMNHNC', ['mnhnc'])
+WriteControlMNHNC.__eq__ = lambda a,b: (type(a) is type(b)) and (tuple(a) == tuple(b))
+
+WriteControlSTRT1 = namedtuple('WriteControlSTRT1', ['strt1'])
+WriteControlSTRT1.__eq__ = lambda a,b: (type(a) is type(b)) and (tuple(a) == tuple(b))
+
+WriteControlSTRT2 = namedtuple('WriteControlSTRT2', ['strt2'])
+WriteControlSTRT2.__eq__ = lambda a,b: (type(a) is type(b)) and (tuple(a) == tuple(b))
 
 WriteControlNHALGA = namedtuple('WriteControlNHALGA', ['nhalga'])
 WriteControlNHALGA.__eq__ = lambda a, b: (type(a) is type(b)) and (tuple(a) == tuple(b))
@@ -93,6 +122,16 @@ def _pack_WriteControlMNHRPT(msg):
     return _pack_write_msg(AddressGroup.Control, Control.MNHRPT, data)
 
 
+def _pack_ReadControlMNHNC(msg):
+    return _pack_read_msg(AddressGroup.Control, Control.MNHNC)
+
+
+def _pack_WriteControlMNHNC(msg):
+    data = 0x0000
+    data |= (msg.mnhnc & 0x0001) << 0
+    return _pack_write_msg(AddressGroup.Control, Control.MNHNC, data)
+
+
 def _pack_ReadControlNHALGA(msg):
     return _pack_read_msg(AddressGroup.Control, Control.NHALGA)
 
@@ -101,6 +140,26 @@ def _pack_WriteControlNHALGA(msg):
     data = 0x0000
     data |= (msg.nhalga & 0x0001) << 0
     return _pack_write_msg(AddressGroup.Control, Control.NHALGA, data)
+
+
+def _pack_ReadControlSTRT1(msg):
+    return _pack_read_msg(AddressGroup.Control, Control.STRT1)
+
+
+def _pack_WriteControlSTRT1(msg):
+    data = 0x0000
+    data |= (msg.strt1 & 0x0001) << 0
+    return _pack_write_msg(AddressGroup.Control, Control.STRT1, data)
+
+
+def _pack_ReadControlSTRT2(msg):
+    return _pack_read_msg(AddressGroup.Control, Control.STRT2)
+
+
+def _pack_WriteControlSTRT2(msg):
+    data = 0x0000
+    data |= (msg.strt2 & 0x0001) << 0
+    return _pack_write_msg(AddressGroup.Control, Control.STRT2, data)
 
 
 def _pack_write_msg(group, addr, data):
