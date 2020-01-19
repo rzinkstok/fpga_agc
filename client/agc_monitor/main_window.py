@@ -47,9 +47,14 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    font = QFont("Futura Std Medium")
-    font.setBold(False)
-    font.setPointSize(10)
+    if sys.platform == "darwin":
+        font = QFont("Futura Std")
+        font.setBold(False)
+        font.setPointSize(12)
+    else:
+        font = QFont("Futura Std Medium")
+        font.setBold(False)
+        font.setPointSize(10)
 
     fontinfo = QFontInfo(font)
     print("Exact match:", fontinfo.exactMatch())

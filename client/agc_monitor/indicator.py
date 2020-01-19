@@ -84,7 +84,8 @@ class LabelIndicator(QFrame):
             self.switch.setStyleSheet('QCheckBox::indicator{subcontrol-position:center;}')
             layout.addWidget(self.switch)
             layout.setAlignment(self.switch, Qt.AlignCenter)
-
+        else:
+            layout.addSpacing(20)
         layout.addStretch()
 
         self.setLayout(layout)
