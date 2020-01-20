@@ -12,10 +12,7 @@ class ApolloGroupHeading(QWidget):
         )
 
         self.text = text
-        self.font = QFont()
-        self.font.setFamily('Futura Std Medium')
-        self.font.setPointSize(10)
-        self.font_metrics = QFontMetrics(self.font)
+        self.font_metrics = QFontMetrics(self.font())
         self.text_width = self.font_metrics.width(self.text)
         self.text_height = self.font_metrics.height()
 

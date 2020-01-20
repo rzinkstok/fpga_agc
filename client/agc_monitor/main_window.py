@@ -53,8 +53,6 @@ if __name__ == '__main__':
     fontsize = 10
     if sys.platform == "darwin":
         fontsize += 2
-    else:
-        fontfamily += " Medium"
     font = QFont(fontfamily)
     font.setBold(False)
     font.setPointSize(fontsize)
@@ -79,6 +77,9 @@ if __name__ == '__main__':
     palette.setColor(QPalette.Base, basecolor.lighter(300))
     palette.setColor(QPalette.Window, basecolor)
     app.setPalette(palette)
+
+    if sys.platform == "darwin":
+        app.setStyleSheet("QLabel { font-size: 12px; font-family: Futura Std; }")
 
     window = MainWindow(None)
     window.show()
