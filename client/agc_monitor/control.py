@@ -8,11 +8,11 @@ import usb_message as um
 
 
 INH_SWITCHES = OrderedDict([
-    ('RPT', um.WriteControlMNHRPT),
-    ('INC', um.WriteControlMNHNC),
-    ('ALG', um.WriteControlNHALGA),
-    ('ST1', um.WriteControlSTRT1),
-    ('ST2', um.WriteControlSTRT2),
+    ('RPT', um.ControlMNHRPT),
+    ('INC', um.ControlMNHNC),
+    ('ALG', um.ControlNHALGA),
+    ('ST1', um.ControlSTRT1),
+    ('ST2', um.ControlSTRT2),
 ])
 
 STATUS_INDS = OrderedDict([
@@ -51,8 +51,6 @@ class Control(QFrame):
         #    self._status_inds['crs_cycle'].set_on(any(msg))
 
     def _setup_ui(self):
-        self.setFrameStyle(QFrame.StyledPanel | QFrame.Raised)
-
         layout = QHBoxLayout(self)
         layout.setSpacing(20)
         self.setLayout(layout)

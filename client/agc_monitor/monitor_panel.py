@@ -1,4 +1,4 @@
-from PySide2.QtWidgets import QWidget, QFrame, QVBoxLayout, QHBoxLayout
+from PySide2.QtWidgets import QWidget, QFrame, QVBoxLayout, QHBoxLayout, QPushButton
 from PySide2.QtCore import Qt
 
 from control import Control
@@ -14,7 +14,6 @@ class MonitorPanel(QFrame):
         self._setup_ui()
 
     def _setup_ui(self):
-        self.setFrameStyle(QFrame.StyledPanel | QFrame.Raised)
         layout = QVBoxLayout(self)
         self.setLayout(layout)
         layout.setSpacing(2)

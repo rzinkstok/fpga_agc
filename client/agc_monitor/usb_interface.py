@@ -74,7 +74,7 @@ class USBInterface(QObject):
             self._enqueue_poll_msgs()
             while not self._tx_queue.empty():
                 msg = self._tx_queue.get_nowait()
-                packed_msg = um.pack(msg)
+                packed_msg = msg.pack()
                 slipped_msg = slip(packed_msg)
                 try:
                     self._dev.write(slipped_msg)
@@ -94,7 +94,7 @@ class USBInterface(QObject):
                     break
 
                 try:
-                    msg = um.unpack(msg_bytes)
+                    msg = um.message_factory(msg_bytes)
                 except:
                     warnings.warn('Unknown message %s' % msg_bytes)
                     continue

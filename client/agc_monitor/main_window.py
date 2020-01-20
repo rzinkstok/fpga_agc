@@ -47,35 +47,37 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+
+    # Apollo font style
+    fontfamily = "Futura Std"
+    fontsize = 10
     if sys.platform == "darwin":
-        font = QFont("Futura Std")
-        font.setBold(False)
-        font.setPointSize(12)
+        fontsize += 2
     else:
-        font = QFont("Futura Std Medium")
-        font.setBold(False)
-        font.setPointSize(10)
-
+        fontfamily += " Medium"
+    font = QFont(fontfamily)
+    font.setBold(False)
+    font.setPointSize(fontsize)
     fontinfo = QFontInfo(font)
-    print("Exact match:", fontinfo.exactMatch())
-    print("Family:", fontinfo.family())
+    print("Selected font family:", fontinfo.family())
     print("Point size:", fontinfo.pointSize())
-    print("Bold:", fontinfo.bold())
-    print("Italic:", fontinfo.italic())
-    print("Weight:", fontinfo.weight())
-    print("Fixed pitch:", fontinfo.fixedPitch())
-
     app.setFont(font)
 
-    palette = QPalette()
-    palette.setColor(QPalette.Window, QColor("#888b8d"))
-    palette.setColor(QPalette.WindowText, QColor("#fff"))
-    palette.setColor(QPalette.Text, QColor("#fff"))
-    palette.setColor(QPalette.ButtonText, QColor("#fff"))
-    palette.setColor(QPalette.PlaceholderText, QColor("#fff"))
-    palette.setColor(QPalette.ToolTipText, QColor("#fff"))
-    palette.setColor(QPalette.HighlightedText, QColor("#fff"))
-    palette.setColor(QPalette.BrightText, QColor("#fff"))
+    # Apollo color palette
+    app.setStyle("Fusion")
+    palette = app.palette()
+    basecolor = QColor("#888b8d")
+    textcolor = QColor("#fff")
+    palette.setColor(QPalette.WindowText, textcolor)
+    palette.setColor(QPalette.Button, basecolor)
+    palette.setColor(QPalette.ButtonText, textcolor)
+    palette.setColor(QPalette.Light, basecolor.lighter(150))
+    palette.setColor(QPalette.Dark, basecolor.darker(150))
+    palette.setColor(QPalette.Mid, basecolor)
+    palette.setColor(QPalette.Text, textcolor)
+    palette.setColor(QPalette.BrightText, textcolor)
+    palette.setColor(QPalette.Base, basecolor.lighter(300))
+    palette.setColor(QPalette.Window, basecolor)
     app.setPalette(palette)
 
     window = MainWindow(None)

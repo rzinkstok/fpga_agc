@@ -1,53 +1,148 @@
-from collections import namedtuple
 import struct
-import slip
+
 
 DATA_FMT = '>BHH'
 READ_FMT = '>BH'
 DATA_FLAG = 0x80
 
 
-def pack(msg):
-    res = globals()['_pack_' + type(msg).__name__](msg)
-    print(" ".join([f"{c:02x}" for c in res]))
-    return res
+"""
+Message
+- 3 or 5 bytes
+- Read/write flag (1 bit)
+- Group (7 bits)
+- Address (16 bits)
+- Data (16 bits, optional)
+
+ReadMessage
+- request data
+- 3 bytes (no data bytes)
+
+WriteMessage
+- write data
+- 5 bytes (includes data bytes)
+
+ResponseMessage
+- response with requested data
+- 5 bytes (includes data bytes)
+
+Sending ReadMessage:
+- get group and address
+- pack into message
+- send
+
+Sending WriteMessage:
+- get group and address
+- get values for attributes
+- pack into message
+- send
+
+Receiving ResponseMessage:
+- Message is received and unpacked
+- Message is converted into correct Message type based on group and address
+- Message signal is emitted
+- All listeners receive signal
+- Listeners check type, ignore when it is not a match for that listener
+- Retrieve values for attributes
 
 
-class WriteControlMNHRPT(object):
-    def __init__(self, mnhrpt):
-        self.mnhrpt = mnhrpt
+Needed:
+- Message classes. Ideally single class per item, that can act in all three roles (Read, Write, Response)
+    - attributes: group, address, data attributes
+    - a data bytes pack function
+    - a data bytes unpack function
+    - a comparison operator
 
-    def __eq__(self, other):
-        return (type(self) == type(other)) and (self.mnhrpt == other.mnhrpt)
+- a generic unpack function (yields group, address, data bytes)
+- a mapping from group/address to Message class for received messages (created automatically from all Message descendants?)
+"""
+
+
+def message_factory(msg_bytes):
+    if len(msg_bytes) != struct.calcsize(DATA_FMT):
+        raise RuntimeError('Cannot unpack data with unexpected length %u' % len(msg_bytes))
+    group, address, data_bytes = struct.unpack(DATA_FMT, msg_bytes)
+
+    return message_map[(group - DATA_FLAG, address)](data=data_bytes)
+     
+
+class Message(object):
+    def __init__(self, data=None, **datadict):
+        self.datadict = {}
+        if data is not None:
+            self.unpack_data(data)
+        elif datadict:    
+            self.datadict = datadict
+        else:
+            self.unpack_data(0)
+                                                                
+    def pack(self):
+        if self.datadict:
+            return struct.pack(DATA_FMT, DATA_FLAG | self.group, self.address, self.pack_data())
+        else:
+            return struct.pack(READ_FMT, self.group, self.address)
+
+    def pack_data(self):
+        return (getattr(self, self.keys[0]) & 0x0001) << 0
+
+    def unpack_data(self, data):
+        setattr(self, self.keys[0], (data >> 0) & 0x0001)
 
     def __repr__(self):
-        return f"{type(self).__name__}(mnhrpt={self.mnhrpt})"
+        return f"{type(self).__name__}(" + ", ".join([f"{x}={self.datadict[x]}" for x in self.keys]) + ")"
 
-    def pack(self):
-        data = 0x0000
-        data |= (self.mnhrpt & 0x0001) << 0
-        return struct.pack(DATA_FMT, DATA_FLAG | AddressGroup.Control, Control.MNHRPT, data)
+    def __eq__(self, other):
+        return (type(self) == type(other)) and (self.datadict == other.datadict)
 
-    def slip(self):
-        return slip.slip(self.pack())
+    def __getattr__(self, key):
+        if key in self.datadict:
+            return self.datadict[key]
+        raise AttributeError
+                      
+    def __setattr__(self, key, value):
+        if key in self.keys:
+            self.datadict[key] = value
+        else:
+            super().__setattr__(key, value)
 
 
+class ControlMessage(Message):
+    group = 0x20
 
-_WriteControlMNHRPT = namedtuple('WriteControlMNHRPT', ['mnhrpt'])
-_WriteControlMNHRPT.__eq__ = lambda a, b: (type(a) is type(b)) and (tuple(a) == tuple(b))
+
+class MonRegMessage(Message):
+    group = 0x21
 
 
-WriteControlMNHNC = namedtuple('WriteControlMNHNC', ['mnhnc'])
-WriteControlMNHNC.__eq__ = lambda a,b: (type(a) is type(b)) and (tuple(a) == tuple(b))
+class ControlMNHRPT(ControlMessage):
+    address = 0x0004
+    keys = ["mnhrpt"]
+               
 
-WriteControlSTRT1 = namedtuple('WriteControlSTRT1', ['strt1'])
-WriteControlSTRT1.__eq__ = lambda a,b: (type(a) is type(b)) and (tuple(a) == tuple(b))
+class ControlMNHNC(ControlMessage):
+    address = 0x0005
+    keys = ["mnhnc"]
 
-WriteControlSTRT2 = namedtuple('WriteControlSTRT2', ['strt2'])
-WriteControlSTRT2.__eq__ = lambda a,b: (type(a) is type(b)) and (tuple(a) == tuple(b))
 
-WriteControlNHALGA = namedtuple('WriteControlNHALGA', ['nhalga'])
-WriteControlNHALGA.__eq__ = lambda a, b: (type(a) is type(b)) and (tuple(a) == tuple(b))
+class ControlNHALGA(ControlMessage):
+    address = 0x0040
+    keys = ["nhalga"]
+
+
+class ControlSTRT1(ControlMessage):
+    address = 0x0041
+    keys = ["strt1"]
+
+
+class ControlSTRT2(ControlMessage):
+    address = 0x0042
+    keys = ["strt2"]
+
+
+# Collect all messages into a dictionary
+subsubclasses = [item for sublist in [sc.__subclasses__() for sc in Message.__subclasses__()] for item in sublist]
+message_map = {(cls.group, cls.address): cls for cls in subsubclasses}
+print(message_map)
 
 
 class AddressGroup(object):
@@ -110,61 +205,3 @@ class Control(object):
     ReadChan = 0x0075
     StartS = 0x0076
     StartPreset = 0x0077
-
-
-def _pack_ReadControlMNHRPT(msg):
-    return _pack_read_msg(AddressGroup.Control, Control.MNHRPT)
-
-
-def _pack_WriteControlMNHRPT(msg):
-    data = 0x0000
-    data |= (msg.mnhrpt & 0x0001) << 0
-    return _pack_write_msg(AddressGroup.Control, Control.MNHRPT, data)
-
-
-def _pack_ReadControlMNHNC(msg):
-    return _pack_read_msg(AddressGroup.Control, Control.MNHNC)
-
-
-def _pack_WriteControlMNHNC(msg):
-    data = 0x0000
-    data |= (msg.mnhnc & 0x0001) << 0
-    return _pack_write_msg(AddressGroup.Control, Control.MNHNC, data)
-
-
-def _pack_ReadControlNHALGA(msg):
-    return _pack_read_msg(AddressGroup.Control, Control.NHALGA)
-
-
-def _pack_WriteControlNHALGA(msg):
-    data = 0x0000
-    data |= (msg.nhalga & 0x0001) << 0
-    return _pack_write_msg(AddressGroup.Control, Control.NHALGA, data)
-
-
-def _pack_ReadControlSTRT1(msg):
-    return _pack_read_msg(AddressGroup.Control, Control.STRT1)
-
-
-def _pack_WriteControlSTRT1(msg):
-    data = 0x0000
-    data |= (msg.strt1 & 0x0001) << 0
-    return _pack_write_msg(AddressGroup.Control, Control.STRT1, data)
-
-
-def _pack_ReadControlSTRT2(msg):
-    return _pack_read_msg(AddressGroup.Control, Control.STRT2)
-
-
-def _pack_WriteControlSTRT2(msg):
-    data = 0x0000
-    data |= (msg.strt2 & 0x0001) << 0
-    return _pack_write_msg(AddressGroup.Control, Control.STRT2, data)
-
-
-def _pack_write_msg(group, addr, data):
-    return struct.pack(DATA_FMT, DATA_FLAG | group, addr, data)
-
-
-def _pack_read_msg(group, addr):
-    return struct.pack(READ_FMT, group, addr)
