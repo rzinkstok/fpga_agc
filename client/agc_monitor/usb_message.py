@@ -58,8 +58,22 @@ Needed:
 """
 
 
+def message_classes():
+    """Collect all classes inheriting from Message that are actual messages, i.e. have a group and address defined."""
+    subclasses = set()
+    work = [Message]
+    while work:
+        parent = work.pop()
+        for child in parent.__subclasses__():
+            if child not in subclasses:
+                work.append(child)
+                if child.group is not None and child.address is not None:
+                    subclasses.add(child)
+    return subclasses
+
+
 def message_factory(msg_bytes):
-    """Returns the correct message class instantiated with the given data."""
+    """Returns the correct message class instance, based on the group and address in the given bytes."""
     if len(msg_bytes) != struct.calcsize(DATA_FMT):
         raise RuntimeError('Cannot unpack data with unexpected length %u' % len(msg_bytes))
 
@@ -70,6 +84,20 @@ def message_factory(msg_bytes):
      
 
 class Message(object):
+    """Base class for all messages.
+
+    Class variables:
+    - group: the address group for the message class
+    - address: the address for the message class
+    - keys: the data properties belonging to the message
+    - bitshift: the bit shift values for each data property, for packing and unpacking data
+    - mask: the mask values for each data property, for packing and unpacking data
+
+    These class variables can be set and overridden anywhere in the class hierarchy.
+    """
+    group = None
+    address = None
+
     def __init__(self, data=None, **datadict):
         self.__dict__["datadict"] = {}
         if data is not None:
@@ -79,22 +107,29 @@ class Message(object):
                 setattr(self, k, v)
 
     def pack(self):
+        """"Returns the message bytes."""
         if self.datadict:
             return struct.pack(DATA_FMT, DATA_FLAG | self.group, self.address, self._pack_data())
         else:
             return struct.pack(READ_FMT, self.group, self.address)
 
     def _pack_data(self):
-        return (getattr(self, self.keys[0]) & 0x0001) << 0
+        """Returns the message data, ready for packing."""
+        data = 0x0000
+        for i, k in enumerate(self.keys):
+            data |= (getattr(self, k) & self.mask[i]) << self.bitshift[i]
+        return data
 
     def _unpack_data(self, data):
-        setattr(self, self.keys[0], (data >> 0) & 0x0001)
+        """Extracts the message data from the unpacked bytes."""
+        for i, k in enumerate(self.keys):
+            setattr(self, k, (data >> self.bitshift[i]) & self.mask[i])
 
     def __repr__(self):
+        data = ""
         if self.datadict:
-            return f"{type(self).__name__}(" + ", ".join([f"{x}={self.datadict[x]}" for x in self.keys]) + ")"
-        else:
-            return f"{type(self).__name__}()"
+            data = ", ".join([f"{x}={self.datadict[x]}" for x in self.keys])
+        return f"{type(self).__name__}({data})"
 
     def __eq__(self, other):
         return (type(self) == type(other)) and (self.datadict == other.datadict)
@@ -113,10 +148,8 @@ class Message(object):
 
 class ControlMessage(Message):
     group = 0x20
-
-
-class MonRegMessage(Message):
-    group = 0x21
+    bitshift = (0,)
+    mask = (0x0001,)
 
 
 class ControlMNHRPT(ControlMessage):
@@ -144,6 +177,39 @@ class ControlSTRT2(ControlMessage):
     keys = ["strt2"]
 
 
-# Collect all messages into a dictionary
-subsubclasses = [item for sublist in [sc.__subclasses__() for sc in Message.__subclasses__()] for item in sublist]
-message_map = {(cls.group, cls.address): cls for cls in subsubclasses}
+class MonRegMessage(Message):
+    group = 0x21
+    bitshift = (0,)
+    mask = (0xFFFF,)
+
+
+class MonRegA(MonRegMessage):
+    address = 0x0000
+    keys = ["a"]
+
+
+class MonRegL(MonRegMessage):
+    address = 0x0001
+    keys = ["l"]
+
+
+class MonRegQ(MonRegMessage):
+    address = 0x0002
+    keys = ["q"]
+
+
+class MonRegZ(MonRegMessage):
+    address = 0x0003
+    keys = ["z"]
+
+
+class MonRegBB(MonRegMessage):
+    address = 0x0004
+    keys = ["eb", "fb"]
+    bitshift = (0, 10)
+    mask = (0x0007, 0x001F)
+
+
+# Construct the message map used in the message factory
+message_map = {(cls.group, cls.address): cls for cls in message_classes()}
+print(message_map)
