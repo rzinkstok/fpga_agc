@@ -76,7 +76,7 @@ if __name__ == '__main__':
     palette.setColor(QPalette.Mid, basecolor)
     palette.setColor(QPalette.Text, textcolor)
     palette.setColor(QPalette.BrightText, textcolor)
-    palette.setColor(QPalette.Base, basecolor.lighter(300))
+    palette.setColor(QPalette.Base, basecolor.lighter(150))
     palette.setColor(QPalette.Window, basecolor)
     app.setPalette(palette)
 

@@ -55,7 +55,6 @@ class USBInterface(QObject):
         self.msg_sent.emit(msg)
 
     def send_msg(self, msg):
-        print("Send", msg)
         self._tx_queue.put(msg)
 
     def poll(self, msg):
@@ -74,6 +73,7 @@ class USBInterface(QObject):
             self._enqueue_poll_msgs()
             while not self._tx_queue.empty():
                 msg = self._tx_queue.get_nowait()
+                print("Send", msg)
                 packed_msg = msg.pack()
                 slipped_msg = slip(packed_msg)
                 try:

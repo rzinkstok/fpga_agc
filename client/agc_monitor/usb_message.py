@@ -145,6 +145,12 @@ class Message(object):
         else:
             raise AttributeError
 
+    def __getitem__(self, arg):
+        if isinstance(arg, slice):
+            return [self.datadict[k] for k in self.keys[arg]]
+        else:
+            return self.datadict[self.keys[arg]]
+
 
 class ControlMessage(Message):
     group = 0x20
@@ -160,6 +166,25 @@ class ControlMNHRPT(ControlMessage):
 class ControlMNHNC(ControlMessage):
     address = 0x0005
     keys = ["mnhnc"]
+
+
+class ControlWComparatorValue(ControlMessage):
+    address = 0x0011
+    keys = ["value"]
+    mask = (0xFFFF,)
+
+
+class ControlWComparatorIgnore(ControlMessage):
+    address = 0x0012
+    keys = ["ignore"]
+    mask = (0xFFFF,)
+
+
+class ControlWComparatorParity(ControlMessage):
+    address = 0x0013
+    keys = ["parity", "ignore"]
+    mask = (0x0003, 0x0003)
+    bitshift = (0, 2)
 
 
 class ControlNHALGA(ControlMessage):
@@ -208,6 +233,39 @@ class MonRegBB(MonRegMessage):
     keys = ["eb", "fb"]
     bitshift = (0, 10)
     mask = (0x0007, 0x001F)
+
+
+class MonRegS(MonRegMessage):
+    address = 0x0006
+    keys = ["s"]
+    mask = (0x0FFF,)
+
+class MonRegG(MonRegMessage):
+    address = 0x0007
+    keys = ["g"]
+
+
+class MonRegW(MonRegMessage):
+    address = 0x0040
+    keys = ["w"]
+
+
+class MonRegParity(MonRegMessage):
+    address = 0x000C
+    keys = ["g_gp", "g_sp", "w_gp", "w_sp"]
+    bitshift = (0, 1, 2, 3)
+    mask = (0x0001, 0x0001, 0x0001, 0x0001)
+
+
+class MonChanMessage(Message):
+    group = 0x22
+
+
+class MonChanFEXT(MonChanMessage):
+    address = 0x0007
+    keys = ["fext"]
+    bitshift = (4,)
+    mask = 0x0007
 
 
 # Construct the message map used in the message factory

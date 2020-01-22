@@ -29,6 +29,12 @@ class Indicator(QWidget):
         d = min(w, h) * 0.9
         r = d/2
 
+        if False:
+            p.drawLine(0, 0, w, 0)
+            p.drawLine(w, 0, w, h)
+            p.drawLine(w, h, 0, h)
+            p.drawLine(0, h, 0, 0)
+
         # Locate the center of the indicator circle
         center = QPointF(w/2, h/2)
 
@@ -81,7 +87,7 @@ class LabelIndicator(QFrame):
             self.switch.stateChanged.connect(self._indicator.set_on)
 
             self.switch.setFixedSize(20, 20)
-            self.switch.setStyleSheet('QCheckBox::indicator{subcontrol-position:center;}')
+            self.switch.setStyleSheet('QCheckBox::indicator{ subcontrol-position:center; } QCheckBox { color: #666; }')
             layout.addWidget(self.switch)
             layout.setAlignment(self.switch, Qt.AlignCenter)
         else:
