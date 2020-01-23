@@ -3,6 +3,16 @@
 module agc_monitor_tb(
 );
 
+	reg [12:1] mt = 0;
+	reg [16:1] mwl = 0;
+	reg MONWT = 0;
+	reg MRULOG = 0;
+	reg MWAG = 0;
+	reg MWBG = 0;
+	reg MWLG = 0;
+	reg MWQG = 0;
+	reg MWYG = 0;
+	reg MWZG = 0;
 	reg clk = 0;
 	reg clkout = 0;
 	reg reset = 0;
@@ -40,6 +50,16 @@ module agc_monitor_tb(
 		wr_n,
 		oe_n,
 		siwu,
+		MONWT,
+		 mt,
+		 mwl,
+		MWAG,
+		MWLG,
+		MWQG,
+		MWZG,
+		MWBG,
+		MWYG,
+		MRULOG,
 		MNHRPT,
 		NHALGA,
 		leds,

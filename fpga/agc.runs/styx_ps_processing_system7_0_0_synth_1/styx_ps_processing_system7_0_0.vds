@@ -1,27 +1,31 @@
 #-----------------------------------------------------------
 # Vivado v2019.1 (64-bit)
-# SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Sun Jan  5 10:31:06 2020
-# Process ID: 3630
-# Current directory: /home/rzinkstok/fpga_agc/agc.runs/styx_ps_processing_system7_0_0_synth_1
-# Command line: vivado -log styx_ps_processing_system7_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source styx_ps_processing_system7_0_0.tcl
-# Log file: /home/rzinkstok/fpga_agc/agc.runs/styx_ps_processing_system7_0_0_synth_1/styx_ps_processing_system7_0_0.vds
-# Journal file: /home/rzinkstok/fpga_agc/agc.runs/styx_ps_processing_system7_0_0_synth_1/vivado.jou
+# Start of session at: Thu Jan 23 14:42:08 2020
+# Process ID: 20384
+# Current directory: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/styx_ps_processing_system7_0_0_synth_1
+# Command line: vivado.exe -log styx_ps_processing_system7_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source styx_ps_processing_system7_0_0.tcl
+# Log file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/styx_ps_processing_system7_0_0_synth_1/styx_ps_processing_system7_0_0.vds
+# Journal file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/styx_ps_processing_system7_0_0_synth_1\vivado.jou
 #-----------------------------------------------------------
 source styx_ps_processing_system7_0_0.tcl -notrace
+WARNING: [IP_Flow 19-5242] IP Cache entry (cache-ID 2e31686541080ca6) does not have the required number of cached files and is not valid. Please delete this entry using the TCL command: 'config_ip_cache -remove [get_ips styx_ps_processing_system7_0_0]'
 Command: synth_design -top styx_ps_processing_system7_0_0 -part xc7z020clg484-1 -mode out_of_context
 Starting synth_design
+WARNING: [Vivado_Tcl 4-393] The 'Synthesis' target of the following IPs are stale, please generate the output products using the generate_target or synth_ip command before running synth_design.
+C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xci
+
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 3660 
+INFO: Helper process launched with PID 10324 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1709.031 ; gain = 153.715 ; free physical = 5905 ; free virtual = 10342
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 752.211 ; gain = 177.402
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'styx_ps_processing_system7_0_0' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/synth/styx_ps_processing_system7_0_0.v:60]
-INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_system7' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:161]
+INFO: [Synth 8-6157] synthesizing module 'styx_ps_processing_system7_0_0' [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/synth/styx_ps_processing_system7_0_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_system7' [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:156]
 	Parameter C_USE_DEFAULT_ACP_USER_VAL bound to: 0 - type: integer 
 	Parameter C_S_AXI_ACP_ARUSER_VAL bound to: 31 - type: integer 
 	Parameter C_S_AXI_ACP_AWUSER_VAL bound to: 31 - type: integer 
@@ -78,17 +82,17 @@ INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_sys
 	Parameter C_USE_S_AXI_ACP bound to: 0 - type: integer 
 	Parameter C_GP0_EN_MODIFIABLE_TXN bound to: 1 - type: integer 
 	Parameter C_GP1_EN_MODIFIABLE_TXN bound to: 1 - type: integer 
-INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1347]
-INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1348]
-INFO: [Synth 8-6157] synthesizing module 'BUFG' [/tools/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
-INFO: [Synth 8-6155] done synthesizing module 'BUFG' (1#1) [/tools/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
-INFO: [Synth 8-6157] synthesizing module 'BIBUF' [/tools/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
-INFO: [Synth 8-6155] done synthesizing module 'BIBUF' (2#1) [/tools/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
-INFO: [Synth 8-6157] synthesizing module 'PS7' [/tools/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
-INFO: [Synth 8-6155] done synthesizing module 'PS7' (3#1) [/tools/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
-INFO: [Synth 8-6155] done synthesizing module 'processing_system7_v5_5_processing_system7' (4#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:161]
-WARNING: [Synth 8-7023] instance 'inst' of module 'processing_system7_v5_5_processing_system7' has 685 connections declared, but only 672 given [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/synth/styx_ps_processing_system7_0_0.v:200]
-INFO: [Synth 8-6155] done synthesizing module 'styx_ps_processing_system7_0_0' (5#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/synth/styx_ps_processing_system7_0_0.v:60]
+INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1342]
+INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1343]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (1#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6157] synthesizing module 'BIBUF' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
+INFO: [Synth 8-6155] done synthesizing module 'BIBUF' (2#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
+INFO: [Synth 8-6157] synthesizing module 'PS7' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
+INFO: [Synth 8-6155] done synthesizing module 'PS7' (3#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
+INFO: [Synth 8-6155] done synthesizing module 'processing_system7_v5_5_processing_system7' (4#1) [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:156]
+WARNING: [Synth 8-7023] instance 'inst' of module 'processing_system7_v5_5_processing_system7' has 685 connections declared, but only 672 given [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/synth/styx_ps_processing_system7_0_0.v:197]
+INFO: [Synth 8-6155] done synthesizing module 'styx_ps_processing_system7_0_0' (5#1) [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/synth/styx_ps_processing_system7_0_0.v:57]
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port ENET0_GMII_COL
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port ENET0_GMII_CRS
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port ENET0_GMII_RX_DV
@@ -169,7 +173,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FTMD_TRACEIN_ATID[1]
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FTMD_TRACEIN_ATID[0]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1767.750 ; gain = 212.434 ; free physical = 5931 ; free virtual = 10370
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 821.859 ; gain = 247.051
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -182,47 +186,47 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1770.719 ; gain = 215.402 ; free physical = 5929 ; free virtual = 10369
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 821.859 ; gain = 247.051
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1770.719 ; gain = 215.402 ; free physical = 5929 ; free virtual = 10369
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 821.859 ; gain = 247.051
 ---------------------------------------------------------------------------------
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xdc] for cell 'inst'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xdc] for cell 'inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/styx_ps_processing_system7_0_0_propImpl.xdc].
+Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xdc] for cell 'inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/styx_ps_processing_system7_0_0_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/styx_ps_processing_system7_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [/home/rzinkstok/fpga_agc/agc.runs/styx_ps_processing_system7_0_0_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/agc.runs/styx_ps_processing_system7_0_0_synth_1/dont_touch.xdc]
+Parsing XDC File [C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/styx_ps_processing_system7_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/styx_ps_processing_system7_0_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1821.414 ; gain = 0.000 ; free physical = 5817 ; free virtual = 10273
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 867.922 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 1824.383 ; gain = 2.969 ; free physical = 5816 ; free virtual = 10272
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.031 . Memory (MB): peak = 869.973 ; gain = 2.051
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1824.383 ; gain = 269.066 ; free physical = 5886 ; free virtual = 10343
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 869.973 ; gain = 295.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1824.383 ; gain = 269.066 ; free physical = 5886 ; free virtual = 10343
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 869.973 ; gain = 295.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for inst. (constraint file  /home/rzinkstok/fpga_agc/agc.runs/styx_ps_processing_system7_0_0_synth_1/dont_touch.xdc, line 9).
+Applied set_property DONT_TOUCH = true for inst. (constraint file  C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/styx_ps_processing_system7_0_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1824.383 ; gain = 269.066 ; free physical = 5890 ; free virtual = 10347
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 869.973 ; gain = 295.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:18 . Memory (MB): peak = 1824.383 ; gain = 269.066 ; free physical = 5889 ; free virtual = 10347
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 869.973 ; gain = 295.164
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -280,7 +284,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port ENET1_GMII_RXD[3]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1824.383 ; gain = 269.066 ; free physical = 5877 ; free virtual = 10338
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 869.973 ; gain = 295.164
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -292,13 +296,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:27 . Memory (MB): peak = 2000.383 ; gain = 445.066 ; free physical = 5594 ; free virtual = 10063
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1050.504 ; gain = 475.695
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:28 . Memory (MB): peak = 2019.391 ; gain = 464.074 ; free physical = 5581 ; free virtual = 10050
+Finished Timing Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1070.574 ; gain = 495.766
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -310,7 +314,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:29 . Memory (MB): peak = 2027.398 ; gain = 472.082 ; free physical = 5580 ; free virtual = 10048
+Finished Technology Mapping : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1075.609 ; gain = 500.801
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -334,7 +338,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:31 . Memory (MB): peak = 2038.305 ; gain = 482.988 ; free physical = 5579 ; free virtual = 10048
+Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1090.680 ; gain = 515.871
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -347,7 +351,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:31 . Memory (MB): peak = 2038.305 ; gain = 482.988 ; free physical = 5579 ; free virtual = 10048
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1090.680 ; gain = 515.871
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -359,25 +363,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:31 . Memory (MB): peak = 2038.305 ; gain = 482.988 ; free physical = 5579 ; free virtual = 10048
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1090.680 ; gain = 515.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:31 . Memory (MB): peak = 2038.305 ; gain = 482.988 ; free physical = 5579 ; free virtual = 10048
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1090.680 ; gain = 515.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:31 . Memory (MB): peak = 2038.305 ; gain = 482.988 ; free physical = 5579 ; free virtual = 10048
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1090.680 ; gain = 515.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:23 ; elapsed = 00:00:31 . Memory (MB): peak = 2038.305 ; gain = 482.988 ; free physical = 5579 ; free virtual = 10048
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1090.680 ; gain = 515.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -407,31 +411,30 @@ Report Instance Areas:
 |2     |  inst   |processing_system7_v5_5_processing_system7 |   244|
 +------+---------+-------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:31 . Memory (MB): peak = 2038.305 ; gain = 482.988 ; free physical = 5579 ; free virtual = 10048
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1090.680 ; gain = 515.871
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 79 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:28 . Memory (MB): peak = 2038.305 ; gain = 429.324 ; free physical = 5635 ; free virtual = 10104
-Synthesis Optimization Complete : Time (s): cpu = 00:00:23 ; elapsed = 00:00:31 . Memory (MB): peak = 2038.312 ; gain = 482.988 ; free physical = 5641 ; free virtual = 10110
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:33 . Memory (MB): peak = 1090.680 ; gain = 467.758
+Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1090.680 ; gain = 515.871
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2052.180 ; gain = 0.000 ; free physical = 5575 ; free virtual = 10044
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1112.441 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-23 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
+23 Infos, 103 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:38 . Memory (MB): peak = 2052.180 ; gain = 647.438 ; free physical = 5811 ; free virtual = 10280
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2052.180 ; gain = 0.000 ; free physical = 5811 ; free virtual = 10280
+synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1112.441 ; gain = 810.695
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1112.441 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/agc.runs/styx_ps_processing_system7_0_0_synth_1/styx_ps_processing_system7_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/styx_ps_processing_system7_0_0_synth_1/styx_ps_processing_system7_0_0.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP styx_ps_processing_system7_0_0, cache-ID = 2e31686541080ca6
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2068.188 ; gain = 0.000 ; free physical = 5815 ; free virtual = 10285
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1112.441 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/agc.runs/styx_ps_processing_system7_0_0_synth_1/styx_ps_processing_system7_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/styx_ps_processing_system7_0_0_synth_1/styx_ps_processing_system7_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file styx_ps_processing_system7_0_0_utilization_synth.rpt -pb styx_ps_processing_system7_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Jan  5 10:31:56 2020...
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 23 14:43:08 2020...

@@ -156,6 +156,8 @@ module toplevel(
 	input wire reset
 );
 
+	reg [12:1] mt = 0;
+	reg [16:1] mwl = 0;
 	reg BLKUPL_ = 1;
 	reg BMGXM = 0;
 	reg BMGXP = 0;
@@ -413,6 +415,16 @@ module toplevel(
 		wr_n,
 		oe_n,
 		siwu,
+		MONWT,
+		 mt,
+		 mwl,
+		MWAG,
+		MWLG,
+		MWQG,
+		MWZG,
+		MWBG,
+		MWYG,
+		MRULOG,
 		MNHRPT,
 		NHALGA,
 		leds,

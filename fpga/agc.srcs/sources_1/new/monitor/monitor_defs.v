@@ -71,3 +71,19 @@
 `define CTRL_REG_READ_CHAN    16'h75
 `define CTRL_REG_START_S      16'h76
 `define CTRL_REG_START_PRESET 16'h77
+
+// Monitor AGC Register Mirrors
+`define MON_REG_A      16'h00
+`define MON_REG_L      16'h01
+`define MON_REG_Q      16'h02
+`define MON_REG_Z      16'h03
+`define MON_REG_BB     16'h04
+`define MON_REG_B      16'h05
+`define MON_REG_S      16'h06
+`define MON_REG_G      16'h07
+`define MON_REG_Y      16'h08
+`define MON_REG_U      16'h09
+`define MON_REG_I      16'h0A
+`define MON_REG_STATUS 16'h0B
+`define MON_REG_PAR    16'h0C
+`define MON_REG_W      16'h40

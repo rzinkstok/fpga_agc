@@ -1,26 +1,27 @@
 #-----------------------------------------------------------
 # Vivado v2019.1 (64-bit)
-# SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Mon Jan 13 22:15:42 2020
-# Process ID: 7042
-# Current directory: /home/rzinkstok/fpga_agc/agc.runs/read_byte_fifo_synth_1
-# Command line: vivado -log read_byte_fifo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source read_byte_fifo.tcl
-# Log file: /home/rzinkstok/fpga_agc/agc.runs/read_byte_fifo_synth_1/read_byte_fifo.vds
-# Journal file: /home/rzinkstok/fpga_agc/agc.runs/read_byte_fifo_synth_1/vivado.jou
+# Start of session at: Thu Jan 23 14:43:03 2020
+# Process ID: 9936
+# Current directory: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/read_byte_fifo_synth_1
+# Command line: vivado.exe -log read_byte_fifo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source read_byte_fifo.tcl
+# Log file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/read_byte_fifo_synth_1/read_byte_fifo.vds
+# Journal file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/read_byte_fifo_synth_1\vivado.jou
 #-----------------------------------------------------------
 source read_byte_fifo.tcl -notrace
+WARNING: [IP_Flow 19-5242] IP Cache entry (cache-ID 25c602e32d893d19) does not have the required number of cached files and is not valid. Please delete this entry using the TCL command: 'config_ip_cache -remove [get_ips read_byte_fifo]'
 Command: synth_design -top read_byte_fifo -part xc7z020clg484-1 -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 7064 
+INFO: Helper process launched with PID 1832 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:15 . Memory (MB): peak = 1704.027 ; gain = 149.715 ; free physical = 6804 ; free virtual = 10919
+Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 747.676 ; gain = 177.215
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'read_byte_fifo' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/synth/read_byte_fifo.vhd:76]
+INFO: [Synth 8-638] synthesizing module 'read_byte_fifo' [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/synth/read_byte_fifo.vhd:76]
 	Parameter C_COMMON_CLOCK bound to: 0 - type: integer 
 	Parameter C_SELECT_XPM bound to: 0 - type: integer 
 	Parameter C_COUNT_TYPE bound to: 0 - type: integer 
@@ -223,17 +224,17 @@ INFO: [Synth 8-638] synthesizing module 'read_byte_fifo' [/home/rzinkstok/fpga_a
 	Parameter C_REG_SLICE_MODE_RACH bound to: 0 - type: integer 
 	Parameter C_REG_SLICE_MODE_RDCH bound to: 0 - type: integer 
 	Parameter C_REG_SLICE_MODE_AXIS bound to: 0 - type: integer 
-INFO: [Synth 8-3491] module 'fifo_generator_v13_2_4' declared at '/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/hdl/fifo_generator_v13_2_vhsyn_rfs.vhd:38586' bound to instance 'U0' of component 'fifo_generator_v13_2_4' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/synth/read_byte_fifo.vhd:547]
-INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_sync_rst' [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
-INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1111]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_sync_rst' (1#1) [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
-INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_single' [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:153]
-INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:205]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_single' (2#1) [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:153]
-INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray' [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
-INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:358]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray' (16#1) [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
-INFO: [Synth 8-256] done synthesizing module 'read_byte_fifo' (31#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/synth/read_byte_fifo.vhd:76]
+INFO: [Synth 8-3491] module 'fifo_generator_v13_2_4' declared at 'c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/hdl/fifo_generator_v13_2_vhsyn_rfs.vhd:38586' bound to instance 'U0' of component 'fifo_generator_v13_2_4' [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/synth/read_byte_fifo.vhd:547]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_sync_rst' [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1111]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_sync_rst' (1#1) [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_single' [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:153]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:205]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_single' (2#1) [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:153]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray' [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:358]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray' (16#1) [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-256] done synthesizing module 'read_byte_fifo' (31#1) [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/synth/read_byte_fifo.vhd:76]
 WARNING: [Synth 8-3331] design wr_status_flags_as has unconnected port WR_RST
 WARNING: [Synth 8-3331] design wr_status_flags_as has unconnected port RST_FULL_FF
 WARNING: [Synth 8-3331] design wr_status_flags_as has unconnected port SAFETY_CKT_WR_RST
@@ -336,7 +337,7 @@ WARNING: [Synth 8-3331] design rd_logic has unconnected port WR_PNTR_PLUS1_RD[1]
 WARNING: [Synth 8-3331] design rd_logic has unconnected port WR_PNTR_PLUS1_RD[0]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:01:10 ; elapsed = 00:01:26 . Memory (MB): peak = 1931.043 ; gain = 376.730 ; free physical = 6790 ; free virtual = 10907
+Finished RTL Elaboration : Time (s): cpu = 00:01:13 ; elapsed = 00:01:19 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -349,10 +350,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:10 ; elapsed = 00:01:27 . Memory (MB): peak = 1945.887 ; gain = 391.574 ; free physical = 6798 ; free virtual = 10914
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:13 ; elapsed = 00:01:19 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:10 ; elapsed = 00:01:27 . Memory (MB): peak = 1945.887 ; gain = 391.574 ; free physical = 6798 ; free virtual = 10914
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:13 ; elapsed = 00:01:19 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 48 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -360,51 +361,51 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_ooc.xdc] for cell 'U0'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_ooc.xdc] for cell 'U0'
-Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo.xdc] for cell 'U0'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo.xdc] for cell 'U0'
-Parsing XDC File [/home/rzinkstok/fpga_agc/agc.runs/read_byte_fifo_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/agc.runs/read_byte_fifo_synth_1/dont_touch.xdc]
-Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_clocks.xdc] for cell 'U0'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_clocks.xdc] for cell 'U0'
-Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst'
-Finished Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst'
-Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst'
-Finished Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/read_byte_fifo_propImpl.xdc].
+Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_ooc.xdc] for cell 'U0'
+Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo.xdc] for cell 'U0'
+Parsing XDC File [C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/read_byte_fifo_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/read_byte_fifo_synth_1/dont_touch.xdc]
+Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_clocks.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_clocks.xdc] for cell 'U0'
+Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/read_byte_fifo_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/read_byte_fifo_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_rrst_wr'
-Finished Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_rrst_wr'
-Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_wrst_rd'
-Finished Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_wrst_rd'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/read_byte_fifo_propImpl.xdc].
+Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_rrst_wr'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_rrst_wr'
+Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_wrst_rd'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_wrst_rd'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/read_byte_fifo_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/read_byte_fifo_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_sync_rst_inst_wrst'
-Finished Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_sync_rst_inst_wrst'
-Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.xpm_cdc_sync_rst_inst_wrst'
-Finished Sourcing Tcl File [/tools/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.xpm_cdc_sync_rst_inst_wrst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_sync_rst_inst_wrst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_sync_rst_inst_wrst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.xpm_cdc_sync_rst_inst_wrst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.xpm_cdc_sync_rst_inst_wrst'
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2010.613 ; gain = 0.000 ; free physical = 6712 ; free virtual = 10829
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1042.406 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2010.613 ; gain = 0.000 ; free physical = 6711 ; free virtual = 10828
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.042 . Memory (MB): peak = 1042.406 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:16 ; elapsed = 00:01:33 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6788 ; free virtual = 10905
+Finished Constraint Validation : Time (s): cpu = 00:01:19 ; elapsed = 00:01:25 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:16 ; elapsed = 00:01:33 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6788 ; free virtual = 10905
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:19 ; elapsed = 00:01:25 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for U0. (constraint file  /home/rzinkstok/fpga_agc/agc.runs/read_byte_fifo_synth_1/dont_touch.xdc, line 9).
+Applied set_property DONT_TOUCH = true for U0. (constraint file  C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/read_byte_fifo_synth_1/dont_touch.xdc, line 9).
 Applied set_property DONT_TOUCH = true for U0/inst_fifo_gen/\gconvfifo.rf /\grf.rf /\gntv_or_sync_fifo.gcx.clkx /rd_pntr_cdc_inst. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for U0/inst_fifo_gen/\gconvfifo.rf /\grf.rf /\gntv_or_sync_fifo.gcx.clkx /wr_pntr_cdc_inst. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for U0/inst_fifo_gen/\gconvfifo.rf /\grf.rf /rstblk/\ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_rrst_wr . (constraint file  auto generated constraint, line ).
@@ -412,10 +413,10 @@ Applied set_property DONT_TOUCH = true for U0/inst_fifo_gen/\gconvfifo.rf /\grf.
 Applied set_property DONT_TOUCH = true for U0/inst_fifo_gen/\gconvfifo.rf /\grf.rf /rstblk/\ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_sync_rst_inst_wrst . (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for U0/inst_fifo_gen/\gconvfifo.rf /\grf.rf /rstblk/\ngwrdrst.grst.g7serrst.gsckt_wrst.xpm_cdc_sync_rst_inst_wrst . (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:16 ; elapsed = 00:01:34 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6788 ; free virtual = 10905
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:19 ; elapsed = 00:01:25 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:17 ; elapsed = 00:01:35 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6781 ; free virtual = 10898
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:20 ; elapsed = 00:01:26 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -699,7 +700,7 @@ INFO: [Synth 8-3886] merging instance 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv
 INFO: [Synth 8-3886] merging instance 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg' (FD) to 'U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg'
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:18 ; elapsed = 00:01:36 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6764 ; free virtual = 10889
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:21 ; elapsed = 00:01:27 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -711,13 +712,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:23 ; elapsed = 00:01:41 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6645 ; free virtual = 10770
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:29 ; elapsed = 00:01:35 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:23 ; elapsed = 00:01:41 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6645 ; free virtual = 10770
+Finished Timing Optimization : Time (s): cpu = 00:01:29 ; elapsed = 00:01:35 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -729,7 +730,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:23 ; elapsed = 00:01:41 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6643 ; free virtual = 10768
+Finished Technology Mapping : Time (s): cpu = 00:01:29 ; elapsed = 00:01:35 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -754,7 +755,7 @@ INFO: [Synth 8-6064] Net \inst_fifo_gen/gconvfifo.rf/grf.rf/p_20_out  is driving
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:24 ; elapsed = 00:01:42 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6641 ; free virtual = 10766
+Finished IO Insertion : Time (s): cpu = 00:01:31 ; elapsed = 00:01:37 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -767,7 +768,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:24 ; elapsed = 00:01:42 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6641 ; free virtual = 10766
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:31 ; elapsed = 00:01:37 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -779,25 +780,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:25 ; elapsed = 00:01:42 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6641 ; free virtual = 10766
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:31 ; elapsed = 00:01:37 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:25 ; elapsed = 00:01:42 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6641 ; free virtual = 10766
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:31 ; elapsed = 00:01:37 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:25 ; elapsed = 00:01:42 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6641 ; free virtual = 10766
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:31 ; elapsed = 00:01:37 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:25 ; elapsed = 00:01:42 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6641 ; free virtual = 10766
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:31 ; elapsed = 00:01:37 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -894,35 +895,34 @@ Report Instance Areas:
 |46    |            \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.xpm_cdc_single_inst_rrst_wr  |xpm_cdc_single                           |     5|
 +------+------------------------------------------------------------------------------------+-----------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:25 ; elapsed = 00:01:42 . Memory (MB): peak = 2010.613 ; gain = 456.301 ; free physical = 6641 ; free virtual = 10767
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:31 ; elapsed = 00:01:37 . Memory (MB): peak = 1042.406 ; gain = 471.945
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 507 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:22 ; elapsed = 00:01:40 . Memory (MB): peak = 2010.613 ; gain = 391.574 ; free physical = 6693 ; free virtual = 10818
-Synthesis Optimization Complete : Time (s): cpu = 00:01:25 ; elapsed = 00:01:43 . Memory (MB): peak = 2010.621 ; gain = 456.301 ; free physical = 6693 ; free virtual = 10818
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:01:35 . Memory (MB): peak = 1042.406 ; gain = 471.945
+Synthesis Optimization Complete : Time (s): cpu = 00:01:31 ; elapsed = 00:01:37 . Memory (MB): peak = 1042.406 ; gain = 471.945
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 56 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2010.621 ; gain = 0.000 ; free physical = 6641 ; free virtual = 10766
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1042.406 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 8 instances were transformed.
   (MUXCY,XORCY) => CARRY4: 8 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-130 Infos, 100 Warnings, 0 Critical Warnings and 0 Errors encountered.
+130 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:30 ; elapsed = 00:01:47 . Memory (MB): peak = 2010.621 ; gain = 608.852 ; free physical = 6739 ; free virtual = 10864
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2010.621 ; gain = 0.000 ; free physical = 6739 ; free virtual = 10864
+synth_design: Time (s): cpu = 00:01:37 ; elapsed = 00:01:45 . Memory (MB): peak = 1042.406 ; gain = 742.895
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1042.406 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/agc.runs/read_byte_fifo_synth_1/read_byte_fifo.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/read_byte_fifo_synth_1/read_byte_fifo.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP read_byte_fifo, cache-ID = 25c602e32d893d19
 INFO: [Coretcl 2-1174] Renamed 45 cell refs.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2034.625 ; gain = 0.000 ; free physical = 6738 ; free virtual = 10865
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1042.406 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/agc.runs/read_byte_fifo_synth_1/read_byte_fifo.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/read_byte_fifo_synth_1/read_byte_fifo.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file read_byte_fifo_utilization_synth.rpt -pb read_byte_fifo_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Jan 13 22:17:40 2020...
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 23 15:01:52 2020...
