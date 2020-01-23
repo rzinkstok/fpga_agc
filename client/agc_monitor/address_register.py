@@ -74,7 +74,7 @@ class AddressRegister(QWidget):
         label_value_layout = QHBoxLayout(label_value_widget)
         label_value_layout.setSpacing(3)
         label_value_layout.setMargin(1)
-        #label_value_layout.setContentsMargins(0, 32, 0, 0)
+        label_value_layout.setContentsMargins(0, 24, 0, 0)
         label_value_widget.setLayout(label_value_layout)
         layout.addWidget(label_value_widget)
 

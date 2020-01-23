@@ -16,8 +16,34 @@ module agc_monitor(
 
     // AGC signals
     input wire MONWT,
-    input wire [12:1] mt,
-    input wire [16:1] mwl,
+    input wire MT01,
+    input wire MT02,
+    input wire MT03,
+    input wire MT04,
+    input wire MT05,
+    input wire MT06,
+    input wire MT07,
+    input wire MT08,
+    input wire MT09,
+    input wire MT10,
+    input wire MT11,
+    input wire MT12,
+    input wire MWL01,
+    input wire MWL02,
+    input wire MWL03,
+    input wire MWL04,
+    input wire MWL05,
+    input wire MWL06,
+    input wire MWL07,
+    input wire MWL08,
+    input wire MWL09,
+    input wire MWL10,
+    input wire MWL11,
+    input wire MWL12,
+    input wire MWL13,
+    input wire MWL14,
+    input wire MWL15,
+    input wire MWL16,
 
     input wire MWAG,
     input wire MWLG,
@@ -39,7 +65,12 @@ module agc_monitor(
     output wire [6:1]dbg
 );
 
+    // Signal conversion
     wire rst_n = !reset;
+    wire [12:1]mt;
+    assign mt = { MT12, MT11, MT10, MT09, MT08, MT07, MT06, MT05, MT04, MT03, MT02, MT01 };
+    wire [16:1]mwl;
+	assign mlw = { MWL16, MWL15, MWL14, MWL13, MWL12, MWL11, MWL10, MWL09, MWL08, MWL07, MWL06, MWL05, MWL04, MWL03, MWL02, MWL01};
 
     /*******************************************************************************.
     * USB Interface                                                                 *
@@ -171,7 +202,7 @@ module agc_monitor(
         .rst_n(rst_n),
 
         .mt(mt),
-        .monwt(MONWT),
+        .MONWT(MONWT),
         .ct(ct),
         .mwl(mwl),
         .MWAG(MWAG),

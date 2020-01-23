@@ -7,7 +7,7 @@ module monitor_regs(
     input wire rst_n,
 
     input wire [12:1] mt,
-    input wire monwt,
+    input wire MONWT,
     input wire ct,
 
     input wire [16:1] mwl,

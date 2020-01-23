@@ -3,12 +3,38 @@
 module agc_monitor_tb(
 );
 
-	reg [12:1] mt = 0;
-	reg [16:1] mwl = 0;
 	reg MONWT = 0;
 	reg MRULOG = 0;
+	reg MT01 = 0;
+	reg MT02 = 0;
+	reg MT03 = 0;
+	reg MT04 = 0;
+	reg MT05 = 0;
+	reg MT06 = 0;
+	reg MT07 = 0;
+	reg MT08 = 0;
+	reg MT09 = 0;
+	reg MT10 = 0;
+	reg MT11 = 0;
+	reg MT12 = 0;
 	reg MWAG = 0;
 	reg MWBG = 0;
+	reg MWL01 = 0;
+	reg MWL02 = 0;
+	reg MWL03 = 0;
+	reg MWL04 = 0;
+	reg MWL05 = 0;
+	reg MWL06 = 0;
+	reg MWL07 = 0;
+	reg MWL08 = 0;
+	reg MWL09 = 0;
+	reg MWL10 = 0;
+	reg MWL11 = 0;
+	reg MWL12 = 0;
+	reg MWL13 = 0;
+	reg MWL14 = 0;
+	reg MWL15 = 0;
+	reg MWL16 = 0;
 	reg MWLG = 0;
 	reg MWQG = 0;
 	reg MWYG = 0;
@@ -51,8 +77,34 @@ module agc_monitor_tb(
 		oe_n,
 		siwu,
 		MONWT,
-		 mt,
-		 mwl,
+		MT01,
+		MT02,
+		MT03,
+		MT04,
+		MT05,
+		MT06,
+		MT07,
+		MT08,
+		MT09,
+		MT10,
+		MT11,
+		MT12,
+		MWL01,
+		MWL02,
+		MWL03,
+		MWL04,
+		MWL05,
+		MWL06,
+		MWL07,
+		MWL08,
+		MWL09,
+		MWL10,
+		MWL11,
+		MWL12,
+		MWL13,
+		MWL14,
+		MWL15,
+		MWL16,
 		MWAG,
 		MWLG,
 		MWQG,
