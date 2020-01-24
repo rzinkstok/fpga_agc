@@ -9,4 +9,7 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==styx_ps || ORIG
 # IP: bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==styx_ps_processing_system7_0_0 || ORIG_REF_NAME==styx_ps_processing_system7_0_0} -quiet] -quiet
 
+# IP: ip/read_fifo/read_fifo.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==read_fifo || ORIG_REF_NAME==read_fifo} -quiet] -quiet
+
 # XDC: bd/styx_ps/styx_ps_ooc.xdc

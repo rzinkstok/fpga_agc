@@ -1,8 +1,8 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Thu Jan 23 16:19:56 2020
-| Host         : NLVL42YXNF2 running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
+| Date         : Thu Jan 23 19:03:57 2020
+| Host         : fpgadev running 64-bit Ubuntu 18.04.3 LTS
 | Command      : report_utilization -file toplevel_utilization_synth.rpt -pb toplevel_utilization_synth.pb
 | Design       : toplevel
 | Device       : 7z020clg484-1
@@ -30,8 +30,8 @@ Table of Contents
 +-------------------------+-------+-------+-----------+-------+
 |        Site Type        |  Used | Fixed | Available | Util% |
 +-------------------------+-------+-------+-----------+-------+
-| Slice LUTs*             |  4721 |     0 |     53200 |  8.87 |
-|   LUT as Logic          |  4721 |     0 |     53200 |  8.87 |
+| Slice LUTs*             |  4722 |     0 |     53200 |  8.88 |
+|   LUT as Logic          |  4722 |     0 |     53200 |  8.88 |
 |   LUT as Memory         |     0 |     0 |     17400 |  0.00 |
 | Slice Registers         | 13699 |     0 |    106400 | 12.88 |
 |   Register as Flip Flop | 13699 |     0 |    106400 | 12.88 |
@@ -149,11 +149,11 @@ Table of Contents
 | FDCE     | 11414 |        Flop & Latch |
 | LUT4     |  2436 |                 LUT |
 | FDPE     |  2277 |        Flop & Latch |
-| LUT5     |  1219 |                 LUT |
+| LUT5     |  1218 |                 LUT |
 | LUT3     |   851 |                 LUT |
-| LUT6     |   190 |                 LUT |
+| LUT6     |   191 |                 LUT |
 | OBUF     |    89 |                  IO |
-| LUT2     |    77 |                 LUT |
+| LUT2     |    78 |                 LUT |
 | IBUF     |    41 |                  IO |
 | OBUFT    |     8 |                  IO |
 | FDRE     |     8 |        Flop & Latch |
