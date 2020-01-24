@@ -155,6 +155,7 @@ class AddressRegister(QWidget):
         bit_layout.setMargin(0)
         bit_frame.setLayout(bit_layout)
         bit_frame.setFrameStyle(QFrame.StyledPanel | QFrame.Plain)
+        bit_layout.addSpacing(2)
 
         # Add indicators for each bit in the register, from MSB to LSB
         for i in range(width, 0, -1):
@@ -170,6 +171,7 @@ class AddressRegister(QWidget):
                 sep.setStyleSheet("QFrame { color: #666; } ")
                 bit_layout.addWidget(sep)
 
+        bit_layout.addSpacing(2)
         reg_layout.addWidget(bit_frame)
 
         return reg_widget, reg_value

@@ -1,8 +1,8 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date             : Thu Jan 23 23:51:25 2020
-| Host             : fpgadev running 64-bit Ubuntu 18.04.3 LTS
+| Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+| Date             : Fri Jan 24 16:10:36 2020
+| Host             : NLVL42YXNF2 running 64-bit major release  (build 9200)
 | Command          : report_power -file toplevel_power_routed.rpt -pb toplevel_power_summary_routed.pb -rpx toplevel_power_routed.rpx
 | Design           : toplevel
 | Device           : xc7z020clg484-1
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.682        |
+| Total On-Chip Power (W)  | 1.694        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.535        |
-| Device Static (W)        | 0.147        |
+| Dynamic (W)              | 1.546        |
+| Device Static (W)        | 0.148        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 65.6         |
-| Junction Temperature (C) | 44.4         |
+| Max Ambient (C)          | 65.5         |
+| Junction Temperature (C) | 44.5         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,22 +52,22 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.032 |        7 |       --- |             --- |
-| Slice Logic             |     0.013 |    24526 |       --- |             --- |
-|   LUT as Logic          |     0.011 |     5105 |     53200 |            9.60 |
-|   Register              |     0.003 |    14366 |    106400 |           13.50 |
+| Clocks                  |     0.031 |        6 |       --- |             --- |
+| Slice Logic             |     0.015 |    24622 |       --- |             --- |
+|   LUT as Logic          |     0.012 |     5142 |     53200 |            9.67 |
+|   Register              |     0.003 |    14400 |    106400 |           13.53 |
 |   CARRY4                |    <0.001 |       48 |     13300 |            0.36 |
 |   BUFG                  |    <0.001 |        1 |        32 |            3.13 |
-|   Others                |     0.000 |     4887 |       --- |             --- |
+|   Others                |     0.000 |     4894 |       --- |             --- |
 |   LUT as Shift Register |     0.000 |        4 |     17400 |            0.02 |
 |   F7/F8 Muxes           |     0.000 |        8 |     53200 |            0.02 |
-| Signals                 |     0.028 |    15119 |       --- |             --- |
-| Block RAM               |     0.020 |     42.5 |       140 |           30.36 |
+| Signals                 |     0.027 |    15201 |       --- |             --- |
+| Block RAM               |     0.020 |     44.5 |       140 |           31.79 |
 | MMCM                    |     0.119 |        1 |         4 |           25.00 |
-| I/O                     |     0.043 |      130 |       200 |           65.00 |
+| I/O                     |     0.054 |      131 |       200 |           65.50 |
 | PS7                     |     1.280 |        1 |       --- |             --- |
-| Static Power            |     0.147 |          |           |                 |
-| Total                   |     1.682 |          |           |                 |
+| Static Power            |     0.148 |          |           |                 |
+| Total                   |     1.694 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -78,8 +78,8 @@ Table of Contents
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
 | Vccint    |       1.000 |     0.108 |       0.092 |      0.016 |
-| Vccaux    |       1.800 |     0.082 |       0.066 |      0.015 |
-| Vcco33    |       3.300 |     0.014 |       0.013 |      0.001 |
+| Vccaux    |       1.800 |     0.082 |       0.067 |      0.015 |
+| Vcco33    |       3.300 |     0.017 |       0.016 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -137,14 +137,13 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+-----------------------------+---------------------------------------------------------------------------+-----------------+
-| Clock                       | Domain                                                                    | Constraint (ns) |
-+-----------------------------+---------------------------------------------------------------------------+-----------------+
-| clk                         | clk                                                                       |            10.0 |
-| clk                         | clk_IBUF_BUFG                                                             |            10.0 |
-| clk_out1_prop_clock_divider | fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1_prop_clock_divider |            19.5 |
-| clkfbout_prop_clock_divider | fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clkfbout_prop_clock_divider |            50.0 |
-+-----------------------------+---------------------------------------------------------------------------+-----------------+
++-------------------------------------------------------+---------------------------------------------------------------------------+-----------------+
+| Clock                                                 | Domain                                                                    | Constraint (ns) |
++-------------------------------------------------------+---------------------------------------------------------------------------+-----------------+
+| clk_out1_prop_clock_divider                           | fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_out1_prop_clock_divider |            19.5 |
+| clkfbout_prop_clock_divider                           | fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clkfbout_prop_clock_divider |            50.0 |
+| fpgaagc/trayb/b07oscillator/prop_clk_div/inst/clk_in1 | clk_IBUF_BUFG                                                             |            10.0 |
++-------------------------------------------------------+---------------------------------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -156,18 +155,18 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| toplevel                |     1.535 |
-|   agcmonitor            |     0.012 |
-|     usb_if              |     0.012 |
-|       cmd_queue         |     0.004 |
-|       read_byte_queue   |     0.005 |
-|       read_msg_queue    |     0.002 |
+| toplevel                |     1.546 |
+|   agcmonitor            |     0.011 |
+|     usb_if              |     0.010 |
+|       cmd_queue         |     0.003 |
+|       read_byte_queue   |     0.004 |
+|       read_msg_queue    |     0.001 |
 |   fpgaagc               |     0.200 |
-|     traya               |     0.054 |
+|     traya               |     0.060 |
 |       a01               |     0.004 |
 |       a02               |     0.002 |
-|       a03               |     0.002 |
-|       a04               |     0.002 |
+|       a03               |     0.003 |
+|       a04               |     0.003 |
 |       a05               |     0.002 |
 |       a06               |     0.002 |
 |       a07               |     0.002 |
@@ -175,21 +174,21 @@ Table of Contents
 |       a09               |     0.003 |
 |       a10               |     0.003 |
 |       a11               |     0.003 |
-|       a12               |     0.002 |
-|       a14               |     0.002 |
-|       a15               |     0.002 |
+|       a12               |     0.003 |
+|       a14               |     0.003 |
+|       a15               |     0.003 |
 |       a16               |     0.002 |
-|       a17               |     0.002 |
+|       a17               |     0.003 |
 |       a18               |     0.004 |
 |       a19               |     0.002 |
-|       a20               |     0.002 |
+|       a20               |     0.003 |
 |       a21               |     0.003 |
 |       a23               |     0.002 |
 |       a24               |     0.001 |
-|     trayb               |     0.146 |
-|       b01fixedmemory    |     0.021 |
+|     trayb               |     0.141 |
+|       b01fixedmemory    |     0.017 |
 |       b07oscillator     |     0.120 |
-|       b12erasablememory |     0.004 |
+|       b12erasablememory |     0.003 |
 |   styxpsbootloader      |     1.280 |
 |     styx_ps             |     1.280 |
 |       styx_ps_i         |     1.280 |

@@ -2,12 +2,12 @@
 <Root MajorVersion="0" MinorVersion="37">
   <CompositeFile CompositeFileTopName="styx_ps" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1578216653"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1578216653"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1578216653"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1578216653"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1579877262"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1579877262"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1579877262"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1579877262"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
-      <File Name="ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0.xci" Type="IP">
+      <File Name="ip\styx_ps_processing_system7_0_0\styx_ps_processing_system7_0_0.xci" Type="IP">
         <Instance HierarchyPath="processing_system7_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
@@ -15,13 +15,13 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="synth/styx_ps.v" Type="Verilog">
+      <File Name="synth\styx_ps.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
       </File>
-      <File Name="sim/styx_ps.v" Type="Verilog">
+      <File Name="sim\styx_ps.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
@@ -33,22 +33,22 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="OUT_OF_CONTEXT"/>
       </File>
-      <File Name="hw_handoff/styx_ps.hwh" Type="HwHandoff">
+      <File Name="hw_handoff\styx_ps.hwh" Type="HwHandoff">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
       </File>
-      <File Name="hw_handoff/styx_ps_bd.tcl">
+      <File Name="hw_handoff\styx_ps_bd.tcl">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
       </File>
-      <File Name="synth/styx_ps.hwdef">
+      <File Name="synth\styx_ps.hwdef">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
       </File>
-      <File Name="sim/styx_ps.protoinst">
+      <File Name="sim\styx_ps.protoinst">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>

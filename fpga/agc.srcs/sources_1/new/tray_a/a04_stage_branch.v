@@ -104,6 +104,7 @@ module a04_stage_branch(
     output wire ST3_, 
     output wire MST1,
     output wire MST2,
+    output wire MST3,
     output wire BR1, 
     output wire BR1_, 
     output wire MBR1, 
@@ -216,7 +217,6 @@ module a04_stage_branch(
     wire NOR36139_out;
     wire NOR36140_out; 
     wire NOR36142_out;
-    wire NOR36143_out;
     wire NOR36144_out;
     wire NOR36146_out;
     wire NOR36147_out;
@@ -364,7 +364,7 @@ module a04_stage_branch(
     nor_3 #(1'b1)  NOR36148(NOR36148_out,   NOR36147_out,   STG3,           n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR36151(STG3,           NOR36148_out,   NOR36150_out,   n0VDCA,         p4SW, reset, prop_clk);
     // NOR36158 removed (fan-out expansion)
-    nor_3 #(1'b0)  NOR36143(NOR36143_out,   NOR36148_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR36143(MST3,           NOR36148_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     
     // Stage decoding
     

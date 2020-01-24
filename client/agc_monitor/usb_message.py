@@ -168,6 +168,27 @@ class ControlMNHNC(ControlMessage):
     keys = ["mnhnc"]
 
 
+class ControlWriteW(ControlMessage):
+    address = 0x000E
+    keys = ['mode', 's1_s2']
+    mask = (0x0007, 0x0001)
+    bitshift = (0, 3)
+
+
+class ControlTimeSwitches(ControlMessage):
+    address = 0x000F
+    keys = list(f"t{i+1:02d}" for i in range(12))
+    mask = tuple(0x0001 for i in range(12))
+    bitshift = tuple(i for i in range(12))
+
+
+class ControlPulseSwitches(ControlMessage):
+    address = 0x0010
+    keys = ['a', 'l', 'q', 'z', 'rch', 'wch', 'g', 'b', 'y', 'ru', 'sp1', 'sp2']
+    mask = tuple(0x0001 for i in range(12))
+    bitshift = tuple(i for i in range(12))
+
+
 class ControlWComparatorValue(ControlMessage):
     address = 0x0011
     keys = ["value"]
@@ -239,6 +260,7 @@ class MonRegS(MonRegMessage):
     address = 0x0006
     keys = ["s"]
     mask = (0x0FFF,)
+
 
 class MonRegG(MonRegMessage):
     address = 0x0007

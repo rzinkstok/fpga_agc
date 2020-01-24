@@ -61,12 +61,89 @@ proc step_failed { step } {
 }
 
 
+start_step init_design
+set ACTIVE_STEP init_design
+set rc [catch {
+  create_msg_db init_design.pb
+  set_param chipscope.maxJobs 3
+  create_project -in_memory -part xc7z020clg484-1
+  set_property board_part numato.com:styx:part0:1.0 [current_project]
+  set_property design_mode GateLvl [current_fileset]
+  set_param project.singleFileAddWarning.threshold 0
+  set_property webtalk.parent_dir C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.cache/wt [current_project]
+  set_property parent.project_path C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.xpr [current_project]
+  set_property ip_output_repo C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.cache/ip [current_project]
+  set_property ip_cache_permissions {read write} [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+  add_files -quiet C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/toplevel.dcp
+  set_msg_config -source 4 -id {BD 41-1661} -limit 0
+  set_param project.isImplRun true
+  add_files C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/styx_ps.bd
+  read_ip -quiet C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xci
+  read_ip -quiet C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider.xci
+  read_ip -quiet C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/core_memory/core_memory.xci
+  read_ip -quiet C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory.xci
+  read_ip -quiet C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo.xci
+  read_ip -quiet C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo.xci
+  set_param project.isImplRun false
+  read_xdc C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/constrs_1/new/agc.xdc
+  set_param project.isImplRun true
+  link_design -top toplevel -part xc7z020clg484-1
+  set_param project.isImplRun false
+  write_hwdef -force -file toplevel.hwdef
+  close_msg_db -file init_design.pb
+} RESULT]
+if {$rc} {
+  step_failed init_design
+  return -code error $RESULT
+} else {
+  end_step init_design
+  unset ACTIVE_STEP 
+}
+
+start_step opt_design
+set ACTIVE_STEP opt_design
+set rc [catch {
+  create_msg_db opt_design.pb
+  opt_design 
+  write_checkpoint -force toplevel_opt.dcp
+  create_report "impl_1_opt_report_drc_0" "report_drc -file toplevel_drc_opted.rpt -pb toplevel_drc_opted.pb -rpx toplevel_drc_opted.rpx"
+  close_msg_db -file opt_design.pb
+} RESULT]
+if {$rc} {
+  step_failed opt_design
+  return -code error $RESULT
+} else {
+  end_step opt_design
+  unset ACTIVE_STEP 
+}
+
+start_step place_design
+set ACTIVE_STEP place_design
+set rc [catch {
+  create_msg_db place_design.pb
+  if { [llength [get_debug_cores -quiet] ] > 0 }  { 
+    implement_debug_core 
+  } 
+  place_design 
+  write_checkpoint -force toplevel_placed.dcp
+  create_report "impl_1_place_report_io_0" "report_io -file toplevel_io_placed.rpt"
+  create_report "impl_1_place_report_utilization_0" "report_utilization -file toplevel_utilization_placed.rpt -pb toplevel_utilization_placed.pb"
+  create_report "impl_1_place_report_control_sets_0" "report_control_sets -verbose -file toplevel_control_sets_placed.rpt"
+  close_msg_db -file place_design.pb
+} RESULT]
+if {$rc} {
+  step_failed place_design
+  return -code error $RESULT
+} else {
+  end_step place_design
+  unset ACTIVE_STEP 
+}
+
 start_step route_design
 set ACTIVE_STEP route_design
 set rc [catch {
   create_msg_db route_design.pb
-  open_checkpoint toplevel_placed.dcp
-  set_property webtalk.parent_dir /home/rzinkstok/fpga_agc/fpga/agc.cache/wt [current_project]
   route_design 
   write_checkpoint -force toplevel_routed.dcp
   create_report "impl_1_route_report_drc_0" "report_drc -file toplevel_drc_routed.rpt -pb toplevel_drc_routed.pb -rpx toplevel_drc_routed.rpx"

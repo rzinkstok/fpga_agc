@@ -272,6 +272,7 @@ module fpga_agc_tb(
 	wire MSQEXT;
 	wire MST1;
 	wire MST2;
+	wire MST3;
 	wire MSTPIT_;
 	wire MT01;
 	wire MT02;
@@ -773,6 +774,7 @@ module fpga_agc_tb(
 		MSQEXT,
 		MST1,
 		MST2,
+		MST3,
 		MSTPIT_,
 		MT01,
 		MT02,

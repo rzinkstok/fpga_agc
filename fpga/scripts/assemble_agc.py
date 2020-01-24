@@ -595,7 +595,8 @@ class Toplevel(GeneratedVerilogModule):
 
     @staticmethod
     def create_clock_constraint(fp, signal, period):
-        fp.write(f"create_clock -name {signal.name} -period {period} [get_ports {signal.name}]\n")
+        pass
+        #fp.write(f"create_clock -name {signal.name} -period {period} [get_ports {signal.name}]\n")
 
     @staticmethod
     def write_signal_constraint(fp, signal):
