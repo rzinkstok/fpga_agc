@@ -145,5 +145,8 @@ class ControlSTRT2(ControlMessage):
 
 
 # Collect all messages into a dictionary
-subsubclasses = [item for sublist in [sc.__subclasses__() for sc in Message.__subclasses__()] for item in sublist]
-message_map = {(cls.group, cls.address): cls for cls in subsubclasses}
+messages = [item for sublist in [sc.__subclasses__() for sc in Message.__subclasses__()] for item in sublist]
+
+#messages = [m for m in Message.__subclasses__() if hasattr(m, "keys")]
+message_map = {(cls.group, cls.address): cls for cls in messages}
+print(message_map)
