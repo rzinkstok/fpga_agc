@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1578956398">
-  <File Type="RDS-RDS" Name="toplevel.vds"/>
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1579878340">
+  <File Type="PA-TCL" Name="toplevel.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="toplevel_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="toplevel_reports.tcl"/>
+  <File Type="RDS-RDS" Name="toplevel.vds"/>
+  <File Type="RDS-UTIL" Name="toplevel_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="toplevel_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="toplevel.dcp"/>
-  <File Type="PA-TCL" Name="toplevel.tcl"/>
-  <File Type="RDS-UTIL" Name="toplevel_utilization_synth.rpt"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="toplevel_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="toplevel_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/components/nor_3.v">
@@ -324,13 +327,54 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/monitor/monitor_defs.v">
+      <FileInfo SFType="VHeader">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/monitor/msg_sender.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/monitor/msg_sender.v">
+    <File Path="$PSRCDIR/sources_1/new/monitor/register.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/monitor/clear_timer.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/monitor/monitor_regs.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/read_fifo/read_fifo.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/monitor/register2.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/monitor/edit.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -365,11 +409,10 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="prop_clock_divider"/>
   <BlockFileSet Type="BlockSrcs" Name="cmd_fifo"/>
   <BlockFileSet Type="BlockSrcs" Name="core_memory"/>
   <BlockFileSet Type="BlockSrcs" Name="styx_ps_processing_system7_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="read_byte_fifo"/>
   <BlockFileSet Type="BlockSrcs" Name="rope_memory"/>
-  <BlockFileSet Type="BlockSrcs" Name="read_fifo"/>
-  <BlockFileSet Type="BlockSrcs" Name="prop_clock_divider"/>
+  <BlockFileSet Type="BlockSrcs" Name="read_byte_fifo"/>
 </GenRun>

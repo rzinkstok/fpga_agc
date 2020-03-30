@@ -1,26 +1,27 @@
 #-----------------------------------------------------------
 # Vivado v2019.1 (64-bit)
-# SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Sun Jan  5 10:56:43 2020
-# Process ID: 7628
-# Current directory: /home/rzinkstok/fpga_agc/agc.runs/rope_memory_synth_1
-# Command line: vivado -log rope_memory.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rope_memory.tcl
-# Log file: /home/rzinkstok/fpga_agc/agc.runs/rope_memory_synth_1/rope_memory.vds
-# Journal file: /home/rzinkstok/fpga_agc/agc.runs/rope_memory_synth_1/vivado.jou
+# Start of session at: Thu Jan 23 14:42:08 2020
+# Process ID: 27288
+# Current directory: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1
+# Command line: vivado.exe -log rope_memory.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rope_memory.tcl
+# Log file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1/rope_memory.vds
+# Journal file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1\vivado.jou
 #-----------------------------------------------------------
 source rope_memory.tcl -notrace
+WARNING: [IP_Flow 19-5242] IP Cache entry (cache-ID 47634f89486a1c58) does not have the required number of cached files and is not valid. Please delete this entry using the TCL command: 'config_ip_cache -remove [get_ips rope_memory]'
 Command: synth_design -top rope_memory -part xc7z020clg484-1 -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 7653 
+INFO: Helper process launched with PID 2492 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:17 . Memory (MB): peak = 1703.062 ; gain = 152.715 ; free physical = 4813 ; free virtual = 9673
+Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 746.363 ; gain = 177.387
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'rope_memory' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/synth/rope_memory.vhd:67]
+INFO: [Synth 8-638] synthesizing module 'rope_memory' [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/synth/rope_memory.vhd:67]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_XDEVICEFAMILY bound to: zynq - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
@@ -96,8 +97,8 @@ INFO: [Synth 8-638] synthesizing module 'rope_memory' [/home/rzinkstok/fpga_agc/
 	Parameter C_COUNT_36K_BRAM bound to: 16 - type: string 
 	Parameter C_COUNT_18K_BRAM bound to: 3 - type: string 
 	Parameter C_EST_POWER_SUMMARY bound to: Estimated Power for IP     :     16.523845 mW - type: string 
-INFO: [Synth 8-3491] module 'blk_mem_gen_v8_4_3' declared at '/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd:195321' bound to instance 'U0' of component 'blk_mem_gen_v8_4_3' [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/synth/rope_memory.vhd:230]
-INFO: [Synth 8-256] done synthesizing module 'rope_memory' (11#1) [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/synth/rope_memory.vhd:67]
+INFO: [Synth 8-3491] module 'blk_mem_gen_v8_4_3' declared at 'c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd:195321' bound to instance 'U0' of component 'blk_mem_gen_v8_4_3' [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/synth/rope_memory.vhd:230]
+INFO: [Synth 8-256] done synthesizing module 'rope_memory' (11#1) [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/synth/rope_memory.vhd:67]
 WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected port MUX_RST[0]
 WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected port MEM_LAT_RST
 WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected port MEM_REG_RST
@@ -200,7 +201,7 @@ WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected p
 WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected port SBITERRIN[178]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:01:28 ; elapsed = 00:01:49 . Memory (MB): peak = 1919.742 ; gain = 369.395 ; free physical = 4798 ; free virtual = 9660
+Finished RTL Elaboration : Time (s): cpu = 00:01:44 ; elapsed = 00:18:44 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -213,10 +214,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:29 ; elapsed = 00:01:49 . Memory (MB): peak = 1928.648 ; gain = 378.301 ; free physical = 4806 ; free virtual = 9668
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:44 ; elapsed = 00:18:44 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:29 ; elapsed = 00:01:49 . Memory (MB): peak = 1928.648 ; gain = 378.301 ; free physical = 4806 ; free virtual = 9668
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:44 ; elapsed = 00:18:44 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 19 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -224,36 +225,36 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/rope_memory_ooc.xdc] for cell 'U0'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/rope_memory/rope_memory_ooc.xdc] for cell 'U0'
-Parsing XDC File [/home/rzinkstok/fpga_agc/agc.runs/rope_memory_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/agc.runs/rope_memory_synth_1/dont_touch.xdc]
+Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory_ooc.xdc] for cell 'U0'
+Parsing XDC File [C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1995.375 ; gain = 0.000 ; free physical = 4722 ; free virtual = 9583
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1026.090 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.05 . Memory (MB): peak = 1995.375 ; gain = 0.000 ; free physical = 4721 ; free virtual = 9582
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.065 . Memory (MB): peak = 1026.090 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:35 ; elapsed = 00:01:58 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4799 ; free virtual = 9661
+Finished Constraint Validation : Time (s): cpu = 00:01:52 ; elapsed = 00:18:52 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:35 ; elapsed = 00:01:58 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4799 ; free virtual = 9661
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:52 ; elapsed = 00:18:52 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for U0. (constraint file  /home/rzinkstok/fpga_agc/agc.runs/rope_memory_synth_1/dont_touch.xdc, line 9).
+Applied set_property DONT_TOUCH = true for U0. (constraint file  C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:35 ; elapsed = 00:01:58 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4799 ; free virtual = 9661
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:52 ; elapsed = 00:18:52 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:36 ; elapsed = 00:01:59 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4791 ; free virtual = 9653
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:52 ; elapsed = 00:18:53 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -305,7 +306,7 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:37 ; elapsed = 00:02:00 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4776 ; free virtual = 9645
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:54 ; elapsed = 00:18:54 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -317,13 +318,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:43 ; elapsed = 00:02:07 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4654 ; free virtual = 9523
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:02 ; elapsed = 00:19:02 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:43 ; elapsed = 00:02:07 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4653 ; free virtual = 9522
+Finished Timing Optimization : Time (s): cpu = 00:02:02 ; elapsed = 00:19:02 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -335,7 +336,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:44 ; elapsed = 00:02:07 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4651 ; free virtual = 9520
+Finished Technology Mapping : Time (s): cpu = 00:02:02 ; elapsed = 00:19:02 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -359,7 +360,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:45 ; elapsed = 00:02:08 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4649 ; free virtual = 9519
+Finished IO Insertion : Time (s): cpu = 00:02:04 ; elapsed = 00:19:04 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -372,7 +373,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:45 ; elapsed = 00:02:08 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4649 ; free virtual = 9519
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:04 ; elapsed = 00:19:04 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -384,25 +385,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:45 ; elapsed = 00:02:08 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4649 ; free virtual = 9519
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:04 ; elapsed = 00:19:04 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:45 ; elapsed = 00:02:08 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4649 ; free virtual = 9519
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:04 ; elapsed = 00:19:04 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:45 ; elapsed = 00:02:08 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4649 ; free virtual = 9519
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:04 ; elapsed = 00:19:04 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:45 ; elapsed = 00:02:08 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4649 ; free virtual = 9519
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:04 ; elapsed = 00:19:04 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -483,34 +484,33 @@ Report Instance Areas:
 |45    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized8  |     1|
 +------+---------------------------------------------+------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:45 ; elapsed = 00:02:08 . Memory (MB): peak = 1995.375 ; gain = 445.027 ; free physical = 4649 ; free virtual = 9519
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:04 ; elapsed = 00:19:04 . Memory (MB): peak = 1026.090 ; gain = 457.113
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 187 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:43 ; elapsed = 00:02:05 . Memory (MB): peak = 1995.375 ; gain = 378.301 ; free physical = 4701 ; free virtual = 9570
-Synthesis Optimization Complete : Time (s): cpu = 00:01:45 ; elapsed = 00:02:09 . Memory (MB): peak = 1995.383 ; gain = 445.027 ; free physical = 4701 ; free virtual = 9570
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:19:01 . Memory (MB): peak = 1026.090 ; gain = 457.113
+Synthesis Optimization Complete : Time (s): cpu = 00:02:04 ; elapsed = 00:19:04 . Memory (MB): peak = 1026.090 ; gain = 457.113
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 19 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1995.383 ; gain = 0.000 ; free physical = 4648 ; free virtual = 9518
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1026.090 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-17 Infos, 100 Warnings, 0 Critical Warnings and 0 Errors encountered.
+17 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:51 ; elapsed = 00:02:14 . Memory (MB): peak = 1995.383 ; gain = 593.609 ; free physical = 4746 ; free virtual = 9615
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1995.383 ; gain = 0.000 ; free physical = 4746 ; free virtual = 9615
+synth_design: Time (s): cpu = 00:02:10 ; elapsed = 00:19:12 . Memory (MB): peak = 1026.090 ; gain = 727.711
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1026.090 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/agc.runs/rope_memory_synth_1/rope_memory.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1/rope_memory.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP rope_memory, cache-ID = 47634f89486a1c58
 INFO: [Coretcl 2-1174] Renamed 44 cell refs.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2011.383 ; gain = 0.000 ; free physical = 4749 ; free virtual = 9619
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1026.090 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/agc.runs/rope_memory_synth_1/rope_memory.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1/rope_memory.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file rope_memory_utilization_synth.rpt -pb rope_memory_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Jan  5 10:59:11 2020...
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 23 15:01:31 2020...

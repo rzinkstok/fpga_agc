@@ -67,7 +67,7 @@ wire cmd_fifo_empty;
 // predicated on the read message FIFO not being full, since accepting
 // a command could potentially trigger generation of a new read response
 // message before that queue can be emptied.
-wire read_fifo_full = 1'b0;
+wire read_fifo_full;
 assign cmd_ready = (!cmd_fifo_empty) && (!read_fifo_full);
 
 

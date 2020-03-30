@@ -71,3 +71,56 @@
 `define CTRL_REG_READ_CHAN    16'h75
 `define CTRL_REG_START_S      16'h76
 `define CTRL_REG_START_PRESET 16'h77
+
+// Monitor AGC Register Mirrors
+`define MON_REG_A      16'h00
+`define MON_REG_L      16'h01
+`define MON_REG_Q      16'h02
+`define MON_REG_Z      16'h03
+`define MON_REG_BB     16'h04
+`define MON_REG_B      16'h05
+`define MON_REG_S      16'h06
+`define MON_REG_G      16'h07
+`define MON_REG_Y      16'h08
+`define MON_REG_U      16'h09
+`define MON_REG_I      16'h0A
+`define MON_REG_STATUS 16'h0B
+`define MON_REG_PAR    16'h0C
+`define MON_REG_W      16'h40
+
+// Wild register mode
+`define W_MODE_ALL 3'o0
+`define W_MODE_S   3'o1
+`define W_MODE_I   3'o2
+`define W_MODE_S_I 3'o3
+`define W_MODE_P   3'o4
+`define W_MODE_P_I 3'o5
+`define W_MODE_P_S 3'o6
+
+// Wild register pulses
+`define W_PULSE_A   0
+`define W_PULSE_L   1
+`define W_PULSE_Q   2
+`define W_PULSE_Z   3
+`define W_PULSE_RCH 4
+`define W_PULSE_WCH 5
+`define W_PULSE_G   6
+`define W_PULSE_B   7
+`define W_PULSE_Y   8
+`define W_PULSE_U   9
+
+// Special memory addresses
+`define CYR     12'o0020
+`define SR      12'o0021
+`define CYL     12'o0022
+`define EDOP    12'o0023
+`define PIPAX   12'o0037
+`define PIPAY   12'o0040
+`define PIPAZ   12'o0041
+`define CDUXCMD 12'o0050
+`define CDUYCMD 12'o0051
+`define CDUZCMD 12'o0052
+`define CDUTCMD 12'o0053
+`define CDUSCMD 12'o0054
+`define THRUST  12'o0055
+`define ALTM    12'o0060

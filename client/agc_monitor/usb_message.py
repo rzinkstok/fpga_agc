@@ -58,8 +58,22 @@ Needed:
 """
 
 
+def message_classes():
+    """Collect all classes inheriting from Message that are actual messages, i.e. have a group and address defined."""
+    subclasses = set()
+    work = [Message]
+    while work:
+        parent = work.pop()
+        for child in parent.__subclasses__():
+            if child not in subclasses:
+                work.append(child)
+                if child.group is not None and child.address is not None:
+                    subclasses.add(child)
+    return subclasses
+
+
 def message_factory(msg_bytes):
-    """Returns the correct message class instantiated with the given data."""
+    """Returns the correct message class instance, based on the group and address in the given bytes."""
     if len(msg_bytes) != struct.calcsize(DATA_FMT):
         raise RuntimeError('Cannot unpack data with unexpected length %u' % len(msg_bytes))
 
@@ -70,6 +84,20 @@ def message_factory(msg_bytes):
      
 
 class Message(object):
+    """Base class for all messages.
+
+    Class variables:
+    - group: the address group for the message class
+    - address: the address for the message class
+    - keys: the data properties belonging to the message
+    - bitshift: the bit shift values for each data property, for packing and unpacking data
+    - mask: the mask values for each data property, for packing and unpacking data
+
+    These class variables can be set and overridden anywhere in the class hierarchy.
+    """
+    group = None
+    address = None
+
     def __init__(self, data=None, **datadict):
         self.__dict__["datadict"] = {}
         if data is not None:
@@ -79,22 +107,29 @@ class Message(object):
                 setattr(self, k, v)
 
     def pack(self):
+        """"Returns the message bytes."""
         if self.datadict:
             return struct.pack(DATA_FMT, DATA_FLAG | self.group, self.address, self._pack_data())
         else:
             return struct.pack(READ_FMT, self.group, self.address)
 
     def _pack_data(self):
-        return (getattr(self, self.keys[0]) & 0x0001) << 0
+        """Returns the message data, ready for packing."""
+        data = 0x0000
+        for i, k in enumerate(self.keys):
+            data |= (getattr(self, k) & self.mask[i]) << self.bitshift[i]
+        return data
 
     def _unpack_data(self, data):
-        setattr(self, self.keys[0], (data >> 0) & 0x0001)
+        """Extracts the message data from the unpacked bytes."""
+        for i, k in enumerate(self.keys):
+            setattr(self, k, (data >> self.bitshift[i]) & self.mask[i])
 
     def __repr__(self):
+        data = ""
         if self.datadict:
-            return f"{type(self).__name__}(" + ", ".join([f"{x}={self.datadict[x]}" for x in self.keys]) + ")"
-        else:
-            return f"{type(self).__name__}()"
+            data = ", ".join([f"{x}={self.datadict[x]}" for x in self.keys])
+        return f"{type(self).__name__}({data})"
 
     def __eq__(self, other):
         return (type(self) == type(other)) and (self.datadict == other.datadict)
@@ -110,13 +145,17 @@ class Message(object):
         else:
             raise AttributeError
 
+    def __getitem__(self, arg):
+        if isinstance(arg, slice):
+            return [self.datadict[k] for k in self.keys[arg]]
+        else:
+            return self.datadict[self.keys[arg]]
+
 
 class ControlMessage(Message):
     group = 0x20
-
-
-class MonRegMessage(Message):
-    group = 0x21
+    bitshift = (0,)
+    mask = (0x0001,)
 
 
 class ControlMNHRPT(ControlMessage):
@@ -127,6 +166,46 @@ class ControlMNHRPT(ControlMessage):
 class ControlMNHNC(ControlMessage):
     address = 0x0005
     keys = ["mnhnc"]
+
+
+class ControlWriteW(ControlMessage):
+    address = 0x000E
+    keys = ['mode', 's1_s2']
+    mask = (0x0007, 0x0001)
+    bitshift = (0, 3)
+
+
+class ControlTimeSwitches(ControlMessage):
+    address = 0x000F
+    keys = list(f"t{i+1:02d}" for i in range(12))
+    mask = tuple(0x0001 for i in range(12))
+    bitshift = tuple(i for i in range(12))
+
+
+class ControlPulseSwitches(ControlMessage):
+    address = 0x0010
+    keys = ['a', 'l', 'q', 'z', 'rch', 'wch', 'g', 'b', 'y', 'ru', 'sp1', 'sp2']
+    mask = tuple(0x0001 for i in range(12))
+    bitshift = tuple(i for i in range(12))
+
+
+class ControlWComparatorValue(ControlMessage):
+    address = 0x0011
+    keys = ["value"]
+    mask = (0xFFFF,)
+
+
+class ControlWComparatorIgnore(ControlMessage):
+    address = 0x0012
+    keys = ["ignore"]
+    mask = (0xFFFF,)
+
+
+class ControlWComparatorParity(ControlMessage):
+    address = 0x0013
+    keys = ["parity", "ignore"]
+    mask = (0x0003, 0x0003)
+    bitshift = (0, 2)
 
 
 class ControlNHALGA(ControlMessage):
@@ -144,9 +223,73 @@ class ControlSTRT2(ControlMessage):
     keys = ["strt2"]
 
 
-# Collect all messages into a dictionary
-messages = [item for sublist in [sc.__subclasses__() for sc in Message.__subclasses__()] for item in sublist]
+class MonRegMessage(Message):
+    group = 0x21
+    bitshift = (0,)
+    mask = (0xFFFF,)
 
-#messages = [m for m in Message.__subclasses__() if hasattr(m, "keys")]
-message_map = {(cls.group, cls.address): cls for cls in messages}
+
+class MonRegA(MonRegMessage):
+    address = 0x0000
+    keys = ["a"]
+
+
+class MonRegL(MonRegMessage):
+    address = 0x0001
+    keys = ["l"]
+
+
+class MonRegQ(MonRegMessage):
+    address = 0x0002
+    keys = ["q"]
+
+
+class MonRegZ(MonRegMessage):
+    address = 0x0003
+    keys = ["z"]
+
+
+class MonRegBB(MonRegMessage):
+    address = 0x0004
+    keys = ["eb", "fb"]
+    bitshift = (0, 10)
+    mask = (0x0007, 0x001F)
+
+
+class MonRegS(MonRegMessage):
+    address = 0x0006
+    keys = ["s"]
+    mask = (0x0FFF,)
+
+
+class MonRegG(MonRegMessage):
+    address = 0x0007
+    keys = ["g"]
+
+
+class MonRegW(MonRegMessage):
+    address = 0x0040
+    keys = ["w"]
+
+
+class MonRegParity(MonRegMessage):
+    address = 0x000C
+    keys = ["g_gp", "g_sp", "w_gp", "w_sp"]
+    bitshift = (0, 1, 2, 3)
+    mask = (0x0001, 0x0001, 0x0001, 0x0001)
+
+
+class MonChanMessage(Message):
+    group = 0x22
+
+
+class MonChanFEXT(MonChanMessage):
+    address = 0x0007
+    keys = ["fext"]
+    bitshift = (4,)
+    mask = 0x0007
+
+
+# Construct the message map used in the message factory
+message_map = {(cls.group, cls.address): cls for cls in message_classes()}
 print(message_map)

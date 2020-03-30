@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Fri Jan 24 16:08:21 2020
+# Process ID: 19448
+# Current directory: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/impl_1
+# Command line: vivado.exe -log toplevel.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source toplevel.tcl -notrace
+# Log file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/impl_1/toplevel.vdi
+# Journal file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source toplevel.tcl -notrace

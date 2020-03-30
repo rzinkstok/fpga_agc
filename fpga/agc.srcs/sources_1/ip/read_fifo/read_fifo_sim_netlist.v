@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-// Date        : Mon Jan 13 22:11:29 2020
+// Date        : Mon Jan 13 22:11:28 2020
 // Host        : fpgadev running 64-bit Ubuntu 18.04.3 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/rzinkstok/fpga_agc/agc.srcs/sources_1/ip/read_fifo/read_fifo_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top read_fifo -prefix
+//               read_fifo_ read_fifo_sim_netlist.v
 // Design      : read_fifo
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -600,7 +600,6 @@ module read_fifo
         .wr_rst_busy(NLW_U0_wr_rst_busy_UNCONNECTED));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module read_fifo_blk_mem_gen_generic_cstr
    (D,
     \no_softecc_sel_reg.ce_pri.sel_pipe_reg[0] ,
@@ -1201,7 +1200,6 @@ module read_fifo_blk_mem_gen_mux__parameterized0
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module read_fifo_blk_mem_gen_prim_width
    (D,
     clk,
@@ -1620,7 +1618,6 @@ module read_fifo_blk_mem_gen_prim_width__parameterized7
         .srst(srst));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module read_fifo_blk_mem_gen_prim_wrapper
    (D,
     clk,
@@ -3921,7 +3918,6 @@ module read_fifo_blk_mem_gen_prim_wrapper__parameterized7
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module read_fifo_blk_mem_gen_top
    (D,
     \no_softecc_sel_reg.ce_pri.sel_pipe_reg[0] ,
@@ -3984,7 +3980,6 @@ module read_fifo_blk_mem_gen_top
         .srst(srst));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_3" *) 
 module read_fifo_blk_mem_gen_v8_4_3
    (D,
     \no_softecc_sel_reg.ce_pri.sel_pipe_reg[0] ,
@@ -4047,7 +4042,6 @@ module read_fifo_blk_mem_gen_v8_4_3
         .srst(srst));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_3_synth" *) 
 module read_fifo_blk_mem_gen_v8_4_3_synth
    (D,
     \no_softecc_sel_reg.ce_pri.sel_pipe_reg[0] ,
@@ -4110,7 +4104,6 @@ module read_fifo_blk_mem_gen_v8_4_3_synth
         .srst(srst));
 endmodule
 
-(* ORIG_REF_NAME = "compare" *) 
 module read_fifo_compare
    (comp0,
     \gmux.gm[6].gms.ms_0 ,
@@ -4357,7 +4350,6 @@ module read_fifo_compare_2
         .O(ram_full_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module read_fifo_fifo_generator_ramfifo
    (empty,
     full,
@@ -4464,7 +4456,6 @@ module read_fifo_fifo_generator_ramfifo
         .srst(srst));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module read_fifo_fifo_generator_top
    (empty,
     full,
@@ -4570,7 +4561,7 @@ endmodule
 (* C_WR_DEPTH_WRCH = "16" *) (* C_WR_FREQ = "1" *) (* C_WR_PNTR_WIDTH = "13" *) 
 (* C_WR_PNTR_WIDTH_AXIS = "10" *) (* C_WR_PNTR_WIDTH_RACH = "4" *) (* C_WR_PNTR_WIDTH_RDCH = "10" *) 
 (* C_WR_PNTR_WIDTH_WACH = "4" *) (* C_WR_PNTR_WIDTH_WDCH = "10" *) (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
-(* C_WR_RESPONSE_LATENCY = "1" *) (* ORIG_REF_NAME = "fifo_generator_v13_2_4" *) 
+(* C_WR_RESPONSE_LATENCY = "1" *) 
 module read_fifo_fifo_generator_v13_2_4
    (backup,
     backup_marker,
@@ -5598,7 +5589,6 @@ module read_fifo_fifo_generator_v13_2_4
         .wr_en(wr_en));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_v13_2_4_synth" *) 
 module read_fifo_fifo_generator_v13_2_4_synth
    (empty,
     full,
@@ -5637,7 +5627,6 @@ module read_fifo_fifo_generator_v13_2_4_synth
         .wr_en(wr_en));
 endmodule
 
-(* ORIG_REF_NAME = "memory" *) 
 module read_fifo_memory
    (sel_pipe,
     dout,
@@ -6025,7 +6014,6 @@ module read_fifo_memory
         .R(srst));
 endmodule
 
-(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module read_fifo_rd_bin_cntr
    (D,
     v1_reg,
@@ -6559,7 +6547,6 @@ module read_fifo_rd_bin_cntr
         .O(\gc0.count_d1_reg[12]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "rd_fwft" *) 
 module read_fifo_rd_fwft
    (empty,
     enb_array,
@@ -6778,7 +6765,6 @@ module read_fifo_rd_fwft
         .R(srst));
 endmodule
 
-(* ORIG_REF_NAME = "rd_logic" *) 
 module read_fifo_rd_logic
    (empty,
     D,
@@ -6899,7 +6885,6 @@ module read_fifo_rd_logic
         .v1_reg_1(\c2/v1_reg ));
 endmodule
 
-(* ORIG_REF_NAME = "rd_status_flags_ss" *) 
 module read_fifo_rd_status_flags_ss
    (out,
     \gmux.gm[1].gms.ms ,
@@ -6994,7 +6979,6 @@ module read_fifo_rd_status_flags_ss
         .S(srst));
 endmodule
 
-(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module read_fifo_wr_bin_cntr
    (D,
     ena_array,
@@ -7343,7 +7327,6 @@ module read_fifo_wr_bin_cntr
         .O(\gcc0.gc0.count_d1_reg[12]_1 ));
 endmodule
 
-(* ORIG_REF_NAME = "wr_logic" *) 
 module read_fifo_wr_logic
    (out,
     full,
@@ -7438,7 +7421,6 @@ module read_fifo_wr_logic
         .wr_en(wr_en));
 endmodule
 
-(* ORIG_REF_NAME = "wr_status_flags_ss" *) 
 module read_fifo_wr_status_flags_ss
    (out,
     full,
