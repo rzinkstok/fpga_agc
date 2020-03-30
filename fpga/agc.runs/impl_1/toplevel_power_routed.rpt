@@ -1,8 +1,8 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Fri Jan 24 16:10:36 2020
-| Host             : NLVL42YXNF2 running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
+| Date             : Fri Jan 24 19:17:36 2020
+| Host             : fpgadev running 64-bit Ubuntu 18.04.3 LTS
 | Command          : report_power -file toplevel_power_routed.rpt -pb toplevel_power_summary_routed.pb -rpx toplevel_power_routed.rpx
 | Design           : toplevel
 | Device           : xc7z020clg484-1
@@ -152,46 +152,46 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-------------------------+-----------+
-| Name                    | Power (W) |
-+-------------------------+-----------+
-| toplevel                |     1.546 |
-|   agcmonitor            |     0.011 |
-|     usb_if              |     0.010 |
-|       cmd_queue         |     0.003 |
-|       read_byte_queue   |     0.004 |
-|       read_msg_queue    |     0.001 |
-|   fpgaagc               |     0.200 |
-|     traya               |     0.060 |
-|       a01               |     0.004 |
-|       a02               |     0.002 |
-|       a03               |     0.003 |
-|       a04               |     0.003 |
-|       a05               |     0.002 |
-|       a06               |     0.002 |
-|       a07               |     0.002 |
-|       a08               |     0.003 |
-|       a09               |     0.003 |
-|       a10               |     0.003 |
-|       a11               |     0.003 |
-|       a12               |     0.003 |
-|       a14               |     0.003 |
-|       a15               |     0.003 |
-|       a16               |     0.002 |
-|       a17               |     0.003 |
-|       a18               |     0.004 |
-|       a19               |     0.002 |
-|       a20               |     0.003 |
-|       a21               |     0.003 |
-|       a23               |     0.002 |
-|       a24               |     0.001 |
-|     trayb               |     0.141 |
-|       b01fixedmemory    |     0.017 |
-|       b07oscillator     |     0.120 |
-|       b12erasablememory |     0.003 |
-|   styxpsbootloader      |     1.280 |
-|     styx_ps             |     1.280 |
-|       styx_ps_i         |     1.280 |
-+-------------------------+-----------+
++----------------------------+-----------+
+| Name                       | Power (W) |
++----------------------------+-----------+
+| toplevel                   |     1.546 |
+|   agcmonitor               |     0.011 |
+|     usb_if                 |     0.010 |
+|       cmd_queue            |     0.003 |
+|       read_byte_queue      |     0.004 |
+|       read_msg_queue       |     0.001 |
+|   fpgaagc                  |     0.200 |
+|     traya                  |     0.060 |
+|       a01                  |     0.004 |
+|       a02                  |     0.002 |
+|       a03                  |     0.003 |
+|       a04                  |     0.003 |
+|       a05                  |     0.002 |
+|       a06                  |     0.002 |
+|       a07                  |     0.002 |
+|       a08                  |     0.003 |
+|       a09                  |     0.003 |
+|       a10                  |     0.003 |
+|       a11                  |     0.003 |
+|       a12                  |     0.003 |
+|       a14                  |     0.003 |
+|       a15                  |     0.003 |
+|       a16                  |     0.002 |
+|       a17                  |     0.003 |
+|       a18                  |     0.004 |
+|       a19                  |     0.002 |
+|       a20                  |     0.003 |
+|       a21                  |     0.003 |
+|       a23                  |     0.002 |
+|       a24                  |     0.001 |
+|     trayb                  |     0.141 |
+|       b01fixedmemory       |     0.017 |
+|       b07oscillator        |     0.120 |
+|       b12erasablememory    |     0.003 |
+|   styxpswrapper            |     1.280 |
+|     styx_ps_i              |     1.280 |
+|       processing_system7_0 |     1.280 |
++----------------------------+-----------+
 
 

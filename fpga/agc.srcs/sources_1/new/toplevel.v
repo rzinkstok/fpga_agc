@@ -852,7 +852,7 @@ module toplevel(
 		n0VDCA
 	);
 
-	styx_ps_bootloader styxpsbootloader(
+	styx_ps_wrapper styxpswrapper(
 		DDR_addr,
 		DDR_ba,
 		DDR_cas_n,

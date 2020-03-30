@@ -76,12 +76,14 @@ class USBInterface(QObject):
                 print("Send", msg)
                 packed_msg = msg.pack()
                 slipped_msg = slip(packed_msg)
-                try:
-                    self._dev.write(slipped_msg)
-                except:
-                    print("Error writing to FTDI")
-                    self._disconnect()
-                    return
+                print(slipped_msg)
+
+                #try:
+                self._dev.write(slipped_msg)
+                # except:
+                #     print("Error writing to FTDI")
+                #     self._disconnect()
+                #     return
 
             try:
                 self._rx_bytes += self._dev.read(4096)
@@ -105,7 +107,7 @@ class USBInterface(QObject):
 
     def _connect(self):
         try:
-            print("Opening device...")
+            #print("Opening device...")
             # Attempt to construct an FTDI Device
             self._dev = Device()
             print("Device opened")
@@ -125,7 +127,7 @@ class USBInterface(QObject):
 
         except FtdiError:
             pass
-            print("Could not connect to device")
+            #print("Could not connect to device")
 
     def _disconnect(self):
         self.connected.emit(False)

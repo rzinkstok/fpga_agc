@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="toplevel_hw_platform_0" key="programflash.hwplatform"/>
+	<item value="Auto Detect" key="toplevel_hw_platform_0-device"/>
+	<item value="" key="toplevel_hw_platform_0-offSet"/>
+	<item value="/home/rzinkstok/fpga_agc/fpga/agc.sdk/fsbl/Debug/fsbl.elf" key="toplevel_hw_platform_0-fsblFile"/>
+	<item value="false" key="toplevel_hw_platform_0-blankCheck"/>
+	<item value="qspi-x4-single" key="toplevel_hw_platform_0-flashType"/>
+	<item value="Local" key="toplevel_hw_platform_0-target"/>
+	<item value="/home/rzinkstok/fpga_agc/fpga/agc.sdk/HelloWorld/bootimage/BOOT.mcs" key="toplevel_hw_platform_0-imgFile"/>
+	<item value="false" key="toplevel_hw_platform_0-verifyFlash"/>
+</section>

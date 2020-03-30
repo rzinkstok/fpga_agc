@@ -1,8 +1,8 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Fri Jan 24 16:10:37 2020
-| Host         : NLVL42YXNF2 running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
+| Date         : Fri Jan 24 19:17:38 2020
+| Host         : fpgadev running 64-bit Ubuntu 18.04.3 LTS
 | Command      : report_timing_summary -max_paths 10 -file toplevel_timing_summary_routed.rpt -pb toplevel_timing_summary_routed.pb -rpx toplevel_timing_summary_routed.rpx -warn_on_violation
 | Design       : toplevel
 | Device       : 7z020-clg484
@@ -1364,10 +1364,10 @@ Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766
 Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X63Y69     fpgaagc/traya/a17/NOR44136/y_reg/C
 Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X63Y69     fpgaagc/traya/a17/NOR44137/prev_val_reg/C
 Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X63Y69     fpgaagc/traya/a17/NOR44137/y_reg/C
-Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X60Y69     fpgaagc/traya/a17/NOR44216/prev_val_reg/C
-Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X60Y69     fpgaagc/traya/a17/NOR44216/y_reg/C
 Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X84Y75     fpgaagc/traya/a08/NOR51119/prev_val_reg/C
 Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X84Y75     fpgaagc/traya/a08/NOR51119/y_reg/C
+Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X60Y69     fpgaagc/traya/a17/NOR44216/prev_val_reg/C
+Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X60Y69     fpgaagc/traya/a17/NOR44216/y_reg/C
 Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X60Y79     fpgaagc/traya/a01/NOR38111/prev_val_reg/C
 Low Pulse Width   Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X60Y79     fpgaagc/traya/a01/NOR38111/y_reg/C
 High Pulse Width  Slow    FDCE/C              n/a            0.500         9.766       9.266      SLICE_X62Y69     fpgaagc/traya/a17/NOR44136/next_val_reg/C
