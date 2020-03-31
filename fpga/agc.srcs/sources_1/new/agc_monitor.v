@@ -176,8 +176,8 @@ module agc_monitor(
         .read_msg_ready(read_msg_ready),
         .ctrl_read_en(ctrl_read_en),
         .ctrl_write_en(ctrl_write_en),
-        .ctrl_write_done(ctrl_write_done),
-        .mon_reg_read_en(mon_reg_read_en)
+        .ctrl_write_done(ctrl_write_done)
+        //.mon_reg_read_en(mon_reg_read_en)
     );
 
 
@@ -223,19 +223,19 @@ module agc_monitor(
         .data_out(ctrl_data),
 
         .MNHRPT(MNHRPT),
-        .MNHNC(MNHNC),
-        .NHALGA(NHALGA),
-        .nhstrt1(nhstrt1),
-        .nhstrt2(nhstrt2),
+        //.MNHNC(MNHNC),
+        .NHALGA(NHALGA)
+        //.nhstrt1(nhstrt1),
+        //.nhstrt2(nhstrt2),
 
-        .i(i),
+        //.i(i),
 
-        .w_mode(w_mode),
-        .w_s1_s2(w_s1_s2),
-        .w_times(w_times),
-        .w_pulses(w_pulses),
+        //.w_mode(w_mode),
+        //.w_s1_s2(w_s1_s2),
+        //.w_times(w_times),
+        //.w_pulses(w_pulses),
 
-        .s_only(s_only)
+        //.s_only(s_only)
     );
 
 
@@ -261,101 +261,101 @@ module agc_monitor(
     /*******************************************************************************.
     * Monitor Registers                                                             *
     '*******************************************************************************/
-    wire [15:10]sq;
-    wire [16:1]l;
-    wire [16:1]q;
-    wire [16:1]z;
-    wire [16:1]g;
-    wire [16:1]b;
-    wire [16:1]y;
-    wire [16:1]u;
-    wire [11:9]true_eb;
-    wire [15:11]true_fb;
-    wire [12:1]true_s;
-    wire inhibit_ws;
-    assign inhibit_ws = 1'b0;   // FIXME: remove when peripheral instructions are done
-    wire rbbk;
-    assign rbbk = 1'b0;         // FIXME: remove when peripheral instructions are done
+//    wire [15:10]sq;
+//    wire [16:1]l;
+//    wire [16:1]q;
+//    wire [16:1]z;
+//    wire [16:1]g;
+//    wire [16:1]b;
+//    wire [16:1]y;
+//    wire [16:1]u;
+//    wire [11:9]true_eb;
+//    wire [15:11]true_fb;
+//    wire [12:1]true_s;
+//    wire inhibit_ws;
+//    assign inhibit_ws = 1'b0;   // FIXME: remove when peripheral instructions are done
+//    wire rbbk;
+//    assign rbbk = 1'b0;         // FIXME: remove when peripheral instructions are done
 
-    monitor_regs mon_regs(
-        .clk(clk),
-        .rst_n(rst_n),
+//    monitor_regs mon_regs(
+//        .clk(clk),
+//        .rst_n(rst_n),
 
-        .mt(mt),
-        .MONWT(MONWT),
-        .ct(ct),
+//        .mt(mt),
+//        .MONWT(MONWT),
+//        .ct(ct),
 
-        .mwl(mwl),
+//        .mwl(mwl),
 
-        .MWAG(MWAG),
-        .MWLG(MWLG),
-        .MWQG(MWQG),
-        .MWEBG(MWEBG),
-        .MWFBG(MWFBG),
-        .MWBBEG(MWBBEG),
-        .MWZG(MWZG),
-        .MWBG(MWBG),
-        .MWSG(MWSG),
-        .MWG(MWG),
-        .MWYG(MWYG),
-        .MRULOG(MRULOG),
-        .MRGG(MRGG),
-        .mwchg(mwchg),
-        .mrchg(mrchg),
+//        .MWAG(MWAG),
+//        .MWLG(MWLG),
+//        .MWQG(MWQG),
+//        .MWEBG(MWEBG),
+//        .MWFBG(MWFBG),
+//        .MWBBEG(MWBBEG),
+//        .MWZG(MWZG),
+//        .MWBG(MWBG),
+//        .MWSG(MWSG),
+//        .MWG(MWG),
+//        .MWYG(MWYG),
+//        .MRULOG(MRULOG),
+//        .MRGG(MRGG),
+//        .mwchg(mwchg),
+//        .mrchg(mrchg),
 
-        .inhibit_ws(inhibit_ws),
-        .rbbk(rbbk),
-        .s_only(s_only),
-        .adv_s(adv_s),
+//        .inhibit_ws(inhibit_ws),
+//        .rbbk(rbbk),
+//        .s_only(s_only),
+//        .adv_s(adv_s),
 
-        .MSQEXT(MSQEXT),
-        .msq(msq),
-        .mst(mst),
-        .mbr(mbr),
+//        .MSQEXT(MSQEXT),
+//        .msq(msq),
+//        .mst(mst),
+//        .mbr(mbr),
 
-        .MGOJAM(MGOJAM),
-        .MSTPIT_(MSTPIT_),
-        .MIIP(MIIP),
-        .MINHL(MINHL),
-        .MINKL(MINKL),
-        .MNISQ(MNISQ),
-        .MSP(MSP),
-        .MGP_(MGP_),
+//        .MGOJAM(MGOJAM),
+//        .MSTPIT_(MSTPIT_),
+//        .MIIP(MIIP),
+//        .MINHL(MINHL),
+//        .MINKL(MINKL),
+//        .MNISQ(MNISQ),
+//        .MSP(MSP),
+//        .MGP_(MGP_),
 
-        .MSTP(MSTP),
+//        .MSTP(MSTP),
 
-        .s1_match(s1_match),
-        .s2_match(s2_match),
-        .i_match(i_match),
+//        .s1_match(s1_match),
+//        .s2_match(s2_match),
+//        .i_match(i_match),
 
-        .w_mode(w_mode),
-        .w_s1_s2(w_s1_s2),
-        .w_times(w_times),
-        .w_pulses(w_pulses),
+//        .w_mode(w_mode),
+//        .w_s1_s2(w_s1_s2),
+//        .w_times(w_times),
+//        .w_pulses(w_pulses),
 
-        .sq(sq),
-        .l(l),
-        .q(q),
-        .z(z),
-        .s(s),
-        .eb(eb),
-        .fb(fb),
-        .g(g),
-        .b(b),
-        .y(y),
-        .u(u),
+//        .sq(sq),
+//        .l(l),
+//        .q(q),
+//        .z(z),
+//        .s(s),
+//        .eb(eb),
+//        .fb(fb),
+//        .g(g),
+//        .b(b),
+//        .y(y),
+//        .u(u),
 
-        .w(w),
-        .wp(wp),
-        .i(i),
+//        .w(w),
+//        .wp(wp),
+//        .i(i),
 
-        .true_eb(true_eb),
-        .true_fb(true_fb),
-        .true_s(true_s),
+//        .true_eb(true_eb),
+//        .true_fb(true_fb),
+//        .true_s(true_s),
 
-        .read_en(mon_reg_read_en),
-        .addr(cmd_addr),
-        .data_out(mon_reg_data)
-    );
+//        .read_en(mon_reg_read_en),
+//        .addr(cmd_addr),
+//        .data_out(mon_reg_data)
+//    );
 
 endmodule

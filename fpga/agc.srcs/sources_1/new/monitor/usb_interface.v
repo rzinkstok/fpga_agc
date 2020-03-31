@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`default_nettype none
 
 module usb_interface(
     input wire clk,
@@ -7,12 +8,12 @@ module usb_interface(
     // FT2232H signals
     input wire clkout,
     inout wire [7:0] data,
-    input wire rxf_n,
-    input wire txe_n,
-    output wire rd_n,
-    output wire wr_n,
-    output wire oe_n,
-    output wire siwu,
+    input wire rxf_n,       // Signifies data is available from FTDI when low
+    input wire txe_n,       // Signifies data can be written to FTDI when low
+    output wire rd_n,       // Output data from FTDI when low
+    output wire wr_n,       // Writes data to FTDI when low
+    output wire oe_n,       // Output enable, should be low before driving rd_n low
+    output wire siwu,       // Not used
     
     // Incoming command outputs
     output wire [39:0] cmd,
@@ -23,8 +24,6 @@ module usb_interface(
     input wire [39:0] read_msg,
     input wire read_msg_ready
 );
-
-
     /*******************************************************************************.
     * FSM States                                                                    *
     '*******************************************************************************/
@@ -42,8 +41,9 @@ module usb_interface(
     // SIWU is unused, so just hold it high
     assign siwu = 1'b1;
     assign wr_n = (state != WRITE);
-    assign oe_n = !((state == READ1) || (state == READ2));
+    assign oe_n = ~((state == READ1) | (state == READ2));
     assign rd_n = (state != READ2);
+    
     
     
     /*******************************************************************************.
@@ -58,12 +58,9 @@ module usb_interface(
     wire rx_data_ready;
     assign rx_data_ready = (state == READ2) & (~rxf_n);
     
-    // Upon completion of a valid command, the receiver will assert cmd_valid and
-    // output the command on cmd_in. This will place the command onto the incoming
-    // command FIFO.
     wire cmd_valid;
     wire [39:0] cmd_in;
-
+    
     // Command FIFO state flags 
     wire cmd_fifo_full;
     wire cmd_fifo_empty;
@@ -74,8 +71,7 @@ module usb_interface(
     // message before that queue can be emptied.
     wire read_fifo_full;
     assign cmd_ready = (!cmd_fifo_empty) && (!read_fifo_full);
-    
-    
+
     // Command receiver
     cmd_receiver cmd_rx(
         .clk(clkout),
@@ -85,7 +81,7 @@ module usb_interface(
         .cmd_valid(cmd_valid),
         .cmd_msg(cmd_in)
     );
-
+    
     // Queue of completed incoming commands
     cmd_fifo cmd_queue(
         .rst(!rst_n),
@@ -98,7 +94,6 @@ module usb_interface(
         .full(cmd_fifo_full), 
         .empty(cmd_fifo_empty)
     );
-
 
     /*******************************************************************************.
     * Read Message Sender                                                           *
@@ -119,7 +114,7 @@ module usb_interface(
     // Read message FIFO status flags
     wire read_fifo_empty;
     wire read_fifo_ready;
-    assign read_fifo_ready = !read_fifo_empty;
+    assign read_fifo_ready = ~read_fifo_empty;
     
     // SLIP-encoded byte output from message sender and its validity flag
     wire send_byte_ready;
@@ -133,13 +128,13 @@ module usb_interface(
     // Output byte from the read byte FIFO to the USB interface
     wire [7:0] tx_byte;
     wire tx_byte_read_en;
-    assign tx_byte_read_en = ((!wr_n) && (!txe_n));
+    assign tx_byte_read_en = ((~wr_n) & (~txe_n) & (~read_byte_fifo_empty));
     assign data = (tx_byte_read_en) ? tx_byte : 8'bZ;
     
     // Read message FIFO
     read_fifo read_msg_queue(
       .clk(clk),
-      .srst(!rst_n),
+      .srst(~rst_n),
       .din(read_msg),
       .wr_en(read_msg_ready),
       .rd_en(sender_ready),
@@ -162,7 +157,7 @@ module usb_interface(
     
     // Read byte FIFO
     read_byte_fifo read_byte_queue(
-        .rst(!rst_n),
+        .rst(~rst_n),
         .wr_clk(clk),
         .rd_clk(clkout),
         .din(send_byte),
@@ -173,62 +168,61 @@ module usb_interface(
         .empty(read_byte_fifo_empty),
         .almost_empty(read_byte_fifo_almost_empty)
     );
-    
 
-/*******************************************************************************.
-* USB Interface State Machine                                                   *
-'*******************************************************************************/
-always @(posedge clkout or negedge rst_n) begin
-    if (!rst_n) begin
-        state <= IDLE;
-    end else begin
-        state <= next_state;
-    end
-end
-
-always @(*) begin
-    next_state = state;
-
-    case (state)
-    IDLE: begin
-        if ((!cmd_fifo_full) && (!rxf_n)) begin
-            // If we have room for command bytes and there is some available,
-            // kick off a read. READ1 will assert OE#, and READ2 will assert
-            // RD# and actually clock out the data.
-            next_state = READ1;
-        end else if ((!read_byte_fifo_empty) && (!txe_n)) begin
-            // If we have data to send and the chip has room to accept it,
-            // kick off a write
-            next_state = WRITE;
-        end
-    end
-
-    READ1: begin
-        if (rxf_n) begin
-            // Somehow the data was lost before we had a chance to read it. Go
-            // back to IDLE.
-            next_state = IDLE;
+    /*******************************************************************************.
+    * USB Interface State Machine                                                   *
+    '*******************************************************************************/
+    always @(posedge clkout or negedge rst_n) begin
+        if (~rst_n) begin
+            state <= IDLE;
         end else begin
-            next_state = READ2;
+            state <= next_state;
         end
     end
-
-    READ2: begin
-        if (rxf_n | cmd_fifo_full) begin
-            // Continue reading bytes until we've either got it all, or our
-            // command FIFO is full
-            next_state = IDLE;
-        end
-    end
-
-    WRITE: begin
-        if (txe_n || (!rxf_n) || (read_byte_fifo_almost_empty)) begin
-            // Continue writing until 
-            next_state = IDLE;
-        end
-    end
-    endcase
-end
-
-
+    
+    always @(*) begin
+        next_state = state;
+    
+        case (state)
+            IDLE: begin
+                if ((~cmd_fifo_full) & (~rxf_n)) begin
+                    // If we have room for command bytes and there is some available,
+                    // kick off a read. READ1 will assert OE#, and READ2 will assert
+                    // RD# and actually clock out the data.
+                    next_state = READ1;
+                end else if ((~read_byte_fifo_empty) & (~txe_n)) begin
+                    // If we have data to send and the chip has room to accept it,
+                    // kick off a write
+                    next_state = WRITE;
+                end
+            end
+        
+            READ1: begin
+                if (rxf_n) begin
+                    // Somehow the data was lost before we had a chance to read it. Go
+                    // back to IDLE.
+                    next_state = IDLE;
+                end else begin
+                    next_state = READ2;
+                end
+            end
+        
+            READ2: begin
+                if (rxf_n | cmd_fifo_full) begin
+                    // Continue reading bytes until we've either got it all, or our
+                    // command FIFO is full
+                    next_state = IDLE;
+                end
+            end
+        
+            WRITE: begin
+                if (txe_n | (~rxf_n) | (read_byte_fifo_almost_empty)) begin
+                    // Continue writing until 
+                    next_state = IDLE;
+                end
+            end
+        endcase
+    end    
 endmodule
+
+`default_nettype wire
