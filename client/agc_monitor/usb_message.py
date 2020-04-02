@@ -94,6 +94,8 @@ class Message(object):
     - mask: the mask values for each data property, for packing and unpacking data
 
     These class variables can be set and overridden anywhere in the class hierarchy.
+
+    If the message is instantiated with arguments to the constructor, it will be a write message, else a read message.
     """
     group = None
     address = None
@@ -277,6 +279,13 @@ class MonRegParity(MonRegMessage):
     keys = ["g_gp", "g_sp", "w_gp", "w_sp"]
     bitshift = (0, 1, 2, 3)
     mask = (0x0001, 0x0001, 0x0001, 0x0001)
+
+
+class MonRegStatus(MonRegMessage):
+    address = 0x000B
+    keys = ["gojam", "run", "iip", "inhl", "inkl", "outcom"]
+    bitshift = (0, 1, 2, 3, 4, 5)
+    mask = (0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001)
 
 
 class MonChanMessage(Message):

@@ -26,7 +26,10 @@ module cmd_controller(
     // Control registers control signals
     output reg ctrl_read_en,
     output reg ctrl_write_en,
-    input wire ctrl_write_done
+    input wire ctrl_write_done,
+    
+    // Monitor registers control signals
+    output reg mon_reg_read_en
 );
     
     
@@ -93,7 +96,7 @@ module cmd_controller(
         ctrl_write_en = 1'b0;
         //status_read_en = 1'b0;
         //status_write_en = 1'b0;
-        //mon_reg_read_en = 1'b0;
+        mon_reg_read_en = 1'b0;
         //mon_chan_read_en = 1'b0;
         //agc_fixed_read_en = 1'b0;
         //agc_erasable_read_en = 1'b0;
@@ -219,7 +222,7 @@ module cmd_controller(
         STATUS: begin
             if (~cmd_write_flag) begin
                 //status_read_en = 1'b1;
-                //next_state = SEND_READ_MSG;
+                next_state = SEND_READ_MSG;
             end else begin
                 //status_write_en = 1'b1;
                 next_state = IDLE;
@@ -228,8 +231,8 @@ module cmd_controller(
     
         MON_REGS: begin
             if (~cmd_write_flag) begin
-                //mon_reg_read_en = 1'b1;
-                //next_state = SEND_READ_MSG;
+                mon_reg_read_en = 1'b1;
+                next_state = SEND_READ_MSG;
             end else begin
                 next_state = IDLE;
             end

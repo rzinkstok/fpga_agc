@@ -66,26 +66,31 @@ class USBInterface(QObject):
             self._tx_queue.put(msg)
 
     def _service(self):
+        #print("Service")
         #self._dev = True
         if self._dev is None:
+            #print("Connecting")
             self._connect()
         else:
             self._enqueue_poll_msgs()
             while not self._tx_queue.empty():
                 msg = self._tx_queue.get_nowait()
-                print("Send", msg)
+                print(f"Sending {msg}")
                 packed_msg = msg.pack()
                 slipped_msg = slip(packed_msg)
-                print(slipped_msg)
-
-                #try:
-                self._dev.write(slipped_msg)
-                # except:
-                #     print("Error writing to FTDI")
-                #     self._disconnect()
-                #     return
+                try:
+                    self._dev.write(slipped_msg)
+                except:
+                     print("Error writing to FTDI")
+                     self._disconnect()
+                     return
 
             try:
+                # Workaround to ensure direct return of data
+                # Somehow, it takes 3 reads to get any data, even if data
+                # is available at the time of the first read
+                self._rx_bytes += self._dev.read(4096)
+                self._rx_bytes += self._dev.read(4096)
                 self._rx_bytes += self._dev.read(4096)
             except:
                 print("Error reading from FTDI")
@@ -103,11 +108,11 @@ class USBInterface(QObject):
                     warnings.warn('Unknown message %s' % msg_bytes)
                     continue
 
+                print(f"Received {msg}")
                 self.msg_received.emit(msg)
 
     def _connect(self):
         try:
-            #print("Opening device...")
             # Attempt to construct an FTDI Device
             self._dev = Device()
             print("Device opened")
@@ -127,7 +132,7 @@ class USBInterface(QObject):
 
         except FtdiError:
             pass
-            #print("Could not connect to device")
+            print("Could not connect to device")
 
     def _disconnect(self):
         self.connected.emit(False)

@@ -32,7 +32,10 @@ class Control(QFrame):
         self._status_inds = {}
         self._setup_ui()
 
-        # usbif.poll(um.ReadMonRegStatus())
+        #usbif.poll(um.ControlNHALGA())
+        #usbif.poll(um.ControlMNHRPT())
+
+        usbif.poll(um.MonRegStatus())
         # usbif.poll(um.ReadControlStopCause())
         # usbif.poll(um.ReadStatusPeripheral())
         usbif.listen(self)
@@ -42,9 +45,13 @@ class Control(QFrame):
 
     def handle_msg(self, msg):
         pass
-        # if isinstance(msg, um.MonRegStatus):
-        #    self._status_inds['gojam'].set_on(msg.gojam)
-        #    self._status_inds['agc_run'].set_on(msg.run)
+        if isinstance(msg, um.ControlNHALGA):
+            print("NHALGA: " + str(msg.nhalga))
+        elif isinstance(msg, um.ControlMNHRPT):
+            print("MNHRPT: " + str(msg.mnhrpt))
+        elif isinstance(msg, um.MonRegStatus):
+            self._status_inds['gojam']._indicator.set_on(msg.gojam)
+            self._status_inds['agc_run']._indicator.set_on(msg.run)
         # elif isinstance(msg, um.ControlStopCause):
         #    self._status_inds['mon_stop'].set_on(any(msg))
         # elif isinstance(msg, um.StatusPeripheral):
@@ -69,3 +76,4 @@ class Control(QFrame):
         for name, label in STATUS_INDS.items():
             w = LabelIndicator(self, QColor(255, 120, 0), label, lines=2)
             ag2.addWidget(w)
+            self._status_inds[name] = w

@@ -73,7 +73,6 @@ class MonitorPanel(QFrame):
         layout.addWidget(self._reg_s)
         layout.setAlignment(self._reg_s, Qt.AlignRight)
 
-
         lower_controls = QWidget(self)
         lower_layout = QHBoxLayout(lower_controls)
         lower_controls.setLayout(lower_layout)

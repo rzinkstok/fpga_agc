@@ -176,8 +176,8 @@ module agc_monitor(
         .read_msg_ready(read_msg_ready),
         .ctrl_read_en(ctrl_read_en),
         .ctrl_write_en(ctrl_write_en),
-        .ctrl_write_done(ctrl_write_done)
-        //.mon_reg_read_en(mon_reg_read_en)
+        .ctrl_write_done(ctrl_write_done),
+        .mon_reg_read_en(mon_reg_read_en)
     );
 
 

@@ -21,9 +21,9 @@ class AddressRegister(QWidget):
 
         self._setup_ui(color)
 
-        usbif.poll(um.MonRegS())
-        usbif.poll(um.MonRegBB())
-        usbif.poll(um.MonChanFEXT())
+        #usbif.poll(um.MonRegS())
+        #usbif.poll(um.MonRegBB())
+        #usbif.poll(um.MonChanFEXT())
 
         usbif.listen(self)
 
