@@ -72,6 +72,19 @@
 `define CTRL_REG_START_S      16'h76
 `define CTRL_REG_START_PRESET 16'h77
 
+// Status registers
+`define STATUS_REG_ALARMS       16'h00
+`define STATUS_REG_SIMULATION   16'h01
+`define STATUS_REG_MON_TEMP     16'h10
+`define STATUS_REG_MON_VCCINT   16'h11
+`define STATUS_REG_MON_VCCAUX   16'h12
+`define STATUS_REG_MON_P3V3IO   16'h13
+`define STATUS_REG_AGC_TEMP     16'h14
+`define STATUS_REG_AGC_BPLSSW   16'h15
+`define STATUS_REG_AGC_P4SW     16'h16
+`define STATUS_REG_MM_ADDR      16'h40
+`define STATUS_REG_MM_DATA      16'h41
+
 // Monitor AGC Register Mirrors
 `define MON_REG_A      16'h00
 `define MON_REG_L      16'h01
@@ -108,6 +121,15 @@
 `define W_PULSE_B   7
 `define W_PULSE_Y   8
 `define W_PULSE_U   9
+
+// ADC adresses
+`define ADC_CHAN_TEMP   5'h00
+`define ADC_CHAN_VCCINT 5'h01
+`define ADC_CHAN_VCCAUX 5'h02
+`define ADC_CHAN_VAUX7  5'h17
+`define ADC_CHAN_VAUX12 5'h1C
+`define ADC_CHAN_VAUX14 5'h1E
+`define ADC_CHAN_VAUX15 5'h1F
 
 // Special memory addresses
 `define CYR     12'o0020

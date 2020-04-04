@@ -11,11 +11,11 @@ set_property DRIVE 4 [get_ports ALGA]
 
 set_property PACKAGE_PIN L22 [get_ports DBLTST]
 set_property IOSTANDARD LVCMOS33 [get_ports DBLTST]
-set_property PULLDOWN true [get_ports DBLTST]
+set_property DRIVE 4 [get_ports DBLTST]
 
 set_property PACKAGE_PIN L21 [get_ports DOSCAL]
 set_property IOSTANDARD LVCMOS33 [get_ports DOSCAL]
-set_property PULLDOWN true [get_ports DOSCAL]
+set_property DRIVE 4 [get_ports DOSCAL]
 
 set_property PACKAGE_PIN G22 [get_ports MAMU]
 set_property IOSTANDARD LVCMOS33 [get_ports MAMU]

@@ -51,12 +51,12 @@ module usb_interface(
     '*******************************************************************************/
     // Prevent data from showing up after rxf_n has gone high
     wire [7:0] rx_data_in;
-    assign rx_data_in = rxf_n ? 8'bZ : data;
+    assign rx_data_in = data; //rxf_n ? 8'bZ : data;
     
     // As long as we are in READ2, new RX data is available from the chip
     // As READ2 lasts 1 cycle longer than needed, add the rxf_n dependency.
     wire rx_data_ready;
-    assign rx_data_ready = (state == READ2) & (~rxf_n);
+    assign rx_data_ready = (state == READ2);// & (~rxf_n);
     
     wire cmd_valid;
     wire [39:0] cmd_in;

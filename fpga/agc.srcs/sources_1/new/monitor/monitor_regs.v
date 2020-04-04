@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`default_nettype none
 
 `include "monitor_defs.v"
 
@@ -406,3 +407,4 @@ module monitor_regs(
     end
 
 endmodule
+`default_nettype wire

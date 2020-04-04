@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2203397000fs"></ZoomStartTime>
-      <ZoomEndTime time="3139397001fs"></ZoomEndTime>
-      <Cursor1Time time="4283397000fs"></Cursor1Time>
+      <ZoomStartTime time="3782400000fs"></ZoomStartTime>
+      <ZoomEndTime time="3846300001fs"></ZoomEndTime>
+      <Cursor1Time time="3831400000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="150"></NameColumnWidth>
-      <ValueColumnWidth column_width="99"></ValueColumnWidth>
+      <ValueColumnWidth column_width="95"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="31" />
+   <WVObjectSize size="33" />
    <wvobject type="logic" fp_name="/agc_monitor_tb/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -63,6 +63,10 @@
    <wvobject type="logic" fp_name="/agc_monitor_tb/agcmonitor/usb_if/cmd_rx/data_valid">
       <obj_property name="ElementShortName">data_valid</obj_property>
       <obj_property name="ObjectShortName">data_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/agc_monitor_tb/agcmonitor/usb_if/cmd_rx/state">
+      <obj_property name="ElementShortName">state[1:0]</obj_property>
+      <obj_property name="ObjectShortName">state[1:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/agc_monitor_tb/agcmonitor/usb_if/cmd_rx/msg_length">
       <obj_property name="ElementShortName">msg_length[2:0]</obj_property>
@@ -146,5 +150,9 @@
    <wvobject type="logic" fp_name="/agc_monitor_tb/MNHRPT">
       <obj_property name="ElementShortName">MNHRPT</obj_property>
       <obj_property name="ObjectShortName">MNHRPT</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/agc_monitor_tb/agcmonitor/read_data">
+      <obj_property name="ElementShortName">read_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">read_data[15:0]</obj_property>
    </wvobject>
 </wave_config>

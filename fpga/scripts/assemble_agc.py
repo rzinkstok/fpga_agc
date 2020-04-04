@@ -555,7 +555,7 @@ class FpgaAgc(GeneratedVerilogModule):
 
 class Toplevel(GeneratedVerilogModule):
     name = "toplevel"
-    modules = ["fpga_agc", "agc_monitor", "styx_ps_bootloader"]
+    modules = ["fpga_agc", "agc_monitor"] #, "styx_ps_bootloader"]
     module_files = [os.path.join(SOURCE_FOLDER, f"{x}.v") for x in modules]
 
     def __init__(self):
@@ -660,14 +660,11 @@ class AgcMonitorTestBench(GeneratedVerilogModule):
 
     def initial(self, fp):
         messages = [
-            ["C0", "80", "12", "34", "56", "78", "C0"],
-            ["C0", "02", "DB", "DC", "DB", "DD", "C0"],
-            ["C0", "05", "DB", "A0", "DB", "DD", "C0"],
-            ["C0", "06", "2A", "3B", "4C", "5D", "6E", "7F", "C0"],
             ["C0", "A0", "00", "40", "00", "01", "C0"],
             ["C0", "A0", "00", "40", "00", "00", "C0"],
             ["C0", "A0", "00", "04", "00", "01", "C0"],
             ["C0", "A0", "00", "04", "00", "00", "C0"],
+            ["C0", "21", "00", "0B", "C0"],
         ]
 
         fp.write("\tinitial\n")
@@ -690,7 +687,7 @@ class AgcMonitorTestBench(GeneratedVerilogModule):
         fp.write("\n")
 
     def ft2232h_message(self, fp, message):
-        fp.write("\t\t#100 rxf_n = 1'b0;\n")
+        fp.write("\t\t#500 rxf_n = 1'b0;\n")
         fp.write(f"\t\t@(negedge oe_n) data_in = 8'h{message[0]};\n")
         fp.write("\t\t@(negedge rd_n);\n")
         for byte in message[1:]:

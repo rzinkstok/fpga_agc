@@ -32,8 +32,8 @@ class Control(QFrame):
         self._status_inds = {}
         self._setup_ui()
 
-        #usbif.poll(um.ControlNHALGA())
-        #usbif.poll(um.ControlMNHRPT())
+        usbif.poll(um.ControlNHALGA())
+        usbif.poll(um.ControlMNHRPT())
 
         usbif.poll(um.MonRegStatus())
         # usbif.poll(um.ReadControlStopCause())

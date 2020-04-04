@@ -22,14 +22,55 @@ module cmd_controller(
     // Completed read response
     output wire [39:0] read_msg,
     output wire read_msg_ready,
-    
+
     // Control registers control signals
     output reg ctrl_read_en,
     output reg ctrl_write_en,
     input wire ctrl_write_done,
-    
+
+    // Status registers control signals
+    output reg status_read_en,
+    output reg status_write_en,
+
     // Monitor registers control signals
-    output reg mon_reg_read_en
+    output reg mon_reg_read_en,
+    output reg mon_chan_read_en,
+
+    // Fixed memory control signals
+    output reg agc_fixed_read_en,
+    input wire agc_fixed_read_done,
+
+    // Erasable memory control signals
+    output reg agc_erasable_read_en,
+    input wire agc_erasable_read_done,
+    output reg agc_erasable_write_en,
+    input wire agc_erasable_write_done,
+
+    // Channel control signals
+    output reg agc_channels_read_en,
+    input wire agc_channels_read_done,
+    output reg agc_channels_write_en,
+    input wire agc_channels_write_done,
+
+    // Core rope simulation control signals
+    output reg crs_read_en,
+    output reg crs_write_en,
+
+    // Erasable memory simulation control signals
+    output reg ems_read_en,
+    output reg ems_write_en,
+
+    // DSKY control signals
+    output reg mon_dsky_read_en,
+    output reg mon_dsky_write_en,
+
+    // Trace control signals
+    output reg trace_read_en,
+
+    // NASSP bridge signals
+    output reg nassp_read_en,
+    output reg nassp_write_en,
+    input wire nassp_write_done
 );
     
     
@@ -94,24 +135,24 @@ module cmd_controller(
         cmd_read_en = 1'b0;
         ctrl_read_en = 1'b0;
         ctrl_write_en = 1'b0;
-        //status_read_en = 1'b0;
-        //status_write_en = 1'b0;
+        status_read_en = 1'b0;
+        status_write_en = 1'b0;
         mon_reg_read_en = 1'b0;
-        //mon_chan_read_en = 1'b0;
-        //agc_fixed_read_en = 1'b0;
-        //agc_erasable_read_en = 1'b0;
-        //agc_erasable_write_en = 1'b0;
-        //agc_channels_read_en = 1'b0;
-        //agc_channels_write_en = 1'b0;
-        //crs_read_en = 1'b0;
-        //crs_write_en = 1'b0;
-        //ems_read_en = 1'b0;
-        //ems_write_en = 1'b0;
-        //mon_dsky_read_en = 1'b0;
-        //mon_dsky_write_en = 1'b0;
-        //trace_read_en = 1'b0;
-        //nassp_read_en = 1'b0;
-        //nassp_write_en = 1'b0;
+        mon_chan_read_en = 1'b0;
+        agc_fixed_read_en = 1'b0;
+        agc_erasable_read_en = 1'b0;
+        agc_erasable_write_en = 1'b0;
+        agc_channels_read_en = 1'b0;
+        agc_channels_write_en = 1'b0;
+        crs_read_en = 1'b0;
+        crs_write_en = 1'b0;
+        ems_read_en = 1'b0;
+        ems_write_en = 1'b0;
+        mon_dsky_read_en = 1'b0;
+        mon_dsky_write_en = 1'b0;
+        trace_read_en = 1'b0;
+        nassp_read_en = 1'b0;
+        nassp_write_en = 1'b0;
     
         case (state)
         IDLE: begin
@@ -140,29 +181,27 @@ module cmd_controller(
     
         ERASABLE: begin
             if (~cmd_write_flag) begin
-                next_state = IDLE; // REMOVE!!
-                //if (agc_erasable_read_done) begin
-                //    next_state = SEND_READ_MSG;
-                //end else begin
-                //    agc_erasable_read_en = 1'b1;
-                //end
+                if (agc_erasable_read_done) begin
+                    next_state = SEND_READ_MSG;
+                end else begin
+                    agc_erasable_read_en = 1'b1;
+                end
             end else begin
-                next_state = IDLE;  // REMOVE!!
-                //if (agc_erasable_write_done) begin
-                //    next_state = IDLE;
-                //end else begin
-                //    agc_erasable_write_en = 1'b1;
-                //end
+                if (agc_erasable_write_done) begin
+                    next_state = IDLE;
+                end else begin
+                    agc_erasable_write_en = 1'b1;
+                end
             end
         end
     
         FIXED: begin
             if (~cmd_write_flag) begin
-                //if (agc_fixed_read_done) begin
-                //    next_state = SEND_READ_MSG;
-                //end else begin
-                //    agc_fixed_read_en = 1'b1;
-                //end
+                if (agc_fixed_read_done) begin
+                    next_state = SEND_READ_MSG;
+                end else begin
+                    agc_fixed_read_en = 1'b1;
+                end
             end else begin
                 next_state = IDLE;
             end
@@ -170,36 +209,36 @@ module cmd_controller(
     
         CHANNELS: begin
             if (~cmd_write_flag) begin
-                //if (agc_channels_read_done) begin
-                //    next_state = SEND_READ_MSG;
-                //end else begin
-                //    agc_channels_read_en = 1'b1;
-                //end
+                if (agc_channels_read_done) begin
+                    next_state = SEND_READ_MSG;
+                end else begin
+                    agc_channels_read_en = 1'b1;
+                end
             end else begin
-                //if (agc_channels_write_done) begin
-                //    next_state = IDLE;
-                //end else begin
-                //    agc_channels_write_en = 1'b1;
-                //end
+                if (agc_channels_write_done) begin
+                    next_state = IDLE;
+                end else begin
+                    agc_channels_write_en = 1'b1;
+                end
             end
         end
     
         SIM_ERASABLE: begin
             if (~cmd_write_flag) begin
-                //ems_read_en = 1'b1;
-                //next_state = SEND_READ_MSG;
+                ems_read_en = 1'b1;
+                next_state = SEND_READ_MSG;
             end else begin
-                //ems_write_en = 1'b1;
+                ems_write_en = 1'b1;
                 next_state = IDLE;
             end
         end
     
         SIM_FIXED: begin
             if (~cmd_write_flag) begin
-                //crs_read_en = 1'b1;
-                //next_state = SEND_READ_MSG;
+                crs_read_en = 1'b1;
+                next_state = SEND_READ_MSG;
             end else begin
-                //crs_write_en = 1'b1;
+                crs_write_en = 1'b1;
                 next_state = IDLE;
             end
         end
@@ -221,10 +260,10 @@ module cmd_controller(
     
         STATUS: begin
             if (~cmd_write_flag) begin
-                //status_read_en = 1'b1;
+                status_read_en = 1'b1;
                 next_state = SEND_READ_MSG;
             end else begin
-                //status_write_en = 1'b1;
+                status_write_en = 1'b1;
                 next_state = IDLE;
             end
         end
@@ -240,8 +279,8 @@ module cmd_controller(
     
         MON_CHANNELS: begin
             if (~cmd_write_flag) begin
-                //mon_chan_read_en = 1'b1;
-                //next_state = SEND_READ_MSG;
+                mon_chan_read_en = 1'b1;
+                next_state = SEND_READ_MSG;
             end else begin
                 next_state = IDLE;
             end
@@ -249,18 +288,18 @@ module cmd_controller(
     
         MON_DSKY: begin
             if (~cmd_write_flag) begin
-                //mon_dsky_read_en = 1'b1;
-                //next_state = SEND_READ_MSG;
+                mon_dsky_read_en = 1'b1;
+                next_state = SEND_READ_MSG;
             end else begin
-                //mon_dsky_write_en = 1'b1;
+                mon_dsky_write_en = 1'b1;
                 next_state = IDLE;
             end
         end
     
         TRACE: begin
             if (~cmd_write_flag) begin
-                //trace_read_en = 1'b1;
-                //next_state = SEND_READ_MSG;
+                trace_read_en = 1'b1;
+                next_state = SEND_READ_MSG;
             end else begin
                 next_state = IDLE;
             end
@@ -268,14 +307,14 @@ module cmd_controller(
     
         NASSP: begin
             if (cmd_write_flag) begin
-                //if (nassp_write_done) begin
-                //    next_state = IDLE;
-                //end else begin
-                //    nassp_write_en = 1'b1;
-                //end
+                if (nassp_write_done) begin
+                    next_state = IDLE;
+                end else begin
+                    nassp_write_en = 1'b1;
+                end
             end else begin
-                //nassp_read_en = 1'b1;
-                //next_state = SEND_READ_MSG;
+                nassp_read_en = 1'b1;
+                next_state = SEND_READ_MSG;
             end
         end
     

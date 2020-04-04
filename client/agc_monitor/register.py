@@ -21,7 +21,7 @@ class Register(QWidget):
         usbif.listen(self)
 
         if has_parity:
-            usbif.poll(um.MonRegParity())
+            #usbif.poll(um.MonRegParity())
             self._gp = name.lower() + '_gp'
             self._sp = name.lower() + '_sp'
         else:

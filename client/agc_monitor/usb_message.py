@@ -124,6 +124,7 @@ class Message(object):
 
     def _unpack_data(self, data):
         """Extracts the message data from the unpacked bytes."""
+        print(f"Data: {data}")
         for i, k in enumerate(self.keys):
             setattr(self, k, (data >> self.bitshift[i]) & self.mask[i])
 

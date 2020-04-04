@@ -72,6 +72,8 @@ module agc_monitor_tb(
 	reg rxf_n = 0;
 	reg txe_n = 0;
 
+	wire DBLTST;
+	wire DOSCAL;
 	wire MNHNC;
 	wire MNHRPT;
 	wire NHALGA;
@@ -174,6 +176,8 @@ module agc_monitor_tb(
 		NHALGA,
 		nhstrt1,
 		nhstrt2,
+		DOSCAL,
+		DBLTST,
 		leds,
 		dbg
 	);
@@ -189,53 +193,7 @@ module agc_monitor_tb(
 		#200 reset = 1'b0;
 		#100;
 
-		#100 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'h80;
-		@(posedge clkout) data_in = 8'h12;
-		@(posedge clkout) data_in = 8'h34;
-		@(posedge clkout) data_in = 8'h56;
-		@(posedge clkout) data_in = 8'h78;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-
-		#100 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'h02;
-		@(posedge clkout) data_in = 8'hDB;
-		@(posedge clkout) data_in = 8'hDC;
-		@(posedge clkout) data_in = 8'hDB;
-		@(posedge clkout) data_in = 8'hDD;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-
-		#100 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'h05;
-		@(posedge clkout) data_in = 8'hDB;
-		@(posedge clkout) data_in = 8'hA0;
-		@(posedge clkout) data_in = 8'hDB;
-		@(posedge clkout) data_in = 8'hDD;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-
-		#100 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'h06;
-		@(posedge clkout) data_in = 8'h2A;
-		@(posedge clkout) data_in = 8'h3B;
-		@(posedge clkout) data_in = 8'h4C;
-		@(posedge clkout) data_in = 8'h5D;
-		@(posedge clkout) data_in = 8'h6E;
-		@(posedge clkout) data_in = 8'h7F;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-
-		#100 rxf_n = 1'b0;
+		#500 rxf_n = 1'b0;
 		@(negedge oe_n) data_in = 8'hC0;
 		@(negedge rd_n);
 		@(posedge clkout) data_in = 8'hA0;
@@ -246,7 +204,7 @@ module agc_monitor_tb(
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 
-		#100 rxf_n = 1'b0;
+		#500 rxf_n = 1'b0;
 		@(negedge oe_n) data_in = 8'hC0;
 		@(negedge rd_n);
 		@(posedge clkout) data_in = 8'hA0;
@@ -257,7 +215,7 @@ module agc_monitor_tb(
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 
-		#100 rxf_n = 1'b0;
+		#500 rxf_n = 1'b0;
 		@(negedge oe_n) data_in = 8'hC0;
 		@(negedge rd_n);
 		@(posedge clkout) data_in = 8'hA0;
@@ -268,7 +226,7 @@ module agc_monitor_tb(
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 
-		#100 rxf_n = 1'b0;
+		#500 rxf_n = 1'b0;
 		@(negedge oe_n) data_in = 8'hC0;
 		@(negedge rd_n);
 		@(posedge clkout) data_in = 8'hA0;
@@ -276,6 +234,15 @@ module agc_monitor_tb(
 		@(posedge clkout) data_in = 8'h04;
 		@(posedge clkout) data_in = 8'h00;
 		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'h21;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0B;
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 
