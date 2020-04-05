@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1586010017">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1586107237">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="RDI-RDI" Name="toplevel.vdi"/>
   <File Type="BG-DRC" Name="toplevel.drc"/>
@@ -420,6 +420,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/monitor/status_regs.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/bd/styx_ps/styx_ps.bd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -428,6 +435,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/styx_ps_bootloader.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -470,6 +484,7 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="mon_adc"/>
   <BlockFileSet Type="BlockSrcs" Name="cmd_fifo"/>
   <BlockFileSet Type="BlockSrcs" Name="read_byte_fifo"/>
   <BlockFileSet Type="BlockSrcs" Name="rope_memory"/>

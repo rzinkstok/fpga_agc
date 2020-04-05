@@ -44,14 +44,16 @@ module b08_alarm(
     
     // Oscillator alarm
     // Delay circuit to hold the alarm slightly longer after the clock is locked
-    // Counts for 255 prop_clk cycles (i.e. about 5 us) before asserting STRT2
+    // Counts for 255 prop_clk cycles (i.e. about 5 us) before deasserting STRT2
     reg [8:0] delay_counter;
-    assign STRT2 = delay_counter < 8'd255;
+    assign STRT2 = (delay_counter < 8'd255);
 
     always @(posedge prop_clk) begin
         if (!prop_clk_locked) begin
+            // Zero the counter, so STRT2 is asserted
             delay_counter <= 8'b0;
         end else begin
+            // After the oscillator is locked, wait a while before STRT2 is deasserted 
             if (delay_counter >= 8'd255) begin
                 delay_counter <= 8'd255;
             end else begin

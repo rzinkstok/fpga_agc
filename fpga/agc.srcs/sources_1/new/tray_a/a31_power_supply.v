@@ -6,7 +6,7 @@ module a31_power_supply(
     //input wire WD169,   // Other 28 volt input, not used
     //input wire n28DCR,  // Other 28 volt input, not used
     
-    //input wire CNTRL2,  // Test equipment input for simulating power failure
+    input wire CNTRL2,  // Test equipment input for simulating power failure
     //input wire SYNC14_, // Sync signal for voltage reference
     input wire SBYREL_, // Standy signal
     
@@ -14,7 +14,7 @@ module a31_power_supply(
     output wire BPLSSW
     );
     
-    assign BPLUS = WD167;
-    assign BPLSSW = (BPLUS && SBYREL_);
+    assign BPLUS = (!CNTRL2) & WD167;
+    assign BPLSSW = (BPLUS & SBYREL_);
     
 endmodule

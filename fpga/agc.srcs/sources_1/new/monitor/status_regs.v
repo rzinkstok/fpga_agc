@@ -25,24 +25,24 @@ module status_regs(
     input wire MT05,
     input wire MT08,
 
-    input wire mvfail_n,
-    input wire moscal_n,
-    input wire mscafl_n,
-    input wire mscdbl_n,
-    input wire mctral_n,
-    input wire mtcal_n,
-    input wire mrptal_n,
-    input wire mpal_n,
-    input wire mwatch_n,
-    input wire mpipal_n,
-    input wire mwarnf_n,
+    input wire MVFAIL_,
+    input wire MOSCAL_,
+    input wire MSCAFL_,
+    input wire MSCDBL_,
+    input wire MCTRAL_,
+    input wire MTCAL_,
+    input wire MRPTAL_,
+    input wire MPAL_,
+    input wire MWATCH_,
+    input wire MPIPAL_,
+    input wire MWARNF_,
 
-    input wire mnhsbf,
-    input wire mamu,
-    input wire mload,
-    input wire mldch,
-    input wire mread,
-    input wire mrdch,
+    input wire MNHSBF,
+    input wire MAMU,
+    input wire MLOAD,
+    input wire MLDCH,
+    input wire MREAD,
+    input wire MRDCH,
 
     input wire [16:1] mismatch_faddr,
     input wire [16:1] mismatch_data
@@ -133,51 +133,51 @@ module status_regs(
             if (write_en) begin
                 alarms <= alarms & ~(data_in[11:0]);
             end else begin
-                if (~mvfail_n) begin
+                if (~MVFAIL_) begin
                     alarms[VFAIL] <= 1'b1;
                 end
     
-                if (~moscal_n) begin
+                if (~MOSCAL_) begin
                     alarms[OSCAL] <= 1'b1;
                 end
     
-                if (~mscafl_n) begin
+                if (~MSCAFL_) begin
                     alarms[SCAFL] <= 1'b1;
                 end
     
-                if (~mscdbl_n) begin
+                if (~MSCDBL_) begin
                     alarms[SCDBL] <= 1'b1;
                 end
     
-                if (~mctral_n) begin
+                if (~MCTRAL_) begin
                     alarms[CTRAL] <= 1'b1;
                 end
     
-                if (~mtcal_n) begin
+                if (~MTCAL_) begin
                     alarms[TCAL] <= 1'b1;
                 end
     
-                if (~mrptal_n) begin
+                if (~MRPTAL_) begin
                     alarms[RPTAL] <= 1'b1;
                 end
     
-                if (~mpal_n & mt08) begin
+                if (~MPAL_ & MT08) begin
                     alarms[FPAL] <= 1'b1;
                 end
     
-                if (~mpal_n & mt05) begin
+                if (~MPAL_ & MT05) begin
                     alarms[EPAL] <= 1'b1;
                 end
     
-                if (~mwatch_n) begin
+                if (~MWATCH_) begin
                     alarms[WATCH] <= 1'b1;
                 end
     
-                if (~mpipal_n) begin
+                if (~MPIPAL_) begin
                     alarms[PIPAL] <= 1'b1;
                 end
     
-                if (~mwarnf_n) begin
+                if (~MWARNF_) begin
                     alarms[WARN] <= 1'b1;
                 end
             end
@@ -198,7 +198,7 @@ module status_regs(
             read_done <= 1'b1;
             case (addr)
                 `STATUS_REG_ALARMS:     read_data <= {4'b0, alarms};
-                `STATUS_REG_SIMULATION: read_data <= {10'b0, mrdch, mread, mldch, mload, mamu, mnhsbf};
+                `STATUS_REG_SIMULATION: read_data <= {10'b0, MRDCH, MREAD, MLDCH, MLOAD, MAMU, MNHSBF};
                 `STATUS_REG_MON_TEMP:   read_data <= adc_temp;
                 `STATUS_REG_MON_VCCINT: read_data <= adc_vccint;
                 `STATUS_REG_MON_VCCAUX: read_data <= adc_vccaux;

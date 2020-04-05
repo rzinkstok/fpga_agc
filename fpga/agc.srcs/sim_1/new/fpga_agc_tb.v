@@ -18,6 +18,8 @@ module fpga_agc_tb(
 	reg CDUYP = 0;
 	reg CDUZM = 0;
 	reg CDUZP = 0;
+	reg CNTRL1 = 0;
+	reg CNTRL2 = 0;
 	reg CTLSAT = 0;
 	reg DBLTST = 0;
 	reg DKBSNC = 0;
@@ -262,6 +264,7 @@ module fpga_agc_tb(
 	wire MRSC;
 	wire MRULOG;
 	wire MSCAFL_;
+	wire MSCDBL_;
 	wire MSP;
 	wire MSQ10;
 	wire MSQ11;
@@ -503,6 +506,8 @@ module fpga_agc_tb(
 		CDUZM,
 		CDUZP,
 		CLOCK,
+		CNTRL1,
+		CNTRL2,
 		CTLSAT,
 		DBLTST,
 		DKBSNC,
@@ -764,6 +769,7 @@ module fpga_agc_tb(
 		MRSC,
 		MRULOG,
 		MSCAFL_,
+		MSCDBL_,
 		MSP,
 		MSQ10,
 		MSQ11,

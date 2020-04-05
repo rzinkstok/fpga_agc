@@ -114,6 +114,7 @@ module a13_alarms(
     output wire SYNC4_,
     output wire SYNC14_,
     output wire MSCAFL_,
+    output wire MSCDBL_,
     output wire MWARNF_,
     output wire AGCWAR,
     output wire CGCWAR,
@@ -386,6 +387,9 @@ module a13_alarms(
 
     nor_3 #(1'b0)  NOR41242(CON3,           CON2,           FS10,           n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR41243(SCADBL,         CON3,           n2FSFAL,        n0VDCA,         p4VDC, reset, prop_clk);
+    
+    // Moved here from A12 sheet 1
+    nor_3 #(1'b0) NOR34254(MSCDBL_,         SCADBL,         n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR41209(NOR41209_out,   F14B,           n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR41210(NOR41210_out,   NOR41209_out,   SB2_,           n0VDCA,         p4VDC, reset, prop_clk);

@@ -3,7 +3,7 @@ import re
 
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GATE_SCHEMATICS = os.path.join(BASEDIR, "gate_changes.txt")
-MODULES_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new", "modules")
+MODULES_SOURCE_FOLDER = os.path.join(BASEDIR, "agc.srcs", "sources_1", "new", "tray_a")
 
 MODULE_RE = re.compile(r"^([a,b]\d\d)\_")
 GATE_RE = re.compile(r"NOR(\d\d\d\d[\dAB])\(")

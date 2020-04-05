@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date         : Sat Apr  4 16:23:04 2020
+| Date         : Sun Apr  5 19:23:46 2020
 | Host         : fpgadev running 64-bit Ubuntu 18.04.4 LTS
 | Command      : report_utilization -file toplevel_utilization_synth.rpt -pb toplevel_utilization_synth.pb
 | Design       : toplevel
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+-------+-------+-----------+-------+
 |        Site Type        |  Used | Fixed | Available | Util% |
 +-------------------------+-------+-------+-----------+-------+
-| Slice LUTs*             |  5189 |     0 |     53200 |  9.75 |
-|   LUT as Logic          |  5189 |     0 |     53200 |  9.75 |
+| Slice LUTs*             |  5338 |     0 |     53200 | 10.03 |
+|   LUT as Logic          |  5338 |     0 |     53200 | 10.03 |
 |   LUT as Memory         |     0 |     0 |     17400 |  0.00 |
-| Slice Registers         | 14220 |     0 |    106400 | 13.36 |
-|   Register as Flip Flop | 14220 |     0 |    106400 | 13.36 |
+| Slice Registers         | 14380 |     0 |    106400 | 13.52 |
+|   Register as Flip Flop | 14380 |     0 |    106400 | 13.52 |
 |   Register as Latch     |     0 |     0 |    106400 |  0.00 |
 | F7 Muxes                |     0 |     0 |     26600 |  0.00 |
 | F8 Muxes                |     0 |     0 |     13300 |  0.00 |
@@ -55,7 +55,7 @@ Table of Contents
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 2277  |          Yes |           - |          Set |
-| 11935 |          Yes |           - |        Reset |
+| 12095 |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
 | 8     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -90,7 +90,7 @@ Table of Contents
 +-----------------------------+------+-------+-----------+-------+
 |          Site Type          | Used | Fixed | Available | Util% |
 +-----------------------------+------+-------+-----------+-------+
-| Bonded IOB                  |  133 |     0 |       200 | 66.50 |
+| Bonded IOB                  |  136 |     0 |       200 | 68.00 |
 | Bonded IPADs                |    0 |     0 |         2 |  0.00 |
 | Bonded IOPADs               |    0 |     0 |       130 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |         4 |  0.00 |
@@ -146,14 +146,14 @@ Table of Contents
 +----------+-------+---------------------+
 | Ref Name |  Used | Functional Category |
 +----------+-------+---------------------+
-| FDCE     | 11935 |        Flop & Latch |
-| LUT4     |  2457 |                 LUT |
+| FDCE     | 12095 |        Flop & Latch |
+| LUT4     |  2485 |                 LUT |
 | FDPE     |  2277 |        Flop & Latch |
-| LUT5     |  1299 |                 LUT |
-| LUT3     |   978 |                 LUT |
-| LUT6     |   432 |                 LUT |
+| LUT5     |  1314 |                 LUT |
+| LUT3     |  1012 |                 LUT |
+| LUT6     |   513 |                 LUT |
 | LUT2     |   102 |                 LUT |
-| OBUF     |    93 |                  IO |
+| OBUF     |    96 |                  IO |
 | IBUF     |    40 |                  IO |
 | OBUFT    |     8 |                  IO |
 | FDRE     |     8 |        Flop & Latch |
@@ -166,16 +166,18 @@ Table of Contents
 8. Black Boxes
 --------------
 
-+--------------------+------+
-|      Ref Name      | Used |
-+--------------------+------+
-| rope_memory        |    1 |
-| read_fifo          |    1 |
-| read_byte_fifo     |    1 |
-| prop_clock_divider |    1 |
-| core_memory        |    1 |
-| cmd_fifo           |    1 |
-+--------------------+------+
++--------------------------------+------+
+|            Ref Name            | Used |
++--------------------------------+------+
+| styx_ps_processing_system7_0_0 |    1 |
+| rope_memory                    |    1 |
+| read_fifo                      |    1 |
+| read_byte_fifo                 |    1 |
+| prop_clock_divider             |    1 |
+| mon_adc                        |    1 |
+| core_memory                    |    1 |
+| cmd_fifo                       |    1 |
++--------------------------------+------+
 
 
 9. Instantiated Netlists

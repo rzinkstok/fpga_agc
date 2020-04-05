@@ -89,6 +89,36 @@ module agc_monitor(
     output wire DOSCAL,
     output wire DBLTST,
     
+    input wire MVFAIL_,
+    input wire MOSCAL_,
+    input wire MSCAFL_,
+    input wire MSCDBL_,
+    input wire MCTRAL_,
+    input wire MTCAL_,
+    input wire MRPTAL_,
+    input wire MPAL_,
+    input wire MWATCH_,
+    input wire MPIPAL_,
+    input wire MWARNF_,
+    
+    input wire MNHSBF,
+    input wire MAMU,
+    input wire MLOAD,
+    input wire MLDCH,
+    input wire MREAD,
+    input wire MRDCH,
+    
+    // Power
+    input wire n0VDCA,
+    //input wire BPLUS,
+    input wire BPLSSW,
+    //input wire p4VDC,
+    input wire p4SW,
+    
+    // Power supply failure test signals
+    output wire CNTRL1,
+    output wire CNTRL2,
+    
     output wire [6:1]leds,
     output wire [6:1]dbg
 );
@@ -105,6 +135,11 @@ module agc_monitor(
     assign mst = { MST3, MST2, MST1 };
     wire [2:1]mbr;
     assign mbr = { MBR2, MBR1 };
+    
+    // Power supply failure test signals: tie low
+    assign CNTRL1 = 1'b0;
+    assign CNTRL2 = 1'b0;
+    
 
     /*******************************************************************************.
     * USB Interface                                                                 *
@@ -206,7 +241,7 @@ module agc_monitor(
 
     // Resulting data from the active read command
     wire [15:0] read_data;
-    assign read_data = ctrl_data | mon_reg_data;
+    assign read_data = ctrl_data | status_data | mon_reg_data;
     //assign read_data =  ctrl_data | status_data | mon_reg_data | mon_chan_data | agc_fixed_data | agc_erasable_data |
     //                    agc_channels_data | crs_data | ems_data | mon_dsky_data | trace_data | nassp_data;
 
@@ -271,11 +306,6 @@ module agc_monitor(
     wire w_match;
     wire i_match;
     
-    assign s1_match = 1'b0; // FIXME: remove when start/stop logic is done
-    assign s2_match = 1'b0; // FIXME: remove when start/stop logic is done
-    assign w_match = 1'b0;  // FIXME: remove when start/stop logic is done
-    assign i_match = 1'b0;  // FIXME: remove when start/stop logic is done
-
     wire [2:0] w_mode;
     wire w_s1_s2;
     wire [12:1] w_times;
@@ -381,6 +411,7 @@ module agc_monitor(
     '*******************************************************************************/
     wire [16:1] mismatch_faddr;
     wire [16:1] mismatch_data;
+    
     status_regs stat_regs(
         .clk(clk),
         .rst_n(rst_n),
@@ -391,36 +422,36 @@ module agc_monitor(
         .write_en(status_write_en),
         .data_out(status_data),
     
-        .bplssw_p(bplssw_p),
-        .bplssw_n(bplssw_n),
-        .p4sw_p(p4sw_p),
-        .p4sw_n(p4sw_n),
-        .p3v3io_p(p3v3io_p),
-        .p3v3io_n(p3v3io_n),
-        .mtemp_p(mtemp_p),
-        .mtemp_n(mtemp_n),
+        .bplssw_p(n0VDCA), // Should be BPLSSW divided down to about 0.8 V
+        .bplssw_n(n0VDCA),
+        .p4sw_p(n0VDCA),   // Should be p4SW divided down to about 0.8 V
+        .p4sw_n(n0VDCA),
+        .p3v3io_p(n0VDCA), // Should be p3v3io ??
+        .p3v3io_n(n0VDCA),
+        .mtemp_p(n0VDCA),   // Should be mtemp ??
+        .mtemp_n(n0VDCA),
     
-        .mt05(mt[5]),
-        .mt08(mt[8]),
+        .MT05(MT05),
+        .MT08(MT08),
     
-        .mvfail_n(mvfail_n),
-        .moscal_n(moscal_n),
-        .mscafl_n(mscafl_n),
-        .mscdbl_n(mscdbl_n),
-        .mctral_n(mctral_n),
-        .mtcal_n(mtcal_n),
-        .mrptal_n(mrptal_n),
-        .mpal_n(mpal_n),
-        .mwatch_n(mwatch_n),
-        .mpipal_n(mpipal_n),
-        .mwarnf_n(mwarnf_n),
+        .MVFAIL_(MVFAIL_),
+        .MOSCAL_(MOSCAL_),
+        .MSCAFL_(MSCAFL_),
+        .MSCDBL_(MSCDBL_),
+        .MCTRAL_(MCTRAL_),
+        .MTCAL_(MTCAL_),
+        .MRPTAL_(MRPTAL_),
+        .MPAL_(MPAL_),
+        .MWATCH_(MWATCH_),
+        .MPIPAL_(MPIPAL_),
+        .MWARNF_(MWARNF_),
     
-        .mnhsbf(mnhsbf),
-        .mamu(mamu),
-        .mload(mload),
-        .mldch(mldch),
-        .mread(mread),
-        .mrdch(mrdch),
+        .MNHSBF(MNHSBF),
+        .MAMU(MAMU),
+        .MLOAD(MLOAD),
+        .MLDCH(MLDCH),
+        .MREAD(MREAD),
+        .MRDCH(MRDCH),
     
         .mismatch_faddr(mismatch_faddr),
         .mismatch_data(mismatch_data)

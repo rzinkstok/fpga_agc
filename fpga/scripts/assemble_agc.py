@@ -555,7 +555,7 @@ class FpgaAgc(GeneratedVerilogModule):
 
 class Toplevel(GeneratedVerilogModule):
     name = "toplevel"
-    modules = ["fpga_agc", "agc_monitor"] #, "styx_ps_bootloader"]
+    modules = ["fpga_agc", "agc_monitor", "styx_ps_bootloader"]
     module_files = [os.path.join(SOURCE_FOLDER, f"{x}.v") for x in modules]
 
     def __init__(self):

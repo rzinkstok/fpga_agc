@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1586010017">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1586107229">
   <File Type="VDS-TIMINGSUMMARY" Name="toplevel_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="toplevel.dcp"/>
   <File Type="RDS-UTIL-PB" Name="toplevel_utilization_synth.pb"/>
@@ -360,6 +360,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/monitor/status_regs.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/bd/styx_ps/styx_ps.bd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -368,6 +375,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/styx_ps_bootloader.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -402,6 +416,7 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="mon_adc"/>
   <BlockFileSet Type="BlockSrcs" Name="cmd_fifo"/>
   <BlockFileSet Type="BlockSrcs" Name="read_byte_fifo"/>
   <BlockFileSet Type="BlockSrcs" Name="rope_memory"/>

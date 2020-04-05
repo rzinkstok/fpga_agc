@@ -3,17 +3,31 @@
 module agc_monitor_tb(
 );
 
+	reg BPLSSW = 0;
+	reg MAMU = 0;
 	reg MBR1 = 0;
 	reg MBR2 = 0;
+	reg MCTRAL_ = 1;
 	reg MGOJAM = 0;
 	reg MGP_ = 1;
 	reg MIIP = 0;
 	reg MINHL = 0;
 	reg MINKL = 0;
+	reg MLDCH = 0;
+	reg MLOAD = 0;
+	reg MNHSBF = 0;
 	reg MNISQ = 0;
 	reg MONWT = 0;
+	reg MOSCAL_ = 1;
+	reg MPAL_ = 1;
+	reg MPIPAL_ = 1;
+	reg MRDCH = 0;
+	reg MREAD = 0;
 	reg MRGG = 0;
+	reg MRPTAL_ = 1;
 	reg MRULOG = 0;
+	reg MSCAFL_ = 1;
+	reg MSCDBL_ = 1;
 	reg MSP = 0;
 	reg MSQ10 = 0;
 	reg MSQ11 = 0;
@@ -39,7 +53,11 @@ module agc_monitor_tb(
 	reg MT10 = 0;
 	reg MT11 = 0;
 	reg MT12 = 0;
+	reg MTCAL_ = 1;
+	reg MVFAIL_ = 1;
 	reg MWAG = 0;
+	reg MWARNF_ = 1;
+	reg MWATCH_ = 1;
 	reg MWBBEG = 0;
 	reg MWBG = 0;
 	reg MWEBG = 0;
@@ -68,10 +86,14 @@ module agc_monitor_tb(
 	reg MWZG = 0;
 	reg clk = 0;
 	reg clkout = 0;
+	reg n0VDCA = 0;
+	reg p4SW = 0;
 	reg reset = 0;
 	reg rxf_n = 0;
 	reg txe_n = 0;
 
+	wire CNTRL1;
+	wire CNTRL2;
 	wire DBLTST;
 	wire DOSCAL;
 	wire MNHNC;
@@ -178,6 +200,28 @@ module agc_monitor_tb(
 		nhstrt2,
 		DOSCAL,
 		DBLTST,
+		MVFAIL_,
+		MOSCAL_,
+		MSCAFL_,
+		MSCDBL_,
+		MCTRAL_,
+		MTCAL_,
+		MRPTAL_,
+		MPAL_,
+		MWATCH_,
+		MPIPAL_,
+		MWARNF_,
+		MNHSBF,
+		MAMU,
+		MLOAD,
+		MLDCH,
+		MREAD,
+		MRDCH,
+		n0VDCA,
+		BPLSSW,
+		p4SW,
+		CNTRL1,
+		CNTRL2,
 		leds,
 		dbg
 	);

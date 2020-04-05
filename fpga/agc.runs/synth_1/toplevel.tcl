@@ -17,7 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -83,7 +82,9 @@ read_verilog -library xil_defaultlib {
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_regs.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/edit.v
+  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v
+  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/styx_ps_bootloader.v
 }
 read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xdc]
@@ -113,6 +114,10 @@ read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fif
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo.xdc]
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_clocks.xdc]
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_ooc.xdc]
+
+read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc.xci
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

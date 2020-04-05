@@ -5,6 +5,7 @@ verilog xil_defaultlib  --include "../../../../agc.srcs/sources_1/new/monitor" -
 "../../../../agc.srcs/sources_1/ip/rope_memory/sim/rope_memory.v" \
 "../../../../agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo_sim_netlist.v" \
 "../../../../agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_sim_netlist.v" \
+"../../../../agc.srcs/sources_1/ip/mon_adc/mon_adc.v" \
 "../../../../agc.srcs/sources_1/new/components/nor_3.v" \
 "../../../../agc.srcs/sources_1/new/fpga_agc.v" \
 "../../../../agc.srcs/sources_1/new/agc_clock_divider.v" \
@@ -57,6 +58,7 @@ verilog xil_defaultlib  --include "../../../../agc.srcs/sources_1/new/monitor" -
 "../../../../agc.ip_user_files/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0_sim_netlist.v" \
 "../../../../agc.ip_user_files/bd/styx_ps/sim/styx_ps.v" \
 "../../../../agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v" \
+"../../../../agc.srcs/sources_1/new/monitor/status_regs.v" \
 "../../../../agc.srcs/monitor/new/agc_monitor_tb.v" \
 "../../../../agc.srcs/monitor/new/usb_interface_tb.v" \
 

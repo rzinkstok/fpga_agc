@@ -17,6 +17,8 @@ module tray_a(
 	input wire CDUZM,
 	input wire CDUZP,
 	input wire CLOCK,
+	input wire CNTRL1,
+	input wire CNTRL2,
 	input wire CTLSAT,
 	input wire DBLTST,
 	input wire DKBSNC,
@@ -279,6 +281,7 @@ module tray_a(
 	output wire MRSC,
 	output wire MRULOG,
 	output wire MSCAFL_,
+	output wire MSCDBL_,
 	output wire MSP,
 	output wire MSQ10,
 	output wire MSQ11,
@@ -3372,6 +3375,7 @@ module tray_a(
 		SYNC4_,
 		SYNC14_,
 		MSCAFL_,
+		MSCDBL_,
 		MWARNF_,
 		AGCWAR,
 		CGCWAR,
@@ -4910,6 +4914,7 @@ module tray_a(
 
 	a30_power_supply a30(
 		WD168,
+		CNTRL1,
 		SBYREL_,
 		prop_clk_locked,
 		p28COM,
@@ -4919,6 +4924,7 @@ module tray_a(
 
 	a31_power_supply a31(
 		WD167,
+		CNTRL2,
 		SBYREL_,
 		BPLUS,
 		BPLSSW

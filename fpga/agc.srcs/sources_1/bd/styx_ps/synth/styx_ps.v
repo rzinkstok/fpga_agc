@@ -1,8 +1,8 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-//Date        : Fri Jan 24 19:10:11 2020
-//Host        : fpgadev running 64-bit Ubuntu 18.04.3 LTS
+//Date        : Sun Apr  5 19:20:06 2020
+//Host        : fpgadev running 64-bit Ubuntu 18.04.4 LTS
 //Command     : generate_target styx_ps.bd
 //Design      : styx_ps
 //Purpose     : IP block netlist
