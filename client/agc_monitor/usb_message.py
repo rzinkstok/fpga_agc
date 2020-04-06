@@ -124,7 +124,6 @@ class Message(object):
 
     def _unpack_data(self, data):
         """Extracts the message data from the unpacked bytes."""
-        print(f"Data: {data}")
         for i, k in enumerate(self.keys):
             setattr(self, k, (data >> self.bitshift[i]) & self.mask[i])
 
@@ -159,6 +158,28 @@ class ControlMessage(Message):
     group = 0x20
     bitshift = (0,)
     mask = (0x0001,)
+
+
+class ControlStart(ControlMessage):
+    address = 0x0000
+
+
+class ControlStop(ControlMessage):
+    address = 0x0001
+    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "s1_s2"]
+    mask = tuple(0x00001 for i in range(12))
+    bitshift = tuple(i for i in range(12))
+
+
+class ControlStopCause(ControlMessage):
+    address = 0x0002
+    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step"]
+    mask = tuple(0x00001 for i in range(11))
+    bitshift = tuple(i for i in range(11))
+
+
+class ControlProceed(ControlMessage):
+    address = 0x0003
 
 
 class ControlMNHRPT(ControlMessage):

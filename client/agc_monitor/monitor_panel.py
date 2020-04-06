@@ -6,6 +6,7 @@ from control import Control
 from register import Register
 from w_comparator import WComparator
 from address_register import AddressRegister
+from comp_stop import CompStop
 
 
 class MonitorPanel(QFrame):
@@ -91,3 +92,8 @@ class MonitorPanel(QFrame):
         self._ctrl_panel = Control(control_stop, self._usbif)
         control_stop_layout.addWidget(self._ctrl_panel)
         control_stop_layout.setAlignment(self._ctrl_panel, Qt.AlignRight)
+
+        # Add the computer stop panel
+        self._comp_stop = CompStop(control_stop, self._usbif)
+        control_stop_layout.addWidget(self._comp_stop)
+        control_stop_layout.setAlignment(self._comp_stop, Qt.AlignRight)

@@ -57,7 +57,6 @@ module agc_monitor(
     input wire MBR2,
     input wire MSQEXT,
     input wire MNISQ,
-    input wire MSTP,
 
     input wire MWAG,
     input wire MWLG,
@@ -80,6 +79,9 @@ module agc_monitor(
     input wire MINKL,
     input wire MSP,
     input wire MGP_,
+    
+    output wire MSTP,
+    output wire MSTRT,
     
     output wire MNHRPT,
     output wire MNHNC,
@@ -462,8 +464,36 @@ module agc_monitor(
     '*******************************************************************************/
     wire mrchg;
     wire mwchg;
-    assign mrchg = 1'b0;    // FIXME: remove when start/stop logic is done
-    assign mwchg = 1'b0;    // FIXME: remove when start/stop logic is done
+    wire ss_mstp;
+    wire inhibit_mstp;
+    
+    assign MSTP = ss_mstp & ~inhibit_mstp;
+    
+    start_stop strt_stp(
+        .clk(clk),
+        .rst_n(rst_n),
+        
+        .start_req(start_req),
+        .proceed_req(proceed_req),
+        .stop_conds(stop_conds),
+        .stop_s1_s2(stop_s1_s2),
+        .stop_cause(stop_cause),
+        .MT01(MT01),
+        .MT12(MT12),
+        .MGOJAM(MGOJAM),
+        .MNISQ(MNISQ),
+        .MPAL_(MPAL_),
+        .mrchg(mrchg),
+        .mwchg(mwchg),
+    
+        .s1_match(s1_match),
+        .s2_match(s2_match),
+        .w_match(w_match),
+        .i_match(i_match),
+    
+        .MSTRT(MSTRT),
+        .mstp(ss_mstp)
+    );
 
     /*******************************************************************************.
     * Clear Timer                                                                   *

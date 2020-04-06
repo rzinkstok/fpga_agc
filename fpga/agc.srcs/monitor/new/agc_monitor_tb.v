@@ -39,7 +39,6 @@ module agc_monitor_tb(
 	reg MST1 = 0;
 	reg MST2 = 0;
 	reg MST3 = 0;
-	reg MSTP = 0;
 	reg MSTPIT_ = 1;
 	reg MT01 = 0;
 	reg MT02 = 0;
@@ -98,6 +97,8 @@ module agc_monitor_tb(
 	wire DOSCAL;
 	wire MNHNC;
 	wire MNHRPT;
+	wire MSTP;
+	wire MSTRT;
 	wire NHALGA;
 	wire [6:1]dbg;
 	wire [6:1]leds;
@@ -172,7 +173,6 @@ module agc_monitor_tb(
 		MBR2,
 		MSQEXT,
 		MNISQ,
-		MSTP,
 		MWAG,
 		MWLG,
 		MWQG,
@@ -193,6 +193,8 @@ module agc_monitor_tb(
 		MINKL,
 		MSP,
 		MGP_,
+		MSTP,
+		MSTRT,
 		MNHRPT,
 		MNHNC,
 		NHALGA,

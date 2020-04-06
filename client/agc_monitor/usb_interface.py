@@ -11,7 +11,7 @@ import usb_message as um
 STYX_VID = 0x2a19
 STYX_PID = 0x1007
 
-POLL_PERIOD_MS = 25
+POLL_PERIOD_MS = 2500
 POLL_DIVIDER = 2
 
 

@@ -271,7 +271,7 @@ set_property DRIVE 4 [get_ports MST3]
 
 set_property PACKAGE_PIN R19 [get_ports MSTP]
 set_property IOSTANDARD LVCMOS33 [get_ports MSTP]
-set_property PULLDOWN true [get_ports MSTP]
+set_property DRIVE 4 [get_ports MSTP]
 
 set_property PACKAGE_PIN V15 [get_ports MSTPIT_]
 set_property IOSTANDARD LVCMOS33 [get_ports MSTPIT_]
@@ -279,7 +279,7 @@ set_property DRIVE 4 [get_ports MSTPIT_]
 
 set_property PACKAGE_PIN V14 [get_ports MSTRT]
 set_property IOSTANDARD LVCMOS33 [get_ports MSTRT]
-set_property PULLDOWN true [get_ports MSTRT]
+set_property DRIVE 4 [get_ports MSTRT]
 
 set_property PACKAGE_PIN U4 [get_ports MT01]
 set_property IOSTANDARD LVCMOS33 [get_ports MT01]

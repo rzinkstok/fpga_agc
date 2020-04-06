@@ -59,7 +59,7 @@ class Indicator(QWidget):
 
 
 class LabelIndicator(QFrame):
-    def __init__(self, parent, color, text, *args, lines=1, switch=False, callback=None, **kwargs):
+    def __init__(self, parent, color, text, *args, lines=1, switch=False, callback=None, direct_connect=True, **kwargs):
         super().__init__(parent, *args, **kwargs)
         layout = QVBoxLayout()
         layout.setSpacing(0)
@@ -84,7 +84,8 @@ class LabelIndicator(QFrame):
             self.switch = QCheckBox(parent)
             if callback:
                 self.switch.stateChanged.connect(callback)
-            self.switch.stateChanged.connect(self._indicator.set_on)
+            if direct_connect:
+                self.switch.stateChanged.connect(self._indicator.set_on)
 
             self.switch.setFixedSize(20, 20)
             self.switch.setStyleSheet('QCheckBox::indicator{ subcontrol-position:center; } QCheckBox { color: #666; }')

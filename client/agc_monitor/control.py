@@ -36,7 +36,7 @@ class Control(QFrame):
         usbif.poll(um.ControlMNHRPT())
 
         usbif.poll(um.MonRegStatus())
-        # usbif.poll(um.ReadControlStopCause())
+        usbif.poll(um.ControlStopCause())
         # usbif.poll(um.ReadStatusPeripheral())
         usbif.listen(self)
 
@@ -52,8 +52,8 @@ class Control(QFrame):
         elif isinstance(msg, um.MonRegStatus):
             self._status_inds['gojam']._indicator.set_on(msg.gojam)
             self._status_inds['agc_run']._indicator.set_on(msg.run)
-        # elif isinstance(msg, um.ControlStopCause):
-        #    self._status_inds['mon_stop'].set_on(any(msg))
+        elif isinstance(msg, um.ControlStopCause):
+            self._status_inds['mon_stop'].set_on(any(msg))
         # elif isinstance(msg, um.StatusPeripheral):
         #    self._status_inds['crs_cycle'].set_on(any(msg))
 
