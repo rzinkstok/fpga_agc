@@ -1,4 +1,4 @@
-from PySide2.QtWidgets import QWidget, QFrame, QLabel, QHBoxLayout, QVBoxLayout, QRadioButton
+from PySide2.QtWidgets import QWidget, QFrame, QLabel, QHBoxLayout, QVBoxLayout, QRadioButton, QButtonGroup, QPushButton
 from PySide2.QtGui import QColor
 from collections import OrderedDict
 
@@ -51,7 +51,6 @@ class CompStop(QFrame):
     def _setup_ui(self):
         layout = QHBoxLayout(self)
         self.setLayout(layout)
-
         layout.setSpacing(20)
 
         ag1 = ApolloGroup(self, "STOP CONDITIONS")
@@ -66,8 +65,9 @@ class CompStop(QFrame):
         ag2 = ApolloGroup(self, "S SELECT")
 
         x1 = QWidget(self)
-        l1 = QVBoxLayout(self)
-        lbl1 = QLabel("\nS1")
+        l1 = QVBoxLayout(x1)
+        l1.addSpacing(7)
+        lbl1 = QLabel("S1")
         l1.addWidget(lbl1)
         self._s1 = QRadioButton(self)
         l1.addWidget(self._s1)
@@ -76,8 +76,9 @@ class CompStop(QFrame):
         x1.setLayout(l1)
 
         x2 = QWidget(self)
-        l2 = QVBoxLayout(self)
-        lbl2 = QLabel("\nS2")
+        l2 = QVBoxLayout(x2)
+        l2.addSpacing(7)
+        lbl2 = QLabel("S2")
         l2.addWidget(lbl2)
         self._s2 = QRadioButton(self)
         l2.addWidget(self._s2)
@@ -88,3 +89,22 @@ class CompStop(QFrame):
 
         layout.addWidget(ag2)
 
+        bg = QButtonGroup(self)
+        bg.addButton(self._s1)
+        bg.addButton(self._s2)
+        bg.exclusive()
+
+
+        pro_widget = QWidget(self)
+        layout.addWidget(pro_widget)
+        pro_layout = QVBoxLayout(pro_widget)
+        pro_layout.addSpacing(15)
+        l = QLabel('PROCEED', self)
+        # l.setAlignment(Qt.AlignCenter)
+        pro_layout.addWidget(l)
+
+        b = QPushButton(pro_widget)
+        b.setFixedSize(20, 20)
+        pro_layout.addWidget(b)
+        # pro_layout.setAlignment(b, Qt.AlignCenter | Qt.AlignTop)
+        b.pressed.connect(lambda: self._usbif.send(um.ControlProceed(1)))

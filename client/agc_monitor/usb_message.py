@@ -180,6 +180,7 @@ class ControlStopCause(ControlMessage):
 
 class ControlProceed(ControlMessage):
     address = 0x0003
+    keys = ["dummy"]
 
 
 class ControlMNHRPT(ControlMessage):

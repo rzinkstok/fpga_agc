@@ -44,16 +44,15 @@ class Control(QFrame):
             usbif.send(msg(0))
 
     def handle_msg(self, msg):
-        pass
-        if isinstance(msg, um.ControlNHALGA):
-            print("NHALGA: " + str(msg.nhalga))
-        elif isinstance(msg, um.ControlMNHRPT):
-            print("MNHRPT: " + str(msg.mnhrpt))
-        elif isinstance(msg, um.MonRegStatus):
+        #if isinstance(msg, um.ControlNHALGA):
+        #    print("NHALGA: " + str(msg.nhalga))
+        #elif isinstance(msg, um.ControlMNHRPT):
+        #    print("MNHRPT: " + str(msg.mnhrpt))
+        if isinstance(msg, um.MonRegStatus):
             self._status_inds['gojam']._indicator.set_on(msg.gojam)
             self._status_inds['agc_run']._indicator.set_on(msg.run)
         elif isinstance(msg, um.ControlStopCause):
-            self._status_inds['mon_stop'].set_on(any(msg))
+            self._status_inds['mon_stop']._indicator.set_on(any(msg))
         # elif isinstance(msg, um.StatusPeripheral):
         #    self._status_inds['crs_cycle'].set_on(any(msg))
 

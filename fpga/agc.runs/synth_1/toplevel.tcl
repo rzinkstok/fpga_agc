@@ -17,6 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -31,6 +32,7 @@ set_property target_language Verilog [current_project]
 set_property board_part numato.com:styx:part0:1.0 [current_project]
 set_property ip_output_repo /home/rzinkstok/fpga_agc/fpga/agc.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
+add_files /home/rzinkstok/fpga_agc/roms/Aurora12.coe
 read_verilog /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_defs.v
 set_property file_type "Verilog Header" [get_files /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_defs.v]
 read_verilog -library xil_defaultlib {
@@ -85,6 +87,7 @@ read_verilog -library xil_defaultlib {
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/styx_ps_bootloader.v
+  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/start_stop.v
 }
 read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xdc]
