@@ -291,43 +291,7 @@ module agc_monitor_tb(
 		@(posedge clkout) data_in = 8'h0B;
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
-		
-		#500 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'hA0;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h01;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h01;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-		
-		#500 MT12 = 1'b1;
-		//#100 MT12 = 1'b0;
-		
-        #500 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'hA0;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h01;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-		
-		#500 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'hA0;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h03;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-    
+
 		# 1000 $finish;
 	end
 

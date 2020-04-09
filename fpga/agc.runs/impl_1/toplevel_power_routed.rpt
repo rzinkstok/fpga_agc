@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date             : Wed Apr  8 23:54:33 2020
+| Date             : Thu Apr  9 17:36:17 2020
 | Host             : fpgadev running 64-bit Ubuntu 18.04.4 LTS
 | Command          : report_power -file toplevel_power_routed.rpt -pb toplevel_power_summary_routed.pb -rpx toplevel_power_routed.rpx
 | Design           : toplevel
@@ -52,16 +52,16 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.031 |        6 |       --- |             --- |
+| Clocks                  |     0.032 |        6 |       --- |             --- |
 | Slice Logic             |     0.016 |    25951 |       --- |             --- |
-|   LUT as Logic          |     0.013 |     5759 |     53200 |           10.83 |
+|   LUT as Logic          |     0.013 |     5761 |     53200 |           10.83 |
 |   Register              |     0.003 |    15045 |    106400 |           14.14 |
 |   CARRY4                |    <0.001 |       51 |     13300 |            0.38 |
 |   BUFG                  |    <0.001 |        1 |        32 |            3.13 |
 |   F7/F8 Muxes           |    <0.001 |       34 |     53200 |            0.06 |
 |   Others                |     0.000 |     4908 |       --- |             --- |
 |   LUT as Shift Register |     0.000 |        4 |     17400 |            0.02 |
-| Signals                 |     0.028 |    16264 |       --- |             --- |
+| Signals                 |     0.027 |    16265 |       --- |             --- |
 | Block RAM               |     0.019 |     44.5 |       140 |           31.79 |
 | MMCM                    |     0.119 |        1 |         4 |           25.00 |
 | I/O                     |     0.057 |      136 |       200 |           68.00 |

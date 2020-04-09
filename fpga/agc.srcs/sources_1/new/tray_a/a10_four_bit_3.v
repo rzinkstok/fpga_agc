@@ -26,7 +26,8 @@ module a10_four_bit_3(
     input wire RZG_,
     input wire WBG_, 
     input wire CBG, 
-    input wire RBLG_, 
+    input wire RBLG_,
+    input wire RBHG_,
     input wire RCG_,
     input wire WG3G_, 
     input wire WG4G_, 
@@ -666,7 +667,7 @@ module a10_four_bit_3(
     nor_3 #(1'b1)  NOR53439(NOR53439_out,   NOR53438_out,   NOR53440_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR53440(NOR53440_out,   NOR53439_out,   CBG,            n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b0)  NOR53441(NOR53441_out,   RBLG_,          NOR53439_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR53441(NOR53441_out,   RBHG_,          NOR53439_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR53442(NOR53442_out,   NOR53440_out,   RCG_,           n0VDCA,         p4SW, reset, prop_clk);
     
     // G register flip-flop
@@ -792,7 +793,7 @@ module a10_four_bit_3(
     nor_3 #(1'b1)  NOR53339(NOR53339_out,   NOR53338_out,   NOR53340_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR53340(NOR53340_out,   NOR53339_out,   CBG,            n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b0)  NOR53341(NOR53341_out,   RBLG_,          NOR53339_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR53341(NOR53341_out,   RBHG_,          NOR53339_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR53342(NOR53342_out,   NOR53340_out,   RCG_,           n0VDCA,         p4SW, reset, prop_clk);
     
     // G register flip-flop

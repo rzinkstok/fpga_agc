@@ -2938,6 +2938,7 @@ module tray_a(
 		WBG_,
 		CBG,
 		RBLG_,
+		RBHG_,
 		RCG_,
 		WG3G_,
 		WG4G_,

@@ -367,9 +367,9 @@ module a12_parity_s_register(
     nor_3 #(1'b1)  NOR34209(NOR34209_out,   INHPLS,         NOR34210_out,   n0VDCA,         p4SW, reset, prop_clk);
     assign NOR34212_in = NOR34208_out & NOR34209_out;
     
-    nor_3 #(1'b0)  NOR34210(NOR34210_out,   NOR34208_out,   T12A,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR34210(NOR34210_out,   NOR34212_in,    T12A,           n0VDCA,         p4SW, reset, prop_clk);
     
-    // RADRZ, RADRG
+    // RADRZ, RADRGs
     nor_3 #(1'b0)  NOR34211(NOR34211_out,   RAD,            n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34212(RADRZ,          NOR34212_in,    NOR34211_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34213(RADRG,          NOR34211_out,   NOR34210_out,   n0VDCA,         p4SW, reset, prop_clk);
@@ -500,7 +500,7 @@ module a12_parity_s_register(
     
     // S09
     nor_3 #(1'b0)  NOR34309(G02ED,          WEDOPG_,        WL09_,          n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR34310(NOR34310_out,   WL08_,          WSG_,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR34310(NOR34310_out,   WL09_,          WSG_,           n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b1)  NOR34311(NOR34311_out,   NOR34310_out,   NOR34312_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34312(NOR34312_out,   NOR34311_out,   CSG,            n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34314(S09,            NOR34311_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
