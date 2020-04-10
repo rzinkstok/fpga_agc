@@ -287,7 +287,7 @@ module a12_parity_s_register(
     
     nor_3 #(1'b0)  NOR34129(NOR34129_out,   NOR34125_out,   NOR34126_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34130(NOR34130_out,   NOR34127_out,   NOR34128_out,   n0VDCA,         p4SW, reset, prop_clk);
-    assign PA09 = NOR34129_out & NOR34129_out;
+    assign PA09 = NOR34129_out & NOR34130_out;
     
     nor_3 #(1'b0)  NOR34131(PA09_,          PA09,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34132(NOR34132_out,   NOR34125_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
@@ -299,7 +299,7 @@ module a12_parity_s_register(
     
     nor_3 #(1'b0)  NOR34136(NOR34136_out,   G10,            G11,            G12,            p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34137(NOR34137_out,   G10,            NOR34134_out,   NOR34135_out,   p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR34138(NOR34138_out,   NOR34133_out,   G11,            NOR34136_out,   p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR34138(NOR34138_out,   NOR34133_out,   G11,            NOR34135_out,   p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34139(NOR34139_out,   NOR34133_out,   NOR34134_out,   G12,            p4SW, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR34140(NOR34140_out,   NOR34136_out,   NOR34137_out,   n0VDCA,         p4SW, reset, prop_clk);
@@ -378,7 +378,7 @@ module a12_parity_s_register(
     nor_3 #(1'b0)  NOR34227(NOR34227_out,   PA03,           PA06,           PA09,           p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34228(NOR34228_out,   PA03,           PA06_,          PA09_,          p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34229(NOR34229_out,   PA03_,          PA06,           PA09_,          p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR34230(NOR34230_out,   PA03_,          PA06_,          PA09_,          p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR34230(NOR34230_out,   PA03_,          PA06_,          PA09,           p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34231(NOR34231_out,   NOR34227_out,   NOR34228_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34232(NOR34232_out,   NOR34229_out,   NOR34230_out,   n0VDCA,         p4SW, reset, prop_clk);
     assign PB09 = NOR34231_out & NOR34232_out;

@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="95834884530fs"></ZoomStartTime>
-      <ZoomEndTime time="107869479127fs"></ZoomEndTime>
-      <Cursor1Time time="103750625000fs"></Cursor1Time>
+      <ZoomStartTime time="149067666666fs"></ZoomStartTime>
+      <ZoomEndTime time="162187666667fs"></ZoomEndTime>
+      <Cursor1Time time="160001000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="166"></NameColumnWidth>
-      <ValueColumnWidth column_width="86"></ValueColumnWidth>
+      <NameColumnWidth column_width="169"></NameColumnWidth>
+      <ValueColumnWidth column_width="103"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="38" />
    <wvobject type="logic" fp_name="/fpga_agc_tb/reset">
@@ -732,10 +732,13 @@
          <obj_property name="ElementShortName">CUG</obj_property>
          <obj_property name="ObjectShortName">CUG</obj_property>
       </wvobject>
-      <wvobject type="vbus" fp_name="vbus249">
+      <wvobject type="vbus" fp_name="VirtualBus">
          <obj_property name="label">X</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="Radix">OCTALRADIX</obj_property>
+         <obj_property name="Reversed">true</obj_property>
+         <obj_property name="ElementShortName">VirtualBus[]</obj_property>
+         <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
          <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51104_out">
             <obj_property name="ElementShortName">NOR51104_out</obj_property>
             <obj_property name="ObjectShortName">NOR51104_out</obj_property>
@@ -1148,7 +1151,6 @@
          <obj_property name="ElementShortName">VirtualBus[]</obj_property>
          <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
          <obj_property name="Radix">OCTALRADIX</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/fpga_agc_tb/traya/G01">
             <obj_property name="ElementShortName">G01</obj_property>
             <obj_property name="ObjectShortName">G01</obj_property>
@@ -1218,6 +1220,7 @@
    <wvobject type="group" fp_name="group419">
       <obj_property name="label">Z register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WZG_">
          <obj_property name="ElementShortName">WZG_</obj_property>
          <obj_property name="ObjectShortName">WZG_</obj_property>
@@ -1306,6 +1309,7 @@
    <wvobject type="group" fp_name="group407">
       <obj_property name="label">Q register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CQG">
          <obj_property name="ElementShortName">CQG</obj_property>
          <obj_property name="ObjectShortName">CQG</obj_property>
@@ -1394,6 +1398,7 @@
    <wvobject type="group" fp_name="group516">
       <obj_property name="label">SQ register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a03/WSQG_">
          <obj_property name="ElementShortName">WSQG_</obj_property>
          <obj_property name="ObjectShortName">WSQG_</obj_property>
@@ -1486,6 +1491,7 @@
    <wvobject type="group" fp_name="group560">
       <obj_property name="label">Stage counter</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/ST1">
          <obj_property name="ElementShortName">ST1</obj_property>
          <obj_property name="ObjectShortName">ST1</obj_property>
@@ -1531,6 +1537,7 @@
    <wvobject type="group" fp_name="group357">
       <obj_property name="label">Erasable bank</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a15/CEBG">
          <obj_property name="ElementShortName">CEBG</obj_property>
          <obj_property name="ObjectShortName">CEBG</obj_property>
@@ -1554,7 +1561,6 @@
       <wvobject type="vbus" fp_name="vbus1828">
          <obj_property name="label">EB</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a15/EB9">
             <obj_property name="ElementShortName">EB9</obj_property>
             <obj_property name="ObjectShortName">EB9</obj_property>
@@ -1572,6 +1578,7 @@
    <wvobject type="group" fp_name="group364">
       <obj_property name="label">Fixed bank</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CFBG">
          <obj_property name="ElementShortName">CFBG</obj_property>
          <obj_property name="ObjectShortName">CFBG</obj_property>
@@ -1591,7 +1598,6 @@
          <obj_property name="Reversed">true</obj_property>
          <obj_property name="ElementShortName">VirtualBus[]</obj_property>
          <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a15/FB11">
             <obj_property name="ElementShortName">FB11</obj_property>
             <obj_property name="ObjectShortName">FB11</obj_property>
@@ -1699,6 +1705,7 @@
    <wvobject type="group" fp_name="group1020">
       <obj_property name="label">Erasable memory</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a14/ERAS_">
          <obj_property name="ElementShortName">ERAS_</obj_property>
          <obj_property name="ObjectShortName">ERAS_</obj_property>
@@ -1758,6 +1765,78 @@
       <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/EDESTROY">
          <obj_property name="ElementShortName">EDESTROY</obj_property>
          <obj_property name="ObjectShortName">EDESTROY</obj_property>
+      </wvobject>
+      <wvobject type="vbus" fp_name="VirtualBus">
+         <obj_property name="label">GEM</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">OCTALRADIX</obj_property>
+         <obj_property name="Reversed">true</obj_property>
+         <obj_property name="ElementShortName">VirtualBus[]</obj_property>
+         <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM01">
+            <obj_property name="ElementShortName">GEM01</obj_property>
+            <obj_property name="ObjectShortName">GEM01</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM02">
+            <obj_property name="ElementShortName">GEM02</obj_property>
+            <obj_property name="ObjectShortName">GEM02</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM03">
+            <obj_property name="ElementShortName">GEM03</obj_property>
+            <obj_property name="ObjectShortName">GEM03</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM04">
+            <obj_property name="ElementShortName">GEM04</obj_property>
+            <obj_property name="ObjectShortName">GEM04</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM05">
+            <obj_property name="ElementShortName">GEM05</obj_property>
+            <obj_property name="ObjectShortName">GEM05</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM06">
+            <obj_property name="ElementShortName">GEM06</obj_property>
+            <obj_property name="ObjectShortName">GEM06</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM07">
+            <obj_property name="ElementShortName">GEM07</obj_property>
+            <obj_property name="ObjectShortName">GEM07</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM08">
+            <obj_property name="ElementShortName">GEM08</obj_property>
+            <obj_property name="ObjectShortName">GEM08</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM09">
+            <obj_property name="ElementShortName">GEM09</obj_property>
+            <obj_property name="ObjectShortName">GEM09</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM10">
+            <obj_property name="ElementShortName">GEM10</obj_property>
+            <obj_property name="ObjectShortName">GEM10</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM11">
+            <obj_property name="ElementShortName">GEM11</obj_property>
+            <obj_property name="ObjectShortName">GEM11</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM12">
+            <obj_property name="ElementShortName">GEM12</obj_property>
+            <obj_property name="ObjectShortName">GEM12</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM13">
+            <obj_property name="ElementShortName">GEM13</obj_property>
+            <obj_property name="ObjectShortName">GEM13</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM14">
+            <obj_property name="ElementShortName">GEM14</obj_property>
+            <obj_property name="ObjectShortName">GEM14</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEMP">
+            <obj_property name="ElementShortName">GEMP</obj_property>
+            <obj_property name="ObjectShortName">GEMP</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b12erasablememory/GEM16">
+            <obj_property name="ElementShortName">GEM16</obj_property>
+            <obj_property name="ObjectShortName">GEM16</obj_property>
+         </wvobject>
       </wvobject>
       <wvobject type="array" fp_name="/fpga_agc_tb/trayb/b12erasablememory/read_word">
          <obj_property name="ElementShortName">read_word[15:0]</obj_property>
@@ -1893,7 +1972,6 @@
    <wvobject type="group" fp_name="group375">
       <obj_property name="label">Fixed memory</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/trayb/b01fixedmemory/SBF">
          <obj_property name="ElementShortName">SBF</obj_property>
          <obj_property name="ObjectShortName">SBF</obj_property>

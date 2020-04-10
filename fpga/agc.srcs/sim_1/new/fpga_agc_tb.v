@@ -1094,7 +1094,7 @@ module fpga_agc_tb(
 	initial
 	begin
 		# 1 NHALGA = 1;
-		# 140000 $stop;
+		# 160000 $stop;
 	end
 
 endmodule

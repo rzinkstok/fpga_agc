@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1586446152">
-  <File Type="VDS-TIMINGSUMMARY" Name="toplevel_timing_summary_synth.rpt"/>
+  <File Type="PA-TCL" Name="toplevel.tcl"/>
+  <File Type="REPORTS-TCL" Name="toplevel_reports.tcl"/>
+  <File Type="RDS-RDS" Name="toplevel.vds"/>
+  <File Type="RDS-UTIL" Name="toplevel_utilization_synth.rpt"/>
   <File Type="RDS-DCP" Name="toplevel.dcp"/>
   <File Type="RDS-UTIL-PB" Name="toplevel_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="toplevel_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="toplevel_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="toplevel.vds"/>
-  <File Type="REPORTS-TCL" Name="toplevel_reports.tcl"/>
-  <File Type="VDS-TIMING-PB" Name="toplevel_timing_summary_synth.pb"/>
-  <File Type="PA-TCL" Name="toplevel.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/components/nor_3.v">
@@ -429,10 +426,10 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="prop_clock_divider"/>
+  <BlockFileSet Type="BlockSrcs" Name="core_memory"/>
   <BlockFileSet Type="BlockSrcs" Name="mon_adc"/>
   <BlockFileSet Type="BlockSrcs" Name="cmd_fifo"/>
-  <BlockFileSet Type="BlockSrcs" Name="read_byte_fifo"/>
   <BlockFileSet Type="BlockSrcs" Name="rope_memory"/>
-  <BlockFileSet Type="BlockSrcs" Name="core_memory"/>
-  <BlockFileSet Type="BlockSrcs" Name="prop_clock_divider"/>
+  <BlockFileSet Type="BlockSrcs" Name="read_byte_fifo"/>
 </GenRun>
