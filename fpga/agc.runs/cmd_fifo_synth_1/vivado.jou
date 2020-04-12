@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Thu Jan 23 14:42:08 2020
+# Process ID: 22868
+# Current directory: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/cmd_fifo_synth_1
+# Command line: vivado.exe -log cmd_fifo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source cmd_fifo.tcl
+# Log file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/cmd_fifo_synth_1/cmd_fifo.vds
+# Journal file: C:/Users/rzine07792/source/rzinkstok/fpga_agc/fpga/agc.runs/cmd_fifo_synth_1\vivado.jou
+#-----------------------------------------------------------
+source cmd_fifo.tcl -notrace
