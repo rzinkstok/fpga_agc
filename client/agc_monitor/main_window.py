@@ -5,6 +5,7 @@ from PySide2.QtCore import Qt
 from usb_interface import USBInterface
 
 from monitor_panel import MonitorPanel
+import usb_message as um
 
 
 class MainWindow(QMainWindow):
@@ -43,6 +44,15 @@ class MainWindow(QMainWindow):
         else:
             message = 'AGC DISCONNECTED'
         self._status.setText(message)
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Q:
+            self.deleteLater()
+        elif event.key() == Qt.Key_N:
+            self._usbif.send(um.ControlProceed(1))
+
+        event.accept()
+
 
 
 if __name__ == '__main__':

@@ -504,7 +504,7 @@ class TrayA(GeneratedVerilogModule):
     module_files = [os.path.join(TRAY_A_SOURCE_FOLDER, x) for x in sorted(os.listdir(TRAY_A_SOURCE_FOLDER)) if not x.startswith("a77")]
 
     def signal_external(self, signal):
-        if signal.name in ["reset", "prop_clk", "prop_clk_locked", "n0VDCA", "p4VDC", "p4SW", "MAMU"]:
+        if signal.name in ["reset", "prop_clk", "prop_clk_locked", "n0VDCA", "p4VDC", "p4SW", "MAMU", "mstpeven", "mstpodd"]:
             return True
 
         modules = signal.agc_modules
@@ -542,7 +542,7 @@ class FpgaAgc(GeneratedVerilogModule):
     module_files = [os.path.join(SOURCE_FOLDER, f"{x}.v") for x in modules]
 
     def signal_external(self, signal):
-        if signal.name in ["reset", "clk", "clk_reset", "MAMU"]:
+        if signal.name in ["reset", "clk", "clk_reset", "MAMU", "mstpeven", "mstpodd"]:
             return True
 
         modules = signal.agc_modules

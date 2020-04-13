@@ -149,6 +149,8 @@ module fpga_agc(
 	input wire XLNK0,
 	input wire XLNK1,
 	input wire ZEROP,
+	input wire mstpeven,
+	input wire mstpodd,
 
 	output wire ALGA,
 	output wire ALRT0,
@@ -659,6 +661,8 @@ module fpga_agc(
 		XLNK0,
 		XLNK1,
 		ZEROP,
+		mstpeven,
+		mstpodd,
 		n2FSFAL,
 		prop_clk_locked,
 		ALGA,

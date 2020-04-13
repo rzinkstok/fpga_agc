@@ -152,6 +152,8 @@ module fpga_agc_tb(
 	reg XLNK1 = 0;
 	reg ZEROP = 0;
 	reg clk = 0;
+	reg mstpeven = 0;
+	reg mstpodd = 0;
 	reg n0VDCA = 0;
 	reg reset = 0;
 
@@ -660,6 +662,8 @@ module fpga_agc_tb(
 		XLNK0,
 		XLNK1,
 		ZEROP,
+		mstpeven,
+		mstpodd,
 		n2FSFAL,
 		prop_clk_locked,
 		ALGA,
@@ -1094,7 +1098,7 @@ module fpga_agc_tb(
 	initial
 	begin
 		# 1 NHALGA = 1;
-		# 400000 $stop;
+		# 100000 $stop;
 	end
 
 endmodule

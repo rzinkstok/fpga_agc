@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="mon_adc_synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1586012161">
+  <File Type="RDS-UTIL-PB" Name="mon_adc_utilization_synth.pb"/>
+  <File Type="REPORTS-TCL" Name="mon_adc_reports.tcl"/>
+  <File Type="RDS-DCP" Name="mon_adc.dcp"/>
+  <File Type="RDS-RDS" Name="mon_adc.vds"/>
   <File Type="PA-TCL" Name="mon_adc.tcl"/>
   <File Type="RDS-UTIL" Name="mon_adc_utilization_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="mon_adc_reports.tcl"/>
-  <File Type="RDS-UTIL-PB" Name="mon_adc_utilization_synth.pb"/>
-  <File Type="RDS-RDS" Name="mon_adc.vds"/>
-  <File Type="RDS-DCP" Name="mon_adc.dcp"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mon_adc">
     <File Path="$PSRCDIR/sources_1/ip/mon_adc/mon_adc.xci">
       <FileInfo>

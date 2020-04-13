@@ -82,6 +82,8 @@ module agc_monitor(
     
     output wire MSTP,
     output wire MSTRT,
+    output wire mstpeven,
+    output wire mstpodd,
     
     output wire MNHRPT,
     output wire MNHNC,
@@ -294,9 +296,9 @@ module agc_monitor(
     
     wire start_req;
     wire proceed_req;
-    wire [10:0] stop_conds;
+    wire [11:0] stop_conds;
     wire stop_s1_s2;
-    wire [10:0] stop_cause;
+    wire [11:0] stop_cause;
     
     wire [12:1] s;
     wire [11:9] eb;
@@ -466,7 +468,7 @@ module agc_monitor(
     wire mwchg;
     wire ss_mstp;
     wire inhibit_mstp;
-    
+    assign inhibit_mstp = 0; // REMOVE WHEN PERIPHERAL STUFF IS DONE
     assign MSTP = ss_mstp & ~inhibit_mstp;
     
     start_stop strt_stp(
@@ -479,6 +481,16 @@ module agc_monitor(
         .stop_s1_s2(stop_s1_s2),
         .stop_cause(stop_cause),
         .MT01(MT01),
+        .MT02(MT02),
+        .MT03(MT03),
+        .MT04(MT04),
+        .MT05(MT05),
+        .MT06(MT06),
+        .MT07(MT07),
+        .MT08(MT08),
+        .MT09(MT09),
+        .MT10(MT10),
+        .MT11(MT11),
         .MT12(MT12),
         .MGOJAM(MGOJAM),
         .MNISQ(MNISQ),
@@ -492,7 +504,9 @@ module agc_monitor(
         .i_match(i_match),
     
         .MSTRT(MSTRT),
-        .mstp(ss_mstp)
+        .mstp(ss_mstp),
+        .mstpeven(mstpeven),
+        .mstpodd(mstpodd)
     );
 
     /*******************************************************************************.

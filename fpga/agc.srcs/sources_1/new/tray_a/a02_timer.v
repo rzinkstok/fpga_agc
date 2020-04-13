@@ -9,6 +9,8 @@ module a02_timer(
     input wire STRT2, 
     input wire GOJ1, 
     input wire MSTP,
+    input wire mstpeven,
+    input wire mstpodd,
     input wire WL15, 
     input wire WL15_, 
     input wire WL16, 
@@ -168,13 +170,17 @@ module a02_timer(
     // NOR37120 removed (fan-out expansion)
     
     // ODDSET_
-    nor_3 #(1'b0)  NOR37121(NOR37121_out,   STOP,           RINGA_,         n0VDCA,         p4VDC, reset, prop_clk);
+    // Extra input for debugging, allowing stopping at any timepoint
+    wire stopeven;
+    nor_3 #(1'b0)  NOR37121(NOR37121_out,   STOP,           RINGA_,         stopeven,       p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR37122(ODDSET_,        NOR37121_out,   n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     // NOR37123 removed (fan-out expansion)
     // NOR37124 removed (fan-out expansion)
     
     // EVNSET and EVNSET_
-    nor_3 #(1'b0)  NOR37125(EVNSET,         RINGB_,         n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
+    // Extra input for debugging, allowing stopping at any timepoint
+    wire stopodd;
+    nor_3 #(1'b0)  NOR37125(EVNSET,         RINGB_,         stopodd,        n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR37126(EVNSET_,        EVNSET,         n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     // NOR37127 removed (fan-out expansion)
     // NOR37128 removed (fan-out expansion)
@@ -381,6 +387,55 @@ module a02_timer(
     // NOR37252 removed (fan-out expansion)
     // NOR37253 removed (fan-out expansion)
     // NOR37254 removed (fan-out expansion)
+    
+    //
+    //
+    // Extra logic for debugging
+    //
+    //
+    
+    wire todd15;
+    wire todd711;
+    wire todd_;
+    wire mstopodd_;
+    wire stopoddset;
+    wire stopoddreset;
+    wire stopodd_;
+    
+    nor_3 #(1'b0) NORDEBUG01(todd15,        T01,            T03,            T05,            p4VDC, reset, prop_clk);
+    nor_3 #(1'b0) NORDEBUG02(todd711,       T07,            T09,            T11,            p4VDC, reset, prop_clk);
+    assign todd_ = todd15 & todd711;
+    
+    nor_3 #(1'b0) NORDEBUG03(mstopodd_,     mstpodd,        n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0) NORDEBUG04(stopoddset,    mstopodd_,      todd_,          ODDSET_,        p4VDC, reset, prop_clk);
+    nor_3 #(1'b0) NORDEBUG05(stopoddreset,  ODDSET_,        mstpodd,        n0VDCA,         p4VDC, reset, prop_clk);
+    
+    nor_3 #(1'b1) NORDEBUG06(stopodd_,      stopoddset,     stopodd,        n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0) NORDEBUG07(stopodd,       stopodd_,       stopoddreset,   n0VDCA,         p4VDC, reset, prop_clk);
+    
+    wire teven26;
+    wire teven812;
+    wire teven_;
+    wire mstopeven_;
+    wire stopevenset;
+    wire stopevenreset;
+    wire stopeven_;
+    
+    nor_3 #(1'b0) NORDEBUG21(teven26,       T02,            T04,            T06,            p4VDC, reset, prop_clk);
+    nor_3 #(1'b0) NORDEBUG22(teven812,      T08,            T10,            T12,            p4VDC, reset, prop_clk);
+    assign teven_ = teven26 & teven812;
+    
+    nor_3 #(1'b0) NORDEBUG23(mstopeven_,    mstpeven,       n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0) NORDEBUG24(stopevenset,   mstopeven_,     teven_,         EVNSET_,        p4VDC, reset, prop_clk);
+    nor_3 #(1'b0) NORDEBUG25(stopevenreset, EVNSET_,        mstpeven,       n0VDCA,         p4VDC, reset, prop_clk);
+    
+    nor_3 #(1'b1) NORDEBUG26(stopeven_,     stopevenset,    stopeven,       n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0) NORDEBUG27(stopeven,      stopeven_,      stopevenreset,  n0VDCA,         p4VDC, reset, prop_clk);
+    
+    //
+    // End of debugging logic
+    //
+    
     
     // Strobe signals
     nor_3 #(1'b0)  NOR37255(SB0,            P02_,           P05,            n0VDCA,         p4VDC, reset, prop_clk);

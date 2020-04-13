@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-// Date        : Wed Apr  8 23:45:03 2020
+// Date        : Wed Apr  8 23:45:02 2020
 // Host        : fpgadev running 64-bit Ubuntu 18.04.4 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top rope_memory -prefix
+//               rope_memory_ rope_memory_sim_netlist.v
 // Design      : rope_memory
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -188,7 +188,6 @@ module rope_memory
         .web(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "bindec" *) 
 module rope_memory_bindec
    (ena_array,
     addra);
@@ -264,7 +263,6 @@ module rope_memory_bindec
         .O(ena_array[7]));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module rope_memory_blk_mem_gen_generic_cstr
    (douta,
     clka,
@@ -432,7 +430,6 @@ module rope_memory_blk_mem_gen_generic_cstr
         .clka(clka));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_mux" *) 
 module rope_memory_blk_mem_gen_mux
    (douta,
     addra,
@@ -898,7 +895,6 @@ module rope_memory_blk_mem_gen_mux
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module rope_memory_blk_mem_gen_prim_width
    (\DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram ,
     clka,
@@ -1327,7 +1323,6 @@ module rope_memory_blk_mem_gen_prim_width__parameterized9
         .p_35_out(p_35_out));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper_init" *) 
 module rope_memory_blk_mem_gen_prim_wrapper_init
    (\DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram_0 ,
     clka,
@@ -5584,7 +5579,6 @@ module rope_memory_blk_mem_gen_prim_wrapper_init__parameterized9
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module rope_memory_blk_mem_gen_top
    (douta,
     clka,
@@ -5628,7 +5622,7 @@ endmodule
 (* C_WEA_WIDTH = "1" *) (* C_WEB_WIDTH = "1" *) (* C_WRITE_DEPTH_A = "36864" *) 
 (* C_WRITE_DEPTH_B = "36864" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) (* C_WRITE_MODE_B = "WRITE_FIRST" *) 
 (* C_WRITE_WIDTH_A = "16" *) (* C_WRITE_WIDTH_B = "16" *) (* C_XDEVICEFAMILY = "zynq" *) 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_3" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* downgradeipidentifiedwarnings = "yes" *) 
 module rope_memory_blk_mem_gen_v8_4_3
    (clka,
     rsta,
@@ -5858,7 +5852,6 @@ module rope_memory_blk_mem_gen_v8_4_3
         .douta(douta));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_3_synth" *) 
 module rope_memory_blk_mem_gen_v8_4_3_synth
    (douta,
     clka,

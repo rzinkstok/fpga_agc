@@ -99,6 +99,7 @@
 `define MON_REG_I      16'h0A
 `define MON_REG_STATUS 16'h0B
 `define MON_REG_PAR    16'h0C
+`define MON_REG_TP     16'h0D
 `define MON_REG_W      16'h40
 
 // Wild register mode

@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../agc.srcs/sources_1/new/monitor" --include "../../../../../agc.srcs/sources_1/bd/styx_ps/ipshared/ec67/hdl" --include "../../../../../agc.srcs/sources_1/bd/styx_ps/ipshared/8c62/hdl" --include "../../../../../agc.srcs/sources_1/ip/prop_clock_divider" --include "/tools/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \
+"fpga_agc_tb_time_synth.v" \
+"../../../../../agc.srcs/sim_1/new/fpga_agc_tb.v" \
+
+# Do not sort compile order
+nosort

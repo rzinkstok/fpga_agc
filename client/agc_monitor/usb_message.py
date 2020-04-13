@@ -166,16 +166,16 @@ class ControlStart(ControlMessage):
 
 class ControlStop(ControlMessage):
     address = 0x0001
-    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "s1_s2"]
-    mask = tuple(0x00001 for i in range(12))
-    bitshift = tuple(i for i in range(12))
+    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "t", "s1_s2"]
+    mask = tuple(0x00001 for i in range(13))
+    bitshift = tuple(i for i in range(13))
 
 
 class ControlStopCause(ControlMessage):
     address = 0x0002
-    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step"]
-    mask = tuple(0x00001 for i in range(11))
-    bitshift = tuple(i for i in range(11))
+    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "t"]
+    mask = tuple(0x00001 for i in range(12))
+    bitshift = tuple(i for i in range(12))
 
 
 class ControlProceed(ControlMessage):
@@ -281,6 +281,11 @@ class MonRegBB(MonRegMessage):
     mask = (0x0007, 0x001F)
 
 
+class MonRegB(MonRegMessage):
+    address = 0x0005
+    keys = ["b"]
+
+
 class MonRegS(MonRegMessage):
     address = 0x0006
     keys = ["s"]
@@ -292,9 +297,28 @@ class MonRegG(MonRegMessage):
     keys = ["g"]
 
 
-class MonRegW(MonRegMessage):
-    address = 0x0040
-    keys = ["w"]
+class MonRegY(MonRegMessage):
+    address = 0x0008
+    keys = ["y"]
+
+
+class MonRegU(MonRegMessage):
+    address = 0x0009
+    keys = ["u"]
+
+
+class MonRegI(MonRegMessage):
+    address = 0x000A
+    keys = ["sq", "sqext", "st", "br"]
+    bitshift = (0, 6, 7, 10)
+    mask = (0x003F, 0x0001, 0x0007, 0x0003)
+
+
+class MonRegStatus(MonRegMessage):
+    address = 0x000B
+    keys = ["gojam", "run", "iip", "inhl", "inkl", "outcom"]
+    bitshift = (0, 1, 2, 3, 4, 5)
+    mask = (0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001)
 
 
 class MonRegParity(MonRegMessage):
@@ -304,11 +328,16 @@ class MonRegParity(MonRegMessage):
     mask = (0x0001, 0x0001, 0x0001, 0x0001)
 
 
-class MonRegStatus(MonRegMessage):
-    address = 0x000B
-    keys = ["gojam", "run", "iip", "inhl", "inkl", "outcom"]
-    bitshift = (0, 1, 2, 3, 4, 5)
-    mask = (0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001)
+class MonRegTimePulse(MonRegMessage):
+    address = 0x000D
+    keys = [f"t{i+1}" for i in range(12)]
+    mask = tuple(0x0001 for i in range(12))
+    bitshift = tuple(i for i in range(12))
+
+
+class MonRegW(MonRegMessage):
+    address = 0x0040
+    keys = ["w"]
 
 
 class MonChanMessage(Message):

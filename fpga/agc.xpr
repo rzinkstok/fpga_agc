@@ -34,7 +34,7 @@
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSABoardId" Val="styx"/>
     <Option Name="DSANumComputeUnits" Val="60"/>
-    <Option Name="WTXSimLaunchSim" Val="794"/>
+    <Option Name="WTXSimLaunchSim" Val="827"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -518,6 +518,7 @@
         <Option Name="XSimWcfgFile" Val="$PSIMDIR/sim_1/behav/xsim/a3_sq_register_tb2_behav.wcfg"/>
         <Option Name="XSimWcfgFile" Val="$PSIMDIR/sim_1/behav/xsim/commands_behav.wcfg"/>
         <Option Name="xsim.simulate.runtime" Val="1000us"/>
+        <Option Name="NLNetlistMode" Val="funcsim"/>
       </Config>
     </FileSet>
     <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">

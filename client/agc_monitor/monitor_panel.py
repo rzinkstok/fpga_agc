@@ -6,6 +6,7 @@ from control import Control
 from register import Register
 from w_comparator import WComparator
 from address_register import AddressRegister
+from instruction_register import InstructionRegister
 from comp_stop import CompStop
 
 
@@ -54,13 +55,29 @@ class MonitorPanel(QFrame):
         regs_layout.addWidget(self._reg_l)
         regs_layout.setAlignment(self._reg_l, Qt.AlignRight)
 
+        self._reg_y = Register(regs, self._usbif, 'Y', False, QColor(0, 255, 0))
+        regs_layout.addWidget(self._reg_y)
+        regs_layout.setAlignment(self._reg_y, Qt.AlignRight)
+
+        self._reg_u = Register(regs, self._usbif, 'U', False, QColor(0, 255, 0))
+        regs_layout.addWidget(self._reg_u)
+        regs_layout.setAlignment(self._reg_u, Qt.AlignRight)
+
         self._reg_z = Register(regs, self._usbif, 'Z', False, QColor(0, 255, 0))
         regs_layout.addWidget(self._reg_z)
         regs_layout.setAlignment(self._reg_z, Qt.AlignRight)
 
+        self._reg_q = Register(regs, self._usbif, 'Q', False, QColor(0, 255, 0))
+        regs_layout.addWidget(self._reg_q)
+        regs_layout.setAlignment(self._reg_q, Qt.AlignRight)
+
         self._reg_g = Register(regs, self._usbif, 'G', True, QColor(0, 255, 0))
         regs_layout.addWidget(self._reg_g)
         regs_layout.setAlignment(self._reg_g, Qt.AlignRight)
+
+        self._reg_b = Register(regs, self._usbif, 'B', False, QColor(0, 255, 0))
+        regs_layout.addWidget(self._reg_b)
+        regs_layout.setAlignment(self._reg_b, Qt.AlignRight)
 
         self._reg_w = Register(regs, self._usbif, 'W', True, QColor(0, 255, 0))
         regs_layout.addWidget(self._reg_w)
@@ -73,6 +90,10 @@ class MonitorPanel(QFrame):
         self._reg_s = AddressRegister(self, self._usbif, QColor(0, 255, 0))
         layout.addWidget(self._reg_s)
         layout.setAlignment(self._reg_s, Qt.AlignRight)
+
+        self._reg_i = InstructionRegister(self, self._usbif, QColor(0, 255, 0))
+        layout.addWidget(self._reg_i)
+        layout.setAlignment(self._reg_i, Qt.AlignRight)
 
         lower_controls = QWidget(self)
         lower_layout = QHBoxLayout(lower_controls)

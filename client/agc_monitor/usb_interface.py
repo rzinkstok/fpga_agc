@@ -75,7 +75,8 @@ class USBInterface(QObject):
             self._enqueue_poll_msgs()
             while not self._tx_queue.empty():
                 msg = self._tx_queue.get_nowait()
-                print(f"Sending {msg}")
+                if msg.datadict:
+                    print(f"Sending {msg}")
                 packed_msg = msg.pack()
                 slipped_msg = slip(packed_msg)
                 try:
@@ -108,7 +109,7 @@ class USBInterface(QObject):
                     warnings.warn('Unknown message %s' % msg_bytes)
                     continue
 
-                print(f"Received {msg}")
+                #print(f"Received {msg}")
                 self.msg_received.emit(msg)
 
     def _connect(self):

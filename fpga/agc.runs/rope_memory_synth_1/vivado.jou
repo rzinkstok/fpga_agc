@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Wed Apr  8 23:41:56 2020
-# Process ID: 21609
+# Start of session at: Sun Apr 12 09:42:01 2020
+# Process ID: 4446
 # Current directory: /home/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1
 # Command line: vivado -log rope_memory.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rope_memory.tcl
 # Log file: /home/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1/rope_memory.vds

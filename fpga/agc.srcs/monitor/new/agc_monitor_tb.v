@@ -102,6 +102,8 @@ module agc_monitor_tb(
 	wire NHALGA;
 	wire [6:1]dbg;
 	wire [6:1]leds;
+	wire mstpeven;
+	wire mstpodd;
 	wire nhstrt1;
 	wire nhstrt2;
 	wire oe_n;
@@ -195,6 +197,8 @@ module agc_monitor_tb(
 		MGP_,
 		MSTP,
 		MSTRT,
+		mstpeven,
+		mstpodd,
 		MNHRPT,
 		MNHNC,
 		NHALGA,

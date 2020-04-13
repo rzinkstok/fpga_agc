@@ -171,6 +171,8 @@ module tray_a(
 	input wire XLNK0,
 	input wire XLNK1,
 	input wire ZEROP,
+	input wire mstpeven,
+	input wire mstpodd,
 	input wire n2FSFAL,
 	input wire prop_clk_locked,
 
@@ -1763,6 +1765,8 @@ module tray_a(
 		STRT2,
 		GOJ1,
 		MSTP,
+		mstpeven,
+		mstpodd,
 		WL15,
 		WL15_,
 		WL16,
