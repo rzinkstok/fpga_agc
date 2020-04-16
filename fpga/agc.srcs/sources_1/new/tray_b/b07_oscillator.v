@@ -9,7 +9,8 @@ module b07_oscillator(
         output wire CLOCK
     );
     
-    wire clk_reset = 1'b0;
+    wire clk_reset;
+    assign clk_reset = 1'b0;
         
     prop_clock_divider prop_clk_div(
         .clk_in1(clk),

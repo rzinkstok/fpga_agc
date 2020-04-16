@@ -471,7 +471,7 @@ class GeneratedVerilogModule(object):
 
                 fp.write(f"\t{module} {m}(\n")
                 for i, param in enumerate(self.module_parameters[module]):
-                    fp.write(f"\t\t{param.name}")
+                    fp.write(f"\t\t.{param.name}({param.name})")
                     if i != (len(self.module_parameters[module]) - 1):
                         fp.write(",")
                     fp.write("\n")
