@@ -12,12 +12,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1000000000001fs"></ZoomEndTime>
-      <Cursor1Time time="1000000000000fs"></Cursor1Time>
+      <ZoomEndTime time="10000000001fs"></ZoomEndTime>
+      <Cursor1Time time="27090468000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="188"></NameColumnWidth>
-      <ValueColumnWidth column_width="114"></ValueColumnWidth>
+      <ValueColumnWidth column_width="110"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="47" />
    <wvobject type="logic" fp_name="/fpga_agc_tb/reset">
@@ -115,7 +115,6 @@
    <wvobject type="group" fp_name="group249">
       <obj_property name="label">Alarm</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/NHALGA">
          <obj_property name="ElementShortName">NHALGA</obj_property>
          <obj_property name="ObjectShortName">NHALGA</obj_property>
@@ -272,6 +271,7 @@
    <wvobject type="group" fp_name="group998">
       <obj_property name="label">Power</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/p28COM">
          <obj_property name="ElementShortName">p28COM</obj_property>
          <obj_property name="ObjectShortName">p28COM</obj_property>
@@ -300,6 +300,7 @@
    <wvobject type="group" fp_name="group1002">
       <obj_property name="label">Timer</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/clk">
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
@@ -569,7 +570,6 @@
    <wvobject type="group" fp_name="group525">
       <obj_property name="label">Write lines</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="vbus" fp_name="VirtualBus">
          <obj_property name="label">MWL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -666,6 +666,7 @@
          <obj_property name="Reversed">true</obj_property>
          <obj_property name="ElementShortName">VirtualBus[]</obj_property>
          <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a08/NOR51121_out">
             <obj_property name="ElementShortName">NOR51121_out</obj_property>
             <obj_property name="ObjectShortName">NOR51121_out</obj_property>
@@ -735,7 +736,6 @@
    <wvobject type="group" fp_name="group245">
       <obj_property name="label">X register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/MONEX">
          <obj_property name="ElementShortName">MONEX</obj_property>
          <obj_property name="ObjectShortName">MONEX</obj_property>
@@ -840,7 +840,6 @@
    <wvobject type="group" fp_name="group245">
       <obj_property name="label">Y register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WYLOG_">
          <obj_property name="ElementShortName">WYLOG_</obj_property>
          <obj_property name="ObjectShortName">WYLOG_</obj_property>
@@ -937,7 +936,6 @@
    <wvobject type="group" fp_name="group221">
       <obj_property name="label">U register (SUM)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CUG">
          <obj_property name="ElementShortName">CUG</obj_property>
          <obj_property name="ObjectShortName">CUG</obj_property>
@@ -1046,7 +1044,6 @@
    <wvobject type="group" fp_name="group378">
       <obj_property name="label">B register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WBG_">
          <obj_property name="ElementShortName">WBG_</obj_property>
          <obj_property name="ObjectShortName">WBG_</obj_property>
@@ -1143,7 +1140,6 @@
    <wvobject type="group" fp_name="group308">
       <obj_property name="label">G register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WG1G_">
          <obj_property name="ElementShortName">WG1G_</obj_property>
          <obj_property name="ObjectShortName">WG1G_</obj_property>
@@ -1252,7 +1248,6 @@
    <wvobject type="group" fp_name="group419">
       <obj_property name="label">Z register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/WZG_">
          <obj_property name="ElementShortName">WZG_</obj_property>
          <obj_property name="ObjectShortName">WZG_</obj_property>
@@ -1341,7 +1336,6 @@
    <wvobject type="group" fp_name="group407">
       <obj_property name="label">Q register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CQG">
          <obj_property name="ElementShortName">CQG</obj_property>
          <obj_property name="ObjectShortName">CQG</obj_property>
@@ -1430,7 +1424,6 @@
    <wvobject type="group" fp_name="group516">
       <obj_property name="label">SQ register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a03/WSQG_">
          <obj_property name="ElementShortName">WSQG_</obj_property>
          <obj_property name="ObjectShortName">WSQG_</obj_property>
@@ -1523,7 +1516,6 @@
    <wvobject type="group" fp_name="group560">
       <obj_property name="label">Stage counter</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/ST1">
          <obj_property name="ElementShortName">ST1</obj_property>
          <obj_property name="ObjectShortName">ST1</obj_property>
@@ -1569,7 +1561,6 @@
    <wvobject type="group" fp_name="group357">
       <obj_property name="label">Erasable bank</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a15/CEBG">
          <obj_property name="ElementShortName">CEBG</obj_property>
          <obj_property name="ObjectShortName">CEBG</obj_property>
@@ -1610,7 +1601,6 @@
    <wvobject type="group" fp_name="group364">
       <obj_property name="label">Fixed bank</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CFBG">
          <obj_property name="ElementShortName">CFBG</obj_property>
          <obj_property name="ObjectShortName">CFBG</obj_property>
@@ -1660,7 +1650,6 @@
    <wvobject type="group" fp_name="group1493">
       <obj_property name="label">Channel</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CCHG_">
          <obj_property name="ElementShortName">CCHG_</obj_property>
          <obj_property name="ObjectShortName">CCHG_</obj_property>
@@ -1881,7 +1870,6 @@
    <wvobject type="group" fp_name="group1597">
       <obj_property name="label">Channel 11</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CCH11">
          <obj_property name="ElementShortName">CCH11</obj_property>
          <obj_property name="ObjectShortName">CCH11</obj_property>
@@ -1966,7 +1954,6 @@
    <wvobject type="group" fp_name="group230">
       <obj_property name="label">Channel 12</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CCH12">
          <obj_property name="ElementShortName">CCH12</obj_property>
          <obj_property name="ObjectShortName">CCH12</obj_property>
@@ -2051,7 +2038,6 @@
    <wvobject type="group" fp_name="group1617">
       <obj_property name="label">Channel 13</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CCH13">
          <obj_property name="ElementShortName">CCH13</obj_property>
          <obj_property name="ObjectShortName">CCH13</obj_property>
@@ -2137,7 +2123,6 @@
    <wvobject type="group" fp_name="group1577">
       <obj_property name="label">Channel 14</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/CCH14">
          <obj_property name="ElementShortName">CCH14</obj_property>
          <obj_property name="ObjectShortName">CCH14</obj_property>
@@ -2222,7 +2207,6 @@
    <wvobject type="group" fp_name="group4229">
       <obj_property name="label">S register</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a12/WSG_">
          <obj_property name="ElementShortName">WSG_</obj_property>
          <obj_property name="ObjectShortName">WSG_</obj_property>
@@ -2291,7 +2275,6 @@
    <wvobject type="group" fp_name="group1020">
       <obj_property name="label">Erasable memory</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fpga_agc_tb/traya/a14/ERAS_">
          <obj_property name="ElementShortName">ERAS_</obj_property>
          <obj_property name="ObjectShortName">ERAS_</obj_property>
