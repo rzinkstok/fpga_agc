@@ -23,7 +23,7 @@ class MainWindow(QMainWindow):
         status_bar.setSizeGripEnabled(False)
         status_bar.setContentsMargins(4, 0, 0, 0)
         status_bar.setStyleSheet('QStatusBar::item {border: None;}')
-        self._status = QLabel('Test')
+        self._status = QLabel('STATUS')
         status_bar.addWidget(self._status)
 
         # Create a central widget, give it a layout, and set it up

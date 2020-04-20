@@ -8,6 +8,7 @@ from w_comparator import WComparator
 from address_register import AddressRegister
 from instruction_register import InstructionRegister
 from comp_stop import CompStop
+from write_w import WriteW
 
 
 class MonitorPanel(QFrame):
@@ -33,9 +34,9 @@ class MonitorPanel(QFrame):
         upper_layout.setSpacing(1)
         layout.addWidget(upper_displays)
 
-        # self._write_w = WriteW(upper_displays, self._usbif)
-        # upper_layout.addWidget(self._write_w)
-        # upper_layout.setAlignment(self._write_w, Qt.AlignRight)
+        self._write_w = WriteW(upper_displays, self._usbif)
+        upper_layout.addWidget(self._write_w)
+        upper_layout.setAlignment(self._write_w, Qt.AlignRight)
 
         regs = QWidget(upper_displays)
         regs_layout = QVBoxLayout(regs)

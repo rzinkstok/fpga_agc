@@ -2,50 +2,31 @@ from PySide2.QtWidgets import QWidget, QFrame, QVBoxLayout, QHBoxLayout, QGridLa
 from PySide2.QtGui import QColor
 from PySide2.QtCore import Qt
 from collections import OrderedDict
-from indicator import Indicator
+from apollo_ui import ApolloIndicator, ApolloLabeledIndicator
 import usb_message as um
 import agc
 
 
-STATUS_INDS = OrderedDict([
-    ('iip', 'IIP'),
-    ('inhl', 'INHL'),
-    ('inkl', 'INKL'),
-    ('ld', 'LD'),
-    ('chld', 'CHLD'),
-    ('rd', 'RD'),
-    ('chrd', 'CHRD'),
-])
+
 
 
 class InstructionRegister(QWidget):
     def __init__(self, parent, usbif, color):
         super().__init__(parent)
+        #self.setStyleSheet("border: 1px solid black;")
         self._br_inds = []
         self._st_inds = []
         self._sq_inds = []
-        self._status_inds = {}
+
 
         self._setup_ui(color)
 
         usbif.poll(um.MonRegI())
-        usbif.poll(um.MonRegStatus())
-        #usbif.poll(um.StatusPeripheral())
         usbif.listen(self)
 
     def handle_msg(self, msg):
         if isinstance(msg, um.MonRegI):
-            print(msg)
             self.set_i_values(msg.br, msg.st, msg.sqext, msg.sq)
-        elif isinstance(msg, um.MonRegStatus):
-            self._status_inds['iip'].set_on(msg.iip)
-            self._status_inds['inhl'].set_on(msg.inhl)
-            self._status_inds['inkl'].set_on(msg.inkl)
-        # elif isinstance(msg, um.StatusPeripheral):
-        #     self._status_inds['ld'].set_on(msg.ld)
-        #     self._status_inds['chld'].set_on(msg.chld)
-        #     self._status_inds['rd'].set_on(msg.rd)
-        #     self._status_inds['chrd'].set_on(msg.chrd)
 
     def set_i_values(self, br, st, sqext, sq):
         self._set_reg_value(self._br_inds, self._br_value, br)
@@ -77,23 +58,12 @@ class InstructionRegister(QWidget):
         layout.addWidget(st_frame)
         layout.addWidget(sq_frame)
 
-        stat_group = QWidget(self)
-        layout.addWidget(stat_group)
-        stat_layout = QGridLayout(stat_group)
-        stat_layout.setMargin(0)
-        stat_layout.setSpacing(0)
-
-        col = 0
-        for name, label in STATUS_INDS.items():
-            self._status_inds[name] = self._create_status_light(label, stat_group, stat_layout, col)
-            col += 1
-
         # Create a grouping widget for the I label and decoded instruction value box
         label_value_widget = QWidget(self)
         label_value_layout = QHBoxLayout(label_value_widget)
         label_value_layout.setSpacing(3)
         label_value_layout.setMargin(1)
-        label_value_layout.setContentsMargins(0, 24, 0, 0)
+        label_value_layout.setContentsMargins(0, 22, 0, 0)
         label_value_widget.setLayout(label_value_layout)
         layout.addWidget(label_value_widget)
 
@@ -161,7 +131,7 @@ class InstructionRegister(QWidget):
 
         # Add indicators for each bit in the register, from MSB to LSB
         for i in range(width, 0, -1):
-            ind = Indicator(bit_frame, color)
+            ind = ApolloIndicator(bit_frame, color)
             ind.setFixedSize(20, 32)
             bit_layout.addWidget(ind)
             ind_list.insert(0, ind)
@@ -177,18 +147,3 @@ class InstructionRegister(QWidget):
         reg_layout.addWidget(bit_frame)
 
         return reg_widget, reg_value
-
-    def _create_status_light(self, name, parent, layout, col):
-        label = QLabel(name, parent)
-        label.setAlignment(Qt.AlignBottom | Qt.AlignCenter)
-        label.setFixedSize(30, 20)
-        layout.addWidget(label, 1, col)
-        layout.setAlignment(label, Qt.AlignBottom)
-
-        # Add an indicator to show inhibit state
-        ind = Indicator(parent, QColor(0, 255, 255))
-        ind.setFixedSize(20, 20)
-        layout.addWidget(ind, 2, col)
-        layout.setAlignment(ind, Qt.AlignCenter)
-
-        return ind

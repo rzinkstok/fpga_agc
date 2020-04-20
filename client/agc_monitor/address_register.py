@@ -1,7 +1,6 @@
 from PySide2.QtWidgets import QWidget, QFrame, QVBoxLayout, QHBoxLayout, QLineEdit, QLabel
-from PySide2.QtGui import QFont
 from PySide2.QtCore import Qt
-from indicator import Indicator
+from apollo_ui import ApolloIndicator as Indicator
 import usb_message as um
 import agc
 

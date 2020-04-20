@@ -354,3 +354,13 @@ class MonChanFEXT(MonChanMessage):
 # Construct the message map used in the message factory
 message_map = {(cls.group, cls.address): cls for cls in message_classes()}
 print(message_map)
+
+
+class WriteWMode:
+    ALL = 0
+    S = 1
+    I = 2
+    S_I = 3
+    P = 4
+    P_I = 5
+    P_S = 6

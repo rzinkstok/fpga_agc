@@ -1,10 +1,9 @@
-from PySide2.QtWidgets import QWidget, QFrame, QLabel, QHBoxLayout, QVBoxLayout, QRadioButton, QButtonGroup, QPushButton
-from PySide2.QtGui import QColor
+from PySide2.QtWidgets import QWidget, QFrame, QLabel, QHBoxLayout, QVBoxLayout, QPushButton
+from PySide2.QtGui import QColor, Qt
 from collections import OrderedDict
 
 import usb_message as um
-from apollo_group import ApolloGroup
-from indicator import LabelIndicator
+from apollo_ui import ApolloGroup, ApolloLabeledIndicatorSwitch, ApolloLabeledRSwitch
 
 
 STOP_CONDS = OrderedDict([
@@ -53,7 +52,7 @@ class CompStop(QFrame):
 
     def _set_stop_conds(self, on):
         settings = {s: int(self._stop_switches[s].isChecked()) for s in STOP_CONDS.values()}
-        settings['s1_s2'] = int(self._s2.isChecked())
+        settings['s1_s2'] = int(self._s2.switch.isChecked())
         self._usbif.send(um.ControlStop(**settings))
 
     def _setup_ui(self):
@@ -65,54 +64,59 @@ class CompStop(QFrame):
         layout.addWidget(ag1)
 
         for label, name in STOP_CONDS.items():
-            w = LabelIndicator(self, QColor(255, 120, 0), label, lines=2, switch=True, callback=self._set_stop_conds, direct_connect=False)
+            w = ApolloLabeledIndicatorSwitch(self, label, QColor(255, 120, 0), lines=2, callback=self._set_stop_conds, direct_connect=False)
             ag1.addWidget(w)
-            self._stop_inds[name] = w._indicator
+            self._stop_inds[name] = w.indicator
             self._stop_switches[name] = w.switch
 
         ag2 = ApolloGroup(self, "S SELECT")
 
-        x1 = QWidget(self)
-        l1 = QVBoxLayout(x1)
-        l1.addSpacing(7)
-        lbl1 = QLabel("S1")
-        l1.addWidget(lbl1)
-        self._s1 = QRadioButton(self)
-        l1.addWidget(self._s1)
-        self._s1.setChecked(True)
-        self._s1.toggled.connect(self._set_stop_conds)
-        x1.setLayout(l1)
-
-        x2 = QWidget(self)
-        l2 = QVBoxLayout(x2)
-        l2.addSpacing(7)
-        lbl2 = QLabel("S2")
-        l2.addWidget(lbl2)
-        self._s2 = QRadioButton(self)
-        l2.addWidget(self._s2)
-        x2.setLayout(l2)
-
-        ag2.addWidget(x1)
-        ag2.addWidget(x2)
-
+        self._s1 = ApolloLabeledRSwitch(self, "S1", lines=2)
+        self._s1.switch.setChecked(True)
+        self._s1.switch.toggled.connect(self._set_stop_conds)
+        ag2.addSpacing(5)
+        ag2.addWidget(self._s1)
+        ag2.addSpacing(10)
+        self._s2 = ApolloLabeledRSwitch(self, "S2", lines=2)
+        ag2.addWidget(self._s2)
+        ag2.addSpacing(5)
         layout.addWidget(ag2)
 
-        bg = QButtonGroup(self)
-        bg.addButton(self._s1)
-        bg.addButton(self._s2)
-        bg.exclusive()
+        ag2.group()
+        # bg = QButtonGroup(self)
+        # bg.addButton(self._s1.switch)
+        # bg.addButton(self._s2.switch)
+        # bg.exclusive()
 
+        ag3 = ApolloGroup(self, "STEP")
+        layout.addWidget(ag3)
 
         pro_widget = QWidget(self)
-        layout.addWidget(pro_widget)
         pro_layout = QVBoxLayout(pro_widget)
-        pro_layout.addSpacing(15)
-        l = QLabel('PROCEED', self)
-        # l.setAlignment(Qt.AlignCenter)
-        pro_layout.addWidget(l)
+        pro_layout.setContentsMargins(0, 0, 0, 0)
 
-        b = QPushButton(pro_widget)
-        b.setFixedSize(20, 20)
-        pro_layout.addWidget(b)
-        # pro_layout.setAlignment(b, Qt.AlignCenter | Qt.AlignTop)
-        b.pressed.connect(lambda: self._usbif.send(um.ControlProceed(1)))
+        l1 = QLabel('\nPROCEED', self)
+        l1.setAlignment(Qt.AlignCenter)
+        pro_layout.addWidget(l1)
+
+        b1 = QPushButton(pro_widget)
+        b1.setFixedSize(15, 15)
+        pro_layout.addWidget(b1)
+        pro_layout.setAlignment(b1, Qt.AlignCenter | Qt.AlignTop)
+        b1.pressed.connect(lambda: self._usbif.send(um.ControlProceed(1)))
+
+        reset_widget = QWidget(self)
+        reset_layout = QVBoxLayout(reset_widget)
+        reset_layout.setContentsMargins(0, 0, 0, 0)
+
+        l2 = QLabel("RESET\nERROR", self)
+        l2.setAlignment(Qt.AlignCenter)
+        reset_layout.addWidget(l2)
+
+        b2 = QPushButton(reset_widget)
+        b2.setFixedSize(15, 15)
+        reset_layout.addWidget(b2)
+        reset_layout.setAlignment(b2, Qt.AlignCenter | Qt.AlignTop)
+
+        ag3.addWidget(pro_widget)
+        ag3.addWidget(reset_widget)
