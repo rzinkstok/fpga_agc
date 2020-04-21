@@ -233,6 +233,11 @@ class ControlWComparatorParity(ControlMessage):
     bitshift = (0, 2)
 
 
+class ControlReset(ControlMessage):
+    address = 0x0020
+    keys = ["reset"]
+
+
 class ControlNHALGA(ControlMessage):
     address = 0x0040
     keys = ["nhalga"]

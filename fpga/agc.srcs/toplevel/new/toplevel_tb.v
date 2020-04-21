@@ -134,7 +134,8 @@ module toplevel_tb();
 	wire siwu;
 
 	reg clk;
-	reg reset;
+	reg rst_n;
+	wire reset;
 
     reg [7:0]data_in;
 
@@ -397,6 +398,7 @@ module toplevel_tb();
 
 	agc_monitor agcmonitor(
 		.clk(clk),
+		.rst_n(rst_n),
 		.reset(reset),
 		.clkout(clkout),
 		.data(data),
@@ -877,12 +879,12 @@ module toplevel_tb();
 	initial
 	begin
 		clk = 1'b0;
-		reset = 1'b1;
+		rst_n = 1'b0;
 		clkout = 1'b0;
 		rxf_n = 1'b1;
 		txe_n = 1'b1;
 		data_in = 8'h00;
-		#200 reset = 1'b0;
+		#200 rst_n = 1'b1;
 		#100;
 		
 		#500 rxf_n = 1'b0;
@@ -916,6 +918,18 @@ module toplevel_tb();
 		#11531 
 		#11531 
 		#11531 // 20
+		
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h20;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h01;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
 		#11531 
 		#11531 
 		#11531 

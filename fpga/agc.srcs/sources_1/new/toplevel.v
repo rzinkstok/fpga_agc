@@ -157,7 +157,7 @@ module toplevel(
 	inout wire FIXED_IO_ps_srstb,
 
 	input wire clk,
-	input wire reset
+	output wire reset
 );
 
 	reg BLKUPL_ = 1;

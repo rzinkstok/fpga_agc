@@ -3,7 +3,7 @@ from PySide2.QtGui import QColor, Qt
 from collections import OrderedDict
 
 import usb_message as um
-from apollo_ui import ApolloGroup, ApolloLabeledIndicatorSwitch, ApolloLabeledRSwitch
+from apollo_ui import ApolloGroup, ApolloLabeledIndicatorSwitch, ApolloLabeledRSwitch, ApolloLabeledButton
 
 
 STOP_CONDS = OrderedDict([
@@ -91,32 +91,35 @@ class CompStop(QFrame):
         ag3 = ApolloGroup(self, "STEP")
         layout.addWidget(ag3)
 
-        pro_widget = QWidget(self)
-        pro_layout = QVBoxLayout(pro_widget)
-        pro_layout.setContentsMargins(0, 0, 0, 0)
+        callback = lambda: self._usbif.send(um.ControlProceed(1))
+        b1 = ApolloLabeledButton(self, "PROCEED", lines=2, callback=callback)
+        # pro_widget = QWidget(self)
+        # pro_layout = QVBoxLayout(pro_widget)
+        # pro_layout.setContentsMargins(0, 0, 0, 0)
+        #
+        # l1 = QLabel('\nPROCEED', self)
+        # l1.setAlignment(Qt.AlignCenter)
+        # pro_layout.addWidget(l1)
+        #
+        # b1 = QPushButton(pro_widget)
+        # b1.setFixedSize(15, 15)
+        # pro_layout.addWidget(b1)
+        # pro_layout.setAlignment(b1, Qt.AlignCenter | Qt.AlignTop)
+        #b1.pressed.connect(lambda: self._usbif.send(um.ControlProceed(1)))
 
-        l1 = QLabel('\nPROCEED', self)
-        l1.setAlignment(Qt.AlignCenter)
-        pro_layout.addWidget(l1)
+        # reset_widget = QWidget(self)
+        # reset_layout = QVBoxLayout(reset_widget)
+        # reset_layout.setContentsMargins(0, 0, 0, 0)
+        #
+        # l2 = QLabel("RESET\nERROR", self)
+        # l2.setAlignment(Qt.AlignCenter)
+        # reset_layout.addWidget(l2)
+        #
+        # b2 = QPushButton(reset_widget)
+        # b2.setFixedSize(15, 15)
+        # reset_layout.addWidget(b2)
+        # reset_layout.setAlignment(b2, Qt.AlignCenter | Qt.AlignTop)
 
-        b1 = QPushButton(pro_widget)
-        b1.setFixedSize(15, 15)
-        pro_layout.addWidget(b1)
-        pro_layout.setAlignment(b1, Qt.AlignCenter | Qt.AlignTop)
-        b1.pressed.connect(lambda: self._usbif.send(um.ControlProceed(1)))
-
-        reset_widget = QWidget(self)
-        reset_layout = QVBoxLayout(reset_widget)
-        reset_layout.setContentsMargins(0, 0, 0, 0)
-
-        l2 = QLabel("RESET\nERROR", self)
-        l2.setAlignment(Qt.AlignCenter)
-        reset_layout.addWidget(l2)
-
-        b2 = QPushButton(reset_widget)
-        b2.setFixedSize(15, 15)
-        reset_layout.addWidget(b2)
-        reset_layout.setAlignment(b2, Qt.AlignCenter | Qt.AlignTop)
-
-        ag3.addWidget(pro_widget)
-        ag3.addWidget(reset_widget)
+        b2 = ApolloLabeledButton(self, "RESET\nERROR", lines=2)
+        ag3.addWidget(b1)
+        ag3.addWidget(b2)

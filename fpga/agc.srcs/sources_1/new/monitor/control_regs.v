@@ -6,6 +6,7 @@
 module control_regs(
     input wire clk,
     input wire rst_n,
+    output reg reset,
     input wire [15:0] addr,
     input wire [15:0] data_in,
 
@@ -67,7 +68,6 @@ module control_regs(
     output reg [63:0] crs_bank_en,
     output reg [7:0] ems_bank_en
 );
-    
     reg [12:1] s1_s;
     reg [11:9] s1_eb;
     reg [15:11] s1_fb;
@@ -154,9 +154,14 @@ module control_regs(
     reg read_done;
     
     assign data_out = read_done ? read_data : 16'b0;
-
+    
+    reg init_reset = 1'b1;
     
     always @(posedge clk or negedge rst_n) begin
+        if (init_reset) begin
+            reset <= 1'b1;
+            init_reset <= 1'b0;
+        end else begin
         if (~rst_n) begin
             write_done <= 1'b0;
             proceed_req <= 1'b0;
@@ -172,6 +177,7 @@ module control_regs(
             DBLTST <= 1'b0;
             downrupt <= 1'b0;
             handrupt <= 1'b0;
+            reset <= 1'b1;
     
             s1_s <= 12'b0;
             s1_eb <= 3'b0;
@@ -234,6 +240,7 @@ module control_regs(
             periph_data <= 16'b0;
             downrupt <= 1'b0;
             handrupt <= 1'b0;
+            reset <= 1'b0;
             
             if (write_en) begin
                 if (addr < `CTRL_REG_LOAD_S) begin
@@ -245,6 +252,7 @@ module control_regs(
                             stop_s1_s2 <= data_in[12];
                         end
                         `CTRL_REG_PROCEED:  proceed_req <= 1'b1;
+                        `CTRL_REG_RESET:    reset <= data_in[0];
                         `CTRL_REG_MNHRPT:   MNHRPT <= data_in[0];
                         `CTRL_REG_MNHNC:    MNHNC <= data_in[0];
                         `CTRL_REG_S1_S:     s1_s <= data_in[11:0];
@@ -355,6 +363,7 @@ module control_regs(
                     end
                 end    
             end    
+        end
         end
     end
     

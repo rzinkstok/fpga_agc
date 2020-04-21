@@ -56,6 +56,7 @@
 `define CTRL_REG_CRS_BANK_EN2 16'h1C
 `define CTRL_REG_CRS_BANK_EN3 16'h1D
 `define CTRL_REG_EMS_BANK_EN  16'h1E
+`define CTRL_REG_RESET        16'h20
 `define CTRL_REG_DOSCAL       16'h30
 `define CTRL_REG_DBLTST       16'h31
 `define CTRL_REG_NHALGA       16'h40

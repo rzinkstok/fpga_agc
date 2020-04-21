@@ -2,7 +2,7 @@ from PySide2.QtWidgets import QFrame, QHBoxLayout
 from PySide2.QtGui import QColor
 from collections import OrderedDict
 
-from apollo_ui import ApolloGroup, ApolloLabeledIndicator, ApolloLabeledIndicatorSwitch
+from apollo_ui import ApolloGroup, ApolloLabeledIndicator, ApolloLabeledIndicatorSwitch, ApolloLabeledButton
 import usb_message as um
 
 
@@ -61,12 +61,12 @@ class Control(QFrame):
             self._instruction_status_inds['inkl'].indicator.set_on(msg.inkl)
         elif isinstance(msg, um.ControlStopCause):
             self._status_inds['mon_stop'].indicator.set_on(any(msg))
-        elif isinstance(msg, um.StatusPeripheral):
-            # self._status_inds['crs_cycle'].indicator.set_on(any(msg))
-            self._instruction_status_inds['ld'].indicator.set_on(msg.ld)
-            self._instruction_status_inds['chld'].indicator.set_on(msg.chld)
-            self._instruction_status_inds['rd'].indicator.set_on(msg.rd)
-            self._instruction_status_inds['chrd'].indicator.set_on(msg.chrd)
+        #elif isinstance(msg, um.StatusPeripheral):
+        #    # self._status_inds['crs_cycle'].indicator.set_on(any(msg))
+        #    self._instruction_status_inds['ld'].indicator.set_on(msg.ld)
+        #    self._instruction_status_inds['chld'].indicator.set_on(msg.chld)
+        #    self._instruction_status_inds['rd'].indicator.set_on(msg.rd)
+        #    self._instruction_status_inds['chrd'].indicator.set_on(msg.chrd)
 
     def _setup_ui(self):
         layout = QHBoxLayout(self)
@@ -90,6 +90,10 @@ class Control(QFrame):
 
         ag2 = ApolloGroup(self, "CONTROL")
         layout.addWidget(ag2)
+
+        callback = lambda: self._usbif.send(um.ControlReset(1))
+        reset = ApolloLabeledButton(self, "AGC\nRESET", lines=2, callback=callback)
+        ag2.addWidget(reset)
 
         for name, label in STATUS_INDS.items():
             w = ApolloLabeledIndicator(self, label, QColor(255, 120, 0), lines=2)

@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Thu Apr 16 11:04:07 2020
-# Process ID: 9972
+# Start of session at: Tue Apr 21 11:47:16 2020
+# Process ID: 32809
 # Current directory: /home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1
 # Command line: vivado -log toplevel.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source toplevel.tcl
 # Log file: /home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/toplevel.vds
@@ -16,12 +16,12 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 10024 
+INFO: Helper process launched with PID 32834 
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:8]
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:10]
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:11]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1728.262 ; gain = 167.559 ; free physical = 4317 ; free virtual = 9201
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1728.168 ; gain = 166.559 ; free physical = 1051 ; free virtual = 6045
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'toplevel' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/toplevel.v:3]
 INFO: [Synth 8-6157] synthesizing module 'agc_monitor' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:3]
@@ -37,19 +37,19 @@ INFO: [Synth 8-6157] synthesizing module 'cmd_receiver' [/home/rzinkstok/fpga_ag
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_receiver.v:64]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_receiver.v:83]
 INFO: [Synth 8-6155] done synthesizing module 'cmd_receiver' (1#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_receiver.v:7]
-INFO: [Synth 8-6157] synthesizing module 'cmd_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/cmd_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'cmd_fifo' (2#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/cmd_fifo_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'cmd_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/cmd_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'cmd_fifo' (2#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/cmd_fifo_stub.v:6]
 WARNING: [Synth 8-7023] instance 'cmd_queue' of module 'cmd_fifo' has 11 connections declared, but only 9 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:86]
-INFO: [Synth 8-6157] synthesizing module 'read_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/read_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'read_fifo' (3#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/read_fifo_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'read_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/read_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'read_fifo' (3#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/read_fifo_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'msg_sender' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/msg_sender.v:6]
 	Parameter IDLE bound to: 0 - type: integer 
 	Parameter ACTIVE bound to: 1 - type: integer 
 	Parameter ESCAPE bound to: 2 - type: integer 
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/msg_sender.v:86]
 INFO: [Synth 8-6155] done synthesizing module 'msg_sender' (4#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/msg_sender.v:6]
-INFO: [Synth 8-6157] synthesizing module 'read_byte_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/read_byte_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'read_byte_fifo' (5#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/read_byte_fifo_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'read_byte_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/read_byte_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'read_byte_fifo' (5#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/read_byte_fifo_stub.v:6]
 WARNING: [Synth 8-7023] instance 'read_byte_queue' of module 'read_byte_fifo' has 12 connections declared, but only 10 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:159]
 INFO: [Synth 8-6155] done synthesizing module 'usb_interface' (6#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:4]
 INFO: [Synth 8-6157] synthesizing module 'cmd_controller' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_controller.v:6]
@@ -69,9 +69,9 @@ INFO: [Synth 8-6157] synthesizing module 'cmd_controller' [/home/rzinkstok/fpga_
 	Parameter SEND_READ_MSG bound to: 15 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'cmd_controller' (7#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_controller.v:6]
 INFO: [Synth 8-6157] synthesizing module 'control_regs' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/control_regs.v:6]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/control_regs.v:241]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/control_regs.v:312]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/control_regs.v:367]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/control_regs.v:248]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/control_regs.v:320]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/control_regs.v:376]
 INFO: [Synth 8-6155] done synthesizing module 'control_regs' (8#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/control_regs.v:6]
 INFO: [Synth 8-6157] synthesizing module 'status_regs' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:6]
 	Parameter VFAIL bound to: 0 - type: integer 
@@ -86,8 +86,8 @@ INFO: [Synth 8-6157] synthesizing module 'status_regs' [/home/rzinkstok/fpga_agc
 	Parameter WATCH bound to: 9 - type: integer 
 	Parameter PIPAL bound to: 10 - type: integer 
 	Parameter WARN bound to: 11 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'mon_adc' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/mon_adc_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mon_adc' (9#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/mon_adc_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mon_adc' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/mon_adc_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mon_adc' (9#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/mon_adc_stub.v:5]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:102]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:199]
 INFO: [Synth 8-6155] done synthesizing module 'status_regs' (10#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:6]
@@ -118,11 +118,11 @@ INFO: [Synth 8-6157] synthesizing module 'register2__parameterized1' [/home/rzin
 	Parameter WIDTH bound to: 16 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'register2__parameterized1' (15#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'monitor_regs' (16#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_regs.v:6]
-WARNING: [Synth 8-3848] Net leds in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:126]
+WARNING: [Synth 8-3848] Net leds in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:127]
+WARNING: [Synth 8-3848] Net fext in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:305]
+WARNING: [Synth 8-3848] Net periph_complete in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:332]
 WARNING: [Synth 8-3848] Net mrchg in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:467]
 WARNING: [Synth 8-3848] Net mwchg in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:468]
-WARNING: [Synth 8-3848] Net fext in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:306]
-WARNING: [Synth 8-3848] Net periph_complete in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:333]
 WARNING: [Synth 8-3848] Net agc_fixed_read_done in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:215]
 WARNING: [Synth 8-3848] Net agc_erasable_read_done in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:219]
 WARNING: [Synth 8-3848] Net agc_erasable_write_done in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:221]
@@ -132,6 +132,7 @@ WARNING: [Synth 8-3848] Net nassp_write_done in module/entity agc_monitor does n
 WARNING: [Synth 8-3848] Net mismatch_faddr in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:416]
 WARNING: [Synth 8-3848] Net mismatch_data in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:417]
 INFO: [Synth 8-6155] done synthesizing module 'agc_monitor' (17#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:3]
+WARNING: [Synth 8-7023] instance 'agcmonitor' of module 'agc_monitor' has 108 connections declared, but only 107 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/toplevel.v:413]
 INFO: [Synth 8-6157] synthesizing module 'fpga_agc' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/fpga_agc.v:3]
 INFO: [Synth 8-6157] synthesizing module 'tray_a' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a01_scaler' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a01_scaler.v:3]
@@ -195,28 +196,28 @@ INFO: [Synth 8-6155] done synthesizing module 'a31_power_supply' (44#1) [/home/r
 INFO: [Synth 8-6155] done synthesizing module 'tray_a' (45#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a.v:3]
 INFO: [Synth 8-6157] synthesizing module 'tray_b' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b.v:3]
 INFO: [Synth 8-6157] synthesizing module 'b01_fixed_memory' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b01_fixed_memory.v:3]
-INFO: [Synth 8-6157] synthesizing module 'rope_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/rope_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'rope_memory' (46#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/rope_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'rope_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/rope_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'rope_memory' (46#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/rope_memory_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'b01_fixed_memory' (47#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b01_fixed_memory.v:3]
 INFO: [Synth 8-6157] synthesizing module 'b07_oscillator' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b07_oscillator.v:4]
-INFO: [Synth 8-6157] synthesizing module 'prop_clock_divider' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/prop_clock_divider_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'prop_clock_divider' (48#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/prop_clock_divider_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'prop_clock_divider' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/prop_clock_divider_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'prop_clock_divider' (48#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/prop_clock_divider_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'agc_clock_divider' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_clock_divider.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'agc_clock_divider' (49#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_clock_divider.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'b07_oscillator' (50#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b07_oscillator.v:4]
 INFO: [Synth 8-6157] synthesizing module 'b08_alarm' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b08_alarm.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'b08_alarm' (51#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b08_alarm.v:3]
 INFO: [Synth 8-6157] synthesizing module 'b12_erasable_memory' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b12_erasable_memory.v:4]
-INFO: [Synth 8-6157] synthesizing module 'core_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/core_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'core_memory' (52#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/core_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'core_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/core_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'core_memory' (52#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/core_memory_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'b12_erasable_memory' (53#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b12_erasable_memory.v:4]
 INFO: [Synth 8-6155] done synthesizing module 'tray_b' (54#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'fpga_agc' (55#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/fpga_agc.v:3]
 INFO: [Synth 8-6157] synthesizing module 'styx_ps_bootloader' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/styx_ps_bootloader.v:3]
 INFO: [Synth 8-6157] synthesizing module 'styx_ps_wrapper' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v:12]
 INFO: [Synth 8-6157] synthesizing module 'styx_ps' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:13]
-INFO: [Synth 8-6157] synthesizing module 'styx_ps_processing_system7_0_0' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/styx_ps_processing_system7_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'styx_ps_processing_system7_0_0' (56#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-9972-fpgadev/realtime/styx_ps_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'styx_ps_processing_system7_0_0' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/styx_ps_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'styx_ps_processing_system7_0_0' (56#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-32809-fpgadev/realtime/styx_ps_processing_system7_0_0_stub.v:6]
 WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'styx_ps_processing_system7_0_0' has 25 connections declared, but only 22 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:79]
 INFO: [Synth 8-6155] done synthesizing module 'styx_ps' (57#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:13]
 INFO: [Synth 8-6155] done synthesizing module 'styx_ps_wrapper' (58#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v:12]
@@ -244,7 +245,7 @@ WARNING: [Synth 8-3331] design agc_monitor has unconnected port dbg[5]
 WARNING: [Synth 8-3331] design agc_monitor has unconnected port BPLSSW
 WARNING: [Synth 8-3331] design agc_monitor has unconnected port p4SW
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1826.137 ; gain = 265.434 ; free physical = 4296 ; free virtual = 9182
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1828.043 ; gain = 266.434 ; free physical = 1027 ; free virtual = 6022
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -257,10 +258,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1843.949 ; gain = 283.246 ; free physical = 4314 ; free virtual = 9200
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:15 . Memory (MB): peak = 1845.855 ; gain = 284.246 ; free physical = 1046 ; free virtual = 6041
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1843.949 ; gain = 283.246 ; free physical = 4314 ; free virtual = 9200
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:15 . Memory (MB): peak = 1845.855 ; gain = 284.246 ; free physical = 1046 ; free virtual = 6041
 ---------------------------------------------------------------------------------
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -290,22 +291,22 @@ Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2009.395 ; gain = 0.000 ; free physical = 4123 ; free virtual = 9008
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2012.270 ; gain = 0.000 ; free physical = 144 ; free virtual = 5105
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.24 ; elapsed = 00:00:00.25 . Memory (MB): peak = 2009.395 ; gain = 0.000 ; free physical = 4123 ; free virtual = 9008
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.24 ; elapsed = 00:00:00.26 . Memory (MB): peak = 2012.270 ; gain = 0.000 ; free physical = 144 ; free virtual = 5105
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'fpgaagc/trayb/b01fixedmemory/rom' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'fpgaagc/trayb/b12erasablememory/ram' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2020.301 ; gain = 459.598 ; free physical = 4277 ; free virtual = 9162
+Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:35 . Memory (MB): peak = 2021.176 ; gain = 459.566 ; free physical = 297 ; free virtual = 5259
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2020.301 ; gain = 459.598 ; free physical = 4277 ; free virtual = 9162
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:35 . Memory (MB): peak = 2021.176 ; gain = 459.566 ; free physical = 297 ; free virtual = 5259
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -582,7 +583,7 @@ Applied set_property DONT_TOUCH = true for agcmonitor/usb_if/cmd_queue. (constra
 Applied set_property DONT_TOUCH = true for agcmonitor/usb_if/read_byte_queue. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for agcmonitor/stat_regs/adc. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:25 . Memory (MB): peak = 2020.301 ; gain = 459.598 ; free physical = 4276 ; free virtual = 9162
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:36 . Memory (MB): peak = 2021.176 ; gain = 459.566 ; free physical = 297 ; free virtual = 5259
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'cmd_receiver'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'msg_sender'
@@ -650,7 +651,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'usb_interface'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:33 . Memory (MB): peak = 2020.301 ; gain = 459.598 ; free physical = 4262 ; free virtual = 9152
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:31 ; elapsed = 00:00:43 . Memory (MB): peak = 2021.176 ; gain = 459.566 ; free physical = 285 ; free virtual = 5250
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'fpgaagc/traya/a02/NOR37131' (nor_3) to 'fpgaagc/traya/a02/NOR37135'
 INFO: [Synth 8-223] decloning instance 'fpgaagc/traya/a02/NOR37454' (nor_3) to 'fpgaagc/traya/a02/NOR34329'
@@ -751,7 +752,7 @@ Report RTL Partitions:
 |1     |tray_a__GB0   |           1|     28954|
 |2     |tray_a__GB1   |           1|     20639|
 |3     |tray_b        |           1|      1689|
-|4     |toplevel__GC0 |           1|      7705|
+|4     |toplevel__GC0 |           1|      7521|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -784,22 +785,23 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 1     
 	                3 Bit    Registers := 14    
 	                2 Bit    Registers := 6     
-	                1 Bit    Registers := 15225 
+	                1 Bit    Registers := 15227 
 +---Muxes : 
-	  40 Input     64 Bit        Muxes := 1     
+	  42 Input     64 Bit        Muxes := 1     
+	   2 Input     64 Bit        Muxes := 2     
 	   7 Input     40 Bit        Muxes := 1     
 	   2 Input     40 Bit        Muxes := 2     
-	   2 Input     16 Bit        Muxes := 19    
+	   2 Input     16 Bit        Muxes := 17    
 	   8 Input     16 Bit        Muxes := 1     
 	   4 Input     16 Bit        Muxes := 1     
-	   2 Input     15 Bit        Muxes := 6     
+	   2 Input     15 Bit        Muxes := 4     
 	   8 Input     15 Bit        Muxes := 1     
-	   2 Input     12 Bit        Muxes := 16    
+	   2 Input     12 Bit        Muxes := 14    
 	   3 Input      9 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 10    
+	   2 Input      8 Bit        Muxes := 11    
 	   3 Input      8 Bit        Muxes := 2     
-	   2 Input      7 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 4     
+	   2 Input      7 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 5     
 	  13 Input      4 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 7     
 	   6 Input      4 Bit        Muxes := 1     
@@ -807,14 +809,14 @@ Detailed RTL Component Info :
 	   3 Input      3 Bit        Muxes := 2     
 	  15 Input      3 Bit        Muxes := 1     
 	   3 Input      2 Bit        Muxes := 3     
-	   2 Input      2 Bit        Muxes := 6     
+	   2 Input      2 Bit        Muxes := 8     
 	   4 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 910   
+	   2 Input      1 Bit        Muxes := 916   
 	   3 Input      1 Bit        Muxes := 8     
 	   4 Input      1 Bit        Muxes := 1     
 	  15 Input      1 Bit        Muxes := 22    
+	  39 Input      1 Bit        Muxes := 34    
 	  34 Input      1 Bit        Muxes := 1     
-	  38 Input      1 Bit        Muxes := 33    
 	   8 Input      1 Bit        Muxes := 12    
 	  12 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
@@ -22838,17 +22840,22 @@ Detailed RTL Component Info :
 	                5 Bit    Registers := 5     
 	                3 Bit    Registers := 9     
 	                2 Bit    Registers := 2     
-	                1 Bit    Registers := 22    
+	                1 Bit    Registers := 24    
 +---Muxes : 
-	  40 Input     64 Bit        Muxes := 1     
-	   2 Input     16 Bit        Muxes := 5     
+	  42 Input     64 Bit        Muxes := 1     
+	   2 Input     64 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 3     
 	   8 Input     16 Bit        Muxes := 1     
-	   2 Input     15 Bit        Muxes := 6     
+	   2 Input     15 Bit        Muxes := 4     
 	   8 Input     15 Bit        Muxes := 1     
-	   2 Input     12 Bit        Muxes := 9     
-	   2 Input      1 Bit        Muxes := 40    
+	   2 Input     12 Bit        Muxes := 7     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 46    
+	  39 Input      1 Bit        Muxes := 34    
 	  34 Input      1 Bit        Muxes := 1     
-	  38 Input      1 Bit        Muxes := 33    
 	   8 Input      1 Bit        Muxes := 5     
 Module status_regs 
 Detailed RTL Component Info : 
@@ -23045,35 +23052,226 @@ INFO: [Synth 8-5546] ROM "downrupt" won't be mapped to RAM because it is too spa
 INFO: [Synth 8-5546] ROM "handrupt" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "adv_s" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "read_data" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/strt_stp/\stop_cause_reg[7] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46336/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46355/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46345/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46335/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46354/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46344/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (fpgaagc/traya/i_0/a13/NOR49439/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (fpgaagc/traya/i_0/a13/NOR49438/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (fpgaagc/traya/i_0/a13/NOR49437/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46308/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (fpgaagc/traya/i_0/a18/NOR45447/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a18/NOR45449/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a18/NOR45453/next_val_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/trayb/b08alarm/\delay_counter_reg[8] )
-INFO: [Synth 8-3886] merging instance 'fpgaagc/trayb/b07oscillator/agc_clk_div/i_0/counter_reg[5]' (FDC) to 'fpgaagc/trayb/b07oscillator/agc_clk_div/i_0/counter_reg[6]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/trayb/b07oscillator/agc_clk_div/i_0/\counter_reg[6] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[48]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[49]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[32]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[33]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[0]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[16]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[17]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[0]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[1]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ldrd_s1_s2_reg[0]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ldrd_s1_s2_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/ctrl_regs/nhstrt2_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/ctrl_regs/nhstrt1_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[0] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[49]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[50]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[33]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[34]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[1]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[17]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[18]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[1]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[2]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ldrd_s1_s2_reg[1]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ldrd_s1_s2_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[1] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[50]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[51]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[34]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[35]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[2]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[18]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[19]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[2]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[3]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ldrd_s1_s2_reg[2]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ldrd_s1_s2_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[2] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[51]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[52]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[35]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[36]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[3]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[19]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[20]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[3]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ldrd_s1_s2_reg[3]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ldrd_s1_s2_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[3] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[52]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[53]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[36]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[37]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[4]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[20]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[21]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[4]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/ctrl_regs/\ldrd_s1_s2_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[4] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[53]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[54]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[37]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[38]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[5]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[21]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[22]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[5]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[5] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[54]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[55]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[38]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[39]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[6]' (FDE) to 'i_0/agcmonitor/ctrl_regs/ems_bank_en_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[22]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[23]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[6]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[6] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[55]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[56]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[39]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[40]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/ctrl_regs/\ems_bank_en_reg[7] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[23]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[24]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[7]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[8]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[7] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[56]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[57]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[40]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[41]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[24]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[25]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[8]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[9]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[8] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[57]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[58]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[41]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[42]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[25]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[26]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[9]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[10]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[9] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[58]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[59]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[42]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[43]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[26]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[27]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[10]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[11]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[10] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[59]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[60]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[43]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[44]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[27]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[28]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[11]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[12]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p4sw_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_bplssw_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_mtemp_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_p3v3io_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccaux_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_vccint_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\adc_temp_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/stat_regs/\alarms_reg[11] )
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[60]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[61]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[44]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[45]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[28]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[29]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[12]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[13]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[61]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[62]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[45]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[46]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[29]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[30]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[13]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[14]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[62]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[63]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[46]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[47]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[30]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[31]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[14]' (FDE) to 'i_0/agcmonitor/ctrl_regs/crs_bank_en_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/adv_s_reg' (FDRE) to 'i_0/agcmonitor/ctrl_regs/proceed_req_reg'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/stop_conds_reg[10]' (FDE) to 'i_0/agcmonitor/ctrl_regs/stop_conds_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[11]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[10]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[10]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[9]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[9]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[8]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[1]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[12]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[8]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[6]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[7]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[0]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[1]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[2]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[3]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[4]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_pulses_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[12]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[11]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[10]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[10]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[9]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[8]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[9]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[9]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[2]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[3]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[4]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[5]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_times_reg[6]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_times_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_mode_reg[0]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_mode_reg[2]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/w_mode_reg[1]' (FDE) to 'i_0/agcmonitor/ctrl_regs/w_mode_reg[2]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/start_req_reg' (FDRE) to 'i_0/agcmonitor/ctrl_regs/proceed_req_reg'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/stop_conds_reg[9]' (FDE) to 'i_0/agcmonitor/ctrl_regs/stop_conds_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/stop_conds_reg[8]' (FDE) to 'i_0/agcmonitor/ctrl_regs/stop_conds_reg[11]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (FSM_sequential_state_reg[1]) is unused and will be removed from module cmd_receiver.
+WARNING: [Synth 8-3332] Sequential element (FSM_sequential_state_reg[0]) is unused and will be removed from module cmd_receiver.
+WARNING: [Synth 8-3332] Sequential element (FSM_sequential_state_reg[1]) is unused and will be removed from module msg_sender.
+WARNING: [Synth 8-3332] Sequential element (FSM_sequential_state_reg[0]) is unused and will be removed from module msg_sender.
+WARNING: [Synth 8-3332] Sequential element (FSM_sequential_state_reg[1]) is unused and will be removed from module usb_interface.
+WARNING: [Synth 8-3332] Sequential element (FSM_sequential_state_reg[0]) is unused and will be removed from module usb_interface.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:52 ; elapsed = 00:04:05 . Memory (MB): peak = 2020.301 ; gain = 459.598 ; free physical = 4022 ; free virtual = 8974
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:23 ; elapsed = 00:03:44 . Memory (MB): peak = 2021.176 ; gain = 459.566 ; free physical = 1610 ; free virtual = 6143
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+--------------+------------+----------+
 |      |RTL Partition |Replication |Instances |
 +------+--------------+------------+----------+
-|1     |tray_a__GB0   |           1|     21618|
-|2     |tray_a__GB1   |           1|     14993|
+|1     |tray_a__GB0   |           1|     21608|
+|2     |tray_a__GB1   |           1|     14992|
 |3     |tray_b        |           1|      1396|
-|4     |toplevel__GC0 |           1|      3699|
+|4     |toplevel__GC0 |           1|       147|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
@@ -23082,29 +23280,29 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'styxpsbootloader/styx_ps/
 INFO: [Synth 8-5578] Moved timing constraint from pin 'b07oscillator/prop_clk_div/clk_out1' to pin 'b07oscillator/prop_clk_div/bbstub_clk_out1/O'
 INFO: [Synth 8-5819] Moved 2 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:00 ; elapsed = 00:04:14 . Memory (MB): peak = 2049.301 ; gain = 488.598 ; free physical = 3924 ; free virtual = 8875
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:31 ; elapsed = 00:03:53 . Memory (MB): peak = 2040.176 ; gain = 478.566 ; free physical = 1880 ; free virtual = 6413
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:03:11 ; elapsed = 00:04:26 . Memory (MB): peak = 2114.348 ; gain = 553.645 ; free physical = 3904 ; free virtual = 8855
+Finished Timing Optimization : Time (s): cpu = 00:02:35 ; elapsed = 00:03:58 . Memory (MB): peak = 2055.191 ; gain = 493.582 ; free physical = 1873 ; free virtual = 6406
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+--------------+------------+----------+
 |      |RTL Partition |Replication |Instances |
 +------+--------------+------------+----------+
-|1     |tray_a__GB0   |           1|     21618|
-|2     |tray_a__GB1   |           1|     14993|
+|1     |tray_a__GB0   |           1|     21608|
+|2     |tray_a__GB1   |           1|     14992|
 |3     |tray_b        |           1|      1396|
-|4     |toplevel__GC0 |           1|      3699|
+|4     |toplevel__GC0 |           1|       147|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:03:57 ; elapsed = 00:05:54 . Memory (MB): peak = 2114.348 ; gain = 553.645 ; free physical = 3922 ; free virtual = 8874
+Finished Technology Mapping : Time (s): cpu = 00:03:21 ; elapsed = 00:05:35 . Memory (MB): peak = 2059.223 ; gain = 497.613 ; free physical = 1258 ; free virtual = 5792
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -23122,7 +23320,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:04:00 ; elapsed = 00:05:57 . Memory (MB): peak = 2114.348 ; gain = 553.645 ; free physical = 3914 ; free virtual = 8865
+Finished IO Insertion : Time (s): cpu = 00:03:25 ; elapsed = 00:05:40 . Memory (MB): peak = 2070.129 ; gain = 508.520 ; free physical = 1256 ; free virtual = 5791
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -23135,7 +23333,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:04:00 ; elapsed = 00:05:57 . Memory (MB): peak = 2114.348 ; gain = 553.645 ; free physical = 3914 ; free virtual = 8865
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:26 ; elapsed = 00:05:40 . Memory (MB): peak = 2070.129 ; gain = 508.520 ; free physical = 1257 ; free virtual = 5791
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -23147,7 +23345,7 @@ Report RTL Partitions:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:04:02 ; elapsed = 00:06:00 . Memory (MB): peak = 2114.348 ; gain = 553.645 ; free physical = 3913 ; free virtual = 8865
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:30 ; elapsed = 00:05:44 . Memory (MB): peak = 2070.129 ; gain = 508.520 ; free physical = 1256 ; free virtual = 5791
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -23179,29 +23377,24 @@ Report Cell Usage:
 |6     |read_fifo                      |     1|
 |7     |rope_memory                    |     1|
 |8     |styx_ps_processing_system7_0_0 |     1|
-|9     |BUFG                           |     1|
-|10    |CARRY4                         |     3|
-|11    |LUT1                           |    27|
-|12    |LUT2                           |  4882|
-|13    |LUT3                           |  1095|
-|14    |LUT4                           |  2660|
-|15    |LUT5                           |  1285|
-|16    |LUT6                           |   376|
-|17    |MUXF7                          |    12|
-|18    |MUXF8                          |     1|
-|19    |FDCE                           | 12174|
-|20    |FDPE                           |  2283|
-|21    |FDRE                           |     8|
-|22    |IBUF                           |    29|
-|23    |IOBUF                          |     8|
-|24    |OBUF                           |    98|
+|9     |LUT1                           |     3|
+|10    |LUT2                           |  4819|
+|11    |LUT3                           |   919|
+|12    |LUT4                           |  2577|
+|13    |LUT5                           |  1098|
+|14    |LUT6                           |    15|
+|15    |FDCE                           | 11369|
+|16    |FDPE                           |  2283|
+|17    |FDRE                           |    10|
+|18    |IBUF                           |    34|
+|19    |OBUF                           |    99|
 +------+-------------------------------+------+
 
 Report Instance Areas: 
 +------+------------------------+-----------------------------+------+
 |      |Instance                |Module                       |Cells |
 +------+------------------------+-----------------------------+------+
-|1     |top                     |                             | 25104|
+|1     |top                     |                             | 23388|
 |2     |  fpgaagc               |fpga_agc                     | 23121|
 |3     |    traya               |tray_a                       | 22233|
 |4     |      a01               |a01_scaler                   |  1245|
@@ -27784,56 +27977,37 @@ Report Instance Areas:
 |4581  |        NOR00058        |nor_3__4175                  |     5|
 |4582  |        NOR00059        |nor_3__parameterized0__809   |     5|
 |4583  |        NOR00060        |nor_3__4176                  |     5|
-|4584  |  agcmonitor            |agc_monitor                  |  1852|
-|4585  |    usb_if              |usb_interface                |   317|
-|4586  |      cmd_rx            |cmd_receiver                 |    97|
-|4587  |      msg_sndr          |msg_sender                   |    98|
-|4588  |    cmd_ctrl            |cmd_controller               |    65|
-|4589  |    ctrl_regs           |control_regs                 |   598|
-|4590  |    stat_regs           |status_regs                  |   272|
-|4591  |    strt_stp            |start_stop                   |    40|
-|4592  |    ctmr                |clear_timer                  |    14|
-|4593  |    mon_regs            |monitor_regs                 |   529|
-|4594  |      reg_a             |register__1                  |    33|
-|4595  |      reg_l             |register__2                  |    33|
-|4596  |      reg_q             |register__3                  |    33|
-|4597  |      reg_eb            |register2__1                 |     8|
-|4598  |      reg_fb            |register__parameterized0__1  |    11|
-|4599  |      reg_z             |register__4                  |    33|
-|4600  |      reg_b             |register__5                  |    33|
-|4601  |      reg_s             |register2__parameterized0    |    26|
-|4602  |      editing           |edit                         |    46|
-|4603  |      reg_g             |register2__parameterized1    |    34|
-|4604  |      reg_y             |register__6                  |    33|
-|4605  |      reg_w             |register                     |    33|
-|4606  |  styxpsbootloader      |styx_ps_bootloader           |     3|
-|4607  |    styx_ps             |styx_ps_wrapper              |     3|
-|4608  |      styx_ps_i         |styx_ps                      |     3|
+|4584  |  agcmonitor            |agc_monitor                  |   131|
+|4585  |    usb_if              |usb_interface                |   102|
+|4586  |      cmd_rx            |cmd_receiver                 |     0|
+|4587  |      msg_sndr          |msg_sender                   |     1|
+|4588  |    ctrl_regs           |control_regs                 |     3|
+|4589  |    stat_regs           |status_regs                  |    26|
+|4590  |  styxpsbootloader      |styx_ps_bootloader           |     3|
+|4591  |    styx_ps             |styx_ps_wrapper              |     3|
+|4592  |      styx_ps_i         |styx_ps                      |     3|
 +------+------------------------+-----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:04:02 ; elapsed = 00:06:00 . Memory (MB): peak = 2114.348 ; gain = 553.645 ; free physical = 3919 ; free virtual = 8872
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:30 ; elapsed = 00:05:45 . Memory (MB): peak = 2070.129 ; gain = 508.520 ; free physical = 1256 ; free virtual = 5791
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:03:55 ; elapsed = 00:05:52 . Memory (MB): peak = 2114.348 ; gain = 377.293 ; free physical = 3976 ; free virtual = 8928
-Synthesis Optimization Complete : Time (s): cpu = 00:04:03 ; elapsed = 00:06:00 . Memory (MB): peak = 2114.355 ; gain = 553.645 ; free physical = 3989 ; free virtual = 8941
+Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:19 ; elapsed = 00:05:29 . Memory (MB): peak = 2070.129 ; gain = 333.199 ; free physical = 1309 ; free virtual = 5845
+Synthesis Optimization Complete : Time (s): cpu = 00:03:30 ; elapsed = 00:05:45 . Memory (MB): peak = 2070.137 ; gain = 508.520 ; free physical = 1324 ; free virtual = 5859
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 24 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2114.355 ; gain = 0.000 ; free physical = 3948 ; free virtual = 8901
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2070.137 ; gain = 0.000 ; free physical = 1215 ; free virtual = 5750
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 8 instances were transformed.
-  IOBUF => IOBUF (IBUF, OBUFT): 8 instances
+No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-341 Infos, 42 Warnings, 0 Critical Warnings and 0 Errors encountered.
+524 Infos, 49 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:04:12 ; elapsed = 00:06:10 . Memory (MB): peak = 2114.355 ; gain = 702.227 ; free physical = 4084 ; free virtual = 9036
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2114.355 ; gain = 0.000 ; free physical = 4084 ; free virtual = 9036
+synth_design: Time (s): cpu = 00:03:39 ; elapsed = 00:05:55 . Memory (MB): peak = 2070.137 ; gain = 658.133 ; free physical = 1346 ; free virtual = 5881
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2070.137 ; gain = 0.000 ; free physical = 1346 ; free virtual = 5881
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/toplevel.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file toplevel_utilization_synth.rpt -pb toplevel_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Apr 16 11:10:42 2020...
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 21 11:53:27 2020...

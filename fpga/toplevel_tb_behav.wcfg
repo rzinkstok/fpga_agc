@@ -11,15 +11,23 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="397142783148fs"></ZoomStartTime>
-      <ZoomEndTime time="409562783149fs"></ZoomEndTime>
-      <Cursor1Time time="403301406000fs"></Cursor1Time>
+      <ZoomStartTime time="397412075833fs"></ZoomStartTime>
+      <ZoomEndTime time="461366866834fs"></ZoomEndTime>
+      <Cursor1Time time="450707735000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="142"></NameColumnWidth>
+      <NameColumnWidth column_width="134"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="45" />
+   <WVObjectSize size="47" />
+   <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/rst_n">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/prop_clk">
       <obj_property name="ElementShortName">prop_clk</obj_property>
       <obj_property name="ObjectShortName">prop_clk</obj_property>
