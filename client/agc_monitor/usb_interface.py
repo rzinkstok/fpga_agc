@@ -77,6 +77,9 @@ class USBInterface(QObject):
                 msg = self._tx_queue.get_nowait()
                 if msg.datadict:
                     print(f"Sending {msg}")
+                else:
+                    pass
+                    #print(f"Sending {msg}")
                 packed_msg = msg.pack()
                 slipped_msg = slip(packed_msg)
                 try:

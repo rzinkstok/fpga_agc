@@ -438,7 +438,7 @@ module a03_sq_register(
     nor_3 #(1'b1)  NOR30134(NOR30134_out,   RPTFRC,         NOR30130_out,   SQR11,          p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR30135(SQR11,          NOR30134_out,   CSQG,           n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b1)  NOR30136(NOR30136_out,   RPTFRC,         NOR30131_out,   SQR10,          p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR30136(NOR30136_out,   RPTFRC,         NOR30131_out,   NOR30137_out,   p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR30137(NOR30137_out,   NOR30136_out,   CSQG,           n0VDCA,         p4SW, reset, prop_clk);
     
     // Quarter Code register monitor signals

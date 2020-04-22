@@ -2,7 +2,7 @@
 
 module agc_monitor(
     input wire clk,
-    input wire reset,
+    input wire rst_n,
     
     // FT232 FIFO interface
     input wire clkout,
@@ -128,7 +128,6 @@ module agc_monitor(
 );
 
     // Signal conversion
-    wire rst_n = !reset;
     wire [12:1]mt;
     assign mt = { MT12, MT11, MT10, MT09, MT08, MT07, MT06, MT05, MT04, MT03, MT02, MT01 };
     wire [16:1]mwl;
@@ -585,6 +584,7 @@ module agc_monitor(
         .MGP_(MGP_),
 
         .MSTP(MSTP),
+        .mstpeven(mstpeven),
 
         .s1_match(s1_match),
         .s2_match(s2_match),

@@ -22,7 +22,7 @@ class AddressRegister(QWidget):
 
         usbif.poll(um.MonRegS())
         usbif.poll(um.MonRegBB())
-        usbif.poll(um.MonChanFEXT())
+        #usbif.poll(um.MonChanFEXT())
 
         usbif.listen(self)
 

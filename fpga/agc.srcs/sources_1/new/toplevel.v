@@ -410,9 +410,150 @@ module toplevel(
 	wire p4SW;
 	wire p4VDC;
 
+    wire dbMSTPIT_;
+    wire dbMONWT;
+    wire dbMT01;
+    wire dbMT02;
+    wire dbMT03;
+    wire dbMT04;
+    wire dbMT05;
+    wire dbMT06;
+    wire dbMT07;
+    wire dbMT08;
+    wire dbMT09;
+    wire dbMT10;
+    wire dbMT11;
+    wire dbMT12;
+    wire dbMWL01;
+    wire dbMWL02;
+    wire dbMWL03;
+    wire dbMWL04;
+    wire dbMWL05;
+    wire dbMWL06;
+    wire dbMWL07;
+    wire dbMWL08;
+    wire dbMWL09;
+    wire dbMWL10;
+    wire dbMWL11;
+    wire dbMWL12;
+    wire dbMWL13;
+    wire dbMWL14;
+    wire dbMWL15;
+    wire dbMWL16;
+    wire dbMIIP;
+    wire dbMINHL;
+    wire dbMINKL;
+    wire dbMSQEXT;
+    wire dbMSQ10;
+    wire dbMSQ11;
+    wire dbMSQ12;
+    wire dbMSQ13;
+    wire dbMSQ14;
+    wire dbMSQ16;
+    wire dbMST1;
+    wire dbMST2;
+    wire dbMST3;
+    wire dbMBR1;
+    wire dbMBR2;
+    wire dbMRSC;
+    wire dbMWAG;
+    wire dbMWLG;
+    wire dbMWQG;
+    wire dbMWEBG;
+    wire dbMWFBG;
+    wire dbMWBBEG;
+    wire dbMWZG;
+    wire dbMWBG;
+    wire dbMWSG;
+    wire dbMWG;
+    wire dbMWYG;
+    wire dbMRULOG;
+    wire dbMRGG;
+    wire dbMRCH;
+    wire dbMWCH;
+    wire dbMNISQ;
+    wire dbMSP;
+    wire dbMGP_;
+    wire dbMREQIN;
+    wire dbMTCSA_;
+    
+    wire rst_n;
+    assign rst_n = !reset;
+    
+    
+    io_circuits io(
+        .clk(clk),
+        .rst_n(rst_n),
+        .MSTPIT_(MSTPIT_),
+        .MONWT(MONWT),
+        .MT({MT12, MT11, MT10, MT09, MT08, MT07, MT06, MT05, MT04, MT03, MT02, MT01}),
+        .MWL({MWL16, MWL15, MWL14, MWL13, MWL12, MWL11, MWL10, MWL09, MWL08, MWL07, MWL06, MWL05, MWL04, MWL03, MWL02, MWL01}),
+        .MIIP(MIIP),
+        .MINHL(MINHL),
+        .MINKL(MINKL),
+        .MSQEXT(MSQEXT),
+        .MSQ({MSQ16, MSQ14, MSQ13, MSQ12, MSQ11, MSQ10}),
+        .MST({MST3, MST2, MST1}),
+        .MBR({MBR2, MBR1}),
+        .MRSC(MRSC),
+        .MWAG(MWAG),
+        .MWLG(MWLG),
+        .MWQG(MWQG),
+        .MWEBG(MWEBG),
+        .MWFBG(MWFBG),
+        .MWBBEG(MWBBEG),
+        .MWZG(MWZG),
+        .MWBG(MWBG),
+        .MWSG(MWSG),
+        .MWG(MWG),
+        .MWYG(MWYG),
+        .MRULOG(MRULOG),
+        .MRGG(MRGG),
+        .MRCH(MRCH),
+        .MWCH(MWCH),
+        .MNISQ(MNISQ),
+        .MSP(MSP),
+        .MGP_(MGP_),
+        .MREQIN(MREQIN),
+        .MTCSA_(MTCSA_),
+    
+        .dbMSTPIT_(dbMSTPIT_),
+        .dbMONWT(dbMONWT),
+        .dbMT({dbMT12, dbMT11, dbMT10, dbMT09, dbMT08, dbMT07, dbMT06, dbMT05, dbMT04, dbMT03, dbMT02, dbMT01}),
+        .dbMWL({dbMWL16, dbMWL15, dbMWL14, dbMWL13, dbMWL12, dbMWL11, dbMWL10, dbMWL09, dbMWL08, dbMWL07, dbMWL06, dbMWL05, dbMWL04, dbMWL03, dbMWL02, dbMWL01}),
+        .dbMIIP(dbMIIP),
+        .dbMINHL(dbMINHL),
+        .dbMINKL(dbMINKL),
+        .dbMSQEXT(dbMSQEXT),
+        .dbMSQ({dbMSQ16, dbMSQ14, dbMSQ13, dbMSQ12, dbMSQ11, dbMSQ10}),
+        .dbMST({dbMST3, dbMST2, dbMST1}),
+        .dbMBR({dbMBR2, dbMBR1}),
+        .dbMRSC(dbMRSC),
+        .dbMWAG(dbMWAG),
+        .dbMWLG(dbMWLG),
+        .dbMWQG(dbMWQG),
+        .dbMWEBG(dbMWEBG),
+        .dbMWFBG(dbMWFBG),
+        .dbMWBBEG(dbMWBBEG),
+        .dbMWZG(dbMWZG),
+        .dbMWBG(dbMWBG),
+        .dbMWSG(dbMWSG),
+        .dbMWG(dbMWG),
+        .dbMWYG(dbMWYG),
+        .dbMRULOG(dbMRULOG),
+        .dbMRGG(dbMRGG),
+        .dbMRCH(dbMRCH),
+        .dbMWCH(dbMWCH),
+        .dbMNISQ(dbMNISQ),
+        .dbMSP(dbMSP),
+        .dbMGP_(dbMGP_),
+        .dbMREQIN(dbMREQIN),
+        .dbMTCSA_(dbMTCSA_)
+    );
+    
 	agc_monitor agcmonitor(
 		.clk(clk),
-		.reset(reset),
+		.rst_n(rst_n),
 		.clkout(clkout),
 		.data(data),
 		.rxf_n(rxf_n),
@@ -421,68 +562,68 @@ module toplevel(
 		.wr_n(wr_n),
 		.oe_n(oe_n),
 		.siwu(siwu),
-		.MONWT(MONWT),
-		.MT01(MT01),
-		.MT02(MT02),
-		.MT03(MT03),
-		.MT04(MT04),
-		.MT05(MT05),
-		.MT06(MT06),
-		.MT07(MT07),
-		.MT08(MT08),
-		.MT09(MT09),
-		.MT10(MT10),
-		.MT11(MT11),
-		.MT12(MT12),
-		.MWL01(MWL01),
-		.MWL02(MWL02),
-		.MWL03(MWL03),
-		.MWL04(MWL04),
-		.MWL05(MWL05),
-		.MWL06(MWL06),
-		.MWL07(MWL07),
-		.MWL08(MWL08),
-		.MWL09(MWL09),
-		.MWL10(MWL10),
-		.MWL11(MWL11),
-		.MWL12(MWL12),
-		.MWL13(MWL13),
-		.MWL14(MWL14),
-		.MWL15(MWL15),
-		.MWL16(MWL16),
-		.MSQ10(MSQ10),
-		.MSQ11(MSQ11),
-		.MSQ12(MSQ12),
-		.MSQ13(MSQ13),
-		.MSQ14(MSQ14),
-		.MSQ16(MSQ16),
-		.MST1(MST1),
-		.MST2(MST2),
-		.MST3(MST3),
-		.MBR1(MBR1),
-		.MBR2(MBR2),
-		.MSQEXT(MSQEXT),
-		.MNISQ(MNISQ),
-		.MWAG(MWAG),
-		.MWLG(MWLG),
-		.MWQG(MWQG),
-		.MWEBG(MWEBG),
-		.MWFBG(MWFBG),
-		.MWBBEG(MWBBEG),
-		.MWZG(MWZG),
-		.MWBG(MWBG),
-		.MWSG(MWSG),
-		.MWG(MWG),
-		.MWYG(MWYG),
-		.MRULOG(MRULOG),
-		.MRGG(MRGG),
+		.MONWT(dbMONWT),
+		.MT01(dbMT01),
+		.MT02(dbMT02),
+		.MT03(dbMT03),
+		.MT04(dbMT04),
+		.MT05(dbMT05),
+		.MT06(dbMT06),
+		.MT07(dbMT07),
+		.MT08(dbMT08),
+		.MT09(dbMT09),
+		.MT10(dbMT10),
+		.MT11(dbMT11),
+		.MT12(dbMT12),
+		.MWL01(dbMWL01),
+		.MWL02(dbMWL02),
+		.MWL03(dbMWL03),
+		.MWL04(dbMWL04),
+		.MWL05(dbMWL05),
+		.MWL06(dbMWL06),
+		.MWL07(dbMWL07),
+		.MWL08(dbMWL08),
+		.MWL09(dbMWL09),
+		.MWL10(dbMWL10),
+		.MWL11(dbMWL11),
+		.MWL12(dbMWL12),
+		.MWL13(dbMWL13),
+		.MWL14(dbMWL14),
+		.MWL15(dbMWL15),
+		.MWL16(dbMWL16),
+		.MSQ10(dbMSQ10),
+		.MSQ11(dbMSQ11),
+		.MSQ12(dbMSQ12),
+		.MSQ13(dbMSQ13),
+		.MSQ14(dbMSQ14),
+		.MSQ16(dbMSQ16),
+		.MST1(dbMST1),
+		.MST2(dbMST2),
+		.MST3(dbMST3),
+		.MBR1(dbMBR1),
+		.MBR2(dbMBR2),
+		.MSQEXT(dbMSQEXT),
+		.MNISQ(dbMNISQ),
+		.MWAG(dbMWAG),
+		.MWLG(dbMWLG),
+		.MWQG(dbMWQG),
+		.MWEBG(dbMWEBG),
+		.MWFBG(dbMWFBG),
+		.MWBBEG(dbMWBBEG),
+		.MWZG(dbMWZG),
+		.MWBG(dbMWBG),
+		.MWSG(dbMWSG),
+		.MWG(dbMWG),
+		.MWYG(dbMWYG),
+		.MRULOG(dbMRULOG),
+		.MRGG(dbMRGG),
 		.MGOJAM(MGOJAM),
-		.MIIP(MIIP),
-		.MSTPIT_(MSTPIT_),
-		.MINHL(MINHL),
-		.MINKL(MINKL),
-		.MSP(MSP),
-		.MGP_(MGP_),
+		.MIIP(dbMIIP),
+		.MSTPIT_(dbMSTPIT_),
+		.MINHL(dbMINHL),
+		.MINKL(dbMINKL),
+		.MSP(dbMSP),
+		.MGP_(dbMGP_),
 		.MSTP(MSTP),
 		.MSTRT(MSTRT),
 		.mstpeven(mstpeven),

@@ -49,6 +49,7 @@ module monitor_regs(
     input wire MGP_,
 
     input wire MSTP,
+    input wire mstpeven,
 
     input wire s1_match,
     input wire s2_match,
@@ -281,7 +282,7 @@ module monitor_regs(
     always @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             sq <= 6'o0;
-        end else if (~(MSTP & mt[12])) begin
+        end else if (~((MSTP | mstpeven) & mt[12])) begin
             // Filter out transient 0's caused by CSQG during MSTP
             sq <= msq;
         end
