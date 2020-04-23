@@ -9,10 +9,10 @@ WRITE_W_POSITIONS = OrderedDict([
     ('ALL', um.WriteWMode.ALL),
     ('S', um.WriteWMode.S),
     ('I', um.WriteWMode.I),
-    ('S & I', um.WriteWMode.S_I),
+    ('S&I', um.WriteWMode.S_I),
     ('P', um.WriteWMode.P),
-    ('P & I', um.WriteWMode.P_I),
-    ('P & S', um.WriteWMode.P_S),
+    ('P&I', um.WriteWMode.P_I),
+    ('P&S', um.WriteWMode.P_S),
 ])
 
 TIME_SWITCHES = OrderedDict([
@@ -85,6 +85,26 @@ class WriteW(QWidget):
         layout.setMargin(10)
         layout.setSpacing(20)
 
+        ww = QWidget(self)
+        wwf = QHBoxLayout(ww)
+        wwf.setMargin(0)
+        wwf.setSpacing(20)
+        ww.setLayout(wwf)
+
+        ag1 = ApolloGroup(self, "WRITE W", nframes=2)
+        for label, mode in WRITE_W_POSITIONS.items():
+            w = ApolloLabeledRSwitch(ag1, label)
+            w.switch.pressed.connect(lambda m=mode: self._update_mode(m))
+            if label == 'ALL':
+                w.switch.setChecked(True)
+                ag1.addWidget(w, 0)
+                ag1.framelayouts[0].addStretch()
+            else:
+                ag1.addWidget(w, 1)
+        ag1.group()
+        wwf.addWidget(ag1)
+        wwf.addStretch(100)
+
         ag0 = ApolloGroup(self, "S SELECT")
         self._s1 = ApolloLabeledRSwitch(self, "S1")
         self._s1.switch.setChecked(True)
@@ -95,21 +115,10 @@ class WriteW(QWidget):
         self._s2 = ApolloLabeledRSwitch(self, "S2")
         ag0.addWidget(self._s2)
         ag0.addSpacing(5)
-        layout.addWidget(ag0)
         ag0.group()
+        wwf.addWidget(ag0)
 
-        ag1 = ApolloGroup(self, "WRITE W")
-        for label, mode in WRITE_W_POSITIONS.items():
-            w = ApolloLabeledRSwitch(ag1, label)
-            w.switch.pressed.connect(lambda m=mode: self._update_mode(m))
-            if label == 'ALL':
-                w.switch.setChecked(True)
-                ag1.addWidget(w)
-                #ag1.framelayouts[0].addStretch()
-            else:
-                ag1.addWidget(w)
-        layout.addWidget(ag1)
-        ag1.group()
+        layout.addWidget(ww)
 
         ag2 = ApolloGroup(self, "TIME PULSES", nframes=2)
         self._add_switches(ag2, TIME_SWITCHES, self._time_switches, self._send_times)

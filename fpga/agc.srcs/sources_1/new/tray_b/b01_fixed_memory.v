@@ -53,7 +53,6 @@ module b01_fixed_memory(
     output wire B01_1_SAP,
     output wire B01_1_SA16,
     
-    input wire clk,
     input wire prop_clk,
     input wire n0VDCA,
     input wire p4VDC,
@@ -289,7 +288,7 @@ module b01_fixed_memory(
     
     // The memory itself
     rope_memory rom(
-        .clka(clk),
+        .clka(prop_clk),
         .addra(address),
         .douta(read_word)
     );

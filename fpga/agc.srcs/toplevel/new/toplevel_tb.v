@@ -219,12 +219,12 @@ module toplevel_tb();
 	reg OPMSW2 = 0;
 	reg OPMSW3 = 0;
 	reg PCHGOF = 0;
-	reg PIPAXm = 0;
-	reg PIPAXp = 0;
-	reg PIPAYm = 0;
-	reg PIPAYp = 0;
-	reg PIPAZm = 0;
-	reg PIPAZp = 0;
+	wire PIPAXm;
+	wire PIPAXp;
+	wire PIPAYm;
+	wire PIPAYp;
+	wire PIPAZm;
+	wire PIPAZp;
 	reg ROLGOF = 0;
 	reg RRIN0 = 0;
 	reg RRIN1 = 0;
@@ -395,6 +395,23 @@ module toplevel_tb();
 	wire p4SW;
 	wire p4VDC;
 
+    // PIPA 3-3 moding simulation
+    reg [2:0] moding_counter = 3'b0;
+    always @(posedge PIPASW) begin
+        moding_counter = moding_counter + 3'b1;
+        if (moding_counter == 3'd6) begin
+            moding_counter = 3'b0;
+        end
+    end
+    
+    assign PIPAXm = PIPDAT && (moding_counter >= 3'd3);
+    assign PIPAYm = PIPDAT && (moding_counter >= 3'd3);
+    assign PIPAZm = PIPDAT && (moding_counter >= 3'd3);
+    assign PIPAXp = PIPDAT && (moding_counter < 3'd3);
+    assign PIPAYp = PIPDAT && (moding_counter < 3'd3);
+    assign PIPAZp = PIPDAT && (moding_counter < 3'd3);
+    
+    
 	agc_monitor agcmonitor(
 		.clk(clk),
 		.rst_n(!reset),
@@ -916,6 +933,20 @@ module toplevel_tb();
 		#11531 
 		#11531 
 		#11531 // 20
+		
+		
+//		#500 rxf_n = 1'b0;
+//		@(negedge oe_n) data_in = 8'hC0;
+//		@(negedge rd_n);
+//		@(posedge clkout) data_in = 8'hA0;
+//		@(posedge clkout) data_in = 8'h00;
+//		@(posedge clkout) data_in = 8'h40;
+//		@(posedge clkout) data_in = 8'h00;
+//		@(posedge clkout) data_in = 8'h00;
+//		@(posedge clkout) data_in = 8'hC0;
+//		rxf_n = 1'b1;
+		
+		
 		#11531 
 		#11531 
 		#11531 

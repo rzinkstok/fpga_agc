@@ -351,6 +351,38 @@ class MonChanFEXT(MonChanMessage):
     mask = 0x0007
 
 
+class StatusMessage(Message):
+    group = 0x0024
+
+
+class StatusAlarms(StatusMessage):
+    address = 0x0000
+    keys = ["vfail", "oscal", "scafl", "scdbl", "ctral", "tcal", "rptal", "fpal", "epal", "watch", "pipal", "warn"]
+    mask = tuple(0x0001 for i in range(12))
+    bitshift = tuple(i for i in range(12))
+
+
+class StatusTemp(StatusMessage):
+    address = 0x0010
+    keys = ["counts"]
+    mask = 0x0FFF
+    bitshift = (4,)
+
+
+class StatusVccInt(StatusMessage):
+    address = 0x0011
+    keys = ["counts"]
+    mask = 0x0FFF
+    bitshift = (4,)
+
+
+class StatusVccAux(StatusMessage):
+    address = 0x0012
+    keys = ["counts"]
+    mask = 0x0FFF
+    bitshift = (4,)
+
+
 # Construct the message map used in the message factory
 message_map = {(cls.group, cls.address): cls for cls in message_classes()}
 print(message_map)

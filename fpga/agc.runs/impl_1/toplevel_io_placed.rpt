@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date                      : Tue Apr 21 21:34:25 2020
+| Date                      : Thu Apr 23 16:55:08 2020
 | Host                      : fpgadev running 64-bit Ubuntu 18.04.4 LTS
 | Command                   : report_io -file toplevel_io_placed.rpt
 | Design                    : toplevel
@@ -232,7 +232,7 @@ Table of Contents
 | G19        | MPIPAL_           | High Range | IO_L20P_T3_AD6P_35      | OUTPUT      | LVCMOS33          |      35 |          4 | SLOW |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | G20        | MBR1              | High Range | IO_L22P_T3_AD7P_35      | OUTPUT      | LVCMOS33          |      35 |          4 | SLOW |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | G21        | MAMU              | High Range | IO_L22N_T3_AD7N_35      | INPUT       | LVCMOS33          |      35 |            |      |                     |                 NONE |         | FIXED      | PULLDOWN  |          |      | NONE             |              |                   |              |
-| G22        | DBLTST            | High Range | IO_L24N_T3_AD15N_35     | OUTPUT      | LVCMOS33          |      35 |          4 | SLOW |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| G22        | DBLTST            | High Range | IO_L24N_T3_AD15N_35     | OUTPUT      | LVCMOS33          |      35 |          4 | SLOW |                     |                 NONE |         | FIXED      | PULLDOWN  |          |      | NONE             |              |                   |              |
 | H1         |                   |            | VCCO_DDR_502            | VCCO        |                   |         |            |      |                     |                      |   any** |            |           |          |      |                  |              |                   |              |
 | H2         | DDR_dqs_p[1]      |            | PS_DDR_DQS_P1_502       | INOUT       | DIFF_SSTL15_T_DCI |         |            | FAST |                     |            FP_VTT_50 |         | FIXED      |           |          |      | SPLIT            |              |                   |              |
 | H3         | DDR_dm[1]         |            | PS_DDR_DM1_502          | INOUT       | SSTL15_T_DCI      |         |            | FAST |           DCI SPLIT |            FP_VTT_50 |         | FIXED      |           |          |      | SPLIT            |              |                   |              |

@@ -20,6 +20,7 @@ set_property DRIVE 4 [get_ports CNTRL2]
 set_property PACKAGE_PIN G22 [get_ports DBLTST]
 set_property IOSTANDARD LVCMOS33 [get_ports DBLTST]
 set_property DRIVE 4 [get_ports DBLTST]
+set_property PULLDOWN true [get_ports DBLTST]
 
 set_property PACKAGE_PIN H22 [get_ports DOSCAL]
 set_property IOSTANDARD LVCMOS33 [get_ports DOSCAL]

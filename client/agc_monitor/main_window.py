@@ -79,7 +79,7 @@ if __name__ == '__main__':
     basecolor = QColor("#888b8d")
     textcolor = QColor("#fff")
     palette.setColor(QPalette.WindowText, textcolor)
-    #palette.setColor(QPalette.Button, basecolor)
+    palette.setColor(QPalette.Button, basecolor)
     #palette.setColor(QPalette.ButtonText, textcolor)
     palette.setColor(QPalette.Light, basecolor.lighter(150))
     palette.setColor(QPalette.Dark, basecolor.darker(150))

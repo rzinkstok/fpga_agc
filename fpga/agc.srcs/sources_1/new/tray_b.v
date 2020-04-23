@@ -197,7 +197,6 @@ module tray_b(
 		.B01_1_SA14(B01_1_SA14),
 		.B01_1_SAP(B01_1_SAP),
 		.B01_1_SA16(B01_1_SA16),
-		.clk(clk),
 		.prop_clk(prop_clk),
 		.n0VDCA(n0VDCA),
 		.p4VDC(p4VDC),
@@ -303,8 +302,7 @@ module tray_b(
 		.n0VDCA(n0VDCA),
 		.p4VDC(p4VDC),
 		.reset(reset),
-		.prop_clk(prop_clk),
-		.clk(clk)
+		.prop_clk(prop_clk)
 	);
 
 	assign SA01 = B01_1_SA01 | B12_1_SA01;

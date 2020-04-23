@@ -3276,7 +3276,7 @@ module tray_a(
 		.F07A(F07A),
 		.F07B_(F07B_),
 		.F08B(F08B),
-		.F10A(F10A),
+		.F10A_(F10A_),
 		.F10B(F10B),
 		.F12B(F12B),
 		.F14B(F14B),

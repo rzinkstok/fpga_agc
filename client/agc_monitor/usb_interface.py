@@ -76,7 +76,8 @@ class USBInterface(QObject):
             while not self._tx_queue.empty():
                 msg = self._tx_queue.get_nowait()
                 if msg.datadict:
-                    print(f"Sending {msg}")
+                    pass
+                    #print(f"Sending {msg}")
                 else:
                     pass
                     #print(f"Sending {msg}")

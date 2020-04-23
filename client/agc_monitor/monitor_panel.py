@@ -9,7 +9,8 @@ from address_register import AddressRegister
 from instruction_register import InstructionRegister
 from comp_stop import CompStop
 from write_w import WriteW
-
+from alarms import Alarms
+from measurements import Measurements
 
 class MonitorPanel(QFrame):
     def __init__(self, parent, usbif):
@@ -119,3 +120,13 @@ class MonitorPanel(QFrame):
         self._comp_stop = CompStop(control_stop, self._usbif)
         control_stop_layout.addWidget(self._comp_stop)
         control_stop_layout.setAlignment(self._comp_stop, Qt.AlignRight)
+
+        # Add the alarms panel
+        self._alarms_panel = Alarms(self, self._usbif)
+        layout.addWidget(self._alarms_panel)
+        layout.setAlignment(self._alarms_panel, Qt.AlignRight)
+
+        # Add the measurement panel
+        self._measurement_panel = Measurements(self, self._usbif)
+        layout.addWidget(self._measurement_panel)
+        layout.setAlignment(self._measurement_panel, Qt.AlignRight)

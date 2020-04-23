@@ -81,8 +81,7 @@ module b12_erasable_memory(
     input wire n0VDCA,
     input wire p4VDC,
     input wire reset,
-    input wire prop_clk,
-    input wire clk
+    input wire prop_clk
     );
     
     wire NOR00001_out;
@@ -333,7 +332,7 @@ module b12_erasable_memory(
     
     // The memory itself
     core_memory ram(
-        .clka(clk),
+        .clka(prop_clk),
         .wea(write_enable),
         .addra(address),
         .dina(write_word),

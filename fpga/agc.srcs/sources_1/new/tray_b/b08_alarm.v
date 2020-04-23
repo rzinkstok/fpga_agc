@@ -85,7 +85,7 @@ module b08_alarm(
     // that is compared with CON3 in A13. CON3 is equal to SCAS10.
     // The processing to get from SCAS10 to 2FSFAL is not clear to me... so this is just passing it
     // along. This will never actually raise an alarm.
-    assign n2FSFAL = SCAS10;
+    assign n2FSFAL = 1'b1;
 
     
     // MYCLMP

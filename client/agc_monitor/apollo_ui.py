@@ -1,6 +1,6 @@
-from PySide2.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QFrame, QCheckBox, QRadioButton, QButtonGroup, QSizePolicy
-from PySide2.QtGui import QPainter, QColor, QRadialGradient, QBrush, QPen, QFont, QFontMetrics
-from PySide2.QtCore import QPointF, Qt, QRect, QSize
+from PySide2.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QFrame, QCheckBox, QRadioButton, QButtonGroup, QSizePolicy, QPushButton, QLineEdit
+from PySide2.QtGui import QPainter, QColor, QRadialGradient, QFontMetrics
+from PySide2.QtCore import QPointF, Qt, QSize
 
 
 class ApolloGroupHeading(QWidget):
@@ -220,3 +220,36 @@ class ApolloLabeledRSwitch(ApolloControl):
         self.switch.setStyleSheet('QRadioButton::indicator{ subcontrol-position:center; } QRadioButton { color: #666; }')
         self.addWidget(self.switch)
         self.addStretch()
+
+
+class ApolloLabeledButton(ApolloControl):
+    def __init__(self, parent, text, lines=1, callback=None, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        # Make sure the text is bottom aligned in the specified number of lines
+        text = "\n" * (lines - text.count("\n") - 1) + text
+        self.label = QLabel(text, self)
+        self.addWidget(self.label)
+        self.layout.addSpacing(3)
+        self.switch = QPushButton(self)
+        self.switch.setFixedSize(20, 20)
+        if callback:
+            self.switch.pressed.connect(callback)
+        self.addWidget(self.switch)
+        self.addStretch(100)
+
+
+class ApolloLabeledValue(ApolloControl):
+    def __init__(self, parent, text, value_text, lines=1, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        # Make sure the text is bottom aligned in the specified number of lines
+        text = "\n" * (lines - text.count("\n") - 1) + text
+        self.label = QLabel(text, self)
+        self.addWidget(self.label)
+        self.layout.addSpacing(3)
+        self.value = QLineEdit(self)
+        self.value.setReadOnly(True)
+        self.value.setMaximumSize(65, 32)
+        self.value.setMinimumSize(65, 32)
+        self.value.setText(value_text)
+        self.value.setAlignment(Qt.AlignCenter)
+        self.layout.addWidget(self.value)
