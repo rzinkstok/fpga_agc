@@ -368,6 +368,7 @@ module a02_timer(
     nor_3 #(1'b0)  NOR37241(NOR37241_out,   STOPA,          n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     assign GOJAM_ = NOR37240_out & NOR37241_out;
     
+    // Maybe fold in msteven and mstpodd into the STOP signal? Or at least the MSTPIT_ signal?
     nor_3 #(1'b0)  NOR37242(STOP_,          STOPA,          NOR37239_out,   n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b1)  NOR37243(STOP,           STOP_,          n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);
     nor_3 #(1'b0)  NOR37244(NOR37244_out,   STOP,           n0VDCA,         n0VDCA,         p4VDC, reset, prop_clk);

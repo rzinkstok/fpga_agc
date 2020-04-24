@@ -118,20 +118,21 @@ module status_regs(
                CTRAL = 4,
                TCAL  = 5,
                RPTAL = 6,
-               FPAL  = 7,
-               EPAL  = 8,
-               WATCH = 9,
-               PIPAL = 10,
-               WARN  = 11;
+               PAL   = 7,
+               FPAL  = 8,
+               EPAL  = 9,
+               WATCH = 10,
+               PIPAL = 11,
+               WARN  = 12;
     
-    reg [11:0] alarms;
+    reg [12:0] alarms;
     
     always @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
-            alarms <= 12'b0;
+            alarms <= 13'b0;
         end else begin
             if (write_en) begin
-                alarms <= alarms & ~(data_in[11:0]);
+                alarms <= alarms & ~(data_in[12:0]);
             end else begin
                 if (~MVFAIL_) begin
                     alarms[VFAIL] <= 1'b1;
@@ -161,6 +162,10 @@ module status_regs(
                     alarms[RPTAL] <= 1'b1;
                 end
     
+                if (~MPAL_) begin
+                    alarms[PAL] <= 1'b1;
+                end
+                
                 if (~MPAL_ & MT08) begin
                     alarms[FPAL] <= 1'b1;
                 end
@@ -197,7 +202,7 @@ module status_regs(
         end else if (read_en) begin
             read_done <= 1'b1;
             case (addr)
-                `STATUS_REG_ALARMS:     read_data <= {4'b0, alarms};
+                `STATUS_REG_ALARMS:     read_data <= {3'b0, alarms};
                 `STATUS_REG_SIMULATION: read_data <= {10'b0, MRDCH, MREAD, MLDCH, MLOAD, MAMU, MNHSBF};
                 `STATUS_REG_MON_TEMP:   read_data <= adc_temp;
                 `STATUS_REG_MON_VCCINT: read_data <= adc_vccint;

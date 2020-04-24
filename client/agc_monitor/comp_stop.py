@@ -33,7 +33,7 @@ class CompStop(QFrame):
         self._setup_ui()
 
         usbif.poll(um.ControlStopCause())
-        usbif.poll(um.MonRegTimePulse())
+        #usbif.poll(um.MonRegTimePulse())
         usbif.listen(self)
         keys = [x for x in STOP_CONDS.values()] + ["s1_s2"]
         z = {k: 0 for k in keys}
@@ -44,11 +44,11 @@ class CompStop(QFrame):
             for v in STOP_CONDS.values():
                 val = getattr(msg, v)
                 self._stop_inds[v].set_on(val)
-        if isinstance(msg, um.MonRegTimePulse):
-            for k, v in msg.datadict.items():
-                if v:
-                    print(k)
-                    break
+        # if isinstance(msg, um.MonRegTimePulse):
+        #     for k, v in msg.datadict.items():
+        #         if v:
+        #             print(k)
+        #             break
 
     def _set_stop_conds(self, on):
         settings = {s: int(self._stop_switches[s].isChecked()) for s in STOP_CONDS.values()}

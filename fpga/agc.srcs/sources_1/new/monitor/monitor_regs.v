@@ -346,14 +346,14 @@ module monitor_regs(
     reg mwwg;
     always @(*) begin
         case (w_mode)
-        `W_MODE_ALL: mwwg = pulse_or_match;
-        `W_MODE_S:   mwwg = s_match & pulse_and_match;
-        `W_MODE_I:   mwwg = i_match & pulse_and_match;
-        `W_MODE_S_I: mwwg = s_match & i_match & pulse_and_match;
-        `W_MODE_P:   mwwg = p_match & pulse_and_match;
-        `W_MODE_P_I: mwwg = p_match & i_match & pulse_and_match;
-        `W_MODE_P_S: mwwg = p_match & s_match & pulse_and_match;
-        default:     mwwg = 1'b0;
+            `W_MODE_ALL: mwwg = pulse_or_match;
+            `W_MODE_S:   mwwg = s_match & pulse_and_match;
+            `W_MODE_I:   mwwg = i_match & pulse_and_match;
+            `W_MODE_S_I: mwwg = s_match & i_match & pulse_and_match;
+            `W_MODE_P:   mwwg = p_match & pulse_and_match;
+            `W_MODE_P_I: mwwg = p_match & i_match & pulse_and_match;
+            `W_MODE_P_S: mwwg = p_match & s_match & pulse_and_match;
+            default:     mwwg = 1'b0;
         endcase
     end
 

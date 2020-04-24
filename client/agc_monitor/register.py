@@ -1,7 +1,7 @@
 from PySide2.QtWidgets import QWidget, QFrame, QHBoxLayout, QLineEdit, QLabel
 from PySide2.QtGui import QFont, QColor
 from PySide2.QtCore import Qt
-from apollo_ui import ApolloIndicator as Indicator
+from apollo_ui import ApolloIndicator
 import usb_message as um
 
 
@@ -79,7 +79,7 @@ class Register(QWidget):
         # Add sensed and generated parity bits, if this register has them
         if self._has_parity:
             for i in range(2, 0, -1):
-                ind = Indicator(bit_frame, QColor(220, 240, 0))
+                ind = ApolloIndicator(bit_frame, QColor(220, 240, 0))
                 ind.setFixedSize(20, 32)
                 bit_layout.addWidget(ind)
                 self._parity_inds.insert(0, ind)
@@ -91,7 +91,7 @@ class Register(QWidget):
 
         # Add the 16 bit indicators to the frame, from 16 to 1.
         for i in range(16, 0, -1):
-            ind = Indicator(bit_frame, color)
+            ind = ApolloIndicator(bit_frame, color)
             ind.setFixedSize(20, 32)
             bit_layout.addWidget(ind)
             self._indicators.insert(0, ind)

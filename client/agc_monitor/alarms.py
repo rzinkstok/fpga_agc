@@ -1,6 +1,5 @@
-from PySide2.QtWidgets import QWidget, QFrame, QGridLayout, QHBoxLayout, QLabel, QPushButton, QCheckBox
-from PySide2.QtGui import QFont, QColor
-from PySide2.QtCore import Qt
+from PySide2.QtWidgets import QWidget, QHBoxLayout
+from PySide2.QtGui import QColor
 from collections import OrderedDict
 
 from apollo_ui import ApolloGroup, ApolloLabeledIndicator, ApolloLabeledButton
@@ -14,6 +13,7 @@ ALARMS = OrderedDict([
     ('CTRAL', QColor(255, 127, 0)),
     ('TCAL', QColor(255, 127, 0)),
     ('RPTAL', QColor(255, 127, 0)),
+    ('PAL', QColor(255, 127, 0)),
     ('FPAL', QColor(255, 127, 0)),
     ('EPAL', QColor(255, 127, 0)),
     ('WATCH', QColor(255, 127, 0)),

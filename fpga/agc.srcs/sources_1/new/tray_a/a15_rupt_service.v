@@ -543,7 +543,7 @@ module a15_rupt_service(
     nor_3 #(1'b1)  NOR35340(NOR35340_out,   UPRUPT,         NOR35341_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR35341(NOR35341_out,   NOR35340_out,   NOR35339_out,   GOJAM,          p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR35342(NOR35342_out,   NOR35332_out,   NOR35340_out,   NOR35335_out,   p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR35343(NOR35343_out,   NOR35322_out,   NOR35341_out,   NOR35335_out,   p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR35343(NOR35343_out,   NOR35332_out,   NOR35341_out,   NOR35335_out,   p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR35344(PRPOR1,         NOR35343_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR35345(DRPRST,         XB0_,           XT4_,           KRPTA_,         p4SW, reset, prop_clk);

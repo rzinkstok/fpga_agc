@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="327159218000fs"></ZoomStartTime>
-      <ZoomEndTime time="447659218001fs"></ZoomEndTime>
-      <Cursor1Time time="412070937000fs"></Cursor1Time>
+      <ZoomStartTime time="402927187166fs"></ZoomStartTime>
+      <ZoomEndTime time="533923124167fs"></ZoomEndTime>
+      <Cursor1Time time="443532688000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="195"></NameColumnWidth>
-      <ValueColumnWidth column_width="172"></ValueColumnWidth>
+      <ValueColumnWidth column_width="164"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="49" />
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/prop_clk">
@@ -143,6 +143,7 @@
       <wvobject type="group" fp_name="group634">
          <obj_property name="label">RPTAL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a13/IIP">
             <obj_property name="ElementShortName">IIP</obj_property>
             <obj_property name="ObjectShortName">IIP</obj_property>
@@ -207,6 +208,19 @@
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a13/CKTAL_">
          <obj_property name="ElementShortName">CKTAL_</obj_property>
          <obj_property name="ObjectShortName">CKTAL_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/usb_if/rxf_n">
+         <obj_property name="ElementShortName">rxf_n</obj_property>
+         <obj_property name="ObjectShortName">rxf_n</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/status_write_en">
+         <obj_property name="ElementShortName">status_write_en</obj_property>
+         <obj_property name="ObjectShortName">status_write_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/stat_regs/alarms">
+         <obj_property name="ElementShortName">alarms[12:0]</obj_property>
+         <obj_property name="ObjectShortName">alarms[12:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group573">
@@ -344,6 +358,19 @@
    <wvobject type="group" fp_name="group629">
       <obj_property name="label">Scaler</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a01/F02B">
+         <obj_property name="ElementShortName">F02B</obj_property>
+         <obj_property name="ObjectShortName">F02B</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a01/F03B">
+         <obj_property name="ElementShortName">F03B</obj_property>
+         <obj_property name="ObjectShortName">F03B</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a01/F04B">
+         <obj_property name="ElementShortName">F04B</obj_property>
+         <obj_property name="ObjectShortName">F04B</obj_property>
+      </wvobject>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a02/FS01">
          <obj_property name="ElementShortName">FS01</obj_property>
          <obj_property name="ObjectShortName">FS01</obj_property>

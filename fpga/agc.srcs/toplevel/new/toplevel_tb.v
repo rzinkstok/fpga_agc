@@ -912,9 +912,26 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'h01;
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
-		
 		#200 
-		#10531 //2
+		
+		
+		
+		#10531 // 1 
+		#11531
+		
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA4;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hFF;
+		@(posedge clkout) data_in = 8'hFF;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		
+		
 		#11531
 		#11531
 		#11531 // 5

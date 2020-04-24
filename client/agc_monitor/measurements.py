@@ -18,11 +18,11 @@ class Measurements(QWidget):
 
     def handle_msg(self, msg):
         if isinstance(msg, um.StatusVccAux):
-            self._vccaux.setText('%.02f V' % self._convert_fpga_volts(msg.counts))
+            self._vccaux.value.setText('%.02f V' % self._convert_fpga_volts(msg.counts))
         elif isinstance(msg, um.StatusVccInt):
-            self._vccint.setText('%.02f V' % self._convert_fpga_volts(msg.counts))
+            self._vccint.value.setText('%.02f V' % self._convert_fpga_volts(msg.counts))
         elif isinstance(msg, um.StatusTemp):
-            self._mon_temp.setText('%.02f C' % self._convert_mon_temp(msg.counts))
+            self._temp.value.setText('%.01f C' % self._convert_mon_temp(msg.counts))
 
     def _convert_mon_temp(self, counts):
         # Taken from UG480 p.33
@@ -40,11 +40,11 @@ class Measurements(QWidget):
         layout.setVerticalSpacing(1)
 
         ag = ApolloGroup(self, "MEASUREMENTS")
-        m1 = ApolloLabeledValue(self, "TEMP", "0.0 C")
-        m2 = ApolloLabeledValue(self, "VCCINT", "0.0 V")
-        m3 = ApolloLabeledValue(self, "VCCAUX", "0.0 V")
-        ag.addWidget(m1)
-        ag.addWidget(m2)
-        ag.addWidget(m3)
+        self._temp = ApolloLabeledValue(self, "TEMP", "0.0 C")
+        self._vccint = ApolloLabeledValue(self, "VCCINT", "0.0 V")
+        self._vccaux = ApolloLabeledValue(self, "VCCAUX", "0.0 V")
+        ag.addWidget(self._temp)
+        ag.addWidget(self._vccint)
+        ag.addWidget(self._vccaux)
         layout.addWidget(ag)
 

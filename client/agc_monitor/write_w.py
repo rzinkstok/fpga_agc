@@ -58,11 +58,21 @@ class WriteW(QWidget):
         self._setup_ui()
 
         usbif.send(um.ControlWriteW(mode=um.WriteWMode.ALL, s1_s2=0))
-
         z = {k: 0 for k in TIME_SWITCHES.keys()}
         usbif.send(um.ControlTimeSwitches(**z))
         z = {k: 0 for k in PULSE_SWITCHES.keys()}
         usbif.send(um.ControlPulseSwitches(**z))
+
+        usbif.poll(um.ControlTimeSwitches())
+        usbif.poll(um.ControlPulseSwitches())
+        usbif.listen(self)
+
+    def handle_msg(self, msg):
+        # if isinstance(msg, um.ControlTimeSwitches):
+        #     print(msg)
+        # elif isinstance(msg, um.ControlPulseSwitches):
+        #     print(msg)
+        pass
 
     def _update_mode(self, mode):
         self._mode = mode

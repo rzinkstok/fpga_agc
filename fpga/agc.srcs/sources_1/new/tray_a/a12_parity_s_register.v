@@ -414,8 +414,8 @@ module a12_parity_s_register(
     // PALE
     nor_3 #(1'b0)  NOR34247(NOR34247_out,   PC15_,          NOR34245_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR34248(NOR34248_out,   NOR34246_out,   PC15,           n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR34250(NOR34250_out,   SCAD,           NOR34248_out,   GOJAM,          p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR34251(NOR34251_out,   TPARG_,         n8XP5,          NOR34247_out,   p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR34250(NOR34250_out,   TPARG_,         n8XP5,          NOR34247_out,   p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR34251(NOR34251_out,   SCAD,           NOR34248_out,   GOJAM,          p4SW, reset, prop_clk);
     assign PALE = NOR34250_out & NOR34251_out;
     
     // MPAL_
