@@ -1,5 +1,5 @@
 import sys
-from PySide2.QtWidgets import QApplication, QMainWindow, QLabel, QWidget, QHBoxLayout, QPushButton
+from PySide2.QtWidgets import QApplication, QMainWindow, QLabel, QWidget, QHBoxLayout
 from PySide2.QtGui import QFont, QFontInfo, QPalette, QColor
 from PySide2.QtCore import Qt
 from usb_interface import USBInterface

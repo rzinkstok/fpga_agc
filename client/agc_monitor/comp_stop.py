@@ -1,9 +1,9 @@
-from PySide2.QtWidgets import QWidget, QFrame, QLabel, QHBoxLayout, QVBoxLayout, QPushButton
-from PySide2.QtGui import QColor, Qt
+from PySide2.QtWidgets import QWidget, QHBoxLayout
+from PySide2.QtGui import QColor
 from collections import OrderedDict
 
-import usb_message as um
 from apollo_ui import ApolloGroup, ApolloLabeledIndicatorSwitch, ApolloLabeledRSwitch, ApolloLabeledButton
+import usb_message as um
 
 
 STOP_CONDS = OrderedDict([
@@ -22,7 +22,7 @@ STOP_CONDS = OrderedDict([
 ])
 
 
-class CompStop(QFrame):
+class CompStop(QWidget):
     def __init__(self, parent, usbif):
         super().__init__(parent)
 

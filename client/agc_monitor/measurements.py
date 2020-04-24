@@ -1,6 +1,7 @@
-from PySide2.QtWidgets import QWidget, QGridLayout
-import usb_message as um
+from PySide2.QtWidgets import QWidget, QHBoxLayout
+
 from apollo_ui import ApolloGroup, ApolloLabeledValue
+import usb_message as um
 
 
 class Measurements(QWidget):
@@ -33,16 +34,15 @@ class Measurements(QWidget):
         return (counts / 4096.0) * 3
 
     def _setup_ui(self):
-        layout = QGridLayout(self)
+        layout = QHBoxLayout(self)
         self.setLayout(layout)
-        layout.setMargin(1)
-        layout.setHorizontalSpacing(10)
-        layout.setVerticalSpacing(1)
+        layout.setMargin(0)
+        layout.setSpacing(0)
 
         ag = ApolloGroup(self, "MEASUREMENTS")
-        self._temp = ApolloLabeledValue(self, "TEMP", "0.0 C")
-        self._vccint = ApolloLabeledValue(self, "VCCINT", "0.0 V")
-        self._vccaux = ApolloLabeledValue(self, "VCCAUX", "0.0 V")
+        self._temp = ApolloLabeledValue(self, "TEMP", "0.0 C", lines=2)
+        self._vccint = ApolloLabeledValue(self, "VCCINT", "0.0 V", lines=2)
+        self._vccaux = ApolloLabeledValue(self, "VCCAUX", "0.0 V", lines=2)
         ag.addWidget(self._temp)
         ag.addWidget(self._vccint)
         ag.addWidget(self._vccaux)

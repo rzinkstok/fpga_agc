@@ -1,4 +1,4 @@
-from PySide2.QtWidgets import QWidget, QFrame, QVBoxLayout, QHBoxLayout, QPushButton
+from PySide2.QtWidgets import QWidget, QFrame, QVBoxLayout, QHBoxLayout
 from PySide2.QtCore import Qt
 from PySide2.QtGui import QColor
 
@@ -6,11 +6,12 @@ from control import Control
 from register import Register
 from w_comparator import WComparator
 from address_register import AddressRegister
+from s_comparator import SComparator
 from instruction_register import InstructionRegister
 from comp_stop import CompStop
 from write_w import WriteW
 from alarms import Alarms
-from measurements import Measurements
+
 
 class MonitorPanel(QFrame):
     def __init__(self, parent, usbif):
@@ -57,29 +58,29 @@ class MonitorPanel(QFrame):
         regs_layout.addWidget(self._reg_l)
         regs_layout.setAlignment(self._reg_l, Qt.AlignRight)
 
-        self._reg_y = Register(regs, self._usbif, 'Y', False, QColor(0, 255, 0))
-        regs_layout.addWidget(self._reg_y)
-        regs_layout.setAlignment(self._reg_y, Qt.AlignRight)
+        #self._reg_y = Register(regs, self._usbif, 'Y', False, QColor(0, 255, 0))
+        #regs_layout.addWidget(self._reg_y)
+        #regs_layout.setAlignment(self._reg_y, Qt.AlignRight)
 
-        self._reg_u = Register(regs, self._usbif, 'U', False, QColor(0, 255, 0))
-        regs_layout.addWidget(self._reg_u)
-        regs_layout.setAlignment(self._reg_u, Qt.AlignRight)
+        #self._reg_u = Register(regs, self._usbif, 'U', False, QColor(0, 255, 0))
+        #regs_layout.addWidget(self._reg_u)
+        #regs_layout.setAlignment(self._reg_u, Qt.AlignRight)
 
         self._reg_z = Register(regs, self._usbif, 'Z', False, QColor(0, 255, 0))
         regs_layout.addWidget(self._reg_z)
         regs_layout.setAlignment(self._reg_z, Qt.AlignRight)
 
-        self._reg_q = Register(regs, self._usbif, 'Q', False, QColor(0, 255, 0))
-        regs_layout.addWidget(self._reg_q)
-        regs_layout.setAlignment(self._reg_q, Qt.AlignRight)
+        #self._reg_q = Register(regs, self._usbif, 'Q', False, QColor(0, 255, 0))
+        #regs_layout.addWidget(self._reg_q)
+        #regs_layout.setAlignment(self._reg_q, Qt.AlignRight)
 
         self._reg_g = Register(regs, self._usbif, 'G', True, QColor(0, 255, 0))
         regs_layout.addWidget(self._reg_g)
         regs_layout.setAlignment(self._reg_g, Qt.AlignRight)
 
-        self._reg_b = Register(regs, self._usbif, 'B', False, QColor(0, 255, 0))
-        regs_layout.addWidget(self._reg_b)
-        regs_layout.setAlignment(self._reg_b, Qt.AlignRight)
+        #self._reg_b = Register(regs, self._usbif, 'B', False, QColor(0, 255, 0))
+        #regs_layout.addWidget(self._reg_b)
+        #regs_layout.setAlignment(self._reg_b, Qt.AlignRight)
 
         self._reg_w = Register(regs, self._usbif, 'W', True, QColor(0, 255, 0))
         regs_layout.addWidget(self._reg_w)
@@ -89,9 +90,21 @@ class MonitorPanel(QFrame):
         regs_layout.addWidget(self._w_cmp)
         regs_layout.setAlignment(self._w_cmp, Qt.AlignRight)
 
+        layout.addSpacing(10)
+
         self._reg_s = AddressRegister(self, self._usbif, QColor(0, 255, 0))
         layout.addWidget(self._reg_s)
         layout.setAlignment(self._reg_s, Qt.AlignRight)
+
+        self._s1_comp = SComparator(self, 1)
+        layout.addWidget(self._s1_comp)
+        layout.setAlignment(self._s1_comp, Qt.AlignRight)
+
+        self._s2_comp = SComparator(self, 2)
+        layout.addWidget(self._s2_comp)
+        layout.setAlignment(self._s2_comp, Qt.AlignRight)
+
+        layout.addSpacing(10)
 
         self._reg_i = InstructionRegister(self, self._usbif, QColor(0, 255, 0))
         layout.addWidget(self._reg_i)
@@ -126,7 +139,3 @@ class MonitorPanel(QFrame):
         layout.addWidget(self._alarms_panel)
         layout.setAlignment(self._alarms_panel, Qt.AlignRight)
 
-        # Add the measurement panel
-        self._measurement_panel = Measurements(self, self._usbif)
-        layout.addWidget(self._measurement_panel)
-        layout.setAlignment(self._measurement_panel, Qt.AlignRight)

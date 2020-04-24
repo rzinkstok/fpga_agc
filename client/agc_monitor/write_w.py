@@ -1,8 +1,8 @@
-from PySide2.QtWidgets import QWidget, QFrame, QHBoxLayout, QVBoxLayout, QButtonGroup, QGridLayout, QLabel, QGroupBox, QCheckBox, QRadioButton
-from PySide2.QtCore import Qt
+from PySide2.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout
 from collections import OrderedDict
-import usb_message as um
+
 from apollo_ui import ApolloGroup, ApolloLabeledSwitch, ApolloLabeledRSwitch
+import usb_message as um
 
 
 WRITE_W_POSITIONS = OrderedDict([
@@ -63,16 +63,12 @@ class WriteW(QWidget):
         z = {k: 0 for k in PULSE_SWITCHES.keys()}
         usbif.send(um.ControlPulseSwitches(**z))
 
-        usbif.poll(um.ControlTimeSwitches())
-        usbif.poll(um.ControlPulseSwitches())
-        usbif.listen(self)
+        #usbif.poll(um.ControlTimeSwitches())
+        #usbif.poll(um.ControlPulseSwitches())
+        #usbif.listen(self)
 
-    def handle_msg(self, msg):
-        # if isinstance(msg, um.ControlTimeSwitches):
-        #     print(msg)
-        # elif isinstance(msg, um.ControlPulseSwitches):
-        #     print(msg)
-        pass
+    #def handle_msg(self, msg):
+    #    pass
 
     def _update_mode(self, mode):
         self._mode = mode

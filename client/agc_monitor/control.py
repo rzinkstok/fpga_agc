@@ -1,8 +1,9 @@
-from PySide2.QtWidgets import QFrame, QHBoxLayout
+from PySide2.QtWidgets import QWidget, QHBoxLayout
 from PySide2.QtGui import QColor
 from collections import OrderedDict
 
 from apollo_ui import ApolloGroup, ApolloLabeledIndicator, ApolloLabeledIndicatorSwitch
+from measurements import Measurements
 import usb_message as um
 
 
@@ -21,25 +22,14 @@ STATUS_INDS = OrderedDict([
     ('crs_cycle', 'CRS\nCYCL')
 ])
 
-INSTRUCTION_STATUS_INDS = OrderedDict([
-    ('iip', 'IIP'),
-    ('inhl', 'INHL'),
-    ('inkl', 'INKL'),
-    ('ld', 'LD'),
-    ('chld', 'CHLD'),
-    ('rd', 'RD'),
-    ('chrd', 'CHRD'),
-])
 
-
-class Control(QFrame):
+class Control(QWidget):
     def __init__(self, parent, usbif):
         super().__init__(parent)
         self._usbif = usbif
         self._inh_switches = []
         self._inh_inds = []
         self._status_inds = {}
-        self._instruction_status_inds = {}
         self._setup_ui()
 
         usbif.poll(um.ControlNHALGA())
@@ -57,29 +47,21 @@ class Control(QFrame):
         if isinstance(msg, um.MonRegStatus):
             self._status_inds['gojam'].indicator.set_on(msg.gojam)
             self._status_inds['agc_run'].indicator.set_on(msg.run)
-            self._instruction_status_inds['iip'].indicator.set_on(msg.iip)
-            self._instruction_status_inds['inhl'].indicator.set_on(msg.inhl)
-            self._instruction_status_inds['inkl'].indicator.set_on(msg.inkl)
         elif isinstance(msg, um.ControlStopCause):
             self._status_inds['mon_stop'].indicator.set_on(any(msg))
         #elif isinstance(msg, um.StatusPeripheral):
-        #    # self._status_inds['crs_cycle'].indicator.set_on(any(msg))
-        #    self._instruction_status_inds['ld'].indicator.set_on(msg.ld)
-        #    self._instruction_status_inds['chld'].indicator.set_on(msg.chld)
-        #    self._instruction_status_inds['rd'].indicator.set_on(msg.rd)
-        #    self._instruction_status_inds['chrd'].indicator.set_on(msg.chrd)
+        #    self._status_inds['crs_cycle'].indicator.set_on(any(msg))
 
     def _setup_ui(self):
         layout = QHBoxLayout(self)
         layout.setSpacing(20)
         self.setLayout(layout)
 
-        ag0 = ApolloGroup(self, "INSTRUCTION STATUS")
-        layout.addWidget(ag0)
-        for name, label in INSTRUCTION_STATUS_INDS.items():
-            w = ApolloLabeledIndicator(self, label, QColor(0, 255, 255), lines=2)
-            ag0.addWidget(w)
-            self._instruction_status_inds[name] = w
+        # Add the measurement panel
+
+        self._measurement_panel = Measurements(self, self._usbif)
+        layout.addWidget(self._measurement_panel)
+        #control_stop_layout.setAlignment(self._measurement_panel, Qt.AlignRight)
 
         ag1 = ApolloGroup(self, "INH")
         layout.addWidget(ag1)

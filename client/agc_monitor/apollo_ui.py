@@ -117,7 +117,7 @@ class ApolloControl(QWidget):
 class ApolloIndicator(QWidget):
     def __init__(self, parent, color, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
-        self.setMinimumSize(16, 16)
+        self.setMinimumSize(20, 20)
         self._color = color
         self._on = False
 

@@ -1,7 +1,8 @@
 from PySide2.QtWidgets import QWidget, QFrame, QHBoxLayout, QGridLayout, QLineEdit, QCheckBox, QLabel
-from PySide2.QtGui import QFont
 from PySide2.QtCore import Qt
+
 from reg_validator import RegValidator
+from comparator import SubComparator
 import usb_message as um
 
 
@@ -20,6 +21,31 @@ class WComparator(QWidget):
         self._setup_ui()
 
     def _setup_ui(self):
+        layout = QHBoxLayout(self)
+        self.setLayout(layout)
+        layout.setSpacing(3)
+        layout.setMargin(1)
+
+        w = SubComparator(self, 18, include_values=False)
+        layout.addWidget(w)
+
+        # Create a value box for displaying the overall decoded valess
+        self._val_box = QLineEdit(self)
+        layout.addWidget(self._val_box)
+        self._val_box.setMaximumSize(52, 32)
+        self._val_box.setText('00000')
+        self._val_box.setStyleSheet("QLineEdit { color: #555; }")
+        self._val_box.setValidator(RegValidator(0o77777))
+        self._val_box.returnPressed.connect(self._update_cmp_switches)
+        self._val_box.setAlignment(Qt.AlignCenter)
+
+        # Add an empty label to align with the registers
+        label = QLabel("", self)
+        label.setMinimumWidth(20)
+        layout.addWidget(label)
+
+        return
+
         # Set up our basic layout
         layout = QHBoxLayout(self)
         self.setLayout(layout)
