@@ -66,7 +66,7 @@ class AddressRegister(QWidget):
 
         # Create a value box for displaying the overall decoded address
         self._addr_value = QLineEdit(label_value_widget)
-        self._addr_value.setMaximumSize(52, 32)
+        self._addr_value.setMaximumSize(70, 32)
         self._addr_value.setReadOnly(True)
         self._addr_value.setAlignment(Qt.AlignCenter)
         self._addr_value.setText('0000')

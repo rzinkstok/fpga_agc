@@ -167,15 +167,15 @@ class ControlStart(ControlMessage):
 class ControlStop(ControlMessage):
     address = 0x0001
     keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "t", "s1_s2"]
-    mask = tuple(0x00001 for i in range(13))
-    bitshift = tuple(i for i in range(13))
+    mask = tuple(0x00001 for k in keys)
+    bitshift = tuple(i for i in range(len(keys)))
 
 
 class ControlStopCause(ControlMessage):
     address = 0x0002
     keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "t"]
-    mask = tuple(0x00001 for i in range(12))
-    bitshift = tuple(i for i in range(12))
+    mask = tuple(0x00001 for k in keys)
+    bitshift = tuple(i for i in range(len(keys)))
 
 
 class ControlProceed(ControlMessage):
@@ -191,6 +191,58 @@ class ControlMNHRPT(ControlMessage):
 class ControlMNHNC(ControlMessage):
     address = 0x0005
     keys = ["mnhnc"]
+
+
+class ControlS1S(ControlMessage):
+    address = 0x0006
+    keys = ["s"]
+    mask = ("0x0FFF",)
+
+
+class ControlS1Bank(ControlMessage):
+    address = 0x0007
+    keys = ["eb", "fext", "fb"]
+    bitshift = (0, 4, 10)
+    mask = (0x0007, 0x0007, 0x001F)
+
+
+class ControlS1SIgnore(ControlMessage):
+    address = 0x0008
+    keys = ["s"]
+    mask = ("0x0FFF",)
+
+
+class ControlS1BankIgnore(ControlMessage):
+    address = 0x0009
+    keys = ["eb", "fext", "fb"]
+    bitshift = (0, 4, 10)
+    mask = (0x0007, 0x0007, 0x001F)
+
+
+class ControlS2S(ControlMessage):
+    address = 0x000A
+    keys = ["s"]
+    mask = ("0x0FFF",)
+
+
+class ControlS2Bank(ControlMessage):
+    address = 0x000B
+    keys = ["eb", "fext", "fb"]
+    bitshift = (0, 4, 10)
+    mask = (0x0007, 0x0007, 0x001F)
+
+
+class ControlS2SIgnore(ControlMessage):
+    address = 0x000D
+    keys = ["s"]
+    mask = ("0x0FFF",)
+
+
+class ControlS2BankIgnore(ControlMessage):
+    address = 0x000D
+    keys = ["eb", "fext", "fb"]
+    bitshift = (0, 4, 10)
+    mask = (0x0007, 0x0007, 0x001F)
 
 
 class ControlWriteW(ControlMessage):
@@ -210,8 +262,8 @@ class ControlTimeSwitches(ControlMessage):
 class ControlPulseSwitches(ControlMessage):
     address = 0x0010
     keys = ['a', 'l', 'q', 'z', 'rch', 'wch', 'g', 'b', 'y', 'ru', 'sp1', 'sp2']
-    mask = tuple(0x0001 for i in range(12))
-    bitshift = tuple(i for i in range(12))
+    mask = tuple(0x0001 for k in keys)
+    bitshift = tuple(i for i in range(len(keys)))
 
 
 class ControlWComparatorValue(ControlMessage):
@@ -231,6 +283,27 @@ class ControlWComparatorParity(ControlMessage):
     keys = ["parity", "ignore"]
     mask = (0x0003, 0x0003)
     bitshift = (0, 2)
+
+
+class ControlICompVal(ControlMessage):
+    address = 0x0014
+    keys = ["sq", "sqext", "st", "br"]
+    mask = (0x003F, 0x0001, 0x0007, 0x0003)
+    bitshift = (0, 6, 7, 10)
+
+
+class ControlICompIgnore(ControlMessage):
+    address = 0x0015
+    keys = ["sq", "sqext", "st", "br"]
+    mask = (0x003F, 0x0001, 0x0007, 0x0003)
+    bitshift = (0, 6, 7, 10)
+
+
+class ControlICompStatus(ControlMessage):
+    address = 0x0016
+    keys = ("iip", "inhl", "inkl", "ld", "chld", "rd", "chrd", "iip_ign", "inhl_ign", "inkl_ign", "ld_ign", "chld_ign", "rd_ign", "chrd_ign")
+    mask = tuple(0x0001 for k in keys)
+    bitshift = tuple(i for i in range(len(keys)))
 
 
 class ControlNHALGA(ControlMessage):
@@ -330,9 +403,9 @@ class MonRegParity(MonRegMessage):
 
 class MonRegTimePulse(MonRegMessage):
     address = 0x000D
-    keys = [f"t{i+1}" for i in range(12)]
-    mask = tuple(0x0001 for i in range(12))
-    bitshift = tuple(i for i in range(12))
+    keys = list([f"t{i+1}" for i in range(12)])
+    mask = tuple(0x0001 for k in keys)
+    bitshift = tuple(i for i in range(len(keys)))
 
 
 class MonRegW(MonRegMessage):
@@ -358,8 +431,8 @@ class StatusMessage(Message):
 class StatusAlarms(StatusMessage):
     address = 0x0000
     keys = ["vfail", "oscal", "scafl", "scdbl", "ctral", "tcal", "rptal", "pal", "fpal", "epal", "watch", "pipal", "warn"]
-    mask = tuple(0x0001 for i in range(13))
-    bitshift = tuple(i for i in range(13))
+    mask = tuple(0x0001 for k in keys)
+    bitshift = tuple(i for i in range(len(keys)))
 
 
 class StatusTemp(StatusMessage):

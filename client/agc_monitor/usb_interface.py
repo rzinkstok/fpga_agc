@@ -137,7 +137,7 @@ class USBInterface(QObject):
 
         except FtdiError:
             pass
-            print("Could not connect to device")
+            #print("Could not connect to device")
             self.connected.emit(False)
 
     def _disconnect(self):

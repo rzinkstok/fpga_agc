@@ -1,15 +1,42 @@
 from PySide2.QtWidgets import QWidget, QFrame, QHBoxLayout, QVBoxLayout, QCheckBox, QLineEdit
 from PySide2.QtCore import Qt
 
+from reg_validator import RegValidator
+
 
 class SubComparator(QWidget):
-    def __init__(self, parent, width, include_values=True, spacing=1):
+    def __init__(self, parent, width, on_change=None, include_values=True, item_width=20, separators=True):
         super().__init__(parent)
         self.width = width
+        self.on_change = on_change
         self.include_values = include_values
-        self.spacing = spacing
+        self.item_width = item_width
+        self.separators = separators
 
+        self._reg_switches = []
+        self._ign_switches = []
+
+        self._updating_switches = False
         self._setup_ui()
+
+    @property
+    def reg_value(self):
+        text = self.reg_box.text()
+        if text == '':
+            return 0
+        return int(text, 8)
+
+    def set_reg_value(self, value):
+        self._update_switches(value, self._reg_switches)
+        if self.include_values:
+            self._update_reg_box()
+
+    @property
+    def ign_value(self):
+        text = self.ign_box.text()
+        if text == '':
+            return 0
+        return int(text, 8)
 
     def _setup_ui(self):
         self.setStyleSheet("QFrame { color: #666; }")
@@ -37,24 +64,24 @@ class SubComparator(QWidget):
             else:
                 value_width = 45
 
-            reg_value = QLineEdit(vw)
-            reg_value.setMaximumSize(value_width, 32)
-            reg_value.setMinimumHeight(32)
-            reg_value.setText(n_digits * '0')
-            reg_value.setAlignment(Qt.AlignCenter)
-            #reg_value.setValidator(RegValidator(2 ** self.width - 1))
-            reg_value.setMaxLength(n_digits)
-            #reg_value.returnPressed.connect(lambda b=reg_value, s=cmp_switches: self._update_switches(b, s))
-            vl.addWidget(reg_value)
+            self.reg_box = QLineEdit(vw)
+            self.reg_box.setMaximumSize(value_width, 32)
+            self.reg_box.setMinimumHeight(32)
+            self.reg_box.setText(n_digits * '0')
+            self.reg_box.setAlignment(Qt.AlignCenter)
+            self.reg_box.setValidator(RegValidator(2 ** self.width - 1))
+            self.reg_box.setMaxLength(n_digits)
+            self.reg_box.returnPressed.connect(self._update_reg_switches)
+            vl.addWidget(self.reg_box)
 
-            ign_value = QLineEdit(vw)
-            ign_value.setMaximumSize(value_width, 32)
-            ign_value.setText(n_digits * '0')
-            ign_value.setAlignment(Qt.AlignCenter)
-            #ign_value.setValidator(RegValidator(2 ** width - 1))
-            ign_value.setMaxLength(n_digits)
-            #ign_value.returnPressed.connect(lambda b=ign_value, s=ign_switches: self._update_switches(b, s))
-            vl.addWidget(ign_value)
+            self.ign_box = QLineEdit(vw)
+            self.ign_box.setMaximumSize(value_width, 32)
+            self.ign_box.setText(n_digits * '0')
+            self.ign_box.setAlignment(Qt.AlignCenter)
+            self.ign_box.setValidator(RegValidator(2 ** self.width - 1))
+            self.ign_box.setMaxLength(n_digits)
+            self.ign_box.returnPressed.connect(self._update_ign_switches)
+            vl.addWidget(self.ign_box)
 
         # Switches
         ssf = QFrame(self)
@@ -62,11 +89,11 @@ class SubComparator(QWidget):
         ssf.setStyleSheet('QCheckBox::indicator { subcontrol-position: center; }')
 
         ssl = QHBoxLayout()
-        ssl.setSpacing(self.spacing)
-        #ssl.setMargin(0)
+        ssl.setSpacing(1)
         ssl.setContentsMargins(1, 0, 2, 0)
         ssf.setLayout(ssl)
         layout.addWidget(ssf)
+        layout.setAlignment(ssf, Qt.AlignRight)
 
         for i in range(self.width, 0, -1):
             sw = QWidget(ssf)
@@ -76,25 +103,67 @@ class SubComparator(QWidget):
             sw.setLayout(sl)
 
             s1 = QCheckBox(sw)
-            s1.setFixedSize(20, 20)
+            s1.setFixedSize(self.item_width, 20)
             sl.addWidget(s1)
             sl.setAlignment(s1, Qt.AlignCenter)
+            if self.include_values:
+                s1.stateChanged.connect(self._update_reg_box)
+            self._reg_switches.insert(0, s1)
 
             s2 = QCheckBox(sw)
-            s2.setFixedSize(20, 20)
+            s2.setFixedSize(self.item_width, 20)
             sl.addWidget(s2)
             sl.setAlignment(s2, Qt.AlignCenter)
+            if self.include_values:
+                s2.stateChanged.connect(self._update_ign_box)
+            self._ign_switches.insert(0, s2)
 
             ssl.addWidget(sw)
 
             # Add separators between each group of 3 bits
-            if i in [17, 13, 10, 7, 4]:
-            #if (i != 16) and (i > 1) and ((i % 3) == 1):
+            if self.separators and i in [17, 13, 10, 7, 4]:
                 sep = QFrame(ssf)
                 sep.setFrameStyle(QFrame.VLine | QFrame.Plain)
                 ssl.addWidget(sep)
 
+    def _get_switch_value(self, switches):
+        val = 0
+        for i, s in enumerate(switches):
+            if s.isChecked():
+                val |= (1 << i)
+        return val
 
+    def _update_reg_switches(self):
+        self._update_switches(self.reg_value, self._reg_switches)
 
+    def _update_ign_switches(self):
+        self._update_switches(self.ign_value, self._ign_switches)
 
+    def _update_switches(self, val, switches):
+        self._updating_switches = True
+
+        for i, s in enumerate(switches):
+            s.setChecked((val & (1 << i)) != 0)
+
+        self._updating_switches = False
+        self._on_change()
+
+    def _update_reg_box(self):
+        self._update_box(self.reg_box, self._reg_switches)
+
+    def _update_ign_box(self):
+        self._update_box(self.ign_box, self._ign_switches)
+
+    def _update_box(self, box, switches):
+        val = self._get_switch_value(switches)
+        max_length = box.maxLength()
+        fmt = '%%0%uo' % max_length
+        box.setText(fmt % val)
+
+        if not self._updating_switches:
+            self._on_change()
+
+    def _on_change(self):
+        if self.on_change is not None:
+            self.on_change()
 

@@ -7,57 +7,59 @@ import usb_message as um
 
 
 class SubRegister(QWidget):
-    def __init__(self, parent, name, width, color):
+    def __init__(self, parent, name, width, color, include_value=True):
         super().__init__(parent)
         self.indicators = []
         self.value = 0
 
-        # Create a widget to hold the register's bits
         reg_layout = QVBoxLayout(self)
         self.setLayout(reg_layout)
         reg_layout.setSpacing(0)
-        reg_layout.setMargin(0)
+        reg_layout.setContentsMargins(0, 0, 0, 0)
 
-        # Create a widget to hold the register's label and value textbox
-        label_value = QWidget(self)
-        lv_layout = QHBoxLayout(label_value)
-        label_value.setLayout(lv_layout)
-        lv_layout.setSpacing(1)
-        lv_layout.setMargin(0)
-        reg_layout.addWidget(label_value)
-        reg_layout.addSpacing(1)
+        if include_value:
+            # Create a widget to hold the register's bits
+            # Create a widget to hold the register's label and value textbox
+            label_value = QWidget(self)
+            lv_layout = QHBoxLayout(label_value)
+            label_value.setLayout(lv_layout)
+            lv_layout.setSpacing(1)
+            lv_layout.setContentsMargins(0, 0, 0, 0)
+            reg_layout.addWidget(label_value)
+            reg_layout.addSpacing(1)
 
-        # Create a label to show the register's name
-        reg_label = QLabel(name, label_value)
-        reg_label.setMinimumHeight(32)
-        reg_label.setAlignment(Qt.AlignCenter | Qt.AlignVCenter)
-        lv_layout.addWidget(reg_label)
+            # Create a label to show the register's name
+            reg_label = QLabel(name, label_value)
+            reg_label.setMinimumHeight(32)
+            reg_label.setAlignment(Qt.AlignCenter | Qt.AlignVCenter)
+            lv_layout.addWidget(reg_label)
 
-        # Create a textbox to show the register's value in octal
-        n_digits = int((width + 2) / 3)
-        if n_digits == 1:
-            value_width = 25
-        elif n_digits == 2:
-            value_width = 30
-        else:
-            value_width = 45
+            # Create a textbox to show the register's value in octal
+            n_digits = int((width + 2) / 3)
+            if n_digits == 1:
+                value_width = 25
+            elif n_digits == 2:
+                value_width = 30
+            else:
+                value_width = 45
 
-        self.value_box = QLineEdit(label_value)
-        self.value_box.setMaximumSize(value_width, 32)
-        self.value_box.setReadOnly(True)
-        self.value_box.setAlignment(Qt.AlignCenter)
-        self.value_box.setText(n_digits * '0')
-        self.value_box.setStyleSheet("QLineEdit { color: #555; }")
-        lv_layout.addWidget(self.value_box)
+            self.value_box = QLineEdit(label_value)
+            self.value_box.setMaximumSize(value_width, 32)
+            self.value_box.setReadOnly(True)
+            self.value_box.setAlignment(Qt.AlignCenter)
+            self.value_box.setText(n_digits * '0')
+            self.value_box.setStyleSheet("QLineEdit { color: #555; }")
+            lv_layout.addWidget(self.value_box)
 
         # Create a frame to hold the register's bits
         bit_frame = QFrame(self)
         bit_layout = QHBoxLayout(bit_frame)
         bit_layout.setSpacing(1)
-        bit_layout.setMargin(0)
+        bit_layout.setContentsMargins(1, 0, 2, 0)
         bit_frame.setLayout(bit_layout)
         bit_frame.setFrameStyle(QFrame.StyledPanel | QFrame.Plain)
-        bit_layout.addSpacing(2)
+        reg_layout.addWidget(bit_frame)
+        reg_layout.setAlignment(bit_frame, Qt.AlignRight)
 
         # Add indicators for each bit in the register, from MSB to LSB
         for i in range(width, 0, -1):
@@ -73,8 +75,7 @@ class SubRegister(QWidget):
                 sep.setStyleSheet("QFrame { color: #666; } ")
                 bit_layout.addWidget(sep)
 
-        bit_layout.addSpacing(2)
-        reg_layout.addWidget(bit_frame)
+
 
     def set_value(self, x):
         # Generic function to display in octal the value of a register, with the
@@ -172,7 +173,11 @@ class Register(QWidget):
 
         # Add the 16 bit indicators to the frame, from 16 to 1.
         for i in range(16, 0, -1):
-            ind = ApolloIndicator(bit_frame, color)
+            if(i == 15):
+                indcolor = QColor(220, 240, 0)
+            else:
+                indcolor = color
+            ind = ApolloIndicator(bit_frame, indcolor)
             ind.setFixedSize(20, 32)
             bit_layout.addWidget(ind)
             self._indicators.insert(0, ind)
@@ -186,7 +191,8 @@ class Register(QWidget):
 
         # Add a box to display the octal decoded value in
         self._value_box = QLineEdit(self)
-        self._value_box.setMaximumSize(52, 32)
+        self._value_box.setMaximumSize(70, 32)
+        #self._value_box.setMinimumWidth(100)
         self._value_box.setReadOnly(True)
         self._value_box.setAlignment(Qt.AlignCenter)
         self._value_box.setText('00000')
