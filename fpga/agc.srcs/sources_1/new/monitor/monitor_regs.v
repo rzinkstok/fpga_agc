@@ -396,11 +396,12 @@ module monitor_regs(
                 `MON_REG_S:      data_out = {4'b0, s};
                 `MON_REG_G:      data_out = g;
                 `MON_REG_Y:      data_out = y;
-                `MON_REG_W:      data_out = w;
+                `MON_REG_U:      data_out = u;
                 `MON_REG_I:      data_out = {4'b0, i};
                 `MON_REG_STATUS: data_out = {11'b0, MINKL, MINHL, MIIP, MSTPIT_, MGOJAM}; // FIXME: add OUTCOM
                 `MON_REG_PAR:    data_out = {12'b0, wp, gp};
                 `MON_REG_TP:     data_out = {4'b0, mt};
+                `MON_REG_W:      data_out = w;
                 default:         data_out = 16'b0;
             endcase
         end else begin

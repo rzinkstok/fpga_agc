@@ -196,7 +196,7 @@ class ControlMNHNC(ControlMessage):
 class ControlS1S(ControlMessage):
     address = 0x0006
     keys = ["s"]
-    mask = ("0x0FFF",)
+    mask = (0x0FFF,)
 
 
 class ControlS1Bank(ControlMessage):
@@ -209,7 +209,7 @@ class ControlS1Bank(ControlMessage):
 class ControlS1SIgnore(ControlMessage):
     address = 0x0008
     keys = ["s"]
-    mask = ("0x0FFF",)
+    mask = (0x0FFF,)
 
 
 class ControlS1BankIgnore(ControlMessage):
@@ -222,7 +222,7 @@ class ControlS1BankIgnore(ControlMessage):
 class ControlS2S(ControlMessage):
     address = 0x000A
     keys = ["s"]
-    mask = ("0x0FFF",)
+    mask = (0x0FFF,)
 
 
 class ControlS2Bank(ControlMessage):
@@ -235,7 +235,7 @@ class ControlS2Bank(ControlMessage):
 class ControlS2SIgnore(ControlMessage):
     address = 0x000D
     keys = ["s"]
-    mask = ("0x0FFF",)
+    mask = (0x0FFF,)
 
 
 class ControlS2BankIgnore(ControlMessage):

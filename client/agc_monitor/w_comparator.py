@@ -75,5 +75,5 @@ class WComparator(QWidget):
             print(msg)
             self._usbif.send(msg)
 
-        w_corrected = ((w & 0o100000) >> 1) | (w & 0o37777) | ((w & 0o40000) << 1)
+        w_corrected = ((w & 0o100000) >> 1) | (w & 0o37777)  # | ((w & 0o40000) << 1)
         self._val_box.setText('%05o' % w_corrected)
