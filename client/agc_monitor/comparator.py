@@ -16,15 +16,18 @@ class SubComparator(QWidget):
         self._reg_switches = []
         self._ign_switches = []
 
-        self._updating_switches = False
+        self.updating_switches = False
         self._setup_ui()
 
     @property
     def reg_value(self):
-        text = self.reg_box.text()
-        if text == '':
-            return 0
-        return int(text, 8)
+        if self.include_values:
+            text = self.reg_box.text()
+            if text == '':
+                return 0
+            return int(text, 8)
+        else:
+            return self._get_switch_value(self._reg_switches)
 
     def set_reg_value(self, value):
         self._update_switches(value, self._reg_switches)
@@ -33,10 +36,13 @@ class SubComparator(QWidget):
 
     @property
     def ign_value(self):
-        text = self.ign_box.text()
-        if text == '':
-            return 0
-        return int(text, 8)
+        if self.include_values:
+            text = self.ign_box.text()
+            if text == '':
+                return 0
+            return int(text, 8)
+        else:
+            return self._get_switch_value(self._ign_switches)
 
     def _setup_ui(self):
         self.setStyleSheet("QFrame { color: #666; }")
@@ -106,16 +112,14 @@ class SubComparator(QWidget):
             s1.setFixedSize(self.item_width, 20)
             sl.addWidget(s1)
             sl.setAlignment(s1, Qt.AlignCenter)
-            if self.include_values:
-                s1.stateChanged.connect(self._update_reg_box)
+            s1.stateChanged.connect(self._update_reg_value)
             self._reg_switches.insert(0, s1)
 
             s2 = QCheckBox(sw)
             s2.setFixedSize(self.item_width, 20)
             sl.addWidget(s2)
             sl.setAlignment(s2, Qt.AlignCenter)
-            if self.include_values:
-                s2.stateChanged.connect(self._update_ign_box)
+            s2.stateChanged.connect(self._update_ign_value)
             self._ign_switches.insert(0, s2)
 
             ssl.addWidget(sw)
@@ -140,19 +144,27 @@ class SubComparator(QWidget):
         self._update_switches(self.ign_value, self._ign_switches)
 
     def _update_switches(self, val, switches):
-        self._updating_switches = True
+        self.updating_switches = True
 
         for i, s in enumerate(switches):
             s.setChecked((val & (1 << i)) != 0)
 
-        self._updating_switches = False
+        self.updating_switches = False
         self._on_change()
 
-    def _update_reg_box(self):
-        self._update_box(self.reg_box, self._reg_switches)
+    def _update_reg_value(self):
+        if self.updating_switches:
+            return
+        if self.include_values:
+            self._update_box(self.reg_box, self._reg_switches)
+        self._on_change()
 
-    def _update_ign_box(self):
-        self._update_box(self.ign_box, self._ign_switches)
+    def _update_ign_value(self):
+        if self.updating_switches:
+            return
+        if self.include_values:
+            self._update_box(self.ign_box, self._ign_switches)
+        self._on_change()
 
     def _update_box(self, box, switches):
         val = self._get_switch_value(switches)
@@ -160,7 +172,7 @@ class SubComparator(QWidget):
         fmt = '%%0%uo' % max_length
         box.setText(fmt % val)
 
-        if not self._updating_switches:
+        if not self.updating_switches:
             self._on_change()
 
     def _on_change(self):

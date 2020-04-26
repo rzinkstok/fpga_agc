@@ -3,7 +3,7 @@ from PySide2.QtCore import Qt
 from PySide2.QtGui import QColor
 from collections import OrderedDict
 
-from apollo_ui import ApolloGroup, ApolloLabeledIndicator
+from apollo_ui import ApolloLabeledIndicator
 from register import SubRegister
 import usb_message as um
 import agc

@@ -88,7 +88,9 @@ class SComparator(QWidget):
 
         if self._s != s:
             self._s = s
-            self._usbif.send(self._write_s_msg(s=s))
+            msg = self._write_s_msg(s=s)
+            print(msg)
+            self._usbif.send(msg)
 
         if (self._eb != eb) or (self._fb != fb) or (self._fext != fext):
             self._eb = eb
@@ -98,12 +100,16 @@ class SComparator(QWidget):
 
         if self._s_ign != s_ign:
             self._s_ign = s_ign
-            self._usbif.send(self._write_s_ign_msg(s=s_ign))
+            msg = self._write_s_ign_msg(s=s_ign)
+            print(msg)
+            self._usbif.send(msg)
 
         if (self._eb_ign != eb_ign) or (self._fb_ign != fb_ign) or (self._fext_ign != fext_ign):
             self._eb_ign = eb_ign
             self._fext_ign = fext_ign
             self._fb_ign = fb_ign
-            self._usbif.send(self._write_bank_ign_msg(eb=eb_ign, fext=fext_ign, fb=fb_ign))
+            msg = self._write_bank_ign_msg(eb=eb_ign, fext=fext_ign, fb=fb_ign)
+            print (msg)
+            self._usbif.send(msg)
 
         self._addr_value.setText(agc.format_addr(s, eb, fb, fext))

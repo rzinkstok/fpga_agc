@@ -71,13 +71,13 @@ class IComparator(QWidget):
         br = self.br.reg_value
         st = self.st.reg_value
         sq = self.sq.reg_value
-        sqext = (sq >> 7) & 0o1
+        sqext = (sq >> 6) & 0o1
         sq &= 0o77
 
         br_ign = self.br.ign_value
         st_ign = self.st.ign_value
         sq_ign = self.sq.ign_value
-        sqext_ign = (sq_ign >> 7) & 0o1
+        sqext_ign = (sq_ign >> 6) & 0o1
         sq_ign &= 0o77
 
         if (self._br != br) or (self._st != st) or (self._sq != sq) or (self._sqext != sqext):
@@ -85,7 +85,9 @@ class IComparator(QWidget):
             self._st = st
             self._sq = sq
             self._sqext = sqext
-            self._usbif.send(um.ControlICompVal(br=br, st=st, sqext=sqext, sq=sq))
+            msg = um.ControlICompVal(br=br, st=st, sqext=sqext, sq=sq)
+            print(msg)
+            self._usbif.send(msg)
 
         if (self._br_ign != br_ign) or (self._st_ign != st_ign) or (self._sq_ign != sq_ign) or (
                 self._sqext_ign != sqext_ign):
@@ -93,7 +95,9 @@ class IComparator(QWidget):
             self._st_ign = st_ign
             self._sq_ign = sq_ign
             self._sqext_ign = sqext_ign
-            self._usbif.send(um.ControlICompIgnore(br=br_ign, st=st_ign, sqext=sqext_ign, sq=sq_ign))
+            msg = um.ControlICompIgnore(br=br_ign, st=st_ign, sqext=sqext_ign, sq=sq_ign)
+            print(msg)
+            self._usbif.send(msg)
 
         self._instr_value.setText(agc.disassemble_subinst(sqext, sq, st))
 
@@ -102,7 +106,9 @@ class IComparator(QWidget):
         ign_states = [s.isChecked() for s in self.status._ign_switches]
         reg_keys = list(STATUS_INDS.keys())
         ign_keys = [k + "_ign" for k in reg_keys]
-        status_reg = dict(zip(reg_keys, reg_states))
-        status_ign = dict(zip(ign_keys, ign_states))
+        status_reg = dict(zip(reg_keys, reversed(reg_states)))
+        status_ign = dict(zip(ign_keys, reversed(ign_states)))
         status_bits = {**status_reg, **status_ign}
-        self._usbif.send(um.ControlICompStatus(**status_bits))
+        msg = um.ControlICompStatus(**status_bits)
+        print(msg)
+        self._usbif.send(msg)
