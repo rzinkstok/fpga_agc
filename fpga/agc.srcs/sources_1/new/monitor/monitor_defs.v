@@ -63,6 +63,7 @@
 `define CTRL_REG_NHSTRT2      16'h42
 `define CTRL_REG_DOWNRUPT     16'h50
 `define CTRL_REG_HANDRUPT     16'h51
+`define CTRL_REG_N_NISQ_STEPS 16'h60
 `define CTRL_REG_LOAD_S       16'h70
 `define CTRL_REG_LOAD_PRESET  16'h71
 `define CTRL_REG_LOAD_CHAN    16'h72

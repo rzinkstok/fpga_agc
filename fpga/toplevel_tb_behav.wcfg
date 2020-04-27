@@ -11,15 +11,39 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="402927187166fs"></ZoomStartTime>
-      <ZoomEndTime time="533923124167fs"></ZoomEndTime>
-      <Cursor1Time time="443532688000fs"></Cursor1Time>
+      <ZoomStartTime time="105294375000fs"></ZoomStartTime>
+      <ZoomEndTime time="107938375001fs"></ZoomEndTime>
+      <Cursor1Time time="107344375000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="195"></NameColumnWidth>
-      <ValueColumnWidth column_width="164"></ValueColumnWidth>
+      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="49" />
+   <WVObjectSize size="56" />
+   <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/rxf_n">
+      <obj_property name="ElementShortName">rxf_n</obj_property>
+      <obj_property name="ObjectShortName">rxf_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/usb_if/cmd_valid">
+      <obj_property name="ElementShortName">cmd_valid</obj_property>
+      <obj_property name="ObjectShortName">cmd_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/strt_stp/stop_conds">
+      <obj_property name="ElementShortName">stop_conds[11:0]</obj_property>
+      <obj_property name="ObjectShortName">stop_conds[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/strt_stp/n_nisq_steps">
+      <obj_property name="ElementShortName">n_nisq_steps[15:0]</obj_property>
+      <obj_property name="ObjectShortName">n_nisq_steps[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/strt_stp/nisq_counter">
+      <obj_property name="ElementShortName">nisq_counter[15:0]</obj_property>
+      <obj_property name="ObjectShortName">nisq_counter[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/strt_stp/nisq_counted">
+      <obj_property name="ElementShortName">nisq_counted</obj_property>
+      <obj_property name="ObjectShortName">nisq_counted</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/prop_clk">
       <obj_property name="ElementShortName">prop_clk</obj_property>
       <obj_property name="ObjectShortName">prop_clk</obj_property>
@@ -39,6 +63,10 @@
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MNHRPT">
       <obj_property name="ElementShortName">MNHRPT</obj_property>
       <obj_property name="ObjectShortName">MNHRPT</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/MNHNC">
+      <obj_property name="ElementShortName">MNHNC</obj_property>
+      <obj_property name="ObjectShortName">MNHNC</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a03/INHINT">
       <obj_property name="ElementShortName">INHINT</obj_property>
@@ -99,7 +127,6 @@
    <wvobject type="group" fp_name="group586">
       <obj_property name="label">Alarms</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/DBLTST">
          <obj_property name="ElementShortName">DBLTST</obj_property>
          <obj_property name="ObjectShortName">DBLTST</obj_property>
@@ -143,7 +170,6 @@
       <wvobject type="group" fp_name="group634">
          <obj_property name="label">RPTAL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a13/IIP">
             <obj_property name="ElementShortName">IIP</obj_property>
             <obj_property name="ObjectShortName">IIP</obj_property>
@@ -220,7 +246,6 @@
       <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/stat_regs/alarms">
          <obj_property name="ElementShortName">alarms[12:0]</obj_property>
          <obj_property name="ObjectShortName">alarms[12:0]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group573">
@@ -358,7 +383,6 @@
    <wvobject type="group" fp_name="group629">
       <obj_property name="label">Scaler</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a01/F02B">
          <obj_property name="ElementShortName">F02B</obj_property>
          <obj_property name="ObjectShortName">F02B</obj_property>

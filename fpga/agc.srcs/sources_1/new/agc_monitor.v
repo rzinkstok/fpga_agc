@@ -340,6 +340,8 @@ module agc_monitor(
     wire handrupt_nassp;
     assign handrupt = handrupt_ctrl | handrupt_nassp;
     
+    wire [15:0] n_nisq_steps;
+    
     control_regs ctrl_regs(
         .clk(clk),
         .rst_n(rst_n),
@@ -406,7 +408,9 @@ module agc_monitor(
         .periph_complete(periph_complete),
     
         .crs_bank_en(crs_bank_en),
-        .ems_bank_en(ems_bank_en)
+        .ems_bank_en(ems_bank_en),
+        
+        .n_nisq_steps(n_nisq_steps)
     );
 
     /*******************************************************************************.
@@ -502,6 +506,8 @@ module agc_monitor(
         .w_match(w_match),
         .i_match(i_match),
     
+        .n_nisq_steps(n_nisq_steps),
+        
         .MSTRT(MSTRT),
         .mstp(ss_mstp),
         .mstpeven(mstpeven),

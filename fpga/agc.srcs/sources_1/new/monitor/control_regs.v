@@ -65,7 +65,9 @@ module control_regs(
     input wire periph_complete,
 
     output reg [63:0] crs_bank_en,
-    output reg [7:0] ems_bank_en
+    output reg [7:0] ems_bank_en,
+    
+    output reg [15:0] n_nisq_steps
 );
     
     reg [12:1] s1_s;
@@ -163,9 +165,9 @@ module control_regs(
             start_req <= 1'b0;
             stop_conds <= 12'b0;
             stop_s1_s2 <= 1'b0;
-            MNHRPT <= 1'b0;
-            MNHNC <= 1'b0;
-            NHALGA <= 1'b0;
+            MNHRPT <= 1'b1;
+            MNHNC <= 1'b1;
+            NHALGA <= 1'b1;
             nhstrt1 <= 1'b0;
             nhstrt2 <= 1'b0;
             DOSCAL <= 1'b0;
@@ -219,6 +221,8 @@ module control_regs(
     
             crs_bank_en <= 64'b0;
             ems_bank_en <= 8'b0;
+            
+            n_nisq_steps <= 16'b1;
         end else begin
             write_done <= 1'b0;
             start_req <= 1'b0;
@@ -304,6 +308,7 @@ module control_regs(
                         `CTRL_REG_EMS_BANK_EN: ems_bank_en <= data_in[7:0];
                         `CTRL_REG_DOWNRUPT: downrupt <= 1'b1;
                         `CTRL_REG_HANDRUPT: handrupt <= 1'b1;
+                        `CTRL_REG_N_NISQ_STEPS: n_nisq_steps <= data_in[15:0];
                     endcase
                 end else begin
                     if (periph_complete) begin

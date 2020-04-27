@@ -1,7 +1,7 @@
 from PySide2.QtWidgets import QWidget, QFrame, QHBoxLayout, QVBoxLayout, QCheckBox, QLineEdit
 from PySide2.QtCore import Qt
 
-from reg_validator import RegValidator
+from reg_validator import OctalValidator
 
 
 class SubComparator(QWidget):
@@ -75,7 +75,7 @@ class SubComparator(QWidget):
             self.reg_box.setMinimumHeight(32)
             self.reg_box.setText(n_digits * '0')
             self.reg_box.setAlignment(Qt.AlignCenter)
-            self.reg_box.setValidator(RegValidator(2 ** self.width - 1))
+            self.reg_box.setValidator(OctalValidator(2 ** self.width - 1))
             self.reg_box.setMaxLength(n_digits)
             self.reg_box.returnPressed.connect(self._update_reg_switches)
             vl.addWidget(self.reg_box)
@@ -84,7 +84,7 @@ class SubComparator(QWidget):
             self.ign_box.setMaximumSize(value_width, 32)
             self.ign_box.setText(n_digits * '0')
             self.ign_box.setAlignment(Qt.AlignCenter)
-            self.ign_box.setValidator(RegValidator(2 ** self.width - 1))
+            self.ign_box.setValidator(OctalValidator(2 ** self.width - 1))
             self.ign_box.setMaxLength(n_digits)
             self.ign_box.returnPressed.connect(self._update_ign_switches)
             vl.addWidget(self.ign_box)

@@ -321,6 +321,13 @@ class ControlSTRT2(ControlMessage):
     keys = ["strt2"]
 
 
+class ControlNNISQSteps(ControlMessage):
+    address = 0x0060
+    keys = ["n"]
+    bitshift = (0,)
+    mask = (0xFFFF,)
+
+
 class MonRegMessage(Message):
     group = 0x21
     bitshift = (0,)

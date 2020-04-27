@@ -1,7 +1,7 @@
 from PySide2.QtGui import QValidator
 
 
-class RegValidator(QValidator):
+class OctalValidator(QValidator):
     def __init__(self, max_value):
         super().__init__()
         self.max_value = max_value
@@ -11,6 +11,24 @@ class RegValidator(QValidator):
             return QValidator.Acceptable
         try:
             value = int(text, 8)
+            if value <= self.max_value:
+                return QValidator.Acceptable
+            else:
+                return QValidator.Invalid
+        except:
+            return QValidator.Invalid
+
+
+class IntValidator(QValidator):
+    def __init__(self, max_value):
+        super().__init__()
+        self.max_value = max_value
+
+    def validate(self, text, pos):
+        if text == '':
+            return QValidator.Acceptable
+        try:
+            value = int(text)
             if value <= self.max_value:
                 return QValidator.Acceptable
             else:

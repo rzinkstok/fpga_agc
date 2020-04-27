@@ -254,3 +254,19 @@ class ApolloLabeledValue(ApolloControl):
         self.value.setText(value_text)
         self.value.setAlignment(Qt.AlignCenter)
         self.layout.addWidget(self.value)
+
+
+class ApolloLabeledEntry(ApolloControl):
+    def __init__(self, parent, text, value_text, lines=1, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        # Make sure the text is bottom aligned in the specified number of lines
+        text = "\n" * (lines - text.count("\n") - 1) + text
+        self.label = QLabel(text, self)
+        self.addWidget(self.label)
+        self.layout.addSpacing(3)
+        self.value = QLineEdit(self)
+        self.value.setMaximumSize(65, 32)
+        self.value.setMinimumSize(65, 32)
+        self.value.setText(value_text)
+        self.value.setAlignment(Qt.AlignCenter)
+        self.layout.addWidget(self.value)

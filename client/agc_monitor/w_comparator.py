@@ -1,7 +1,7 @@
 from PySide2.QtWidgets import QWidget, QFrame, QHBoxLayout, QGridLayout, QLineEdit, QCheckBox, QLabel
 from PySide2.QtCore import Qt
 
-from reg_validator import RegValidator
+from reg_validator import OctalValidator
 from comparator import SubComparator
 import usb_message as um
 
@@ -34,7 +34,7 @@ class WComparator(QWidget):
         self._val_box.setAlignment(Qt.AlignCenter)
         self._val_box.setText('00000')
         self._val_box.setStyleSheet("QLineEdit { color: #555; }")
-        self._val_box.setValidator(RegValidator(0o77777))
+        self._val_box.setValidator(OctalValidator(0o77777))
         self._val_box.returnPressed.connect(self._update_switches)
 
 

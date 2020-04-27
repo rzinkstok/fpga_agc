@@ -32,6 +32,8 @@ module start_stop(
     input wire s2_match,
     input wire w_match,
     input wire i_match,
+    
+    input wire [15:0] n_nisq_steps,
 
     output reg MSTRT,
     output wire mstp,
@@ -76,6 +78,8 @@ module start_stop(
     reg proceeding;
     reg prog_step_match;
     reg evenstop;
+    reg [15:0] nisq_counter;
+    reg nisq_counted;
     
     always @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
@@ -83,7 +87,12 @@ module start_stop(
             proceeding <= 1'b0;
             prog_step_match <= 1'b0;
             evenstop <= 1'b0;
+            nisq_counter <= 16'b0;
+            nisq_counted <= 1'b0;
         end else begin
+            if(MT01 & ~MNISQ) begin
+                nisq_counted <= 1'b0;
+            end
             if (proceed_req) begin
                 stop_cause <= 11'b0;
                 proceeding <= 1'b1;
@@ -108,7 +117,14 @@ module start_stop(
                 end
     
                 if (stop_conds[`STOP_NISQ] & MNISQ) begin
-                    stop_cause[`STOP_NISQ] <= 1'b1;
+                    if(~nisq_counted) begin
+                        nisq_counter <= nisq_counter + 1'b1;
+                        nisq_counted = 1'b1;
+                    end
+                    if(nisq_counter == n_nisq_steps) begin
+                        stop_cause[`STOP_NISQ] <= 1'b1;
+                        nisq_counter <= 16'b0;
+                    end
                 end
     
                 if (stop_conds[`STOP_S1] & s1_match) begin
