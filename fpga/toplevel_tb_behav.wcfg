@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="105294375000fs"></ZoomStartTime>
-      <ZoomEndTime time="107938375001fs"></ZoomEndTime>
-      <Cursor1Time time="107344375000fs"></Cursor1Time>
+      <ZoomStartTime time="3777953255833fs"></ZoomStartTime>
+      <ZoomEndTime time="15221059348834fs"></ZoomEndTime>
+      <Cursor1Time time="13313875000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <NameColumnWidth column_width="180"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="56" />
@@ -127,6 +127,7 @@
    <wvobject type="group" fp_name="group586">
       <obj_property name="label">Alarms</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/DBLTST">
          <obj_property name="ElementShortName">DBLTST</obj_property>
          <obj_property name="ObjectShortName">DBLTST</obj_property>
@@ -170,6 +171,7 @@
       <wvobject type="group" fp_name="group634">
          <obj_property name="label">RPTAL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a13/IIP">
             <obj_property name="ElementShortName">IIP</obj_property>
             <obj_property name="ObjectShortName">IIP</obj_property>
@@ -251,6 +253,7 @@
    <wvobject type="group" fp_name="group573">
       <obj_property name="label">Interrupt</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/CTROR">
          <obj_property name="ElementShortName">CTROR</obj_property>
          <obj_property name="ObjectShortName">CTROR</obj_property>
@@ -266,10 +269,6 @@
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/KRPT">
          <obj_property name="ElementShortName">KRPT</obj_property>
          <obj_property name="ObjectShortName">KRPT</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/T6RPT">
-         <obj_property name="ElementShortName">T6RPT</obj_property>
-         <obj_property name="ObjectShortName">T6RPT</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/RPTAD3">
          <obj_property name="ElementShortName">RPTAD3</obj_property>
@@ -314,6 +313,38 @@
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a15/DNRPTA">
          <obj_property name="ElementShortName">DNRPTA</obj_property>
          <obj_property name="ObjectShortName">DNRPTA</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a15/T6RPT">
+         <obj_property name="ElementShortName">T6RPT</obj_property>
+         <obj_property name="ObjectShortName">T6RPT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a15/NOR35311_out">
+         <obj_property name="ElementShortName">NOR35311_out</obj_property>
+         <obj_property name="ObjectShortName">NOR35311_out</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a15/NOR35322_out">
+         <obj_property name="ElementShortName">NOR35322_out</obj_property>
+         <obj_property name="ObjectShortName">NOR35322_out</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a15/KYRPT1">
+         <obj_property name="ElementShortName">KYRPT1</obj_property>
+         <obj_property name="ObjectShortName">KYRPT1</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a15/KYRPT2">
+         <obj_property name="ElementShortName">KYRPT2</obj_property>
+         <obj_property name="ObjectShortName">KYRPT2</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a15/MKRPT">
+         <obj_property name="ElementShortName">MKRPT</obj_property>
+         <obj_property name="ObjectShortName">MKRPT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a15/UPRUPT">
+         <obj_property name="ElementShortName">UPRUPT</obj_property>
+         <obj_property name="ObjectShortName">UPRUPT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a15/DLKPLS">
+         <obj_property name="ElementShortName">DLKPLS</obj_property>
+         <obj_property name="ObjectShortName">DLKPLS</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/RUPTOR_">
          <obj_property name="ElementShortName">RUPTOR_</obj_property>

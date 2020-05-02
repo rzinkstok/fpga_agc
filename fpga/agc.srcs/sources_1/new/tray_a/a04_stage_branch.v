@@ -676,7 +676,7 @@ module a04_stage_branch(
     
     // WG_
     nor_3 #(1'b0)  NOR36351(NOR36351_out,   T02_,           WRITE0_,        n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR36340(NOR36340_out,   T09_,           RUPT0_,         n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR36340(NOR36340_out,   T09_,           RXOR0_,         n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR36342(NOR36342_out,   RUPT1,          IC13,           IC12,           p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR36343(NOR36343_out,   T09_,           NOR36342_out,   n0VDCA,         p4SW, reset, prop_clk);
     // Cross-module fan-in, connected to A5, A6 and A12

@@ -165,8 +165,8 @@ module control_regs(
             start_req <= 1'b0;
             stop_conds <= 12'b0;
             stop_s1_s2 <= 1'b0;
-            MNHRPT <= 1'b1;
-            MNHNC <= 1'b1;
+            MNHRPT <= 1'b0;
+            MNHNC <= 1'b0;
             NHALGA <= 1'b1;
             nhstrt1 <= 1'b0;
             nhstrt2 <= 1'b0;

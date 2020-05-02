@@ -156,6 +156,7 @@ module a01_scaler(
     wire F03A;
     wire F03B;
     wire FS03A;
+    wire FS04A;
     wire F04B_;
     wire F05A;
     wire F05B;
@@ -179,6 +180,7 @@ module a01_scaler(
     wire FS15;
     wire F16A;
     wire F16B;
+    wire F18A;
     wire F18A_;
     wire F18B;
     wire FS18;
