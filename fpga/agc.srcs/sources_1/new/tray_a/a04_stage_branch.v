@@ -766,7 +766,7 @@ module a04_stage_branch(
     nor_3 #(1'b0)  NOR36420(BR12B_,         BR12B,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     
     // BRDIF_
-    nor_3 #(1'b0)  NOR36421(BRDIF_,         BR1B2,          BR1B2,          n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR36421(BRDIF_,         BR1B2,          BR12B,          n0VDCA,         p4SW, reset, prop_clk);
     
     // BR1B2B
     nor_3 #(1'b0)  NOR36422(BR1B2B,         BR2,            BR1,            n0VDCA,         p4SW, reset, prop_clk);

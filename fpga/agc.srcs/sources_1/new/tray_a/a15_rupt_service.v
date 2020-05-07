@@ -553,7 +553,7 @@ module a15_rupt_service(
     
     nor_3 #(1'b0)  NOR35349(RRPA1_,         RRPA,           n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR35350(NOR35350_out,   NOR35309_out,   NOR35319_out,   n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR35351(NOR35351_out,   NOR35330_out,   NOR35442_out,   PRPOR3,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR35351(NOR35351_out,   NOR35330_out,   NOR35342_out,   PRPOR3,         p4SW, reset, prop_clk);
     assign RPTAD3_in = NOR35350_out & NOR35351_out;
     nor_3 #(1'b0)  NOR35352(RPTAD3,         RRPA1_,         RPTAD3_in,      n0VDCA,         p4SW, reset, prop_clk);
     

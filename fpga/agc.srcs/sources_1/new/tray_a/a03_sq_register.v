@@ -620,7 +620,7 @@ module a03_sq_register(
     nor_3 #(1'b0)  NOR30417(NOR30417_out,   SQ2_,           QC0_,           n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR30418(NOR30418_out,   SQEXT,          ST1_,           n0VDCA,         p4SW, reset, prop_clk);
     assign NOR30419_in = NOR30417_out & NOR30418_out;
-    nor_3 #(1'b0)  NOR30419(DAS1_,          NOR30417_out,   ADS0,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR30419(DAS1_,          NOR30419_in,    ADS0,           n0VDCA,         p4SW, reset, prop_clk);
     // NOR30420 omitted (fan-out expansion)
     nor_3 #(1'b0)  NOR30421(DAS1,           DAS1_,          n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR30422(IC12_,          CCS0,           MSU0,           n0VDCA,         p4SW, reset, prop_clk);

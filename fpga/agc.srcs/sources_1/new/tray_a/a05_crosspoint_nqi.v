@@ -307,7 +307,7 @@ module a05_crosspoint_nqi(
     nor_3 #(1'b0)  NOR39115(DVST,           T02_,           STD2,           DIV_,           p4SW, reset, prop_clk);
     
     nor_3 #(1'b0)  NOR39116(NOR39116_out,   MP3_,           T10_,           n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b0)  NOR39117(n2XP7,          T01_,           MP3_,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR39117(n2XP7,          T02_,           MP3_,           n0VDCA,         p4SW, reset, prop_clk);
     
     // NOR39118 removed (not used)
     // NOR39119 removed (not used)
