@@ -2,8 +2,10 @@ import sys
 from PySide2.QtWidgets import QApplication, QMainWindow, QLabel, QWidget, QHBoxLayout
 from PySide2.QtGui import QFont, QFontInfo, QPalette, QColor
 from PySide2.QtCore import Qt
-from usb_interface import USBInterface
 
+import resources
+from usb_interface import USBInterface
+from dsky import DSKY
 from monitor_panel import MonitorPanel
 import usb_message as um
 
@@ -17,6 +19,7 @@ class MainWindow(QMainWindow):
         self._usbif.connected.connect(self.connected)
 
         self.setup_ui()
+        self.dsky = DSKY(self, self._usbif)
 
     def setup_ui(self):
         status_bar = self.statusBar()
@@ -33,6 +36,8 @@ class MainWindow(QMainWindow):
         central.setLayout(layout)
         layout.setSpacing(0)
         layout.setMargin(0)
+
+        #self.setStyleSheet("background-image:url(:/dsky.png)")
 
         self._monitor_panel = MonitorPanel(central, self._usbif)
 

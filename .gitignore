@@ -86,6 +86,10 @@
 !*.bmm
 !*.xmp
 
+!*.qrc
+!*.png
+!Pipfile
+!Pipfile.lock
 !*.py
 *.bak
 *~

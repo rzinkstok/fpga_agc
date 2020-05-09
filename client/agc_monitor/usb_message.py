@@ -431,6 +431,91 @@ class MonChanFEXT(MonChanMessage):
     mask = 0x0007
 
 
+class DSKYMessage(Message):
+    group = 0x0023
+
+
+class DSKYProg(DSKYMessage):
+    address = 0x0000
+    keys = ["digit1", "digit2"]
+    bitshift = (0, 5)
+    mask = (0x001F, 0x001F)
+
+
+class DSKYVerb(DSKYMessage):
+    address = 0x0001
+    keys = ["digit1", "digit2"]
+    bitshift = (0, 5)
+    mask = (0x001F, 0x001F)
+
+
+class DSKYNoun(DSKYMessage):
+    address = 0x0002
+    keys = ["digit1", "digit2"]
+    bitshift = (0, 5)
+    mask = (0x001F, 0x001F)
+
+
+class DSKYReg1L(DSKYMessage):
+    address = 0x0003
+    keys = ["digit1", "digit2", "digit3"]
+    bitshift = (0, 5, 10)
+    mask = (0x001F, 0x001F, 0x001F)
+
+
+class DSKYReg1H(DSKYMessage):
+    address = 0x0004
+    keys = ["digit4", "digit5", "sign"]
+    bitshift = (0, 5, 10)
+    mask = (0x001F, 0x001F, 0x0003)
+
+
+class DSKYReg2L(DSKYMessage):
+    address = 0x0005
+    keys = ["digit1", "digit2", "digit3"]
+    bitshift = (0, 5, 10)
+    mask = (0x001F, 0x001F, 0x001F)
+
+
+class DSKYReg2H(DSKYMessage):
+    address = 0x0006
+    keys = ["digit4", "digit5", "sign"]
+    bitshift = (0, 5, 10)
+    mask = (0x001F, 0x001F, 0x0003)
+
+
+class DSKYReg3L(DSKYMessage):
+    address = 0x0007
+    keys = ["digit1", "digit2", "digit3"]
+    bitshift = (0, 5, 10)
+    mask = (0x001F, 0x001F, 0x001F)
+
+
+class DSKYReg3H(DSKYMessage):
+    address = 0x0008
+    keys = ["digit4", "digit5", "sign"]
+    bitshift = (0, 5, 10)
+    mask = (0x001F, 0x001F, 0x0003)
+
+
+class DSKYButton(DSKYMessage):
+    address = 0x0009
+    keys = ["keycode"]
+    mask = (0x001F,)
+
+
+class DSKYProceed(DSKYMessage):
+    address = 0x000A
+    keys = ["dummy"]
+
+
+class DSKYStatus(DSKYMessage):
+    address = 0x000B
+    keys = ["vel", "alt", "tracker", "restart", "prog", "gimbal_lock", "temp", "prio_disp", "no_dap", "opr_err", "key_rel", "stby", "no_att", "uplink_acty", "comp_acty", "vnflash"]
+    bitshift = (i for i in keys)
+    mask = (0x0001 for i in keys)
+
+
 class StatusMessage(Message):
     group = 0x0024
 
