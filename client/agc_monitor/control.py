@@ -41,8 +41,8 @@ class Control(QWidget):
         # usbif.poll(um.StatusPeripheral())
         usbif.listen(self)
 
-        #for msg in INH_SWITCHES.values():
-        #    usbif.send(msg(0))
+        for msg in INH_SWITCHES.values():
+            usbif.send(msg(0))
         usbif.send(um.ControlSTRT1(0))
         usbif.send(um.ControlSTRT2(0))
 
@@ -70,8 +70,8 @@ class Control(QWidget):
         for label, msg in INH_SWITCHES.items():
             callback = lambda state, msg=msg: self._usbif.send(msg(int(bool(state))))
             w = ApolloLabeledIndicatorSwitch(self, label, QColor(255, 120, 0), lines=2, callback=callback)
-            if label in ["RPT", "INC", "ALG"]:
-                w.switch.setCheckState(Qt.CheckState.Checked)
+            #if label in ["RPT", "INC", "ALG"]:
+            #    w.switch.setCheckState(Qt.CheckState.Checked)
             ag1.addWidget(w)
 
         ag2 = ApolloGroup(self, "CONTROL")

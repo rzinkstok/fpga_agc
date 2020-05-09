@@ -112,6 +112,9 @@ module agc_monitor(
     input wire MREAD,
     input wire MRDCH,
     
+    input wire MRCH,
+    input wire MWCH,
+    
     // Power
     input wire n0VDCA,
     //input wire BPLUS,
@@ -244,7 +247,7 @@ module agc_monitor(
 
     // Resulting data from the active read command
     wire [15:0] read_data;
-    assign read_data = ctrl_data | status_data | mon_reg_data;
+    assign read_data = ctrl_data | status_data | mon_reg_data | mon_dsky_data;
     //assign read_data =  ctrl_data | status_data | mon_reg_data | mon_chan_data | agc_fixed_data | agc_erasable_data |
     //                    agc_channels_data | crs_data | ems_data | mon_dsky_data | trace_data | nassp_data;
 
@@ -338,6 +341,7 @@ module agc_monitor(
     wire handrupt;
     wire handrupt_ctrl;
     wire handrupt_nassp;
+    assign handrupt_nassp = 1'b0;
     assign handrupt = handrupt_ctrl | handrupt_nassp;
     
     wire [15:0] n_nisq_steps;
@@ -413,6 +417,7 @@ module agc_monitor(
         .n_nisq_steps(n_nisq_steps)
     );
 
+
     /*******************************************************************************.
     * Status Registers                                                              *
     '*******************************************************************************/
@@ -464,6 +469,7 @@ module agc_monitor(
         .mismatch_data(mismatch_data)
     );
     
+    
     /*******************************************************************************.
     * Start/Stop Logic                                                              *
     '*******************************************************************************/
@@ -514,6 +520,7 @@ module agc_monitor(
         .mstpodd(mstpodd)
     );
 
+
     /*******************************************************************************.
     * Clear Timer                                                                   *
     '*******************************************************************************/
@@ -524,6 +531,7 @@ module agc_monitor(
         .MONWT(MONWT),
         .ct(ct)
     );
+
 
     /*******************************************************************************.
     * Monitor Registers                                                             *
@@ -624,6 +632,114 @@ module agc_monitor(
         .read_en(mon_reg_read_en),
         .addr(cmd_addr),
         .data_out(mon_reg_data)
+    );
+    
+
+    /*******************************************************************************.
+    * Monitor AGC Channel Mirrors                                                   *
+    '*******************************************************************************/
+    wire [9:1] chan77;
+    wire [15:1] out0;
+    wire [15:1] dsalmout;
+    wire [15:1] chan13;
+    
+    monitor_channels mon_chans(
+        .clk(clk),
+        .rst_n(rst_n),
+    
+        .MONWT(MONWT),
+        .ct(ct),
+    
+        .MRCH(MRCH),
+        .MWCH(MWCH),
+        .ch(s[9:1]),
+        .mwl({mwl[16], mwl[14:1]}),
+        .l({l[16], l[14:1]}),
+        .q({q[16], q[14:1]}),
+        .chan77(chan77),
+    
+        .mrchg(mrchg),
+        .mwchg(mwchg),
+        .fext(fext),
+        .out0(out0),
+        .dsalmout(dsalmout),
+        .chan13(chan13),
+    
+        .read_en(mon_chan_read_en),
+        .addr(cmd_addr),
+        .data_out(mon_chan_data)
+    );
+    
+    /*******************************************************************************.
+    * Core Rope Simulation                                                          *
+    '*******************************************************************************/
+    wire mnhsbf_rupts;
+    
+    
+    /*******************************************************************************.
+    * Interrupt Injection                                                           *
+    '*******************************************************************************/
+    wire keyrupt1;
+    wire keyrupt2;
+    wire monpar_rupts;
+    wire [16:1] mdt_rupts;
+    
+    rupt_injector rupts(
+        .clk(clk),
+        .rst_n(rst_n),
+    
+        .keyrupt1(keyrupt1),
+        .keyrupt2(keyrupt2),
+        .uprupt(1'b0),
+        .downrupt(downrupt),
+        .handrupt(handrupt),
+    
+        .MGOJAM(MGOJAM),
+        .mt(mt),
+        .mst(mst),
+        .MSQEXT(MSQEXT),
+        .sq(sq),
+        .MIIP(MIIP),
+        .MRGG(MRGG),
+        .MWBG(MWBG),
+        .mwl(mwl),
+    
+        .mnhsbf(mnhsbf_rupts),
+        .mdt(mdt_rupts),
+        .monpar(monpar_rupts)
+    );
+
+
+    /*******************************************************************************.
+    * DSKY                                                                          *
+    '*******************************************************************************/
+    wire [16:1] mdt_dsky;
+    
+    monitor_dsky mon_dsky(
+        .clk(clk),
+        .rst_n(rst_n),
+    
+        .read_en(mon_dsky_read_en),
+        .write_en(mon_dsky_write_en),
+        .addr(cmd_addr),
+        .data_in(cmd_data),
+        .data_out(mon_dsky_data),
+    
+        .MGOJAM(MGOJAM),
+        .mt(mt),
+        .MSQEXT(MSQEXT),
+        .sq(sq),
+        .mrchg(mrchg),
+        .ch(s[9:1]),
+    
+        .out0(out0),
+        .dsalmout(dsalmout),
+        .chan13(chan13),
+    
+        .mdt(mdt_dsky),
+    
+        .keyrupt1(keyrupt1),
+        .keyrupt2(keyrupt2)
     );
 
 endmodule

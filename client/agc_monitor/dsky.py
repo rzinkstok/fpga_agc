@@ -48,7 +48,56 @@ class DSKY(QWidget):
         usbif.listen(self)
 
     def handle_msg(self, msg):
-        pass
+        if isinstance(msg, um.DSKYProg):
+            self._prog[0].set_relay_bits(msg.digit2)
+            self._prog[1].set_relay_bits(msg.digit1)
+        elif isinstance(msg, um.DSKYVerb):
+            self._verb[0].set_relay_bits(msg.digit2)
+            self._verb[1].set_relay_bits(msg.digit1)
+        elif isinstance(msg, um.DSKYNoun):
+            self._noun[0].set_relay_bits(msg.digit2)
+            self._noun[1].set_relay_bits(msg.digit1)
+        elif isinstance(msg, um.DSKYReg1L):
+            self._reg1[2].set_relay_bits(msg.digit3)
+            self._reg1[3].set_relay_bits(msg.digit2)
+            self._reg1[4].set_relay_bits(msg.digit1)
+        elif isinstance(msg, um.DSKYReg1H):
+            self._sign1.set_relay_bits(msg.sign)
+            self._reg1[0].set_relay_bits(msg.digit5)
+            self._reg1[1].set_relay_bits(msg.digit4)
+        elif isinstance(msg, um.DSKYReg2L):
+            self._reg2[2].set_relay_bits(msg.digit3)
+            self._reg2[3].set_relay_bits(msg.digit2)
+            self._reg2[4].set_relay_bits(msg.digit1)
+        elif isinstance(msg, um.DSKYReg2H):
+            self._sign2.set_relay_bits(msg.sign)
+            self._reg2[0].set_relay_bits(msg.digit5)
+            self._reg2[1].set_relay_bits(msg.digit4)
+        elif isinstance(msg, um.DSKYReg3L):
+            self._reg3[2].set_relay_bits(msg.digit3)
+            self._reg3[3].set_relay_bits(msg.digit2)
+            self._reg3[4].set_relay_bits(msg.digit1)
+        elif isinstance(msg, um.DSKYReg3H):
+            self._sign3.set_relay_bits(msg.sign)
+            self._reg3[0].set_relay_bits(msg.digit5)
+            self._reg3[1].set_relay_bits(msg.digit4)
+        elif isinstance(msg, um.DSKYStatus):
+            self._vnflash = msg.vnflash
+            self._com_act.set_on(msg.comp_acty)
+            self._upl_act.set_on(msg.uplink_acty)
+            self._no_att.set_on(msg.no_att)
+            self._stby.set_on(msg.stby)
+            self._key_rel.set_on(msg.key_rel)
+            self._opr_err.set_on(msg.opr_err)
+            self._prio_disp.set_on(msg.prio_disp)
+            self._no_dap.set_on(msg.no_dap)
+            self._temp.set_on(msg.temp)
+            self._gimbal_lock.set_on(msg.gimbal_lock)
+            self._prog_alarm.set_on(msg.prog)
+            self._restart.set_on(msg.restart)
+            self._tracker.set_on(msg.tracker)
+            self._alt.set_on(msg.alt)
+            self._vel.set_on(msg.vel)
 
     def _setup_ui(self):
         self.setObjectName('#DSKY')
@@ -57,8 +106,8 @@ class DSKY(QWidget):
         self.setStyleSheet('DSKY{background-image: url(:/dsky.png);}')
         self.setWindowTitle('Monitor DSKY')
 
-        el_pix = QPixmap(':/resources/el.png')
-        lamp_pix = QPixmap(':/resources/lamps.png')
+        el_pix = QPixmap(':/el.png')
+        lamp_pix = QPixmap(':/lamps.png')
 
         self._com_act = Lamp(self, el_pix, 0, 1, 65, 61, False)
         self._com_act.move(285, 36)

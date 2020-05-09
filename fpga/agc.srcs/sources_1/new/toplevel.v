@@ -669,6 +669,8 @@ module toplevel(
 		.MLDCH(MLDCH),
 		.MREAD(MREAD),
 		.MRDCH(MRDCH),
+		.MRCH(MRCH),
+		.MWCH(MWCH),
 		.n0VDCA(n0VDCA),
 		.BPLSSW(BPLSSW),
 		.p4SW(p4SW),

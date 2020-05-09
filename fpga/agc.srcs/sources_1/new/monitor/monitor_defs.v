@@ -103,6 +103,21 @@
 `define MON_REG_TP     16'h0D
 `define MON_REG_W      16'h40
 
+
+`define DSKY_REG_PROG        16'h00
+`define DSKY_REG_VERB        16'h01
+`define DSKY_REG_NOUN        16'h02
+`define DSKY_REG_REG1_L      16'h03
+`define DSKY_REG_REG1_H      16'h04
+`define DSKY_REG_REG2_L      16'h05
+`define DSKY_REG_REG2_H      16'h06
+`define DSKY_REG_REG3_L      16'h07
+`define DSKY_REG_REG3_H      16'h08
+`define DSKY_REG_MAIN_BUTTON 16'h09
+`define DSKY_REG_PROCEED     16'h0A
+`define DSKY_REG_STATUS      16'h0B
+`define DSKY_REG_NAV_BUTTON  16'h0C
+
 // Wild register mode
 `define W_MODE_ALL 3'o0
 `define W_MODE_S   3'o1
@@ -132,6 +147,18 @@
 `define ADC_CHAN_VAUX12 5'h1C
 `define ADC_CHAN_VAUX14 5'h1E
 `define ADC_CHAN_VAUX15 5'h1F
+
+`define TCF_KEYRUPT1 16'o14024
+`define TCF_KEYRUPT2 16'o14030
+`define TCF_UPRUPT   16'o14034
+`define TCF_DOWNRUPT 16'o14040
+`define TCF_HANDRUPT 16'o14050
+`define RESUME 16'o150017
+
+`define SQ_RXOR 6'o06
+`define SQ_DV 5'o4
+`define SQ_IO 3'o0
+`define IO_RUPT 3'o7
 
 // Special memory addresses
 `define CYR     12'o0020

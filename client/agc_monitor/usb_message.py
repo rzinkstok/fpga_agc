@@ -501,19 +501,22 @@ class DSKYReg3H(DSKYMessage):
 class DSKYButton(DSKYMessage):
     address = 0x0009
     keys = ["keycode"]
+    bitshift = (0,)
     mask = (0x001F,)
 
 
 class DSKYProceed(DSKYMessage):
     address = 0x000A
     keys = ["dummy"]
+    bitshift = (0,)
+    mask = (0x0001,)
 
 
 class DSKYStatus(DSKYMessage):
     address = 0x000B
     keys = ["vel", "alt", "tracker", "restart", "prog", "gimbal_lock", "temp", "prio_disp", "no_dap", "opr_err", "key_rel", "stby", "no_att", "uplink_acty", "comp_acty", "vnflash"]
-    bitshift = (i for i in keys)
-    mask = (0x0001 for i in keys)
+    bitshift = tuple(i for i in range(len(keys)))
+    mask = tuple(0x0001 for i in keys)
 
 
 class StatusMessage(Message):
