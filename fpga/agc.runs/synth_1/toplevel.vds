@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Sat May  2 18:54:12 2020
-# Process ID: 37899
+# Start of session at: Sat May  9 09:56:17 2020
+# Process ID: 27167
 # Current directory: /home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1
 # Command line: vivado -log toplevel.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source toplevel.tcl
 # Log file: /home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/toplevel.vds
@@ -16,14 +16,14 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 37921 
+INFO: Helper process launched with PID 27196 
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:8]
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:10]
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:11]
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/debounce.v:7]
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/debounce.v:8]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1729.234 ; gain = 168.527 ; free physical = 4520 ; free virtual = 9462
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1729.266 ; gain = 168.559 ; free physical = 2405 ; free virtual = 9025
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'toplevel' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/toplevel.v:3]
 INFO: [Synth 8-6157] synthesizing module 'io_circuits' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/io_circuits.v:4]
@@ -65,19 +65,19 @@ INFO: [Synth 8-6157] synthesizing module 'cmd_receiver' [/home/rzinkstok/fpga_ag
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_receiver.v:64]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_receiver.v:83]
 INFO: [Synth 8-6155] done synthesizing module 'cmd_receiver' (3#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_receiver.v:7]
-INFO: [Synth 8-6157] synthesizing module 'cmd_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/cmd_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'cmd_fifo' (4#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/cmd_fifo_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'cmd_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/cmd_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'cmd_fifo' (4#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/cmd_fifo_stub.v:6]
 WARNING: [Synth 8-7023] instance 'cmd_queue' of module 'cmd_fifo' has 11 connections declared, but only 9 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:86]
-INFO: [Synth 8-6157] synthesizing module 'read_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/read_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'read_fifo' (5#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/read_fifo_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'read_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/read_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'read_fifo' (5#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/read_fifo_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'msg_sender' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/msg_sender.v:6]
 	Parameter IDLE bound to: 0 - type: integer 
 	Parameter ACTIVE bound to: 1 - type: integer 
 	Parameter ESCAPE bound to: 2 - type: integer 
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/msg_sender.v:86]
 INFO: [Synth 8-6155] done synthesizing module 'msg_sender' (6#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/msg_sender.v:6]
-INFO: [Synth 8-6157] synthesizing module 'read_byte_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/read_byte_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'read_byte_fifo' (7#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/read_byte_fifo_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'read_byte_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/read_byte_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'read_byte_fifo' (7#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/read_byte_fifo_stub.v:6]
 WARNING: [Synth 8-7023] instance 'read_byte_queue' of module 'read_byte_fifo' has 12 connections declared, but only 10 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:159]
 INFO: [Synth 8-6155] done synthesizing module 'usb_interface' (8#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:4]
 INFO: [Synth 8-6157] synthesizing module 'cmd_controller' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_controller.v:6]
@@ -115,8 +115,8 @@ INFO: [Synth 8-6157] synthesizing module 'status_regs' [/home/rzinkstok/fpga_agc
 	Parameter WATCH bound to: 10 - type: integer 
 	Parameter PIPAL bound to: 11 - type: integer 
 	Parameter WARN bound to: 12 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'mon_adc' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/mon_adc_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mon_adc' (11#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/mon_adc_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mon_adc' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/mon_adc_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mon_adc' (11#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/mon_adc_stub.v:5]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:102]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:204]
 INFO: [Synth 8-6155] done synthesizing module 'status_regs' (12#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:6]
@@ -225,28 +225,28 @@ INFO: [Synth 8-6155] done synthesizing module 'a31_power_supply' (46#1) [/home/r
 INFO: [Synth 8-6155] done synthesizing module 'tray_a' (47#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a.v:3]
 INFO: [Synth 8-6157] synthesizing module 'tray_b' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b.v:3]
 INFO: [Synth 8-6157] synthesizing module 'b01_fixed_memory' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b01_fixed_memory.v:3]
-INFO: [Synth 8-6157] synthesizing module 'rope_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/rope_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'rope_memory' (48#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/rope_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'rope_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/rope_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'rope_memory' (48#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/rope_memory_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'b01_fixed_memory' (49#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b01_fixed_memory.v:3]
 INFO: [Synth 8-6157] synthesizing module 'b07_oscillator' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b07_oscillator.v:4]
-INFO: [Synth 8-6157] synthesizing module 'prop_clock_divider' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/prop_clock_divider_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'prop_clock_divider' (50#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/prop_clock_divider_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'prop_clock_divider' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/prop_clock_divider_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'prop_clock_divider' (50#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/prop_clock_divider_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'agc_clock_divider' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_clock_divider.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'agc_clock_divider' (51#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_clock_divider.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'b07_oscillator' (52#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b07_oscillator.v:4]
 INFO: [Synth 8-6157] synthesizing module 'b08_alarm' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b08_alarm.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'b08_alarm' (53#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b08_alarm.v:3]
 INFO: [Synth 8-6157] synthesizing module 'b12_erasable_memory' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b12_erasable_memory.v:4]
-INFO: [Synth 8-6157] synthesizing module 'core_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/core_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'core_memory' (54#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/core_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'core_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/core_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'core_memory' (54#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/core_memory_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'b12_erasable_memory' (55#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b12_erasable_memory.v:4]
 INFO: [Synth 8-6155] done synthesizing module 'tray_b' (56#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'fpga_agc' (57#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/fpga_agc.v:3]
 INFO: [Synth 8-6157] synthesizing module 'styx_ps_bootloader' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/styx_ps_bootloader.v:3]
 INFO: [Synth 8-6157] synthesizing module 'styx_ps_wrapper' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v:12]
 INFO: [Synth 8-6157] synthesizing module 'styx_ps' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:13]
-INFO: [Synth 8-6157] synthesizing module 'styx_ps_processing_system7_0_0' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/styx_ps_processing_system7_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'styx_ps_processing_system7_0_0' (58#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-37899-fpgadev/realtime/styx_ps_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'styx_ps_processing_system7_0_0' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/styx_ps_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'styx_ps_processing_system7_0_0' (58#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-27167-fpgadev/realtime/styx_ps_processing_system7_0_0_stub.v:6]
 WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'styx_ps_processing_system7_0_0' has 25 connections declared, but only 22 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:79]
 INFO: [Synth 8-6155] done synthesizing module 'styx_ps' (59#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:13]
 INFO: [Synth 8-6155] done synthesizing module 'styx_ps_wrapper' (60#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v:12]
@@ -274,7 +274,7 @@ WARNING: [Synth 8-3331] design agc_monitor has unconnected port dbg[5]
 WARNING: [Synth 8-3331] design agc_monitor has unconnected port BPLSSW
 WARNING: [Synth 8-3331] design agc_monitor has unconnected port p4SW
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1828.109 ; gain = 267.402 ; free physical = 4498 ; free virtual = 9442
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1828.141 ; gain = 267.434 ; free physical = 2382 ; free virtual = 9004
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -287,10 +287,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1845.922 ; gain = 285.215 ; free physical = 4516 ; free virtual = 9460
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1845.953 ; gain = 285.246 ; free physical = 2401 ; free virtual = 9022
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1845.922 ; gain = 285.215 ; free physical = 4516 ; free virtual = 9460
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1845.953 ; gain = 285.246 ; free physical = 2401 ; free virtual = 9022
 ---------------------------------------------------------------------------------
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -320,22 +320,22 @@ Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2011.367 ; gain = 0.000 ; free physical = 4324 ; free virtual = 9268
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2011.398 ; gain = 0.000 ; free physical = 2210 ; free virtual = 8832
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.24 ; elapsed = 00:00:00.24 . Memory (MB): peak = 2011.367 ; gain = 0.000 ; free physical = 4324 ; free virtual = 9268
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.29 ; elapsed = 00:00:00.30 . Memory (MB): peak = 2011.398 ; gain = 0.000 ; free physical = 2210 ; free virtual = 8832
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'fpgaagc/trayb/b01fixedmemory/rom' at clock pin 'clka' is different from the actual clock period '19.531', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'fpgaagc/trayb/b12erasablememory/ram' at clock pin 'clka' is different from the actual clock period '19.531', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2022.273 ; gain = 461.566 ; free physical = 4477 ; free virtual = 9421
+Finished Constraint Validation : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 2022.305 ; gain = 461.598 ; free physical = 2363 ; free virtual = 8984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2022.273 ; gain = 461.566 ; free physical = 4477 ; free virtual = 9421
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 2022.305 ; gain = 461.598 ; free physical = 2363 ; free virtual = 8984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -612,7 +612,7 @@ Applied set_property DONT_TOUCH = true for agcmonitor/usb_if/cmd_queue. (constra
 Applied set_property DONT_TOUCH = true for agcmonitor/usb_if/read_byte_queue. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for agcmonitor/stat_regs/adc. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2022.273 ; gain = 461.566 ; free physical = 4476 ; free virtual = 9420
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 2022.305 ; gain = 461.598 ; free physical = 2363 ; free virtual = 8984
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'cmd_receiver'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'msg_sender'
@@ -681,7 +681,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'usb_interface'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 2022.273 ; gain = 461.566 ; free physical = 4465 ; free virtual = 9413
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:33 ; elapsed = 00:00:38 . Memory (MB): peak = 2022.305 ; gain = 461.598 ; free physical = 2352 ; free virtual = 8977
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'fpgaagc/traya/a02/NOR37131' (nor_3) to 'fpgaagc/traya/a02/NOR37135'
 INFO: [Synth 8-223] decloning instance 'fpgaagc/traya/a02/NOR37454' (nor_3) to 'fpgaagc/traya/a02/NOR34329'
@@ -779,7 +779,7 @@ Report RTL Partitions:
 |      |RTL Partition |Replication |Instances |
 +------+--------------+------------+----------+
 |1     |tray_a__GB0   |           1|     28954|
-|2     |tray_a__GB1   |           1|     20649|
+|2     |tray_a__GB1   |           1|     20650|
 |3     |tray_b        |           1|      1689|
 |4     |toplevel__GC0 |           1|      9238|
 +------+--------------+------------+----------+
@@ -23432,7 +23432,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/t
 INFO: [Synth 8-3886] merging instance 'fpgaagc/trayb/b07oscillator/agc_clk_div/i_0/counter_reg[5]' (FDC) to 'fpgaagc/trayb/b07oscillator/agc_clk_div/i_0/counter_reg[6]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/trayb/b07oscillator/agc_clk_div/i_0/\counter_reg[6] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:27 ; elapsed = 00:03:31 . Memory (MB): peak = 2022.273 ; gain = 461.566 ; free physical = 4225 ; free virtual = 9236
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:52 ; elapsed = 00:04:05 . Memory (MB): peak = 2022.305 ; gain = 461.598 ; free physical = 2112 ; free virtual = 8800
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -23440,7 +23440,7 @@ Report RTL Partitions:
 |      |RTL Partition |Replication |Instances |
 +------+--------------+------------+----------+
 |1     |tray_a__GB0   |           1|     21604|
-|2     |tray_a__GB1   |           1|     15001|
+|2     |tray_a__GB1   |           1|     15010|
 |3     |tray_b        |           1|      1396|
 |4     |toplevel__GC0 |           1|      4990|
 +------+--------------+------------+----------+
@@ -23451,13 +23451,13 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'styxpsbootloader/styx_ps/
 INFO: [Synth 8-5578] Moved timing constraint from pin 'b07oscillator/prop_clk_div/clk_out1' to pin 'b07oscillator/prop_clk_div/bbstub_clk_out1/O'
 INFO: [Synth 8-5819] Moved 2 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:34 ; elapsed = 00:03:37 . Memory (MB): peak = 2051.273 ; gain = 490.566 ; free physical = 4128 ; free virtual = 9138
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:59 ; elapsed = 00:04:14 . Memory (MB): peak = 2050.305 ; gain = 489.598 ; free physical = 2014 ; free virtual = 8702
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:39 ; elapsed = 00:03:43 . Memory (MB): peak = 2076.305 ; gain = 515.598 ; free physical = 4119 ; free virtual = 9130
+Finished Timing Optimization : Time (s): cpu = 00:03:05 ; elapsed = 00:04:21 . Memory (MB): peak = 2075.336 ; gain = 514.629 ; free physical = 2006 ; free virtual = 8695
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -23465,7 +23465,7 @@ Report RTL Partitions:
 |      |RTL Partition |Replication |Instances |
 +------+--------------+------------+----------+
 |1     |tray_a__GB0   |           1|     21604|
-|2     |tray_a__GB1   |           1|     15001|
+|2     |tray_a__GB1   |           1|     15010|
 |3     |tray_b        |           1|      1396|
 |4     |toplevel__GC0 |           1|      4990|
 +------+--------------+------------+----------+
@@ -23473,7 +23473,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:03:18 ; elapsed = 00:05:03 . Memory (MB): peak = 2084.312 ; gain = 523.605 ; free physical = 4132 ; free virtual = 9143
+Finished Technology Mapping : Time (s): cpu = 00:03:51 ; elapsed = 00:06:06 . Memory (MB): peak = 2083.344 ; gain = 522.637 ; free physical = 1875 ; free virtual = 8564
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -23491,7 +23491,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:03:21 ; elapsed = 00:05:06 . Memory (MB): peak = 2084.312 ; gain = 523.605 ; free physical = 4132 ; free virtual = 9143
+Finished IO Insertion : Time (s): cpu = 00:03:55 ; elapsed = 00:06:10 . Memory (MB): peak = 2083.344 ; gain = 522.637 ; free physical = 1875 ; free virtual = 8563
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -23504,7 +23504,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:03:21 ; elapsed = 00:05:06 . Memory (MB): peak = 2084.312 ; gain = 523.605 ; free physical = 4132 ; free virtual = 9143
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:55 ; elapsed = 00:06:11 . Memory (MB): peak = 2083.344 ; gain = 522.637 ; free physical = 1875 ; free virtual = 8563
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -23516,7 +23516,7 @@ Report RTL Partitions:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:03:24 ; elapsed = 00:05:09 . Memory (MB): peak = 2084.312 ; gain = 523.605 ; free physical = 4130 ; free virtual = 9140
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:59 ; elapsed = 00:06:15 . Memory (MB): peak = 2083.344 ; gain = 522.637 ; free physical = 1873 ; free virtual = 8561
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -23551,14 +23551,14 @@ Report Cell Usage:
 |9     |BUFG                           |     1|
 |10    |CARRY4                         |    12|
 |11    |LUT1                           |    56|
-|12    |LUT2                           |  4898|
-|13    |LUT3                           |  1162|
-|14    |LUT4                           |  2708|
+|12    |LUT2                           |  4900|
+|13    |LUT3                           |  1161|
+|14    |LUT4                           |  2710|
 |15    |LUT5                           |  1305|
 |16    |LUT6                           |   475|
 |17    |MUXF7                          |    18|
 |18    |MUXF8                          |     4|
-|19    |FDCE                           | 12453|
+|19    |FDCE                           | 12456|
 |20    |FDPE                           |  2339|
 |21    |FDRE                           |    11|
 |22    |IBUF                           |    29|
@@ -23570,9 +23570,9 @@ Report Instance Areas:
 +------+------------------------+-----------------------------+------+
 |      |Instance                |Module                       |Cells |
 +------+------------------------+-----------------------------+------+
-|1     |top                     |                             | 25739|
-|2     |  fpgaagc               |fpga_agc                     | 23111|
-|3     |    traya               |tray_a                       | 22223|
+|1     |top                     |                             | 25745|
+|2     |  fpgaagc               |fpga_agc                     | 23117|
+|3     |    traya               |tray_a                       | 22229|
 |4     |      a01               |a01_scaler                   |  1245|
 |5     |        NOR38202        |nor_3__parameterized0__409   |     5|
 |6     |        NOR38203        |nor_3__2217                  |     5|
@@ -27797,7 +27797,7 @@ Report Instance Areas:
 |4225  |        NOR36456        |nor_3__2781                  |     5|
 |4226  |        NOR36457        |nor_3__2782                  |     5|
 |4227  |        NOR36460        |nor_3__2783                  |     5|
-|4228  |      a03               |a03_sq_register              |   993|
+|4228  |      a03               |a03_sq_register              |   999|
 |4229  |        NOR30001        |nor_3__parameterized0__473   |     5|
 |4230  |        NOR30002        |nor_3__2406                  |     5|
 |4231  |        NOR30003        |nor_3__2407                  |     5|
@@ -27961,264 +27961,265 @@ Report Instance Areas:
 |4389  |        NOR30415        |nor_3__2546                  |     5|
 |4390  |        NOR30416        |nor_3__2547                  |     5|
 |4391  |        NOR30417        |nor_3__2548                  |     5|
-|4392  |        NOR30419        |nor_3__2550                  |     5|
-|4393  |        NOR30421        |nor_3__2551                  |     5|
-|4394  |        NOR30422        |nor_3__2552                  |     5|
-|4395  |        NOR30423        |nor_3__2553                  |     5|
-|4396  |        NOR30424        |nor_3__2554                  |     5|
-|4397  |        NOR30425        |nor_3__2555                  |     5|
-|4398  |        NOR30426        |nor_3__2556                  |     5|
-|4399  |        NOR30427        |nor_3__2557                  |     5|
-|4400  |        NOR30428        |nor_3__2558                  |     5|
-|4401  |        NOR30429        |nor_3__2559                  |     5|
-|4402  |        NOR30430        |nor_3__2560                  |     5|
-|4403  |        NOR30431        |nor_3__2561                  |     5|
-|4404  |        NOR30432        |nor_3__2562                  |     5|
-|4405  |        NOR30433        |nor_3__2563                  |     5|
-|4406  |        NOR36108        |nor_3__2564                  |     5|
-|4407  |        NOR30435        |nor_3__2565                  |     5|
-|4408  |        NOR30436        |nor_3__2566                  |     5|
-|4409  |        NOR30437        |nor_3__2567                  |     5|
-|4410  |        NOR30439        |nor_3__2568                  |     5|
-|4411  |        NOR30441        |nor_3__2569                  |     5|
-|4412  |        NOR30442        |nor_3__2570                  |     5|
-|4413  |        NOR30443        |nor_3__2571                  |     5|
-|4414  |        NOR30444        |nor_3__2572                  |     5|
-|4415  |        NOR30445        |nor_3__2573                  |     5|
-|4416  |        NOR30446        |nor_3__2574                  |     5|
-|4417  |        NOR30447        |nor_3__2575                  |     5|
-|4418  |        NOR30448        |nor_3__2576                  |     5|
-|4419  |        NOR30449        |nor_3__2577                  |     5|
-|4420  |        NOR30450        |nor_3__2578                  |     5|
-|4421  |        NOR30451        |nor_3__2579                  |     5|
-|4422  |        NOR30452        |nor_3__2580                  |     5|
-|4423  |        NOR30453        |nor_3__2581                  |     5|
-|4424  |        NOR30454        |nor_3__2582                  |     5|
-|4425  |        NOR30455        |nor_3__2583                  |     5|
-|4426  |        NOR30456        |nor_3__2584                  |     5|
-|4427  |    trayb               |tray_b                       |   888|
-|4428  |      b01fixedmemory    |b01_fixed_memory             |   429|
-|4429  |        NOR00001        |nor_3__4178                  |     5|
-|4430  |        NOR00002        |nor_3__4179                  |     5|
-|4431  |        NOR00003        |nor_3__4180                  |     5|
-|4432  |        NOR00004        |nor_3__4181                  |     5|
-|4433  |        NOR00005        |nor_3__4182                  |     5|
-|4434  |        NOR00006        |nor_3__4183                  |     5|
-|4435  |        NOR00007        |nor_3__4184                  |     5|
-|4436  |        NOR00008        |nor_3__parameterized0__810   |     5|
-|4437  |        NOR00009        |nor_3__parameterized0__811   |     5|
-|4438  |        NOR00010        |nor_3__parameterized0__812   |     5|
-|4439  |        NOR00011        |nor_3__parameterized0__813   |     5|
-|4440  |        NOR00012        |nor_3__parameterized0__814   |     5|
-|4441  |        NOR00013        |nor_3__4185                  |     5|
-|4442  |        NOR00014        |nor_3__4186                  |     5|
-|4443  |        NOR00015        |nor_3__4187                  |     5|
-|4444  |        NOR00016        |nor_3__parameterized0__815   |     5|
-|4445  |        NOR00017        |nor_3__4188                  |     5|
-|4446  |        NOR00018        |nor_3__parameterized0__816   |     5|
-|4447  |        NOR00019        |nor_3__4189                  |     5|
-|4448  |        NOR00020        |nor_3__parameterized0__817   |     5|
-|4449  |        NOR00021        |nor_3__4190                  |     5|
-|4450  |        NOR00022        |nor_3__4191                  |     5|
-|4451  |        NOR00023        |nor_3__4192                  |     5|
-|4452  |        NOR00024        |nor_3__4193                  |     5|
-|4453  |        NOR00025        |nor_3__4194                  |     5|
-|4454  |        NOR00026        |nor_3__4195                  |     5|
-|4455  |        NOR00027        |nor_3__4196                  |     5|
-|4456  |        NOR00028        |nor_3__4197                  |     5|
-|4457  |        NOR00029        |nor_3__4198                  |     5|
-|4458  |        NOR00030        |nor_3__4199                  |     5|
-|4459  |        NOR00031        |nor_3__4200                  |     5|
-|4460  |        NOR00032        |nor_3__4201                  |     5|
-|4461  |        NOR00033        |nor_3__4202                  |     5|
-|4462  |        NOR00034        |nor_3__4203                  |     5|
-|4463  |        NOR00035        |nor_3__4204                  |     5|
-|4464  |        NOR00036        |nor_3__4205                  |     5|
-|4465  |        NOR00037        |nor_3__4206                  |     5|
-|4466  |        NOR00038        |nor_3__4207                  |     5|
-|4467  |        NOR00039        |nor_3__4208                  |     5|
-|4468  |        NOR00040        |nor_3__4209                  |     5|
-|4469  |        NOR00041        |nor_3__4210                  |     5|
-|4470  |        NOR00042        |nor_3__4211                  |     5|
-|4471  |        NOR00043        |nor_3__4212                  |     5|
-|4472  |        NOR00044        |nor_3__4213                  |     5|
-|4473  |        NOR00045        |nor_3__4214                  |     5|
-|4474  |        NOR00046        |nor_3__4215                  |     5|
-|4475  |        NOR00048        |nor_3__4216                  |     5|
-|4476  |        NOR00049        |nor_3__4217                  |     5|
-|4477  |        NOR00050        |nor_3__4218                  |     5|
-|4478  |        NOR00051        |nor_3__4219                  |     5|
-|4479  |        NOR00052        |nor_3__parameterized0__818   |     5|
-|4480  |        NOR00053        |nor_3__4220                  |     5|
-|4481  |        NOR00054        |nor_3__parameterized0__819   |     5|
-|4482  |        NOR00055        |nor_3__parameterized0__820   |     5|
-|4483  |        NOR00056        |nor_3__parameterized0__821   |     5|
-|4484  |        NOR00057        |nor_3__parameterized0__822   |     5|
-|4485  |        NOR00058        |nor_3__4221                  |     5|
-|4486  |        NOR00059        |nor_3__4222                  |     5|
-|4487  |        NOR00061        |nor_3__4223                  |     5|
-|4488  |        NOR00062        |nor_3__parameterized0__823   |     5|
-|4489  |        NOR00063        |nor_3__4224                  |     5|
-|4490  |        NOR00064        |nor_3__parameterized0__824   |     5|
-|4491  |        NOR00065        |nor_3__parameterized0__825   |     5|
-|4492  |        NOR00066        |nor_3__parameterized0__826   |     5|
-|4493  |        NOR00067        |nor_3__parameterized0__827   |     5|
-|4494  |        NOR00068        |nor_3__4225                  |     5|
-|4495  |        NOR00069        |nor_3__4226                  |     5|
-|4496  |        NOR00071        |nor_3__4227                  |     5|
-|4497  |        NOR00072        |nor_3__parameterized0__828   |     5|
-|4498  |        NOR00073        |nor_3__4228                  |     5|
-|4499  |        NOR00074        |nor_3__parameterized0__829   |     5|
-|4500  |        NOR00075        |nor_3__parameterized0__830   |     5|
-|4501  |        NOR00076        |nor_3__parameterized0__831   |     5|
-|4502  |        NOR00077        |nor_3__parameterized0__832   |     5|
-|4503  |        NOR00078        |nor_3__4229                  |     5|
-|4504  |        NOR00079        |nor_3__4230                  |     5|
-|4505  |        NOR00080        |nor_3__parameterized0        |     5|
-|4506  |        NOR00081        |nor_3__4231                  |     5|
-|4507  |        NOR00082        |nor_3                        |     5|
-|4508  |      b07oscillator     |b07_oscillator               |    13|
-|4509  |        agc_clk_div     |agc_clock_divider            |    11|
-|4510  |      b08alarm          |b08_alarm                    |    23|
-|4511  |      b12erasablememory |b12_erasable_memory          |   407|
-|4512  |        NOR00001        |nor_3__4128                  |     5|
-|4513  |        NOR00002        |nor_3__4129                  |     5|
-|4514  |        NOR00003        |nor_3__4130                  |     5|
-|4515  |        NOR00004        |nor_3__4131                  |     5|
-|4516  |        NOR00005        |nor_3__4132                  |     5|
-|4517  |        NOR00007        |nor_3__4133                  |     5|
-|4518  |        NOR00008        |nor_3__4134                  |     5|
-|4519  |        NOR00009        |nor_3__4135                  |     5|
-|4520  |        NOR00010        |nor_3__4136                  |     5|
-|4521  |        NOR00011        |nor_3__4137                  |     5|
-|4522  |        NOR00013        |nor_3__4138                  |     5|
-|4523  |        NOR00014        |nor_3__4139                  |     5|
-|4524  |        NOR00015        |nor_3__4140                  |     5|
-|4525  |        NOR00016        |nor_3__4141                  |     5|
-|4526  |        NOR00017        |nor_3__4142                  |     5|
-|4527  |        NOR00018        |nor_3__4143                  |     5|
-|4528  |        NOR00019        |nor_3__4144                  |     5|
-|4529  |        NOR00021        |nor_3__4145                  |     5|
-|4530  |        NOR00022        |nor_3__4146                  |     5|
-|4531  |        NOR00023        |nor_3__4147                  |     5|
-|4532  |        NOR00024        |nor_3__parameterized0__790   |     5|
-|4533  |        NOR00025        |nor_3__4148                  |     5|
-|4534  |        NOR00026        |nor_3__4149                  |     5|
-|4535  |        NOR00027        |nor_3__parameterized0__791   |     5|
-|4536  |        NOR00028        |nor_3__4150                  |     5|
-|4537  |        NOR00029        |nor_3__4151                  |     5|
-|4538  |        NOR00030        |nor_3__parameterized0__792   |     5|
-|4539  |        NOR00031        |nor_3__4152                  |     5|
-|4540  |        NOR00032        |nor_3__4153                  |     5|
-|4541  |        NOR00033        |nor_3__parameterized0__793   |     5|
-|4542  |        NOR00034        |nor_3__4154                  |     5|
-|4543  |        NOR00035        |nor_3__4155                  |     5|
-|4544  |        NOR00036        |nor_3__parameterized0__794   |     5|
-|4545  |        NOR00037        |nor_3__4156                  |     5|
-|4546  |        NOR00038        |nor_3__4157                  |     5|
-|4547  |        NOR00039        |nor_3__parameterized0__795   |     5|
-|4548  |        NOR00040        |nor_3__4158                  |     5|
-|4549  |        NOR00041        |nor_3__4159                  |     5|
-|4550  |        NOR00042        |nor_3__parameterized0__796   |     5|
-|4551  |        NOR00043        |nor_3__4160                  |     5|
-|4552  |        NOR00044        |nor_3__4161                  |     5|
-|4553  |        NOR00045        |nor_3__parameterized0__797   |     5|
-|4554  |        NOR00046        |nor_3__4162                  |     5|
-|4555  |        NOR00047        |nor_3__4163                  |     5|
-|4556  |        NOR00048        |nor_3__parameterized0__798   |     5|
-|4557  |        NOR00049        |nor_3__4164                  |     5|
-|4558  |        NOR00050        |nor_3__4165                  |     5|
-|4559  |        NOR00051        |nor_3__parameterized0__799   |     5|
-|4560  |        NOR00052        |nor_3__4166                  |     5|
-|4561  |        NOR00053        |nor_3__4167                  |     5|
-|4562  |        NOR00054        |nor_3__parameterized0__800   |     5|
-|4563  |        NOR00055        |nor_3__4168                  |     5|
-|4564  |        NOR00061        |nor_3__parameterized0__801   |     5|
-|4565  |        NOR00062        |nor_3__4169                  |     5|
-|4566  |        NOR00063        |nor_3__4170                  |     5|
-|4567  |        NOR00064        |nor_3__parameterized0__802   |     5|
-|4568  |        NOR00065        |nor_3__4171                  |     5|
-|4569  |        NOR00066        |nor_3__parameterized0__803   |     5|
-|4570  |        NOR00067        |nor_3__4172                  |     5|
-|4571  |        NOR00068        |nor_3__parameterized0__804   |     5|
-|4572  |        NOR00069        |nor_3__4173                  |     5|
-|4573  |        NOR00070        |nor_3__parameterized0__805   |     5|
-|4574  |        NOR00071        |nor_3__4174                  |     5|
-|4575  |        NOR00072        |nor_3__parameterized0__806   |     5|
-|4576  |        NOR00073        |nor_3__4175                  |     5|
-|4577  |        NOR00056        |nor_3__parameterized0__807   |     5|
-|4578  |        NOR00057        |nor_3__parameterized0__808   |     5|
-|4579  |        NOR00058        |nor_3__4176                  |     5|
-|4580  |        NOR00059        |nor_3__parameterized0__809   |     5|
-|4581  |        NOR00060        |nor_3__4177                  |     5|
-|4582  |  io                    |io_circuits                  |   524|
-|4583  |    db1                 |debounce__1                  |    15|
-|4584  |    db2                 |debounce__2                  |    15|
-|4585  |    db3                 |debounce__parameterized0     |    52|
-|4586  |    db4                 |debounce__parameterized1     |    67|
-|4587  |    db5                 |debounce__3                  |    15|
-|4588  |    db6                 |debounce__4                  |    15|
-|4589  |    db7                 |debounce__5                  |    15|
-|4590  |    db8                 |debounce__6                  |    15|
-|4591  |    db9                 |debounce__parameterized2     |    31|
-|4592  |    db10                |debounce__parameterized3     |    24|
-|4593  |    db11                |debounce__parameterized4     |    20|
-|4594  |    db13                |debounce__8                  |    15|
-|4595  |    db14                |debounce__9                  |    15|
-|4596  |    db15                |debounce__10                 |    15|
-|4597  |    db16                |debounce__11                 |    15|
-|4598  |    db17                |debounce__12                 |    15|
-|4599  |    db18                |debounce__13                 |    15|
-|4600  |    db19                |debounce__14                 |    15|
-|4601  |    db20                |debounce__15                 |    15|
-|4602  |    db21                |debounce__16                 |    15|
-|4603  |    db22                |debounce__17                 |    15|
-|4604  |    db23                |debounce__18                 |    15|
-|4605  |    db24                |debounce__19                 |    15|
-|4606  |    db25                |debounce__20                 |    15|
-|4607  |    db28                |debounce__23                 |    15|
-|4608  |    db29                |debounce__24                 |    15|
-|4609  |    db30                |debounce__25                 |    15|
-|4610  |  agcmonitor            |agc_monitor                  |  1964|
-|4611  |    usb_if              |usb_interface                |   317|
-|4612  |      cmd_rx            |cmd_receiver                 |    97|
-|4613  |      msg_sndr          |msg_sender                   |    98|
-|4614  |    cmd_ctrl            |cmd_controller               |    65|
-|4615  |    ctrl_regs           |control_regs                 |   616|
-|4616  |    stat_regs           |status_regs                  |   274|
-|4617  |    strt_stp            |start_stop                   |    89|
-|4618  |    ctmr                |clear_timer                  |    14|
-|4619  |    mon_regs            |monitor_regs                 |   573|
-|4620  |      reg_a             |register__1                  |    33|
-|4621  |      reg_l             |register__2                  |    33|
-|4622  |      reg_q             |register__3                  |    33|
-|4623  |      reg_eb            |register2__1                 |     8|
-|4624  |      reg_fb            |register__parameterized0__1  |    11|
-|4625  |      reg_z             |register__4                  |    33|
-|4626  |      reg_b             |register__5                  |    33|
-|4627  |      reg_s             |register2__parameterized0    |    26|
-|4628  |      editing           |edit                         |    46|
-|4629  |      reg_g             |register2__parameterized1    |    34|
-|4630  |      reg_y             |register__6                  |    33|
-|4631  |      reg_u             |register__7                  |    33|
-|4632  |      reg_w             |register                     |    33|
-|4633  |  styxpsbootloader      |styx_ps_bootloader           |     3|
-|4634  |    styx_ps             |styx_ps_wrapper              |     3|
-|4635  |      styx_ps_i         |styx_ps                      |     3|
+|4392  |        NOR30418        |nor_3__2549                  |     5|
+|4393  |        NOR30419        |nor_3__2550                  |     5|
+|4394  |        NOR30421        |nor_3__2551                  |     5|
+|4395  |        NOR30422        |nor_3__2552                  |     5|
+|4396  |        NOR30423        |nor_3__2553                  |     5|
+|4397  |        NOR30424        |nor_3__2554                  |     5|
+|4398  |        NOR30425        |nor_3__2555                  |     5|
+|4399  |        NOR30426        |nor_3__2556                  |     5|
+|4400  |        NOR30427        |nor_3__2557                  |     5|
+|4401  |        NOR30428        |nor_3__2558                  |     5|
+|4402  |        NOR30429        |nor_3__2559                  |     5|
+|4403  |        NOR30430        |nor_3__2560                  |     5|
+|4404  |        NOR30431        |nor_3__2561                  |     5|
+|4405  |        NOR30432        |nor_3__2562                  |     5|
+|4406  |        NOR30433        |nor_3__2563                  |     5|
+|4407  |        NOR36108        |nor_3__2564                  |     5|
+|4408  |        NOR30435        |nor_3__2565                  |     5|
+|4409  |        NOR30436        |nor_3__2566                  |     5|
+|4410  |        NOR30437        |nor_3__2567                  |     5|
+|4411  |        NOR30439        |nor_3__2568                  |     5|
+|4412  |        NOR30441        |nor_3__2569                  |     5|
+|4413  |        NOR30442        |nor_3__2570                  |     5|
+|4414  |        NOR30443        |nor_3__2571                  |     5|
+|4415  |        NOR30444        |nor_3__2572                  |     5|
+|4416  |        NOR30445        |nor_3__2573                  |     5|
+|4417  |        NOR30446        |nor_3__2574                  |     5|
+|4418  |        NOR30447        |nor_3__2575                  |     5|
+|4419  |        NOR30448        |nor_3__2576                  |     5|
+|4420  |        NOR30449        |nor_3__2577                  |     5|
+|4421  |        NOR30450        |nor_3__2578                  |     5|
+|4422  |        NOR30451        |nor_3__2579                  |     5|
+|4423  |        NOR30452        |nor_3__2580                  |     5|
+|4424  |        NOR30453        |nor_3__2581                  |     5|
+|4425  |        NOR30454        |nor_3__2582                  |     5|
+|4426  |        NOR30455        |nor_3__2583                  |     5|
+|4427  |        NOR30456        |nor_3__2584                  |     5|
+|4428  |    trayb               |tray_b                       |   888|
+|4429  |      b01fixedmemory    |b01_fixed_memory             |   429|
+|4430  |        NOR00001        |nor_3__4178                  |     5|
+|4431  |        NOR00002        |nor_3__4179                  |     5|
+|4432  |        NOR00003        |nor_3__4180                  |     5|
+|4433  |        NOR00004        |nor_3__4181                  |     5|
+|4434  |        NOR00005        |nor_3__4182                  |     5|
+|4435  |        NOR00006        |nor_3__4183                  |     5|
+|4436  |        NOR00007        |nor_3__4184                  |     5|
+|4437  |        NOR00008        |nor_3__parameterized0__810   |     5|
+|4438  |        NOR00009        |nor_3__parameterized0__811   |     5|
+|4439  |        NOR00010        |nor_3__parameterized0__812   |     5|
+|4440  |        NOR00011        |nor_3__parameterized0__813   |     5|
+|4441  |        NOR00012        |nor_3__parameterized0__814   |     5|
+|4442  |        NOR00013        |nor_3__4185                  |     5|
+|4443  |        NOR00014        |nor_3__4186                  |     5|
+|4444  |        NOR00015        |nor_3__4187                  |     5|
+|4445  |        NOR00016        |nor_3__parameterized0__815   |     5|
+|4446  |        NOR00017        |nor_3__4188                  |     5|
+|4447  |        NOR00018        |nor_3__parameterized0__816   |     5|
+|4448  |        NOR00019        |nor_3__4189                  |     5|
+|4449  |        NOR00020        |nor_3__parameterized0__817   |     5|
+|4450  |        NOR00021        |nor_3__4190                  |     5|
+|4451  |        NOR00022        |nor_3__4191                  |     5|
+|4452  |        NOR00023        |nor_3__4192                  |     5|
+|4453  |        NOR00024        |nor_3__4193                  |     5|
+|4454  |        NOR00025        |nor_3__4194                  |     5|
+|4455  |        NOR00026        |nor_3__4195                  |     5|
+|4456  |        NOR00027        |nor_3__4196                  |     5|
+|4457  |        NOR00028        |nor_3__4197                  |     5|
+|4458  |        NOR00029        |nor_3__4198                  |     5|
+|4459  |        NOR00030        |nor_3__4199                  |     5|
+|4460  |        NOR00031        |nor_3__4200                  |     5|
+|4461  |        NOR00032        |nor_3__4201                  |     5|
+|4462  |        NOR00033        |nor_3__4202                  |     5|
+|4463  |        NOR00034        |nor_3__4203                  |     5|
+|4464  |        NOR00035        |nor_3__4204                  |     5|
+|4465  |        NOR00036        |nor_3__4205                  |     5|
+|4466  |        NOR00037        |nor_3__4206                  |     5|
+|4467  |        NOR00038        |nor_3__4207                  |     5|
+|4468  |        NOR00039        |nor_3__4208                  |     5|
+|4469  |        NOR00040        |nor_3__4209                  |     5|
+|4470  |        NOR00041        |nor_3__4210                  |     5|
+|4471  |        NOR00042        |nor_3__4211                  |     5|
+|4472  |        NOR00043        |nor_3__4212                  |     5|
+|4473  |        NOR00044        |nor_3__4213                  |     5|
+|4474  |        NOR00045        |nor_3__4214                  |     5|
+|4475  |        NOR00046        |nor_3__4215                  |     5|
+|4476  |        NOR00048        |nor_3__4216                  |     5|
+|4477  |        NOR00049        |nor_3__4217                  |     5|
+|4478  |        NOR00050        |nor_3__4218                  |     5|
+|4479  |        NOR00051        |nor_3__4219                  |     5|
+|4480  |        NOR00052        |nor_3__parameterized0__818   |     5|
+|4481  |        NOR00053        |nor_3__4220                  |     5|
+|4482  |        NOR00054        |nor_3__parameterized0__819   |     5|
+|4483  |        NOR00055        |nor_3__parameterized0__820   |     5|
+|4484  |        NOR00056        |nor_3__parameterized0__821   |     5|
+|4485  |        NOR00057        |nor_3__parameterized0__822   |     5|
+|4486  |        NOR00058        |nor_3__4221                  |     5|
+|4487  |        NOR00059        |nor_3__4222                  |     5|
+|4488  |        NOR00061        |nor_3__4223                  |     5|
+|4489  |        NOR00062        |nor_3__parameterized0__823   |     5|
+|4490  |        NOR00063        |nor_3__4224                  |     5|
+|4491  |        NOR00064        |nor_3__parameterized0__824   |     5|
+|4492  |        NOR00065        |nor_3__parameterized0__825   |     5|
+|4493  |        NOR00066        |nor_3__parameterized0__826   |     5|
+|4494  |        NOR00067        |nor_3__parameterized0__827   |     5|
+|4495  |        NOR00068        |nor_3__4225                  |     5|
+|4496  |        NOR00069        |nor_3__4226                  |     5|
+|4497  |        NOR00071        |nor_3__4227                  |     5|
+|4498  |        NOR00072        |nor_3__parameterized0__828   |     5|
+|4499  |        NOR00073        |nor_3__4228                  |     5|
+|4500  |        NOR00074        |nor_3__parameterized0__829   |     5|
+|4501  |        NOR00075        |nor_3__parameterized0__830   |     5|
+|4502  |        NOR00076        |nor_3__parameterized0__831   |     5|
+|4503  |        NOR00077        |nor_3__parameterized0__832   |     5|
+|4504  |        NOR00078        |nor_3__4229                  |     5|
+|4505  |        NOR00079        |nor_3__4230                  |     5|
+|4506  |        NOR00080        |nor_3__parameterized0        |     5|
+|4507  |        NOR00081        |nor_3__4231                  |     5|
+|4508  |        NOR00082        |nor_3                        |     5|
+|4509  |      b07oscillator     |b07_oscillator               |    13|
+|4510  |        agc_clk_div     |agc_clock_divider            |    11|
+|4511  |      b08alarm          |b08_alarm                    |    23|
+|4512  |      b12erasablememory |b12_erasable_memory          |   407|
+|4513  |        NOR00001        |nor_3__4128                  |     5|
+|4514  |        NOR00002        |nor_3__4129                  |     5|
+|4515  |        NOR00003        |nor_3__4130                  |     5|
+|4516  |        NOR00004        |nor_3__4131                  |     5|
+|4517  |        NOR00005        |nor_3__4132                  |     5|
+|4518  |        NOR00007        |nor_3__4133                  |     5|
+|4519  |        NOR00008        |nor_3__4134                  |     5|
+|4520  |        NOR00009        |nor_3__4135                  |     5|
+|4521  |        NOR00010        |nor_3__4136                  |     5|
+|4522  |        NOR00011        |nor_3__4137                  |     5|
+|4523  |        NOR00013        |nor_3__4138                  |     5|
+|4524  |        NOR00014        |nor_3__4139                  |     5|
+|4525  |        NOR00015        |nor_3__4140                  |     5|
+|4526  |        NOR00016        |nor_3__4141                  |     5|
+|4527  |        NOR00017        |nor_3__4142                  |     5|
+|4528  |        NOR00018        |nor_3__4143                  |     5|
+|4529  |        NOR00019        |nor_3__4144                  |     5|
+|4530  |        NOR00021        |nor_3__4145                  |     5|
+|4531  |        NOR00022        |nor_3__4146                  |     5|
+|4532  |        NOR00023        |nor_3__4147                  |     5|
+|4533  |        NOR00024        |nor_3__parameterized0__790   |     5|
+|4534  |        NOR00025        |nor_3__4148                  |     5|
+|4535  |        NOR00026        |nor_3__4149                  |     5|
+|4536  |        NOR00027        |nor_3__parameterized0__791   |     5|
+|4537  |        NOR00028        |nor_3__4150                  |     5|
+|4538  |        NOR00029        |nor_3__4151                  |     5|
+|4539  |        NOR00030        |nor_3__parameterized0__792   |     5|
+|4540  |        NOR00031        |nor_3__4152                  |     5|
+|4541  |        NOR00032        |nor_3__4153                  |     5|
+|4542  |        NOR00033        |nor_3__parameterized0__793   |     5|
+|4543  |        NOR00034        |nor_3__4154                  |     5|
+|4544  |        NOR00035        |nor_3__4155                  |     5|
+|4545  |        NOR00036        |nor_3__parameterized0__794   |     5|
+|4546  |        NOR00037        |nor_3__4156                  |     5|
+|4547  |        NOR00038        |nor_3__4157                  |     5|
+|4548  |        NOR00039        |nor_3__parameterized0__795   |     5|
+|4549  |        NOR00040        |nor_3__4158                  |     5|
+|4550  |        NOR00041        |nor_3__4159                  |     5|
+|4551  |        NOR00042        |nor_3__parameterized0__796   |     5|
+|4552  |        NOR00043        |nor_3__4160                  |     5|
+|4553  |        NOR00044        |nor_3__4161                  |     5|
+|4554  |        NOR00045        |nor_3__parameterized0__797   |     5|
+|4555  |        NOR00046        |nor_3__4162                  |     5|
+|4556  |        NOR00047        |nor_3__4163                  |     5|
+|4557  |        NOR00048        |nor_3__parameterized0__798   |     5|
+|4558  |        NOR00049        |nor_3__4164                  |     5|
+|4559  |        NOR00050        |nor_3__4165                  |     5|
+|4560  |        NOR00051        |nor_3__parameterized0__799   |     5|
+|4561  |        NOR00052        |nor_3__4166                  |     5|
+|4562  |        NOR00053        |nor_3__4167                  |     5|
+|4563  |        NOR00054        |nor_3__parameterized0__800   |     5|
+|4564  |        NOR00055        |nor_3__4168                  |     5|
+|4565  |        NOR00061        |nor_3__parameterized0__801   |     5|
+|4566  |        NOR00062        |nor_3__4169                  |     5|
+|4567  |        NOR00063        |nor_3__4170                  |     5|
+|4568  |        NOR00064        |nor_3__parameterized0__802   |     5|
+|4569  |        NOR00065        |nor_3__4171                  |     5|
+|4570  |        NOR00066        |nor_3__parameterized0__803   |     5|
+|4571  |        NOR00067        |nor_3__4172                  |     5|
+|4572  |        NOR00068        |nor_3__parameterized0__804   |     5|
+|4573  |        NOR00069        |nor_3__4173                  |     5|
+|4574  |        NOR00070        |nor_3__parameterized0__805   |     5|
+|4575  |        NOR00071        |nor_3__4174                  |     5|
+|4576  |        NOR00072        |nor_3__parameterized0__806   |     5|
+|4577  |        NOR00073        |nor_3__4175                  |     5|
+|4578  |        NOR00056        |nor_3__parameterized0__807   |     5|
+|4579  |        NOR00057        |nor_3__parameterized0__808   |     5|
+|4580  |        NOR00058        |nor_3__4176                  |     5|
+|4581  |        NOR00059        |nor_3__parameterized0__809   |     5|
+|4582  |        NOR00060        |nor_3__4177                  |     5|
+|4583  |  io                    |io_circuits                  |   524|
+|4584  |    db1                 |debounce__1                  |    15|
+|4585  |    db2                 |debounce__2                  |    15|
+|4586  |    db3                 |debounce__parameterized0     |    52|
+|4587  |    db4                 |debounce__parameterized1     |    67|
+|4588  |    db5                 |debounce__3                  |    15|
+|4589  |    db6                 |debounce__4                  |    15|
+|4590  |    db7                 |debounce__5                  |    15|
+|4591  |    db8                 |debounce__6                  |    15|
+|4592  |    db9                 |debounce__parameterized2     |    31|
+|4593  |    db10                |debounce__parameterized3     |    24|
+|4594  |    db11                |debounce__parameterized4     |    20|
+|4595  |    db13                |debounce__8                  |    15|
+|4596  |    db14                |debounce__9                  |    15|
+|4597  |    db15                |debounce__10                 |    15|
+|4598  |    db16                |debounce__11                 |    15|
+|4599  |    db17                |debounce__12                 |    15|
+|4600  |    db18                |debounce__13                 |    15|
+|4601  |    db19                |debounce__14                 |    15|
+|4602  |    db20                |debounce__15                 |    15|
+|4603  |    db21                |debounce__16                 |    15|
+|4604  |    db22                |debounce__17                 |    15|
+|4605  |    db23                |debounce__18                 |    15|
+|4606  |    db24                |debounce__19                 |    15|
+|4607  |    db25                |debounce__20                 |    15|
+|4608  |    db28                |debounce__23                 |    15|
+|4609  |    db29                |debounce__24                 |    15|
+|4610  |    db30                |debounce__25                 |    15|
+|4611  |  agcmonitor            |agc_monitor                  |  1964|
+|4612  |    usb_if              |usb_interface                |   317|
+|4613  |      cmd_rx            |cmd_receiver                 |    97|
+|4614  |      msg_sndr          |msg_sender                   |    98|
+|4615  |    cmd_ctrl            |cmd_controller               |    65|
+|4616  |    ctrl_regs           |control_regs                 |   616|
+|4617  |    stat_regs           |status_regs                  |   274|
+|4618  |    strt_stp            |start_stop                   |    89|
+|4619  |    ctmr                |clear_timer                  |    14|
+|4620  |    mon_regs            |monitor_regs                 |   573|
+|4621  |      reg_a             |register__1                  |    33|
+|4622  |      reg_l             |register__2                  |    33|
+|4623  |      reg_q             |register__3                  |    33|
+|4624  |      reg_eb            |register2__1                 |     8|
+|4625  |      reg_fb            |register__parameterized0__1  |    11|
+|4626  |      reg_z             |register__4                  |    33|
+|4627  |      reg_b             |register__5                  |    33|
+|4628  |      reg_s             |register2__parameterized0    |    26|
+|4629  |      editing           |edit                         |    46|
+|4630  |      reg_g             |register2__parameterized1    |    34|
+|4631  |      reg_y             |register__6                  |    33|
+|4632  |      reg_u             |register__7                  |    33|
+|4633  |      reg_w             |register                     |    33|
+|4634  |  styxpsbootloader      |styx_ps_bootloader           |     3|
+|4635  |    styx_ps             |styx_ps_wrapper              |     3|
+|4636  |      styx_ps_i         |styx_ps                      |     3|
 +------+------------------------+-----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:03:24 ; elapsed = 00:05:09 . Memory (MB): peak = 2084.312 ; gain = 523.605 ; free physical = 4128 ; free virtual = 9140
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:59 ; elapsed = 00:06:15 . Memory (MB): peak = 2083.344 ; gain = 522.637 ; free physical = 1871 ; free virtual = 8561
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:03:15 ; elapsed = 00:05:01 . Memory (MB): peak = 2084.312 ; gain = 347.254 ; free physical = 4184 ; free virtual = 9195
-Synthesis Optimization Complete : Time (s): cpu = 00:03:24 ; elapsed = 00:05:10 . Memory (MB): peak = 2084.320 ; gain = 523.605 ; free physical = 4197 ; free virtual = 9209
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:49 ; elapsed = 00:06:04 . Memory (MB): peak = 2083.344 ; gain = 346.285 ; free physical = 1927 ; free virtual = 8616
+Synthesis Optimization Complete : Time (s): cpu = 00:04:00 ; elapsed = 00:06:15 . Memory (MB): peak = 2083.352 ; gain = 522.637 ; free physical = 1941 ; free virtual = 8631
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 42 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2084.320 ; gain = 0.000 ; free physical = 4157 ; free virtual = 9168
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2083.352 ; gain = 0.000 ; free physical = 1899 ; free virtual = 8589
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 8 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 8 instances
@@ -28226,11 +28227,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 357 Infos, 45 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:03:33 ; elapsed = 00:05:19 . Memory (MB): peak = 2084.320 ; gain = 684.094 ; free physical = 4291 ; free virtual = 9303
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2084.320 ; gain = 0.000 ; free physical = 4291 ; free virtual = 9303
+synth_design: Time (s): cpu = 00:04:11 ; elapsed = 00:06:26 . Memory (MB): peak = 2083.352 ; gain = 638.992 ; free physical = 2035 ; free virtual = 8723
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2083.352 ; gain = 0.000 ; free physical = 2035 ; free virtual = 8723
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/toplevel.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 2108.324 ; gain = 24.004 ; free physical = 4288 ; free virtual = 9301
+write_checkpoint: Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 2107.355 ; gain = 24.004 ; free physical = 2032 ; free virtual = 8723
 INFO: [runtcl-4] Executing : report_utilization -file toplevel_utilization_synth.rpt -pb toplevel_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat May  2 18:59:48 2020...
+INFO: [Common 17-206] Exiting Vivado at Sat May  9 10:03:03 2020...

@@ -349,7 +349,7 @@ module a04_stage_branch(
     assign MST2 = NOR36125_out;
     
     // Flip-flop C
-    nor_3 #(1'b1)  NOR36146(NOR36146_out,   NOR36155_out,   NOR36149_out,   n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR36146(NOR36146_out,   NOR36155_out,   NOR36150_in,    n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR36149(NOR36149_out,   NOR36146_out,   STRTFC,         T01,            p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR36159(NOR36159_out,   RSTSTG,         n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);
     assign NOR36150_in = NOR36149_out & NOR36159_out;
