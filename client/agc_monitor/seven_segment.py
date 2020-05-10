@@ -19,7 +19,7 @@ class SevenSegment(QWidget):
         self._setup_ui()
 
     def _setup_ui(self):
-        self.setFixedSize(33,37)
+        self.setFixedSize(33, 37)
 
     def set_relay_bits(self, bits):
         if bits != self._bits:

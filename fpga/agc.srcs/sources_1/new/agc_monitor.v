@@ -115,6 +115,25 @@ module agc_monitor(
     input wire MRCH,
     input wire MWCH,
     
+    output wire MKEY1,
+    output wire MKEY2,
+    output wire MKEY3,
+    output wire MKEY4,
+    output wire MKEY5,
+    output wire MAINRS,
+    
+    output wire NKEY1,
+    output wire NKEY2,
+    output wire NKEY3,
+    output wire NKEY4,
+    output wire NKEY5,
+    output wire NAVRST,
+    output wire MARK,
+    output wire MRKREJ,
+    output wire MRKRST,
+    
+    output wire IN3214,
+    
     // Power
     input wire n0VDCA,
     //input wire BPLUS,
@@ -673,42 +692,8 @@ module agc_monitor(
     /*******************************************************************************.
     * Core Rope Simulation                                                          *
     '*******************************************************************************/
-    wire mnhsbf_rupts;
     
     
-    /*******************************************************************************.
-    * Interrupt Injection                                                           *
-    '*******************************************************************************/
-    wire keyrupt1;
-    wire keyrupt2;
-    wire monpar_rupts;
-    wire [16:1] mdt_rupts;
-    
-    rupt_injector rupts(
-        .clk(clk),
-        .rst_n(rst_n),
-    
-        .keyrupt1(keyrupt1),
-        .keyrupt2(keyrupt2),
-        .uprupt(1'b0),
-        .downrupt(downrupt),
-        .handrupt(handrupt),
-    
-        .MGOJAM(MGOJAM),
-        .mt(mt),
-        .mst(mst),
-        .MSQEXT(MSQEXT),
-        .sq(sq),
-        .MIIP(MIIP),
-        .MRGG(MRGG),
-        .MWBG(MWBG),
-        .mwl(mwl),
-    
-        .mnhsbf(mnhsbf_rupts),
-        .mdt(mdt_rupts),
-        .monpar(monpar_rupts)
-    );
-
 
     /*******************************************************************************.
     * DSKY                                                                          *
@@ -735,11 +720,25 @@ module agc_monitor(
         .out0(out0),
         .dsalmout(dsalmout),
         .chan13(chan13),
-    
-        .mdt(mdt_dsky),
-    
-        .keyrupt1(keyrupt1),
-        .keyrupt2(keyrupt2)
+        
+        .MKEY1(MKEY1),
+        .MKEY2(MKEY2),
+        .MKEY3(MKEY3),
+        .MKEY4(MKEY4),
+        .MKEY5(MKEY5),
+        .MAINRS(MAINRS),
+        
+        .NKEY1(NKEY1),
+        .NKEY2(NKEY2),
+        .NKEY3(NKEY3),
+        .NKEY4(NKEY4),
+        .NKEY5(NKEY5),
+        .MARK(MARK),
+        .MRKREJ(MRKREJ),
+        .NAVRST(NAVRST),
+        .MRKRST(MRKRST),
+        
+        .IN3214(IN3214)
     );
 
 endmodule

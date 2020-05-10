@@ -155,178 +155,177 @@ module cmd_controller(
         nassp_write_en = 1'b0;
     
         case (state)
-        IDLE: begin
-            if (cmd_ready) begin
-                // A new command is read. Read it in, latch it, and move on to the
-                // state associated with its target
-                cmd_read_en = 1'b1;
-                active_cmd_q = cmd;
-                case (new_cmd_addr_group)
-                    `ADDR_GROUP_ERASABLE:     next_state = ERASABLE;
-                    `ADDR_GROUP_FIXED:        next_state = FIXED;
-                    `ADDR_GROUP_CHANNELS:     next_state = CHANNELS;
-                    `ADDR_GROUP_SIM_ERASABLE: next_state = SIM_ERASABLE;
-                    `ADDR_GROUP_SIM_FIXED:    next_state = SIM_FIXED;
-                    `ADDR_GROUP_CONTROL:      next_state = CONTROL;
-                    `ADDR_GROUP_STATUS:       next_state = STATUS;
-                    `ADDR_GROUP_MON_REGS:     next_state = MON_REGS;
-                    `ADDR_GROUP_MON_CHANNELS: next_state = MON_CHANNELS;
-                    `ADDR_GROUP_MON_DSKY:     next_state = MON_DSKY;
-                    `ADDR_GROUP_TRACE:        next_state = TRACE;
-                    `ADDR_GROUP_NASSP:        next_state = NASSP;
-                    default:                  next_state = IDLE;
-                endcase
+            IDLE: begin
+                if (cmd_ready) begin
+                    // A new command is read. Read it in, latch it, and move on to the
+                    // state associated with its target
+                    cmd_read_en = 1'b1;
+                    active_cmd_q = cmd;
+                    case (new_cmd_addr_group)
+                        `ADDR_GROUP_ERASABLE:     next_state = ERASABLE;
+                        `ADDR_GROUP_FIXED:        next_state = FIXED;
+                        `ADDR_GROUP_CHANNELS:     next_state = CHANNELS;
+                        `ADDR_GROUP_SIM_ERASABLE: next_state = SIM_ERASABLE;
+                        `ADDR_GROUP_SIM_FIXED:    next_state = SIM_FIXED;
+                        `ADDR_GROUP_CONTROL:      next_state = CONTROL;
+                        `ADDR_GROUP_STATUS:       next_state = STATUS;
+                        `ADDR_GROUP_MON_REGS:     next_state = MON_REGS;
+                        `ADDR_GROUP_MON_CHANNELS: next_state = MON_CHANNELS;
+                        `ADDR_GROUP_MON_DSKY:     next_state = MON_DSKY;
+                        `ADDR_GROUP_TRACE:        next_state = TRACE;
+                        `ADDR_GROUP_NASSP:        next_state = NASSP;
+                        default:                  next_state = IDLE;
+                    endcase
+                end
             end
-        end
-    
-        ERASABLE: begin
-            if (~cmd_write_flag) begin
-                if (agc_erasable_read_done) begin
+        
+            ERASABLE: begin
+                if (~cmd_write_flag) begin
+                    if (agc_erasable_read_done) begin
+                        next_state = SEND_READ_MSG;
+                    end else begin
+                        agc_erasable_read_en = 1'b1;
+                    end
+                end else begin
+                    if (agc_erasable_write_done) begin
+                        next_state = IDLE;
+                    end else begin
+                        agc_erasable_write_en = 1'b1;
+                    end
+                end
+            end
+        
+            FIXED: begin
+                if (~cmd_write_flag) begin
+                    if (agc_fixed_read_done) begin
+                        next_state = SEND_READ_MSG;
+                    end else begin
+                        agc_fixed_read_en = 1'b1;
+                    end
+                end else begin
+                    next_state = IDLE;
+                end
+            end
+        
+            CHANNELS: begin
+                if (~cmd_write_flag) begin
+                    if (agc_channels_read_done) begin
+                        next_state = SEND_READ_MSG;
+                    end else begin
+                        agc_channels_read_en = 1'b1;
+                    end
+                end else begin
+                    if (agc_channels_write_done) begin
+                        next_state = IDLE;
+                    end else begin
+                        agc_channels_write_en = 1'b1;
+                    end
+                end
+            end
+        
+            SIM_ERASABLE: begin
+                if (~cmd_write_flag) begin
+                    ems_read_en = 1'b1;
                     next_state = SEND_READ_MSG;
                 end else begin
-                    agc_erasable_read_en = 1'b1;
-                end
-            end else begin
-                if (agc_erasable_write_done) begin
+                    ems_write_en = 1'b1;
                     next_state = IDLE;
-                end else begin
-                    agc_erasable_write_en = 1'b1;
                 end
             end
-        end
-    
-        FIXED: begin
-            if (~cmd_write_flag) begin
-                if (agc_fixed_read_done) begin
+        
+            SIM_FIXED: begin
+                if (~cmd_write_flag) begin
+                    crs_read_en = 1'b1;
                     next_state = SEND_READ_MSG;
                 end else begin
-                    agc_fixed_read_en = 1'b1;
+                    crs_write_en = 1'b1;
+                    next_state = IDLE;
                 end
-            end else begin
-                next_state = IDLE;
             end
-        end
-    
-        CHANNELS: begin
-            if (~cmd_write_flag) begin
-                if (agc_channels_read_done) begin
+        
+            CONTROL: begin
+                // Control register actions are instant, so toggle the appropriate
+                // signal and move on
+                if (cmd_write_flag) begin
+                    if (ctrl_write_done) begin
+                        next_state = IDLE;
+                    end else begin
+                        ctrl_write_en = 1'b1;
+                    end
+                end else begin
+                    ctrl_read_en = 1'b1;
+                    next_state = SEND_READ_MSG;
+                end
+            end
+        
+            STATUS: begin
+                if (~cmd_write_flag) begin
+                    status_read_en = 1'b1;
                     next_state = SEND_READ_MSG;
                 end else begin
-                    agc_channels_read_en = 1'b1;
-                end
-            end else begin
-                if (agc_channels_write_done) begin
+                    status_write_en = 1'b1;
                     next_state = IDLE;
-                end else begin
-                    agc_channels_write_en = 1'b1;
                 end
             end
-        end
-    
-        SIM_ERASABLE: begin
-            if (~cmd_write_flag) begin
-                ems_read_en = 1'b1;
-                next_state = SEND_READ_MSG;
-            end else begin
-                ems_write_en = 1'b1;
-                next_state = IDLE;
-            end
-        end
-    
-        SIM_FIXED: begin
-            if (~cmd_write_flag) begin
-                crs_read_en = 1'b1;
-                next_state = SEND_READ_MSG;
-            end else begin
-                crs_write_en = 1'b1;
-                next_state = IDLE;
-            end
-        end
-    
-        CONTROL: begin
-            // Control register actions are instant, so toggle the appropriate
-            // signal and move on
-            if (cmd_write_flag) begin
-                if (ctrl_write_done) begin
+        
+            MON_REGS: begin
+                if (~cmd_write_flag) begin
+                    mon_reg_read_en = 1'b1;
+                    next_state = SEND_READ_MSG;
+                end else begin
                     next_state = IDLE;
-                end else begin
-                    ctrl_write_en = 1'b1;
                 end
-            end else begin
-                ctrl_read_en = 1'b1;
-                next_state = SEND_READ_MSG;
             end
-        end
-    
-        STATUS: begin
-            if (~cmd_write_flag) begin
-                status_read_en = 1'b1;
-                next_state = SEND_READ_MSG;
-            end else begin
-                status_write_en = 1'b1;
-                next_state = IDLE;
-            end
-        end
-    
-        MON_REGS: begin
-            if (~cmd_write_flag) begin
-                mon_reg_read_en = 1'b1;
-                next_state = SEND_READ_MSG;
-            end else begin
-                next_state = IDLE;
-            end
-        end
-    
-        MON_CHANNELS: begin
-            if (~cmd_write_flag) begin
-                mon_chan_read_en = 1'b1;
-                next_state = SEND_READ_MSG;
-            end else begin
-                next_state = IDLE;
-            end
-        end
-    
-        MON_DSKY: begin
-            if (~cmd_write_flag) begin
-                mon_dsky_read_en = 1'b1;
-                next_state = SEND_READ_MSG;
-            end else begin
-                mon_dsky_write_en = 1'b1;
-                next_state = IDLE;
-            end
-        end
-    
-        TRACE: begin
-            if (~cmd_write_flag) begin
-                trace_read_en = 1'b1;
-                next_state = SEND_READ_MSG;
-            end else begin
-                next_state = IDLE;
-            end
-        end
-    
-        NASSP: begin
-            if (cmd_write_flag) begin
-                if (nassp_write_done) begin
+        
+            MON_CHANNELS: begin
+                if (~cmd_write_flag) begin
+                    mon_chan_read_en = 1'b1;
+                    next_state = SEND_READ_MSG;
+                end else begin
                     next_state = IDLE;
-                end else begin
-                    nassp_write_en = 1'b1;
                 end
-            end else begin
-                nassp_read_en = 1'b1;
-                next_state = SEND_READ_MSG;
             end
-        end
-    
-        SEND_READ_MSG: begin
-            // The read response should now be constructed; proceed to IDLE
-            next_state = IDLE;
-        end
-    
-        default: begin
-            next_state = IDLE;
-        end
-    
+        
+            MON_DSKY: begin
+                if (~cmd_write_flag) begin
+                    mon_dsky_read_en = 1'b1;
+                    next_state = SEND_READ_MSG;
+                end else begin
+                    mon_dsky_write_en = 1'b1;
+                    next_state = IDLE;
+                end
+            end
+        
+            TRACE: begin
+                if (~cmd_write_flag) begin
+                    trace_read_en = 1'b1;
+                    next_state = SEND_READ_MSG;
+                end else begin
+                    next_state = IDLE;
+                end
+            end
+        
+            NASSP: begin
+                if (cmd_write_flag) begin
+                    if (nassp_write_done) begin
+                        next_state = IDLE;
+                    end else begin
+                        nassp_write_en = 1'b1;
+                    end
+                end else begin
+                    nassp_read_en = 1'b1;
+                    next_state = SEND_READ_MSG;
+                end
+            end
+        
+            SEND_READ_MSG: begin
+                // The read response should now be constructed; proceed to IDLE
+                next_state = IDLE;
+            end
+        
+            default: begin
+                next_state = IDLE;
+            end
         endcase
     end
 endmodule

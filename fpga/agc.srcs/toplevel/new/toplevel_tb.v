@@ -177,7 +177,7 @@ module toplevel_tb();
 	reg IN3008 = 0;
 	reg IN3212 = 0;
 	reg IN3213 = 0;
-	reg IN3214 = 0;
+	wire IN3214;
 	reg IN3216 = 0;
 	reg IN3301 = 0;
 	reg ISSTOR = 0;
@@ -187,34 +187,34 @@ module toplevel_tb();
 	reg LRIN1 = 0;
 	reg LRRLSC = 0;
 	reg LVDAGD = 0;
-	reg MAINRS = 0;
+	wire MAINRS;
 	reg MANRmP = 0;
 	reg MANRmR = 0;
 	reg MANRmY = 0;
 	reg MANRpP = 0;
 	reg MANRpR = 0;
 	reg MANRpY = 0;
-	reg MARK = 0;
-	reg MKEY1 = 0;
-	reg MKEY2 = 0;
-	reg MKEY3 = 0;
-	reg MKEY4 = 0;
-	reg MKEY5 = 0;
+	wire MARK;
+	wire MKEY1;
+	wire MKEY2;
+	wire MKEY3;
+	wire MKEY4;
+	wire MKEY5;
 	reg MNIMmP = 0;
 	reg MNIMmR = 0;
 	reg MNIMmY = 0;
 	reg MNIMpP = 0;
 	reg MNIMpR = 0;
 	reg MNIMpY = 0;
-	reg MRKREJ = 0;
-	reg MRKRST = 0;
-	reg NAVRST = 0;
+	wire MRKREJ;
+	wire MRKRST;
+	wire NAVRST;
 	reg NHVFAL = 0;
-	reg NKEY1 = 0;
-	reg NKEY2 = 0;
-	reg NKEY3 = 0;
-	reg NKEY4 = 0;
-	reg NKEY5 = 0;
+	wire NKEY1;
+	wire NKEY2;
+	wire NKEY3;
+	wire NKEY4;
+	wire NKEY5;
 	reg OPCDFL = 0;
 	reg OPMSW2 = 0;
 	reg OPMSW3 = 0;
@@ -395,6 +395,9 @@ module toplevel_tb();
 	wire p4SW;
 	wire p4VDC;
 
+    wire rst_n;
+    assign rst_n = !reset;
+    
     // PIPA 3-3 moding simulation
     reg [2:0] moding_counter = 3'b0;
     always @(posedge PIPASW) begin
@@ -414,7 +417,7 @@ module toplevel_tb();
     
 	agc_monitor agcmonitor(
 		.clk(clk),
-		.rst_n(!reset),
+		.rst_n(rst_n),
 		.clkout(clkout),
 		.data(data),
 		.rxf_n(rxf_n),
@@ -423,7 +426,7 @@ module toplevel_tb();
 		.wr_n(wr_n),
 		.oe_n(oe_n),
 		.siwu(siwu),
-		.MONWT(MONWT),
+		.MONWT(MONWT), //
 		.MT01(MT01),
 		.MT02(MT02),
 		.MT03(MT03),
@@ -477,14 +480,14 @@ module toplevel_tb();
 		.MWG(MWG),
 		.MWYG(MWYG),
 		.MRULOG(MRULOG),
-		.MRGG(MRGG),
+		.MRGG(MRGG),  //
 		.MGOJAM(MGOJAM),
-		.MIIP(MIIP),
+		.MIIP(MIIP), //
 		.MSTPIT_(MSTPIT_),
 		.MINHL(MINHL),
 		.MINKL(MINKL),
 		.MSP(MSP),
-		.MGP_(MGP_),
+		.MGP_(MGP_), //
 		.MSTP(MSTP),
 		.MSTRT(MSTRT),
 		.mstpeven(mstpeven),
@@ -513,6 +516,26 @@ module toplevel_tb();
 		.MLDCH(MLDCH),
 		.MREAD(MREAD),
 		.MRDCH(MRDCH),
+		.MRCH(MRCH),
+		.MWCH(MWCH),
+		
+		.MKEY1(MKEY1),
+		.MKEY2(MKEY2),
+		.MKEY3(MKEY3),
+		.MKEY4(MKEY4),
+		.MKEY5(MKEY5),
+		.MAINRS(MAINRS),
+        .NKEY1(NKEY1),
+        .NKEY2(NKEY2),
+        .NKEY3(NKEY3),
+        .NKEY4(NKEY4),
+        .NKEY5(NKEY5),
+        .NAVRST(NAVRST),
+        .MARK(MARK),
+        .MRKREJ(MRKREJ),
+        .MRKRST(MRKRST),
+        .IN3214(IN3214),
+        
 		.n0VDCA(n0VDCA),
 		.BPLSSW(BPLSSW),
 		.p4SW(p4SW),
@@ -971,6 +994,18 @@ module toplevel_tb();
 //		@(posedge clkout) data_in = 8'h01;
 //		@(posedge clkout) data_in = 8'hC0;
 //		rxf_n = 1'b1;
+
+        // VERB key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h11;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
 		
 		#11531 // 5
 		#11531
@@ -978,6 +1013,59 @@ module toplevel_tb();
 		#11531
 		#11531
 		#11531 // 10
+		
+		
+		#12000000
+		
+		// VERB key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#4000000
+		
+		// 1 key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h07;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#11531 // 5
+		#11531
+		#11531
+		#11531
+		#11531
+		#11531 // 10
+		
+		
+		#10000000
+		
+		// 7 key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		
 		#11531
 		#11531 
 		#11531 

@@ -117,6 +117,7 @@
 `define DSKY_REG_PROCEED     16'h0A
 `define DSKY_REG_STATUS      16'h0B
 `define DSKY_REG_NAV_BUTTON  16'h0C
+`define DSKY_REG_BUTTON_REL  16'h0D
 
 // Wild register mode
 `define W_MODE_ALL 3'o0

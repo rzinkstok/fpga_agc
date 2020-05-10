@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="105471664687000fs"></ZoomStartTime>
-      <ZoomEndTime time="105494914687001fs"></ZoomEndTime>
-      <Cursor1Time time="105490156875000fs"></Cursor1Time>
+      <ZoomStartTime time="4918195000000fs"></ZoomStartTime>
+      <ZoomEndTime time="5152695000001fs"></ZoomEndTime>
+      <Cursor1Time time="5009297500000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="161"></NameColumnWidth>
+      <NameColumnWidth column_width="157"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="59" />
+   <WVObjectSize size="67" />
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MP0">
       <obj_property name="ElementShortName">MP0</obj_property>
       <obj_property name="ObjectShortName">MP0</obj_property>
@@ -35,6 +35,34 @@
    <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/usb_if/cmd_valid">
       <obj_property name="ElementShortName">cmd_valid</obj_property>
       <obj_property name="ObjectShortName">cmd_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/cmd_ctrl/cmd_write_flag">
+      <obj_property name="ElementShortName">cmd_write_flag</obj_property>
+      <obj_property name="ObjectShortName">cmd_write_flag</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/cmd_ctrl/new_cmd_addr_group">
+      <obj_property name="ElementShortName">new_cmd_addr_group[6:0]</obj_property>
+      <obj_property name="ObjectShortName">new_cmd_addr_group[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/cmd_addr">
+      <obj_property name="ElementShortName">cmd_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">cmd_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/cmd_data">
+      <obj_property name="ElementShortName">cmd_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">cmd_data[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_dsky_write_en">
+      <obj_property name="ElementShortName">mon_dsky_write_en</obj_property>
+      <obj_property name="ObjectShortName">mon_dsky_write_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_dsky_read_en">
+      <obj_property name="ElementShortName">mon_dsky_read_en</obj_property>
+      <obj_property name="ObjectShortName">mon_dsky_read_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/mon_dsky_data">
+      <obj_property name="ElementShortName">mon_dsky_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">mon_dsky_data[15:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/strt_stp/stop_conds">
       <obj_property name="ElementShortName">stop_conds[11:0]</obj_property>
@@ -135,7 +163,6 @@
    <wvobject type="group" fp_name="group670">
       <obj_property name="label">TIME</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="array" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[20]">
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">[20][15:0]</obj_property>
@@ -306,6 +333,7 @@
    <wvobject type="group" fp_name="group573">
       <obj_property name="label">Interrupt</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/CTROR">
          <obj_property name="ElementShortName">CTROR</obj_property>
          <obj_property name="ObjectShortName">CTROR</obj_property>
@@ -467,6 +495,75 @@
          <obj_property name="ObjectShortName">RPTSET</obj_property>
       </wvobject>
    </wvobject>
+   <wvobject type="group" fp_name="group703">
+      <obj_property name="label">DSKY</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MKEY1">
+         <obj_property name="ElementShortName">MKEY1</obj_property>
+         <obj_property name="ObjectShortName">MKEY1</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MKEY2">
+         <obj_property name="ElementShortName">MKEY2</obj_property>
+         <obj_property name="ObjectShortName">MKEY2</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MKEY3">
+         <obj_property name="ElementShortName">MKEY3</obj_property>
+         <obj_property name="ObjectShortName">MKEY3</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MKEY4">
+         <obj_property name="ElementShortName">MKEY4</obj_property>
+         <obj_property name="ObjectShortName">MKEY4</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MKEY5">
+         <obj_property name="ElementShortName">MKEY5</obj_property>
+         <obj_property name="ObjectShortName">MKEY5</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MAINRS">
+         <obj_property name="ElementShortName">MAINRS</obj_property>
+         <obj_property name="ObjectShortName">MAINRS</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/NOR45101_out">
+         <obj_property name="ElementShortName">NOR45101_out</obj_property>
+         <obj_property name="ObjectShortName">NOR45101_out</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/MKEY15">
+         <obj_property name="ElementShortName">MKEY15</obj_property>
+         <obj_property name="ObjectShortName">MKEY15</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/NOR45123_out">
+         <obj_property name="ElementShortName">NOR45123_out</obj_property>
+         <obj_property name="ObjectShortName">NOR45123_out</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/NOR45135_out">
+         <obj_property name="ElementShortName">NOR45135_out</obj_property>
+         <obj_property name="ObjectShortName">NOR45135_out</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/NOR45129_in">
+         <obj_property name="ElementShortName">NOR45129_in</obj_property>
+         <obj_property name="ObjectShortName">NOR45129_in</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/NOR45129_out">
+         <obj_property name="ElementShortName">NOR45129_out</obj_property>
+         <obj_property name="ObjectShortName">NOR45129_out</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/TPOR_">
+         <obj_property name="ElementShortName">TPOR_</obj_property>
+         <obj_property name="ObjectShortName">TPOR_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/F09D">
+         <obj_property name="ElementShortName">F09D</obj_property>
+         <obj_property name="ObjectShortName">F09D</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/F09A_">
+         <obj_property name="ElementShortName">F09A_</obj_property>
+         <obj_property name="ObjectShortName">F09A_</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a18/F09B_">
+         <obj_property name="ElementShortName">F09B_</obj_property>
+         <obj_property name="ObjectShortName">F09B_</obj_property>
+      </wvobject>
+   </wvobject>
    <wvobject type="group" fp_name="group410">
       <obj_property name="label">Timer</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -518,6 +615,7 @@
    <wvobject type="group" fp_name="group629">
       <obj_property name="label">Scaler</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a01/F02B">
          <obj_property name="ElementShortName">F02B</obj_property>
          <obj_property name="ObjectShortName">F02B</obj_property>
@@ -666,7 +764,6 @@
    <wvobject type="group" fp_name="group399">
       <obj_property name="label">Time pulses</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/MT01">
          <obj_property name="ElementShortName">MT01</obj_property>
          <obj_property name="ObjectShortName">MT01</obj_property>

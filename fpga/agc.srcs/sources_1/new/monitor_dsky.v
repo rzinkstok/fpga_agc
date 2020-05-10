@@ -22,19 +22,29 @@ module monitor_dsky(
     input wire [15:1] out0,
     input wire [15:1] dsalmout,
     input wire [15:1] chan13,
-
-    output wire [16:1] mdt,
-
-    output reg keyrupt1,
-    output reg keyrupt2
+    
+    output reg MKEY1,
+    output reg MKEY2,
+    output reg MKEY3,
+    output reg MKEY4,
+    output reg MKEY5,
+    output reg MAINRS,
+    
+    output reg NKEY1,
+    output reg NKEY2,
+    output reg NKEY3,
+    output reg NKEY4,
+    output reg NKEY5,
+    output reg MARK,
+    output reg MRKREJ,
+    output reg NAVRST,
+    output reg MRKRST,
+    
+    output reg IN3214
 );
     
+    // Logic to decode channel 10 (OUT0) data
     `define RYWD_5MS_COUNT 19'd500000
-    
-    wire [16:1] mdt_mainkey;
-    wire [16:1] mdt_navkey;
-    wire [16:1] mdt_pro;
-    assign mdt = mdt_mainkey | mdt_navkey | mdt_pro;
     
     wire [15:12] rywd;
     assign rywd = out0[15:12];
@@ -60,6 +70,10 @@ module monitor_dsky(
     reg tracker;
     reg prog_alarm;
     
+    // Channel 10 (OUT0) multiplexes the DSKY data coming from the AGC, holding each digit at least 20 ms.
+    // This loop checks the 4 bit digit address code in channel 10 (bits 12-15, called RYWD):
+    // if it changes, it waits for 5 ms and then puts the digit data (bits 1-11, called RYB)
+    // into the proper register
     always @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             prog <= 10'b0;
@@ -154,22 +168,24 @@ module monitor_dsky(
         end
     end
     
+    // Flip-flop for the restart lamp
     reg restart_ff;
-    reg [4:0] main_keycode;
-    reg [6:0] nav_keycode;
+    //reg [4:0] main_keycode;
+   // reg [6:0] nav_keycode;
     
-    always @(posedge clk or negedge rst_n) begin
-        if (~rst_n) begin
-            restart_ff <= 1'b0;
-        end else begin
-            if (MGOJAM) begin
-                restart_ff <= 1'b1;
-            end else if ((keyrupt1 & (main_keycode == 5'b10010)) | (keyrupt2 & (nav_keycode == 5'b10010))) begin
-                restart_ff <= 1'b0;
-            end
-        end
-    end
+//    always @(posedge clk or negedge rst_n) begin
+//        if (~rst_n) begin
+//            restart_ff <= 1'b0;
+//        end else begin
+//            if (MGOJAM) begin
+//                restart_ff <= 1'b1;
+//            end else if ((keyrupt1 & (main_keycode == 5'b10010)) | (keyrupt2 & (nav_keycode == 5'b10010))) begin
+//                restart_ff <= 1'b0;
+//            end
+//        end
+//    end
     
+    // Other lamps are controlled by channels 13 and channel 15 (DSALMOUT) 
     wire restart;
     assign restart = restart_ff | chan13[10];
     
@@ -194,61 +210,88 @@ module monitor_dsky(
     wire vnflash;
     assign vnflash = dsalmout[6];
     
-   
-    
-    reg proceed;
-    
-    wire rxor_start;
-    assign rxor_start = MSQEXT & (sq == `SQ_RXOR) & ((ch == 9'o32) | (ch == 9'o72)) & mt[2];
-    
-    reg rxor_32;
-    always @(posedge clk or negedge rst_n) begin
-        if (~rst_n) begin
-            rxor_32 <= 1'b0;
-        end else begin
-            if (rxor_start) begin
-                rxor_32 <= 1'b1;
-            end else if (mt[12]) begin
-                rxor_32 <= 1'b0;
-            end
-        end
-    end
-    
-    assign mdt_pro = (proceed & rxor_32 & mt[9]) ? 16'o20000 : 16'o0;
-    assign mdt_mainkey = (mrchg & (ch == 9'o15)) ? {11'b0, main_keycode} : 16'o0;
-    assign mdt_navkey = (mrchg & (ch == 9'o16)) ? {9'b0, nav_keycode} : 16'o0;
+    // Handling of button presses
+    // Should put keycode on MKEY1 - MKEY5, which are linked to input channel 15 
+    // When a key is released, MAINRS must be sent. The AGC generates KYRUPT1 only when
+    // F09A/ goes low, so the key must be pressed for at least half the period of F09. F09
+    // has a 5 ms period, so 2.5 ms should do it.
+    // MAINRS is always high if no key is pressed.
+    //
+    // PROCEED is special: it has no keycode, and is also the STBY button. The proceed signal is
+    // communicated through channel 32 bit 14 (signal IN3214). STBY is initiated when holding PROCEED
+    // for about 2 seconds.
     
     always @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
-            main_keycode <= 5'b0;
-            nav_keycode <= 7'b0;
-            proceed <= 1'b0;
-            keyrupt1 <= 1'b0;
-            keyrupt2 <= 1'b0;
+            MKEY1 <= 1'b0;
+            MKEY2 <= 1'b0;
+            MKEY3 <= 1'b0;
+            MKEY4 <= 1'b0;
+            MKEY5 <= 1'b0;
+            NKEY1 <= 1'b0;
+            NKEY2 <= 1'b0;
+            NKEY3 <= 1'b0;
+            NKEY4 <= 1'b0;
+            NKEY5 <= 1'b0;
+            MARK <= 1'b0;
+            MRKREJ <= 1'b0;
+            IN3214 <= 1'b0;
+            MAINRS <= 1'b1;
+            NAVRST <= 1'b1;
+            MRKRST <= 1'b1;
+            
         end else begin
-            keyrupt1 <= 1'b0;
-            keyrupt2 <= 1'b0;
-            if (rxor_32 & mt[11]) begin
-                proceed <= 1'b0;
-            end
             if (write_en) begin
                 case (addr)
                     `DSKY_REG_MAIN_BUTTON: begin
-                        main_keycode <= data_in[4:0];
-                        keyrupt1 <= 1'b1;
+                        MKEY1 <= data_in[0];
+                        MKEY2 <= data_in[1];
+                        MKEY3 <= data_in[2];
+                        MKEY4 <= data_in[3];
+                        MKEY5 <= data_in[4];
+                        MAINRS <= 1'b0;
                     end
                     `DSKY_REG_NAV_BUTTON: begin
-                        nav_keycode <= data_in[6:0];
-                        keyrupt2 <= 1'b1;
+                        NKEY1 <= data_in[0];
+                        NKEY2 <= data_in[1];
+                        NKEY3 <= data_in[2];
+                        NKEY4 <= data_in[3];
+                        NKEY5 <= data_in[4];
+                        MARK <= data_in[5];
+                        MRKREJ <= data_in[6];
+                        NAVRST <= 1'b0;
+                        MRKRST <= 1'b0;
                     end
                     `DSKY_REG_PROCEED: begin
-                        proceed <= 1'b1;
+                        IN3214 <= 1'b1;
+                    end
+                    `DSKY_REG_BUTTON_REL: begin
+                        MKEY1 <= 1'b0;
+                        MKEY2 <= 1'b0;
+                        MKEY3 <= 1'b0;
+                        MKEY4 <= 1'b0;
+                        MKEY5 <= 1'b0;
+                        NKEY1 <= 1'b0;
+                        NKEY2 <= 1'b0;
+                        NKEY3 <= 1'b0;
+                        NKEY4 <= 1'b0;
+                        NKEY5 <= 1'b0;
+                        MARK <= 1'b0;
+                        MRKREJ <= 1'b0;
+                        IN3214 <= 1'b0;
+                        
+                        MAINRS <= 1'b1;
+                        NAVRST <= 1'b1;
+                        MRKRST <= 1'b1;
+                        
+                        IN3214 <= 1'b0;
                     end
                 endcase
             end
         end
     end
     
+    // Logic to send display data to client
     reg [15:0] read_data;
     reg read_done;
     

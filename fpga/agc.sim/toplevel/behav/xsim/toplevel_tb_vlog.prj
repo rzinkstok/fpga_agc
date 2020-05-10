@@ -63,6 +63,10 @@ verilog xil_defaultlib  --include "../../../../agc.srcs/sources_1/new/monitor" -
 "../../../../agc.srcs/sources_1/new/debounce.v" \
 "../../../../agc.srcs/sources_1/new/io_circuits.v" \
 "../../../../agc.srcs/sources_1/ip/core_memory/sim/core_memory.v" \
+"../../../../agc.srcs/sources_1/new/rupt_injector.v" \
+"../../../../agc.srcs/sources_1/new/monitor_dsky.v" \
+"../../../../agc.srcs/sources_1/new/monitor_channels.v" \
+"../../../../agc.srcs/sources_1/new/channel.v" \
 "../../../../agc.srcs/toplevel/new/toplevel_tb.v" \
 
 # compile glbl module

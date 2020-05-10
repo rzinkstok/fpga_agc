@@ -512,6 +512,13 @@ class DSKYProceed(DSKYMessage):
     mask = (0x0001,)
 
 
+class DSKYButtonRelease(DSKYMessage):
+    address = 0x000D
+    keys = ["dummy"]
+    bitshift = (0,)
+    mask = (0x0001,)
+
+
 class DSKYStatus(DSKYMessage):
     address = 0x000B
     keys = ["vel", "alt", "tracker", "restart", "prog", "gimbal_lock", "temp", "prio_disp", "no_dap", "opr_err", "key_rel", "stby", "no_att", "uplink_acty", "comp_acty", "vnflash"]

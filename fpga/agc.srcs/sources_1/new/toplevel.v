@@ -192,7 +192,7 @@ module toplevel(
 	reg IN3008 = 0;
 	reg IN3212 = 0;
 	reg IN3213 = 0;
-	reg IN3214 = 0;
+	//reg IN3214 = 0;
 	reg IN3216 = 0;
 	reg IN3301 = 0;
 	reg ISSTOR = 0;
@@ -202,34 +202,34 @@ module toplevel(
 	reg LRIN1 = 0;
 	reg LRRLSC = 0;
 	reg LVDAGD = 0;
-	reg MAINRS = 0;
+	//reg MAINRS = 0;
 	reg MANRmP = 0;
 	reg MANRmR = 0;
 	reg MANRmY = 0;
 	reg MANRpP = 0;
 	reg MANRpR = 0;
 	reg MANRpY = 0;
-	reg MARK = 0;
-	reg MKEY1 = 0;
-	reg MKEY2 = 0;
-	reg MKEY3 = 0;
-	reg MKEY4 = 0;
-	reg MKEY5 = 0;
+//	reg MARK = 0;
+//	reg MKEY1 = 0;
+//	reg MKEY2 = 0;
+//	reg MKEY3 = 0;
+//	reg MKEY4 = 0;
+//	reg MKEY5 = 0;
 	reg MNIMmP = 0;
 	reg MNIMmR = 0;
 	reg MNIMmY = 0;
 	reg MNIMpP = 0;
 	reg MNIMpR = 0;
 	reg MNIMpY = 0;
-	reg MRKREJ = 0;
-	reg MRKRST = 0;
-	reg NAVRST = 0;
+	//reg MRKREJ = 0;
+	//reg MRKRST = 0;
+	//reg NAVRST = 0;
 	reg NHVFAL = 0;
-	reg NKEY1 = 0;
-	reg NKEY2 = 0;
-	reg NKEY3 = 0;
-	reg NKEY4 = 0;
-	reg NKEY5 = 0;
+	//reg NKEY1 = 0;
+	//reg NKEY2 = 0;
+	//reg NKEY3 = 0;
+	//reg NKEY4 = 0;
+	//reg NKEY5 = 0;
 	reg OPCDFL = 0;
 	reg OPMSW2 = 0;
 	reg OPMSW3 = 0;
@@ -410,6 +410,27 @@ module toplevel(
 	wire p4SW;
 	wire p4VDC;
 
+    // DSKY signals
+    wire MKEY1;
+    wire MKEY2;
+    wire MKEY3;
+    wire MKEY4;
+    wire MKEY5;
+    wire MAINRS;
+    
+    wire NKEY1;
+    wire NKEY2;
+    wire NKEY3;
+    wire NKEY4;
+    wire NKEY5;
+    wire NAVRST;
+    wire MARK;
+    wire MRKREJ;
+    wire MRKRST;
+    
+    wire IN3214;
+    
+    // Debounced AGC outputs
     wire dbMSTPIT_;
     wire dbMONWT;
     wire dbMT01;
@@ -671,6 +692,24 @@ module toplevel(
 		.MRDCH(MRDCH),
 		.MRCH(MRCH),
 		.MWCH(MWCH),
+		
+		.MKEY1(MKEY1),
+		.MKEY2(MKEY2),
+		.MKEY3(MKEY3),
+		.MKEY4(MKEY4),
+		.MKEY5(MKEY5),
+		.MAINRS(MAINRS),
+        .NKEY1(NKEY1),
+        .NKEY2(NKEY2),
+        .NKEY3(NKEY3),
+        .NKEY4(NKEY4),
+        .NKEY5(NKEY5),
+        .NAVRST(NAVRST),
+        .MARK(MARK),
+        .MRKREJ(MRKREJ),
+        .MRKRST(MRKRST),
+        .IN3214(IN3214),
+        
 		.n0VDCA(n0VDCA),
 		.BPLSSW(BPLSSW),
 		.p4SW(p4SW),
