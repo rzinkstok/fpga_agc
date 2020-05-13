@@ -1,39 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1589114685">
-  <File Type="PA-TCL" Name="toplevel.tcl"/>
-  <File Type="REPORTS-TCL" Name="toplevel_reports.tcl"/>
-  <File Type="OPT-DCP" Name="toplevel_opt.dcp"/>
-  <File Type="OPT-DRC" Name="toplevel_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="toplevel.hwdef"/>
-  <File Type="PWROPT-DCP" Name="toplevel_pwropt.dcp"/>
-  <File Type="PLACE-DCP" Name="toplevel_placed.dcp"/>
-  <File Type="PLACE-IO" Name="toplevel_io_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="toplevel_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="toplevel_utilization_placed.pb"/>
-  <File Type="PLACE-CTRL" Name="toplevel_control_sets_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="toplevel_incremental_reuse_pre_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="toplevel_postplace_pwropt.dcp"/>
-  <File Type="BITSTR-LTX" Name="toplevel.ltx"/>
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1589361375">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="BG-BIT" Name="toplevel.bit"/>
-  <File Type="ROUTE-BUS-SKEW" Name="toplevel_bus_skew_routed.rpt"/>
-  <File Type="BITSTR-MSK" Name="toplevel.msk"/>
-  <File Type="BG-BGN" Name="toplevel.bgn"/>
-  <File Type="BG-BIN" Name="toplevel.bin"/>
   <File Type="RDI-RDI" Name="toplevel.vdi"/>
-  <File Type="ROUTE-DRC-RPX" Name="toplevel_drc_routed.rpx"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="toplevel_bus_skew_routed.rpx"/>
   <File Type="BG-DRC" Name="toplevel.drc"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="toplevel_postroute_physopt.dcp"/>
-  <File Type="BITSTR-MMI" Name="toplevel.mmi"/>
+  <File Type="BG-BGN" Name="toplevel.bgn"/>
   <File Type="BITSTR-SYSDEF" Name="toplevel.sysdef"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="toplevel_postroute_physopt_bb.dcp"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="toplevel.ltx"/>
+  <File Type="BITSTR-MMI" Name="toplevel.mmi"/>
   <File Type="BITSTR-BMM" Name="toplevel_bd.bmm"/>
   <File Type="BITSTR-NKY" Name="toplevel.nky"/>
-  <File Type="PHYSOPT-DCP" Name="toplevel_physopt.dcp"/>
   <File Type="BITSTR-RBT" Name="toplevel.rbt"/>
+  <File Type="BITSTR-MSK" Name="toplevel.msk"/>
+  <File Type="BG-BIN" Name="toplevel.bin"/>
+  <File Type="BG-BIT" Name="toplevel.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="toplevel_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="toplevel_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="toplevel_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="toplevel_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="toplevel_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="toplevel_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="toplevel_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="toplevel_postroute_physopt.dcp"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="toplevel_bus_skew_routed.rpx"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="toplevel_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW" Name="toplevel_bus_skew_routed.rpt"/>
   <File Type="ROUTE-CLK" Name="toplevel_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="toplevel_incremental_reuse_routed.rpt"/>
   <File Type="ROUTE-TIMING-RPX" Name="toplevel_timing_summary_routed.rpx"/>
   <File Type="ROUTE-TIMING-PB" Name="toplevel_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="toplevel_timing_summary_routed.rpt"/>
@@ -45,11 +38,37 @@
   <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="toplevel_methodology_drc_routed.pb"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="toplevel_methodology_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="toplevel_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="toplevel_drc_routed.rpx"/>
   <File Type="ROUTE-DRC-PB" Name="toplevel_drc_routed.pb"/>
   <File Type="ROUTE-DRC" Name="toplevel_drc_routed.rpt"/>
   <File Type="ROUTE-BLACKBOX-DCP" Name="toplevel_routed_bb.dcp"/>
   <File Type="ROUTE-DCP" Name="toplevel_routed.dcp"/>
   <File Type="ROUTE-ERROR-DCP" Name="toplevel_routed_error.dcp"/>
+  <File Type="PHYSOPT-TIMING" Name="toplevel_timing_summary_physopted.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="toplevel_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="toplevel_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="toplevel_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="toplevel_postplace_pwropt.dcp"/>
+  <File Type="PLACE-TIMING" Name="toplevel_timing_summary_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="toplevel_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="toplevel_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="toplevel_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="toplevel_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="toplevel_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="toplevel_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="toplevel_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="toplevel_placed.dcp"/>
+  <File Type="PWROPT-DRC" Name="toplevel_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="toplevel_pwropt.dcp"/>
+  <File Type="OPT-HWDEF" Name="toplevel.hwdef"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="toplevel_methodology_drc_opted.rpt"/>
+  <File Type="OPT-DRC" Name="toplevel_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="toplevel_opt.dcp"/>
+  <File Type="INIT-TIMING" Name="toplevel_timing_summary_init.rpt"/>
+  <File Type="PWROPT-TIMING" Name="toplevel_timing_summary_pwropted.rpt"/>
+  <File Type="REPORTS-TCL" Name="toplevel_reports.tcl"/>
+  <File Type="OPT-TIMING" Name="toplevel_timing_summary_opted.rpt"/>
+  <File Type="PA-TCL" Name="toplevel.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/components/nor_3.v">
@@ -527,9 +546,9 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="prop_clock_divider"/>
   <BlockFileSet Type="BlockSrcs" Name="mon_adc"/>
   <BlockFileSet Type="BlockSrcs" Name="cmd_fifo"/>
-  <BlockFileSet Type="BlockSrcs" Name="rope_memory"/>
   <BlockFileSet Type="BlockSrcs" Name="read_byte_fifo"/>
+  <BlockFileSet Type="BlockSrcs" Name="rope_memory"/>
+  <BlockFileSet Type="BlockSrcs" Name="prop_clock_divider"/>
 </GenRun>
