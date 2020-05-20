@@ -95,3 +95,5 @@
 *~
 .idea/
 venv/
+fpga/scripts/test*.coe
+
