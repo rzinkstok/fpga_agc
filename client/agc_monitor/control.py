@@ -41,8 +41,8 @@ class Control(QWidget):
         # usbif.poll(um.StatusPeripheral())
         usbif.listen(self)
 
-        for msg in INH_SWITCHES.values():
-            usbif.send(msg(0))
+        #for msg in INH_SWITCHES.values():
+        #    usbif.send(msg(0))
         usbif.send(um.ControlSTRT1(0))
         usbif.send(um.ControlSTRT2(0))
 

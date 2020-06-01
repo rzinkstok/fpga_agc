@@ -923,78 +923,10 @@ module toplevel_tb();
 		txe_n = 1'b1;
 		data_in = 8'h00;
 		#200 reset = 1'b0;
-//		#100;
-//		
-//		#500 rxf_n = 1'b0;
-//		@(negedge oe_n) data_in = 8'hC0;
-//		@(negedge rd_n);
-//		@(posedge clkout) data_in = 8'hA0;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h40;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h01;
-//		@(posedge clkout) data_in = 8'hC0;
-//		rxf_n = 1'b1;
-//		#200 
 		
 		
+		#80000000 // 80 ms
 		
-		#11531 // 1 
-		#11531
-		
-//		#500 rxf_n = 1'b0;
-//		@(negedge oe_n) data_in = 8'hC0;
-//		@(negedge rd_n);
-//		@(posedge clkout) data_in = 8'hA4;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'hFF;
-//		@(posedge clkout) data_in = 8'hFF;
-//		@(posedge clkout) data_in = 8'hC0;
-//		rxf_n = 1'b1;
-
-        // Set stop at NISQ
-//		#500 rxf_n = 1'b0;
-//		@(negedge oe_n) data_in = 8'hC0;
-//		@(negedge rd_n);
-//		@(posedge clkout) data_in = 8'hA0;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h01;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h02;
-//		@(posedge clkout) data_in = 8'hC0;
-//		rxf_n = 1'b1;
-		
-		
-		
-		#11531
-		
-		// Set N NISQ STEPS to 3
-//		#500 rxf_n = 1'b0;
-//		@(negedge oe_n) data_in = 8'hC0;
-//		@(negedge rd_n);
-//		@(posedge clkout) data_in = 8'hA0;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h60;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h03;
-//		@(posedge clkout) data_in = 8'hC0;
-//		rxf_n = 1'b1;
-
-//		#11531
-		
-		// PROCEED
-//		#500 rxf_n = 1'b0;
-//		@(negedge oe_n) data_in = 8'hC0;
-//		@(negedge rd_n);
-//		@(posedge clkout) data_in = 8'hA0;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h03;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h01;
-//		@(posedge clkout) data_in = 8'hC0;
-//		rxf_n = 1'b1;
-
         // VERB key
         #500 rxf_n = 1'b0;
 		@(negedge oe_n) data_in = 8'hC0;
@@ -1007,17 +939,9 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#11531 // 5
-		#11531
-		#11531
-		#11531
-		#11531
-		#11531 // 10
+		#10000000 // 10 ms
 		
-		
-		#12000000
-		
-		// VERB key release
+		// Key release
         #500 rxf_n = 1'b0;
 		@(negedge oe_n) data_in = 8'hC0;
 		@(negedge rd_n);
@@ -1029,7 +953,91 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#4000000
+		#5000000 // 5 ms
+		
+		// 0 key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h10;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#10000000 // 10 ms
+		
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#5000000 // 5 ms
+		
+		// 6 key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h06;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#10000000 // 10 ms
+		
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#5000000 // 5 ms
+		
+		// NOUN key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h1F;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#10000000 // 10 ms
+		
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#5000000 // 5 ms
 		
 		// 1 key
         #500 rxf_n = 1'b0;
@@ -1039,21 +1047,13 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'h00;
 		@(posedge clkout) data_in = 8'h09;
 		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h07;
+		@(posedge clkout) data_in = 8'h01;
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#11531 // 5
-		#11531
-		#11531
-		#11531
-		#11531
-		#11531 // 10
+		#10000000 // 10 ms
 		
-		
-		#10000000
-		
-		// 7 key release
+		// Key release
         #500 rxf_n = 1'b0;
 		@(negedge oe_n) data_in = 8'hC0;
 		@(negedge rd_n);
@@ -1065,391 +1065,64 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
+		#5000000 // 5 ms
 		
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 15
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 20
+		// 6 key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h06;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
 		
+		#10000000 // 10 ms
 		
-//		#500 rxf_n = 1'b0;
-//		@(negedge oe_n) data_in = 8'hC0;
-//		@(negedge rd_n);
-//		@(posedge clkout) data_in = 8'hA0;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h40;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'h00;
-//		@(posedge clkout) data_in = 8'hC0;
-//		rxf_n = 1'b1;
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
 		
+		#5000000 // 5 ms
 		
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 25
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 30
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 35
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 40
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 45
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 50
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 55
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 60
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 65
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 70
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 75
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 80
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 85
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 90
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 95
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 100
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 105
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 110
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 115
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 120
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 125
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 130
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 135
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 140
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 145
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 150
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 155
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 160
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 165
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 170
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 175
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 180
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 185
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 190
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 195
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 200
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 205
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 210
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 215
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 220
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 225
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 230
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 235
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 240
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 245
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 250
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 255
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 260
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 265
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 270
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 275
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 280
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 285
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 290
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 295
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 300
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 305
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 310
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 315
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 320
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 325
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 330
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 335
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 340
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 345
-		#11531
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 350
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 355
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 360
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 365
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 370
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 375
-		#11531 
-		#11531 
-		#11531 
-		#11531 
-		#11531 // 380
+		// ENTER key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h1C;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#10000000 // 10 ms
+		
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#5000000 // 5 ms
+		
 		$stop;
 	end
 

@@ -80,8 +80,8 @@ set rc [catch {
   read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xci
   add_files /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/styx_ps.bd
   read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/core_memory/core_memory.xci
-  read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider.xci
   read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory.xci
+  read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider.xci
   read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo.xci
   read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo.xci
   read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc.xci

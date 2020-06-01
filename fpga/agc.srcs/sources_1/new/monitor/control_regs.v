@@ -167,7 +167,7 @@ module control_regs(
             stop_s1_s2 <= 1'b0;
             MNHRPT <= 1'b0;
             MNHNC <= 1'b0;
-            NHALGA <= 1'b1;
+            NHALGA <= 1'b0;
             nhstrt1 <= 1'b0;
             nhstrt2 <= 1'b0;
             DOSCAL <= 1'b0;

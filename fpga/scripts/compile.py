@@ -3,6 +3,7 @@ OPCODES = {
     "EXTEND": 0,
     "TC": 0,
     "TCF": 1,
+    "DAS": 2,
     "CA": 3,
     "CAF": 3,
     "TS": 5,
@@ -13,6 +14,7 @@ OPCODES = {
 QUARTERCODES = {
     "XCH": 3,
     "TS": 2,
+    "DAS": 0,
 }
 
 
@@ -100,6 +102,9 @@ class Instruction(object):
         if quartercode is not None:
             operand_address = (quartercode << 10) + operand_address
 
+        if self.instruction in ["DAS"]:
+            operand_address += 1
+
         res = (opcode << 12) + operand_address
         res = self.set_parity(res)
         return res
@@ -152,7 +157,7 @@ def first_pass(p):
         print(i)
         compiled_instructions[i.address] = i.compile(label_map)
 
-    to_coe("test10.coe", compiled_instructions, 36*1024)
+    to_coe("test17.coe", compiled_instructions, 36*1024)
 
 
 program = """
@@ -161,27 +166,18 @@ A                  OCTAL    0
 L                  OCTAL    0
                    SETLOC   100
 TEMP1              OCTAL    0
+                   OCTAL    0
                    SETLOC   4000
                    INHINT
                    CA       MULTIPLIER
-START              TS       TEMP1
-                   EXTEND
+START              EXTEND
                    MP       MULTIPLICAND
+                   DAS      TEMP1
                    CA       L
                    TC       START
-MULTIPLICAND       OCTAL    35671
-MULTIPLIER         OCTAL    00003
+MULTIPLICAND       OCTAL    12
+MULTIPLIER         OCTAL    33146
 """
 
-program1 = """
-                   SETLOC   4000
-                   INHINT
-                   CAF      GOBB
-                   XCH      6
-                   TCF      2072
-                   SETLOC   4054
-GOBB               OCTAL    24003
-
-"""
 if __name__ == "__main__":
     first_pass(program)

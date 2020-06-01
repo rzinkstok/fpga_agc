@@ -23,6 +23,7 @@
 `define ADDR_GROUP_STATUS       7'h24
 `define ADDR_GROUP_TRACE        7'h25
 `define ADDR_GROUP_NASSP        7'h26
+`define ADDR_GROUP_VERSION      7'h7F  // Max value for 7 bits
 
 // Control Registers
 `define CTRL_REG_START        16'h0

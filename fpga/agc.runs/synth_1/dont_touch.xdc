@@ -15,4 +15,7 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==styx_ps_process
 # IP: ip/core_memory/core_memory.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==core_memory || ORIG_REF_NAME==core_memory} -quiet] -quiet
 
+# IP: ip/rope_memory/rope_memory.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==rope_memory || ORIG_REF_NAME==rope_memory} -quiet] -quiet
+
 # XDC: bd/styx_ps/styx_ps_ooc.xdc

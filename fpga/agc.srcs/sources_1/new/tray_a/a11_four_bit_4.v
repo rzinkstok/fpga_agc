@@ -639,7 +639,8 @@ module a11_four_bit_4(
     nor_3 #(1'b1)  NOR54426(L15_,           NOR54424_out,   NOR54425_out,   NOR54427_out,   p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR54427(NOR54427_out,   L15_,           CLG1G,          n0VDCA,         p4SW, reset, prop_clk);
     
-    nor_3 #(1'b0)  NOR54428(NOR54428_out,   RLG_,           L15_,           n0VDCA,         p4SW, reset, prop_clk);
+    // p4SW is used as third input to force output low (in the schematics, the output is tied to 0VDCA)
+    nor_3 #(1'b0)  NOR54428(NOR54428_out,   RLG_,           L15_,           p4SW,           p4SW, reset, prop_clk);
     
     // Q register flip-flop
     nor_3 #(1'b0)  NOR54429(NOR54429_out,   WQG_,           WL15_,          n0VDCA,         p4SW, reset, prop_clk);

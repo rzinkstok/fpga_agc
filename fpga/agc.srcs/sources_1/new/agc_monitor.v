@@ -263,10 +263,13 @@ module agc_monitor(
     wire nassp_write_en;
     wire nassp_write_done;
     wire [15:0] nassp_data;
+    
+    wire version_read_en;
+    wire [15:0] version_data;
 
     // Resulting data from the active read command
     wire [15:0] read_data;
-    assign read_data = ctrl_data | status_data | mon_reg_data | mon_dsky_data;
+    assign read_data = ctrl_data | status_data | mon_reg_data | mon_dsky_data | version_data;
     //assign read_data =  ctrl_data | status_data | mon_reg_data | mon_chan_data | agc_fixed_data | agc_erasable_data |
     //                    agc_channels_data | crs_data | ems_data | mon_dsky_data | trace_data | nassp_data;
 
@@ -307,9 +310,17 @@ module agc_monitor(
         .trace_read_en(trace_read_en),
         .nassp_read_en(nassp_read_en),
         .nassp_write_en(nassp_write_en),
-        .nassp_write_done(nassp_write_done)
+        .nassp_write_done(nassp_write_done),
+        .version_read_en(version_read_en)
     );
 
+    // Version logic
+    version ver(
+        .clk(clk),
+        .rst_n(rst_n),
+        .read_en(version_read_en),
+        .data_out(version_data)
+    );
 
     /*******************************************************************************.
     * Control Registers                                                             *

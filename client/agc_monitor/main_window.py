@@ -18,8 +18,15 @@ class MainWindow(QMainWindow):
         self._usbif = USBInterface()
         self._usbif.connected.connect(self.connected)
 
+        self._usbif.poll(um.VersionMessage())
+        self._usbif.listen(self)
+
         self.setup_ui()
         self.dsky = DSKY(self, self._usbif)
+
+    def handle_msg(self, msg):
+        if isinstance(msg, um.VersionMessage):
+            self._status.setText(f"AGC VERSION {msg.version} CONNECTED")
 
     def setup_ui(self):
         status_bar = self.statusBar()

@@ -70,7 +70,10 @@ module cmd_controller(
     // NASSP bridge signals
     output reg nassp_read_en,
     output reg nassp_write_en,
-    input wire nassp_write_done
+    input wire nassp_write_done,
+    
+    // Version signal
+    output reg version_read_en
 );
     
     
@@ -90,6 +93,7 @@ module cmd_controller(
                MON_DSKY      = 10,
                TRACE         = 11,
                NASSP         = 12,
+               VERSION       = 13,
                SEND_READ_MSG = 15;
     
     reg [3:0] state;
@@ -153,6 +157,7 @@ module cmd_controller(
         trace_read_en = 1'b0;
         nassp_read_en = 1'b0;
         nassp_write_en = 1'b0;
+        version_read_en = 1'b0;
     
         case (state)
             IDLE: begin
@@ -174,6 +179,7 @@ module cmd_controller(
                         `ADDR_GROUP_MON_DSKY:     next_state = MON_DSKY;
                         `ADDR_GROUP_TRACE:        next_state = TRACE;
                         `ADDR_GROUP_NASSP:        next_state = NASSP;
+                        `ADDR_GROUP_VERSION:      next_state = VERSION;
                         default:                  next_state = IDLE;
                     endcase
                 end
@@ -317,7 +323,16 @@ module cmd_controller(
                     next_state = SEND_READ_MSG;
                 end
             end
-        
+            
+            VERSION: begin
+                if (~cmd_write_flag) begin
+                    version_read_en = 1'b1;
+                    next_state = SEND_READ_MSG;
+                end else begin
+                    next_state = IDLE;
+                end
+            end
+            
             SEND_READ_MSG: begin
                 // The read response should now be constructed; proceed to IDLE
                 next_state = IDLE;

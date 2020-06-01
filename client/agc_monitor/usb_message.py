@@ -558,6 +558,14 @@ class StatusVccAux(StatusMessage):
     bitshift = (4,)
 
 
+class VersionMessage(Message):
+    group = 0x007f
+    address = 0x0000
+    keys = ["version"]
+    mask = (0x0FFF,)
+    bitshift = (0,)
+
+
 # Construct the message map used in the message factory
 message_map = {(cls.group, cls.address): cls for cls in message_classes()}
 print(message_map)

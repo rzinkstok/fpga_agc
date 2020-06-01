@@ -1,5 +1,3 @@
-from bitarray import bitarray
-
 
 class Int1c(object):
     def __init__(self, value=0, negative=False, width=15):
@@ -71,6 +69,8 @@ class Int1c(object):
     def __invert__(self):
         if self._negative:
             return Int1c(self._value, width=self._width)
+        if self._value == 0:
+            return Int1c(value=0, negative=True, width=self._width)
         return Int1c(-self._value, width=self._width)
 
     def __getitem__(self, item):
@@ -158,7 +158,7 @@ class Register(object):
 
     def __invert__(self):
         r = Register("~"+self.name, self.width)
-        r[16:1] = (~self.value)[16:1]
+        r[self.width:1] = (~self.value)[self.width:1]
         return r
 
     def set_octal(self, val):
@@ -525,7 +525,7 @@ class MP(object):
         self.print(f"MP     ")
 
     def print(self, s):
-        print(f"{s} {self.A} {self.L} {self.X} {self.Y} {self.U} {self.B} {self.G} BR: {self.BR1}{self.BR2}")
+        print(f"{s} {self.A} {self.L} {self.X} {self.Y} {self.U} {self.B} {self.C} {self.G} BR: {self.BR1}{self.BR2}")
 
 
 if __name__ == "__main__":
@@ -533,9 +533,17 @@ if __name__ == "__main__":
     #m = MP("177771", "000003")
     #m = MP("000003", "035671") # 131453
     #m = MP("035671", "000003")  # 131453
-    m = MP("004626", "013261")
+
+    a = 0o33146
+    e = 0o12
+    m = MP(a=f"{a:06o}", e=f"{e:06o}")  # 14901 * 5809 = 86559909 -> 512146245
+    # 0 101 001 010 001 1  00 110 010 100 101
     m.MP0()
     m.MP1()
     m.MP3()
-    print(m.L)
 
+    print()
+    print(f"A: {int(m.A[16:1], 2):06o}")
+    print(f"L: {int(m.L[16:1], 2):06o}")
+    print(f"Result: {int(m.A[14], 2)}{int(m.A[13:11], 2)}{int(m.A[10:8], 2)}{int(m.A[7:5], 2)}{int(m.A[4:2], 2)}{int(str(m.A[1]) + str(m.L[14:13]), 2)}{int(m.L[12:10], 2)}{int(m.L[9:7], 2)}{int(m.L[6:4], 2)}{int(m.L[3:1], 2)}")
+    print(f"Check:  {a*e:010o}")

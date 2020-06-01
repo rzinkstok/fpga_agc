@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date                      : Wed May 13 11:24:37 2020
+| Date                      : Mon Jun  1 15:36:10 2020
 | Host                      : fpgadev running 64-bit Ubuntu 18.04.4 LTS
 | Command                   : report_io -file toplevel_io_placed.rpt
 | Design                    : toplevel
