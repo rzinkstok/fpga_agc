@@ -166,14 +166,14 @@ class ControlStart(ControlMessage):
 
 class ControlStop(ControlMessage):
     address = 0x0001
-    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "t", "s1_s2"]
+    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "s1_s2"]
     mask = tuple(0x00001 for k in keys)
     bitshift = tuple(i for i in range(len(keys)))
 
 
 class ControlStopCause(ControlMessage):
     address = 0x0002
-    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "t"]
+    keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step"]
     mask = tuple(0x00001 for k in keys)
     bitshift = tuple(i for i in range(len(keys)))
 
@@ -498,7 +498,7 @@ class DSKYReg3H(DSKYMessage):
     mask = (0x001F, 0x001F, 0x0003)
 
 
-class DSKYButton(DSKYMessage):
+class DSKYMainButton(DSKYMessage):
     address = 0x0009
     keys = ["keycode"]
     bitshift = (0,)
@@ -507,14 +507,7 @@ class DSKYButton(DSKYMessage):
 
 class DSKYProceed(DSKYMessage):
     address = 0x000A
-    keys = ["dummy"]
-    bitshift = (0,)
-    mask = (0x0001,)
-
-
-class DSKYButtonRelease(DSKYMessage):
-    address = 0x000D
-    keys = ["dummy"]
+    keys = ["sbybut"]
     bitshift = (0,)
     mask = (0x0001,)
 
@@ -524,6 +517,27 @@ class DSKYStatus(DSKYMessage):
     keys = ["vel", "alt", "tracker", "restart", "prog", "gimbal_lock", "temp", "prio_disp", "no_dap", "opr_err", "key_rel", "stby", "no_att", "uplink_acty", "comp_acty", "vnflash"]
     bitshift = tuple(i for i in range(len(keys)))
     mask = tuple(0x0001 for i in keys)
+
+
+class DSKYNavButton(DSKYMessage):
+    address = 0x000C
+    keys = ["keycode"]
+    bitshift = (0,)
+    mask = (0x001F,)
+
+
+class DSKYKeyRelease(DSKYMessage):
+    address = 0x000D
+    keys = ["keyrst"]
+    bitshift = (0,)
+    mask = (0x0001,)
+
+
+class DSKYReset(DSKYMessage):
+    address = 0x000E
+    keys = ["rset"]
+    bitshift = (0,)
+    mask = (0x0001,)
 
 
 class StatusMessage(Message):

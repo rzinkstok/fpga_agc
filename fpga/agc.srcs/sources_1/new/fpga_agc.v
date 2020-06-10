@@ -661,8 +661,6 @@ module fpga_agc(
 		.XLNK0(XLNK0),
 		.XLNK1(XLNK1),
 		.ZEROP(ZEROP),
-		.mstpeven(mstpeven),
-		.mstpodd(mstpodd),
 		.n2FSFAL(n2FSFAL),
 		.prop_clk_locked(prop_clk_locked),
 		.ALGA(ALGA),

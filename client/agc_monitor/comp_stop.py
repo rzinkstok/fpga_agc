@@ -19,7 +19,6 @@ STOP_CONDS = OrderedDict([
     ('PAR', 'par'),
     ('I', 'i'),
     ('PROG\nSTEP', 'prog_step'),
-    ('T', 't'),
 ])
 
 
@@ -34,7 +33,6 @@ class CompStop(QWidget):
         self._setup_ui()
 
         usbif.poll(um.ControlStopCause())
-        #usbif.poll(um.MonRegTimePulse())
         usbif.listen(self)
         keys = [x for x in STOP_CONDS.values()] + ["s1_s2"]
         z = {k: 0 for k in keys}
@@ -45,11 +43,6 @@ class CompStop(QWidget):
             for v in STOP_CONDS.values():
                 val = getattr(msg, v)
                 self._stop_inds[v].set_on(val)
-        # if isinstance(msg, um.MonRegTimePulse):
-        #     for k, v in msg.datadict.items():
-        #         if v:
-        #             print(k)
-        #             break
 
     def _set_stop_conds(self, on):
         settings = {s: int(self._stop_switches[s].isChecked()) for s in STOP_CONDS.values()}
@@ -108,5 +101,3 @@ class CompStop(QWidget):
 
     def _proceed(self):
         self._usbif.send(um.ControlProceed(1))
-        if self._stop_switches["t"].isChecked():
-            self._usbif.send(um.MonRegTimePulse())

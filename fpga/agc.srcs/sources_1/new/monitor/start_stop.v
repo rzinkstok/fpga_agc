@@ -7,9 +7,9 @@ module start_stop(
     input wire rst_n,
     input wire start_req,
     input wire proceed_req,
-    input wire [11:0] stop_conds,
+    input wire [10:0] stop_conds,
     input wire stop_s1_s2,
-    output reg [11:0] stop_cause,
+    output reg [10:0] stop_cause,
     input wire MT01,
     input wire MT02,
     input wire MT03,
@@ -36,9 +36,7 @@ module start_stop(
     input wire [15:0] n_nisq_steps,
 
     output reg MSTRT,
-    output wire mstp,
-    output wire mstpeven,
-    output wire mstpodd
+    output wire mstp
 );
     
     `define STOP_T12       0
@@ -52,13 +50,8 @@ module start_stop(
     `define STOP_PAR       8
     `define STOP_I         9
     `define STOP_PROG_STEP 10
-    `define STOP_T         11
     
-    assign mstp = (stop_cause != 12'b0) & (!stop_cause[`STOP_T]);
-    assign mstpeven = stop_cause[`STOP_T] & (MT02 | MT04 | MT06 | MT08 | MT10 | MT12);
-    assign mstpodd = stop_cause[`STOP_T] & (MT01 | MT03 | MT05 | MT07 | MT09 | MT11);
-    wire oddset = (MT01 | MT03 | MT05 | MT07 | MT09 | MT11);
-    wire evenset = (MT02 | MT04 | MT06 | MT08 | MT10 | MT12);
+    assign mstp = (stop_cause != 11'b0);
     
     wire s_match;
     assign s_match = stop_s1_s2 ? s2_match : s1_match;
@@ -86,7 +79,6 @@ module start_stop(
             stop_cause <= 11'b0;
             proceeding <= 1'b0;
             prog_step_match <= 1'b0;
-            evenstop <= 1'b0;
             nisq_counter <= 16'b0;
             nisq_counted <= 1'b0;
         end else begin
@@ -97,18 +89,7 @@ module start_stop(
                 stop_cause <= 11'b0;
                 proceeding <= 1'b1;
             end else if (proceeding) begin
-                if (stop_conds[`STOP_T]) begin
-                    if(evenstop) begin
-                        if(oddset) begin
-                            proceeding <= 1'b0;
-                        end    
-                    end else begin
-                        if(evenset) begin
-                            proceeding <= 1'b0;
-                        end    
-                    end
-                end
-                else if (MT01) begin
+                if (MT01) begin
                     proceeding <= 1'b0;
                 end
             end else begin
@@ -166,15 +147,6 @@ module start_stop(
                 if (prog_step_match & MNISQ) begin
                     stop_cause[`STOP_PROG_STEP] <= 1'b1;
                     prog_step_match <= 1'b0;
-                end
-                
-                if (stop_conds[`STOP_T] & (MT01 | MT02 | MT03 | MT04 | MT05 | MT06 | MT07 | MT08 | MT09 | MT10 | MT11 | MT12)) begin
-                    stop_cause[`STOP_T] <= 1'b1;
-                    if(MT02 | MT04 | MT06 | MT08 | MT10 | MT12) begin
-                        evenstop <= 1'b1;
-                    end else begin
-                        evenstop <= 1'b0;
-                    end
                 end
             end
         end

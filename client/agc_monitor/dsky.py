@@ -83,6 +83,7 @@ class DSKY(QWidget):
             self._reg3[1].set_relay_bits(msg.digit4)
         elif isinstance(msg, um.DSKYStatus):
             self._vnflash = msg.vnflash
+
             self._com_act.set_on(msg.comp_acty)
             self._upl_act.set_on(msg.uplink_acty)
             self._no_att.set_on(msg.no_att)
@@ -180,14 +181,16 @@ class DSKY(QWidget):
         b.setAutoRepeat(False)
         if keycode is None:
             b.pressed.connect(lambda: self._usbif.send(um.DSKYProceed()))
-            b.released.connect(lambda: self._usbif.send(um.DSKYButtonRelease(1)))
+            b.released.connect(lambda: self._usbif.send(um.DSKYKeyRelease(1)))
             b.released.connect(lambda: print("PRO released"))
             b.pressed.connect(lambda: print("PRO pressed"))
         else:
-            b.pressed.connect(lambda k=keycode: self._usbif.send(um.DSKYButton(keycode=k)))
-            b.released.connect(lambda: self._usbif.send(um.DSKYButtonRelease(1)))
+            b.pressed.connect(lambda k=keycode: self._usbif.send(um.DSKYMainButton(keycode=k)))
+            b.released.connect(lambda: self._usbif.send(um.DSKYKeyRelease(1)))
             b.pressed.connect(lambda k=keycode: print(keycode, "pressed"))
             b.released.connect(lambda k=keycode: print(keycode, "released"))
+            if keycode == 0b10010:
+                b.pressed.connect(lambda: self._usbif.send(um.DSKYReset(1)))
 
         return b
 

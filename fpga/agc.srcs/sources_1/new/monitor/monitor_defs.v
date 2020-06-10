@@ -115,10 +115,11 @@
 `define DSKY_REG_REG3_L      16'h07
 `define DSKY_REG_REG3_H      16'h08
 `define DSKY_REG_MAIN_BUTTON 16'h09
-`define DSKY_REG_PROCEED     16'h0A
+`define DSKY_REG_PROCEED     16'h0A  // STBY signal from DSKY
 `define DSKY_REG_STATUS      16'h0B
 `define DSKY_REG_NAV_BUTTON  16'h0C
-`define DSKY_REG_BUTTON_REL  16'h0D
+`define DSKY_REG_KEYRST      16'h0D  // KEYRST signal from DSKY
+`define DSKY_REG_RSET        16'h0E  // RSET signal from DSKY
 
 // Wild register mode
 `define W_MODE_ALL 3'o0

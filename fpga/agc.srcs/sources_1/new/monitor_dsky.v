@@ -40,7 +40,10 @@ module monitor_dsky(
     output reg NAVRST,
     output reg MRKRST,
     
-    output reg IN3214
+    output reg IN3214,
+    output reg SBYBUT,
+    
+    output reg CAURST
 );
     
     // Logic to decode channel 10 (OUT0) data
@@ -212,14 +215,17 @@ module monitor_dsky(
     
     // Handling of button presses
     // Should put keycode on MKEY1 - MKEY5, which are linked to input channel 15 
-    // When a key is released, MAINRS must be sent. The AGC generates KYRUPT1 only when
+    // When a key is released, MAINRS/NAVRST must be sent. The AGC generates KYRUPT1 only when
     // F09A/ goes low, so the key must be pressed for at least half the period of F09. F09
     // has a 5 ms period, so 2.5 ms should do it.
-    // MAINRS is always high if no key is pressed.
+    // MAINRS/NAVRST is always high if no key is pressed.
     //
     // PROCEED is special: it has no keycode, and is also the STBY button. The proceed signal is
     // communicated through channel 32 bit 14 (signal IN3214). STBY is initiated when holding PROCEED
-    // for about 2 seconds.
+    // for about 2 seconds; this is communicated via the SBYBUT signal.
+    //
+    // RSET is another special signal, which is always sent together with the RSET key code. The AGC signal
+    // involved is CAURST.
     
     always @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
@@ -236,9 +242,11 @@ module monitor_dsky(
             MARK <= 1'b0;
             MRKREJ <= 1'b0;
             IN3214 <= 1'b0;
+            SBYBUT <= 1'b0;
             MAINRS <= 1'b1;
             NAVRST <= 1'b1;
             MRKRST <= 1'b1;
+            CAURST <= 1'b0;
             
         end else begin
             if (write_en) begin
@@ -262,29 +270,43 @@ module monitor_dsky(
                         NAVRST <= 1'b0;
                         MRKRST <= 1'b0;
                     end
-                    `DSKY_REG_PROCEED: begin
-                        IN3214 <= 1'b1;
-                    end
-                    `DSKY_REG_BUTTON_REL: begin
+                    `DSKY_REG_KEYRST: begin
+                        // Main keys
                         MKEY1 <= 1'b0;
                         MKEY2 <= 1'b0;
                         MKEY3 <= 1'b0;
                         MKEY4 <= 1'b0;
                         MKEY5 <= 1'b0;
+                        
+                        // Nav keys
                         NKEY1 <= 1'b0;
                         NKEY2 <= 1'b0;
                         NKEY3 <= 1'b0;
                         NKEY4 <= 1'b0;
                         NKEY5 <= 1'b0;
+                        
+                        // Mark keys
                         MARK <= 1'b0;
                         MRKREJ <= 1'b0;
-                        IN3214 <= 1'b0;
                         
+                        // Proceed key
+                        IN3214 <= 1'b0;
+                        SBYBUT <= 1'b0;
+                        
+                        // Resets
                         MAINRS <= 1'b1;
                         NAVRST <= 1'b1;
                         MRKRST <= 1'b1;
                         
-                        IN3214 <= 1'b0;
+                        // RSET
+                        CAURST <= 1'b0;
+                    end
+                    `DSKY_REG_PROCEED: begin
+                        IN3214 <= 1'b1;
+                        SBYBUT <= 1'b1;
+                    end
+                    `DSKY_REG_RSET: begin
+                        CAURST <= 1'b1;
                     end
                 endcase
             end
@@ -313,8 +335,7 @@ module monitor_dsky(
                 `DSKY_REG_REG2_H: read_data <= {4'b0, reg2[26:15]};
                 `DSKY_REG_REG3_L: read_data <= {1'b0, reg3[14:0]};
                 `DSKY_REG_REG3_H: read_data <= {4'b0, reg3[26:15]};
-                `DSKY_REG_STATUS: read_data <= {vnflash, com_act, upl_act, no_att, stby, key_rel, opr_err, no_dap, prio_disp,
-                                                temp, gimbal_lock, prog_alarm, restart, tracker, alt, vel};
+                `DSKY_REG_STATUS: read_data <= {vnflash, com_act, upl_act, no_att, stby, key_rel, opr_err, no_dap, prio_disp, temp, gimbal_lock, prog_alarm, restart, tracker, alt, vel};
             endcase
         end else begin
             read_done <= 1'b0;

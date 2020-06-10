@@ -82,8 +82,6 @@ module agc_monitor(
     
     output wire MSTP,
     output wire MSTRT,
-    output wire mstpeven,
-    output wire mstpodd,
     
     output wire MNHRPT,
     output wire MNHNC,
@@ -133,6 +131,8 @@ module agc_monitor(
     output wire MRKRST,
     
     output wire IN3214,
+    output wire SBYBUT,
+    output wire CAURST,
     
     // Power
     input wire n0VDCA,
@@ -269,9 +269,9 @@ module agc_monitor(
 
     // Resulting data from the active read command
     wire [15:0] read_data;
-    assign read_data = ctrl_data | status_data | mon_reg_data | mon_dsky_data | version_data;
-    //assign read_data =  ctrl_data | status_data | mon_reg_data | mon_chan_data | agc_fixed_data | agc_erasable_data |
-    //                    agc_channels_data | crs_data | ems_data | mon_dsky_data | trace_data | nassp_data;
+    assign read_data = ctrl_data | status_data | mon_reg_data | mon_chan_data | mon_dsky_data | version_data;
+    //assign read_data =   agc_fixed_data | agc_erasable_data |
+    //                    agc_channels_data | crs_data | ems_data | trace_data | nassp_data;
 
     cmd_controller cmd_ctrl(
         .clk(clk),
@@ -328,9 +328,9 @@ module agc_monitor(
     
     wire start_req;
     wire proceed_req;
-    wire [11:0] stop_conds;
+    wire [10:0] stop_conds;
     wire stop_s1_s2;
-    wire [11:0] stop_cause;
+    wire [10:0] stop_cause;
     
     wire [12:1] s;
     wire [11:9] eb;
@@ -545,9 +545,7 @@ module agc_monitor(
         .n_nisq_steps(n_nisq_steps),
         
         .MSTRT(MSTRT),
-        .mstp(ss_mstp),
-        .mstpeven(mstpeven),
-        .mstpodd(mstpodd)
+        .mstp(ss_mstp)
     );
 
 
@@ -749,7 +747,9 @@ module agc_monitor(
         .NAVRST(NAVRST),
         .MRKRST(MRKRST),
         
-        .IN3214(IN3214)
+        .IN3214(IN3214),
+        .SBYBUT(SBYBUT),
+        .CAURST(CAURST)
     );
 
 endmodule

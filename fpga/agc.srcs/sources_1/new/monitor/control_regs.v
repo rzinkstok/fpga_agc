@@ -16,9 +16,9 @@ module control_regs(
     
     output reg start_req,
     output reg proceed_req,
-    output reg [11:0] stop_conds,
+    output reg [10:0] stop_conds,
     output reg stop_s1_s2,
-    input wire [11:0] stop_cause,
+    input wire [10:0] stop_cause,
     output reg MNHRPT,
     output reg MNHNC,
     output reg NHALGA,
@@ -163,7 +163,7 @@ module control_regs(
             write_done <= 1'b0;
             proceed_req <= 1'b0;
             start_req <= 1'b0;
-            stop_conds <= 12'b0;
+            stop_conds <= 11'b0;
             stop_s1_s2 <= 1'b0;
             MNHRPT <= 1'b0;
             MNHNC <= 1'b0;
@@ -245,8 +245,8 @@ module control_regs(
                     case (addr)
                         `CTRL_REG_START:    start_req <= 1'b1;
                         `CTRL_REG_STOP: begin
-                            stop_conds <= data_in[11:0];
-                            stop_s1_s2 <= data_in[12];
+                            stop_conds <= data_in[10:0];
+                            stop_s1_s2 <= data_in[11];
                         end
                         `CTRL_REG_PROCEED:  proceed_req <= 1'b1;
                         `CTRL_REG_MNHRPT:   MNHRPT <= data_in[0];
@@ -370,8 +370,8 @@ module control_regs(
         end else if (read_en) begin
             read_done <= 1'b1;
             case (addr)
-                `CTRL_REG_STOP:         read_data <= {3'b0, stop_s1_s2, stop_conds};
-                `CTRL_REG_STOP_CAUSE:   read_data <= {4'b0, stop_cause};
+                `CTRL_REG_STOP:         read_data <= {4'b0, stop_s1_s2, stop_conds};
+                `CTRL_REG_STOP_CAUSE:   read_data <= {5'b0, stop_cause};
                 `CTRL_REG_MNHRPT:       read_data <= {15'b0, MNHRPT};
                 `CTRL_REG_MNHNC:        read_data <= {15'b0, MNHNC};
                 `CTRL_REG_S1_S:         read_data <= {4'b0, s1_s};

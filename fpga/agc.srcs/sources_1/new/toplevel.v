@@ -394,8 +394,6 @@ module toplevel(
 	wire ZOPCDU;
 	wire [6:1]dbg;
 	wire [6:1]leds;
-	wire mstpeven;
-	wire mstpodd;
 	wire n12KPPS;
 	wire n25KPPS;
 	wire n3200A;
@@ -664,8 +662,6 @@ module toplevel(
 		.MGP_(dbMGP_), //
 		.MSTP(MSTP),
 		.MSTRT(MSTRT),
-		.mstpeven(mstpeven),
-		.mstpodd(mstpodd),
 		.MNHRPT(MNHRPT),
 		.MNHNC(MNHNC),
 		.NHALGA(NHALGA),
@@ -868,8 +864,6 @@ module toplevel(
 		.XLNK0(XLNK0),
 		.XLNK1(XLNK1),
 		.ZEROP(ZEROP),
-		.mstpeven(mstpeven),
-		.mstpodd(mstpodd),
 		.ALGA(ALGA),
 		.ALRT0(ALRT0),
 		.ALRT1(ALRT1),
