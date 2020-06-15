@@ -67,6 +67,7 @@ verilog xil_defaultlib  --include "../../../../agc.srcs/sources_1/new/monitor" -
 "../../../../agc.srcs/sources_1/new/monitor_channels.v" \
 "../../../../agc.srcs/sources_1/new/channel.v" \
 "../../../../agc.srcs/sources_1/ip/rope_memory/sim/rope_memory.v" \
+"../../../../agc.srcs/sources_1/new/version.v" \
 "../../../../agc.srcs/toplevel/new/toplevel_tb.v" \
 
 # compile glbl module

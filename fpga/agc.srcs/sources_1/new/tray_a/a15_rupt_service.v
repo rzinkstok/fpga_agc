@@ -312,7 +312,7 @@ module a15_rupt_service(
     nor_3 #(1'b1)  NOR35145(NOR35145_out,   NOR35143_out,   NOR35144_out,   EB9,            p4SW, reset, prop_clk);
     assign EB9_ = NOR35142_out & NOR35145_out;
     
-    nor_3 #(1'b0)  NOR35146(EB9,            EB10_,          CEBG,           n0VDCA,         p4SW, reset, prop_clk);
+    nor_3 #(1'b0)  NOR35146(EB9,            EB9_,           CEBG,           n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR35147(NOR35147_out,   REBG_,          EB9_,           n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR35148(BBK1,           EB9_,           RBBEG_,         n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR35149(A15_1_RL09_,    NOR35147_out,   n0VDCA,         n0VDCA,         p4SW, reset, prop_clk);

@@ -8,7 +8,7 @@ module version(
     output wire [15:0] data_out
     );
     
-    localparam VERSION = 16'd3;
+    localparam VERSION = 16'd4;
     
     reg [15:0] read_data;
     reg read_done;

@@ -379,8 +379,6 @@ module toplevel_tb();
 	wire ZOPCDU;
 	wire [6:1]dbg;
 	wire [6:1]leds;
-	wire mstpeven;
-	wire mstpodd;
 	wire n12KPPS;
 	wire n25KPPS;
 	wire n3200A;
@@ -490,8 +488,6 @@ module toplevel_tb();
 		.MGP_(MGP_), //
 		.MSTP(MSTP),
 		.MSTRT(MSTRT),
-		.mstpeven(mstpeven),
-		.mstpodd(mstpodd),
 		.MNHRPT(MNHRPT),
 		.MNHNC(MNHNC),
 		.NHALGA(NHALGA),
@@ -694,8 +690,6 @@ module toplevel_tb();
 		.XLNK0(XLNK0),
 		.XLNK1(XLNK1),
 		.ZEROP(ZEROP),
-		.mstpeven(mstpeven),
-		.mstpodd(mstpodd),
 		.ALGA(ALGA),
 		.ALRT0(ALRT0),
 		.ALRT1(ALRT1),
@@ -916,6 +910,9 @@ module toplevel_tb();
 
 	initial
 	begin
+	    //# 250000000 // 250 ms
+	    //$stop;
+	    
 		clk = 1'b0;
 		reset = 1'b1;
 		clkout = 1'b0;
@@ -924,8 +921,7 @@ module toplevel_tb();
 		data_in = 8'h00;
 		#200 reset = 1'b0;
 		
-		
-		#80000000 // 80 ms
+		#55000000 // 55 ms
 		
         // VERB key
         #500 rxf_n = 1'b0;
@@ -953,9 +949,9 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#5000000 // 5 ms
+		#6000000 // 5 ms
 		
-		// 0 key
+		// 2 key
         #500 rxf_n = 1'b0;
 		@(negedge oe_n) data_in = 8'hC0;
 		@(negedge rd_n);
@@ -963,7 +959,7 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'h00;
 		@(posedge clkout) data_in = 8'h09;
 		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h10;
+		@(posedge clkout) data_in = 8'h02;
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
@@ -981,63 +977,7 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#5000000 // 5 ms
-		
-		// 6 key
-        #500 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'hA3;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h09;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h06;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-		
-		#10000000 // 10 ms
-		
-		// Key release
-        #500 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'hA3;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h0D;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-		
-		#5000000 // 5 ms
-		
-		// NOUN key
-        #500 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'hA3;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h09;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h1F;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-		
-		#10000000 // 10 ms
-		
-		// Key release
-        #500 rxf_n = 1'b0;
-		@(negedge oe_n) data_in = 8'hC0;
-		@(negedge rd_n);
-		@(posedge clkout) data_in = 8'hA3;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h0D;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'hC0;
-		rxf_n = 1'b1;
-		
-		#5000000 // 5 ms
+		#6000000 // 5 ms
 		
 		// 1 key
         #500 rxf_n = 1'b0;
@@ -1065,9 +1005,9 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#5000000 // 5 ms
+		#6000000 // 5 ms
 		
-		// 6 key
+		// NOUN key
         #500 rxf_n = 1'b0;
 		@(negedge oe_n) data_in = 8'hC0;
 		@(negedge rd_n);
@@ -1075,7 +1015,7 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'h00;
 		@(posedge clkout) data_in = 8'h09;
 		@(posedge clkout) data_in = 8'h00;
-		@(posedge clkout) data_in = 8'h06;
+		@(posedge clkout) data_in = 8'h1F;
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
@@ -1093,7 +1033,63 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#5000000 // 5 ms
+		#6000000 // 5 ms
+		
+		// 2 key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h02;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#10000000 // 10 ms
+		
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#6000000 // 5 ms
+		
+		// 7 key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h07;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#10000000 // 10 ms
+		
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#6000000 // 5 ms
 		
 		// ENTER key
         #500 rxf_n = 1'b0;
@@ -1121,8 +1117,92 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#5000000 // 5 ms
+		#6000000 // 5 ms
 		
+		// 1 key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h01;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#10000000 // 10 ms
+		
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#6000000 // 5 ms
+		
+		// 0 key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h10;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#10000000 // 10 ms
+		
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#6000000 // 5 ms
+		
+		// ENTER key
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h09;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h1C;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#10000000 // 10 ms
+		
+		// Key release
+        #500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#6000000 // 5 ms
+		#10000000
 		$stop;
 	end
 

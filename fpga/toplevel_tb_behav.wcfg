@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="192910024218000fs"></ZoomStartTime>
-      <ZoomEndTime time="192932404218001fs"></ZoomEndTime>
-      <Cursor1Time time="192928340468000fs"></Cursor1Time>
+      <ZoomStartTime time="207721133437000fs"></ZoomStartTime>
+      <ZoomEndTime time="207777483437001fs"></ZoomEndTime>
+      <Cursor1Time time="207741133437000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="221"></NameColumnWidth>
-      <ValueColumnWidth column_width="162"></ValueColumnWidth>
+      <ValueColumnWidth column_width="154"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="68" />
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MP0">
@@ -65,8 +65,8 @@
       <obj_property name="ObjectShortName">mon_dsky_data[15:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/strt_stp/stop_conds">
-      <obj_property name="ElementShortName">stop_conds[11:0]</obj_property>
-      <obj_property name="ObjectShortName">stop_conds[11:0]</obj_property>
+      <obj_property name="ElementShortName">stop_conds[10:0]</obj_property>
+      <obj_property name="ObjectShortName">stop_conds[10:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/strt_stp/n_nisq_steps">
       <obj_property name="ElementShortName">n_nisq_steps[15:0]</obj_property>
@@ -676,86 +676,6 @@
             <obj_property name="label">VERBREG (266)</obj_property>
             <obj_property name="Radix">OCTALRADIX</obj_property>
             <obj_property name="Reversed">false</obj_property>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][15]">
-               <obj_property name="ElementShortName">[15]</obj_property>
-               <obj_property name="ObjectShortName">[15]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][14]">
-               <obj_property name="ElementShortName">[14]</obj_property>
-               <obj_property name="ObjectShortName">[14]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][13]">
-               <obj_property name="ElementShortName">[13]</obj_property>
-               <obj_property name="ObjectShortName">[13]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][12]">
-               <obj_property name="ElementShortName">[12]</obj_property>
-               <obj_property name="ObjectShortName">[12]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][11]">
-               <obj_property name="ElementShortName">[11]</obj_property>
-               <obj_property name="ObjectShortName">[11]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][10]">
-               <obj_property name="ElementShortName">[10]</obj_property>
-               <obj_property name="ObjectShortName">[10]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][9]">
-               <obj_property name="ElementShortName">[9]</obj_property>
-               <obj_property name="ObjectShortName">[9]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][8]">
-               <obj_property name="ElementShortName">[8]</obj_property>
-               <obj_property name="ObjectShortName">[8]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][7]">
-               <obj_property name="ElementShortName">[7]</obj_property>
-               <obj_property name="ObjectShortName">[7]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][6]">
-               <obj_property name="ElementShortName">[6]</obj_property>
-               <obj_property name="ObjectShortName">[6]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][5]">
-               <obj_property name="ElementShortName">[5]</obj_property>
-               <obj_property name="ObjectShortName">[5]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][4]">
-               <obj_property name="ElementShortName">[4]</obj_property>
-               <obj_property name="ObjectShortName">[4]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][3]">
-               <obj_property name="ElementShortName">[3]</obj_property>
-               <obj_property name="ObjectShortName">[3]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][2]">
-               <obj_property name="ElementShortName">[2]</obj_property>
-               <obj_property name="ObjectShortName">[2]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][1]">
-               <obj_property name="ElementShortName">[1]</obj_property>
-               <obj_property name="ObjectShortName">[1]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[182][0]">
-               <obj_property name="ElementShortName">[0]</obj_property>
-               <obj_property name="ObjectShortName">[0]</obj_property>
-               <obj_property name="Reversed">false</obj_property>
-            </wvobject>
          </wvobject>
          <wvobject type="array" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[183]">
             <obj_property name="DisplayName">label</obj_property>
@@ -780,6 +700,13 @@
             <obj_property name="label">NOUT (303)</obj_property>
             <obj_property name="Radix">OCTALRADIX</obj_property>
             <obj_property name="Reversed">false</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[196]">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[196][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[196][15:0]</obj_property>
+            <obj_property name="label">NOUNCADR (304)</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject type="array" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[199]">
             <obj_property name="DisplayName">label</obj_property>
@@ -868,6 +795,13 @@
             <obj_property name="label">DSPTAB+10</obj_property>
             <obj_property name="Radix">OCTALRADIX</obj_property>
             <obj_property name="Reversed">false</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/toplevel_tb/fpgaagc/trayb/b12erasablememory/ram/inst/\native_mem_module.blk_mem_gen_v8_4_3_inst /memory[1009]">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[1009][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[1009][15:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
+            <obj_property name="label">SMODE (1761)</obj_property>
          </wvobject>
       </wvobject>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MKEY1">
