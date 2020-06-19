@@ -1,5 +1,4 @@
-FPGA implementation of the Apollo Guidance Computer
----------------------------------------------------
+# FPGA implementation of the Apollo Guidance Computer
 
 Leaning heaviliy on the excellent work of Mike Stewart (see https://github.com/virtualagc/agc_simulation), this
 repository contains my first experiments in Verilog and FPGA programming. In the end, I hope to produce a 
@@ -62,7 +61,7 @@ not needed as the memory is implemented in modern memory, not in actual ferrite 
 
 #### Oscillator
 The oscillator is implemented using the FPGA's internal 100 MHz oscillator as a source. The propagation clock at 51.2 MHz
-is derived from the 100 MHz using an MMCM clock module, and the 2.048 main oscillator frequency is derived from the
+is derived from the 100 MHz using an MMCM clock module, and the 2.048 MHz main oscillator frequency is derived from the
 propagation clock using a simple counter.
 
 #### Alarm
@@ -72,11 +71,18 @@ relevant, only simple token alarms are implemented for the voltage and oscillato
 The scalar alarms are ignored, and the filtering is not (yet) implemented.
 
 #### Erasable memory
-Erasable memory is implemented as modern RAM, using the Block Memory Generator IP from Xilinx. Extra logic is added
+Erasable memory is implemented as modern RAM, using the Xilinx Block Memory Generator IP. Extra logic is added
 to translate the memory addressing signals back to a binary address, and also for the read and write signals. In order to
 correspond to the actual AGC erasable memory behaviour, a memory location is cleared after a read.
 
 #### Fixed memory
-Fixed memory is implemented as modern ROM, using the Block Memory Generator IP from Xilinx. Extra logic is added
+Fixed memory is implemented as modern ROM, using the Xilinx Block Memory Generator IP. Extra logic is added
 to translate the memory addressing signals back to a binary address, and also for the read signal. As it would be
 impractical to distribute the memory over six modules, all fixed memory is condensed into a single module, B1.
+
+### AGC Monitor
+Mike Stewarts AGC Monitor project (see https://www/github.com/thewonderidiot/agc_monitor) has been adapted and added to this project,
+so a single FPGA board can be used to both run the AGC and the Monitor.
+
+So far, the Monitor includes the registers, start/stop logic, alarm control, and the DSKY. The DSKY is implemented by connecting to the
+actual DSKY channels, as opposed to the `MDT` data injection approach used by Mike Stewart.
