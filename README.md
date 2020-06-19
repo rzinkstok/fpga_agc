@@ -81,7 +81,7 @@ to translate the memory addressing signals back to a binary address, and also fo
 impractical to distribute the memory over six modules, all fixed memory is condensed into a single module, B1.
 
 ### AGC Monitor
-Mike Stewarts AGC Monitor project (see https://www/github.com/thewonderidiot/agc_monitor) has been adapted and added to this project,
+Mike Stewarts AGC Monitor project (see https://www.github.com/thewonderidiot/agc_monitor) has been adapted and added to this project,
 so a single FPGA board can be used to both run the AGC and the Monitor.
 
 So far, the Monitor includes the registers, start/stop logic, alarm control, and the DSKY. The DSKY is implemented by connecting to the
