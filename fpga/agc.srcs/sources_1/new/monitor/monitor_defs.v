@@ -151,6 +151,10 @@
 `define ADC_CHAN_VAUX14 5'h1E
 `define ADC_CHAN_VAUX15 5'h1F
 
+`define EB 12'o0003
+`define FB 12'o0004
+`define BB 12'o0006
+
 `define TCF_KEYRUPT1 16'o14024
 `define TCF_KEYRUPT2 16'o14030
 `define TCF_UPRUPT   16'o14034
