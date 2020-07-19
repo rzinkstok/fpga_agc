@@ -164,12 +164,12 @@ class ApolloIndicator(QWidget):
 
 
 class ApolloLabeledIndicator(ApolloControl):
-    def __init__(self, parent, text, color, lines=1, *args, **kwargs):
+    def __init__(self, parent, text, color, lines=1, labelwidth=25, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         # Make sure the text is bottom aligned in the specified number of lines
         text = "\n" * (lines - text.count("\n") - 1) + text
         self.label = QLabel(text, self)
-        self.label.setMinimumWidth(25)
+        self.label.setMinimumWidth(labelwidth)
         self.addWidget(self.label)
         self.layout.addSpacing(4)
 

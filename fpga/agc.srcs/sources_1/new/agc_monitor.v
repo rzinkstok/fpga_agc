@@ -103,15 +103,19 @@ module agc_monitor(
     input wire MPIPAL_,
     input wire MWARNF_,
     
-    input wire MNHSBF,
-    input wire MAMU,
-    input wire MLOAD,
-    input wire MLDCH,
-    input wire MREAD,
-    input wire MRDCH,
+    output wire MNHSBF,
+    output wire MAMU,
+    output wire MLOAD,
+    output wire MLDCH,
+    output wire MREAD,
+    output wire MRDCH,
+    output wire MONWBK,
     
     input wire MRCH,
     input wire MWCH,
+    input wire MREQIN,
+    input wire MTCSA_,
+    output wire MTCSAI,
     
     output wire MKEY1,
     output wire MKEY2,
@@ -626,8 +630,7 @@ module agc_monitor(
         .MGP_(MGP_),
 
         .MSTP(MSTP),
-        .mstpeven(mstpeven),
-
+        
         .s1_match(s1_match),
         .s2_match(s2_match),
         .i_match(i_match),
@@ -697,6 +700,74 @@ module agc_monitor(
         .addr(cmd_addr),
         .data_out(mon_chan_data)
     );
+    
+    /*******************************************************************************.
+    * Peripheral Instructions                                                       *
+    '*******************************************************************************/
+    
+    wire periph_load;
+    wire periph_read;
+    wire periph_loadch;
+    wire periph_readch;
+    wire periph_tcsaj;
+    wire [15:1] periph_bb;
+    wire [12:1] periph_s;
+    wire [16:1] periph_data;
+    wire [16:1] mdt_periph;
+    wire [16:1] periph_read_data;
+    wire periph_read_parity;
+    
+    assign periph_load = ctrl_periph_load; // | agc_erasable_periph_load | nassp_periph_load;
+    assign periph_read = ctrl_periph_read; // | agc_fixed_periph_read | agc_erasable_periph_read;
+    assign periph_loadch = ctrl_periph_loadch; //| agc_fixed_periph_loadch | agc_channels_periph_loadch;
+    assign periph_readch = ctrl_periph_readch; // | agc_channels_periph_readch;
+    assign periph_tcsaj = ctrl_periph_tcsaj;
+    assign periph_bb = ctrl_periph_bb; // | agc_fixed_periph_bb | agc_erasable_periph_bb | nassp_periph_bb;
+    assign periph_s = ctrl_periph_s; // | agc_fixed_periph_s | agc_erasable_periph_s | agc_channels_periph_s | nassp_periph_s;
+    assign periph_data = ctrl_periph_data; // | agc_fixed_periph_data | agc_erasable_periph_data | agc_channels_periph_data | nassp_periph_data;
+    
+    peripheral_instructions periph_insts(
+        .clk(clk),
+        .rst_n(rst_n),
+    
+        .MONWT(MONWT),
+        .mt(mt),
+        .mst(mst),
+        .mwl(mwl),
+        .MSP(MSP),
+    
+        .inhibit_mstp(inhibit_mstp),
+        .inhibit_ws(inhibit_ws),
+        .rbbk(rbbk),
+    
+        .MREQIN(MREQIN),
+        .MTCSA_(MTCSA_),
+    
+        .load(periph_load),
+        .read(periph_read),
+        .loadch(periph_loadch),
+        .readch(periph_readch),
+        .tcsaj(periph_tcsaj),
+    
+        .bb(periph_bb),
+        .s(periph_s),
+        .data(periph_data),
+    
+        .read_data(periph_read_data),
+        .read_parity(periph_read_parity),
+        .complete(periph_complete),
+    
+        .MTCSAI(MTCSAI),
+        .MREAD(MREAD),
+        .MLOAD(MLOAD),
+        .MRDCH(MRDCH),
+        .MLDCH(MLDCH),
+        .MONWBK(MONWBK),
+    
+        .mdt(mdt_periph)
+    );
+
+    
     
     /*******************************************************************************.
     * Core Rope Simulation                                                          *

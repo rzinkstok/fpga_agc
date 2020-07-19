@@ -77,18 +77,18 @@ class CompStop(QWidget):
         layout.addWidget(ag2)
         ag2.group()
 
-        ag3 = ApolloGroup(self, "STEP")
-        layout.addWidget(ag3)
-
-        b1 = ApolloLabeledButton(self, "PROCEED", lines=2, callback=self._proceed)
-        b2 = ApolloLabeledButton(self, "RESET\nERROR", lines=2)
-        ag3.addWidget(b1)
-        ag3.addWidget(b2)
-
-        self.n_nisq = ApolloLabeledEntry(self, "NISQ\nSTEPS", value_text="1", lines=2)
-        self.n_nisq.value.setValidator(IntValidator(pow(2, 16) - 1))
-        self.n_nisq.value.returnPressed.connect(self._set_nisq_steps)
-        ag3.addWidget(self.n_nisq)
+        # ag3 = ApolloGroup(self, "STEP")
+        # layout.addWidget(ag3)
+        #
+        # b1 = ApolloLabeledButton(self, "PROCEED", lines=2, callback=self._proceed)
+        # b2 = ApolloLabeledButton(self, "RESET\nERROR", lines=2)
+        # ag3.addWidget(b1)
+        # ag3.addWidget(b2)
+        #
+        # self.n_nisq = ApolloLabeledEntry(self, "NISQ\nSTEPS", value_text="1", lines=2)
+        # self.n_nisq.value.setValidator(IntValidator(pow(2, 16) - 1))
+        # self.n_nisq.value.returnPressed.connect(self._set_nisq_steps)
+        # ag3.addWidget(self.n_nisq)
 
     def _set_nisq_steps(self):
         t = self.n_nisq.value.text()

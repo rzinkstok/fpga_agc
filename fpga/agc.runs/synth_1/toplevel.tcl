@@ -17,7 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -101,11 +100,11 @@ read_verilog -library xil_defaultlib {
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/start_stop.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/debounce.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/io_circuits.v
-  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/rupt_injector.v
-  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor_dsky.v
-  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor_channels.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/channel.v
-  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/version.v
+  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/version.v
+  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_channels.v
+  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_dsky.v
+  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/peripheral_instructions.v
 }
 read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xdc]

@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module toplevel(
-	input wire MAMU,
+	output wire MAMU,
 	input wire MDT01,
 	input wire MDT02,
 	input wire MDT03,
@@ -18,16 +18,14 @@ module toplevel(
 	input wire MDT14,
 	input wire MDT15,
 	input wire MDT16,
-	input wire MLDCH,
-	input wire MLOAD,
-	input wire MNHSBF,
-	input wire MONPAR,
-	input wire MONWBK,
-	input wire MRDCH,
-	input wire MREAD,
-	input wire MTCSAI,
-	input wire SIGNY,
-
+	output wire MLDCH,
+	output wire MLOAD,
+	output wire MNHSBF,
+	output wire MONPAR,
+	output wire MONWBK,
+	output wire MRDCH,
+	output wire MREAD,
+	
 	output wire ALGA,
 	output wire CNTRL1,
 	output wire CNTRL2,
@@ -87,6 +85,7 @@ module toplevel(
 	output wire MT12,
 	output wire MTCAL_,
 	output wire MTCSA_,
+	output wire MTCSAI,
 	output wire MVFAIL_,
 	output wire MWAG,
 	output wire MWARNF_,
@@ -250,6 +249,7 @@ module toplevel(
 	reg SHAFTM = 0;
 	reg SHAFTP = 0;
 	reg SIGNX = 0;
+	reg SIGNY = 0;
 	reg SIGNZ = 0;
 	reg SMSEPR = 0;
 	reg SPSRDY = 0;
@@ -688,6 +688,9 @@ module toplevel(
 		.MRDCH(MRDCH),
 		.MRCH(MRCH),
 		.MWCH(MWCH),
+		.MREQIN(dbMREQIN),
+		.MTCSA_(dbMTCSA_),
+		.MTCSAI(MTCSAI),
 		
 		.MKEY1(MKEY1),
 		.MKEY2(MKEY2),
