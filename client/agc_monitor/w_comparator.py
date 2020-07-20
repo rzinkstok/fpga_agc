@@ -40,7 +40,7 @@ class WComparator(QWidget):
 
         # Add an empty label to align with the registers
         label = QLabel("", self)
-        label.setMinimumWidth(20)
+        label.setFixedWidth(20)
         layout.addWidget(label)
 
     def _update_switches(self):

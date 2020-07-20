@@ -164,12 +164,12 @@ class ApolloIndicator(QWidget):
 
 
 class ApolloLabeledIndicator(ApolloControl):
-    def __init__(self, parent, text, color, lines=1, labelwidth=25, *args, **kwargs):
+    def __init__(self, parent, text, color, lines=1, labelwidth=32, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         # Make sure the text is bottom aligned in the specified number of lines
         text = "\n" * (lines - text.count("\n") - 1) + text
         self.label = QLabel(text, self)
-        self.label.setMinimumWidth(labelwidth)
+        self.label.setFixedWidth(labelwidth)
         self.addWidget(self.label)
         self.layout.addSpacing(4)
 
@@ -196,9 +196,10 @@ class ApolloLabeledIndicatorSwitch(ApolloLabeledIndicator):
 
 
 class ApolloLabeledSwitch(ApolloControl):
-    def __init__(self, parent, text, *args, **kwargs):
+    def __init__(self, parent, text, labelwidth=32, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.label = QLabel(text, self)
+        self.label.setFixedWidth(labelwidth)
         self.addWidget(self.label)
         self.layout.addSpacing(3)
         self.switch = QCheckBox(self)
@@ -249,8 +250,7 @@ class ApolloLabeledValue(ApolloControl):
         self.layout.addSpacing(3)
         self.value = QLineEdit(self)
         self.value.setReadOnly(True)
-        self.value.setMaximumSize(65, 32)
-        self.value.setMinimumSize(65, 32)
+        self.value.setFixedSize(65, 32)
         self.value.setText(value_text)
         self.value.setAlignment(Qt.AlignCenter)
         self.layout.addWidget(self.value)
@@ -265,8 +265,7 @@ class ApolloLabeledEntry(ApolloControl):
         self.addWidget(self.label)
         self.layout.addSpacing(3)
         self.value = QLineEdit(self)
-        self.value.setMaximumSize(65, 32)
-        self.value.setMinimumSize(65, 32)
+        self.value.setFixedSize(65, 32)
         self.value.setText(value_text)
         self.value.setAlignment(Qt.AlignCenter)
         self.layout.addWidget(self.value)

@@ -51,19 +51,16 @@ class SComparator(QWidget):
         layout.addWidget(self.s)
 
         # Create a grouping widget for the S label and decoded octal value box
-        label_value_widget = QWidget(self)
-        label_value_layout = QHBoxLayout(label_value_widget)
+        label_value_layout = QHBoxLayout()
         label_value_layout.setSpacing(3)
         label_value_layout.setMargin(1)
         label_value_layout.setContentsMargins(0, 33, 0, 0)
-        label_value_widget.setLayout(label_value_layout)
-        layout.addWidget(label_value_widget)
+        layout.addLayout(label_value_layout)
 
         # Create a value box for displaying the overall decoded address
-        self._addr_value = QLineEdit(label_value_widget)
+        self._addr_value = QLineEdit(self)
         label_value_layout.addWidget(self._addr_value)
-        self._addr_value.setMaximumSize(70, 32)
-        self._addr_value.setMinimumHeight(32)
+        self._addr_value.setFixedSize(70, 32)
         self._addr_value.setReadOnly(True)
         self._addr_value.setAlignment(Qt.AlignCenter)
         self._addr_value.setText('0000')
@@ -71,8 +68,8 @@ class SComparator(QWidget):
 
 
         # Create a label to show 'S'
-        label = QLabel(f"S{self.num}", label_value_widget)
-        label.setMinimumWidth(20)
+        label = QLabel(f"S{self.num}", self)
+        label.setFixedWidth(20)
         label_value_layout.addWidget(label)
 
     def _update_address(self):

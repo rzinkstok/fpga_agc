@@ -71,8 +71,7 @@ class SubComparator(QWidget):
                 value_width = 45
 
             self.reg_box = QLineEdit(vw)
-            self.reg_box.setMaximumSize(value_width, 32)
-            self.reg_box.setMinimumHeight(32)
+            self.reg_box.setFixedSize(value_width, 32)
             self.reg_box.setText(n_digits * '0')
             self.reg_box.setAlignment(Qt.AlignCenter)
             self.reg_box.setValidator(OctalValidator(2 ** self.width - 1))

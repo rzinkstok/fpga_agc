@@ -20,17 +20,17 @@ class SubRegister(QWidget):
         if include_value:
             # Create a widget to hold the register's bits
             # Create a widget to hold the register's label and value textbox
-            label_value = QWidget(self)
-            lv_layout = QHBoxLayout(label_value)
-            label_value.setLayout(lv_layout)
+            #label_value = QWidget(self)
+            lv_layout = QHBoxLayout()
+            #label_value.setLayout(lv_layout)
             lv_layout.setSpacing(1)
             lv_layout.setContentsMargins(0, 0, 0, 0)
-            reg_layout.addWidget(label_value)
+            reg_layout.addLayout(lv_layout)
             reg_layout.addSpacing(1)
 
             # Create a label to show the register's name
-            reg_label = QLabel(name, label_value)
-            reg_label.setMinimumHeight(32)
+            reg_label = QLabel(name, self)
+            reg_label.setFixedHeight(32)
             reg_label.setAlignment(Qt.AlignCenter | Qt.AlignVCenter)
             lv_layout.addWidget(reg_label)
 
@@ -43,7 +43,7 @@ class SubRegister(QWidget):
             else:
                 value_width = 45
 
-            self.value_box = QLineEdit(label_value)
+            self.value_box = QLineEdit(self)
             self.value_box.setMaximumSize(value_width, 32)
             self.value_box.setReadOnly(True)
             self.value_box.setAlignment(Qt.AlignCenter)
@@ -74,8 +74,6 @@ class SubRegister(QWidget):
                 sep.setFrameStyle(QFrame.VLine | QFrame.Plain)
                 sep.setStyleSheet("QFrame { color: #666; } ")
                 bit_layout.addWidget(sep)
-
-
 
     def set_value(self, x):
         # Generic function to display in octal the value of a register, with the
@@ -191,8 +189,7 @@ class Register(QWidget):
 
         # Add a box to display the octal decoded value in
         self._value_box = QLineEdit(self)
-        self._value_box.setMaximumSize(70, 32)
-        #self._value_box.setMinimumWidth(100)
+        self._value_box.setFixedSize(70, 32)
         self._value_box.setReadOnly(True)
         self._value_box.setAlignment(Qt.AlignCenter)
         self._value_box.setText('00000')
@@ -201,6 +198,6 @@ class Register(QWidget):
 
         # Add a label showing the name of the register
         label = QLabel(name, self)
-        label.setMinimumWidth(20)
+        label.setFixedWidth(20)
         layout.addWidget(label)
 

@@ -139,8 +139,7 @@ class WriteW(QWidget):
     def _add_switches(self, parent, switches, switch_dict, switch_fn):
         n = len(switches)
         for i, (v, l) in enumerate(switches.items()):
-            w = ApolloLabeledSwitch(parent, l)
-            w.label.setMinimumWidth(33)
+            w = ApolloLabeledSwitch(parent, l, labelwidth=33)
             w.switch.stateChanged.connect(switch_fn)
             switch_dict[v] = w.switch
             f = i // (n//2)

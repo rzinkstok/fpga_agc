@@ -44,18 +44,15 @@ class IComparator(QWidget):
         layout.setAlignment(self.status, Qt.AlignBottom)
 
         # Create a grouping widget for the I label and decoded octal value box
-        label_value_widget = QWidget(self)
-        label_value_layout = QHBoxLayout(label_value_widget)
+        label_value_layout = QHBoxLayout()
         label_value_layout.setSpacing(3)
         label_value_layout.setMargin(1)
         label_value_layout.setContentsMargins(0, 33, 0, 0)
-        label_value_widget.setLayout(label_value_layout)
-        layout.addWidget(label_value_widget)
+        layout.addLayout(label_value_layout)
 
         # Create a value box for displaying the overall decoded address
-        self._instr_value = QLineEdit(label_value_widget)
-        self._instr_value.setMaximumSize(70, 32)
-        self._instr_value.setMinimumHeight(32)
+        self._instr_value = QLineEdit(self)
+        self._instr_value.setFixedSize(70, 32)
         self._instr_value.setReadOnly(True)
         self._instr_value.setAlignment(Qt.AlignCenter)
         self._instr_value.setText('TC0')
@@ -63,8 +60,8 @@ class IComparator(QWidget):
         label_value_layout.addWidget(self._instr_value)
 
         # Create a label to show 'I'
-        label = QLabel(f"I", label_value_widget)
-        label.setMinimumWidth(20)
+        label = QLabel(f"I", self)
+        label.setFixedWidth(20)
         label_value_layout.addWidget(label)
 
     def _update_instruction(self):

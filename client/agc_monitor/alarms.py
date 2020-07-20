@@ -48,13 +48,13 @@ class Alarms(QWidget):
     def _setup_ui(self):
         layout = QHBoxLayout(self)
         self.setLayout(layout)
-        layout.setSpacing(3)
+        layout.setSpacing(0)
 
         ag1 = ApolloGroup(self, "ALARMS")
 
         # Construct the alarm indicators
         for name, color in ALARMS.items():
-            w = ApolloLabeledIndicator(self, name, color, labelwidth=35)
+            w = ApolloLabeledIndicator(self, name, color, labelwidth=42)
             self._alarm_inds[name.lower()] = w.indicator
             ag1.addWidget(w)
 

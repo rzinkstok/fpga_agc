@@ -65,30 +65,25 @@ class InstructionRegister(QWidget):
         layout.addWidget(self.sq)
 
         # Status indicators
-        w = QWidget(self)
         wl = QHBoxLayout()
         wl.setSpacing(1)
-        wl.setContentsMargins(2, 0, 3, 2)
-        w.setLayout(wl)
-        layout.addWidget(w)
+        wl.setContentsMargins(2, 3, 3, 2)
+        layout.addLayout(wl)
 
         for name, label in STATUS_INDS.items():
-            w = ApolloLabeledIndicator(self, label, QColor(0, 255, 255), lines=2)
-            w.setMinimumWidth(35)
+            w = ApolloLabeledIndicator(self, label, QColor(0, 255, 255), lines=2, labelwidth=35)
             wl.addWidget(w)
             self._status_inds[name] = w
 
         # Create a grouping widget for the I label and decoded instruction value box
-        label_value_widget = QWidget(self)
-        label_value_layout = QHBoxLayout(label_value_widget)
+        label_value_layout = QHBoxLayout()
         label_value_layout.setSpacing(3)
         label_value_layout.setContentsMargins(0, 33, 0, 0)
-        label_value_widget.setLayout(label_value_layout)
-        layout.addWidget(label_value_widget)
+        layout.addLayout(label_value_layout)
 
         # Create a value box for displaying the overall decoded instruction
-        self._inst_value = QLineEdit(label_value_widget)
-        self._inst_value.setMaximumSize(70, 32)
+        self._inst_value = QLineEdit(self)
+        self._inst_value.setFixedSize(70, 32)
         self._inst_value.setReadOnly(True)
         self._inst_value.setAlignment(Qt.AlignCenter)
         self._inst_value.setText('TC0')
@@ -96,8 +91,8 @@ class InstructionRegister(QWidget):
         label_value_layout.addWidget(self._inst_value)
 
         # Create a label to show 'I'
-        label = QLabel('I', label_value_widget)
-        label.setMinimumWidth(20)
+        label = QLabel('I', self)
+        label.setFixedWidth(20)
         label_value_layout.addWidget(label)
 
 

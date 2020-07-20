@@ -306,6 +306,13 @@ class ControlICompStatus(ControlMessage):
     bitshift = tuple(i for i in range(len(keys)))
 
 
+class ControlAdvanceS(ControlMessage):
+    address = 0x0019
+    keys = ("dummy",)
+    bitshift = (0,)
+    mask = (0xFFFF,)
+
+
 class ControlNHALGA(ControlMessage):
     address = 0x0040
     keys = ["nhalga"]
