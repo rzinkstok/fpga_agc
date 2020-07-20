@@ -64,14 +64,12 @@ class Control(QWidget):
         self._measurement_panel = Measurements(self, self._usbif)
         layout.addWidget(self._measurement_panel)
 
-        ag1 = ApolloGroup(self, "INH")
+        ag1 = ApolloGroup(self, "INHIBIT")
         layout.addWidget(ag1)
 
         for label, msg in INH_SWITCHES.items():
             callback = lambda state, msg=msg: self._usbif.send(msg(int(bool(state))))
             w = ApolloLabeledIndicatorSwitch(self, label, QColor(255, 120, 0), lines=2, callback=callback)
-            #if label in ["RPT", "INC", "ALG"]:
-            #    w.switch.setCheckState(Qt.CheckState.Checked)
             ag1.addWidget(w)
 
         ag2 = ApolloGroup(self, "CONTROL")

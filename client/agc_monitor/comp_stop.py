@@ -2,8 +2,7 @@ from PySide2.QtWidgets import QWidget, QHBoxLayout
 from PySide2.QtGui import QColor
 from collections import OrderedDict
 
-from apollo_ui import ApolloGroup, ApolloLabeledIndicatorSwitch, ApolloLabeledRSwitch, ApolloLabeledButton, ApolloLabeledEntry
-from reg_validator import IntValidator
+from apollo_ui import ApolloGroup, ApolloLabeledIndicatorSwitch, ApolloLabeledRSwitch
 import usb_message as um
 
 
@@ -77,27 +76,3 @@ class CompStop(QWidget):
         layout.addWidget(ag2)
         ag2.group()
 
-        # ag3 = ApolloGroup(self, "STEP")
-        # layout.addWidget(ag3)
-        #
-        # b1 = ApolloLabeledButton(self, "PROCEED", lines=2, callback=self._proceed)
-        # b2 = ApolloLabeledButton(self, "RESET\nERROR", lines=2)
-        # ag3.addWidget(b1)
-        # ag3.addWidget(b2)
-        #
-        # self.n_nisq = ApolloLabeledEntry(self, "NISQ\nSTEPS", value_text="1", lines=2)
-        # self.n_nisq.value.setValidator(IntValidator(pow(2, 16) - 1))
-        # self.n_nisq.value.returnPressed.connect(self._set_nisq_steps)
-        # ag3.addWidget(self.n_nisq)
-
-    def _set_nisq_steps(self):
-        t = self.n_nisq.value.text()
-        if not t:
-            t = 0
-        n = int(t)
-        msg = um.ControlNNISQSteps(n=n)
-        print(msg)
-        self._usbif.send(msg)
-
-    def _proceed(self):
-        self._usbif.send(um.ControlProceed(1))

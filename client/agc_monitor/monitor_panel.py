@@ -12,6 +12,7 @@ from i_comparator import IComparator
 from comp_stop import CompStop
 from write_w import WriteW
 from alarms import Alarms
+from read_load import ReadLoad
 
 
 class MonitorPanel(QFrame):
@@ -122,6 +123,11 @@ class MonitorPanel(QFrame):
         #col3_layout.addSpacing(10)
         column_layout.addWidget(col3)
 
+        # Add the alarms panel
+        self._alarms_panel = Alarms(col3, self._usbif)
+        col3_layout.addWidget(self._alarms_panel)
+        col3_layout.setAlignment(self._alarms_panel, Qt.AlignTop | Qt.AlignRight)
+
         # Add the control panel
         self._ctrl_panel = Control(col3, self._usbif)
         col3_layout.addWidget(self._ctrl_panel)
@@ -132,10 +138,12 @@ class MonitorPanel(QFrame):
         col3_layout.addWidget(self._comp_stop)
         col3_layout.setAlignment(self._comp_stop, Qt.AlignTop | Qt.AlignRight)
 
-        # Add the alarms panel
-        self._alarms_panel = Alarms(col3, self._usbif)
-        col3_layout.addWidget(self._alarms_panel)
-        col3_layout.setAlignment(self._alarms_panel, Qt.AlignTop | Qt.AlignRight)
+
+
+        # Add the read/load panel
+        self._read_load = ReadLoad(col3, self._usbif)
+        col3_layout.addWidget(self._read_load)
+        col3_layout.setAlignment(self._read_load, Qt.AlignTop | Qt.AlignRight)
 
         col3_layout.addStretch()
 

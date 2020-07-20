@@ -54,7 +54,12 @@ class Alarms(QWidget):
 
         # Construct the alarm indicators
         for name, color in ALARMS.items():
-            w = ApolloLabeledIndicator(self, name, color, labelwidth=42)
+            lw = 34
+            if name == "WATCH":
+                lw = 41
+            if name == "OSCAL":
+                lw = 37
+            w = ApolloLabeledIndicator(self, name, color, labelwidth=lw)
             self._alarm_inds[name.lower()] = w.indicator
             ag1.addWidget(w)
 

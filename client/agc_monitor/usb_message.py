@@ -99,6 +99,9 @@ class Message(object):
     """
     group = None
     address = None
+    keys = ("default",)
+    bitshift = (0,)
+    mask = (0x0001,)
 
     def __init__(self, data=None, **datadict):
         self.__dict__["datadict"] = {}
@@ -156,8 +159,6 @@ class Message(object):
 
 class ControlMessage(Message):
     group = 0x20
-    bitshift = (0,)
-    mask = (0x0001,)
 
 
 class ControlStart(ControlMessage):
@@ -180,13 +181,12 @@ class ControlStopCause(ControlMessage):
 
 class ControlProceed(ControlMessage):
     address = 0x0003
-    keys = ["dummy"]
 
 
 class ControlMNHRPT(ControlMessage):
     address = 0x0004
     keys = ["mnhrpt"]
-               
+
 
 class ControlMNHNC(ControlMessage):
     address = 0x0005
@@ -306,10 +306,15 @@ class ControlICompStatus(ControlMessage):
     bitshift = tuple(i for i in range(len(keys)))
 
 
+class ControlLoadReadS1S2(ControlMessage):
+    address = 0x0017
+    keys = ("load_preset", "load_channel", "read_preset", "read_channel", "start_preset")
+    bitshift = (0, 1, 2, 3, 4)
+    mask = (0x0001, 0x0001, 0x0001, 0x0001, 0x0001)
+
+
 class ControlAdvanceS(ControlMessage):
     address = 0x0019
-    keys = ("dummy",)
-    bitshift = (0,)
     mask = (0xFFFF,)
 
 
@@ -331,13 +336,43 @@ class ControlSTRT2(ControlMessage):
 class ControlNNISQSteps(ControlMessage):
     address = 0x0060
     keys = ["n"]
-    bitshift = (0,)
     mask = (0xFFFF,)
+
+
+class ControlLoadS(ControlMessage):
+    address = 0x0070
+
+
+class ControlLoadPreset(ControlMessage):
+    address = 0x0071
+
+
+class ControlLoadChannel(ControlMessage):
+    address = 0x0072
+
+
+class ControlReadS(ControlMessage):
+    address = 0x0073
+
+
+class ControlReadPreset(ControlMessage):
+    address = 0x0074
+
+
+class ControlReadChannel(ControlMessage):
+    address = 0x0075
+
+
+class ControlStartS(ControlMessage):
+    address = 0x0076
+
+
+class ControlStartPreset(ControlMessage):
+    address = 0x0077
 
 
 class MonRegMessage(Message):
     group = 0x21
-    bitshift = (0,)
     mask = (0xFFFF,)
 
 
@@ -508,15 +543,12 @@ class DSKYReg3H(DSKYMessage):
 class DSKYMainButton(DSKYMessage):
     address = 0x0009
     keys = ["keycode"]
-    bitshift = (0,)
     mask = (0x001F,)
 
 
 class DSKYProceed(DSKYMessage):
     address = 0x000A
     keys = ["sbybut"]
-    bitshift = (0,)
-    mask = (0x0001,)
 
 
 class DSKYStatus(DSKYMessage):
@@ -529,22 +561,17 @@ class DSKYStatus(DSKYMessage):
 class DSKYNavButton(DSKYMessage):
     address = 0x000C
     keys = ["keycode"]
-    bitshift = (0,)
     mask = (0x001F,)
 
 
 class DSKYKeyRelease(DSKYMessage):
     address = 0x000D
     keys = ["keyrst"]
-    bitshift = (0,)
-    mask = (0x0001,)
 
 
 class DSKYReset(DSKYMessage):
     address = 0x000E
     keys = ["rset"]
-    bitshift = (0,)
-    mask = (0x0001,)
 
 
 class StatusMessage(Message):
@@ -584,7 +611,6 @@ class VersionMessage(Message):
     address = 0x0000
     keys = ["version"]
     mask = (0x0FFF,)
-    bitshift = (0,)
 
 
 # Construct the message map used in the message factory

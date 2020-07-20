@@ -210,11 +210,12 @@ class ApolloLabeledSwitch(ApolloControl):
 
 
 class ApolloLabeledRSwitch(ApolloControl):
-    def __init__(self, parent, text, lines=1, *args, **kwargs):
+    def __init__(self, parent, text, lines=1, labelwidth=16, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         # Make sure the text is bottom aligned in the specified number of lines
         text = "\n" * (lines - text.count("\n") - 1) + text
         self.label = QLabel(text, self)
+        self.label.setFixedWidth(labelwidth)
         self.addWidget(self.label)
         self.layout.addSpacing(3)
         self.switch = QRadioButton(self)
