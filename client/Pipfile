@@ -8,6 +8,14 @@ verify_ssl = true
 [packages]
 pyside2 = "*"
 pylibftdi = "*"
+numpy = "*"
+numpy-quaternion = "*"
+pyopengl = "*"
+pyopengl-accelerate = "*"
+pyopengl-demo = "*"
+numba = "*"
+scipy = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"

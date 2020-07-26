@@ -6,6 +6,7 @@ from PySide2.QtCore import Qt
 import resources
 from usb_interface import USBInterface
 from dsky import DSKY
+from lm import LM
 from monitor_panel import MonitorPanel
 import usb_message as um
 
@@ -22,7 +23,8 @@ class MainWindow(QMainWindow):
         self._usbif.listen(self)
 
         self.setup_ui()
-        self.dsky = DSKY(self, self._usbif)
+        #self.dsky = DSKY(self, self._usbif)
+        self.lm = LM(self, self._usbif)
 
     def handle_msg(self, msg):
         if isinstance(msg, um.VersionMessage):
@@ -36,6 +38,7 @@ class MainWindow(QMainWindow):
         self._status = QLabel('STATUS')
         status_bar.addWidget(self._status)
 
+        return
         # Create a central widget, give it a layout, and set it up
         central = QWidget(self)
         self.setCentralWidget(central)
