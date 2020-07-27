@@ -87,9 +87,9 @@ class LM(QWidget):
         self.aslider.setTickInterval(10)
         self.aslider.setMinimum(0)
         self.aslider.setMaximum(360)
-        self.aslider.setValue(180)
+        self.aslider.setValue(0)
         self.aslider.valueChanged.connect(self.changedAngleValue)
-        self.alabel = QLabel("180")
+        self.alabel = QLabel("0")
 
         al.addWidget(QLabel("ANGLE"))
         al.addWidget(self.aslider)

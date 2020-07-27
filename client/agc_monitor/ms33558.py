@@ -161,7 +161,7 @@ if __name__ == "__main__":
     for f in figures.values():
         print(f.height)
 
-    f = figures[4]
+    f = figures[9]
     la = f.linear_approximation(1)
 
 
