@@ -11,9 +11,11 @@ from ms33558 import get_data, BezierPoint
 
 R = 50.0             # Radius of the sphere in mm
 LINEWIDTH = 1.5      # in points
+TICKWIDTH = 0.75     # in points
 MM_PER_POINT = 0.352778
 WIDTH_HALF_ANGLE = 0.5 * LINEWIDTH * MM_PER_POINT / R
-DEGREE_RESOLUTION = 10
+TICKWIDTH_HALF_ANGLE = 0.6 * TICKWIDTH * MM_PER_POINT / R
+DEGREE_RESOLUTION = 5
 NUMBER_TOLERANCE = 50
 NUMBER_OF_TICK_POINTS = 3
 BALL_SCALE = 7
@@ -50,7 +52,7 @@ def anglerange(start, stop, resolution=1):
         return angles
 
 
-def fixed_distance(angle, longitude, latitude, direction):
+def move_fixed_distance(angle, longitude, latitude, direction):
     """
     :param angle: radians
     :param longitude: degrees
@@ -73,6 +75,16 @@ def fixed_distance(angle, longitude, latitude, direction):
     start_point = to_cartesian(longitude, latitude)
     axis = normalize(to_cartesian(axis_longitude, axis_latitude))
     if direction in ["south", "east"]:
+        angle *= -1
+
+    q = quaternion.from_rotation_vector(angle * axis)
+    return quaternion.rotate_vectors(q, start_point)
+
+
+def move_along_parallel(angle, longitude, latitude, direction):
+    start_point = to_cartesian(longitude, latitude)
+    axis = np.array([0, 0, -1])
+    if direction == "east":
         angle *= -1
 
     q = quaternion.from_rotation_vector(angle * axis)
@@ -168,25 +180,27 @@ class Meridian(object):
         points_east = []
 
         for current_latitude in anglerange(start_latitude, stop_latitude, DEGREE_RESOLUTION):
-            points_west.append(fixed_distance(WIDTH_HALF_ANGLE, self.longitude, current_latitude, "west"))
-            points_east.append(fixed_distance(WIDTH_HALF_ANGLE, self.longitude, current_latitude, "east"))
+            points_west.append(move_fixed_distance(WIDTH_HALF_ANGLE, self.longitude, current_latitude, "west"))
+            points_east.append(move_fixed_distance(WIDTH_HALF_ANGLE, self.longitude, current_latitude, "east"))
 
         points_west.reverse()
         return to_array(points_east + points_west)
 
 
 class Parallel(object):
-    def __init__(self, latitude, color=None):
+    def __init__(self, latitude, color=None, width=None):
         # Latitude in degrees
         self.latitude = latitude
         self.polygons = []
+        if width is None:
+            width = 2 * WIDTH_HALF_ANGLE
 
         # Black half
         points_north = []
         points_south = []
         for current_longitude in anglerange(0, 180, DEGREE_RESOLUTION):
-            points_north.append(fixed_distance(WIDTH_HALF_ANGLE, current_longitude, self.latitude, "north"))
-            points_south.append(fixed_distance(WIDTH_HALF_ANGLE, current_longitude, self.latitude, "south"))
+            points_north.append(move_fixed_distance(0.5 * width, current_longitude, self.latitude, "north"))
+            points_south.append(move_fixed_distance(0.5 * width, current_longitude, self.latitude, "south"))
 
         points_south.reverse()
         pointlist = points_north + points_south
@@ -201,8 +215,8 @@ class Parallel(object):
         points_north = []
         points_south = []
         for current_longitude in anglerange(180, 360, DEGREE_RESOLUTION):
-            points_north.append(fixed_distance(WIDTH_HALF_ANGLE, current_longitude, self.latitude, "north"))
-            points_south.append(fixed_distance(WIDTH_HALF_ANGLE, current_longitude, self.latitude, "south"))
+            points_north.append(move_fixed_distance(0.5 * width, current_longitude, self.latitude, "north"))
+            points_south.append(move_fixed_distance(0.5 * width, current_longitude, self.latitude, "south"))
 
         points_south.reverse()
         points = to_array(points_north + points_south)
@@ -240,85 +254,78 @@ class Numbers(object):
             for latitude in range(-45, 46, 30):
                 self.project_number(int(longitude/10), longitude, latitude, color)
 
-    def build_background(self, q0, rounded, bgcolor):
-        h = 1.3 * self.digit_height
-        w = 2.25 * max(self.digit_widths)
+    def build_background(self, q, offset, bgcolor):
+        w = 1.3 * self.digit_height
+        h = 2.25 * max(self.digit_widths)
 
-        # Background
         pointlist = []
+        corner_radius = w / 3
+        n_corner_points = 5
 
-        if rounded:
-            corner_radius = h / 3
-            n_corner_points = 5
+        cornerdata = []
+        for i in range(2 * n_corner_points+1):
+            angle = -math.pi / 2.0 + math.pi * i / (2 * n_corner_points)
+            cornerdata.append(np.array([corner_radius * math.cos(angle), corner_radius * math.sin(angle)]))
 
-            circlepoints = []
-            for i in range(4 * n_corner_points):
-                angle = 2 * math.pi * i / (4 * n_corner_points)
-                circlepoints.append(np.array([corner_radius * math.cos(angle), corner_radius * math.sin(angle)]))
+        pts = []
 
-            pts = [np.array([-0.5 * w, 0])]
+        # Left
+        pts.append(np.array([-0.5 * w, 0]))
+        # Lower left
+        pts.append(np.array([-0.5 * w, -0.5 * h]))
+        # Bottom
+        pts.append(np.array([0, -0.5 * h]))
 
-            # Lower left corner
-            if rounded == "0":
-                for p in circlepoints[2 * n_corner_points:3 * n_corner_points]:
-                    p[0] -= (w / 2 - corner_radius)
-                    p[1] -= (h / 2 - corner_radius)
-                    pts.append(p)
-            else:
-                pts.append(np.array([-0.5 * w, -0.5 * h]))
-            pts.append(np.array([0, -0.5 * h]))
-
-            # Lower right corner
-            if rounded == "0":
-                for p in circlepoints[3 * n_corner_points:]:
-                    p[0] += (w / 2 - corner_radius)
-                    p[1] -= (h / 2 - corner_radius)
-                    pts.append(p)
-            else:
-                pts.append(np.array([0.5 * w, -0.5 * h]))
-            pts.append(np.array([0.5 * w, 0]))
-
-            # Upper right corner
-            if rounded == "180":
-                for p in circlepoints[:n_corner_points]:
-                    p[0] += (w / 2 - corner_radius)
-                    p[1] += (h / 2 - corner_radius)
-                    pts.append(p)
-            else:
-                pts.append(np.array([0.5 * w, 0.5 * h]))
-            pts.append(np.array([0, 0.5 * h]))
-
-            # Upper left corner
-            if rounded == "180":
-                for p in circlepoints[n_corner_points:2 * n_corner_points]:
-                    p[0] -= (w / 2 - corner_radius)
-                    p[1] += (h / 2 - corner_radius)
-                    pts.append(p)
-            else:
-                pts.append(np.array([-0.5 * w, 0.5 * h]))
-
+        # Lower right
+        if offset:
+            for p in cornerdata[:n_corner_points+1]:
+                x = p[0] + (w / 2 - corner_radius)
+                y = p[1] - (h / 2 - corner_radius)
+                pts.append(np.array([x, y]))
         else:
-            pts = [
-                np.array([-0.5 * w, 0]),
-                np.array([-0.5 * w, -0.5 * h]),
-                np.array([0, -0.5 * h]),
-                np.array([0.5 * w, -0.5 * h]),
-                np.array([0.5 * w, 0]),
-                np.array([0.5 * w, 0.5 * h]),
-                np.array([0, 0.5 * h]),
-                np.array([-0.5 * w, 0.5 * h])
-            ]
+            pts.append(np.array([0.5 * w, -0.5 * h]))
+
+        # Right
+        pts.append(np.array([0.5 * w, 0]))
+
+        # Upper right
+        if offset:
+            for p in cornerdata[n_corner_points:]:
+                x = p[0] + (w / 2 - corner_radius)
+                y = p[1] + (h / 2 - corner_radius)
+                pts.append(np.array([x, y]))
+        else:
+            pts.append(np.array([0.5 * w, 0.5 * h]))
+
+        # Top
+        pts.append(np.array([0, 0.5 * h]))
+
+        # Upper left
+        pts.append(np.array([-0.5 * w, 0.5 * h]))
+
         for point in pts:
-            axis1 = np.array([0, 0, 1])
-            q1 = quaternion.from_rotation_vector(point[0] * axis1)
-            axis2 = quaternion.rotate_vectors(q1, np.array([0, -1, 0]))
-            q2 = quaternion.from_rotation_vector(point[1] * axis2)
-            q3 = quaternion.from_rotation_vector(math.pi / 2 * np.array([1, 0, 0]))
-            p = quaternion.rotate_vectors(q0 * q3 * q2 * q1, np.array([R, 0, 0]))
+            # rotate the offset background shape 180 degrees if needed
+            if offset == "east":
+                 point = -point
+
+            p1 = move_fixed_distance(point[1], 0, 0, "north")
+            delta_x = point[0]
+
+            # shift the shape for offset
+            if offset == "east":
+                delta_x -= WIDTH_HALF_ANGLE + 0.5 * w
+            if offset == "west":
+                delta_x += WIDTH_HALF_ANGLE + 0.5 * w
+
+            p2 = move_fixed_distance(delta_x, *from_cartesian(*p1), "west")
+            p = quaternion.rotate_vectors(q, p2)
             pointlist.append(p)
 
+        pointlist.reverse()
         background_points = to_array(pointlist)
         self.polygons.append(FDAIPolygon(background_points, bgcolor))
+
+        return 0.5 * w
 
     def shift_number(self, digit, x, y):
         result = []
@@ -329,51 +336,59 @@ class Numbers(object):
         return result
 
     def project_number(self, number, longitude, latitude, color):
-        h = 1.3 * self.digit_height
-        w = 2.25 * max(self.digit_widths)
-
-        offset = math.degrees((0.5 * h + WIDTH_HALF_ANGLE)/math.cos(math.radians(latitude)))
-        rounded = False
+        offset = False
         if longitude == 0:
-            longitude -= offset
-            rounded = "0"
+            offset = "east"
         elif longitude == 180:
-            longitude += offset
-            rounded = "180"
-
-        # We're coming from long, lat = (0, 0)
-        theta = math.radians(-latitude)
-        phi = math.radians(90 - longitude)
-        q0 = quaternion.from_spherical_coords(theta, phi)
+            offset = "west"
 
         bgcolor = Qt.white if color == Qt.black else Qt.black
-        self.build_background(q0, rounded, bgcolor)
 
-        digits = [int(d) for d in str(number)]
-        full_width = sum([self.digit_widths[i] for i in digits]) - self.digit_right_kerns[digits[-1]]
+        current_digits = [int(d) for d in str(number)]
+        current_full_width = sum([self.digit_widths[i] for i in current_digits]) - self.digit_right_kerns[current_digits[-1]]
 
         # Shift all numbers to the correct position
         shifted_digits = []
-        xshift = -0.5*full_width
+        xshift = -0.5 * current_full_width
         yshift = - 0.5 * self.digit_height
 
-        for d in digits:
+        for d in current_digits:
             digit = self.shift_number(self.digits[d], xshift, yshift)
             shifted_digits.append(digit)
             xshift += self.digit_widths[d]
 
-        # Project to reference position on the sphere
-        # For each point, rotate around Z axis to longitude position
-        # Then rotate around rotated Y axis to latitude position
+        # Put number on its side
+        q1 = quaternion.from_rotation_vector(math.pi/2 * np.array([0, 1, 0]))
+
+
+        # # Shift to latitude
+        q2 = quaternion.from_rotation_vector(math.radians(latitude) * np.array([1, 0, 0]))
+        # Shift to longitude
+        q3 = quaternion.from_rotation_vector(-math.radians(longitude) * np.array([0, 0, 1]))
+        q = q3 * q2 * q1
+
+        # Build background
+        offset_value = self.build_background(q3 * q2, offset, bgcolor)
+
         for d in shifted_digits:
             for loopn, loop in enumerate(d):
                 pointlist = []
                 for point in loop:
-                    q1 = quaternion.from_rotation_vector(math.pi/2 * np.array([1, 0, 0]))
-                    p1 = fixed_distance(point.x, 90, 0, "east")
-                    p2 = fixed_distance(point.y, *from_cartesian(*p1), "north")
-                    p = quaternion.rotate_vectors(q0 * q1, p2)
-                    pointlist.append(p)
+                    # Start at 0 longitude, 0 latitude and move to point coordinates
+                    p1 = move_fixed_distance(point.x, 0, 0, "east")
+
+                    delta_y = point.y
+                    if offset == "east":
+                        delta_y -= WIDTH_HALF_ANGLE + offset_value
+                    elif offset == "west":
+                        delta_y += WIDTH_HALF_ANGLE + offset_value
+
+                    p2 = move_fixed_distance(delta_y, *from_cartesian(*p1), "north")
+
+                    # Shift to position
+                    p4 = quaternion.rotate_vectors(q, p2)
+
+                    pointlist.append(p4)
 
                 if loopn > 0:
                     pointlist.reverse()
@@ -407,19 +422,15 @@ class Ticks(object):
             if current_latitude in [-75, -60, -30, 0, 30, 60, 75]:
                 continue
 
-            p = to_cartesian(longitude, current_latitude)
-
-            ew_axis = np.array([0, 0, 1])
-
             points_north = []
             points_south = []
             current_tick_half_angle = self.tick_half_angle / math.cos(math.radians(current_latitude))
 
             for i in range(NUMBER_OF_TICK_POINTS):
                 ta = -current_tick_half_angle + i * 2 * current_tick_half_angle / (NUMBER_OF_TICK_POINTS - 1)
-                p1 = quaternion.rotate_vectors(quaternion.from_rotation_vector(ta * ew_axis), p)
-                points_north.append(fixed_distance(WIDTH_HALF_ANGLE, *from_cartesian(*p1), "north"))
-                points_south.append(fixed_distance(WIDTH_HALF_ANGLE, *from_cartesian(*p1), "south"))
+                p1 = move_along_parallel(ta, longitude, current_latitude, "east")
+                points_north.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "north"))
+                points_south.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "south"))
             points_north.reverse()
             points = to_array(points_north + points_south)
 
@@ -451,9 +462,9 @@ class Ticks(object):
                     ta += self.tick_half_angle
                 if latitude == -75:
                     ta -= self.tick_half_angle
-                p1 = fixed_distance(ta, *from_cartesian(*p), "south")
-                points_east.append(fixed_distance(WIDTH_HALF_ANGLE, *from_cartesian(*p1), "east"))
-                points_west.append(fixed_distance(WIDTH_HALF_ANGLE, *from_cartesian(*p1), "west"))
+                p1 = move_fixed_distance(ta, *from_cartesian(*p), "south")
+                points_east.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "east"))
+                points_west.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "west"))
 
             points_east.reverse()
             points = to_array(points_west + points_east)
@@ -465,7 +476,73 @@ class Ticks(object):
             self.polygons.append(FDAIPolygon(points, color))
 
     def build_prime_ticks(self):
-        pass
+        prime_tick_half_angle = 1.4 * self.tick_half_angle
+
+        # Prime meridian
+        for i in range(149):
+            latitude = -74 + i
+            if latitude % 30 == 0:
+                continue
+
+            points_north_0 = []
+            points_south_0 = []
+            points_north_180 = []
+            points_south_180 = []
+
+            current_tick_half_angle = 0.5*prime_tick_half_angle / math.cos(math.radians(latitude))
+
+            if latitude % 10 == 0:
+                current_tick_half_angle *= 2
+            elif latitude % 5 == 0:
+                current_tick_half_angle *= 1.5
+
+            for j in range(NUMBER_OF_TICK_POINTS):
+                ta = j * 2 * current_tick_half_angle / (NUMBER_OF_TICK_POINTS - 1)
+                p1 = move_along_parallel(ta, 0, latitude, "west")
+                points_north_0.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "north"))
+                points_south_0.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "south"))
+
+                p1 = move_along_parallel(ta, 180, latitude, "east")
+                points_north_180.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "north"))
+                points_south_180.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "south"))
+
+            points_south_0.reverse()
+            points_north_180.reverse()
+
+            points = to_array(points_south_0 + points_north_0)
+            self.polygons.append(FDAIPolygon(points, Qt.black))
+
+            points = to_array(points_north_180 + points_south_180)
+            self.polygons.append(FDAIPolygon(points, Qt.black))
+
+        # Prime parallel
+        for i in range(359):
+            longitude = i + 1
+            if longitude % 30 == 0:
+                continue
+
+            points_east = []
+            points_west = []
+
+            current_tick_angle = 2 * prime_tick_half_angle
+
+            if longitude % 10 == 0:
+                current_tick_angle *= 2
+            elif longitude % 5 == 0:
+                current_tick_angle *= 1.5
+
+            current_tick_angle += 7.5 * WIDTH_HALF_ANGLE
+
+            for j in range(NUMBER_OF_TICK_POINTS):
+                ta = - 0.5 * current_tick_angle + j * current_tick_angle / (NUMBER_OF_TICK_POINTS - 1)
+                p1 = move_fixed_distance(ta, longitude, 0, "north")
+                points_east.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "east"))
+                points_west.append(move_fixed_distance(TICKWIDTH_HALF_ANGLE, *from_cartesian(*p1), "west"))
+
+            points_west.reverse()
+            points = to_array(points_east + points_west)
+            color = Qt.black if longitude < 180 else Qt.white
+            self.polygons.append(FDAIPolygon(points, color))
 
 
 class FDAIData(object):
@@ -501,6 +578,8 @@ class FDAIData(object):
             polygons.extend(p.polygons)
             for i in range(5):
                 latitude = -60 + i * 30
+                if latitude == 0:
+                    continue
                 p = Parallel(latitude)
                 polygons.extend(p.polygons)
             p = Parallel(75)
@@ -521,6 +600,14 @@ class FDAIData(object):
         if self.ticks:
             t = Ticks()
             polygons.extend(t.polygons)
+
+        # Bands around zero parallel
+        p = Parallel(0, Qt.black, 7.5 * WIDTH_HALF_ANGLE)
+        polygons.extend(p.polygons)
+        p = Parallel(math.degrees(2 * WIDTH_HALF_ANGLE), Qt.lightGray)
+        polygons.extend(p.polygons)
+        p = Parallel(math.degrees(-2 * WIDTH_HALF_ANGLE), Qt.lightGray)
+        polygons.extend(p.polygons)
 
         for polygon in polygons:
             self.reference_points = np.vstack((self.reference_points, polygon.points))
@@ -584,9 +671,6 @@ class ClipList(object):
         for p in points:
             self.append(p)
         self.close()
-        # print("ClipList")
-        # print("Number of intersections in:", len(self.intersections["in"]))
-        # print("Number of intersections out:", len(self.intersections["out"]))
 
     def __len__(self):
         n = 1
@@ -680,7 +764,6 @@ class ClipList(object):
         while self.intersections["in"]:
             points = []
             start = self.intersections["in"][0]
-            #print("Start:", start.point)
             points.append(start.point)
             cur = start
 
@@ -688,16 +771,13 @@ class ClipList(object):
                 cur = cur.next
                 points.append(cur.point)
                 if cur.direction == "out":
-                    #print("Out:", cur)
                     # Walk along visibility circle counter clockwise to the next intersection (in)
                     next_in = self.next_in(cur)
-                    #print("Connecting to", next_in.point)
                     out_angle = cur.angle
                     in_angle = next_in.angle
                     angles = anglerange(out_angle, in_angle, DEGREE_RESOLUTION)
                     for a in angles[1:-1]:
                         p = np.array([0, R * math.cos(math.radians(a)), R * math.sin(math.radians(a))])
-                        # print("Border point:", p)
                         points.append(p)
                     points.append(next_in.point)
 
@@ -709,9 +789,7 @@ class ClipList(object):
                     # Should not occur
                     print("Encountered in before out")
                 else:
-                    #print("Point", cur.point)
                     pass
-            #print("Points assembled:", len(points))
             poly_points.append(points)
         return poly_points
 
