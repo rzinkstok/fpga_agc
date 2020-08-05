@@ -1,5 +1,5 @@
 import sys
-from PySide2.QtWidgets import QApplication, QMainWindow, QLabel, QWidget, QHBoxLayout
+from PySide2.QtWidgets import QApplication, QMainWindow, QLabel, QWidget, QVBoxLayout
 from PySide2.QtGui import QFont, QFontInfo, QPalette, QColor
 from PySide2.QtCore import Qt
 
@@ -7,30 +7,30 @@ import resources
 from usb_interface import USBInterface
 from dsky import DSKY
 from lm import LM
-from monitor_panel import MonitorPanel
+from apollo_ui import ApolloGroup, ApolloLabeledSwitch
+from monitor_window import MonitorWindow
 import usb_message as um
 
 
 class MainWindow(QMainWindow):
     def __init__(self, parent):
         super().__init__(parent)
-        self.setWindowTitle('AGC Monitor')
-
         self._usbif = USBInterface()
         self._usbif.connected.connect(self.connected)
 
         self._usbif.poll(um.VersionMessage())
         self._usbif.listen(self)
 
-        self.setup_ui()
-        #self.dsky = DSKY(self, self._usbif)
+        self.monitor = MonitorWindow(self, self._usbif)
+        self.dsky = DSKY(self, self._usbif)
         self.lm = LM(self, self._usbif)
+        self._setup_ui()
 
     def handle_msg(self, msg):
         if isinstance(msg, um.VersionMessage):
             self._status.setText(f"AGC VERSION {msg.version} CONNECTED")
 
-    def setup_ui(self):
+    def _setup_ui(self):
         status_bar = self.statusBar()
         status_bar.setSizeGripEnabled(False)
         status_bar.setContentsMargins(4, 0, 0, 0)
@@ -38,20 +38,50 @@ class MainWindow(QMainWindow):
         self._status = QLabel('STATUS')
         status_bar.addWidget(self._status)
 
-        return
         # Create a central widget, give it a layout, and set it up
         central = QWidget(self)
         self.setCentralWidget(central)
-        layout = QHBoxLayout(central)
+        layout = QVBoxLayout()
+        layout.setMargin(10)
         central.setLayout(layout)
-        layout.setSpacing(0)
-        layout.setMargin(0)
 
-        #self.setStyleSheet("background-image:url(:/dsky.png)")
+        ag = ApolloGroup(self, "INTERFACE")
+        dsky_sw = ApolloLabeledSwitch(self, "DSKY")
+        monitor_sw = ApolloLabeledSwitch(self, "MONITOR", labelwidth=56)
+        fdai_sw = ApolloLabeledSwitch(self, "FDAI")
 
-        self._monitor_panel = MonitorPanel(central, self._usbif)
+        dsky_sw.switch.setChecked(True)
+        monitor_sw.switch.setChecked(True)
+        fdai_sw.switch.setChecked(True)
+        dsky_sw.switch.stateChanged.connect(self.toggle_dsky)
+        monitor_sw.switch.stateChanged.connect(self.toggle_monitor)
+        fdai_sw.switch.stateChanged.connect(self.toggle_fdai)
 
-        layout.addWidget(self._monitor_panel)
+        ag.addWidget(dsky_sw)
+        ag.addWidget(monitor_sw)
+        ag.addWidget(fdai_sw)
+
+        layout.addWidget(ag)
+        layout.setAlignment(ag, Qt.AlignTop | Qt.AlignLeft)
+        layout.addStretch()
+
+    def toggle_dsky(self):
+        if self.dsky.isVisible():
+            self.dsky.hide()
+        else:
+            self.dsky.show()
+
+    def toggle_monitor(self):
+        if self.monitor.isVisible():
+            self.monitor.hide()
+        else:
+            self.monitor.show()
+
+    def toggle_fdai(self):
+        if self.lm.isVisible():
+            self.lm.hide()
+        else:
+            self.lm.show()
 
     def connected(self, connected):
         if connected:
@@ -67,7 +97,6 @@ class MainWindow(QMainWindow):
             self._usbif.send(um.ControlProceed(1))
 
         event.accept()
-
 
 
 if __name__ == '__main__':

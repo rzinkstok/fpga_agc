@@ -818,12 +818,23 @@ class FDAI(QWidget):
         self.orientation = quaternion.from_rotation_vector(0 * normalize(np.array([0, 1, 1])))
         self.data = FDAIData()
 
+
+
+
     def setOrientation(self, x, y, z, angle):
+        """Should take IMU X, Y and Z angles"""
         axis = normalize(np.array([x, y, z]))
         angle = math.radians(angle)
         q = quaternion.from_rotation_vector(angle * axis)
         self.orientation = q
         self.update()
+
+    def setRates(self, roll, pitch, yaw):
+        """Takes omegas for roll, pitch and yaw"""
+        pass
+
+    def setErrorNeedles(self, error_x, error_y, error_z):
+        pass
 
     def sizeHint(self):
         return QSize(self.size + 1, self.size + 1)
@@ -925,3 +936,54 @@ class FDAI(QWidget):
         self.drawBall(painter)
         painter.end()
 
+
+def setOrientation(imux, imuy, imuz):
+    oga = math.radians(imux)  # Outer gimbal axis/angle
+    iga = math.radians(imuy)  # Inner gimbal axis
+    mga = math.radians(imuz)  # Middle gimbal axis
+
+    sinog = math.sin(oga)
+    sinig = math.sin(iga)
+    sinmg = math.sin(mga)
+    cosog = math.cos(oga)
+    cosig = math.cos(iga)
+    cosmg = math.cos(mga)
+
+    t12 = sinmg
+    t22 = cosmg * cosog
+    t31 = cosig * sinmg * sinog + sinig * cosog
+    t32 = -cosmg * sinog
+    t33 = -sinig * sinmg * sinog + cosig * cosog
+
+    roll = math.atan2(t12, t22)
+    if roll < -2 * math.pi:
+        roll += 2 * math.pi
+    if roll >= 2 * math.pi:
+        roll -= 2 * math.pi
+
+    pitch = math.atan2(t31, t33)
+    if pitch < -2 * math.pi:
+        pitch += 2 * math.pi
+    if pitch >= 2 * math.pi:
+        pitch -= 2 * math.pi
+
+    yaw = math.asin(t32)
+    if yaw < -2 * math.pi:
+        yaw += 2 * math.pi
+    if yaw >= 2 * math.pi:
+        yaw -= 2 * math.pi
+
+    fdaix_angle = - math.degrees(yaw)
+    """
+    x = -math.degrees(yaw)
+      = -math.degrees(math.asin(t32))
+      = -math.degrees(math.asin(-1 * cosmg * sinog))
+    y = math.degrees(pitch)
+      = math.degrees(math.atan2(t31, t33))
+      = math.degrees(math.atan2(cosig * sinmg * sinog + sinig * cosog, -1 * sinig * sinmg * sinog + cosig * cosog))
+    """
+
+    fdaiy_angle = math.degrees(pitch)
+    fdaiz_angle = math.degrees(roll)
+
+    return fdaix_angle, fdaiy_angle, fdaiz_angle

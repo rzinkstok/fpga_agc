@@ -99,7 +99,7 @@ class WriteW(QWidget):
 
         ag1 = ApolloGroup(self, "WRITE W", nframes=2)
         for label, mode in WRITE_W_POSITIONS.items():
-            w = ApolloLabeledRSwitch(ag1, label)
+            w = ApolloLabeledRSwitch(ag1, label, labelwidth=20)
             w.switch.pressed.connect(lambda m=mode: self._update_mode(m))
             if label == 'ALL':
                 w.switch.setChecked(True)
@@ -139,8 +139,11 @@ class WriteW(QWidget):
     def _add_switches(self, parent, switches, switch_dict, switch_fn):
         n = len(switches)
         for i, (v, l) in enumerate(switches.items()):
+            f = i // (n // 2)
+            if i != 0:
+                parent.addStretch(f)
             w = ApolloLabeledSwitch(parent, l, labelwidth=33)
             w.switch.stateChanged.connect(switch_fn)
             switch_dict[v] = w.switch
-            f = i // (n//2)
+
             parent.addWidget(w, f)

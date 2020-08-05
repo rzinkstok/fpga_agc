@@ -81,6 +81,9 @@ class ApolloGroup(QWidget):
     def addSpacing(self, spacing, frame=0):
         self.framelayouts[frame].addSpacing(spacing)
 
+    def addStretch(self, frame=0):
+        self.framelayouts[frame].addStretch()
+
     def group(self):
         bg = QButtonGroup(self)
         for w in self.widgets:
