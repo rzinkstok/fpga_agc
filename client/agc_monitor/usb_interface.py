@@ -33,7 +33,8 @@ class USBInterface(QObject):
 
         self._dev = None
 
-        self._poll_msgs = []
+        self._poll_msgs = {}
+        self._disabled_sources = []
         self._tx_queue = queue.Queue()
         self._rx_bytes = b''
         self._poll_ctr = 0
@@ -57,13 +58,26 @@ class USBInterface(QObject):
     def send_msg(self, msg):
         self._tx_queue.put(msg)
 
-    def poll(self, msg):
-        if msg not in self._poll_msgs:
-            self._poll_msgs.append(msg)
+    def poll(self, source, msg):
+        if source not in self._poll_msgs:
+            self._poll_msgs[source] = []
+        if msg not in self._poll_msgs[source]:
+            self._poll_msgs[source].append(msg)
+
+    def disable_source(self, source):
+        if source not in self._disabled_sources:
+            self._disabled_sources.append(source)
+
+    def enable_source(self, source):
+        if source in self._disabled_sources:
+            self._disabled_sources.remove(source)
 
     def _enqueue_poll_msgs(self):
-        for msg in self._poll_msgs:
-            self._tx_queue.put(msg)
+        for source in self._poll_msgs.keys():
+            if source in self._disabled_sources:
+                continue
+            for msg in self._poll_msgs[source]:
+                self._tx_queue.put(msg)
 
     def _service(self):
         #print("Service")
@@ -77,10 +91,10 @@ class USBInterface(QObject):
                 msg = self._tx_queue.get_nowait()
                 if msg.datadict:
                     pass
-                    #print(f"Sending {msg}")
+                    print(f"Sending {msg}")
                 else:
                     pass
-                    #print(f"Sending {msg}")
+                    print(f"Sending {msg}")
                 packed_msg = msg.pack()
                 slipped_msg = slip(packed_msg)
                 try:

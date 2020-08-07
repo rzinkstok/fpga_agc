@@ -63,8 +63,8 @@ class WriteW(QWidget):
         z = {k: 0 for k in PULSE_SWITCHES.keys()}
         usbif.send(um.ControlPulseSwitches(**z))
 
-        #usbif.poll(um.ControlTimeSwitches())
-        #usbif.poll(um.ControlPulseSwitches())
+        #usbif.poll("monitor", um.ControlTimeSwitches())
+        #usbif.poll("monitor", um.ControlPulseSwitches())
         #usbif.listen(self)
 
     #def handle_msg(self, msg):

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="prop_clock_divider_synth_1" LaunchDir="/home/rzinkstok/fpga_agc/fpga/agc.runs/prop_clock_divider_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="cmd_fifo_synth_1" LaunchDir="/home/rzinkstok/fpga_agc/fpga/agc.runs/cmd_fifo_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="read_byte_fifo_synth_1" LaunchDir="/home/rzinkstok/fpga_agc/fpga/agc.runs/read_byte_fifo_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="mon_adc_synth_1" LaunchDir="/home/rzinkstok/fpga_agc/fpga/agc.runs/mon_adc_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="rope_memory_synth_1" LaunchDir="/home/rzinkstok/fpga_agc/fpga/agc.runs/rope_memory_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="styx_ps_processing_system7_0_0_synth_1" LaunchDir="/home/rzinkstok/fpga_agc/fpga/agc.runs/styx_ps_processing_system7_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="prop_clock_divider_synth_1"/>
+		<Parent Id="cmd_fifo_synth_1"/>
+		<Parent Id="read_byte_fifo_synth_1"/>
+		<Parent Id="mon_adc_synth_1"/>
+		<Parent Id="rope_memory_synth_1"/>
+		<Parent Id="styx_ps_processing_system7_0_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

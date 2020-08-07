@@ -98,11 +98,11 @@ class Register(QWidget):
 
         # Set up register reading and updates
         self.msg = getattr(um, 'MonReg' + name)
-        usbif.poll(self.msg())
+        usbif.poll("monitor", self.msg())
         usbif.listen(self)
 
         if has_parity:
-            usbif.poll(um.MonRegParity())
+            usbif.poll("monitor", um.MonRegParity())
             self._gp = name.lower() + '_gp'
             self._sp = name.lower() + '_sp'
         else:

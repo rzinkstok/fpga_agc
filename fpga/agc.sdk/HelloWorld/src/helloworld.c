@@ -57,7 +57,6 @@ int main()
     while(1) {
     	print("Hello World\n\r");
     }
-
     cleanup_platform();
     return 0;
 }

@@ -12,9 +12,9 @@ class Measurements(QWidget):
 
         self._setup_ui()
 
-        usbif.poll(um.StatusTemp())
-        usbif.poll(um.StatusVccInt())
-        usbif.poll(um.StatusVccAux())
+        usbif.poll("monitor", um.StatusTemp())
+        usbif.poll("monitor", um.StatusVccInt())
+        usbif.poll("monitor", um.StatusVccAux())
         usbif.listen(self)
 
     def handle_msg(self, msg):

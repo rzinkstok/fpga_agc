@@ -26,7 +26,7 @@ class InstructionRegister(QWidget):
         self._status_inds = {}
         self._setup_ui(color)
 
-        usbif.poll(um.MonRegI())
+        usbif.poll("monitor", um.MonRegI())
         usbif.listen(self)
 
     def handle_msg(self, msg):

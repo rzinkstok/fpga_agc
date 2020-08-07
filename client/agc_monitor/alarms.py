@@ -31,7 +31,7 @@ class Alarms(QWidget):
 
         self._setup_ui()
 
-        usbif.poll(um.StatusAlarms())
+        usbif.poll("monitor", um.StatusAlarms())
         usbif.listen(self)
 
         self._reset_alarms()
@@ -54,11 +54,13 @@ class Alarms(QWidget):
 
         # Construct the alarm indicators
         for name, color in ALARMS.items():
-            lw = 34
+            lw = 36
             if name == "WATCH":
-                lw = 41
+                lw = 46
             if name == "OSCAL":
-                lw = 37
+                lw = 42
+            if name == "WARN":
+                lw = 40
             w = ApolloLabeledIndicator(self, name, color, labelwidth=lw)
             self._alarm_inds[name.lower()] = w.indicator
             ag1.addWidget(w)

@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-//Date        : Sun Apr  5 19:20:06 2020
+//Date        : Thu Aug  6 11:08:15 2020
 //Host        : fpgadev running 64-bit Ubuntu 18.04.4 LTS
 //Command     : generate_target styx_ps.bd
 //Design      : styx_ps

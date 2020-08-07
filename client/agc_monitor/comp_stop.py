@@ -31,7 +31,7 @@ class CompStop(QWidget):
 
         self._setup_ui()
 
-        usbif.poll(um.ControlStopCause())
+        usbif.poll("monitor", um.ControlStopCause())
         usbif.listen(self)
         keys = [x for x in STOP_CONDS.values()] + ["s1_s2"]
         z = {k: 0 for k in keys}
@@ -57,7 +57,7 @@ class CompStop(QWidget):
         layout.addWidget(ag1)
 
         for label, name in STOP_CONDS.items():
-            w = ApolloLabeledIndicatorSwitch(self, label, QColor(255, 120, 0), lines=2, callback=self._set_stop_conds, direct_connect=False)
+            w = ApolloLabeledIndicatorSwitch(self, label, QColor(255, 120, 0), labelwidth=38, lines=2, callback=self._set_stop_conds, direct_connect=False)
             ag1.addWidget(w)
             self._stop_inds[name] = w.indicator
             self._stop_switches[name] = w.switch

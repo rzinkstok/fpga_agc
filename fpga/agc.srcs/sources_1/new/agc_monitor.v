@@ -511,7 +511,6 @@ module agc_monitor(
     wire mwchg;
     wire ss_mstp;
     wire inhibit_mstp;
-    assign inhibit_mstp = 0; // REMOVE WHEN PERIPHERAL STUFF IS DONE
     assign MSTP = ss_mstp & ~inhibit_mstp;
     
     start_stop strt_stp(
@@ -580,10 +579,8 @@ module agc_monitor(
     wire [15:11]true_fb;
     wire [12:1]true_s;
     wire inhibit_ws;
-    assign inhibit_ws = 1'b0;   // FIXME: remove when peripheral instructions are done
     wire rbbk;
-    assign rbbk = 1'b0;         // FIXME: remove when peripheral instructions are done
-
+    
     monitor_regs mon_regs(
         .clk(clk),
         .rst_n(rst_n),

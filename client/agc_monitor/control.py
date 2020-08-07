@@ -33,12 +33,12 @@ class Control(QWidget):
         self._status_inds = {}
         self._setup_ui()
 
-        usbif.poll(um.ControlNHALGA())
-        usbif.poll(um.ControlMNHRPT())
+        usbif.poll("monitor", um.ControlNHALGA())
+        usbif.poll("monitor", um.ControlMNHRPT())
 
-        usbif.poll(um.MonRegStatus())
-        usbif.poll(um.ControlStopCause())
-        # usbif.poll(um.StatusPeripheral())
+        usbif.poll("monitor", um.MonRegStatus())
+        usbif.poll("monitor", um.ControlStopCause())
+        # usbif.poll("monitor", um.StatusPeripheral())
         usbif.listen(self)
 
         #for msg in INH_SWITCHES.values():

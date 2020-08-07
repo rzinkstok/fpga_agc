@@ -32,17 +32,6 @@ set_property board_part numato.com:styx:part0:1.0 [current_project]
 set_property ip_output_repo /home/rzinkstok/fpga_agc/fpga/agc.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 add_files /home/rzinkstok/fpga_agc/roms/Aurora12.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test2.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test3.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test4.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test5.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test6.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test9.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test11.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test12.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test13.coe
-add_files /home/rzinkstok/fpga_agc/fpga/scripts/test14.coe
 read_verilog /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_defs.v
 set_property file_type "Verilog Header" [get_files /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_defs.v]
 read_verilog -library xil_defaultlib {
@@ -117,9 +106,6 @@ set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_a
 read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/core_memory/core_memory.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/core_memory/core_memory_ooc.xdc]
 
-read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory.xci
-set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory_ooc.xdc]
-
 read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider_board.xdc]
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider.xdc]
@@ -138,6 +124,9 @@ set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_a
 read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc.xdc]
+
+read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory.xci
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

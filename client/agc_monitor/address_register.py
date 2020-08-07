@@ -11,9 +11,9 @@ class AddressRegister(QWidget):
         super().__init__(parent)
         self._setup_ui(color)
 
-        usbif.poll(um.MonRegS())
-        usbif.poll(um.MonRegBB())
-        #usbif.poll(um.MonChanFEXT())
+        usbif.poll("monitor", um.MonRegS())
+        usbif.poll("monitor", um.MonRegBB())
+        #usbif.poll("monitor", um.MonChanFEXT())
 
         usbif.listen(self)
 

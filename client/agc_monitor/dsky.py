@@ -34,16 +34,16 @@ class DSKY(QWidget):
         self._flash_on = True
         QTimer.singleShot(FLASH_ON_MS, self._update_flash)
 
-        usbif.poll(um.DSKYProg())
-        usbif.poll(um.DSKYVerb())
-        usbif.poll(um.DSKYNoun())
-        usbif.poll(um.DSKYReg1L())
-        usbif.poll(um.DSKYReg1H())
-        usbif.poll(um.DSKYReg2L())
-        usbif.poll(um.DSKYReg2H())
-        usbif.poll(um.DSKYReg3L())
-        usbif.poll(um.DSKYReg3H())
-        usbif.poll(um.DSKYStatus())
+        usbif.poll("dsky", um.DSKYProg())
+        usbif.poll("dsky", um.DSKYVerb())
+        usbif.poll("dsky", um.DSKYNoun())
+        usbif.poll("dsky", um.DSKYReg1L())
+        usbif.poll("dsky", um.DSKYReg1H())
+        usbif.poll("dsky", um.DSKYReg2L())
+        usbif.poll("dsky", um.DSKYReg2H())
+        usbif.poll("dsky", um.DSKYReg3L())
+        usbif.poll("dsky", um.DSKYReg3H())
+        usbif.poll("dsky", um.DSKYStatus())
 
         usbif.listen(self)
 

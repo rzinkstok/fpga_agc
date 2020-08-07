@@ -18,8 +18,9 @@ class MainWindow(QMainWindow):
         self._usbif = USBInterface()
         self._usbif.connected.connect(self.connected)
 
-        self._usbif.poll(um.VersionMessage())
+        # Retrieve the AGC version number
         self._usbif.listen(self)
+        self._usbif.send(um.VersionMessage())
 
         self.monitor = MonitorWindow(self, self._usbif)
         self.dsky = DSKY(self, self._usbif)
@@ -47,7 +48,7 @@ class MainWindow(QMainWindow):
 
         ag = ApolloGroup(self, "INTERFACE")
         dsky_sw = ApolloLabeledSwitch(self, "DSKY")
-        monitor_sw = ApolloLabeledSwitch(self, "MONITOR", labelwidth=56)
+        monitor_sw = ApolloLabeledSwitch(self, "MONITOR", labelwidth=62)
         fdai_sw = ApolloLabeledSwitch(self, "FDAI")
 
         dsky_sw.switch.setChecked(True)
@@ -68,13 +69,17 @@ class MainWindow(QMainWindow):
     def toggle_dsky(self):
         if self.dsky.isVisible():
             self.dsky.hide()
+            self._usbif.disable_source("dsky")
         else:
+            self._usbif.enable_source("dsky")
             self.dsky.show()
 
     def toggle_monitor(self):
         if self.monitor.isVisible():
             self.monitor.hide()
+            self._usbif.disable_source("monitor")
         else:
+            self._usbif.enable_source("monitor")
             self.monitor.show()
 
     def toggle_fdai(self):
