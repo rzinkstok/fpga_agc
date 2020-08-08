@@ -18,7 +18,7 @@ class ReadLoad(QFrame):
         usbif.send(um.ControlLoadReadS1S2(load_preset=0, load_channel=0, read_preset=0, read_channel=0, start_preset=0))
 
     def _update_s1_s2_switches(self, state):
-        switch_states = {switch: self._s1_s2_switches[switch].isChecked() for switch in self._s1_s2_switches.keys()}
+        switch_states = {switch: int(self._s1_s2_switches[switch].isChecked()) for switch in self._s1_s2_switches.keys()}
         self._usbif.send(um.ControlLoadReadS1S2(**switch_states))
 
     def _setup_ui(self):
@@ -74,7 +74,9 @@ class ReadLoad(QFrame):
         rs3 = ApolloLabeledButton(ag1, "PRESET\nCHAN")
         rs1.switch.pressed.connect(lambda: self._usbif.send(um.ControlReadS(0)))
         rs2.switch.pressed.connect(lambda: self._usbif.send(um.ControlReadPreset(0)))
-        rs3.switch.pressed.connect(lambda: self._usbif.send(um.ControlReadChannel(0)))
+        m = um.ControlReadChannel(0)
+        print(m)
+        rs3.switch.pressed.connect(lambda: self._usbif.send(m))
 
         ag2.addWidget(rs1, 0)
         ag2.addWidget(rs2, 0)

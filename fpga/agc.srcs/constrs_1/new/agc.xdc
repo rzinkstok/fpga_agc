@@ -43,67 +43,67 @@ set_property DRIVE 4 [get_ports MCTRAL_]
 
 set_property PACKAGE_PIN E20 [get_ports MDT01]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT01]
-set_property PULLDOWN true [get_ports MDT01]
+set_property DRIVE 4 [get_ports MDT01]
 
 set_property PACKAGE_PIN E19 [get_ports MDT02]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT02]
-set_property PULLDOWN true [get_ports MDT02]
+set_property DRIVE 4 [get_ports MDT02]
 
 set_property PACKAGE_PIN F22 [get_ports MDT03]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT03]
-set_property PULLDOWN true [get_ports MDT03]
+set_property DRIVE 4 [get_ports MDT03]
 
 set_property PACKAGE_PIN F21 [get_ports MDT04]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT04]
-set_property PULLDOWN true [get_ports MDT04]
+set_property DRIVE 4 [get_ports MDT04]
 
 set_property PACKAGE_PIN A22 [get_ports MDT05]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT05]
-set_property PULLDOWN true [get_ports MDT05]
+set_property DRIVE 4 [get_ports MDT05]
 
 set_property PACKAGE_PIN A21 [get_ports MDT06]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT06]
-set_property PULLDOWN true [get_ports MDT06]
+set_property DRIVE 4 [get_ports MDT06]
 
 set_property PACKAGE_PIN C22 [get_ports MDT07]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT07]
-set_property PULLDOWN true [get_ports MDT07]
+set_property DRIVE 4 [get_ports MDT07]
 
 set_property PACKAGE_PIN D22 [get_ports MDT08]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT08]
-set_property PULLDOWN true [get_ports MDT08]
+set_property DRIVE 4 [get_ports MDT08]
 
 set_property PACKAGE_PIN C20 [get_ports MDT09]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT09]
-set_property PULLDOWN true [get_ports MDT09]
+set_property DRIVE 4 [get_ports MDT09]
 
 set_property PACKAGE_PIN D20 [get_ports MDT10]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT10]
-set_property PULLDOWN true [get_ports MDT10]
+set_property DRIVE 4 [get_ports MDT10]
 
 set_property PACKAGE_PIN B22 [get_ports MDT11]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT11]
-set_property PULLDOWN true [get_ports MDT11]
+set_property DRIVE 4 [get_ports MDT11]
 
 set_property PACKAGE_PIN B21 [get_ports MDT12]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT12]
-set_property PULLDOWN true [get_ports MDT12]
+set_property DRIVE 4 [get_ports MDT12]
 
 set_property PACKAGE_PIN C19 [get_ports MDT13]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT13]
-set_property PULLDOWN true [get_ports MDT13]
+set_property DRIVE 4 [get_ports MDT13]
 
 set_property PACKAGE_PIN D18 [get_ports MDT14]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT14]
-set_property PULLDOWN true [get_ports MDT14]
+set_property DRIVE 4 [get_ports MDT14]
 
 set_property PACKAGE_PIN B20 [get_ports MDT15]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT15]
-set_property PULLDOWN true [get_ports MDT15]
+set_property DRIVE 4 [get_ports MDT15]
 
 set_property PACKAGE_PIN B19 [get_ports MDT16]
 set_property IOSTANDARD LVCMOS33 [get_ports MDT16]
-set_property PULLDOWN true [get_ports MDT16]
+set_property DRIVE 4 [get_ports MDT16]
 
 set_property PACKAGE_PIN C18 [get_ports MGOJAM]
 set_property IOSTANDARD LVCMOS33 [get_ports MGOJAM]
@@ -155,7 +155,7 @@ set_property DRIVE 4 [get_ports MON800]
 
 set_property PACKAGE_PIN E18 [get_ports MONPAR]
 set_property IOSTANDARD LVCMOS33 [get_ports MONPAR]
-set_property PULLDOWN true [get_ports MONPAR]
+set_property DRIVE 4 [get_ports MONPAR]
 
 set_property PACKAGE_PIN F18 [get_ports MONWBK]
 set_property IOSTANDARD LVCMOS33 [get_ports MONWBK]

@@ -4,6 +4,7 @@ verilog xil_defaultlib  --include "../../../../agc.srcs/sources_1/new/monitor" -
 "../../../../agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo_sim_netlist.v" \
 "../../../../agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo_sim_netlist.v" \
 "../../../../agc.srcs/sources_1/ip/mon_adc/mon_adc.v" \
+"../../../../agc.srcs/sources_1/ip/rope_memory/sim/rope_memory.v" \
 "../../../../agc.srcs/sources_1/new/components/nor_3.v" \
 "../../../../agc.srcs/sources_1/new/fpga_agc.v" \
 "../../../../agc.srcs/sources_1/new/agc_clock_divider.v" \
@@ -62,12 +63,11 @@ verilog xil_defaultlib  --include "../../../../agc.srcs/sources_1/new/monitor" -
 "../../../../agc.srcs/sources_1/new/debounce.v" \
 "../../../../agc.srcs/sources_1/new/io_circuits.v" \
 "../../../../agc.srcs/sources_1/ip/core_memory/sim/core_memory.v" \
-"../../../../agc.srcs/sources_1/new/rupt_injector.v" \
-"../../../../agc.srcs/sources_1/new/monitor_dsky.v" \
-"../../../../agc.srcs/sources_1/new/monitor_channels.v" \
 "../../../../agc.srcs/sources_1/new/channel.v" \
-"../../../../agc.srcs/sources_1/ip/rope_memory/sim/rope_memory.v" \
-"../../../../agc.srcs/sources_1/new/version.v" \
+"../../../../agc.srcs/sources_1/new/monitor/version.v" \
+"../../../../agc.srcs/sources_1/new/monitor/monitor_channels.v" \
+"../../../../agc.srcs/sources_1/new/monitor/monitor_dsky.v" \
+"../../../../agc.srcs/sources_1/new/monitor/peripheral_instructions.v" \
 "../../../../agc.srcs/toplevel/new/toplevel_tb.v" \
 
 # compile glbl module

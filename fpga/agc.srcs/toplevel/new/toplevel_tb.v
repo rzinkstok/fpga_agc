@@ -1,31 +1,31 @@
 `timescale 1ns / 1ps
 
 module toplevel_tb();
-	reg MAMU = 0;
-	reg MDT01 = 0;
-	reg MDT02 = 0;
-	reg MDT03 = 0;
-	reg MDT04 = 0;
-	reg MDT05 = 0;
-	reg MDT06 = 0;
-	reg MDT07 = 0;
-	reg MDT08 = 0;
-	reg MDT09 = 0;
-	reg MDT10 = 0;
-	reg MDT11 = 0;
-	reg MDT12 = 0;
-	reg MDT13 = 0;
-	reg MDT14 = 0;
-	reg MDT15 = 0;
-	reg MDT16 = 0;
-	reg MLDCH = 0;
-	reg MLOAD = 0;
-	reg MNHSBF = 0;
-	reg MONPAR = 0;
-	reg MONWBK = 0;
-	reg MRDCH = 0;
-	reg MREAD = 0;
-	reg MTCSAI = 0;
+	wire MAMU;
+	wire MDT01;
+	wire MDT02;
+	wire MDT03;
+    wire MDT04;
+	wire MDT05;
+	wire MDT06;
+	wire MDT07;
+    wire MDT08;
+	wire MDT09;
+	wire MDT10;
+	wire MDT11;
+	wire MDT12;
+	wire MDT13;
+	wire MDT14;
+	wire MDT15;
+	wire MDT16;
+	wire MLDCH;
+	wire MLOAD;
+	wire MNHSBF;
+	wire MONPAR;
+	wire MONWBK;
+	wire MRDCH;
+	wire MREAD;
+	wire MTCSAI;
 	reg SIGNY = 0;
 
 	wire ALGA;
@@ -152,7 +152,7 @@ module toplevel_tb();
 	reg BMGYP = 0;
 	reg BMGZM = 0;
 	reg BMGZP = 0;
-	reg CAURST = 0;
+	wire CAURST;
 	reg CDUFAL = 0;
 	reg CDUXM = 0;
 	reg CDUXP = 0;
@@ -231,7 +231,7 @@ module toplevel_tb();
 	reg RRPONA = 0;
 	reg RRRLSC = 0;
 	reg S4BSAB = 0;
-	reg SBYBUT = 0;
+	wire SBYBUT;
 	reg SHAFTM = 0;
 	reg SHAFTP = 0;
 	reg SIGNX = 0;
@@ -239,7 +239,7 @@ module toplevel_tb();
 	reg SMSEPR = 0;
 	reg SPSRDY = 0;
 	reg STRPRS = 0;
-	reg TEMPIN = 0;
+	reg TEMPIN = 1;
 	reg TRANmX = 0;
 	reg TRANmY = 0;
 	reg TRANmZ = 0;
@@ -413,6 +413,7 @@ module toplevel_tb();
     assign PIPAZp = PIPDAT && (moding_counter < 3'd3);
     
     
+	
 	agc_monitor agcmonitor(
 		.clk(clk),
 		.rst_n(rst_n),
@@ -514,6 +515,9 @@ module toplevel_tb();
 		.MRDCH(MRDCH),
 		.MRCH(MRCH),
 		.MWCH(MWCH),
+		.MREQIN(MREQIN),
+		.MTCSA_(MTCSA_),
+		.MTCSAI(MTCSAI),
 		
 		.MKEY1(MKEY1),
 		.MKEY2(MKEY2),
@@ -521,17 +525,67 @@ module toplevel_tb();
 		.MKEY4(MKEY4),
 		.MKEY5(MKEY5),
 		.MAINRS(MAINRS),
+		
         .NKEY1(NKEY1),
         .NKEY2(NKEY2),
         .NKEY3(NKEY3),
         .NKEY4(NKEY4),
         .NKEY5(NKEY5),
         .NAVRST(NAVRST),
+        
         .MARK(MARK),
         .MRKREJ(MRKREJ),
         .MRKRST(MRKRST),
+    
         .IN3214(IN3214),
+        .SBYBUT(SBYBUT),
+        .CAURST(CAURST),
+        .RESTRT(RESTRT),
         
+        .RLYB01(RLYB01),
+        .RLYB02(RLYB02),
+        .RLYB03(RLYB03),
+        .RLYB04(RLYB04),
+        .RLYB05(RLYB05),
+        .RLYB06(RLYB06),
+        .RLYB07(RLYB07),
+        .RLYB08(RLYB08),
+        .RLYB09(RLYB09),
+        .RLYB10(RLYB10),
+        .RLYB11(RLYB11),
+    
+        .RYWD12(RYWD12),
+        .RYWD13(RYWD13),
+        .RYWD14(RYWD14),
+        .RYWD16(RYWD16),
+    
+        .COMACT(COMACT),
+        .UPLACT(UPLACT),
+        .TMPCAU(TMPCAU),
+        .KYRLS(KYRLS),
+        .VNFLSH(VNFLSH),
+        .OPEROR(OPEROR),
+        .SBYLIT(SBYLIT),
+        
+        .MDT01(MDT01),
+		.MDT02(MDT02),
+		.MDT03(MDT03),
+		.MDT04(MDT04),
+		.MDT05(MDT05),
+		.MDT06(MDT06),
+		.MDT07(MDT07),
+		.MDT08(MDT08),
+		.MDT09(MDT09),
+		.MDT10(MDT10),
+		.MDT11(MDT11),
+		.MDT12(MDT12),
+		.MDT13(MDT13),
+		.MDT14(MDT14),
+		.MDT15(MDT15),
+		.MDT16(MDT16),
+		
+		.MONPAR(MONPAR),
+		
 		.n0VDCA(n0VDCA),
 		.BPLSSW(BPLSSW),
 		.p4SW(p4SW),
@@ -920,6 +974,50 @@ module toplevel_tb();
 		txe_n = 1'b1;
 		data_in = 8'h00;
 		#200 reset = 1'b0;
+		
+		// Load channel
+		#1000000 // 5ms
+		
+		// Set S1 comparator: group 20, address 6, value 10 octal
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h06;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h08;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#1000000 // 1ms
+		
+		// Set W comparator: group 20, address 11, value 4000
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h11;
+		@(posedge clkout) data_in = 8'h08;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#1000000 // 1ms
+		
+		// Send load preset channel: group 20, address 72, value 0
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h72;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
 		
 		#55000000 // 55 ms
 		

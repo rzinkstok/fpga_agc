@@ -243,8 +243,6 @@ class DSKY(QWidget):
     def _update_flash(self):
         self._flash_on = not self._flash_on
         QTimer.singleShot(FLASH_ON_MS if self._flash_on else FLASH_OFF_MS, self._update_flash)
-        print("Flash on:", self._flash_on)
-        print("VNFLASH:", self._vnflash)
         vn = (not self._flash_on) if self._vnflash else True
         self._verb[0].set_on(vn)
         self._verb[1].set_on(vn)

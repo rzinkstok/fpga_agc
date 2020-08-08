@@ -165,6 +165,25 @@ module agc_monitor(
     input wire OPEROR,
     input wire SBYLIT,
     
+    output wire MDT01,
+    output wire MDT02,
+    output wire MDT03,
+    output wire MDT04,
+    output wire MDT05,
+    output wire MDT06,
+    output wire MDT07,
+    output wire MDT08,
+    output wire MDT09,
+    output wire MDT10,
+    output wire MDT11,
+    output wire MDT12,
+    output wire MDT13,
+    output wire MDT14,
+    output wire MDT15,
+    output wire MDT16,
+    
+    output wire MONPAR,
+    
     // Power
     input wire n0VDCA,
     //input wire BPLUS,
@@ -180,6 +199,11 @@ module agc_monitor(
     output wire [6:1]dbg
 );
 
+    // Monitor signals not yet incorporated (TODO)
+    assign MAMU = 0;
+    assign MNHSBF = 0;
+    assign MONPAR = 0;
+    
     // Signal conversion
     wire [12:1]mt;
     assign mt = { MT12, MT11, MT10, MT09, MT08, MT07, MT06, MT05, MT04, MT03, MT02, MT01 };
@@ -191,6 +215,26 @@ module agc_monitor(
     assign mst = { MST3, MST2, MST1 };
     wire [2:1]mbr;
     assign mbr = { MBR2, MBR1 };
+    
+    // MDT assingments
+    // assign mdt = mdt_chan77 | mdt_periph | mdt_crs | mdt_ems | mdt_rupts | mdt_dsky | mdt_nassp;
+    wire [16:1] mdt_periph;
+    assign MDT01 = mdt_periph[1];
+    assign MDT02 = mdt_periph[2];
+    assign MDT03 = mdt_periph[3];
+    assign MDT04 = mdt_periph[4];
+    assign MDT05 = mdt_periph[5];
+    assign MDT06 = mdt_periph[6];
+    assign MDT07 = mdt_periph[7];
+    assign MDT08 = mdt_periph[8];
+    assign MDT09 = mdt_periph[9];
+    assign MDT10 = mdt_periph[10];
+    assign MDT11 = mdt_periph[11];
+    assign MDT12 = mdt_periph[12];
+    assign MDT13 = mdt_periph[13];
+    assign MDT14 = mdt_periph[14];
+    assign MDT15 = mdt_periph[15];
+    assign MDT16 = mdt_periph[16];
     
     // Power supply failure test signals: tie low
     assign CNTRL1 = 1'b0;
@@ -737,7 +781,6 @@ module agc_monitor(
     wire [15:1] periph_bb;
     wire [12:1] periph_s;
     wire [16:1] periph_data;
-    wire [16:1] mdt_periph;
     wire [16:1] periph_read_data;
     wire periph_read_parity;
     
