@@ -166,7 +166,7 @@ module toplevel(
 	reg BMGYP = 0;
 	reg BMGZM = 0;
 	reg BMGZP = 0;
-	reg CAURST = 0;
+	//reg CAURST = 0;
 	reg CDUFAL = 0;
 	reg CDUXM = 0;
 	reg CDUXP = 0;
@@ -245,7 +245,7 @@ module toplevel(
 	reg RRPONA = 0;
 	reg RRRLSC = 0;
 	reg S4BSAB = 0;
-	reg SBYBUT = 0;
+	//reg SBYBUT = 0;
 	reg SHAFTM = 0;
 	reg SHAFTP = 0;
 	reg SIGNX = 0;
@@ -254,7 +254,7 @@ module toplevel(
 	reg SMSEPR = 0;
 	reg SPSRDY = 0;
 	reg STRPRS = 0;
-	reg TEMPIN = 0;
+	reg TEMPIN = 1;
 	reg TRANmX = 0;
 	reg TRANmY = 0;
 	reg TRANmZ = 0;
@@ -427,6 +427,8 @@ module toplevel(
     wire MRKRST;
     
     wire IN3214;
+    wire CAURST;
+    wire SBYBUT;
     
     // Debounced AGC outputs
     wire dbMSTPIT_;
@@ -495,6 +497,31 @@ module toplevel(
     wire dbMGP_;
     wire dbMREQIN;
     wire dbMTCSA_;
+    wire dbRESTRT;
+    wire dbRLYB01;
+    wire dbRLYB02;
+    wire dbRLYB03;
+    wire dbRLYB04;
+    wire dbRLYB05;
+    wire dbRLYB06;
+    wire dbRLYB07;
+    wire dbRLYB08;
+    wire dbRLYB09;
+    wire dbRLYB10;
+    wire dbRLYB11;
+    
+    wire dbRYWD12;
+    wire dbRYWD13;
+    wire dbRYWD14;
+    wire dbRYWD16;
+    
+    wire dbCOMACT;
+    wire dbUPLACT;
+    wire dbTMPCAU;
+    wire dbKYRLS;
+    wire dbVNFLSH;
+    wire dbOPEROR;
+    wire dbSBYLIT;
     
     wire rst_n;
     assign rst_n = !reset;
@@ -552,7 +579,29 @@ module toplevel(
         .MGP_(MGP_),
         .MREQIN(MREQIN),
         .MTCSA_(MTCSA_),
-    
+        .RESTRT(RESTRT),
+        .RLYB01(RLYB01),
+        .RLYB02(RLYB02),
+        .RLYB03(RLYB03),
+        .RLYB04(RLYB04),
+        .RLYB05(RLYB05),
+        .RLYB06(RLYB06),
+        .RLYB07(RLYB07),
+        .RLYB08(RLYB08),
+        .RLYB09(RLYB09),
+        .RLYB10(RLYB10),
+        .RLYB11(RLYB11),
+        .RYWD12(RYWD12),
+        .RYWD13(RYWD13),
+        .RYWD14(RYWD14),
+        .RYWD16(RYWD16),
+        .COMACT(COMACT),
+        .UPLACT(UPLACT),
+        .TMPCAU(TMPCAU),
+        .KYRLS(KYRLS),
+        .VNFLSH(VNFLSH),
+        .OPEROR(OPEROR),
+        .SBYLIT(SBYLIT),
         .dbMSTPIT_(dbMSTPIT_),
         .dbMONWT(dbMONWT),
         .dbMT({dbMT12, dbMT11, dbMT10, dbMT09, dbMT08, dbMT07, dbMT06, dbMT05, dbMT04, dbMT03, dbMT02, dbMT01}),
@@ -584,7 +633,30 @@ module toplevel(
         .dbMSP(dbMSP),
         .dbMGP_(dbMGP_),
         .dbMREQIN(dbMREQIN),
-        .dbMTCSA_(dbMTCSA_)
+        .dbMTCSA_(dbMTCSA_),
+        .dbRESTRT(dbRESTRT),
+        .dbRLYB01(dbRLYB01),
+        .dbRLYB02(dbRLYB02),
+        .dbRLYB03(dbRLYB03),
+        .dbRLYB04(dbRLYB04),
+        .dbRLYB05(dbRLYB05),
+        .dbRLYB06(dbRLYB06),
+        .dbRLYB07(dbRLYB07),
+        .dbRLYB08(dbRLYB08),
+        .dbRLYB09(dbRLYB09),
+        .dbRLYB10(dbRLYB10),
+        .dbRLYB11(dbRLYB11),
+        .dbRYWD12(dbRYWD12),
+        .dbRYWD13(dbRYWD13),
+        .dbRYWD14(dbRYWD14),
+        .dbRYWD16(dbRYWD16),
+        .dbCOMACT(dbCOMACT),
+        .dbUPLACT(dbUPLACT),
+        .dbTMPCAU(dbTMPCAU),
+        .dbKYRLS(dbKYRLS),
+        .dbVNFLSH(dbVNFLSH),
+        .dbOPEROR(dbOPEROR),
+        .dbSBYLIT(dbSBYLIT)
     );
     
 	agc_monitor agcmonitor(
@@ -698,16 +770,47 @@ module toplevel(
 		.MKEY4(MKEY4),
 		.MKEY5(MKEY5),
 		.MAINRS(MAINRS),
+		
         .NKEY1(NKEY1),
         .NKEY2(NKEY2),
         .NKEY3(NKEY3),
         .NKEY4(NKEY4),
         .NKEY5(NKEY5),
         .NAVRST(NAVRST),
+        
         .MARK(MARK),
         .MRKREJ(MRKREJ),
         .MRKRST(MRKRST),
+    
         .IN3214(IN3214),
+        .SBYBUT(SBYBUT),
+        .CAURST(CAURST),
+        .RESTRT(dbRESTRT),
+        
+        .RLYB01(dbRLYB01),
+        .RLYB02(dbRLYB02),
+        .RLYB03(dbRLYB03),
+        .RLYB04(dbRLYB04),
+        .RLYB05(dbRLYB05),
+        .RLYB06(dbRLYB06),
+        .RLYB07(dbRLYB07),
+        .RLYB08(dbRLYB08),
+        .RLYB09(dbRLYB09),
+        .RLYB10(dbRLYB10),
+        .RLYB11(dbRLYB11),
+    
+        .RYWD12(dbRYWD12),
+        .RYWD13(dbRYWD13),
+        .RYWD14(dbRYWD14),
+        .RYWD16(dbRYWD16),
+    
+        .COMACT(dbCOMACT),
+        .UPLACT(dbUPLACT),
+        .TMPCAU(dbTMPCAU),
+        .KYRLS(dbKYRLS),
+        .VNFLSH(dbVNFLSH),
+        .OPEROR(dbOPEROR),
+        .SBYLIT(dbSBYLIT),
         
 		.n0VDCA(n0VDCA),
 		.BPLSSW(BPLSSW),

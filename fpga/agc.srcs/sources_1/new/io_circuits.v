@@ -38,6 +38,33 @@ module io_circuits(
     input wire MGP_,
     input wire MREQIN,
     input wire MTCSA_,
+    
+    input wire RESTRT,
+    
+    input wire RLYB01,
+    input wire RLYB02,
+    input wire RLYB03,
+    input wire RLYB04,
+    input wire RLYB05,
+    input wire RLYB06,
+    input wire RLYB07,
+    input wire RLYB08,
+    input wire RLYB09,
+    input wire RLYB10,
+    input wire RLYB11,
+    
+    input wire RYWD12,
+    input wire RYWD13,
+    input wire RYWD14,
+    input wire RYWD16,
+    
+    input wire COMACT,
+    input wire UPLACT,
+    input wire TMPCAU,
+    input wire KYRLS,
+    input wire VNFLSH,
+    input wire OPEROR,
+    input wire SBYLIT,
 
     output wire dbMSTPIT_,
     output wire dbMONWT,
@@ -70,46 +97,37 @@ module io_circuits(
     output wire dbMSP,
     output wire dbMGP_,
     output wire dbMREQIN,
-    output wire dbMTCSA_
-
-    // Open-drain outputs
-//    input wire mnhsbf_pp,
-//    input wire mamu_pp,
-//    input wire [16:1] mdt_pp,
-//    input wire monpar_pp,
-//    input wire mstrt_pp,
-//    input wire mstp_pp,
-//    input wire mnhrpt_pp,
-//    input wire mnhnc_pp,
-//    input wire nhalga_pp,
-//    input wire doscal_pp,
-//    input wire dbltst_pp,
-//    input wire mread_pp,
-//    input wire mload_pp,
-//    input wire mrdch_pp,
-//    input wire mldch_pp,
-//    input wire mtcsai_pp,
-//    input wire monwbk_pp,
-
-//    output wire mnhsbf,
-//    output wire mamu,
-//    output wire [16:1] mdt,
-//    output wire monpar,
-//    output wire mstrt,
-//    output wire mstp,
-//    output wire mnhrpt,
-//    output wire mnhnc,
-//    output wire nhalga,
-//    output wire doscal,
-//    output wire dbltst,
-//    output wire mread,
-//    output wire mload,
-//    output wire mrdch,
-//    output wire mldch,
-//    output wire mtcsai,
-//    output wire monwbk
+    output wire dbMTCSA_,
+    
+    output wire dbRESTRT,
+    
+    output wire dbRLYB01,
+    output wire dbRLYB02,
+    output wire dbRLYB03,
+    output wire dbRLYB04,
+    output wire dbRLYB05,
+    output wire dbRLYB06,
+    output wire dbRLYB07,
+    output wire dbRLYB08,
+    output wire dbRLYB09,
+    output wire dbRLYB10,
+    output wire dbRLYB11,
+    
+    output wire dbRYWD12,
+    output wire dbRYWD13,
+    output wire dbRYWD14,
+    output wire dbRYWD16,
+    
+    output wire dbCOMACT,
+    output wire dbUPLACT,
+    output wire dbTMPCAU,
+    output wire dbKYRLS,
+    output wire dbVNFLSH,
+    output wire dbOPEROR,
+    output wire dbSBYLIT
 );
 
+    // Debounce AGC outputs before feeding them into the monitor
     debounce #(1,3)  db1(clk, rst_n, MSTPIT_, dbMSTPIT_);
     debounce #(1,3)  db2(clk, rst_n, MONWT, dbMONWT);
     debounce #(12,3) db3(clk, rst_n, MT, dbMT);
@@ -142,24 +160,29 @@ module io_circuits(
     debounce #(1,3) db30(clk, rst_n, MGP_, dbMGP_);
     debounce #(1,3) db31(clk, rst_n, MREQIN, dbMREQIN);
     debounce #(1,3) db32(clk, rst_n, MTCSA_, dbMTCSA_);
-    
-//    od_buf #(1)  od1(mnhsbf_pp, mnhsbf);
-//    od_buf #(1)  od2(mamu_pp, mamu);
-//    od_buf #(16) od3(mdt_pp, mdt);
-//    od_buf #(1)  od4(monpar_pp, monpar);
-//    od_buf #(1)  od5(mstrt_pp, mstrt);
-//    od_buf #(1)  od6(mstp_pp, mstp);
-//    od_buf #(1)  od7(mnhrpt_pp, mnhrpt);
-//    od_buf #(1)  od8(mnhnc_pp, mnhnc);
-//    od_buf #(1)  od9(nhalga_pp, nhalga);
-//    od_buf #(1) od10(doscal_pp, doscal);
-//    od_buf #(1) od11(dbltst_pp, dbltst);
-//    od_buf #(1) od12(mread_pp, mread);
-//    od_buf #(1) od13(mload_pp, mload);
-//    od_buf #(1) od14(mrdch_pp, mrdch);
-//    od_buf #(1) od15(mldch_pp, mldch);
-//    od_buf #(1) od16(mtcsai_pp, mtcsai);
-//    od_buf #(1) od17(monwbk_pp, monwbk);
+    debounce #(1,3) db33(clk, rst_n, RESTRT, dbRESTRT);
+    debounce #(1,3) db34(clk, rst_n, RLYB01, dbRLYB01);
+    debounce #(1,3) db35(clk, rst_n, RLYB02, dbRLYB02);
+    debounce #(1,3) db36(clk, rst_n, RLYB03, dbRLYB03);
+    debounce #(1,3) db37(clk, rst_n, RLYB04, dbRLYB04);
+    debounce #(1,3) db38(clk, rst_n, RLYB05, dbRLYB05);
+    debounce #(1,3) db39(clk, rst_n, RLYB06, dbRLYB06);
+    debounce #(1,3) db40(clk, rst_n, RLYB07, dbRLYB07);
+    debounce #(1,3) db41(clk, rst_n, RLYB08, dbRLYB08);
+    debounce #(1,3) db42(clk, rst_n, RLYB09, dbRLYB09);
+    debounce #(1,3) db43(clk, rst_n, RLYB10, dbRLYB10);
+    debounce #(1,3) db44(clk, rst_n, RLYB11, dbRLYB11);
+    debounce #(1,3) db45(clk, rst_n, RYWD12, dbRYWD12);
+    debounce #(1,3) db46(clk, rst_n, RYWD13, dbRYWD13);
+    debounce #(1,3) db47(clk, rst_n, RYWD14, dbRYWD14);
+    debounce #(1,3) db48(clk, rst_n, RYWD16, dbRYWD16);
+    debounce #(1,3) db49(clk, rst_n, COMACT, dbCOMACT);
+    debounce #(1,3) db50(clk, rst_n, UPLACT, dbUPLACT);
+    debounce #(1,3) db51(clk, rst_n, TMPCAU, dbTMPCAU);
+    debounce #(1,3) db52(clk, rst_n, KYRLS, dbKYRLS);
+    debounce #(1,3) db53(clk, rst_n, VNFLSH, dbVNFLSH);
+    debounce #(1,3) db54(clk, rst_n, OPEROR, dbOPEROR);
+    debounce #(1,3) db55(clk, rst_n, SBYLIT, dbSBYLIT);
 
 endmodule
 `default_nettype wire

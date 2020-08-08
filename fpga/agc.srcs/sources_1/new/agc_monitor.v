@@ -130,6 +130,7 @@ module agc_monitor(
     output wire NKEY4,
     output wire NKEY5,
     output wire NAVRST,
+    
     output wire MARK,
     output wire MRKREJ,
     output wire MRKRST,
@@ -137,6 +138,32 @@ module agc_monitor(
     output wire IN3214,
     output wire SBYBUT,
     output wire CAURST,
+    input wire RESTRT,
+    
+    input wire RLYB01,
+    input wire RLYB02,
+    input wire RLYB03,
+    input wire RLYB04,
+    input wire RLYB05,
+    input wire RLYB06,
+    input wire RLYB07,
+    input wire RLYB08,
+    input wire RLYB09,
+    input wire RLYB10,
+    input wire RLYB11,
+    
+    input wire RYWD12,
+    input wire RYWD13,
+    input wire RYWD14,
+    input wire RYWD16,
+    
+    input wire COMACT,
+    input wire UPLACT,
+    input wire TMPCAU,
+    input wire KYRLS,
+    input wire VNFLSH,
+    input wire OPEROR,
+    input wire SBYLIT,
     
     // Power
     input wire n0VDCA,
@@ -775,7 +802,6 @@ module agc_monitor(
     /*******************************************************************************.
     * DSKY                                                                          *
     '*******************************************************************************/
-    wire [16:1] mdt_dsky;
     
     monitor_dsky mon_dsky(
         .clk(clk),
@@ -788,15 +814,32 @@ module agc_monitor(
         .data_out(mon_dsky_data),
     
         .MGOJAM(MGOJAM),
-        .mt(mt),
-        .MSQEXT(MSQEXT),
-        .sq(sq),
-        .mrchg(mrchg),
-        .ch(s[9:1]),
+        .RESTRT(RESTRT),
+        
+        .RLYB01(RLYB01),
+        .RLYB02(RLYB02),
+        .RLYB03(RLYB03),
+        .RLYB04(RLYB04),
+        .RLYB05(RLYB05),
+        .RLYB06(RLYB06),
+        .RLYB07(RLYB07),
+        .RLYB08(RLYB08),
+        .RLYB09(RLYB09),
+        .RLYB10(RLYB10),
+        .RLYB11(RLYB11),
     
-        .out0(out0),
-        .dsalmout(dsalmout),
-        .chan13(chan13),
+        .RYWD12(RYWD12),
+        .RYWD13(RYWD13),
+        .RYWD14(RYWD14),
+        .RYWD16(RYWD16),
+    
+        .COMACT(COMACT),
+        .UPLACT(UPLACT),
+        .TMPCAU(TMPCAU),
+        .KYRLS(KYRLS),
+        .VNFLSH(VNFLSH),
+        .OPEROR(OPEROR),
+        .SBYLIT(SBYLIT),
         
         .MKEY1(MKEY1),
         .MKEY2(MKEY2),

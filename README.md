@@ -86,3 +86,6 @@ so a single FPGA board can be used to both run the AGC and the Monitor.
 
 So far, the Monitor includes the registers, start/stop logic, alarm control, and the DSKY. The DSKY is implemented by connecting to the
 actual DSKY channels, as opposed to the `MDT` data injection approach used by Mike Stewart.
+
+### Checks
+- Load channel through monitor: AGC part 8, 14:00

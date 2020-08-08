@@ -13,15 +13,32 @@ module monitor_dsky(
     output wire [15:0] data_out,
 
     input wire MGOJAM,
-    input wire [12:1] mt,
-    input wire MSQEXT,
-    input wire [15:10] sq,
-    input wire mrchg,
-    input wire [9:1] ch,
-
-    input wire [15:1] out0,
-    input wire [15:1] dsalmout,
-    input wire [15:1] chan13,
+    input wire RESTRT,
+    
+    input wire RLYB01,
+    input wire RLYB02,
+    input wire RLYB03,
+    input wire RLYB04,
+    input wire RLYB05,
+    input wire RLYB06,
+    input wire RLYB07,
+    input wire RLYB08,
+    input wire RLYB09,
+    input wire RLYB10,
+    input wire RLYB11,
+    
+    input wire RYWD12,
+    input wire RYWD13,
+    input wire RYWD14,
+    input wire RYWD16,
+    
+    input wire COMACT,
+    input wire UPLACT,
+    input wire TMPCAU,
+    input wire KYRLS,
+    input wire VNFLSH,
+    input wire OPEROR,
+    input wire SBYLIT,
     
     output reg MKEY1,
     output reg MKEY2,
@@ -50,13 +67,13 @@ module monitor_dsky(
     `define RYWD_5MS_COUNT 19'd500000
     
     wire [15:12] rywd;
-    assign rywd = out0[15:12];
+    assign rywd = {RYWD16, RYWD14, RYWD13, RYWD12};
     reg [15:12] rywd_p;
     
     reg [18:0] rywd_timer;
     
     wire [11:1] ryb;
-    assign ryb = out0[11:1];
+    assign ryb = {RLYB11, RLYB10, RLYB09, RLYB08, RLYB07, RLYB06, RLYB05, RLYB04, RLYB03, RLYB02, RLYB01};
     
     reg [9:0] prog;
     reg [9:0] verb;
@@ -73,10 +90,11 @@ module monitor_dsky(
     reg tracker;
     reg prog_alarm;
     
-    // Channel 10 (OUT0) multiplexes the DSKY data coming from the AGC, holding each digit at least 20 ms.
+    // Channel 10 multiplexes the DSKY data coming from the AGC, holding each digit at least 20 ms.
     // This loop checks the 4 bit digit address code in channel 10 (bits 12-15, called RYWD):
     // if it changes, it waits for 5 ms and then puts the digit data (bits 1-11, called RYB)
     // into the proper register
+    
     always @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             prog <= 10'b0;
@@ -171,48 +189,6 @@ module monitor_dsky(
         end
     end
     
-    // Flip-flop for the restart lamp
-    reg restart_ff;
-    //reg [4:0] main_keycode;
-   // reg [6:0] nav_keycode;
-    
-//    always @(posedge clk or negedge rst_n) begin
-//        if (~rst_n) begin
-//            restart_ff <= 1'b0;
-//        end else begin
-//            if (MGOJAM) begin
-//                restart_ff <= 1'b1;
-//            end else if ((keyrupt1 & (main_keycode == 5'b10010)) | (keyrupt2 & (nav_keycode == 5'b10010))) begin
-//                restart_ff <= 1'b0;
-//            end
-//        end
-//    end
-    
-    // Other lamps are controlled by channels 13 and channel 15 (DSALMOUT) 
-    wire restart;
-    assign restart = restart_ff | chan13[10];
-    
-    wire upl_act;
-    assign upl_act = dsalmout[3];
-    
-    wire stby;
-    assign stby = chan13[10];
-    
-    wire key_rel;
-    assign key_rel = dsalmout[5];
-    
-    wire opr_err;
-    assign opr_err = dsalmout[7];
-    
-    wire temp;
-    assign temp = dsalmout[4];
-    
-    wire com_act;
-    assign com_act = dsalmout[2];
-    
-    wire vnflash;
-    assign vnflash = dsalmout[6];
-    
     // Handling of button presses
     // Should put keycode on MKEY1 - MKEY5, which are linked to input channel 15 
     // When a key is released, MAINRS/NAVRST must be sent. The AGC generates KYRUPT1 only when
@@ -226,6 +202,7 @@ module monitor_dsky(
     //
     // RSET is another special signal, which is always sent together with the RSET key code. The AGC signal
     // involved is CAURST.
+    // This should extinguish OPR ERR, TEMP, GIMBAL LOCK, PROG, RESTART, TRACKER.
     
     always @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
@@ -335,7 +312,7 @@ module monitor_dsky(
                 `DSKY_REG_REG2_H: read_data <= {4'b0, reg2[26:15]};
                 `DSKY_REG_REG3_L: read_data <= {1'b0, reg3[14:0]};
                 `DSKY_REG_REG3_H: read_data <= {4'b0, reg3[26:15]};
-                `DSKY_REG_STATUS: read_data <= {vnflash, com_act, upl_act, no_att, stby, key_rel, opr_err, no_dap, prio_disp, temp, gimbal_lock, prog_alarm, restart, tracker, alt, vel};
+                `DSKY_REG_STATUS: read_data <= {VNFLSH, COMACT, UPLACT, no_att, SBYLIT, KYRLS, OPEROR, no_dap, prio_disp, TMPCAU, gimbal_lock, prog_alarm, RESTRT, tracker, alt, vel};
             endcase
         end else begin
             read_done <= 1'b0;
