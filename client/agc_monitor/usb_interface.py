@@ -95,7 +95,10 @@ class USBInterface(QObject):
                 else:
                     pass
                     #print(f"Sending {msg}")
-                packed_msg = msg.pack()
+                try:
+                    packed_msg = msg.pack()
+                except:
+                    print("Error packing message:", msg)
                 slipped_msg = slip(packed_msg)
                 try:
                     self._dev.write(slipped_msg)

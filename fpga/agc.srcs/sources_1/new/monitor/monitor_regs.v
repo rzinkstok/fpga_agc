@@ -321,7 +321,38 @@ module monitor_regs(
     wire pulse_or_match;
     wire pulse_and_match;
 
+    // or match
+    // conds: 0 0 0 1 0 0 1 0 0
+    // agc:   0 1 0 1 0 0 1 0 0
+    // &:     0 0 0 1 0 0 1 0 0
+    // res: 1
+    // conds: 0 0 0 0 0 0 1 0 0
+    // agc:   0 1 0 1 0 0 1 0 0
+    // &:     0 0 0 0 0 0 1 0 0
+    // res: 1
+    // conds: 0 0 0 0 0 0 1 0 0
+    // agc:   0 1 0 1 0 0 0 0 0
+    // &:     0 0 0 0 0 0 0 0 0
+    // res: 0
+    
     assign pulse_or_match = (w_conds & agc_pulses) != 24'b0;
+    
+    // and match
+    // conds:  0 0 0 1 0 0 1 0 0
+    // ~conds: 1 1 1 0 1 1 0 1 1 
+    // agc:    0 1 0 1 0 0 1 0 0
+    // |:      1 1 1 1 1 1 1 1 1
+    // res: 1
+    // conds:  0 0 0 0 0 0 1 0 0
+    // ~conds: 1 1 1 1 1 1 0 1 1 
+    // agc:    0 1 0 1 0 0 1 0 0
+    // |:      1 1 1 1 1 1 1 1 1
+    // res: 1
+    // conds:  0 0 0 0 0 0 1 0 0
+    // ~conds: 1 1 1 1 1 1 0 1 1 
+    // agc:    0 1 0 1 0 0 0 0 0
+    // |:      1 1 1 1 1 1 0 1 1
+    // res: 0
     assign pulse_and_match = (~w_conds | agc_pulses) == 24'hFFFFFF;
 
     wire s_match;

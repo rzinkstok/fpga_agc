@@ -976,7 +976,7 @@ module toplevel_tb();
 		#200 reset = 1'b0;
 		
 		// Load channel
-		#1000000 // 5ms
+		#1000000 // 1ms
 		
 		// Set S1 comparator: group 20, address 6, value 10 octal
 		#500 rxf_n = 1'b0;
@@ -990,7 +990,7 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#1000000 // 1ms
+		#500000 // 0.5ms
 		
 		// Set W comparator: group 20, address 11, value 4000
 		#500 rxf_n = 1'b0;
@@ -1004,7 +1004,35 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
-		#1000000 // 1ms
+		#500000 // 0.5ms
+		
+		// Set Write G pulse to RCH: group 20, address 10, value 16 = 10 in hex
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h10;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h10;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#500000 // 0.5ms
+		
+		// Set Write G mode to S: group 20, address E, value 1
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0E;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h01;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#500000 // 0.5ms
 		
 		// Send load preset channel: group 20, address 72, value 0
 		#500 rxf_n = 1'b0;
@@ -1018,6 +1046,19 @@ module toplevel_tb();
 		@(posedge clkout) data_in = 8'hC0;
 		rxf_n = 1'b1;
 		
+		#500000 // 0.5ms
+		
+		// Send read preset channel: group 20, address 75, value 0
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h75;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
 		
 		#55000000 // 55 ms
 		

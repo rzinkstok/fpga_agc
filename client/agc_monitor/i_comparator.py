@@ -83,7 +83,6 @@ class IComparator(QWidget):
             self._sq = sq
             self._sqext = sqext
             msg = um.ControlICompVal(br=br, st=st, sqext=sqext, sq=sq)
-            print(msg)
             self._usbif.send(msg)
 
         if (self._br_ign != br_ign) or (self._st_ign != st_ign) or (self._sq_ign != sq_ign) or (
@@ -93,7 +92,6 @@ class IComparator(QWidget):
             self._sq_ign = sq_ign
             self._sqext_ign = sqext_ign
             msg = um.ControlICompIgnore(br=br_ign, st=st_ign, sqext=sqext_ign, sq=sq_ign)
-            print(msg)
             self._usbif.send(msg)
 
         self._instr_value.setText(agc.disassemble_subinst(sqext, sq, st))
@@ -107,5 +105,4 @@ class IComparator(QWidget):
         status_ign = dict(zip(ign_keys, reversed(ign_states)))
         status_bits = {**status_reg, **status_ign}
         msg = um.ControlICompStatus(**status_bits)
-        print(msg)
         self._usbif.send(msg)

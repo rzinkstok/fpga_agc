@@ -33,7 +33,6 @@ class SevenSegment(QWidget):
 
     def set_on(self, on):
         if on != self._on:
-            print("Segment on:", on)
             self._on = on
             self.update()
 

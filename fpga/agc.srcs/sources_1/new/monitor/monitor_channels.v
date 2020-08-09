@@ -30,7 +30,7 @@ module monitor_channels(
 );
 
     assign mwchg = MWCH & MONWT;
-    assign mrchg = MRCH & MONWT;
+    assign mrchg = MRCH & MONWT; // Should this not be RT? RT is not present... WT is present for the last 2/3 of RT so should be fine
     
     wire [15:1] hiscalar;
     channel #(9'o3,15) chan_3(

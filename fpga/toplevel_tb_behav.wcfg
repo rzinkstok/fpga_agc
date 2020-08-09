@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2519236666666fs"></ZoomStartTime>
-      <ZoomEndTime time="2550986666667fs"></ZoomEndTime>
-      <Cursor1Time time="2545695000000fs"></Cursor1Time>
+      <ZoomStartTime time="4687682916666fs"></ZoomStartTime>
+      <ZoomEndTime time="5849682916667fs"></ZoomEndTime>
+      <Cursor1Time time="5656016250000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="221"></NameColumnWidth>
-      <ValueColumnWidth column_width="150"></ValueColumnWidth>
+      <NameColumnWidth column_width="232"></NameColumnWidth>
+      <ValueColumnWidth column_width="146"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="56" />
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MP0">
@@ -156,7 +156,6 @@
          <obj_property name="Reversed">true</obj_property>
          <obj_property name="ElementShortName">VirtualBus[]</obj_property>
          <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/toplevel_tb/MDT01">
             <obj_property name="ElementShortName">MDT01</obj_property>
             <obj_property name="ObjectShortName">MDT01</obj_property>
@@ -221,6 +220,120 @@
             <obj_property name="ElementShortName">MDT16</obj_property>
             <obj_property name="ObjectShortName">MDT16</obj_property>
          </wvobject>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_regs/mrchg">
+         <obj_property name="ElementShortName">mrchg</obj_property>
+         <obj_property name="ObjectShortName">mrchg</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/mon_regs/agc_pulses">
+         <obj_property name="ElementShortName">agc_pulses[23:0]</obj_property>
+         <obj_property name="ObjectShortName">agc_pulses[23:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/mon_regs/w_conds">
+         <obj_property name="ElementShortName">w_conds[23:0]</obj_property>
+         <obj_property name="ObjectShortName">w_conds[23:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_regs/pulse_or_match">
+         <obj_property name="ElementShortName">pulse_or_match</obj_property>
+         <obj_property name="ObjectShortName">pulse_or_match</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_regs/pulse_and_match">
+         <obj_property name="ElementShortName">pulse_and_match</obj_property>
+         <obj_property name="ObjectShortName">pulse_and_match</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/mon_regs/w_mode">
+         <obj_property name="ElementShortName">w_mode[2:0]</obj_property>
+         <obj_property name="ObjectShortName">w_mode[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_regs/w_s1_s2">
+         <obj_property name="ElementShortName">w_s1_s2</obj_property>
+         <obj_property name="ObjectShortName">w_s1_s2</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_s">
+         <obj_property name="ElementShortName">s1_s[12:1]</obj_property>
+         <obj_property name="ObjectShortName">s1_s[12:1]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_eb">
+         <obj_property name="ElementShortName">s1_eb[11:9]</obj_property>
+         <obj_property name="ObjectShortName">s1_eb[11:9]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_fb">
+         <obj_property name="ElementShortName">s1_fb[15:11]</obj_property>
+         <obj_property name="ObjectShortName">s1_fb[15:11]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_fext">
+         <obj_property name="ElementShortName">s1_fext[7:5]</obj_property>
+         <obj_property name="ObjectShortName">s1_fext[7:5]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_s_ign">
+         <obj_property name="ElementShortName">s1_s_ign[12:1]</obj_property>
+         <obj_property name="ObjectShortName">s1_s_ign[12:1]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_eb_ign">
+         <obj_property name="ElementShortName">s1_eb_ign[11:9]</obj_property>
+         <obj_property name="ObjectShortName">s1_eb_ign[11:9]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_fb_ign">
+         <obj_property name="ElementShortName">s1_fb_ign[15:11]</obj_property>
+         <obj_property name="ObjectShortName">s1_fb_ign[15:11]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_fext_ign">
+         <obj_property name="ElementShortName">s1_fext_ign[7:5]</obj_property>
+         <obj_property name="ObjectShortName">s1_fext_ign[7:5]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s">
+         <obj_property name="ElementShortName">s[12:1]</obj_property>
+         <obj_property name="ObjectShortName">s[12:1]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/eb">
+         <obj_property name="ElementShortName">eb[11:9]</obj_property>
+         <obj_property name="ObjectShortName">eb[11:9]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/fb">
+         <obj_property name="ElementShortName">fb[15:11]</obj_property>
+         <obj_property name="ObjectShortName">fb[15:11]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/fext">
+         <obj_property name="ElementShortName">fext[7:5]</obj_property>
+         <obj_property name="ObjectShortName">fext[7:5]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_s_match">
+         <obj_property name="ElementShortName">s1_s_match</obj_property>
+         <obj_property name="ObjectShortName">s1_s_match</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_eb_match">
+         <obj_property name="ElementShortName">s1_eb_match</obj_property>
+         <obj_property name="ObjectShortName">s1_eb_match</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_fb_match">
+         <obj_property name="ElementShortName">s1_fb_match</obj_property>
+         <obj_property name="ObjectShortName">s1_fb_match</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/ctrl_regs/s1_fext_match">
+         <obj_property name="ElementShortName">s1_fext_match</obj_property>
+         <obj_property name="ObjectShortName">s1_fext_match</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_regs/s1_match">
+         <obj_property name="ElementShortName">s1_match</obj_property>
+         <obj_property name="ObjectShortName">s1_match</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_regs/s2_match">
+         <obj_property name="ElementShortName">s2_match</obj_property>
+         <obj_property name="ObjectShortName">s2_match</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_regs/s_match">
+         <obj_property name="ElementShortName">s_match</obj_property>
+         <obj_property name="ObjectShortName">s_match</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/mon_regs/mwwg">
+         <obj_property name="ElementShortName">mwwg</obj_property>
+         <obj_property name="ObjectShortName">mwwg</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/mon_regs/w">
+         <obj_property name="ElementShortName">w[16:1]</obj_property>
+         <obj_property name="ObjectShortName">w[16:1]</obj_property>
+         <obj_property name="Radix">OCTALRADIX</obj_property>
+         <obj_property name="Reversed">false</obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/prop_clk">
@@ -3062,7 +3175,6 @@
       <wvobject type="vbus" fp_name="vbus2179">
          <obj_property name="label">Channel 10</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/RLYB01">
             <obj_property name="ElementShortName">RLYB01</obj_property>
             <obj_property name="ObjectShortName">RLYB01</obj_property>
@@ -3128,6 +3240,7 @@
    <wvobject type="group" fp_name="group1084">
       <obj_property name="label">Channel 11</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/WCH11_">
          <obj_property name="ElementShortName">WCH11_</obj_property>
          <obj_property name="ObjectShortName">WCH11_</obj_property>
@@ -3147,7 +3260,6 @@
          <obj_property name="ElementShortName">VirtualBus[]</obj_property>
          <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
          <obj_property name="Radix">OCTALRADIX</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/ISSWAR">
             <obj_property name="ElementShortName">ISSWAR</obj_property>
             <obj_property name="ObjectShortName">ISSWAR</obj_property>
@@ -3233,7 +3345,6 @@
          <obj_property name="ElementShortName">VirtualBus[]</obj_property>
          <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
          <obj_property name="Radix">OCTALRADIX</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/a16/ZOPCDU">
             <obj_property name="ElementShortName">ZOPCDU</obj_property>
             <obj_property name="ObjectShortName">ZOPCDU</obj_property>
@@ -3299,6 +3410,7 @@
    <wvobject type="group" fp_name="group1104">
       <obj_property name="label">Channel 13</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/WCH13_">
          <obj_property name="ElementShortName">WCH13_</obj_property>
          <obj_property name="ObjectShortName">WCH13_</obj_property>
@@ -3383,6 +3495,7 @@
    <wvobject type="group" fp_name="group1123">
       <obj_property name="label">Channel 14</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/WCH14_">
          <obj_property name="ElementShortName">WCH14_</obj_property>
          <obj_property name="ObjectShortName">WCH14_</obj_property>

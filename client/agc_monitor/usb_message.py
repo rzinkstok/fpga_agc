@@ -315,7 +315,6 @@ class ControlLoadReadS1S2(ControlMessage):
 
 class ControlAdvanceS(ControlMessage):
     address = 0x0019
-    mask = (0xFFFF,)
 
 
 class ControlNHALGA(ControlMessage):

@@ -182,13 +182,13 @@ class DSKY(QWidget):
         if keycode is None:
             b.pressed.connect(lambda: self._usbif.send(um.DSKYProceed()))
             b.released.connect(lambda: self._usbif.send(um.DSKYKeyRelease(1)))
-            b.released.connect(lambda: print("PRO released"))
-            b.pressed.connect(lambda: print("PRO pressed"))
+            #b.released.connect(lambda: print("PRO released"))
+            #b.pressed.connect(lambda: print("PRO pressed"))
         else:
             b.pressed.connect(lambda k=keycode: self._usbif.send(um.DSKYMainButton(keycode=k)))
             b.released.connect(lambda: self._usbif.send(um.DSKYKeyRelease(1)))
-            b.pressed.connect(lambda k=keycode: print(keycode, "pressed"))
-            b.released.connect(lambda k=keycode: print(keycode, "released"))
+            #b.pressed.connect(lambda k=keycode: print(keycode, "pressed"))
+            #b.released.connect(lambda k=keycode: print(keycode, "released"))
             if keycode == 0b10010:
                 b.pressed.connect(lambda: self._usbif.send(um.DSKYReset(1)))
 

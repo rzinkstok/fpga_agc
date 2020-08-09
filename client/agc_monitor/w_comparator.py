@@ -59,20 +59,17 @@ class WComparator(QWidget):
         if w != self._w:
             self._w = w
             msg = um.ControlWComparatorValue(value=w)
-            print(msg)
             self._usbif.send(msg)
 
         if w_ign != self._w_ign:
             self._w_ign = w_ign
             msg = um.ControlWComparatorIgnore(ignore=w_ign)
-            print(msg)
             self._usbif.send(msg)
 
         if parity != self._parity or parity_ign != self._parity_ign:
             self._parity = parity
             self._parity_ign = parity_ign
             msg = um.ControlWComparatorParity(parity=parity, ignore=parity_ign)
-            print(msg)
             self._usbif.send(msg)
 
         w_corrected = ((w & 0o100000) >> 1) | (w & 0o37777)  # | ((w & 0o40000) << 1)
