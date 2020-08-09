@@ -125,7 +125,7 @@ class USBInterface(QObject):
                     break
 
                 #try:
-                msg = um.message_factory(msg_bytes)
+                msg = um.received_message_factory(msg_bytes)
                 #except:
                 #    warnings.warn('Unknown message %s' % msg_bytes)
                 #    continue

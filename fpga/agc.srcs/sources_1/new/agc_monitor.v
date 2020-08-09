@@ -344,9 +344,8 @@ module agc_monitor(
 
     // Resulting data from the active read command
     wire [15:0] read_data;
-    assign read_data = ctrl_data | status_data | mon_reg_data | mon_chan_data | mon_dsky_data | version_data;
-    //assign read_data =   agc_fixed_data | agc_erasable_data |
-    //                    agc_channels_data | crs_data | ems_data | trace_data | nassp_data;
+    assign read_data = ctrl_data | status_data | mon_reg_data | mon_chan_data | mon_dsky_data | agc_fixed_data | agc_erasable_data | version_data;
+    //assign read_data = agc_channels_data | crs_data | ems_data | trace_data | nassp_data;
 
     cmd_controller cmd_ctrl(
         .clk(clk),
@@ -772,7 +771,18 @@ module agc_monitor(
     /*******************************************************************************.
     * Peripheral Instructions                                                       *
     '*******************************************************************************/
+    wire agc_fixed_periph_read;
+    wire agc_fixed_periph_loadch;
+    wire [12:1] agc_fixed_periph_s;
+    wire [15:1] agc_fixed_periph_bb;
+    wire [16:1] agc_fixed_periph_data;
     
+    wire agc_erasable_periph_read;
+    wire agc_erasable_periph_load;
+    wire [12:1] agc_erasable_periph_s;
+    wire [15:1] agc_erasable_periph_bb;
+    wire [16:1] agc_erasable_periph_data;
+
     wire periph_load;
     wire periph_read;
     wire periph_loadch;
@@ -784,14 +794,14 @@ module agc_monitor(
     wire [16:1] periph_read_data;
     wire periph_read_parity;
     
-    assign periph_load = ctrl_periph_load; // | agc_erasable_periph_load | nassp_periph_load;
-    assign periph_read = ctrl_periph_read; // | agc_fixed_periph_read | agc_erasable_periph_read;
-    assign periph_loadch = ctrl_periph_loadch; //| agc_fixed_periph_loadch | agc_channels_periph_loadch;
+    assign periph_load = ctrl_periph_load | agc_erasable_periph_load; // | nassp_periph_load;
+    assign periph_read = ctrl_periph_read | agc_fixed_periph_read | agc_erasable_periph_read;
+    assign periph_loadch = ctrl_periph_loadch | agc_fixed_periph_loadch; // | agc_channels_periph_loadch;
     assign periph_readch = ctrl_periph_readch; // | agc_channels_periph_readch;
     assign periph_tcsaj = ctrl_periph_tcsaj;
-    assign periph_bb = ctrl_periph_bb; // | agc_fixed_periph_bb | agc_erasable_periph_bb | nassp_periph_bb;
-    assign periph_s = ctrl_periph_s; // | agc_fixed_periph_s | agc_erasable_periph_s | agc_channels_periph_s | nassp_periph_s;
-    assign periph_data = ctrl_periph_data; // | agc_fixed_periph_data | agc_erasable_periph_data | agc_channels_periph_data | nassp_periph_data;
+    assign periph_bb = ctrl_periph_bb | agc_fixed_periph_bb | agc_erasable_periph_bb; // | nassp_periph_bb;
+    assign periph_s = ctrl_periph_s | agc_fixed_periph_s | agc_erasable_periph_s; // | agc_channels_periph_s | nassp_periph_s;
+    assign periph_data = ctrl_periph_data | agc_fixed_periph_data | agc_erasable_periph_data; // | agc_channels_periph_data | nassp_periph_data;
     
     peripheral_instructions periph_insts(
         .clk(clk),
@@ -834,8 +844,55 @@ module agc_monitor(
         .mdt(mdt_periph)
     );
 
+    /*******************************************************************************.
+    * AGC Fixed Memory                                                              *
+    '*******************************************************************************/
+    agc_fixed fixed(
+        .clk(clk),
+        .rst_n(rst_n),
     
+        .read_en(agc_fixed_read_en),
+        .read_done(agc_fixed_read_done),
+        .addr(cmd_addr),
+        .data_out(agc_fixed_data),
     
+        .periph_read(agc_fixed_periph_read),
+        .periph_loadch(agc_fixed_periph_loadch),
+        .periph_s(agc_fixed_periph_s),
+        .periph_bb(agc_fixed_periph_bb),
+        .periph_data(agc_fixed_periph_data),
+        .periph_read_data(periph_read_data),
+        .periph_read_parity(periph_read_parity),
+        .periph_complete(periph_complete),
+    
+        .fext(fext)
+    );
+    
+    /*******************************************************************************.
+    * AGC Erasable Memory                                                           *
+    '*******************************************************************************/
+    agc_erasable erasable(
+        .clk(clk),
+        .rst_n(rst_n),
+    
+        .read_en(agc_erasable_read_en),
+        .read_done(agc_erasable_read_done),
+        .write_en(agc_erasable_write_en),
+        .write_done(agc_erasable_write_done),
+        .addr(cmd_addr),
+        .data_in(cmd_data),
+        .data_out(agc_erasable_data),
+    
+        .periph_read(agc_erasable_periph_read),
+        .periph_load(agc_erasable_periph_load),
+        .periph_s(agc_erasable_periph_s),
+        .periph_bb(agc_erasable_periph_bb),
+        .periph_data(agc_erasable_periph_data),
+        .periph_read_data(periph_read_data),
+        .periph_read_parity(periph_read_parity),
+        .periph_complete(periph_complete)
+    );
+
     /*******************************************************************************.
     * Core Rope Simulation                                                          *
     '*******************************************************************************/

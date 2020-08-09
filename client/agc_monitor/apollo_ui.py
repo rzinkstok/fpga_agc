@@ -54,7 +54,7 @@ class ApolloGroup(QWidget):
 
         self.heading = ApolloGroupHeading(parent, text)
         self.layout.addWidget(self.heading)
-        self.layout.addSpacing(8)
+        self.layout.addSpacing(12)
 
         self.framelayouts = []
         for i in range(nframes):
@@ -194,18 +194,21 @@ class ApolloLabeledIndicatorSwitch(ApolloLabeledIndicator):
         self.switch.setFixedSize(20, 20)
         self.switch.setStyleSheet('QCheckBox::indicator{ subcontrol-position:center; } QCheckBox { color: #666; }')
         self.addWidget(self.switch)
-        #self.layout.setAlignment(self.switch, Qt.AlignCenter)
         self.addStretch()
 
 
 class ApolloLabeledSwitch(ApolloControl):
-    def __init__(self, parent, text, labelwidth=32, *args, **kwargs):
+    def __init__(self, parent, text, lines=1, tristate=False, labelwidth=32, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
+        # Make sure the text is bottom aligned in the specified number of lines
+        text = "\n" * (lines - text.count("\n") - 1) + text
         self.label = QLabel(text, self)
         self.label.setFixedWidth(labelwidth)
         self.addWidget(self.label)
         self.layout.addSpacing(3)
         self.switch = QCheckBox(self)
+        if tristate:
+            self.switch.setTristate(True)
         self.switch.setFixedSize(20, 20)
         self.switch.setStyleSheet('QCheckBox::indicator{ subcontrol-position:center; } QCheckBox { color: #666; }')
         self.addWidget(self.switch)

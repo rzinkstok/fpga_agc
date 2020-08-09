@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date             : Sat Aug  8 16:11:54 2020
+| Date             : Sun Aug  9 13:31:12 2020
 | Host             : fpgadev running 64-bit Ubuntu 18.04.4 LTS
 | Command          : report_power -file toplevel_power_routed.rpt -pb toplevel_power_summary_routed.pb -rpx toplevel_power_routed.rpx
 | Design           : toplevel
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 1.800        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.649        |
+| Dynamic (W)              | 1.650        |
 | Device Static (W)        | 0.151        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 64.2         |
@@ -52,19 +52,19 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.091 |        6 |       --- |             --- |
-| Slice Logic             |     0.027 |    33317 |       --- |             --- |
-|   LUT as Logic          |     0.023 |    11509 |     53200 |           21.63 |
-|   Register              |     0.003 |    16212 |    106400 |           15.24 |
+| Clocks                  |     0.092 |        6 |       --- |             --- |
+| Slice Logic             |     0.027 |    33428 |       --- |             --- |
+|   LUT as Logic          |     0.023 |    11584 |     53200 |           21.77 |
+|   Register              |     0.003 |    16216 |    106400 |           15.24 |
 |   CARRY4                |    <0.001 |       69 |     13300 |            0.52 |
 |   BUFG                  |    <0.001 |        1 |        32 |            3.13 |
-|   F7/F8 Muxes           |    <0.001 |       21 |     53200 |            0.04 |
+|   F7/F8 Muxes           |    <0.001 |       17 |     53200 |            0.03 |
 |   Others                |     0.000 |     5015 |       --- |             --- |
 |   LUT as Shift Register |     0.000 |        4 |     17400 |            0.02 |
-| Signals                 |     0.061 |    22813 |       --- |             --- |
+| Signals                 |     0.059 |    22897 |       --- |             --- |
 | Block RAM               |     0.011 |     44.5 |       140 |           31.79 |
 | MMCM                    |     0.119 |        1 |         4 |           25.00 |
-| I/O                     |     0.058 |      136 |       200 |           68.00 |
+| I/O                     |     0.061 |      136 |       200 |           68.00 |
 | XADC                    |     0.002 |        1 |       --- |             --- |
 | PS7                     |     1.280 |        1 |       --- |             --- |
 | Static Power            |     0.151 |          |           |                 |
@@ -78,9 +78,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.208 |       0.190 |      0.017 |
+| Vccint    |       1.000 |     0.205 |       0.188 |      0.017 |
 | Vccaux    |       1.800 |     0.082 |       0.067 |      0.016 |
-| Vcco33    |       3.300 |     0.018 |       0.017 |      0.001 |
+| Vcco33    |       3.300 |     0.019 |       0.018 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -156,7 +156,7 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| toplevel                |     1.649 |
+| toplevel                |     1.650 |
 |   agcmonitor            |     0.018 |
 |     ctrl_regs           |     0.002 |
 |     mon_chans           |     0.001 |
@@ -167,8 +167,8 @@ Table of Contents
 |       cmd_queue         |     0.002 |
 |       read_byte_queue   |     0.004 |
 |       read_msg_queue    |     0.001 |
-|   fpgaagc               |     0.287 |
-|     traya               |     0.153 |
+|   fpgaagc               |     0.284 |
+|     traya               |     0.151 |
 |       a01               |     0.008 |
 |       a02               |     0.005 |
 |       a03               |     0.007 |
@@ -176,19 +176,19 @@ Table of Contents
 |       a05               |     0.006 |
 |       a06               |     0.006 |
 |       a07               |     0.005 |
-|       a08               |     0.008 |
+|       a08               |     0.007 |
 |       a09               |     0.007 |
 |       a10               |     0.007 |
 |       a11               |     0.007 |
 |       a12               |     0.006 |
 |       a13               |     0.003 |
 |       a14               |     0.007 |
-|       a15               |     0.006 |
+|       a15               |     0.007 |
 |       a16               |     0.006 |
 |       a17               |     0.007 |
 |       a18               |     0.007 |
 |       a19               |     0.005 |
-|       a20               |     0.007 |
+|       a20               |     0.006 |
 |       a21               |     0.008 |
 |       a23               |     0.006 |
 |       a24               |     0.003 |
@@ -196,7 +196,7 @@ Table of Contents
 |     trayb               |     0.133 |
 |       b01fixedmemory    |     0.011 |
 |       b07oscillator     |     0.119 |
-|       b12erasablememory |     0.004 |
+|       b12erasablememory |     0.003 |
 |   io                    |     0.007 |
 |   styxpsbootloader      |     1.280 |
 |     styx_ps             |     1.280 |

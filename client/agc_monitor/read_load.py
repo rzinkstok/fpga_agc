@@ -30,7 +30,7 @@ class ReadLoad(QFrame):
         layout.addWidget(ag0)
 
         b1 = ApolloLabeledButton(self, "PROCEED", lines=2, callback=self._proceed)
-        #b2 = ApolloLabeledButton(self, "RESET\nERROR", lines=2)
+        #b2 = ApolloLabeledButton(self, "RESET\nERROR", lines=2)  # Unclear what this control is for
         b3 = ApolloLabeledButton(self, "\nADV S", lines=2, callback=self._advance_s)
 
         self.n_nisq = ApolloLabeledEntry(self, "NISQ\nSTEPS", value_text="1", lines=2)
@@ -63,7 +63,7 @@ class ReadLoad(QFrame):
         lss1.switch.toggled.connect(self._update_s1_s2_switches)
         lss2.switch.toggled.connect(self._update_s1_s2_switches)
 
-        ag1.framelayouts[1].addStretch()
+        ag1.addStretch(1)
         ag1.addWidget(lss1, 1)
         ag1.addWidget(lss2, 1)
         ag1.group()
@@ -89,7 +89,7 @@ class ReadLoad(QFrame):
         rss1.switch.toggled.connect(self._update_s1_s2_switches)
         rss2.switch.toggled.connect(self._update_s1_s2_switches)
 
-        ag2.framelayouts[1].addStretch()
+        ag2.addStretch(1)
         ag2.addWidget(rss1, 1)
         ag2.addWidget(rss2, 1)
         ag2.group()
@@ -115,7 +115,7 @@ class ReadLoad(QFrame):
         sss1.switch.toggled.connect(self._update_s1_s2_switches)
         sss2.switch.toggled.connect(self._update_s1_s2_switches)
 
-        ag3.framelayouts[1].addStretch()
+        ag3.addStretch(1)
         ag3.addWidget(sss1, 1)
         ag3.addWidget(sss2, 1)
         ag3.group()

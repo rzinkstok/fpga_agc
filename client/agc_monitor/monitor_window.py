@@ -13,6 +13,7 @@ from comp_stop import CompStop
 from write_w import WriteW
 from alarms import Alarms
 from read_load import ReadLoad
+from fixed_memory import FixedMemory
 
 
 class MonitorWindow(QWidget):
@@ -149,6 +150,11 @@ class MonitorWindow(QWidget):
         self._read_load = ReadLoad(col3, self._usbif)
         col3_layout.addWidget(self._read_load)
         col3_layout.setAlignment(self._read_load, Qt.AlignTop | Qt.AlignRight)
+
+        # Add the fixed memory panel
+        self._fixed = FixedMemory(col3, self._usbif)
+        col3_layout.addWidget(self._fixed)
+        col3_layout.setAlignment(self._fixed, Qt.AlignTop | Qt.AlignRight)
 
         col3_layout.addStretch()
 

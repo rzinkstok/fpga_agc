@@ -4,57 +4,14 @@ import struct
 DATA_FMT = '>BHH'
 READ_FMT = '>BH'
 DATA_FLAG = 0x80
-
+MEMORY_GROUPS = [0x01, 0x11]
 
 """
-Message
-- 3 or 5 bytes
-- Read/write flag (1 bit)
-- Group (7 bits)
-- Address (16 bits)
-- Data (16 bits, optional)
-
-ReadMessage
-- request data
-- 3 bytes (no data bytes)
-
-WriteMessage
-- write data
-- 5 bytes (includes data bytes)
-
-ResponseMessage
-- response with requested data
-- 5 bytes (includes data bytes)
-
-Sending ReadMessage:
-- get group and address
-- pack into message
-- send
-
-Sending WriteMessage:
-- get group and address
-- get values for attributes
-- pack into message
-- send
-
-Receiving ResponseMessage:
-- Message is received and unpacked
-- Message is converted into correct Message type based on group and address
-- Message signal is emitted
-- All listeners receive signal
-- Listeners check type, ignore when it is not a match for that listener
-- Retrieve values for attributes
+Change Message so address is not a class variable anymore (or at least can be both)
 
 
-Needed:
-- Message classes. Ideally single class per item, that can act in all three roles (Read, Write, Response)
-    - attributes: group, address, data attributes
-    - a data bytes pack function
-    - a data bytes unpack function
-    - a comparison operator
+Message to 
 
-- a generic unpack function (yields group, address, data bytes)
-- a mapping from group/address to Message class for received messages (created automatically from all Message descendants?)
 """
 
 
@@ -72,16 +29,27 @@ def message_classes():
     return subclasses
 
 
-def message_factory(msg_bytes):
-    """Returns the correct message class instance, based on the group and address in the given bytes."""
+def received_message_factory(msg_bytes):
+    """Returns the correct message class instance, based on the group and address in the given bytes.
+    Only used for messages received by the USB interface.
+    """
     if len(msg_bytes) != struct.calcsize(DATA_FMT):
         raise RuntimeError('Cannot unpack data with unexpected length %u' % len(msg_bytes))
 
     group, address, data_bytes = struct.unpack(DATA_FMT, msg_bytes)
 
     # Subtract the value of the data flag from the group value, effectively removing the MSB
-    return message_map[(group - DATA_FLAG, address)](data=data_bytes)
-     
+    group -= DATA_FLAG
+
+    # Remove address for memory messages
+    map_address = address
+    memory_address = None
+    if group in MEMORY_GROUPS:
+        map_address = None
+        memory_address = address
+
+    return message_map[(group, map_address)](raw_data=data_bytes, memory_address=memory_address)
+
 
 class Message(object):
     """Base class for all messages.
@@ -98,18 +66,37 @@ class Message(object):
     If the message is instantiated with arguments to the constructor, it will be a write message, else a read message.
     """
     group = None
-    address = None
+    _address = None
     keys = ("default",)
     bitshift = (0,)
     mask = (0x0001,)
 
-    def __init__(self, data=None, **datadict):
-        self.__dict__["datadict"] = {}
-        if data is not None:
-            self._unpack_data(data)
+    def __init__(self, raw_data=None, memory_address=None, **datadict):
+        if len(self.bitshift) != len(self.keys):
+            self.bitshift = tuple([i for i in range(len(self.keys))])
+            self.mask = tuple([0x0001 for i in range(len(self.keys))])
+
+        self.datadict = {}
+        self.memory_address = memory_address
+        if raw_data is not None:
+            self._unpack_data(raw_data)
         elif datadict:
             for k, v in datadict.items():
-                setattr(self, k, v)
+                self._set_data(k, v)
+
+    def _set_data(self, k, v):
+        if k == "address":
+            self.memory_address = v
+        elif k in self.keys:
+            self.datadict[k] = v
+        else:
+            raise ValueError(f"Cannot add {k}")
+
+    @property
+    def address(self):
+        if self._address is not None:
+            return self._address
+        return self.memory_address
 
     def pack(self):
         """"Returns the message bytes."""
@@ -128,12 +115,15 @@ class Message(object):
     def _unpack_data(self, data):
         """Extracts the message data from the unpacked bytes."""
         for i, k in enumerate(self.keys):
-            setattr(self, k, (data >> self.bitshift[i]) & self.mask[i])
+            v = (data >> self.bitshift[i]) & self.mask[i]
+            self._set_data(k, v)
 
     def __repr__(self):
         data = ""
         if self.datadict:
             data = ", ".join([f"{x}={self.datadict[x]}" for x in self.keys])
+        if self.memory_address is not None:
+            data += f", address={self.memory_address}"
         return f"{type(self).__name__}({data})"
 
     def __eq__(self, other):
@@ -143,12 +133,6 @@ class Message(object):
         if key in self.datadict:
             return self.datadict[key]
         raise AttributeError
-                      
-    def __setattr__(self, key, value):
-        if key in self.keys:
-            self.datadict[key] = value
-        else:
-            raise AttributeError
 
     def __getitem__(self, arg):
         if isinstance(arg, slice):
@@ -157,217 +141,267 @@ class Message(object):
             return self.datadict[self.keys[arg]]
 
 
+class FixedMessage(Message):
+    group = 0x01
+
+
+class FixedRead(FixedMessage):
+    """Only used to request data from fixed memory"""
+    pass
+
+
+class FixedData(FixedMessage):
+    keys = ("parity", "data")
+    mask = (0x0001, 0x7fff)
+    bitshift = (0, 1)
+
+
+class SimFixedMessage(Message):
+    group = 0x11
+
+
+class SimFixedData(SimFixedMessage):
+    keys = ("parity", "data")
+    mask = (0x0001, 0x7fff)
+    bitshift = (0, 1)
+
+
 class ControlMessage(Message):
     group = 0x20
 
 
 class ControlStart(ControlMessage):
-    address = 0x0000
+    _address = 0x0000
 
 
 class ControlStop(ControlMessage):
-    address = 0x0001
+    _address = 0x0001
     keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step", "s1_s2"]
-    mask = tuple(0x00001 for k in keys)
+    mask = tuple(0x0001 for k in keys)
     bitshift = tuple(i for i in range(len(keys)))
 
 
 class ControlStopCause(ControlMessage):
-    address = 0x0002
+    _address = 0x0002
     keys = ["t12", "nisq", "s1", "s2", "w", "s_w", "s_i", "chan", "par", "i", "prog_step"]
-    mask = tuple(0x00001 for k in keys)
+    mask = tuple(0x0001 for k in keys)
     bitshift = tuple(i for i in range(len(keys)))
 
 
 class ControlProceed(ControlMessage):
-    address = 0x0003
+    _address = 0x0003
 
 
 class ControlMNHRPT(ControlMessage):
-    address = 0x0004
+    _address = 0x0004
     keys = ["mnhrpt"]
 
 
 class ControlMNHNC(ControlMessage):
-    address = 0x0005
+    _address = 0x0005
     keys = ["mnhnc"]
 
 
 class ControlS1S(ControlMessage):
-    address = 0x0006
+    _address = 0x0006
     keys = ["s"]
     mask = (0x0FFF,)
 
 
 class ControlS1Bank(ControlMessage):
-    address = 0x0007
+    _address = 0x0007
     keys = ["eb", "fext", "fb"]
     bitshift = (0, 4, 10)
     mask = (0x0007, 0x0007, 0x001F)
 
 
 class ControlS1SIgnore(ControlMessage):
-    address = 0x0008
+    _address = 0x0008
     keys = ["s"]
     mask = (0x0FFF,)
 
 
 class ControlS1BankIgnore(ControlMessage):
-    address = 0x0009
+    _address = 0x0009
     keys = ["eb", "fext", "fb"]
     bitshift = (0, 4, 10)
     mask = (0x0007, 0x0007, 0x001F)
 
 
 class ControlS2S(ControlMessage):
-    address = 0x000A
+    _address = 0x000A
     keys = ["s"]
     mask = (0x0FFF,)
 
 
 class ControlS2Bank(ControlMessage):
-    address = 0x000B
+    _address = 0x000B
     keys = ["eb", "fext", "fb"]
     bitshift = (0, 4, 10)
     mask = (0x0007, 0x0007, 0x001F)
 
 
 class ControlS2SIgnore(ControlMessage):
-    address = 0x000D
+    _address = 0x000C
     keys = ["s"]
     mask = (0x0FFF,)
 
 
 class ControlS2BankIgnore(ControlMessage):
-    address = 0x000D
+    _address = 0x000D
     keys = ["eb", "fext", "fb"]
     bitshift = (0, 4, 10)
     mask = (0x0007, 0x0007, 0x001F)
 
 
 class ControlWriteW(ControlMessage):
-    address = 0x000E
+    _address = 0x000E
     keys = ['mode', 's1_s2']
     mask = (0x0007, 0x0001)
     bitshift = (0, 3)
 
 
 class ControlTimeSwitches(ControlMessage):
-    address = 0x000F
+    _address = 0x000F
     keys = list(f"t{i+1:02d}" for i in range(12))
     mask = tuple(0x0001 for i in range(12))
     bitshift = tuple(i for i in range(12))
 
 
 class ControlPulseSwitches(ControlMessage):
-    address = 0x0010
+    _address = 0x0010
     keys = ['a', 'l', 'q', 'z', 'rch', 'wch', 'g', 'b', 'y', 'ru', 'sp1', 'sp2']
     mask = tuple(0x0001 for k in keys)
     bitshift = tuple(i for i in range(len(keys)))
 
 
 class ControlWComparatorValue(ControlMessage):
-    address = 0x0011
+    _address = 0x0011
     keys = ["value"]
     mask = (0xFFFF,)
 
 
 class ControlWComparatorIgnore(ControlMessage):
-    address = 0x0012
+    _address = 0x0012
     keys = ["ignore"]
     mask = (0xFFFF,)
 
 
 class ControlWComparatorParity(ControlMessage):
-    address = 0x0013
+    _address = 0x0013
     keys = ["parity", "ignore"]
     mask = (0x0003, 0x0003)
     bitshift = (0, 2)
 
 
 class ControlICompVal(ControlMessage):
-    address = 0x0014
+    _address = 0x0014
     keys = ["sq", "sqext", "st", "br"]
     mask = (0x003F, 0x0001, 0x0007, 0x0003)
     bitshift = (0, 6, 7, 10)
 
 
 class ControlICompIgnore(ControlMessage):
-    address = 0x0015
+    _address = 0x0015
     keys = ["sq", "sqext", "st", "br"]
     mask = (0x003F, 0x0001, 0x0007, 0x0003)
     bitshift = (0, 6, 7, 10)
 
 
 class ControlICompStatus(ControlMessage):
-    address = 0x0016
+    _address = 0x0016
     keys = ("iip", "inhl", "inkl", "ld", "chld", "rd", "chrd", "iip_ign", "inhl_ign", "inkl_ign", "ld_ign", "chld_ign", "rd_ign", "chrd_ign")
     mask = tuple(0x0001 for k in keys)
     bitshift = tuple(i for i in range(len(keys)))
 
 
 class ControlLoadReadS1S2(ControlMessage):
-    address = 0x0017
+    _address = 0x0017
     keys = ("load_preset", "load_channel", "read_preset", "read_channel", "start_preset")
     bitshift = (0, 1, 2, 3, 4)
     mask = (0x0001, 0x0001, 0x0001, 0x0001, 0x0001)
 
 
 class ControlAdvanceS(ControlMessage):
-    address = 0x0019
+    _address = 0x0019
+
+
+class ControlCRSBankEnable0(ControlMessage):
+    _address = 0x001A
+    keys = tuple(f"f{bank:o}" for bank in range(16))
+
+
+class ControlCRSBankEnable1(ControlMessage):
+    _address = 0x001B
+    keys = tuple(f"f{bank:o}" for bank in range(16, 32))
+
+
+class ControlCRSBankEnable2(ControlMessage):
+    _address = 0x001C
+    keys = tuple(f"f{bank:o}" for bank in range(32, 48))
+
+
+class ControlCRSBankEnable3(ControlMessage):
+    _address = 0x001D
+    keys = tuple(f"f{bank:o}" for bank in range(48, 64))
+
+
+class ControlEMSBankEnable(ControlMessage):
+    _address = 0x001E
+    keys = tuple(f"e{bank:o}" for bank in range(8))
 
 
 class ControlNHALGA(ControlMessage):
-    address = 0x0040
+    _address = 0x0040
     keys = ["nhalga"]
 
 
 class ControlSTRT1(ControlMessage):
-    address = 0x0041
+    _address = 0x0041
     keys = ["strt1"]
 
 
 class ControlSTRT2(ControlMessage):
-    address = 0x0042
+    _address = 0x0042
     keys = ["strt2"]
 
 
 class ControlNNISQSteps(ControlMessage):
-    address = 0x0060
+    _address = 0x0060
     keys = ["n"]
     mask = (0xFFFF,)
 
 
 class ControlLoadS(ControlMessage):
-    address = 0x0070
+    _address = 0x0070
 
 
 class ControlLoadPreset(ControlMessage):
-    address = 0x0071
+    _address = 0x0071
 
 
 class ControlLoadChannel(ControlMessage):
-    address = 0x0072
+    _address = 0x0072
 
 
 class ControlReadS(ControlMessage):
-    address = 0x0073
+    _address = 0x0073
 
 
 class ControlReadPreset(ControlMessage):
-    address = 0x0074
+    _address = 0x0074
 
 
 class ControlReadChannel(ControlMessage):
-    address = 0x0075
+    _address = 0x0075
 
 
 class ControlStartS(ControlMessage):
-    address = 0x0076
+    _address = 0x0076
 
 
 class ControlStartPreset(ControlMessage):
-    address = 0x0077
+    _address = 0x0077
 
 
 class MonRegMessage(Message):
@@ -376,88 +410,88 @@ class MonRegMessage(Message):
 
 
 class MonRegA(MonRegMessage):
-    address = 0x0000
+    _address = 0x0000
     keys = ["a"]
 
 
 class MonRegL(MonRegMessage):
-    address = 0x0001
+    _address = 0x0001
     keys = ["l"]
 
 
 class MonRegQ(MonRegMessage):
-    address = 0x0002
+    _address = 0x0002
     keys = ["q"]
 
 
 class MonRegZ(MonRegMessage):
-    address = 0x0003
+    _address = 0x0003
     keys = ["z"]
 
 
 class MonRegBB(MonRegMessage):
-    address = 0x0004
+    _address = 0x0004
     keys = ["eb", "fb"]
     bitshift = (0, 10)
     mask = (0x0007, 0x001F)
 
 
 class MonRegB(MonRegMessage):
-    address = 0x0005
+    _address = 0x0005
     keys = ["b"]
 
 
 class MonRegS(MonRegMessage):
-    address = 0x0006
+    _address = 0x0006
     keys = ["s"]
     mask = (0x0FFF,)
 
 
 class MonRegG(MonRegMessage):
-    address = 0x0007
+    _address = 0x0007
     keys = ["g"]
 
 
 class MonRegY(MonRegMessage):
-    address = 0x0008
+    _address = 0x0008
     keys = ["y"]
 
 
 class MonRegU(MonRegMessage):
-    address = 0x0009
+    _address = 0x0009
     keys = ["u"]
 
 
 class MonRegI(MonRegMessage):
-    address = 0x000A
+    _address = 0x000A
     keys = ["sq", "sqext", "st", "br"]
     bitshift = (0, 6, 7, 10)
     mask = (0x003F, 0x0001, 0x0007, 0x0003)
 
 
 class MonRegStatus(MonRegMessage):
-    address = 0x000B
+    _address = 0x000B
     keys = ["gojam", "run", "iip", "inhl", "inkl", "outcom"]
     bitshift = (0, 1, 2, 3, 4, 5)
     mask = (0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001)
 
 
 class MonRegParity(MonRegMessage):
-    address = 0x000C
+    _address = 0x000C
     keys = ["g_gp", "g_sp", "w_gp", "w_sp"]
     bitshift = (0, 1, 2, 3)
     mask = (0x0001, 0x0001, 0x0001, 0x0001)
 
 
 class MonRegTimePulse(MonRegMessage):
-    address = 0x000D
+    _address = 0x000D
     keys = list([f"t{i+1}" for i in range(12)])
     mask = tuple(0x0001 for k in keys)
     bitshift = tuple(i for i in range(len(keys)))
 
 
 class MonRegW(MonRegMessage):
-    address = 0x0040
+    _address = 0x0040
     keys = ["w"]
 
 
@@ -466,7 +500,7 @@ class MonChanMessage(Message):
 
 
 class MonChanFEXT(MonChanMessage):
-    address = 0x0007
+    _address = 0x0007
     keys = ["fext"]
     bitshift = (4,)
     mask = 0x0007
@@ -477,99 +511,99 @@ class DSKYMessage(Message):
 
 
 class DSKYProg(DSKYMessage):
-    address = 0x0000
+    _address = 0x0000
     keys = ["digit1", "digit2"]
     bitshift = (0, 5)
     mask = (0x001F, 0x001F)
 
 
 class DSKYVerb(DSKYMessage):
-    address = 0x0001
+    _address = 0x0001
     keys = ["digit1", "digit2"]
     bitshift = (0, 5)
     mask = (0x001F, 0x001F)
 
 
 class DSKYNoun(DSKYMessage):
-    address = 0x0002
+    _address = 0x0002
     keys = ["digit1", "digit2"]
     bitshift = (0, 5)
     mask = (0x001F, 0x001F)
 
 
 class DSKYReg1L(DSKYMessage):
-    address = 0x0003
+    _address = 0x0003
     keys = ["digit1", "digit2", "digit3"]
     bitshift = (0, 5, 10)
     mask = (0x001F, 0x001F, 0x001F)
 
 
 class DSKYReg1H(DSKYMessage):
-    address = 0x0004
+    _address = 0x0004
     keys = ["digit4", "digit5", "sign"]
     bitshift = (0, 5, 10)
     mask = (0x001F, 0x001F, 0x0003)
 
 
 class DSKYReg2L(DSKYMessage):
-    address = 0x0005
+    _address = 0x0005
     keys = ["digit1", "digit2", "digit3"]
     bitshift = (0, 5, 10)
     mask = (0x001F, 0x001F, 0x001F)
 
 
 class DSKYReg2H(DSKYMessage):
-    address = 0x0006
+    _address = 0x0006
     keys = ["digit4", "digit5", "sign"]
     bitshift = (0, 5, 10)
     mask = (0x001F, 0x001F, 0x0003)
 
 
 class DSKYReg3L(DSKYMessage):
-    address = 0x0007
+    _address = 0x0007
     keys = ["digit1", "digit2", "digit3"]
     bitshift = (0, 5, 10)
     mask = (0x001F, 0x001F, 0x001F)
 
 
 class DSKYReg3H(DSKYMessage):
-    address = 0x0008
+    _address = 0x0008
     keys = ["digit4", "digit5", "sign"]
     bitshift = (0, 5, 10)
     mask = (0x001F, 0x001F, 0x0003)
 
 
 class DSKYMainButton(DSKYMessage):
-    address = 0x0009
+    _address = 0x0009
     keys = ["keycode"]
     mask = (0x001F,)
 
 
 class DSKYProceed(DSKYMessage):
-    address = 0x000A
+    _address = 0x000A
     keys = ["sbybut"]
 
 
 class DSKYStatus(DSKYMessage):
-    address = 0x000B
+    _address = 0x000B
     keys = ["vel", "alt", "tracker", "restart", "prog", "gimbal_lock", "temp", "prio_disp", "no_dap", "opr_err", "key_rel", "stby", "no_att", "uplink_acty", "comp_acty", "vnflash"]
     bitshift = tuple(i for i in range(len(keys)))
     mask = tuple(0x0001 for i in keys)
 
 
 class DSKYNavButton(DSKYMessage):
-    address = 0x000C
+    _address = 0x000C
     keys = ["keycode"]
     mask = (0x001F,)
 
 
 class DSKYKeyRelease(DSKYMessage):
-    address = 0x000D
+    _address = 0x000D
     keys = ["keyrst"]
 
 
 class DSKYReset(DSKYMessage):
-    address = 0x000E
+    _address = 0x000E
     keys = ["rset"]
 
 
@@ -578,28 +612,28 @@ class StatusMessage(Message):
 
 
 class StatusAlarms(StatusMessage):
-    address = 0x0000
+    _address = 0x0000
     keys = ["vfail", "oscal", "scafl", "scdbl", "ctral", "tcal", "rptal", "pal", "fpal", "epal", "watch", "pipal", "warn"]
     mask = tuple(0x0001 for k in keys)
     bitshift = tuple(i for i in range(len(keys)))
 
 
 class StatusTemp(StatusMessage):
-    address = 0x0010
+    _address = 0x0010
     keys = ["counts"]
     mask = (0x0FFF,)
     bitshift = (4,)
 
 
 class StatusVccInt(StatusMessage):
-    address = 0x0011
+    _address = 0x0011
     keys = ["counts"]
     mask = (0x0FFF,)
     bitshift = (4,)
 
 
 class StatusVccAux(StatusMessage):
-    address = 0x0012
+    _address = 0x0012
     keys = ["counts"]
     mask = (0x0FFF,)
     bitshift = (4,)
@@ -607,13 +641,13 @@ class StatusVccAux(StatusMessage):
 
 class VersionMessage(Message):
     group = 0x007f
-    address = 0x0000
+    _address = 0x0000
     keys = ["version"]
     mask = (0x0FFF,)
 
 
 # Construct the message map used in the message factory
-message_map = {(cls.group, cls.address): cls for cls in message_classes()}
+message_map = {(cls.group, cls._address): cls for cls in message_classes()}
 print(message_map)
 
 
