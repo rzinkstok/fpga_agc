@@ -20,7 +20,7 @@ class FixedMemory(QWidget):
         self._rope_loader = MemoryLoad(usbif, um.SimFixedData, 0o100, 1024, self._bank_switches, self._aux_switch)
         self._rope_loader.finished.connect(self._load_complete)
 
-        self._rope_dumper = MemoryDump(usbif, um.FixedRead, um.FixedData, 0o100, 1024, self._bank_switches, self._aux_switch)
+        self._rope_dumper = MemoryDump(usbif, um.FixedData, um.FixedData, 0o100, 1024, self._bank_switches, self._aux_switch)
         self._rope_dumper.finished.connect(self._dump_complete)
 
     def _setup_ui(self):

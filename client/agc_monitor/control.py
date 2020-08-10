@@ -28,21 +28,18 @@ class Control(QWidget):
     def __init__(self, parent, usbif):
         super().__init__(parent)
         self._usbif = usbif
-        self._inh_switches = []
-        self._inh_inds = []
+        self._inh_inds = {}
         self._status_inds = {}
         self._setup_ui()
 
-        usbif.poll("monitor", um.ControlNHALGA())
-        usbif.poll("monitor", um.ControlMNHRPT())
+        for m in INH_SWITCHES.values():
+            usbif.poll("monitor", m())
 
         usbif.poll("monitor", um.MonRegStatus())
         usbif.poll("monitor", um.ControlStopCause())
         # usbif.poll("monitor", um.StatusPeripheral())
         usbif.listen(self)
 
-        #for msg in INH_SWITCHES.values():
-        #    usbif.send(msg(0))
         usbif.send(um.ControlSTRT1(0))
         usbif.send(um.ControlSTRT2(0))
 
@@ -52,6 +49,13 @@ class Control(QWidget):
             self._status_inds['agc_run'].indicator.set_on(msg.run)
         elif isinstance(msg, um.ControlStopCause):
             self._status_inds['mon_stop'].indicator.set_on(any(msg))
+        else:
+            for c in INH_SWITCHES.values():
+                if isinstance(msg, c):
+                    self._inh_inds[c].indicator.set_on(msg[0])
+                    self._inh_inds[c].switch.setChecked(msg[0])
+                    break
+
         #elif isinstance(msg, um.StatusPeripheral):
         #    self._status_inds['crs_cycle'].indicator.set_on(any(msg))
 
@@ -68,8 +72,9 @@ class Control(QWidget):
         layout.addWidget(ag1)
 
         for label, msg in INH_SWITCHES.items():
-            callback = lambda state, msg=msg: self._usbif.send(msg(int(bool(state))))
-            w = ApolloLabeledIndicatorSwitch(self, label, QColor(255, 120, 0), lines=2, callback=callback)
+            callback = lambda state, m=msg: self._usbif.send(m(int(bool(state))))
+            w = ApolloLabeledIndicatorSwitch(self, label, QColor(255, 120, 0), lines=2, callback=callback, direct_connect=False)
+            self._inh_inds[msg] = w
             ag1.addWidget(w)
 
         ag2 = ApolloGroup(self, "CONTROL")

@@ -50,7 +50,6 @@ class MemoryDump(QObject):
 
     def _dump_addrs(self, addrs):
         self._read_addrs = addrs
-        print("Addresses:", addrs)
         for a in addrs:
             self._usbif.send(self._read_msg(address=a))
 
@@ -67,7 +66,6 @@ class MemoryDump(QObject):
 
             self._bank += 1
 
-        print("Bank:", self._bank)
         if self._bank == self._num_banks:
             self._complete_dump()
             return

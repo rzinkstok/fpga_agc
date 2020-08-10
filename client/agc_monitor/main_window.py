@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
 
         self.monitor = MonitorWindow(self, self._usbif)
         self.dsky = DSKY(self, self._usbif)
-        self.lm = LM(self, self._usbif)
+        #self.lm = LM(self, self._usbif)
         self._setup_ui()
 
     def handle_msg(self, msg):

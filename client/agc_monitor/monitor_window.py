@@ -14,6 +14,7 @@ from write_w import WriteW
 from alarms import Alarms
 from read_load import ReadLoad
 from fixed_memory import FixedMemory
+from erasable_memory import ErasableMemory
 
 
 class MonitorWindow(QWidget):
@@ -155,6 +156,11 @@ class MonitorWindow(QWidget):
         self._fixed = FixedMemory(col3, self._usbif)
         col3_layout.addWidget(self._fixed)
         col3_layout.setAlignment(self._fixed, Qt.AlignTop | Qt.AlignRight)
+
+        # Add the erasable memory panel
+        self._erasable = ErasableMemory(col3, self._usbif)
+        col3_layout.addWidget(self._erasable)
+        col3_layout.setAlignment(self._erasable, Qt.AlignTop | Qt.AlignRight)
 
         col3_layout.addStretch()
 
