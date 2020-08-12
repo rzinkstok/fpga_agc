@@ -85,6 +85,7 @@ set rc [catch {
   read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo.xci
   read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc.xci
   read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory.xci
+  read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/sim_fixed_memory/sim_fixed_memory.xci
   set_param project.isImplRun false
   read_xdc /home/rzinkstok/fpga_agc/fpga/agc.srcs/constrs_1/new/agc.xdc
   set_param project.isImplRun true

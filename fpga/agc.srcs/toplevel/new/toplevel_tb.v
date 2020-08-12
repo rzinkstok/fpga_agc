@@ -425,7 +425,8 @@ module toplevel_tb();
 		.wr_n(wr_n),
 		.oe_n(oe_n),
 		.siwu(siwu),
-		.MONWT(MONWT), //
+		.MRSC(MRSC),  //
+		.MONWT(MONWT),
 		.MT01(MT01),
 		.MT02(MT02),
 		.MT03(MT03),
@@ -975,8 +976,28 @@ module toplevel_tb();
 		data_in = 8'h00;
 		#200 reset = 1'b0;
 		
-		// Load channel
+		
 		#1000000 // 1ms
+		
+		// Enable sim fixed memory
+		// Set bank enable: group 20, address 1A, value ffff
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h1A;
+		@(posedge clkout) data_in = 8'hFF;
+		@(posedge clkout) data_in = 8'hFF;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#500000 // 0.5ms
+		
+		#2000000
+		
+		
+		// Load channel
 		
 		// Set S1 comparator: group 20, address 6, value 10 octal
 		#500 rxf_n = 1'b0;

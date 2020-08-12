@@ -15,6 +15,7 @@ module agc_monitor(
     output wire siwu,
 
     // AGC signals
+    input wire MRSC,
     input wire MONWT,
     input wire MT01,
     input wire MT02,
@@ -201,8 +202,6 @@ module agc_monitor(
 
     // Monitor signals not yet incorporated (TODO)
     assign MAMU = 0;
-    assign MNHSBF = 0;
-    assign MONPAR = 0;
     
     // Signal conversion
     wire [12:1]mt;
@@ -219,22 +218,23 @@ module agc_monitor(
     // MDT assingments
     // assign mdt = mdt_chan77 | mdt_periph | mdt_crs | mdt_ems | mdt_rupts | mdt_dsky | mdt_nassp;
     wire [16:1] mdt_periph;
-    assign MDT01 = mdt_periph[1];
-    assign MDT02 = mdt_periph[2];
-    assign MDT03 = mdt_periph[3];
-    assign MDT04 = mdt_periph[4];
-    assign MDT05 = mdt_periph[5];
-    assign MDT06 = mdt_periph[6];
-    assign MDT07 = mdt_periph[7];
-    assign MDT08 = mdt_periph[8];
-    assign MDT09 = mdt_periph[9];
-    assign MDT10 = mdt_periph[10];
-    assign MDT11 = mdt_periph[11];
-    assign MDT12 = mdt_periph[12];
-    assign MDT13 = mdt_periph[13];
-    assign MDT14 = mdt_periph[14];
-    assign MDT15 = mdt_periph[15];
-    assign MDT16 = mdt_periph[16];
+    wire [16:1] mdt_crs;
+    assign MDT01 = mdt_periph[1] | mdt_crs[1];
+    assign MDT02 = mdt_periph[2] | mdt_crs[2];
+    assign MDT03 = mdt_periph[3] | mdt_crs[3];
+    assign MDT04 = mdt_periph[4] | mdt_crs[4];
+    assign MDT05 = mdt_periph[5] | mdt_crs[5];
+    assign MDT06 = mdt_periph[6] | mdt_crs[6];
+    assign MDT07 = mdt_periph[7] | mdt_crs[7];
+    assign MDT08 = mdt_periph[8] | mdt_crs[8];
+    assign MDT09 = mdt_periph[9] | mdt_crs[9];
+    assign MDT10 = mdt_periph[10] | mdt_crs[10];
+    assign MDT11 = mdt_periph[11] | mdt_crs[11];
+    assign MDT12 = mdt_periph[12] | mdt_crs[12];
+    assign MDT13 = mdt_periph[13] | mdt_crs[13];
+    assign MDT14 = mdt_periph[14] | mdt_crs[14];
+    assign MDT15 = mdt_periph[15] | mdt_crs[15];
+    assign MDT16 = mdt_periph[16] | mdt_crs[16];
     
     // Power supply failure test signals: tie low
     assign CNTRL1 = 1'b0;
@@ -323,9 +323,9 @@ module agc_monitor(
     wire agc_channels_write_done;
     wire [15:0] agc_channels_data;
     
-    wire crs_read_en;
-    wire crs_write_en;
-    wire [15:0] crs_data;
+    wire sim_fixed_read_en;
+    wire sim_fixed_write_en;
+    wire [15:0] sim_fixed_data;
     
     wire ems_read_en;
     wire ems_write_en;
@@ -344,8 +344,8 @@ module agc_monitor(
 
     // Resulting data from the active read command
     wire [15:0] read_data;
-    assign read_data = ctrl_data | status_data | mon_reg_data | mon_chan_data | mon_dsky_data | agc_fixed_data | agc_erasable_data | version_data;
-    //assign read_data = agc_channels_data | crs_data | ems_data | trace_data | nassp_data;
+    assign read_data = ctrl_data | status_data | mon_reg_data | mon_chan_data | mon_dsky_data | agc_fixed_data | agc_erasable_data | sim_fixed_data | version_data;
+    //assign read_data = agc_channels_data | ems_data | trace_data | nassp_data;
 
     cmd_controller cmd_ctrl(
         .clk(clk),
@@ -375,8 +375,8 @@ module agc_monitor(
         .agc_channels_read_done(agc_channels_read_done),
         .agc_channels_write_en(agc_channels_write_en),
         .agc_channels_write_done(agc_channels_write_done),
-        .crs_read_en(crs_read_en),
-        .crs_write_en(crs_write_en),
+        .sim_fixed_read_en(sim_fixed_read_en),
+        .sim_fixed_write_en(sim_fixed_write_en),
         .ems_read_en(ems_read_en),
         .ems_write_en(ems_write_en),
         .mon_dsky_read_en(mon_dsky_read_en),
@@ -538,6 +538,7 @@ module agc_monitor(
         .write_en(status_write_en),
         .data_out(status_data),
     
+        // ADC inputs: cannot be used in current config, as the voltages are 3.3 V but the ADC takes max 1.0 V
         .bplssw_p(n0VDCA), // Should be BPLSSW divided down to about 0.8 V
         .bplssw_n(n0VDCA),
         .p4sw_p(n0VDCA),   // Should be p4SW divided down to about 0.8 V
@@ -897,7 +898,40 @@ module agc_monitor(
     * Core Rope Simulation                                                          *
     '*******************************************************************************/
     
+    wire mismatch;
     
+    sim_fixed sim_fix(
+        .clk(clk),
+        .rst_n(rst_n),
+    
+        .read_en(sim_fixed_read_en),
+        .write_en(sim_fixed_write_en),
+        .addr(cmd_addr),
+        .data_in(cmd_data),
+        .data_out(sim_fixed_data),
+    
+        .bank_en(crs_bank_en),
+        
+        .fext(fext),
+        .fb(true_fb),
+        .s(true_s),
+    
+        .mt02(mt[2]),
+        .mt04(mt[4]),
+        .mt07(mt[7]),
+        .MRSC(MRSC),
+        .MWG(MWG),
+    
+        .MNHSBF(MNHSBF),
+        .mdt(mdt_crs),
+        .MONPAR(MONPAR),
+    
+        .MRGG(MRGG),
+        .g(g),
+        .mismatch(mismatch),
+        .mismatch_faddr(mismatch_faddr),
+        .mismatch_data(mismatch_data)
+    );
 
     /*******************************************************************************.
     * DSKY                                                                          *

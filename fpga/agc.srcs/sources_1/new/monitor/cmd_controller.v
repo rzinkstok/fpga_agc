@@ -53,8 +53,8 @@ module cmd_controller(
     input wire agc_channels_write_done,
 
     // Core rope simulation control signals
-    output reg crs_read_en,
-    output reg crs_write_en,
+    output reg sim_fixed_read_en,
+    output reg sim_fixed_write_en,
 
     // Erasable memory simulation control signals
     output reg ems_read_en,
@@ -148,8 +148,8 @@ module cmd_controller(
         agc_erasable_write_en = 1'b0;
         agc_channels_read_en = 1'b0;
         agc_channels_write_en = 1'b0;
-        crs_read_en = 1'b0;
-        crs_write_en = 1'b0;
+        sim_fixed_read_en = 1'b0;
+        sim_fixed_write_en = 1'b0;
         ems_read_en = 1'b0;
         ems_write_en = 1'b0;
         mon_dsky_read_en = 1'b0;
@@ -241,10 +241,10 @@ module cmd_controller(
         
             SIM_FIXED: begin
                 if (~cmd_write_flag) begin
-                    crs_read_en = 1'b1;
+                    sim_fixed_read_en = 1'b1;
                     next_state = SEND_READ_MSG;
                 end else begin
-                    crs_write_en = 1'b1;
+                    sim_fixed_write_en = 1'b1;
                     next_state = IDLE;
                 end
             end

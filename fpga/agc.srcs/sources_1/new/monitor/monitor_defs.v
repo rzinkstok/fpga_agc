@@ -151,6 +151,9 @@
 `define ADC_CHAN_VAUX14 5'h1E
 `define ADC_CHAN_VAUX15 5'h1F
 
+`define ERASABLE_BASE_ADDR 12'o0010
+`define FIXED_BASE_ADDR 16'o2000
+
 `define EB 12'o0003
 `define FB 12'o0004
 `define BB 12'o0006

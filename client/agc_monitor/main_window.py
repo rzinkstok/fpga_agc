@@ -24,6 +24,7 @@ class MainWindow(QMainWindow):
 
         self.monitor = MonitorWindow(self, self._usbif)
         self.dsky = DSKY(self, self._usbif)
+        self.lm = None
         #self.lm = LM(self, self._usbif)
         self._setup_ui()
 
@@ -53,7 +54,7 @@ class MainWindow(QMainWindow):
 
         dsky_sw.switch.setChecked(True)
         monitor_sw.switch.setChecked(True)
-        fdai_sw.switch.setChecked(True)
+        fdai_sw.switch.setChecked(False)
         dsky_sw.switch.stateChanged.connect(self.toggle_dsky)
         monitor_sw.switch.stateChanged.connect(self.toggle_monitor)
         fdai_sw.switch.stateChanged.connect(self.toggle_fdai)
@@ -83,10 +84,12 @@ class MainWindow(QMainWindow):
             self.monitor.show()
 
     def toggle_fdai(self):
-        if self.lm.isVisible():
-            self.lm.hide()
+        if self.lm is None:
+            self.lm = LM(self, self._usbif)
         else:
-            self.lm.show()
+            self.lm.destroy()
+            del(self.lm)
+            self.lm = None
 
     def connected(self, connected):
         if connected:

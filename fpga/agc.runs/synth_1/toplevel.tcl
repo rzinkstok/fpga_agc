@@ -100,6 +100,7 @@ read_verilog -library xil_defaultlib {
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/fixed_addr_decoder.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/agc_erasable.v
   /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/agc_fixed.v
+  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/sim_fixed.v
 }
 read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo.xdc]
@@ -133,6 +134,9 @@ set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_a
 
 read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory.xci
 set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory_ooc.xdc]
+
+read_ip -quiet /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/sim_fixed_memory/sim_fixed_memory.xci
+set_property used_in_implementation false [get_files -all /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/sim_fixed_memory/sim_fixed_memory_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

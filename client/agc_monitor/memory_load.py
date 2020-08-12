@@ -61,7 +61,7 @@ class MemoryLoad(QObject):
 
         for a, w in enumerate(words):
             d, p = agc.unpack_word(w)
-            self._usbif.send(self._write_msg(address=bank_addr+a, data=d, parity=p))
+            self._usbif.send(self._write_msg(memory_address=bank_addr+a, data=d, parity=p))
 
         self._bank += 1
 

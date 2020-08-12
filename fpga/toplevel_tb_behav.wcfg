@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="4687682916666fs"></ZoomStartTime>
-      <ZoomEndTime time="5849682916667fs"></ZoomEndTime>
-      <Cursor1Time time="5656016250000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1058145025297fs"></ZoomEndTime>
+      <Cursor1Time time="20945000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="232"></NameColumnWidth>
-      <ValueColumnWidth column_width="146"></ValueColumnWidth>
+      <NameColumnWidth column_width="233"></NameColumnWidth>
+      <ValueColumnWidth column_width="142"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="56" />
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/traya/MP0">
@@ -334,6 +334,39 @@
          <obj_property name="ObjectShortName">w[16:1]</obj_property>
          <obj_property name="Radix">OCTALRADIX</obj_property>
          <obj_property name="Reversed">false</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group848">
+         <obj_property name="label">Sim fixed</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/sim_fix/MNHSBF">
+            <obj_property name="ElementShortName">MNHSBF</obj_property>
+            <obj_property name="ObjectShortName">MNHSBF</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/sim_fix/MRSC">
+            <obj_property name="ElementShortName">MRSC</obj_property>
+            <obj_property name="ObjectShortName">MRSC</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/sim_fix/MWG">
+            <obj_property name="ElementShortName">MWG</obj_property>
+            <obj_property name="ObjectShortName">MWG</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/toplevel_tb/agcmonitor/sim_fix/wagc">
+            <obj_property name="ElementShortName">wagc</obj_property>
+            <obj_property name="ObjectShortName">wagc</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/sim_fix/mon_word">
+            <obj_property name="ElementShortName">mon_word[16:1]</obj_property>
+            <obj_property name="ObjectShortName">mon_word[16:1]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/sim_fix/bank">
+            <obj_property name="ElementShortName">bank[5:0]</obj_property>
+            <obj_property name="ObjectShortName">bank[5:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/toplevel_tb/agcmonitor/sim_fix/bank_en">
+            <obj_property name="ElementShortName">bank_en[63:0]</obj_property>
+            <obj_property name="ObjectShortName">bank_en[63:0]</obj_property>
+         </wvobject>
       </wvobject>
    </wvobject>
    <wvobject type="logic" fp_name="/toplevel_tb/fpgaagc/prop_clk">

@@ -51,7 +51,7 @@ class MemoryDump(QObject):
     def _dump_addrs(self, addrs):
         self._read_addrs = addrs
         for a in addrs:
-            self._usbif.send(self._read_msg(address=a))
+            self._usbif.send(self._read_msg(memory_address=a))
 
     def _dump_next_bank(self):
         while self._bank < self._num_banks:

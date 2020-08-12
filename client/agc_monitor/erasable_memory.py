@@ -1,6 +1,8 @@
 from PySide2.QtWidgets import QWidget, QVBoxLayout, QButtonGroup, QLabel, QCheckBox, QPushButton, QFileDialog
 from PySide2.QtCore import Qt
 
+import re
+
 from memory_load import MemoryLoad
 from memory_dump import MemoryDump
 import usb_message as um
@@ -57,12 +59,14 @@ class ErasableMemory(QWidget):
 
         ag.addStretch(1)
 
-        b3 = ApolloLabeledButton(self, "PAD\nSIM", lines=2, callback=self._load_pad)
-        b4 = ApolloLabeledButton(self, "LOAD\nSIM", lines=2, callback=self._load_core)
-        b5 = ApolloLabeledButton(self, "DUMP\nAGC", lines=2, callback=self._dump_core)
+        b3 = ApolloLabeledButton(self, "\nSCN", lines=2, callback=self._load_scn)
+        b4 = ApolloLabeledButton(self, "\nPAD", lines=2, callback=self._load_pad)
+        b5 = ApolloLabeledButton(self, "\nLOAD", lines=2, callback=self._load_core)
+        b6 = ApolloLabeledButton(self, "DUMP\nAGC", lines=2, callback=self._dump_core)
         ag.addWidget(b3, 1)
         ag.addWidget(b4, 1)
         ag.addWidget(b5, 1)
+        ag.addWidget(b6, 1)
 
     def _update_ems_banks(self):
         if self._updating_switches:
@@ -81,41 +85,61 @@ class ErasableMemory(QWidget):
         self._updating_switches = False
         self._update_ems_banks()
 
-    def _create_button(self, name, layout, row, col, width):
-        label = QLabel(name, self)
-        label.setAlignment(Qt.AlignCenter)
-        font = label.font()
-        font.setPointSize(7)
-        font.setBold(True)
-        label.setFont(font)
-        label.setMinimumWidth(30)
-        layout.addWidget(label, row, col, 1, width)
-        layout.setAlignment(label, Qt.AlignCenter)
+    def _load_scn(self):
+        self._usbif.disable_source("monitor")
+        filename, group = QFileDialog.getOpenFileName(self, 'Load AGC Pad Load', '/home/rzinkstok/fpga_agc/scenarios/', 'NASSP Scenario Files (*.scn)')
+        self._usbif.enable_source("monitor")
+        if group == '':
+            return
 
-        b = QPushButton(self)
-        b.setFixedSize(20, 20)
-        layout.addWidget(b, row + 1, col, 1, width)
-        layout.setAlignment(b, Qt.AlignCenter)
-        return b
+        requested_shiptype = "LEM"
+        re_ship = re.compile(r"(.+):ProjectApollo[/\\](.+)")
+        re_emem = re.compile(r"EMEM(\d+)\s(\d+)")
 
-    def _create_bank_switch(self, name, layout, row, col, width):
-        label = QLabel(name, self)
-        label.setAlignment(Qt.AlignBottom | (Qt.AlignLeft if width == 2 else Qt.AlignCenter))
-        font = label.font()
-        font.setPointSize(7)
-        font.setBold(True)
-        label.setFont(font)
-        layout.addWidget(label, row, col, 1, width)
+        with open(filename, 'r') as f:
+            in_ships = False
+            ship = None
+            shiptype = None
+            in_agc = False
+            load_data = {i: 0 for i in range(2048)}
 
-        check = QCheckBox(self)
-        check.setFixedSize(20, 20)
-        check.setStyleSheet('QCheckBox::indicator{subcontrol-position:center;}')
-        layout.addWidget(check, row + 1, col, 1, 1)
-        layout.setAlignment(check, Qt.AlignCenter)
-        return check
+            for l in f.readlines():
+                if l.startswith("BEGIN_SHIPS"):
+                    in_ships = True
+                elif l.startswith("END_SHIPS"):
+                    in_ships = False
+                elif in_ships:
+                    if ship is not None:
+                        if l.strip() == "END":
+                            ship = None
+                            shiptype = None
+                        elif l.strip() == "AGC_BEGIN":
+                            in_agc = True
+                        elif l.strip() == "AGC_END":
+                            in_agc = False
+                        elif in_agc:
+                            m = re_emem.search(l)
+                            if m:
+                                address, value = m.groups()
+                                address = int(address, 8)
+                                value = int(value, 8)
+                                if shiptype == requested_shiptype:
+                                    load_data[address] = value
+                    else:
+                        m = re_ship.search(l)
+                        if m:
+                            ship, shiptype = m.groups()
+
+        msg_type = um.ErasableData if self._agc_sel.isChecked() else um.SimErasableData
+        for addr in sorted(load_data.keys()):
+            val = load_data[addr]
+            print('%04o %o' % (addr, val))
+            self._usbif.send(msg_type(memory_address=addr, data=val, parity=0))
 
     def _load_pad(self):
+        self._usbif.disable_source("monitor")
         filename, group = QFileDialog.getOpenFileName(self, 'Load AGC Pad Load', '/home/rzinkstok/fpga_agc/pads/', 'AGC Pad Load Files (*.pad)')
+        self._usbif.enable_source("monitor")
         if group == '':
             return
 
@@ -139,10 +163,12 @@ class ErasableMemory(QWidget):
         msg_type = um.ErasableData if self._agc_sel.isChecked() else um.SimErasableData
         for addr, val in load_data:
             print('%04o %o' % (addr, val))
-            self._usbif.send(msg_type(addr=addr, data=val, parity=0))
+            self._usbif.send(msg_type(memory_address=addr, data=val, parity=0))
 
     def _load_core(self):
+        self._usbif.disable_source("monitor")
         filename, group = QFileDialog.getOpenFileName(self, 'Load AGC Core File', '/home/rzinkstok/fpga_agc/cores/', 'AGC Core Files (*.bin)')
+        self._usbif.enable_source("monitor")
         if group == '':
             return
         self._updating_switches = True
@@ -156,7 +182,9 @@ class ErasableMemory(QWidget):
         self._update_ems_banks()
 
     def _dump_core(self):
+        self._usbif.disable_source("monitor")
         filename, group = QFileDialog.getSaveFileName(self, 'Save AGC Core Dump', '/home/rzinkstok/fpga_agc/cores/', 'AGC Core Files (*.bin)')
+        self._usbif.enable_source("monitor")
         if group == '':
             return
 

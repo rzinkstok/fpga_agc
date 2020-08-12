@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date         : Mon Aug 10 11:01:09 2020
+| Date         : Wed Aug 12 14:08:50 2020
 | Host         : fpgadev running 64-bit Ubuntu 18.04.4 LTS
 | Command      : report_methodology -file toplevel_methodology_drc_routed.rpt -pb toplevel_methodology_drc_routed.pb -rpx toplevel_methodology_drc_routed.rpx
 | Design       : toplevel
@@ -4827,212 +4827,212 @@ Related violations: <none>
 
 TIMING-17#959 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[10]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_fb/val_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#960 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[11]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_fb/val_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#961 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[12]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_fb/val_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#962 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[13]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_fb/val_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#963 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[14]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_fb/val_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#964 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[15]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[10]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#965 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[16]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[11]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#966 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[1]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[12]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#967 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[2]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#968 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[3]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#969 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[4]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#970 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[5]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#971 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[6]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#972 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[7]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#973 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[8]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#974 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_u/val_reg[9]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#975 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[10]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_true_s/val_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#976 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[11]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[10]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#977 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[12]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[11]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#978 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[13]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[12]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#979 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[14]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[13]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#980 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[15]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[14]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#981 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[16]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[15]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#982 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[1]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[16]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#983 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[2]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#984 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[3]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#985 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[4]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#986 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[5]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#987 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[6]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#988 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[7]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#989 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[8]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#990 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_w/val_reg[9]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#991 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[10]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_u/val_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#992 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[11]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_w/val_reg[10]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#993 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[12]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_w/val_reg[11]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#994 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[13]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_w/val_reg[12]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#995 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[14]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_w/val_reg[13]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#996 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[15]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_w/val_reg[14]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#997 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[16]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_w/val_reg[15]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#998 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[1]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_w/val_reg[16]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#999 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[2]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_w/val_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#1000 Critical Warning
 Non-clocked sequential cell  
-The clock pin agcmonitor/mon_regs/reg_y/val_reg[3]/C is not reached by a timing clock
+The clock pin agcmonitor/mon_regs/reg_w/val_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-27#1 Critical Warning
@@ -27912,12 +27912,12 @@ Related violations: <none>
 
 PDRC-190#1 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell agcmonitor/usb_if/cmd_queue/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X46Y69 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell agcmonitor/usb_if/cmd_queue/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
+The FDRE cell agcmonitor/usb_if/cmd_queue/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X40Y43 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell agcmonitor/usb_if/cmd_queue/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#2 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell agcmonitor/usb_if/read_byte_queue/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X82Y61 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell agcmonitor/usb_if/read_byte_queue/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
+The FDRE cell agcmonitor/usb_if/read_byte_queue/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X80Y44 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell agcmonitor/usb_if/read_byte_queue/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
 Related violations: <none>
 
 

@@ -670,7 +670,8 @@ module toplevel(
 		.wr_n(wr_n),
 		.oe_n(oe_n),
 		.siwu(siwu),
-		.MONWT(dbMONWT), //
+		.MRSC(dbMRSC), //
+		.MONWT(dbMONWT),
 		.MT01(dbMT01),
 		.MT02(dbMT02),
 		.MT03(dbMT03),

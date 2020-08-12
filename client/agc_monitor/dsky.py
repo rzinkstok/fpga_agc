@@ -180,7 +180,7 @@ class DSKY(QWidget):
         b.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         b.setAutoRepeat(False)
         if keycode is None:
-            b.pressed.connect(lambda: self._usbif.send(um.DSKYProceed()))
+            b.pressed.connect(lambda: self._usbif.send(um.DSKYProceed(1)))
             b.released.connect(lambda: self._usbif.send(um.DSKYKeyRelease(1)))
             #b.released.connect(lambda: print("PRO released"))
             #b.pressed.connect(lambda: print("PRO pressed"))

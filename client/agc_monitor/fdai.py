@@ -818,9 +818,6 @@ class FDAI(QWidget):
         self.orientation = quaternion.from_rotation_vector(0 * normalize(np.array([0, 1, 1])))
         self.data = FDAIData()
 
-
-
-
     def setOrientation(self, x, y, z, angle):
         """Should take IMU X, Y and Z angles"""
         axis = normalize(np.array([x, y, z]))

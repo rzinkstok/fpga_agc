@@ -1,5 +1,4 @@
-from PySide2.QtWidgets import QWidget, QVBoxLayout, QGridLayout, QLabel, QButtonGroup, QRadioButton, QFileDialog
-from PySide2.QtCore import Qt
+from PySide2.QtWidgets import QWidget, QVBoxLayout, QButtonGroup, QFileDialog
 
 from memory_load import MemoryLoad
 from memory_dump import MemoryDump
@@ -49,18 +48,18 @@ class FixedMemory(QWidget):
         ag.addWidget(b1, 2)
         ag.addWidget(b2, 2)
 
-        ag.addSpacing(30, 2)
+        # ag.addSpacing(30, 2)
 
-        cb1 = ApolloLabeledRSwitch(self, "\nSIM", lines=2, labelwidth=30)
-        cb2 = ApolloLabeledRSwitch(self, "\nAGC", lines=2, labelwidth=30)
-        cb2.switch.setChecked(True)
-        self._agc_sel = cb2.switch
+        # cb1 = ApolloLabeledRSwitch(self, "\nSIM", lines=2, labelwidth=30)
+        # cb2 = ApolloLabeledRSwitch(self, "\nAGC", lines=2, labelwidth=30)
+        # cb2.switch.setChecked(True)
+        # self._agc_sel = cb2.switch
 
-        group = QButtonGroup(self)
-        group.addButton(cb1.switch)
-        group.addButton(cb2.switch)
-        ag.addWidget(cb1, 2)
-        ag.addWidget(cb2, 2)
+        # group = QButtonGroup(self)
+        # group.addButton(cb1.switch)
+        # group.addButton(cb2.switch)
+        # ag.addWidget(cb1, 2)
+        # ag.addWidget(cb2, 2)
 
         ag.addStretch(2)
 
@@ -101,7 +100,9 @@ class FixedMemory(QWidget):
         self._update_all_banks()
 
     def _load_rope(self):
-        filename, group = QFileDialog.getOpenFileName(self, 'Load AGC Rope', 'roms', 'AGC ROMs (*.bin)')
+        self._usbif.disable_source("monitor")
+        filename, group = QFileDialog.getOpenFileName(self, 'Load AGC Rope', '/home/rzinkstok/fpga_agc/cores/', 'AGC ROMs (*.bin)')
+        self._usbif.enable_source("monitor")
         if group == '':
             return
         self._updating_switches = True
@@ -115,15 +116,17 @@ class FixedMemory(QWidget):
         self._update_all_banks()
 
     def _dump_rope(self):
-        filename, group = QFileDialog.getSaveFileName(self, 'Save AGC Rope', '/home/rzinkstok/fpga_agc/roms/', 'AGC ROMs (*.bin)')
+        self._usbif.disable_source("monitor")
+        filename, group = QFileDialog.getSaveFileName(self, 'Save AGC Rope', '/home/rzinkstok/fpga_agc/cores/', 'AGC ROMs (*.bin)')
+        self._usbif.enable_source("monitor")
         if group == '':
             return
 
-        self._updating_switches = True
+        #self._updating_switches = True
 
-        if self._agc_sel.isChecked():
-            for m in [um.ControlCRSBankEnable0, um.ControlCRSBankEnable1, um.ControlCRSBankEnable2, um.ControlCRSBankEnable3]:
-                z = {k: False for k in m.keys}
-                self._usbif.send(m(**z))
+        # if self._agc_sel.isChecked():
+        #     for m in [um.ControlCRSBankEnable0, um.ControlCRSBankEnable1, um.ControlCRSBankEnable2, um.ControlCRSBankEnable3]:
+        #         z = {k: False for k in m.keys}
+        #         self._usbif.send(m(**z))
 
         self._rope_dumper.dump_memory(filename)

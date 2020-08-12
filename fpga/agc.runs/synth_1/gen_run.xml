@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1597049286">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1597233341">
   <File Type="VDS-TIMINGSUMMARY" Name="toplevel_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="toplevel.dcp"/>
   <File Type="RDS-UTIL-PB" Name="toplevel_utilization_synth.pb"/>
@@ -499,6 +499,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/monitor/sim_fixed.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="toplevel"/>
@@ -529,6 +536,7 @@
       <Option Id="FlattenHierarchy">1</Option>
     </Step>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="sim_fixed_memory"/>
   <BlockFileSet Type="BlockSrcs" Name="mon_adc"/>
   <BlockFileSet Type="BlockSrcs" Name="rope_memory"/>
   <BlockFileSet Type="BlockSrcs" Name="read_byte_fifo"/>
