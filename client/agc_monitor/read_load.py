@@ -1,8 +1,7 @@
-from PySide2.QtWidgets import QWidget, QFrame, QHBoxLayout, QVBoxLayout, QGridLayout, QLabel, QGroupBox, QButtonGroup, QRadioButton, QPushButton
-from PySide2.QtCore import Qt
+from PySide2.QtWidgets import QFrame, QHBoxLayout
 
 import usb_message as um
-from apollo_ui import ApolloGroup, ApolloLabeledButton, ApolloLabeledRSwitch, ApolloLabeledEntry
+from apollo_ui import ApolloGroup, ApolloLabeledButton, ApolloLabeledSwitch, ApolloLabeledRSwitch, ApolloLabeledEntry
 from reg_validator import IntValidator
 
 
@@ -32,6 +31,9 @@ class ReadLoad(QFrame):
         b1 = ApolloLabeledButton(self, "PROCEED", lines=2, callback=self._proceed)
         #b2 = ApolloLabeledButton(self, "RESET\nERROR", lines=2)  # Unclear what this control is for
         b3 = ApolloLabeledButton(self, "\nADV S", lines=2, callback=self._advance_s)
+        b4 = ApolloLabeledSwitch(self, "S\nONLY")
+        self._s_only = b4.switch
+        self._s_only.toggled = self._toggle_s_only
 
         self.n_nisq = ApolloLabeledEntry(self, "NISQ\nSTEPS", value_text="1", lines=2)
         self.n_nisq.value.setValidator(IntValidator(pow(2, 16) - 1))
@@ -41,6 +43,7 @@ class ReadLoad(QFrame):
         ag0.addWidget(self.n_nisq)
         #ag0.addWidget(b2)
         ag0.addWidget(b3)
+        ag0.addWidget(b4)
 
         ag1 = ApolloGroup(self, "LOAD", nframes=2)
         layout.addWidget(ag1)
@@ -120,7 +123,6 @@ class ReadLoad(QFrame):
         ag3.addWidget(sss2, 1)
         ag3.group()
 
-
     def _set_nisq_steps(self):
         t = self.n_nisq.value.text()
         if not t:
@@ -134,3 +136,6 @@ class ReadLoad(QFrame):
 
     def _advance_s(self):
         self._usbif.send(um.ControlAdvanceS(1))
+
+    def _toggle_s_only(self):
+        self._usbif.send(um.ControlBankS(int(self._s_only.checkState())))

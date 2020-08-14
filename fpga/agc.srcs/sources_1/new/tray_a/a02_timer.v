@@ -484,8 +484,8 @@ module a02_timer(
 
      // Time pulse generator    
      
-    nor_3 #(1'b0)  NOR37301(T12,            T12DC_,         EVNSET_,        n0VDCA,         p4SW, reset, prop_clk);
-    nor_3 #(1'b1)  NOR37302(T12DC_,         T12SET,         GOJAM,          NOR37303_out,   p4SW, reset, prop_clk);
+    nor_3 #(1'b1)  NOR37301(T12,            T12DC_,         EVNSET_,        n0VDCA,         p4SW, reset, prop_clk); // Reverts reset condition on T12 to allow SBY
+    nor_3 #(1'b0)  NOR37302(T12DC_,         T12SET,         GOJAM,          NOR37303_out,   p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR37303(NOR37303_out,   T12DC_,         NOR37306_out,   n0VDCA,         p4SW, reset, prop_clk);
     nor_3 #(1'b0)  NOR37304(NOR37304_out,   T12DC_,         ODDSET_,        n0VDCA,         p4SW, reset, prop_clk);
      

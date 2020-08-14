@@ -354,6 +354,11 @@ class ControlLoadReadS1S2(ControlMessage):
     mask = (0x0001, 0x0001, 0x0001, 0x0001, 0x0001)
 
 
+class ControlBankS(ControlMessage):
+    _address = 0x0018
+    keys = ("s_only",)
+
+
 class ControlAdvanceS(ControlMessage):
     _address = 0x0019
 

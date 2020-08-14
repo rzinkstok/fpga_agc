@@ -212,7 +212,7 @@ class ApolloLabeledSwitch(ApolloControl):
         self.switch.setFixedSize(20, 20)
         self.switch.setStyleSheet('QCheckBox::indicator{ subcontrol-position:center; } QCheckBox { color: #666; }')
         self.addWidget(self.switch)
-        self.addStretch()
+        self.addStretch(100)
 
 
 class ApolloLabeledRSwitch(ApolloControl):

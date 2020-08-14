@@ -122,7 +122,7 @@ module monitor_regs(
         .ct(ct),
         .mwg1(MWEBG),
         .mwl1(mwl[11:9]),
-        .mwg2(MWBBEG | (rbbk & s_only)),
+        .mwg2(MWBBEG | (rbbk & (~s_only))), // When S only is set, do not update bank during MLOAD/MREAD
         .mwl2(mwl[3:1]),
         .val(eb)
     );
@@ -143,7 +143,7 @@ module monitor_regs(
         .clk(clk),
         .rst_n(rst_n),
         .ct(ct),
-        .mwg(MWFBG | (rbbk & s_only)),
+        .mwg(MWFBG | (rbbk & (~s_only))), // When S only is set, do not update bank during MLOAD/MREAD
         .mwl({mwl[16], mwl[14:11]}),
         .val(fb)
     );

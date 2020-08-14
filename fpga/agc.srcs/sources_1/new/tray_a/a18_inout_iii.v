@@ -332,8 +332,8 @@ module a18_inout_iii(
     
     // Channel 13 bit 11
     nor_3 #(1'b0)  NOR45137(NOR45137_out,   WCH13_,         CHWL11_,        n0VDCA,         p4VDC, reset, prop_clk);
-    nor_3 #(1'b1)  NOR45138(NOR45138_out,   NOR45137_out,   NOR45139_out,   n0VDCA,         p4VDC, reset, prop_clk);
-    nor_3 #(1'b0)  NOR45139(NOR45139_out,   NOR45138_out,   CCH13,          n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b0)  NOR45138(NOR45138_out,   NOR45137_out,   NOR45139_out,   n0VDCA,         p4VDC, reset, prop_clk);
+    nor_3 #(1'b1)  NOR45139(NOR45139_out,   NOR45138_out,   CCH13,          n0VDCA,         p4VDC, reset, prop_clk); // Set initial value to 1 to make sure standby circuit works
     nor_3 #(1'b0)  NOR45140(CH1311,         NOR45138_out,   RCH13_,         n0VDCA,         p4VDC, reset, prop_clk);
     
     // Standby

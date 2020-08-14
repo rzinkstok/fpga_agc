@@ -44,7 +44,7 @@ class ErasableMemory(QWidget):
         ag.addWidget(b1, 1)
         ag.addWidget(b2, 1)
 
-        ag.addSpacing(30, 1)
+        ag.addStretch(1)
 
         cb1 = ApolloLabeledRSwitch(self, "\nSIM", lines=2, labelwidth=30)
         cb2 = ApolloLabeledRSwitch(self, "\nAGC", lines=2, labelwidth=30)

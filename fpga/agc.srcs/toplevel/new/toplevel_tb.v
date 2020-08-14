@@ -979,6 +979,108 @@ module toplevel_tb();
 		
 		#1000000 // 1ms
 		
+		// Load channel
+		
+		// Set S1 comparator: group 20, address 6, value 13 octal
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h06;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0B;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#500000 // 0.5ms
+		
+		// Set W comparator: group 20, address 11, value 400 hex
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h11;
+		@(posedge clkout) data_in = 8'h04;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#500000 // 0.5ms
+		
+		// Send load preset channel: group 20, address 72, value 0
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA0;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h72;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#500000 // 0.5ms
+		
+		
+		// Push PRO button: group A3, address A, value 1
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0A;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h01;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#7000000 // 8ms
+		
+		// Key release: group A3, addres D, value 1
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h01;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		
+		#1000000
+		
+		// Push PRO button: group A3, address A, value 1
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0A;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h01;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#8000000 // 8ms
+		
+		// Key release: group A3, addres D, value 1
+		#500 rxf_n = 1'b0;
+		@(negedge oe_n) data_in = 8'hC0;
+		@(negedge rd_n);
+		@(posedge clkout) data_in = 8'hA3;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h0D;
+		@(posedge clkout) data_in = 8'h00;
+		@(posedge clkout) data_in = 8'h01;
+		@(posedge clkout) data_in = 8'hC0;
+		rxf_n = 1'b1;
+		
+		#20000000
+		
 		// Enable sim fixed memory
 		// Set bank enable: group 20, address 1A, value ffff
 		#500 rxf_n = 1'b0;
