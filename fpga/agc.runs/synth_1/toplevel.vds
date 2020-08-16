@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Fri Aug 14 16:40:12 2020
-# Process ID: 84752
+# Start of session at: Sun Aug 16 13:37:43 2020
+# Process ID: 17450
 # Current directory: /home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1
 # Command line: vivado -log toplevel.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source toplevel.tcl
 # Log file: /home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/toplevel.vds
@@ -16,7 +16,7 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 84789 
+INFO: Helper process launched with PID 17476 
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:8]
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:10]
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/register2.v:11]
@@ -25,7 +25,7 @@ WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/channel.v:12]
 WARNING: [Synth 8-6901] identifier 'WIDTH' is used before its declaration [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/channel.v:13]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1737.695 ; gain = 166.590 ; free physical = 156 ; free virtual = 2406
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1723.262 ; gain = 169.527 ; free physical = 6141 ; free virtual = 10139
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'toplevel' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/toplevel.v:3]
 INFO: [Synth 8-6157] synthesizing module 'io_circuits' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/io_circuits.v:4]
@@ -67,20 +67,20 @@ INFO: [Synth 8-6157] synthesizing module 'cmd_receiver' [/home/rzinkstok/fpga_ag
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_receiver.v:64]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_receiver.v:83]
 INFO: [Synth 8-6155] done synthesizing module 'cmd_receiver' (3#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_receiver.v:7]
-INFO: [Synth 8-6157] synthesizing module 'cmd_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/cmd_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'cmd_fifo' (4#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/cmd_fifo_stub.v:6]
-WARNING: [Synth 8-7023] instance 'cmd_queue' of module 'cmd_fifo' has 11 connections declared, but only 9 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:86]
-INFO: [Synth 8-6157] synthesizing module 'read_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/read_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'read_fifo' (5#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/read_fifo_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'cmd_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/cmd_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'cmd_fifo' (4#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/cmd_fifo_stub.v:6]
+WARNING: [Synth 8-7023] instance 'nolabel_line86' of module 'cmd_fifo' has 11 connections declared, but only 9 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:86]
+INFO: [Synth 8-6157] synthesizing module 'read_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/read_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'read_fifo' (5#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/read_fifo_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'msg_sender' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/msg_sender.v:6]
 	Parameter IDLE bound to: 0 - type: integer 
 	Parameter ACTIVE bound to: 1 - type: integer 
 	Parameter ESCAPE bound to: 2 - type: integer 
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/msg_sender.v:86]
 INFO: [Synth 8-6155] done synthesizing module 'msg_sender' (6#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/msg_sender.v:6]
-INFO: [Synth 8-6157] synthesizing module 'read_byte_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/read_byte_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'read_byte_fifo' (7#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/read_byte_fifo_stub.v:6]
-WARNING: [Synth 8-7023] instance 'read_byte_queue' of module 'read_byte_fifo' has 12 connections declared, but only 10 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:159]
+INFO: [Synth 8-6157] synthesizing module 'read_byte_fifo' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/read_byte_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'read_byte_fifo' (7#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/read_byte_fifo_stub.v:6]
+WARNING: [Synth 8-7023] instance 'nolabel_line159' of module 'read_byte_fifo' has 12 connections declared, but only 10 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:159]
 INFO: [Synth 8-6155] done synthesizing module 'usb_interface' (8#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/usb_interface.v:4]
 INFO: [Synth 8-6157] synthesizing module 'cmd_controller' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/cmd_controller.v:6]
 	Parameter IDLE bound to: 0 - type: integer 
@@ -121,8 +121,8 @@ INFO: [Synth 8-6157] synthesizing module 'status_regs' [/home/rzinkstok/fpga_agc
 	Parameter WATCH bound to: 10 - type: integer 
 	Parameter PIPAL bound to: 11 - type: integer 
 	Parameter WARN bound to: 12 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'mon_adc' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/mon_adc_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mon_adc' (12#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/mon_adc_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mon_adc' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/mon_adc_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mon_adc' (12#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/mon_adc_stub.v:5]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:102]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:204]
 INFO: [Synth 8-6155] done synthesizing module 'status_regs' (13#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/status_regs.v:6]
@@ -262,112 +262,116 @@ INFO: [Synth 8-6155] done synthesizing module 'agc_erasable' (26#1) [/home/rzink
 INFO: [Synth 8-6157] synthesizing module 'sim_fixed' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/sim_fixed.v:6]
 INFO: [Synth 8-6157] synthesizing module 'fixed_addr_decoder' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/fixed_addr_decoder.v:4]
 INFO: [Synth 8-6155] done synthesizing module 'fixed_addr_decoder' (27#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/fixed_addr_decoder.v:4]
-INFO: [Synth 8-6157] synthesizing module 'sim_fixed_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/sim_fixed_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'sim_fixed_memory' (28#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/sim_fixed_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'sim_fixed_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/sim_fixed_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'sim_fixed_memory' (28#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/sim_fixed_memory_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'sim_fixed' (29#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/sim_fixed.v:6]
+INFO: [Synth 8-6157] synthesizing module 'sim_erasable' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/sim_erasable.v:6]
+	Parameter IDLE bound to: 2'b00 
+	Parameter ACTIVE bound to: 2'b01 
+	Parameter COMPLETE bound to: 2'b10 
+INFO: [Synth 8-6157] synthesizing module 'erasable_addr_decoder' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/erasable_addr_decoder.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'erasable_addr_decoder' (30#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/erasable_addr_decoder.v:4]
+INFO: [Synth 8-6157] synthesizing module 'sim_erasable_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/sim_erasable_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'sim_erasable_memory' (31#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/sim_erasable_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'unedit' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/unedit.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'unedit' (32#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/unedit.v:6]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/sim_erasable.v:124]
+INFO: [Synth 8-6155] done synthesizing module 'sim_erasable' (33#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/sim_erasable.v:6]
 INFO: [Synth 8-6157] synthesizing module 'monitor_dsky' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_dsky.v:6]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_dsky.v:121]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_dsky.v:230]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_dsky.v:305]
-INFO: [Synth 8-6155] done synthesizing module 'monitor_dsky' (30#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_dsky.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'monitor_dsky' (34#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_dsky.v:6]
 WARNING: [Synth 8-3848] Net leds in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:199]
-WARNING: [Synth 8-3848] Net agc_channels_read_done in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:321]
-WARNING: [Synth 8-3848] Net agc_channels_write_done in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:323]
-WARNING: [Synth 8-3848] Net nassp_write_done in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:339]
-WARNING: [Synth 8-3848] Net chan77 in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:740]
-INFO: [Synth 8-6155] done synthesizing module 'agc_monitor' (31#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:3]
+WARNING: [Synth 8-3848] Net agc_channels_read_done in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:319]
+WARNING: [Synth 8-3848] Net agc_channels_write_done in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:321]
+WARNING: [Synth 8-3848] Net nassp_write_done in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:337]
+WARNING: [Synth 8-3848] Net chan77 in module/entity agc_monitor does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:738]
+INFO: [Synth 8-6155] done synthesizing module 'agc_monitor' (35#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_monitor.v:3]
 WARNING: [Synth 8-7023] instance 'agcmonitor' of module 'agc_monitor' has 170 connections declared, but only 169 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/toplevel.v:662]
 INFO: [Synth 8-6157] synthesizing module 'fpga_agc' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/fpga_agc.v:3]
 INFO: [Synth 8-6157] synthesizing module 'tray_a' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a01_scaler' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a01_scaler.v:3]
 INFO: [Synth 8-6157] synthesizing module 'nor_3' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/components/nor_3.v:3]
 	Parameter iv bound to: 1'b0 
-INFO: [Synth 8-6155] done synthesizing module 'nor_3' (32#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/components/nor_3.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'nor_3' (36#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/components/nor_3.v:3]
 INFO: [Synth 8-6157] synthesizing module 'nor_3__parameterized0' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/components/nor_3.v:3]
 	Parameter iv bound to: 1'b1 
-INFO: [Synth 8-6155] done synthesizing module 'nor_3__parameterized0' (32#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/components/nor_3.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a01_scaler' (33#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a01_scaler.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'nor_3__parameterized0' (36#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/components/nor_3.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a01_scaler' (37#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a01_scaler.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a02_timer' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a02_timer.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a02_timer' (34#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a02_timer.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a02_timer' (38#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a02_timer.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a03_sq_register' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a03_sq_register.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a03_sq_register' (35#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a03_sq_register.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a03_sq_register' (39#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a03_sq_register.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a04_stage_branch' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a04_stage_branch.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a04_stage_branch' (36#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a04_stage_branch.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a04_stage_branch' (40#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a04_stage_branch.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a05_crosspoint_nqi' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a05_crosspoint_nqi.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a05_crosspoint_nqi' (37#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a05_crosspoint_nqi.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a05_crosspoint_nqi' (41#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a05_crosspoint_nqi.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a06_crosspoint_ii' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a06_crosspoint_ii.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a06_crosspoint_ii' (38#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a06_crosspoint_ii.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a06_crosspoint_ii' (42#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a06_crosspoint_ii.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a07_service_gates' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a07_service_gates.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a07_service_gates' (39#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a07_service_gates.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a07_service_gates' (43#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a07_service_gates.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a08_four_bit_1' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a08_four_bit_1.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a08_four_bit_1' (40#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a08_four_bit_1.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a08_four_bit_1' (44#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a08_four_bit_1.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a09_four_bit_2' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a09_four_bit_2.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a09_four_bit_2' (41#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a09_four_bit_2.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a09_four_bit_2' (45#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a09_four_bit_2.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a10_four_bit_3' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a10_four_bit_3.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a10_four_bit_3' (42#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a10_four_bit_3.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a10_four_bit_3' (46#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a10_four_bit_3.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a11_four_bit_4' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a11_four_bit_4.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a11_four_bit_4' (43#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a11_four_bit_4.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a11_four_bit_4' (47#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a11_four_bit_4.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a12_parity_s_register' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a12_parity_s_register.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a12_parity_s_register' (44#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a12_parity_s_register.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a12_parity_s_register' (48#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a12_parity_s_register.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a13_alarms' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a13_alarms.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a13_alarms' (45#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a13_alarms.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a13_alarms' (49#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a13_alarms.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a14_memory_timing_addressing' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a14_memory_timing_addressing.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'a14_memory_timing_addressing' (46#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a14_memory_timing_addressing.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'a14_memory_timing_addressing' (50#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a14_memory_timing_addressing.v:4]
 INFO: [Synth 8-6157] synthesizing module 'a15_rupt_service' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a15_rupt_service.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a15_rupt_service' (47#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a15_rupt_service.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a15_rupt_service' (51#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a15_rupt_service.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a16_inout_i' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a16_inout_i.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'a16_inout_i' (48#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a16_inout_i.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'a16_inout_i' (52#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a16_inout_i.v:4]
 INFO: [Synth 8-6157] synthesizing module 'a17_inout_ii' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a17_inout_ii.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'a17_inout_ii' (49#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a17_inout_ii.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'a17_inout_ii' (53#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a17_inout_ii.v:4]
 INFO: [Synth 8-6157] synthesizing module 'a18_inout_iii' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a18_inout_iii.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a18_inout_iii' (50#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a18_inout_iii.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a18_inout_iii' (54#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a18_inout_iii.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a19_inout_iv' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a19_inout_iv.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a19_inout_iv' (51#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a19_inout_iv.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a19_inout_iv' (55#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a19_inout_iv.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a20_counter_cell_i' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a20_counter_cell_i.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a20_counter_cell_i' (52#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a20_counter_cell_i.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a20_counter_cell_i' (56#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a20_counter_cell_i.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a21_counter_cell_ii' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a21_counter_cell_ii.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a21_counter_cell_ii' (53#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a21_counter_cell_ii.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a21_counter_cell_ii' (57#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a21_counter_cell_ii.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a22_inout_v' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a22_inout_v.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a22_inout_v' (54#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a22_inout_v.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a22_inout_v' (58#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a22_inout_v.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a23_inout_vi' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a23_inout_vi.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a23_inout_vi' (55#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a23_inout_vi.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a23_inout_vi' (59#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a23_inout_vi.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a24_inout_vii' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a24_inout_vii.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a24_inout_vii' (56#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a24_inout_vii.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a24_inout_vii' (60#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a24_inout_vii.v:3]
 INFO: [Synth 8-6157] synthesizing module 'a30_power_supply' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a30_power_supply.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'a30_power_supply' (57#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a30_power_supply.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'a30_power_supply' (61#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a30_power_supply.v:4]
 INFO: [Synth 8-6157] synthesizing module 'a31_power_supply' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a31_power_supply.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'a31_power_supply' (58#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a31_power_supply.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'tray_a' (59#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'a31_power_supply' (62#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a/a31_power_supply.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'tray_a' (63#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_a.v:3]
 INFO: [Synth 8-6157] synthesizing module 'tray_b' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b.v:3]
 INFO: [Synth 8-6157] synthesizing module 'b01_fixed_memory' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b01_fixed_memory.v:3]
-INFO: [Synth 8-6157] synthesizing module 'rope_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/rope_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'rope_memory' (60#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/rope_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'b01_fixed_memory' (61#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b01_fixed_memory.v:3]
+INFO: [Synth 8-6157] synthesizing module 'rope_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/rope_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'rope_memory' (64#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/rope_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'b01_fixed_memory' (65#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b01_fixed_memory.v:3]
 INFO: [Synth 8-6157] synthesizing module 'b07_oscillator' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b07_oscillator.v:4]
-INFO: [Synth 8-6157] synthesizing module 'prop_clock_divider' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/prop_clock_divider_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'prop_clock_divider' (62#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/prop_clock_divider_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'prop_clock_divider' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/prop_clock_divider_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'prop_clock_divider' (66#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/prop_clock_divider_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'agc_clock_divider' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_clock_divider.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'agc_clock_divider' (63#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_clock_divider.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'b07_oscillator' (64#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b07_oscillator.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'agc_clock_divider' (67#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/agc_clock_divider.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'b07_oscillator' (68#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b07_oscillator.v:4]
 INFO: [Synth 8-6157] synthesizing module 'b08_alarm' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b08_alarm.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'b08_alarm' (65#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b08_alarm.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'b08_alarm' (69#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b08_alarm.v:3]
 INFO: [Synth 8-6157] synthesizing module 'b12_erasable_memory' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b12_erasable_memory.v:4]
-INFO: [Synth 8-6157] synthesizing module 'core_memory' [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/core_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'core_memory' (66#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/core_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'b12_erasable_memory' (67#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b12_erasable_memory.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'tray_b' (68#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'fpga_agc' (69#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/fpga_agc.v:3]
-WARNING: [Synth 8-7023] instance 'fpgaagc' of module 'fpga_agc' has 366 connections declared, but only 364 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/toplevel.v:844]
-INFO: [Synth 8-6157] synthesizing module 'styx_ps_bootloader' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/styx_ps_bootloader.v:3]
-INFO: [Synth 8-6157] synthesizing module 'styx_ps_wrapper' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v:12]
-INFO: [Synth 8-6157] synthesizing module 'styx_ps' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:13]
 INFO: [Common 17-14] Message 'Synth 8-6157' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-6155] done synthesizing module 'styx_ps_processing_system7_0_0' (70#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-84752-fpgadev/realtime/styx_ps_processing_system7_0_0_stub.v:6]
-WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'styx_ps_processing_system7_0_0' has 25 connections declared, but only 22 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:79]
-INFO: [Synth 8-6155] done synthesizing module 'styx_ps' (71#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'styx_ps_wrapper' (72#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/hdl/styx_ps_wrapper.v:12]
-INFO: [Synth 8-6155] done synthesizing module 'styx_ps_bootloader' (73#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/styx_ps_bootloader.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'core_memory' (70#1) [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/.Xil/Vivado-17450-fpgadev/realtime/core_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'b12_erasable_memory' (71#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b/b12_erasable_memory.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'tray_b' (72#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/tray_b.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'fpga_agc' (73#1) [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/fpga_agc.v:3]
 INFO: [Common 17-14] Message 'Synth 8-6155' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7023] instance 'fpgaagc' of module 'fpga_agc' has 366 connections declared, but only 364 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/toplevel.v:844]
+WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'styx_ps_processing_system7_0_0' has 25 connections declared, but only 22 given [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/synth/styx_ps.v:79]
 WARNING: [Synth 8-3848] Net MONWBK in module/entity toplevel does not have driver. [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/toplevel.v:25]
 WARNING: [Synth 8-3331] design b12_erasable_memory has unconnected port XB0E
 WARNING: [Synth 8-3331] design b12_erasable_memory has unconnected port XT0E
@@ -389,6 +393,35 @@ WARNING: [Synth 8-3331] design monitor_dsky has unconnected port data_in[9]
 WARNING: [Synth 8-3331] design monitor_dsky has unconnected port data_in[8]
 WARNING: [Synth 8-3331] design monitor_dsky has unconnected port data_in[7]
 WARNING: [Synth 8-3331] design monitor_dsky has unconnected port MGOJAM
+WARNING: [Synth 8-3331] design erasable_addr_decoder has unconnected port s[12]
+WARNING: [Synth 8-3331] design erasable_addr_decoder has unconnected port s[11]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port addr[15]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port addr[14]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port addr[13]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port addr[12]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port addr[11]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port MINKL
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[10]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[9]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[8]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[7]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[6]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[5]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[4]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[3]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[2]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mt[1]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port MSQEXT
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port msq[15]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port msq[14]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port msq[13]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port msq[12]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port msq[11]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port msq[10]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mst[3]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mst[2]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port mst[1]
+WARNING: [Synth 8-3331] design sim_erasable has unconnected port g[15]
 WARNING: [Synth 8-3331] design agc_erasable has unconnected port addr[15]
 WARNING: [Synth 8-3331] design agc_erasable has unconnected port addr[14]
 WARNING: [Synth 8-3331] design agc_erasable has unconnected port addr[13]
@@ -424,7 +457,7 @@ WARNING: [Synth 8-3331] design agc_monitor has unconnected port dbg[5]
 WARNING: [Synth 8-3331] design agc_monitor has unconnected port BPLSSW
 WARNING: [Synth 8-3331] design agc_monitor has unconnected port p4SW
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 1846.570 ; gain = 275.465 ; free physical = 236 ; free virtual = 2369
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1831.137 ; gain = 277.402 ; free physical = 6109 ; free virtual = 10109
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -437,33 +470,35 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1864.383 ; gain = 293.277 ; free physical = 259 ; free virtual = 2394
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1849.949 ; gain = 296.215 ; free physical = 6130 ; free virtual = 10130
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1864.383 ; gain = 293.277 ; free physical = 259 ; free virtual = 2394
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1849.949 ; gain = 296.215 ; free physical = 6130 ; free virtual = 10130
 ---------------------------------------------------------------------------------
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo/read_fifo_in_context.xdc] for cell 'agcmonitor/usb_if/read_msg_queue'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo/read_fifo_in_context.xdc] for cell 'agcmonitor/usb_if/read_msg_queue'
+Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo/read_fifo_in_context.xdc] for cell 'agcmonitor/nolabel_line260/nolabel_line135'
+Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_fifo/read_fifo/read_fifo_in_context.xdc] for cell 'agcmonitor/nolabel_line260/nolabel_line135'
 Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0_in_context.xdc] for cell 'styxpsbootloader/styx_ps/styx_ps_i/processing_system7_0'
 Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0_in_context.xdc] for cell 'styxpsbootloader/styx_ps/styx_ps_i/processing_system7_0'
 Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/core_memory/core_memory/core_memory_in_context.xdc] for cell 'fpgaagc/trayb/b12erasablememory/ram'
 Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/core_memory/core_memory/core_memory_in_context.xdc] for cell 'fpgaagc/trayb/b12erasablememory/ram'
 Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider/prop_clock_divider_in_context.xdc] for cell 'fpgaagc/trayb/b07oscillator/prop_clk_div'
 Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider/prop_clock_divider_in_context.xdc] for cell 'fpgaagc/trayb/b07oscillator/prop_clk_div'
-Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo/cmd_fifo_in_context.xdc] for cell 'agcmonitor/usb_if/cmd_queue'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo/cmd_fifo_in_context.xdc] for cell 'agcmonitor/usb_if/cmd_queue'
-Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo/read_byte_fifo_in_context.xdc] for cell 'agcmonitor/usb_if/read_byte_queue'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo/read_byte_fifo_in_context.xdc] for cell 'agcmonitor/usb_if/read_byte_queue'
-Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc/mon_adc_in_context.xdc] for cell 'agcmonitor/stat_regs/adc'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc/mon_adc_in_context.xdc] for cell 'agcmonitor/stat_regs/adc'
+Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo/cmd_fifo_in_context.xdc] for cell 'agcmonitor/nolabel_line260/nolabel_line86'
+Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/cmd_fifo/cmd_fifo/cmd_fifo_in_context.xdc] for cell 'agcmonitor/nolabel_line260/nolabel_line86'
+Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo/read_byte_fifo_in_context.xdc] for cell 'agcmonitor/nolabel_line260/nolabel_line159'
+Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/read_byte_fifo/read_byte_fifo/read_byte_fifo_in_context.xdc] for cell 'agcmonitor/nolabel_line260/nolabel_line159'
+Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc/mon_adc_in_context.xdc] for cell 'agcmonitor/nolabel_line529/nolabel_line58'
+Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/mon_adc/mon_adc/mon_adc_in_context.xdc] for cell 'agcmonitor/nolabel_line529/nolabel_line58'
 Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory/rope_memory_in_context.xdc] for cell 'fpgaagc/trayb/b01fixedmemory/rom'
 Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/rope_memory/rope_memory/rope_memory_in_context.xdc] for cell 'fpgaagc/trayb/b01fixedmemory/rom'
-Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/sim_fixed_memory/sim_fixed_memory/sim_fixed_memory_in_context.xdc] for cell 'agcmonitor/sim_fix/sim_fixed_mem'
-Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/sim_fixed_memory/sim_fixed_memory/sim_fixed_memory_in_context.xdc] for cell 'agcmonitor/sim_fix/sim_fixed_mem'
+Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/sim_fixed_memory/sim_fixed_memory/sim_fixed_memory_in_context.xdc] for cell 'agcmonitor/nolabel_line901/nolabel_line61'
+Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/sim_fixed_memory/sim_fixed_memory/sim_fixed_memory_in_context.xdc] for cell 'agcmonitor/nolabel_line901/nolabel_line61'
+Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/sim_erasable_memory/sim_erasable_memory/sim_erasable_memory_in_context.xdc] for cell 'agcmonitor/nolabel_line939/nolabel_line74'
+Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/sim_erasable_memory/sim_erasable_memory/sim_erasable_memory_in_context.xdc] for cell 'agcmonitor/nolabel_line939/nolabel_line74'
 Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/constrs_1/new/agc.xdc]
 Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.srcs/constrs_1/new/agc.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/rzinkstok/fpga_agc/fpga/agc.srcs/constrs_1/new/agc.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/toplevel_propImpl.xdc].
@@ -472,23 +507,24 @@ Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2030.797 ; gain = 0.000 ; free physical = 144 ; free virtual = 2198
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2017.301 ; gain = 0.000 ; free physical = 5931 ; free virtual = 9931
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.29 ; elapsed = 00:00:00.32 . Memory (MB): peak = 2030.797 ; gain = 0.000 ; free physical = 143 ; free virtual = 2198
-WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'agcmonitor/sim_fix/sim_fixed_mem' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.20 ; elapsed = 00:00:00.21 . Memory (MB): peak = 2017.301 ; gain = 0.000 ; free physical = 5931 ; free virtual = 9931
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'agcmonitor/nolabel_line901/nolabel_line61' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'agcmonitor/nolabel_line939/nolabel_line74' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'fpgaagc/trayb/b01fixedmemory/rom' at clock pin 'clka' is different from the actual clock period '19.531', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'fpgaagc/trayb/b12erasablememory/ram' at clock pin 'clka' is different from the actual clock period '19.531', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:28 ; elapsed = 00:00:35 . Memory (MB): peak = 2042.703 ; gain = 471.598 ; free physical = 297 ; free virtual = 2358
+Finished Constraint Validation : Time (s): cpu = 00:00:22 ; elapsed = 00:00:26 . Memory (MB): peak = 2029.176 ; gain = 475.441 ; free physical = 6090 ; free virtual = 10090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:28 ; elapsed = 00:00:35 . Memory (MB): peak = 2042.703 ; gain = 471.598 ; free physical = 296 ; free virtual = 2359
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:22 ; elapsed = 00:00:26 . Memory (MB): peak = 2029.176 ; gain = 475.441 ; free physical = 6090 ; free virtual = 10090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -755,18 +791,19 @@ Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_ps_srstb. (constraint fi
 Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_ps_srstb. (constraint file  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/bd/styx_ps/ip/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0/styx_ps_processing_system7_0_0_in_context.xdc, line 261).
 Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider/prop_clock_divider_in_context.xdc, line 3).
 Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  /home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/ip/prop_clock_divider/prop_clock_divider/prop_clock_divider_in_context.xdc, line 4).
-Applied set_property DONT_TOUCH = true for agcmonitor/usb_if/read_msg_queue. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for agcmonitor/nolabel_line260/nolabel_line135. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for styxpsbootloader/styx_ps/styx_ps_i. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for styxpsbootloader/styx_ps/styx_ps_i/processing_system7_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for fpgaagc/trayb/b12erasablememory/ram. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for fpgaagc/trayb/b07oscillator/prop_clk_div. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for agcmonitor/usb_if/cmd_queue. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for agcmonitor/usb_if/read_byte_queue. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for agcmonitor/stat_regs/adc. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for agcmonitor/nolabel_line260/nolabel_line86. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for agcmonitor/nolabel_line260/nolabel_line159. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for agcmonitor/nolabel_line529/nolabel_line58. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for fpgaagc/trayb/b01fixedmemory/rom. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for agcmonitor/sim_fix/sim_fixed_mem. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for agcmonitor/nolabel_line901/nolabel_line61. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for agcmonitor/nolabel_line939/nolabel_line74. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:36 . Memory (MB): peak = 2042.703 ; gain = 471.598 ; free physical = 295 ; free virtual = 2358
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2029.176 ; gain = 475.441 ; free physical = 6092 ; free virtual = 10092
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'cmd_receiver'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'msg_sender'
@@ -804,13 +841,14 @@ INFO: [Synth 8-5546] ROM "w_pulses" won't be mapped to RAM because it is too spa
 INFO: [Synth 8-5546] ROM "s_only" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "adv_s" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ldrd_s1_s2" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "crs_bank_en" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "ems_bank_en" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sim_fixed_bank_en" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sim_erasable_bank_en" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "n_nisq_steps" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "read_data" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "read_data" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'agc_fixed'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'agc_erasable'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'sim_erasable'
 INFO: [Synth 8-4471] merging register 'SBYBUT_reg' into 'IN3214_reg' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_dsky.v:222]
 INFO: [Synth 8-4471] merging register 'MRKRST_reg' into 'NAVRST_reg' [/home/rzinkstok/fpga_agc/fpga/agc.srcs/sources_1/new/monitor/monitor_dsky.v:225]
 INFO: [Synth 8-5546] ROM "read_data" won't be mapped to RAM because it is too sparse
@@ -857,8 +895,16 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
           WRITE_ERASABLE |                               11 |                               10
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'agc_erasable'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                               00 |                               00
+                  ACTIVE |                               01 |                               01
+                COMPLETE |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sim_erasable'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:38 ; elapsed = 00:00:47 . Memory (MB): peak = 2042.703 ; gain = 471.598 ; free physical = 276 ; free virtual = 2349
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:30 ; elapsed = 00:00:35 . Memory (MB): peak = 2029.176 ; gain = 475.441 ; free physical = 6081 ; free virtual = 10085
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'fpgaagc/traya/a02/NOR37131' (nor_3) to 'fpgaagc/traya/a02/NOR37135'
 INFO: [Synth 8-223] decloning instance 'fpgaagc/traya/a02/NOR37454' (nor_3) to 'fpgaagc/traya/a02/NOR34329'
@@ -953,7 +999,7 @@ Report RTL Partitions:
 |1     |tray_a__GB0   |           1|     39506|
 |2     |tray_a__GB1   |           1|     10006|
 |3     |tray_b        |           1|      1689|
-|4     |toplevel__GC0 |           1|     14507|
+|4     |toplevel__GC0 |           1|     14818|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -979,12 +1025,12 @@ Detailed RTL Component Info :
 	               64 Bit    Registers := 1     
 	               40 Bit    Registers := 3     
 	               27 Bit    Registers := 3     
-	               16 Bit    Registers := 34    
+	               16 Bit    Registers := 35    
 	               15 Bit    Registers := 15    
 	               14 Bit    Registers := 1     
 	               13 Bit    Registers := 1     
 	               12 Bit    Registers := 17    
-	               11 Bit    Registers := 2     
+	               11 Bit    Registers := 3     
 	               10 Bit    Registers := 3     
 	                9 Bit    Registers := 1     
 	                8 Bit    Registers := 3     
@@ -994,15 +1040,15 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 59    
 	                3 Bit    Registers := 19    
 	                2 Bit    Registers := 10    
-	                1 Bit    Registers := 15385 
+	                1 Bit    Registers := 15387 
 +---Muxes : 
 	  41 Input     64 Bit        Muxes := 1     
 	   7 Input     40 Bit        Muxes := 1     
 	   2 Input     40 Bit        Muxes := 2     
 	  15 Input     27 Bit        Muxes := 3     
-	   2 Input     16 Bit        Muxes := 30    
+	   2 Input     16 Bit        Muxes := 34    
 	   8 Input     16 Bit        Muxes := 1     
-	   4 Input     16 Bit        Muxes := 4     
+	   4 Input     16 Bit        Muxes := 5     
 	  16 Input     16 Bit        Muxes := 1     
 	   2 Input     15 Bit        Muxes := 21    
 	   8 Input     15 Bit        Muxes := 1     
@@ -1012,7 +1058,7 @@ Detailed RTL Component Info :
 	   2 Input     13 Bit        Muxes := 2     
 	   2 Input     12 Bit        Muxes := 13    
 	   4 Input     12 Bit        Muxes := 2     
-	   2 Input     11 Bit        Muxes := 3     
+	   2 Input     11 Bit        Muxes := 4     
 	   3 Input      9 Bit        Muxes := 1     
 	   2 Input      8 Bit        Muxes := 12    
 	   3 Input      8 Bit        Muxes := 2     
@@ -1028,11 +1074,11 @@ Detailed RTL Component Info :
 	   2 Input      3 Bit        Muxes := 4     
 	   3 Input      3 Bit        Muxes := 2     
 	   4 Input      3 Bit        Muxes := 2     
-	   3 Input      2 Bit        Muxes := 3     
-	   2 Input      2 Bit        Muxes := 13    
+	   3 Input      2 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 14    
 	   4 Input      2 Bit        Muxes := 4     
-	   2 Input      1 Bit        Muxes := 1003  
-	   3 Input      1 Bit        Muxes := 10    
+	   2 Input      1 Bit        Muxes := 1006  
+	   3 Input      1 Bit        Muxes := 12    
 	   4 Input      1 Bit        Muxes := 10    
 	  16 Input      1 Bit        Muxes := 23    
 	  34 Input      1 Bit        Muxes := 1     
@@ -23932,6 +23978,24 @@ Detailed RTL Component Info :
 	   2 Input     16 Bit        Muxes := 2     
 	   2 Input      4 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 7     
+Module unedit 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module sim_erasable 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+	               11 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 3     
+	   2 Input     11 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   3 Input      1 Bit        Muxes := 2     
 Module monitor_dsky 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -23992,7 +24056,7 @@ INFO: [Synth 8-5546] ROM "DOSCAL" won't be mapped to RAM because it is too spars
 INFO: [Synth 8-5546] ROM "DBLTST" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ldrd_s1_s2" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "s_only" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "ems_bank_en" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sim_erasable_bank_en" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "start_req" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "proceed_req" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "downrupt" won't be mapped to RAM because it is too sparse
@@ -24002,28 +24066,28 @@ INFO: [Synth 8-5546] ROM "n_nisq_steps" won't be mapped to RAM because it is too
 INFO: [Synth 8-5546] ROM "read_data" won't be mapped to RAM because it is too sparse
 WARNING: [Synth 8-3331] design fpga_agc has unconnected port mstpeven
 WARNING: [Synth 8-3331] design fpga_agc has unconnected port mstpodd
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[0]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[1]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[1]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[2]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[3]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[4]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[5]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[6]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[6]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[7]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[7]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[8]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[8]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[9]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[9]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[10]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[10]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[11]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[12]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[12]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[13]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[13]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[14]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ver/read_data_reg[14]' (FDCE) to 'i_0/agcmonitor/ver/read_data_reg[15]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/ver/\read_data_reg[15] )
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[10]' (FDC) to 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[9]' (FDC) to 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[8]' (FDC) to 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[7]' (FDC) to 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[6]' (FDC) to 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[5]' (FDC) to 'i_0/agcmonitor/ctrl_regs/periph_bb_reg[4]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/ctrl_regs/\periph_bb_reg[4] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[0]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[1]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[3]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[4]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[5]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[6]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[6]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[7]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[8]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[8]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[9]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[10]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[10]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[11]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[12]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[12]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[13]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[13]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[14]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line390/read_data_reg[14]' (FDCE) to 'i_0/agcmonitor/nolabel_line390/read_data_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/nolabel_line390/\read_data_reg[15] )
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[10]' (FDC) to 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[9]' (FDC) to 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[8]' (FDC) to 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[7]' (FDC) to 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[6]' (FDC) to 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[5]' (FDC) to 'i_0/agcmonitor/nolabel_line451/periph_bb_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/agcmonitor/nolabel_line451/\periph_bb_reg[4] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46308/next_val_reg)
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46355/next_val_reg)
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/traya/i_0/a19/NOR46354/next_val_reg)
@@ -24043,7 +24107,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/t
 INFO: [Synth 8-3886] merging instance 'fpgaagc/trayb/b07oscillator/agc_clk_div/i_0/counter_reg[5]' (FDC) to 'fpgaagc/trayb/b07oscillator/agc_clk_div/i_0/counter_reg[6]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (fpgaagc/trayb/b07oscillator/agc_clk_div/i_0/\counter_reg[6] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:03:27 ; elapsed = 00:05:03 . Memory (MB): peak = 2042.703 ; gain = 471.598 ; free physical = 154 ; free virtual = 2170
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:48 ; elapsed = 00:04:06 . Memory (MB): peak = 2029.176 ; gain = 475.441 ; free physical = 5833 ; free virtual = 9902
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -24053,7 +24117,7 @@ Report RTL Partitions:
 |1     |tray_a__GB0   |           1|     28901|
 |2     |tray_a__GB1   |           1|      7948|
 |3     |tray_b        |           1|      1395|
-|4     |toplevel__GC0 |           1|     10056|
+|4     |toplevel__GC0 |           1|     10418|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
@@ -24062,13 +24126,13 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'styxpsbootloader/styx_ps/
 INFO: [Synth 8-5578] Moved timing constraint from pin 'b07oscillator/prop_clk_div/clk_out1' to pin 'b07oscillator/prop_clk_div/bbstub_clk_out1/O'
 INFO: [Synth 8-5819] Moved 2 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:33 ; elapsed = 00:05:10 . Memory (MB): peak = 2067.703 ; gain = 496.598 ; free physical = 143 ; free virtual = 2079
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:56 ; elapsed = 00:04:14 . Memory (MB): peak = 2054.176 ; gain = 500.441 ; free physical = 5737 ; free virtual = 9805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:03:39 ; elapsed = 00:05:17 . Memory (MB): peak = 2094.734 ; gain = 523.629 ; free physical = 168 ; free virtual = 2072
+Finished Timing Optimization : Time (s): cpu = 00:03:04 ; elapsed = 00:04:22 . Memory (MB): peak = 2081.207 ; gain = 527.473 ; free physical = 5729 ; free virtual = 9798
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -24078,13 +24142,13 @@ Report RTL Partitions:
 |1     |tray_a__GB0   |           1|     28901|
 |2     |tray_a__GB1   |           1|      7948|
 |3     |tray_b        |           1|      1395|
-|4     |toplevel__GC0 |           1|     10014|
+|4     |toplevel__GC0 |           1|     10376|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:04:17 ; elapsed = 00:06:35 . Memory (MB): peak = 2102.742 ; gain = 531.637 ; free physical = 176 ; free virtual = 2088
+Finished Technology Mapping : Time (s): cpu = 00:03:46 ; elapsed = 00:05:46 . Memory (MB): peak = 2089.215 ; gain = 535.480 ; free physical = 5737 ; free virtual = 9806
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -24103,7 +24167,7 @@ Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-3295] tying undriven pin fpgaagc:MONWBK to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:04:20 ; elapsed = 00:06:38 . Memory (MB): peak = 2105.711 ; gain = 534.605 ; free physical = 174 ; free virtual = 2087
+Finished IO Insertion : Time (s): cpu = 00:03:49 ; elapsed = 00:05:49 . Memory (MB): peak = 2092.184 ; gain = 538.449 ; free physical = 5737 ; free virtual = 9806
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -24116,7 +24180,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:04:20 ; elapsed = 00:06:38 . Memory (MB): peak = 2105.711 ; gain = 534.605 ; free physical = 174 ; free virtual = 2088
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:49 ; elapsed = 00:05:49 . Memory (MB): peak = 2092.184 ; gain = 538.449 ; free physical = 5737 ; free virtual = 9806
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -24128,7 +24192,7 @@ Report RTL Partitions:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:04:23 ; elapsed = 00:06:41 . Memory (MB): peak = 2105.711 ; gain = 534.605 ; free physical = 173 ; free virtual = 2087
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:52 ; elapsed = 00:05:52 . Memory (MB): peak = 2092.184 ; gain = 538.449 ; free physical = 5736 ; free virtual = 9805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -24146,7 +24210,8 @@ Report BlackBoxes:
 |6     |read_byte_fifo                 |         1|
 |7     |mon_adc                        |         1|
 |8     |sim_fixed_memory               |         1|
-|9     |styx_ps_processing_system7_0_0 |         1|
+|9     |sim_erasable_memory            |         1|
+|10    |styx_ps_processing_system7_0_0 |         1|
 +------+-------------------------------+----------+
 
 Report Cell Usage: 
@@ -24160,32 +24225,33 @@ Report Cell Usage:
 |5     |read_byte_fifo                 |     1|
 |6     |read_fifo                      |     1|
 |7     |rope_memory                    |     1|
-|8     |sim_fixed_memory               |     1|
-|9     |styx_ps_processing_system7_0_0 |     1|
-|10    |BUFG                           |     1|
-|11    |CARRY4                         |    23|
-|12    |LUT1                           |   109|
-|13    |LUT2                           |  5084|
-|14    |LUT3                           |  1559|
-|15    |LUT4                           |  2851|
-|16    |LUT5                           |  1367|
-|17    |LUT6                           |   962|
-|18    |MUXF7                          |    14|
-|19    |MUXF8                          |     7|
-|20    |FDCE                           | 13291|
-|21    |FDPE                           |  2399|
-|22    |FDRE                           |    11|
-|23    |IBUF                           |     4|
-|24    |IOBUF                          |     8|
-|25    |OBUF                           |   122|
-|26    |OBUFT                          |     1|
+|8     |sim_erasable_memory            |     1|
+|9     |sim_fixed_memory               |     1|
+|10    |styx_ps_processing_system7_0_0 |     1|
+|11    |BUFG                           |     1|
+|12    |CARRY4                         |    23|
+|13    |LUT1                           |   112|
+|14    |LUT2                           |  5087|
+|15    |LUT3                           |  1579|
+|16    |LUT4                           |  2870|
+|17    |LUT5                           |  1373|
+|18    |LUT6                           |  1007|
+|19    |MUXF7                          |    15|
+|20    |MUXF8                          |     7|
+|21    |FDCE                           | 13324|
+|22    |FDPE                           |  2399|
+|23    |FDRE                           |    11|
+|24    |IBUF                           |     4|
+|25    |IOBUF                          |     8|
+|26    |OBUF                           |   122|
+|27    |OBUFT                          |     1|
 +------+-------------------------------+------+
 
 Report Instance Areas: 
 +------+------------------------+-----------------------------+------+
 |      |Instance                |Module                       |Cells |
 +------+------------------------+-----------------------------+------+
-|1     |top                     |                             | 28007|
+|1     |top                     |                             | 28169|
 |2     |  fpgaagc               |fpga_agc                     | 23263|
 |3     |    traya               |tray_a                       | 22375|
 |4     |      a03               |a03_sq_register              |   999|
@@ -28850,86 +28916,90 @@ Report Instance Areas:
 |4663  |    db53                |debounce__48                 |    15|
 |4664  |    db54                |debounce__49                 |    15|
 |4665  |    db55                |debounce                     |    15|
-|4666  |  agcmonitor            |agc_monitor                  |  3690|
-|4667  |    usb_if              |usb_interface                |   317|
-|4668  |      cmd_rx            |cmd_receiver                 |    97|
-|4669  |      msg_sndr          |msg_sender                   |    98|
-|4670  |    cmd_ctrl            |cmd_controller               |    83|
-|4671  |    ver                 |version                      |     5|
-|4672  |    ctrl_regs           |control_regs                 |   791|
-|4673  |    stat_regs           |status_regs                  |   278|
-|4674  |    strt_stp            |start_stop                   |    82|
-|4675  |    ctmr                |clear_timer                  |    14|
-|4676  |    mon_regs            |monitor_regs                 |   624|
+|4666  |  agcmonitor            |agc_monitor                  |  3852|
+|4667  |    nolabel_line260     |usb_interface                |   317|
+|4668  |      nolabel_line76    |cmd_receiver                 |    97|
+|4669  |      nolabel_line147   |msg_sender                   |    98|
+|4670  |    nolabel_line348     |cmd_controller               |    85|
+|4671  |    nolabel_line390     |version                      |     5|
+|4672  |    nolabel_line451     |control_regs                 |   791|
+|4673  |    nolabel_line529     |status_regs                  |   278|
+|4674  |    nolabel_line585     |start_stop                   |    82|
+|4675  |    nolabel_line628     |clear_timer                  |    14|
+|4676  |    nolabel_line653     |monitor_regs                 |   633|
 |4677  |      reg_a             |register__1                  |    33|
 |4678  |      reg_l             |register__2                  |    33|
 |4679  |      reg_q             |register__3                  |    33|
 |4680  |      reg_eb            |register2__1                 |     8|
-|4681  |      reg_fb            |register__parameterized0__1  |    11|
-|4682  |      reg_true_fb       |register__parameterized0     |    11|
-|4683  |      reg_z             |register__4                  |    33|
-|4684  |      reg_b             |register__5                  |    33|
-|4685  |      reg_s             |register2__parameterized0    |    26|
-|4686  |      reg_true_s        |register__parameterized1     |    25|
-|4687  |      editing           |edit                         |    46|
-|4688  |      reg_g             |register2__parameterized1    |    34|
-|4689  |      reg_y             |register__6                  |    33|
-|4690  |      reg_u             |register__7                  |    33|
-|4691  |      reg_w             |register                     |    33|
-|4692  |    mon_chans           |monitor_channels             |   621|
-|4693  |      chan_3            |channel                      |    33|
-|4694  |      chan_4            |channel__parameterized0      |    33|
-|4695  |      chan_5            |channel__parameterized1      |    19|
-|4696  |      chan_6            |channel__parameterized2      |    19|
-|4697  |      chan_7            |channel__parameterized3      |     9|
-|4698  |      chan_10           |channel__parameterized4      |    33|
-|4699  |      chan_11           |channel__parameterized5      |    33|
-|4700  |      chan_12           |channel__parameterized6      |    33|
-|4701  |      chan_13           |channel__parameterized7      |    33|
-|4702  |      chan_14           |channel__parameterized8      |    33|
-|4703  |      chan_15           |channel__parameterized9      |    13|
-|4704  |      chan_16           |channel__parameterized10     |    17|
-|4705  |      chan_30           |channel__parameterized11     |    33|
-|4706  |      chan_31           |channel__parameterized12     |    33|
-|4707  |      chan_32           |channel__parameterized13     |    33|
-|4708  |      chan_33           |channel__parameterized14     |    33|
-|4709  |      chan_34           |channel__parameterized15     |    33|
-|4710  |      chan_35           |channel__parameterized16     |    33|
-|4711  |    periph_insts        |peripheral_instructions      |   166|
-|4712  |    fixed               |agc_fixed                    |    48|
-|4713  |      fixed_addr        |fixed_addr_encoder           |     4|
-|4714  |    erasable            |agc_erasable                 |    52|
-|4715  |    sim_fix             |sim_fixed                    |   199|
-|4716  |      fixed_addr        |fixed_addr_decoder           |     6|
-|4717  |    mon_dsky            |monitor_dsky                 |   323|
-|4718  |  styxpsbootloader      |styx_ps_bootloader           |     3|
-|4719  |    styx_ps             |styx_ps_wrapper              |     3|
-|4720  |      styx_ps_i         |styx_ps                      |     3|
+|4681  |      reg_true_eb       |register2                    |     8|
+|4682  |      reg_fb            |register__parameterized0__1  |    11|
+|4683  |      reg_true_fb       |register__parameterized0     |    11|
+|4684  |      reg_z             |register__4                  |    33|
+|4685  |      reg_b             |register__5                  |    33|
+|4686  |      reg_s             |register2__parameterized0    |    26|
+|4687  |      reg_true_s        |register__parameterized1     |    25|
+|4688  |      nolabel_line231   |edit                         |    46|
+|4689  |      reg_g             |register2__parameterized1    |    34|
+|4690  |      reg_y             |register__6                  |    33|
+|4691  |      reg_u             |register__7                  |    33|
+|4692  |      reg_w             |register                     |    33|
+|4693  |    nolabel_line743     |monitor_channels             |   621|
+|4694  |      chan_3            |channel                      |    33|
+|4695  |      chan_4            |channel__parameterized0      |    33|
+|4696  |      chan_5            |channel__parameterized1      |    19|
+|4697  |      chan_6            |channel__parameterized2      |    19|
+|4698  |      chan_7            |channel__parameterized3      |     9|
+|4699  |      chan_10           |channel__parameterized4      |    33|
+|4700  |      chan_11           |channel__parameterized5      |    33|
+|4701  |      chan_12           |channel__parameterized6      |    33|
+|4702  |      chan_13           |channel__parameterized7      |    33|
+|4703  |      chan_14           |channel__parameterized8      |    33|
+|4704  |      chan_15           |channel__parameterized9      |    13|
+|4705  |      chan_16           |channel__parameterized10     |    17|
+|4706  |      chan_30           |channel__parameterized11     |    33|
+|4707  |      chan_31           |channel__parameterized12     |    33|
+|4708  |      chan_32           |channel__parameterized13     |    33|
+|4709  |      chan_33           |channel__parameterized14     |    33|
+|4710  |      chan_34           |channel__parameterized15     |    33|
+|4711  |      chan_35           |channel__parameterized16     |    33|
+|4712  |    nolabel_line805     |peripheral_instructions      |   166|
+|4713  |    nolabel_line849     |agc_fixed                    |    48|
+|4714  |      nolabel_line41    |fixed_addr_encoder           |     4|
+|4715  |    nolabel_line873     |agc_erasable                 |    52|
+|4716  |    nolabel_line901     |sim_fixed                    |   199|
+|4717  |      nolabel_line43    |fixed_addr_decoder           |     6|
+|4718  |    nolabel_line939     |sim_erasable                 |   151|
+|4719  |      nolabel_line44    |erasable_addr_decoder        |     3|
+|4720  |      nolabel_line96    |unedit                       |    32|
+|4721  |    nolabel_line972     |monitor_dsky                 |   323|
+|4722  |  styxpsbootloader      |styx_ps_bootloader           |     3|
+|4723  |    styx_ps             |styx_ps_wrapper              |     3|
+|4724  |      styx_ps_i         |styx_ps                      |     3|
 +------+------------------------+-----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:04:23 ; elapsed = 00:06:42 . Memory (MB): peak = 2105.711 ; gain = 534.605 ; free physical = 171 ; free virtual = 2086
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:52 ; elapsed = 00:05:53 . Memory (MB): peak = 2092.184 ; gain = 538.449 ; free physical = 5735 ; free virtual = 9805
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:04:11 ; elapsed = 00:06:29 . Memory (MB): peak = 2105.711 ; gain = 356.285 ; free physical = 224 ; free virtual = 2140
-Synthesis Optimization Complete : Time (s): cpu = 00:04:23 ; elapsed = 00:06:42 . Memory (MB): peak = 2105.719 ; gain = 534.605 ; free physical = 221 ; free virtual = 2140
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:42 ; elapsed = 00:05:42 . Memory (MB): peak = 2092.184 ; gain = 359.223 ; free physical = 5790 ; free virtual = 9860
+Synthesis Optimization Complete : Time (s): cpu = 00:03:52 ; elapsed = 00:05:53 . Memory (MB): peak = 2092.191 ; gain = 538.449 ; free physical = 5805 ; free virtual = 9875
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 52 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 53 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2105.719 ; gain = 0.000 ; free physical = 145 ; free virtual = 2113
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2092.191 ; gain = 0.000 ; free physical = 5764 ; free virtual = 9833
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 8 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 8 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-445 Infos, 79 Warnings, 0 Critical Warnings and 0 Errors encountered.
+448 Infos, 109 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:04:33 ; elapsed = 00:06:53 . Memory (MB): peak = 2105.719 ; gain = 735.211 ; free physical = 277 ; free virtual = 2247
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2105.719 ; gain = 0.000 ; free physical = 275 ; free virtual = 2247
+synth_design: Time (s): cpu = 00:04:01 ; elapsed = 00:06:01 . Memory (MB): peak = 2092.191 ; gain = 652.836 ; free physical = 5895 ; free virtual = 9964
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2092.191 ; gain = 0.000 ; free physical = 5895 ; free virtual = 9964
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint '/home/rzinkstok/fpga_agc/fpga/agc.runs/synth_1/toplevel.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file toplevel_utilization_synth.rpt -pb toplevel_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Aug 14 16:47:27 2020...
+INFO: [Common 17-206] Exiting Vivado at Sun Aug 16 13:44:02 2020...

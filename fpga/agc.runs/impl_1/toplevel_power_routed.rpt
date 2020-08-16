@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-| Date             : Fri Aug 14 16:53:48 2020
+| Date             : Sun Aug 16 13:51:20 2020
 | Host             : fpgadev running 64-bit Ubuntu 18.04.5 LTS
 | Command          : report_power -file toplevel_power_routed.rpt -pb toplevel_power_summary_routed.pb -rpx toplevel_power_routed.rpx
 | Design           : toplevel
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.837        |
+| Total On-Chip Power (W)  | 1.848        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.683        |
+| Dynamic (W)              | 1.693        |
 | Device Static (W)        | 0.155        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 63.8         |
-| Junction Temperature (C) | 46.2         |
+| Max Ambient (C)          | 63.7         |
+| Junction Temperature (C) | 46.3         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,22 +53,22 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.093 |        6 |       --- |             --- |
-| Slice Logic             |     0.027 |    34005 |       --- |             --- |
-|   LUT as Logic          |     0.023 |    11833 |     53200 |           22.24 |
-|   Register              |     0.003 |    16362 |    106400 |           15.38 |
+| Slice Logic             |     0.027 |    34145 |       --- |             --- |
+|   LUT as Logic          |     0.024 |    11922 |     53200 |           22.41 |
+|   Register              |     0.003 |    16395 |    106400 |           15.41 |
 |   CARRY4                |    <0.001 |       71 |     13300 |            0.53 |
-|   F7/F8 Muxes           |    <0.001 |       83 |     53200 |            0.16 |
+|   F7/F8 Muxes           |    <0.001 |       84 |     53200 |            0.16 |
 |   BUFG                  |    <0.001 |        1 |        32 |            3.13 |
-|   Others                |     0.000 |     5095 |       --- |             --- |
+|   Others                |     0.000 |     5099 |       --- |             --- |
 |   LUT as Shift Register |     0.000 |        4 |     17400 |            0.02 |
-| Signals                 |     0.060 |    23541 |       --- |             --- |
-| Block RAM               |     0.038 |     74.5 |       140 |           53.21 |
+| Signals                 |     0.059 |    23704 |       --- |             --- |
+| Block RAM               |     0.040 |     75.5 |       140 |           53.93 |
 | MMCM                    |     0.119 |        1 |         4 |           25.00 |
-| I/O                     |     0.064 |      136 |       200 |           68.00 |
+| I/O                     |     0.073 |      136 |       200 |           68.00 |
 | XADC                    |     0.002 |        1 |       --- |             --- |
 | PS7                     |     1.280 |        1 |       --- |             --- |
 | Static Power            |     0.155 |          |           |                 |
-| Total                   |     1.837 |          |           |                 |
+| Total                   |     1.848 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -78,16 +78,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.234 |       0.215 |      0.019 |
-| Vccaux    |       1.800 |     0.082 |       0.067 |      0.016 |
-| Vcco33    |       3.300 |     0.020 |       0.019 |      0.001 |
+| Vccint    |       1.000 |     0.235 |       0.217 |      0.019 |
+| Vccaux    |       1.800 |     0.083 |       0.067 |      0.016 |
+| Vcco33    |       3.300 |     0.022 |       0.021 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.009 |       0.003 |      0.006 |
+| Vccbram   |       1.000 |     0.010 |       0.004 |      0.006 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
@@ -156,23 +156,24 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| toplevel                |     1.683 |
-|   agcmonitor            |     0.047 |
-|     ctrl_regs           |     0.002 |
-|     mon_chans           |     0.001 |
-|     mon_dsky            |     0.001 |
-|     mon_regs            |     0.002 |
-|     periph_insts        |     0.001 |
-|     sim_fix             |     0.028 |
-|       sim_fixed_mem     |     0.027 |
-|     stat_regs           |     0.003 |
-|       adc               |     0.002 |
-|     usb_if              |     0.008 |
-|       cmd_queue         |     0.002 |
-|       read_byte_queue   |     0.004 |
-|       read_msg_queue    |     0.001 |
-|   fpgaagc               |     0.284 |
-|     traya               |     0.151 |
+| toplevel                |     1.693 |
+|   agcmonitor            |     0.050 |
+|     nolabel_line260     |     0.008 |
+|       nolabel_line135   |     0.001 |
+|       nolabel_line159   |     0.004 |
+|       nolabel_line86    |     0.002 |
+|     nolabel_line451     |     0.002 |
+|     nolabel_line529     |     0.003 |
+|       nolabel_line58    |     0.002 |
+|     nolabel_line653     |     0.002 |
+|     nolabel_line743     |     0.001 |
+|     nolabel_line805     |     0.001 |
+|     nolabel_line901     |     0.028 |
+|       nolabel_line61    |     0.027 |
+|     nolabel_line939     |     0.003 |
+|       nolabel_line74    |     0.002 |
+|   fpgaagc               |     0.282 |
+|     traya               |     0.150 |
 |       a01               |     0.008 |
 |       a02               |     0.005 |
 |       a03               |     0.007 |
@@ -180,19 +181,19 @@ Table of Contents
 |       a05               |     0.006 |
 |       a06               |     0.006 |
 |       a07               |     0.005 |
-|       a08               |     0.008 |
+|       a08               |     0.007 |
 |       a09               |     0.007 |
 |       a10               |     0.007 |
-|       a11               |     0.007 |
+|       a11               |     0.008 |
 |       a12               |     0.006 |
 |       a13               |     0.003 |
 |       a14               |     0.007 |
-|       a15               |     0.006 |
+|       a15               |     0.007 |
 |       a16               |     0.006 |
 |       a17               |     0.007 |
-|       a18               |     0.007 |
+|       a18               |     0.006 |
 |       a19               |     0.005 |
-|       a20               |     0.007 |
+|       a20               |     0.006 |
 |       a21               |     0.008 |
 |       a23               |     0.006 |
 |       a24               |     0.003 |

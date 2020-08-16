@@ -57,8 +57,8 @@ module cmd_controller(
     output reg sim_fixed_write_en,
 
     // Erasable memory simulation control signals
-    output reg ems_read_en,
-    output reg ems_write_en,
+    output reg sim_erasable_read_en,
+    output reg sim_erasable_write_en,
 
     // DSKY control signals
     output reg mon_dsky_read_en,
@@ -150,8 +150,8 @@ module cmd_controller(
         agc_channels_write_en = 1'b0;
         sim_fixed_read_en = 1'b0;
         sim_fixed_write_en = 1'b0;
-        ems_read_en = 1'b0;
-        ems_write_en = 1'b0;
+        sim_erasable_read_en = 1'b0;
+        sim_erasable_write_en = 1'b0;
         mon_dsky_read_en = 1'b0;
         mon_dsky_write_en = 1'b0;
         trace_read_en = 1'b0;
@@ -231,10 +231,10 @@ module cmd_controller(
         
             SIM_ERASABLE: begin
                 if (~cmd_write_flag) begin
-                    ems_read_en = 1'b1;
+                    sim_erasable_read_en = 1'b1;
                     next_state = SEND_READ_MSG;
                 end else begin
-                    ems_write_en = 1'b1;
+                    sim_erasable_write_en = 1'b1;
                     next_state = IDLE;
                 end
             end

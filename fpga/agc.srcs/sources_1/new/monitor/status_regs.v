@@ -55,7 +55,7 @@ module status_regs(
     wire [15:0] adc_do;
     wire adc_drdy;
     
-    mon_adc adc(
+    mon_adc(
         .daddr_in(adc_daddr),
         .dclk_in(clk),
         .den_in(adc_eoc),

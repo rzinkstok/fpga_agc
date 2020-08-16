@@ -73,7 +73,7 @@ module usb_interface(
     assign cmd_ready = (!cmd_fifo_empty) && (!read_fifo_full);
 
     // Command receiver
-    cmd_receiver cmd_rx(
+    cmd_receiver(
         .clk(clkout),
         .rst_n(rst_n),
         .data(rx_data_in),
@@ -83,7 +83,7 @@ module usb_interface(
     );
     
     // Queue of completed incoming commands
-    cmd_fifo cmd_queue(
+    cmd_fifo(
         .rst(!rst_n),
         .wr_clk(clkout),
         .rd_clk(clk),
@@ -132,7 +132,7 @@ module usb_interface(
     assign data = (tx_byte_read_en) ? tx_byte : 8'bZ;
     
     // Read message FIFO
-    read_fifo read_msg_queue(
+    read_fifo(
       .clk(clk),
       .srst(~rst_n),
       .din(read_msg),
@@ -144,7 +144,7 @@ module usb_interface(
     );
     
     // Message sender
-    msg_sender msg_sndr(
+    msg_sender(
         .clk(clk),
         .rst_n(rst_n),
         .msg(send_msg),
@@ -156,7 +156,7 @@ module usb_interface(
     );
     
     // Read byte FIFO
-    read_byte_fifo read_byte_queue(
+    read_byte_fifo(
         .rst(~rst_n),
         .wr_clk(clk),
         .rd_clk(clkout),

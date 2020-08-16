@@ -228,7 +228,7 @@ module monitor_regs(
 
     // Register G
     wire [16:1] mwl_edited;
-    edit editing(
+    edit(
         .clk(clk),
         .rst_n(rst_n),
         .mt02(mt[2]),

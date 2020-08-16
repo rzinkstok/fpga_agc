@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Fri Aug 14 16:47:29 2020
-# Process ID: 85406
+# Start of session at: Sun Aug 16 13:54:44 2020
+# Process ID: 19540
 # Current directory: /home/rzinkstok/fpga_agc/fpga/agc.runs/impl_1
 # Command line: vivado -log toplevel.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source toplevel.tcl -notrace
 # Log file: /home/rzinkstok/fpga_agc/fpga/agc.runs/impl_1/toplevel.vdi

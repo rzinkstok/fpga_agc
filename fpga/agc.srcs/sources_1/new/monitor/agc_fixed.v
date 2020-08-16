@@ -38,7 +38,7 @@ module agc_fixed(
     wire [7:5] cmd_fext;
     wire [15:11] cmd_fb;
     wire [12:1] cmd_s;
-    fixed_addr_encoder fixed_addr(addr, cmd_fext, cmd_fb, cmd_s);
+    fixed_addr_encoder(addr, cmd_fext, cmd_fb, cmd_s);
     
     always @(*) begin
         next_state = state;

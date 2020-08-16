@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="sim_erasable_memory_synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1597573243">
+  <File Type="VDS-TIMINGSUMMARY" Name="sim_erasable_memory_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="sim_erasable_memory.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="sim_erasable_memory_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="sim_erasable_memory_utilization_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="sim_erasable_memory_timing_summary_synth.pb"/>
+  <File Type="PA-TCL" Name="sim_erasable_memory.tcl"/>
+  <File Type="REPORTS-TCL" Name="sim_erasable_memory_reports.tcl"/>
+  <File Type="RDS-RDS" Name="sim_erasable_memory.vds"/>
+  <File Type="RDS-PROPCONSTRS" Name="sim_erasable_memory_drc_synth.rpt"/>
+  <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/sim_erasable_memory">
+    <File Path="$PSRCDIR/sources_1/ip/sim_erasable_memory/sim_erasable_memory.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="sim_erasable_memory"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/sim_erasable_memory">
+    <File Path="$PSRCDIR/sources_1/ip/sim_erasable_memory/sim_erasable_memory.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="sim_erasable_memory"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

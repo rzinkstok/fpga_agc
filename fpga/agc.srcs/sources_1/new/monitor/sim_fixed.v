@@ -40,7 +40,7 @@ module sim_fixed(
 
     // Decode fixed address coming from AGC in s, fb and fext
     wire [16:1] faddr;
-    fixed_addr_decoder fixed_addr(
+    fixed_addr_decoder(
         .fext(fext),
         .fb(fb),
         .s(s),
@@ -58,7 +58,7 @@ module sim_fixed(
     
     // Memory channel A enables loading and reading data (data input/output to monitor)
     // Memory channel B enables reading data (data output to AGC)
-    sim_fixed_memory sim_fixed_mem(
+    sim_fixed_memory(
         .clka(clk),
         .ena(rope_mem_en),
         .wea(write_en),

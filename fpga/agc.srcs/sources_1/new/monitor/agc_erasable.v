@@ -39,7 +39,7 @@ module agc_erasable(
     
     wire [11:9] cmd_eb;
     wire [12:1] cmd_s;
-    erasable_addr_encoder erasable_addr(addr[10:0], cmd_eb, cmd_s);
+    erasable_addr_encoder(addr[10:0], cmd_eb, cmd_s);
     
     always @(*) begin
         next_state = state;

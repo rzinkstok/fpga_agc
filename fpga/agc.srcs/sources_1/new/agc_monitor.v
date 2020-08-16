@@ -200,9 +200,6 @@ module agc_monitor(
     output wire [6:1]dbg
 );
 
-    // Monitor signals not yet incorporated (TODO)
-    assign MAMU = 0;
-    
     // Signal conversion
     wire [12:1]mt;
     assign mt = { MT12, MT11, MT10, MT09, MT08, MT07, MT06, MT05, MT04, MT03, MT02, MT01 };
@@ -218,23 +215,24 @@ module agc_monitor(
     // MDT assingments
     // assign mdt = mdt_chan77 | mdt_periph | mdt_crs | mdt_ems | mdt_rupts | mdt_dsky | mdt_nassp;
     wire [16:1] mdt_periph;
-    wire [16:1] mdt_crs;
-    assign MDT01 = mdt_periph[1] | mdt_crs[1];
-    assign MDT02 = mdt_periph[2] | mdt_crs[2];
-    assign MDT03 = mdt_periph[3] | mdt_crs[3];
-    assign MDT04 = mdt_periph[4] | mdt_crs[4];
-    assign MDT05 = mdt_periph[5] | mdt_crs[5];
-    assign MDT06 = mdt_periph[6] | mdt_crs[6];
-    assign MDT07 = mdt_periph[7] | mdt_crs[7];
-    assign MDT08 = mdt_periph[8] | mdt_crs[8];
-    assign MDT09 = mdt_periph[9] | mdt_crs[9];
-    assign MDT10 = mdt_periph[10] | mdt_crs[10];
-    assign MDT11 = mdt_periph[11] | mdt_crs[11];
-    assign MDT12 = mdt_periph[12] | mdt_crs[12];
-    assign MDT13 = mdt_periph[13] | mdt_crs[13];
-    assign MDT14 = mdt_periph[14] | mdt_crs[14];
-    assign MDT15 = mdt_periph[15] | mdt_crs[15];
-    assign MDT16 = mdt_periph[16] | mdt_crs[16];
+    wire [16:1] mdt_sim_fixed;
+    wire [16:1]mdt_sim_erasable;
+    assign MDT01 = mdt_periph[1] | mdt_sim_fixed[1] | mdt_sim_erasable[1];
+    assign MDT02 = mdt_periph[2] | mdt_sim_fixed[2] | mdt_sim_erasable[2];
+    assign MDT03 = mdt_periph[3] | mdt_sim_fixed[3] | mdt_sim_erasable[3];
+    assign MDT04 = mdt_periph[4] | mdt_sim_fixed[4] | mdt_sim_erasable[4];
+    assign MDT05 = mdt_periph[5] | mdt_sim_fixed[5] | mdt_sim_erasable[5];
+    assign MDT06 = mdt_periph[6] | mdt_sim_fixed[6] | mdt_sim_erasable[6];
+    assign MDT07 = mdt_periph[7] | mdt_sim_fixed[7] | mdt_sim_erasable[7];
+    assign MDT08 = mdt_periph[8] | mdt_sim_fixed[8] | mdt_sim_erasable[8];
+    assign MDT09 = mdt_periph[9] | mdt_sim_fixed[9] | mdt_sim_erasable[9];
+    assign MDT10 = mdt_periph[10] | mdt_sim_fixed[10] | mdt_sim_erasable[10];
+    assign MDT11 = mdt_periph[11] | mdt_sim_fixed[11] | mdt_sim_erasable[11];
+    assign MDT12 = mdt_periph[12] | mdt_sim_fixed[12] | mdt_sim_erasable[12];
+    assign MDT13 = mdt_periph[13] | mdt_sim_fixed[13] | mdt_sim_erasable[13];
+    assign MDT14 = mdt_periph[14] | mdt_sim_fixed[14] | mdt_sim_erasable[14];
+    assign MDT15 = mdt_periph[15] | mdt_sim_fixed[15] | mdt_sim_erasable[15];
+    assign MDT16 = mdt_periph[16] | mdt_sim_fixed[16] | mdt_sim_erasable[16];
     
     // Power supply failure test signals: tie low
     assign CNTRL1 = 1'b0;
@@ -259,7 +257,7 @@ module agc_monitor(
 
 
     // USB interface
-    usb_interface usb_if(
+    usb_interface(
         .clk(clk),
         .rst_n(rst_n),
         .clkout(clkout),
@@ -327,9 +325,9 @@ module agc_monitor(
     wire sim_fixed_write_en;
     wire [15:0] sim_fixed_data;
     
-    wire ems_read_en;
-    wire ems_write_en;
-    wire [15:0] ems_data;
+    wire sim_erasable_read_en;
+    wire sim_erasable_write_en;
+    wire [15:0] sim_erasable_data;
     
     wire trace_read_en;
     wire [15:0] trace_data;
@@ -344,10 +342,10 @@ module agc_monitor(
 
     // Resulting data from the active read command
     wire [15:0] read_data;
-    assign read_data = ctrl_data | status_data | mon_reg_data | mon_chan_data | mon_dsky_data | agc_fixed_data | agc_erasable_data | sim_fixed_data | version_data;
+    assign read_data = ctrl_data | status_data | mon_reg_data | mon_chan_data | mon_dsky_data | agc_fixed_data | agc_erasable_data | sim_fixed_data | sim_erasable_data | version_data;
     //assign read_data = agc_channels_data | ems_data | trace_data | nassp_data;
 
-    cmd_controller cmd_ctrl(
+    cmd_controller(
         .clk(clk),
         .rst_n(rst_n),
         .cmd(cmd),
@@ -377,8 +375,8 @@ module agc_monitor(
         .agc_channels_write_done(agc_channels_write_done),
         .sim_fixed_read_en(sim_fixed_read_en),
         .sim_fixed_write_en(sim_fixed_write_en),
-        .ems_read_en(ems_read_en),
-        .ems_write_en(ems_write_en),
+        .sim_erasable_read_en(sim_erasable_read_en),
+        .sim_erasable_write_en(sim_erasable_write_en),
         .mon_dsky_read_en(mon_dsky_read_en),
         .mon_dsky_write_en(mon_dsky_write_en),
         .trace_read_en(trace_read_en),
@@ -389,7 +387,7 @@ module agc_monitor(
     );
 
     // Version logic
-    version ver(
+    version(
         .clk(clk),
         .rst_n(rst_n),
         .read_en(version_read_en),
@@ -438,8 +436,8 @@ module agc_monitor(
     wire [16:1] ctrl_periph_data;
     wire periph_complete;
     
-    wire [63:0] crs_bank_en;
-    wire [7:0] ems_bank_en;
+    wire [63:0] sim_fixed_bank_en;
+    wire [7:0] sim_erasable_bank_en;
     
     wire downrupt;
     wire handrupt;
@@ -450,7 +448,7 @@ module agc_monitor(
     
     wire [15:0] n_nisq_steps;
     
-    control_regs ctrl_regs(
+    control_regs(
         .clk(clk),
         .rst_n(rst_n),
         
@@ -515,8 +513,8 @@ module agc_monitor(
         .periph_data(ctrl_periph_data),
         .periph_complete(periph_complete),
     
-        .crs_bank_en(crs_bank_en),
-        .ems_bank_en(ems_bank_en),
+        .sim_fixed_bank_en(sim_fixed_bank_en),
+        .sim_erasable_bank_en(sim_erasable_bank_en),
         
         .n_nisq_steps(n_nisq_steps)
     );
@@ -528,7 +526,7 @@ module agc_monitor(
     wire [16:1] mismatch_faddr;
     wire [16:1] mismatch_data;
     
-    status_regs stat_regs(
+    status_regs(
         .clk(clk),
         .rst_n(rst_n),
     
@@ -584,7 +582,7 @@ module agc_monitor(
     wire inhibit_mstp;
     assign MSTP = ss_mstp & ~inhibit_mstp;
     
-    start_stop strt_stp(
+    start_stop(
         .clk(clk),
         .rst_n(rst_n),
         
@@ -627,7 +625,7 @@ module agc_monitor(
     * Clear Timer                                                                   *
     '*******************************************************************************/
     wire ct;
-    clear_timer ctmr(
+    clear_timer(
         .clk(clk),
         .rst_n(rst_n),
         .MONWT(MONWT),
@@ -652,7 +650,7 @@ module agc_monitor(
     wire inhibit_ws;
     wire rbbk;
     
-    monitor_regs mon_regs(
+    monitor_regs(
         .clk(clk),
         .rst_n(rst_n),
 
@@ -742,7 +740,7 @@ module agc_monitor(
     wire [15:1] dsalmout;
     wire [15:1] chan13;
     
-    monitor_channels mon_chans(
+    monitor_channels(
         .clk(clk),
         .rst_n(rst_n),
     
@@ -804,7 +802,7 @@ module agc_monitor(
     assign periph_s = ctrl_periph_s | agc_fixed_periph_s | agc_erasable_periph_s; // | agc_channels_periph_s | nassp_periph_s;
     assign periph_data = ctrl_periph_data | agc_fixed_periph_data | agc_erasable_periph_data; // | agc_channels_periph_data | nassp_periph_data;
     
-    peripheral_instructions periph_insts(
+    peripheral_instructions(
         .clk(clk),
         .rst_n(rst_n),
     
@@ -848,7 +846,7 @@ module agc_monitor(
     /*******************************************************************************.
     * AGC Fixed Memory                                                              *
     '*******************************************************************************/
-    agc_fixed fixed(
+    agc_fixed(
         .clk(clk),
         .rst_n(rst_n),
     
@@ -872,7 +870,7 @@ module agc_monitor(
     /*******************************************************************************.
     * AGC Erasable Memory                                                           *
     '*******************************************************************************/
-    agc_erasable erasable(
+    agc_erasable(
         .clk(clk),
         .rst_n(rst_n),
     
@@ -900,7 +898,7 @@ module agc_monitor(
     
     wire mismatch;
     
-    sim_fixed sim_fix(
+    sim_fixed(
         .clk(clk),
         .rst_n(rst_n),
     
@@ -910,7 +908,7 @@ module agc_monitor(
         .data_in(cmd_data),
         .data_out(sim_fixed_data),
     
-        .bank_en(crs_bank_en),
+        .bank_en(sim_fixed_bank_en),
         
         .fext(fext),
         .fb(true_fb),
@@ -923,7 +921,7 @@ module agc_monitor(
         .MWG(MWG),
     
         .MNHSBF(MNHSBF),
-        .mdt(mdt_crs),
+        .mdt(mdt_sim_fixed),
         .MONPAR(MONPAR),
     
         .MRGG(MRGG),
@@ -932,12 +930,46 @@ module agc_monitor(
         .mismatch_faddr(mismatch_faddr),
         .mismatch_data(mismatch_data)
     );
+    
+    
+    /*******************************************************************************.
+    * Erasable Memory Simulation                                                    *
+    '*******************************************************************************/
+    
+    sim_erasable(
+        .clk(clk),
+        .rst_n(rst_n),
+    
+        .read_en(sim_erasable_read_en),
+        .write_en(sim_erasable_write_en),
+        .addr(cmd_addr),
+        .data_in(cmd_data),
+        .data_out(sim_erasable_data),
+    
+        .bank_en(sim_erasable_bank_en),
+    
+        .MINKL(MINKL),
+        .mt(mt),
+        .MSQEXT(MSQEXT),
+        .msq(msq),
+        .mst(mst),
+        .eb(true_eb),
+        .s(true_s),
+        .g(g),
+        .MGP_(MGP_),
+        .MRSC(MRSC),
+        .MRGG(MRGG),
+        .MWG(MWG),
+        .MAMU(MAMU),
+        .mdt(mdt_sim_erasable)
+    );
+
 
     /*******************************************************************************.
     * DSKY                                                                          *
     '*******************************************************************************/
     
-    monitor_dsky mon_dsky(
+    monitor_dsky(
         .clk(clk),
         .rst_n(rst_n),
     
