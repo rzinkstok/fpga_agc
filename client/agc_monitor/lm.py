@@ -5,7 +5,7 @@ from PySide2.QtCore import Qt, QTimer, QSize, QPointF, QRectF
 import usb_message as um
 
 import math
-from fdai import FDAI
+from fdai_old import FDAI
 
 
 class LM(QWidget):
@@ -41,10 +41,11 @@ class LM(QWidget):
         self.xslider.setTickInterval(10)
         self.xslider.setMinimum(0)
         self.xslider.setMaximum(100)
+        self.xslider.setValue(50)
         self.xslider.valueChanged.connect(self.changedXValue)
         self.xlabel = QLabel("0")
 
-        xl.addWidget(QLabel("X"))
+        xl.addWidget(QLabel("Roll"))
         xl.addWidget(self.xslider)
         xl.addWidget(self.xlabel)
 
@@ -56,10 +57,11 @@ class LM(QWidget):
         self.yslider.setTickInterval(10)
         self.yslider.setMinimum(0)
         self.yslider.setMaximum(100)
+        self.yslider.setValue(50)
         self.yslider.valueChanged.connect(self.changedYValue)
         self.ylabel = QLabel("0")
 
-        yl.addWidget(QLabel("Y"))
+        yl.addWidget(QLabel("Yaw"))
         yl.addWidget(self.yslider)
         yl.addWidget(self.ylabel)
 
@@ -71,33 +73,15 @@ class LM(QWidget):
         self.zslider.setTickInterval(10)
         self.zslider.setMinimum(0)
         self.zslider.setMaximum(100)
-        self.zslider.setValue(100)
+        self.zslider.setValue(50)
         self.zslider.valueChanged.connect(self.changedZValue)
-        self.zlabel = QLabel("1")
+        self.zlabel = QLabel("0")
 
-        zl.addWidget(QLabel("Z"))
+        zl.addWidget(QLabel("Pitch"))
         zl.addWidget(self.zslider)
         zl.addWidget(self.zlabel)
 
-        al = QHBoxLayout()
-        control_layout.addLayout(al)
-        self.aslider = QSlider()
-        self.aslider.setOrientation(Qt.Horizontal)
-        self.aslider.setTickPosition(QSlider.TicksBelow)
-        self.aslider.setTickInterval(10)
-        self.aslider.setMinimum(0)
-        self.aslider.setMaximum(360)
-        self.aslider.setValue(0)
-        self.aslider.valueChanged.connect(self.changedAngleValue)
-        self.alabel = QLabel("0")
 
-        al.addWidget(QLabel("ANGLE"))
-        al.addWidget(self.aslider)
-        al.addWidget(self.alabel)
-
-        b = QPushButton("DEBUG")
-        b.clicked.connect(self.debug)
-        control_layout.addWidget(b)
         control_layout.addStretch()
 
 
@@ -107,17 +91,17 @@ class LM(QWidget):
         self.show()
 
     def changedXValue(self):
-        size = self.xslider.value() / 100
+        size = int(round(-180 + 360*self.xslider.value() / 100))
         self.xlabel.setText(str(size))
         self.setOrientation()
 
     def changedYValue(self):
-        size = self.yslider.value() / 100
+        size = int(round(-180 + 360*self.yslider.value() / 100))
         self.ylabel.setText(str(size))
         self.setOrientation()
 
     def changedZValue(self):
-        size = self.zslider.value() / 100
+        size = int(round(-180 + 360*self.zslider.value() / 100))
         self.zlabel.setText(str(size))
         self.setOrientation()
 
@@ -127,11 +111,11 @@ class LM(QWidget):
         self.setOrientation()
 
     def setOrientation(self):
-        x = self.xslider.value() / 100
-        y = self.yslider.value() / 100
-        z = self.zslider.value() / 100
-        angle = self.aslider.value()
-        self.fdai.setOrientation(x, y, z, angle)
+        roll = -180 + 360*self.xslider.value() / 100
+        yaw = -180 + 360*self.yslider.value() / 100
+        pitch = -180 + 360*self.zslider.value() / 100
+        #angle = self.aslider.value()
+        self.fdai.setOrientation(roll, yaw, pitch)
 
     def debug(self):
         pass

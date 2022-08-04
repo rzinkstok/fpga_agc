@@ -1,5 +1,4 @@
 from PIL import Image, ImageDraw
-from PIL import ImagePath
 
 
 class BezierPoint(object):

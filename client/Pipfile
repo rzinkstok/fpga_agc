@@ -16,6 +16,7 @@ pyopengl-demo = "*"
 numba = "*"
 scipy = "*"
 pillow = "*"
+vtk = "*"
 
 [requires]
 python_version = "3.9"
